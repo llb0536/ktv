@@ -1,7 +1,7 @@
 require "redis"
 require "redis-search"
 
-def redis_connect!
+def redis_connect!(index=0)
 
   redis_config = YAML.load_file("#{Rails.root}/config/redis.yml")[Rails.env]
   $redis = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true)
@@ -36,7 +36,13 @@ def redis_connect!
 
   # Resque
   Resque.redis = $redis_resque
-
+  
+  
+  $snda_service = Sndacs::Service.new(:access_key_id => Setting.snda_id, :secret_access_key => Setting.snda_key)
+  $snda_buckets = $snda_service.buckets
+  $snda_ktv_eb = $snda_buckets.find("ktv-eb")
+  $snda_ktv_down = $snda_buckets.find("ktv-down")
+  $snda_ktv_up = $snda_buckets.find("ktv-up")
 end
 
 

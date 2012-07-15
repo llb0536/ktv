@@ -1,6 +1,6 @@
 source 'http://ruby.taobao.org/'
 
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -131,7 +131,7 @@ gem 'nokogiri'
 gem 'redis-objects'
 gem 'progressbar'
 gem 'unicorn'
-gem "therubyracer", :require => 'v8'
+gem 'therubyracer', :platforms => :ruby
 
 gem 'mobile-fu'
 gem 'savon'
@@ -154,3 +154,5 @@ gem 'validate_url', '0.1.6'
 gem "redis-objects"
 gem 'pry'
 gem 'to_xls', '~> 1.0.0'
+
+gem 'sndacs'

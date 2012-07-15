@@ -11,10 +11,10 @@ Quora::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -22,15 +22,13 @@ Quora::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-
-  # config.cache_store = :dalli_store, '127.0.0.1:11211',{ :namespace => "quora",  :compress => true }
-  
   config.action_mailer.delivery_method = :letter_opener
   config.mongoid.preload_models = true
   
   # assets___________
   config.assets.compress = false
   config.assets.debug = true
+  config.assets.prefix = '/assets'
   # assets-----------
   
   #config.mongoid.logger = Logger.new(File.join(Rails.root,'log/mongoid.log'),  File::WRONLY | File::APPEND | File::CREAT)

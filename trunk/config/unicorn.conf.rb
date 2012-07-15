@@ -32,12 +32,15 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  redis_connect!
-  filepath = "#{Rails.root}/log/#{Rails.env}.#{worker.nr}.log"
-  Rails.logger = Logger.new(filepath, File::WRONLY | File::APPEND)
-  Rails.logger.fatal("#{server} nr=#{worker.nr} switched=#{worker.switched} tick=#{worker.tick}")
+  redis_connect!(worker.nr)
+
+  Rails.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.#{worker.nr}.log", File::WRONLY | File::APPEND)
+
   ActiveSupport::LogSubscriber.logger = Rails.logger
   ActionController::Base.logger = Rails.logger
   ActionMailer::Base.logger = Rails.logger
   ActiveResource::Base.logger = Rails.logger
+
+  Ktv.config.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.ktv.#{worker.nr}.log",File::WRONLY|File::APPEND)
+  $debug_logger = Logger.new("#{Rails.root}/log/#{Rails.env}.debug.#{worker.nr}.log", File::WRONLY | File::APPEND)
 end

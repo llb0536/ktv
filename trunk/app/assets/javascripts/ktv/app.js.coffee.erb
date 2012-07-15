@@ -1,0 +1,247 @@
+window.App = {}
+window.App.Utilities = {}
+
+if window.psvr_subject is 'math'
+  App.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math_hover.png") %>'
+  App.logo_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math.png") %>'
+else
+  App.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-all_hover.png") %>'
+  App.logo_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-all.png") %>'
+  
+App.browsetext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("browsetext_hover.png") %>'
+App.browsetext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("browsetext.png") %>'
+App.addtext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("addtext_hover.png") %>'
+App.addtext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("addtext.png") %>'
+
+App.Utilities.wrap_with_matches = (str,keyword)->
+  objRegExp = /// (
+    #{keyword}
+  ) ///i
+  return false if null==str.match(objRegExp)
+  return str.replace(objRegExp, "<span class=\"match\">$1</span>")
+
+App.Utilities.slice_with_matches = (str,keyword,length=3)->
+  objRegExp = /// (
+    #{keyword}
+  ) ///i
+  matched = str.match(objRegExp)
+  return false if null==matched
+  matched = matched[0]
+  parts = str.split(matched)
+  joiner = "<span class=\"match\">#{matched}</span>"
+  ret = ''
+  ret += App.Utilities.left_trim(parts[0],length)
+  ret += joiner
+  ret += App.Utilities.right_trim(parts[1],length)
+  ret
+
+App.Utilities.left_trim = (str,length) ->
+  if str.length > length
+    "...#{str[(str.length-length)..(str.length-1)]}"
+  else
+    str
+App.Utilities.right_trim = (str,length) ->
+  if str.length > length
+    "#{str[0..(length-1)]}..."
+  else
+    str
+
+App.preload = (arrayOfImages) -> 
+  $(arrayOfImages).each(->
+    $('<img/>')[0].src = this
+  )
+
+
+App.search_move = (dir) ->
+  current_which = $("#core_search_ul li.selected").first()
+  next_which = current_which.next('li')
+  prev_which = current_which.prev('li')
+  target = null
+  if current_which.length > 0
+    if dir is 1
+      if next_which.length > 0
+        target = next_which.first()
+      else
+        target = $("#core_search_ul li").first()
+    else if dir is -1
+      if prev_which.length > 0
+        target = prev_which.first()
+      else
+        target = $("#core_search_ul li").last()
+  if target
+    current_which.removeClass('selected')
+    target.addClass('selected')
+
+App.search_li_hover = ->
+  $('#core_search_ul li').hover(->
+    $('#core_search_ul li').removeClass('selected')
+    $(this).css('cursor','pointer')
+    $(this).addClass('selected')
+  ,->
+    $(this).css('cursor','auto');
+    $(this).removeClass('selected')
+  )
+  if $('#core_search_ul li.selected').length is 0
+    $('#core_search_ul li').first().addClass('selected')
+App.search_cater = (data) ->
+  $('#core_search_ul').html('')
+  $('#core_search_ul_new').html('')
+  keyword = 'unknown-keyword'
+  last_one = new_one = ''
+  failed = false
+  $.each(data,(index,itemRaw)->
+    item = JSON.parse(itemRaw)
+    if 'Course' == item['type']
+      title = App.Utilities.wrap_with_matches(item['title'],keyword)
+      title = item['title'] if false==title
+      slice1 = false # App.Utilities.slice_with_matches(item['name_en'],keyword,38)
+      slice2 = false #App.Utilities.slice_with_matches(item['name_pinyin'],keyword,6)
+      if false==slice1
+        if false==slice2
+          # do nothing
+        else
+          title += " <span class=\"en_match\">(#{slice2})</span>"
+      else
+        title += " <span class=\"en_match\">(#{slice1})</span>"
+      $('#core_search_ul').append("<li class=\"topic with_img\"><a class=\"result_item\" href=\"#\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"><img src=\"http://qph.cf.quoracdn.net/main-thumb-t-12709-100-Chrp3pWVUjUuilUt0sp1dNoloqxjiTSd.jpeg\" height=\"22\" width=\"22\"></div><div style=\"margin-top: 7px\">#{item['field_name']}</div></span></div></a></li>")
+    else if 'User' == item['type']
+      title = App.Utilities.wrap_with_matches(item['title'],keyword)
+      title = item['title'] if false==title
+      slice1 = App.Utilities.slice_with_matches(item['name_en'],keyword,18)
+      slice2 = App.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
+      if false==slice1
+        if false==slice2
+          # do nothing
+        else
+          title += " <span class=\"en_match\">(#{slice2})</span>"
+      else
+        title += " <span class=\"en_match\">(#{slice1})</span>"
+      $('#core_search_ul').append( "<li class=\"user\"><a href=\"#\" class=\"result_item\"><div class=\"text\"><div class=\"pic\"><img width=\"40\" height=\"40\" alt=\"#{item['text']}\" class=\"[]\" src=\"http://qph.cf.quoracdn.net/main-thumb-20806-25-lWRBrYp5S76HESRmO19OYorGun7B2QjQ.jpeg\"></div>#{title} <span class=\"faded\">#{item['real_tagline']}</span></div></a></li>" )
+    else if 'Courseware' == item['type']
+      title = App.Utilities.wrap_with_matches(item['title'],keyword)
+      title = item['title'] if false==title
+      slice1 = App.Utilities.slice_with_matches(item['title_en'],keyword,12)
+      slice2 = App.Utilities.slice_with_matches(item['title_pinyin'],keyword,6)
+      if false==slice1
+        if false==slice2
+          # do nothing
+        else
+          title += " <span class=\"en_match\">(#{slice2})</span>"
+      else
+        title += " <span class=\"en_match\">(#{slice1})</span>"
+      $('#core_search_ul').append( "<li class=\"topic with_img\"><a class=\"result_item\" href=\"/#{item['course_slug']}/#{item['slug']}\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"></div><div style=\"margin-top: 7px\">#{item['course_name']}</div></span></div></a></li>")
+    else if 'more' == item['type']
+      keyword = item['what']
+      last_one = "<li class=\"lightlink\"><a href=\"#\" class=\"result_item result_item_more\">全部搜索结果: #{item['what']}</a></li>"
+      new_one = "<li class=\"addquestionitem\" style=\"padding-top:10px\"><strong class=\"inline_label col\">#{item['what']}</strong><span class=\"lil_action_button submit_button col\" style=\"font-weight:normal\">开设新课程</span></li>"
+    else
+      failed = true
+      keyword = item['what']
+      last_one = "<li class=\"lightlink\">未找到与“#{item['what']}”相关的内容，请尝试其他关键词</li>"
+  )  
+  $('#core_search_ul').append(last_one)
+  $('#core_search_ul_new').append(new_one)
+  $('.results_frame li').removeClass('selected')
+  App.search_li_hover()
+App.login = ->
+  im.zm.login();
+  $("#loginLayout").definedDialog("open");
+  
+App.preload([
+  App.logo_css_src1,
+  App.browsetext_css_src1,
+  App.browsetext_css_src1
+])
+$(document).ready ->
+  $('#q').autocomplete({
+    minLength: 1,
+    source: ( request, response ) ->
+      term = request.term
+      console.log term
+      if false and cache[term] # todo: turn it on
+        console.log 'cache hit'
+        App.search_cater( cache[ term ] )
+      else
+        console.log '!'
+        lastXhr = $.getJSON( "/searches", request, ( data, status, xhr ) ->
+          cache[ term ] = data
+          if xhr == lastXhr
+            App.search_cater( data )
+        )
+  })
+  $('#q').bind( "input.autocomplete", ->
+    $(this).trigger('keydown.autocomplete')
+  )
+
+  $('#q').focus(->
+    $('div.navigation').fadeOut('fast')
+    $('#search_form').animate({
+      width: $('#search_form').data('width-tobe')
+    }, 200, ->
+      $('#search_form input').addClass('focused')
+      $('#results_tray_content').fadeIn('fast')
+      $('#results_tray_div').css('padding-bottom','2px')
+      $('#results_tray').animate({height:$('#results_tray').data('data-height')}, {duration: 200, easing: 'swing', complete: -> 
+        App.search_li_hover()
+      })
+    )
+  ).blur(->
+    $('#search_form input').removeClass('focused')
+    $('#results_tray_div').css('padding-bottom','0')
+    $('#results_tray_content').fadeOut('fast')  
+    $('#results_tray').animate({height:0}, {duration: 200, easing: 'swing', complete: ->
+      $('#search_form').animate({
+        width: 200
+      }, 200)
+      $('div.navigation').fadeIn('fast')
+    })
+  )
+  $('#search_form').submit(->
+    $('#q').blur()
+    false
+  )
+  $("#core_logotext_wrap").hover(->
+    $("#core_logotext").attr "src", App.logo_css_src1
+  , ->
+    $("#core_logotext").attr "src", App.logo_css_src0
+  )
+  $("#core_browsetext_wrap").hover(->
+    $("#core_browsetext").attr "src", App.browsetext_css_src1
+  , ->
+    $("#core_browsetext").attr "src", App.browsetext_css_src0
+  )
+  $("#core_addtext_wrap").hover(->
+    $("#core_addtext").attr "src", App.addtext_css_src1
+  , ->
+    $("#core_addtext").attr "src", App.addtext_css_src0
+  )
+  core_people_cf_timer = null
+  $('#core_people_cf li').click(->
+    $('#core_people_cf li').removeClass('on')
+    $(this).addClass('on')
+    $('#core_people_cf_quotes li').removeClass('on')
+    $($('#core_people_cf_quotes li')[$(this).data('no')]).addClass('on')
+    next_who = ($(this).data('no') + 1) % 4
+    clearTimeout(core_people_cf_timer) if core_people_cf_timer
+    core_people_cf_timer = setTimeout(->
+      $($('#core_people_cf li')[next_who]).trigger('click')
+    , 2000);
+  )
+  $('#login,#loginhuge').click(App.login)
+  # $('#weizuozhefasongganxie').click( ->
+  #   num = parseInt($('#weizuozhefasongganxie2').html())
+  #   if $('#weizuozhefasongganxie').is('.like')
+  #     $('#weizuozhefasongganxie').removeClass('grey')
+  #     $('#weizuozhefasongganxie').addClass('purple')
+  #     $('#weizuozhefasongganxie').removeClass('like')
+  #     $('#weizuozhefasongganxie').addClass('unlike')
+  #     $('#weizuozhefasongganxie').html('已发送感谢')
+  #     $('#weizuozhefasongganxie2').html(num+1)
+  #   else
+  #     $('#weizuozhefasongganxie').removeClass('purple')
+  #     $('#weizuozhefasongganxie').addClass('grey')
+  #     $('#weizuozhefasongganxie').removeClass('unlike')
+  #     $('#weizuozhefasongganxie').addClass('like')
+  #     $('#weizuozhefasongganxie').html('为作者发送感谢')
+  #     $('#weizuozhefasongganxie2').html(num-1)
+  # )

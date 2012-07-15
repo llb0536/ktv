@@ -11,8 +11,8 @@ default: &defaults
   # 配置图片的域名
   upload_url: "/uploads"
   # 设置管理员，在下面填写需要设置为管理员的用户 email
-  admin_emails: ['xin.yu@zhaopin.com.cn', 'sally.jiang@zhaopin.com.cn', 'zhangxi8288@163.com', 'pmq2001@gmail.com', 'yunlong.lee@msn.com', '11123275@qq.com', 'angela.cai@zhaopin.com.cn', 'lizi7@vip.qq.com', 'hkongm@163.com', 'jamie.liu@zhaopin.com.cn']
-  email_sender: '"问道" <wendao@zhaopin.com.cn>'
+  admin_emails: ['pmq2001@gmail.com']
+  email_sender: '"Kejian.TV 课件交流系统" <kejian@kejian.tv>'
 
   smtp_username: 'wendao@zhaopin.com.cn'
   smtp_password: 'user_0104'
@@ -34,16 +34,52 @@ default: &defaults
   error_tracker_enabled: false
   # 问道开放API的信任客户端，以下客户端可以在用户不知情的情况下随意获得任何用户的授权
   # 请填写client_id.
-  trusted_client_ips: ['127.0.0.1', '0.0.0.0', '192.168.7.189']
+  trusted_client_ips: ['127.0.0.1', '0.0.0.0']
+  hexdigest_pass: '287dshfkjdhFF09GG&*^^#!*&Hjkh%&!^&!G9787h8230*&T@@&*@(*JJHJHGGG)'
+  snda_id: '7HDL3HVT04F5RF6BRW90BJUXH'
+  snda_key: 'MzdmYTkzNjMtYTViZi00NWY4LWI4MTMtZGE0OWJlZTIxMWMw'
+  user_qingqiu_id: 72
+  course_qingqiu_id: 2116
+  topic_qingqiu: '领域请求'
+  ktv_course_id: 1
+  ktv_courseware_id: 1
+  ktv_domain: kejian.tv
   
+  google_analytics_key: UA-28971136-1
+  # Length of time to wait until a connection is opened in seconds
+  open_timeout: 1
+  # Connections that have not been used in this many seconds will be reset.
+  # Sets the idle timeout to idle_timeout. The default timeout is 5 seconds. If you experience “too many connection resets”, reducing this value may help.
+  idle_timeout: 5
+  # Length of time to wait for data from the server
+  read_timeout: 1
+  timeout: 1
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0"
+  # 每页读取多少条记录？这个影响到打开这个页面的速度，
+  # 时间太长会超时。所以控制一下。
+  mechanize_per_page: 88
+  proxy:
+  # 不使用代理的时候把下面四行注释掉，但是上面这行保留。
+     # addr: 192.168.20.6
+     # port: 3128
+     # user:
+     # pass:
+
 development:
   <<: *defaults
+  ktv_domain: kejian.lvh.me
+  open_timeout: 1
+  timeout: 1
 
 development_mongohq:
   <<: *defaults
 
 test:
   <<: *defaults
-
+  read_timeout: 50
+  idle_timeout: 50
+  open_timeout: 50
+  timeout: 50
+  
 production:
   <<: *defaults

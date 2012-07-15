@@ -5,6 +5,69 @@ require 'uri'
 class ApplicationController < ActionController::Base
   has_mobile_fu
   protect_from_forgery
+  layout :layout_by_resource
+  def layout_by_resource
+    if devise_controller?
+      "application_for_devise"
+    elsif request.path.starts_with?('/embed/')
+      "embedded"
+    else
+      "application"
+    end
+  end
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, with: :render_500
+    rescue_from AbstractController::ActionNotFound, with: :render_404
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from ActionController::UnknownController, with: :render_404
+    rescue_from ActionController::UnknownAction, with: :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  end
+  def render_404(exception=nil)
+    @not_found_path = exception ? exception.message : ''
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404.html", layout: false, status: 404 }
+      format.all { render nothing: true, status: 404 }
+    end
+  end
+  def render_500(exception=nil)
+    @not_found_path = exception ? exception.message : ''
+    if e = exception
+      str = "#{Time.now.getlocal}\n"
+      str += "#{request.request_method} #{request.path}\n"
+      str += "#{request.user_agent}\n"
+      str += e.message+"\n"+e.backtrace.join("\n")
+      str += "\n---------------------------------------------\n"
+      $debug_logger.fatal(str)
+    end
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/500.html", layout: false, status: 500 }
+      format.all { render nothing: true, status: 500 }
+    end
+  end
+  before_filter :set_vars
+  def set_vars
+    @seo = Hash.new('')
+    agent = request.env['HTTP_USER_AGENT'].downcase
+    @is_bot = (agent.match(/\(.*https?:\/\/.*\)/)!=nil)
+    @is_ie = (agent.index('msie')!=nil)
+    @is_ie6 = (agent.index('msie 6')!=nil)
+    @is_ie7 = (agent.index('msie 7')!=nil)
+    @is_ie8 = (agent.index('msie 8')!=nil)
+    @is_ie9 = (agent.index('msie 9')!=nil)
+    @is_ie10 = (agent.index('msie 10')!=nil)
+  end
+  before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
+  def check_user_logged_in
+    if !user_signed_in?
+      @seo[:title]='请登录或获取注册邀请'
+      render 'welcome/user_logged_in_required',:layout => 'application_ie'
+      return false
+    else
+      return true
+    end
+  end
+  
   before_filter proc{
     if params[:force_mobile] or is_mobile_device?
       $zhaopin_is_mobile_device = true
@@ -14,34 +77,10 @@ class ApplicationController < ActionController::Base
   }
   before_filter proc{
   }
-  if Setting.error_tracker_enabled or 'production'==Rails.env
-    rescue_from(Exception){|e|
-      f = File.new(Rails.root+"log/error.log","a")
-      str = "#{Time.now.getlocal}\n"
-      str += "#{request.request_method} #{request.path}\n"
-      str += "#{request.user_agent}\n"
-      str += e.message+"\n"+e.backtrace.join("\n")
-      str += "\n---------------------------------------------\n"
-      f.print str
-      f.close
-=begin
-      if Setting.error_tracker_enabled
-        client = Savon::Client.new{wsdl.document=Setting.error_tracker_wsdl}
-        client.request :wsdl,'add_error_log','wendao',,e.message
-      end
-=end
-      if Setting.error_tracker_enabled
-        first = CGI::escape("#{request.request_method}_#{request.path}".split('/').join('[]'))
-        #second = CGI::escape("#{e.message}".split('/').join('[]'))
-        second = CGI::escape(str)
-        Resque.enqueue(ErrorTrackerJob,first,second)
-      end
-      render file:"errors/500.html.erb",layout:false
-    }
-  end
+
 
   helper :all
-  before_filter :load_notice, :xookie
+  before_filter :load_notice
   before_filter Proc.new{
     # render text:request.subdomain and return
     # $redis.incr('stat1231')  if 'http://article.zhaopin.com/zt/2011/1231.html'==request.referer
@@ -56,8 +95,6 @@ class ApplicationController < ActionController::Base
     params[:page]='0' if ''==params[:page]
   
   } 
-
-  # before_filter :bao10jie_filter
 
   before_filter :set_some_variables
   def set_some_variables
@@ -92,11 +129,12 @@ class ApplicationController < ActionController::Base
   end
   # set page title, meta keywords, meta description
   def set_seo_meta(title, options = {})
+    #todo
     keywords = options[:keywords] || "职业规划,问答,职场,加薪,问道,"
     description = options[:description] || "问道是智联招聘旗下的职场领域问答交流平台.问道助你制定专业的职业规划,提供求职指导,分享职场知识,赢取工作机会.问道拥有大批职场专家,行业资深人士,知名企业HR,同行,校友."
 
     if title.length > 0
-      @page_title = "#{title} &raquo; "
+      @seo[:title] = "#{title} &raquo; "
     end
     @meta_keywords = keywords
     @meta_description = description
@@ -246,140 +284,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
-  if 'test'==Rails.env
-    def test_login
-      session[:testuser__name]=params[:name]
-      session[:testuser__email]=params[:email]
-      session[:testuser__pass]=params[:password]
-      redirect_to '/'
-    end
-    def test_logout
-      session[:testuser__name]=nil
-      session[:testuser__email]=nil
-      session[:testuser__pass]=nil
-      redirect_to '/'
-    end
-    def xookie
-      email = session[:testuser__email]
-      if email.blank?
-        sign_out
-      else
-        u = User.where(email: email).first
-        u ||= User.create!(name:session[:testuser__name],
-          email:session[:testuser__email],
-          password:session[:testuser__pass],
-          password_confimation:session[:testuser__pass])
-        sign_in(u)
-      end
-    end
-  else
-    def xookie
-      # sign_in( User.where(slug:'a.b.c.d').first)
-      sui = cookies["JSsUserInfo"]
-      pui = cookies["JSpUserInfo"]
-      u = User.authenticate_through_ui!(sui,cookies["JSShowname"],params[:force_mobile] || is_mobile_device?)
-      u ||= User.authenticate_through_ui!(pui,cookies["JSShowname"],params[:force_mobile] || is_mobile_device?)
-      if u
-        if session[:wendaouser__email].blank? or session[:wendaouser__email]!=u.email
-          u.update_attribute("last_login_at",Time.now)
-          u.inc(:login_times,1)
-          LoginLog.create(:user_id=>u.id,:login_at=>Time.now,:range=>(Time.now.to_date-u.created_at.to_date).to_i)
-          session[:wendaouser__email]=u.email
-        end
-        sign_in(u)
-        @current_user=u
-      else
-        session[:wendaouser__email]=nil
-        sign_out
-        @timenum=Time.now.to_i
-      end
-    end
-  end
-  
-  protected
-  def bao10jie_sig(canshu)
-    canshu
-    canshu_a  = canshu.sort
-    pinjie = []
-    canshu_a.each do |item|
-      pinjie << "#{item[0]}=#{item[1]}"
-    end
-    pinjie = pinjie.join('&')
-    pinjie+=Bao10jie::Config::APP_KEY
-    Digest::MD5.hexdigest(pinjie)
-  end
-
-  def bao10jie_filter
-    return true if request.method=='GET'
-    url = URI.parse(Bao10jie::Config::PURIFY_API)
-    proxy_addr = '192.168.20.6'
-    proxy_port = 3128
-
-    req = Net::HTTP::Post.new(url.path)
-    bao10fied = params.inspect
-    bao10fied = bao10fied.split(/<|>|<(\S*?)[^>]*>.*?<\\1>|<.*? \/> /).join('')
-    xml = <<HERE
-<?xml version="1.0" encoding="utf-8"?>
-        <contents>
-          <content>
-            <class>11</class>
-            <textId>324</textId>
-            <url>http://www.sina.com/1.htm</url>
-            <title>标题</title>
-            <text><![CDATA[#{bao10fied}]]></text>
-            <author>网名</author>
-            <userId>xxxx</userId>
-            <ip>0.0.0.0</ip>
-            <pubDate>#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}</pubDate>
-            <threadId>34553</threadId>
-            <authorEx>扩展</authorEx>
-            <contentEx>扩展</contentEx>
-            <structureEx>扩展</structureEx>
-            <rules></rules>
-          </content>
-        </contents>
-HERE
-    canshu = {
-      'format'=>'JSON',
-      'appid'=>Bao10jie::Config::APP_ID,
-      'appType'=>Bao10jie::Config::APP_TYPE,
-      'v'=>'2.0',
-      'time'=>Time.now.to_i,
-      'transId'=>Bao10jie::Config::TRANS_ID,
-      'param'=>xml
-    }
-    canshu['sig']=bao10jie_sig(canshu)
-    debug=''
-=begin
-    canshu.each do |key,value|
-      canshu[key] = CGI::escape(value.to_s)
-debug+="#{key}=>#{value}\n"
-    end
-=end
-    req.set_form_data(canshu)
-    #render text:req.body and return
-    #res = Net::HTTP::Proxy(proxy_addr,proxy_port).start(url.host, url.port) {|http| http.request(req) }
-    res = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
-
-    case res
-    when Net::HTTPSuccess, Net::HTTPRedirection
-      bao10result = JSON.parse(res.body)
-      #Rails.logger.info bao10result.to_s
-      #render text:bao10result and return
-      bao10result = bao10result['purifyPredictResponse']['contents']['content']['clueClass']
-      if bao10result and bao10result!='' and 'SensitiveServices'==bao10result
-        render text:'您的请求含有敏感信息!' and return false
-      else
-        return true
-      end
-    else
-      return true
-      res.error!
-    end
-  end
-  
   
   def suggest
     if current_user and !(current_user.followed_topic_ids.blank? and current_user.following_ids.blank?)

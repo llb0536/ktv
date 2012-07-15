@@ -25,6 +25,20 @@ end
 
 
 
+class RedisSetting < Settingslogic  
+  source File.expand_path('../redis.yml', __FILE__)
+  namespace Rails.env
+  suppress_errors Rails.env.production?
+end
+
+class Setting < Settingslogic
+  source File.expand_path('../setting.yml', __FILE__)
+  namespace Rails.env
+  suppress_errors Rails.env.production?
+end
+
+
+
 module Quora
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -33,7 +47,8 @@ module Quora
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += ["#{config.root}/uploaders", "#{Rails.root}/lib/cryptor", "#{Rails.root}/lib/core_ext"]
-    config.action_controller.default_url_options = {:host => "wendao.zhaopin.com"}
+    config.action_mailer.default_url_options = {:host => Setting.ktv_domain}
+    config.action_controller.default_url_options = {:host => Setting.ktv_domain}
     config.action_controller.page_cache_directory= File.expand_path('./html_cache',Rails.root)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -51,7 +66,7 @@ module Quora
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = 'zh-CN'
-
+    config.i18n.available_locales = ['zh-CN', :en]
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -65,11 +80,10 @@ module Quora
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.version = '1.0'
-
-    config.action_mailer.default_url_options = { :host => "wendao.zhaopin.com" }
+    config.action_controller.asset_host = nil
     #config.middleware.use ::Rack::PerftoolsProfiler, :default_printer => 'gif', :bundler => true, :password=>'zhaopin3707'
-    require 'oauth/rack/oauth_filter'
-    config.middleware.use OAuth::Rack::OAuthFilter
+    # require 'oauth/rack/oauth_filter'
+    # config.middleware.use OAuth::Rack::OAuthFilter
     # Use SQL instead of Active Record's schema dumper when creating the database.
 
     # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -87,8 +101,8 @@ module Quora
 
     # parameters by using an attr_accessible or attr_protected declaration.
 
-    # config.active_record.whitelist_attributes = true
-
+    # config.active_record.whitelist_attributes = false #todo: security concerns
+    config.active_support.escape_html_entities_in_json = true
   end
 end
 
