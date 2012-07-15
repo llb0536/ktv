@@ -1,28 +1,4 @@
 
-<% if !user_signed_in? %>
-
-<div class="__sdk">
-  <section id="about" class="feature">
-    <div class="wrapper">
-      <div class="primary_info">
-        <h1><em><%= image_tag 'h1.png',:alt => '轻松分享' %></em><br><%= image_tag 'h2.png',:alt => '讲义·作业·复习资料·往年试卷·课堂录像' %></h1>
-        <p>
-          <%= image_tag 'p.png',:alt => '以前，我总要下课追着老师复制PPT；过去，面对一个难题的我苦于找不到人请教；曾几何时，我因靠前找不到足够的复习资料而惆怅不已。所有这些麻烦已经成为过去！通过课件交流系统，我可以迅速定位到我所学的课程，发现志同道合的人；分享我手中的资源，同时轻松下载他人发布的课件。' %>
-        </p>
-          <p><a href="javascript:void(0)" id="loginhuge" class="button primary">用人人 / 微博 / QQ账号瞬间登录</a></p>
-      </div>
-      <div class="secondary_info">
-        <div class="slide_frame">
-          <script async class="speakerdeck-embed" data-course-slug="<%=@courseware.course.slug%>" data-courseware-slug="<%=@courseware.slug%>" data-ratio="1.3333333333333333" src="<%=asset_path 'embed.js'%>"></script>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<% end %>
-
-
-
 
 <div class="__zm">
   <div id="pagewrap">
@@ -61,12 +37,21 @@
   <div id="cols_3" class="column lastCol"></div>
   </div>
   </div>
-</div>
+  <div id="loadMore" class="frmore" style="display:none;"><a>查看更多</a></div>
+  <div id="imloading" class="imfootloading" style="visibility:hidden;"><div class="loading">正在加载，请稍候...</div></div>
+  <div id="firstload" class="firstload" style="" data-top-gonna-be="188">加载中...</div>
 
 <script type="text/javascript">
 
 <% content_for :butt2 do%>
 $(function () {
+  
+    // --------------------------------------------------------------------------------------
+    // action start!
+    // --------------------------------------------------------------------------------------
+    $("#firstload").css({
+        "top": $("#firstload").data('top-gonna-be')
+    }); //定位初次加载提示垂直位置
     $("#uploadToTitle").live("click", function () {
         var loginUserId = 1141902;
         if (loginUserId == 0) {
@@ -131,194 +116,10 @@ function shareWindow(sync_type, uri) {
     }
 }
 
-
 <% end %>
 
 </script>
+</div>
 
-
-
-
-
-<% if !user_signed_in? %>
-
-<div class="__flo">
-  <div class="sfooter-wrap">
-    <div class="sfooter-main">
-      <div id="main-wrap">
-        <div class="main"><div class="container">
-            <div class="simple-homepage">
-
-              <div class="signup-bar signup-form top">
-                <div class="form-wrap">
-                  <div class="help-tip">
-                    <h4>Create a Free Account</h4>
-                    <p>No credit card required.</p>
-                    <div class="nip">
-                    </div>
-                  </div>
-                  <!-- critical form -->
-                  <%= form_tag user_registration_path,:class=>"new_account",:method=>"post" do%>
-                    <input autocomplete="off" class="text name fancyPH" id="user_name" name="user[name]" placeholder="真实姓名..." required="required" type="text">
-                    <input autocomplete="off" class="text email fancyPH" id="user_email" name="user[email]" placeholder="电子邮箱..." required="required" type="email">
-                    <input autocomplete="off" class="text password fancyPH" id="user_password" name="user[password]" placeholder="密码..." required="required" type="password"  onkeypress="if(event.keyCode==13){$(this).parents('form').find('.lijizhuce').trigger('click');}">
-                    <input autocomplete="off" id="user_password_confirmation" name="user[password_confirmation]" value="" type="hidden">
-                    <div class="lijizhuce">
-                    <span>立即注册</span>
-                    </div>
-                    <input id="code" name="code" type="hidden">
-                  <% end %></div>
-              </div>
-
-<!-- 
-</div></div></div></div></div></div></div>
-<div class="__flo">
-  <div class="sfooter-wrap">
-    <div class="sfooter-main">
-      <div id="main-wrap">
-        <div class="main"><div class="container">
-            <div class="simple-homepage">
- -->
-
-              <section class="six-things-and-signup cf psvr_zh" id="yifenzhong">
-                <h2>登录立即体验以下给力功能</h2>
-                <ul class="grid cols3 rows2 six-things">
-                  <li class="row">
-                    <ul>
-                      <li>
-                        <span class="icon six-things-icons-team"></span>
-                        <p>最开放的学习社区，自由开课或加入他人课程，迅速发现志同道合的学习伙伴</p>
-                      </li>
-                      <li>
-                        <span class="icon six-things-icons-devices"></span>
-                        <p>一键轻松获取课件的便携式设备兼容格式，把课件带在身边，随时随地学习</p>
-                      </li>
-                      <li class="end">
-                        <span class="icon six-things-icons-email"></span>
-                        <p>最真实的学术互助社区，随时向专业的课件作者提问，与大家共同讨论学术问题</p>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="row">
-                    <ul>
-                      <li class="end">
-                        <span class="icon six-things-icons-cloud"></span>
-                        <p>发布您的课件至云端，与同行与全世界的学习者共享</p>
-                      </li>
-                      <li>
-                        <span class="icon six-things-icons-fast"></span>
-                        <p>为您发布的课件标价，对课件的使用权进行作者级授权</p>
-                      </li>
-                      <li>
-                        <span class="icon six-things-icons-one-place"></span>
-                        <p>最方便的课件管理平台，轻松查阅下载量与读者反馈</p>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <div class="signup-box signup-form mid form-wrap">
-                  <div class="help-tip">
-                    <h4>Create a Free Account</h4>
-                    <p>No credit card required.</p>
-                    <div class="nip">
-                    </div>
-                  </div>
-                  <div class="arrows-right">
-                  </div>
-                  <h4 class="psvr_zh">5s瞬间登录</h4>
-                  <div style="text-align:center;height:222px">
-                    <%# User.omniauth_providers %>
-                    <a href="<%=omniauth_authorize_path(:user, :renren)%>"><%= image_tag 'renren230.png' %></a><br>
-                    <a href="<%=omniauth_authorize_path(:user, :weibo)%>"><%= image_tag 'weibo230.png' %></a><br>
-                    <a href="<%=omniauth_authorize_path(:user, :qq_connect)%>"><%= image_tag 'qq230.png' %></a>
-                    <a href="#"><%= image_tag 'emaillgoinreg.png' %></a>
-                  </div>
-                </div>
-                <p class="concierge-note">
-                  我们采用知识共享(CC)许可证确保<strong>课件的作者</strong>获得有效的著作权保护. <a href="/concierge">点击了解更多 →</a>
-                </p>
-              </section>
-              <section class="quotes cf">
-                <ul class="quotes psvr_zh" id="core_people_cf_quotes">
-                  <li class="on">
-                    <blockquote>推荐辞1.</blockquote>
-                  </li>
-                  <li>
-                    <blockquote>推荐辞2.</blockquote>
-                  </li>
-                  <li>
-                    <blockquote>推荐辞3.</blockquote>
-                  </li>
-                  <li>
-                    <blockquote>推荐辞4.</blockquote>
-                  </li>
-                </ul>
-                <ul class="people cf" id="core_people_cf">
-                  <li class="on" data-no="0">
-                    <div class="photo liyou">
-                    </div>
-                    <div class="name psvr_zh">张利友</div>
-                    <div class="title psvr_zh">中科院数学所</div>
-                  </li>
-                  <li data-no="1">
-                    <div class="photo jingzhe">
-                    </div>
-                    <div class="name psvr_zh">王兢喆</div>
-                    <div class="title psvr_zh">清华大学</div>
-                  </li>
-                  <li data-no="2">
-                    <div class="photo liuzongzhen">
-                    </div>
-                    <div class="name psvr_zh">刘总真</div>
-                    <div class="title psvr_zh">西南交通大学</div>
-                  </li>
-                  <li data-no="3">
-                    <div class="photo zhiqiang">
-                    </div>
-                    <div class="name psvr_zh">placeholder</div>
-                    <div class="title psvr_zh">placeholder</div>
-                  </li>
-                </ul>
-              </section>
-              <section>
-                <h2 class="small psvr_zh">现在就注册新用户，<em class="light">立即开启课件系统之旅吧！</em>
-                </h2>
-                <div class="signup-bar signup-form bot plain">
-                  <div class="form-wrap">
-                    <div class="help-tip">
-                      <h4>Create a Free Account</h4>
-                      <p>No credit card required.</p>
-                      <div class="nip">
-                      </div>
-                    </div>                  <%= form_tag user_registration_path,:class=>"new_account",:method=>"post" do%>
-                      <input autocomplete="off" class="text name fancyPH" id="user_name" name="user[name]" placeholder="真实姓名..." required="required" type="text">
-                      <input autocomplete="off" class="text email fancyPH" id="user_email" name="user[email]" placeholder="电子邮箱..." required="required" type="email">
-                      <input autocomplete="off" class="text password fancyPH" id="user_password" name="user[password]" placeholder="密码..." required="required" type="password"  onkeypress="if(event.keyCode==13){$(this).parents('form').find('.lijizhuce').trigger('click');}">
-                      <input autocomplete="off" id="user_password_confirmation" name="user[password_confirmation]" value="" type="hidden">
-                      <div class="lijizhuce">
-                      <span style="margin-left:48px">立即注册</span>
-                      </div>
-                      <input id="code" name="code" type="hidden">
-                    <% end %></div>
-                </div>
-              </section></div>
-            </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</div>  
-<% content_for :butt2 do %>
-$($('#core_people_cf li')[0]).trigger('click');
-$('.lijizhuce').click(function(){
-  forms = $(this).parents('form');
-  forms.find('#user_password_confirmation').val(forms.find('#user_password').val())
-  forms[0].submit();
-});
-<% end %>
-
-<% end %>
 
 <%= render 'flo_footer' %>

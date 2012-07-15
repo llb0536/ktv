@@ -14,9 +14,9 @@ begin
 
 <div style="background:#FFF; font-size:12px; width:500px;">
 
-        <div><a href="http://wendao.zhaopin.com" title="问道" target="_blank"><img src="http://wendao.zhaopin.com/assets/mail_logo.png" /></a></div>
+        <div><a href="http://wendao.zhaopin.com" title="Kejian.TV" target="_blank"><img src="http://wendao.zhaopin.com/assets/mail_logo.png" /></a></div>
         <div style="width:90%;margin:0 auto;">
-                <div style="font-size:14px;height:30px; line-height:30px; border-bottom:3px solid #bbb;font-weight:bold;margin-bottom:20px;">你在[问道]上的最
+                <div style="font-size:14px;height:30px; line-height:30px; border-bottom:3px solid #bbb;font-weight:bold;margin-bottom:20px;">你在[Kejian.TV]上的最
 近的通知</div>
 <ul>
 
@@ -35,7 +35,7 @@ bodycombo+=<<DOC
 DOC
       user.current_mails = []
       user.save! if user.changed?
-      UserMailer.simple(user.email, '[问道]'+title, bodycombo).deliver!
+      UserMailer.simple(user.email, '[Kejian.TV]'+title, bodycombo).deliver!
 p "send ok to #{user.email}"
    rescue Exception=>e
      p user.id

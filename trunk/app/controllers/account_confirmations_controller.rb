@@ -2,6 +2,10 @@
 class AccountConfirmationsController < Devise::ConfirmationsController
   def show
     self.resource = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
+    if resource.encrypted_password.present?
+      super
+      return
+    end
     if 'GET'==request.method
       if resource.errors.empty?
         render

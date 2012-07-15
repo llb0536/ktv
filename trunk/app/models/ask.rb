@@ -110,7 +110,7 @@ class Ask
   field :topic_count, :type => Integer, :default => 0
   field :shared_count, :type => Integer, :default => 0
   field :spams_count, :type => Integer, :default => 0
-  field :views_count, :type => Integer, :default => 0
+  field :views_count, :type => Integer, :default => 0  
   before_save :counter_work
   def counter_work
     self.topic_count = self.topics.count

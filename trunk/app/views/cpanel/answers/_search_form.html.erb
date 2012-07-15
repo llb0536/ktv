@@ -30,7 +30,7 @@
       <%=label_tag(:spams_count,"没帮助数:")%>
       <%=text_field_tag(:spams_count_left,nil,:class=>"validate[custom[integer],numRange[grp5]] left_count",:value=>params[:spams_count_left])%>——<%=text_field_tag(:spams_count_right,nil,:class=>"validate[custom[integer],numRange[grp5]] right_count",:value=>params[:spams_count_right])%>
       <%=label_tag(:user_type,"用户组:")%>
-      <%=select_tag :user_type,options_for_select([["全部用户",0],["普通用户",User::NORMAL_USER],["问道专家",User::EXPERT_USER],["问道精英",User::ELITE_USER]],params[:user_type]),:style=>"margin-right:50px;" %>
+      <%=select_tag :user_type,options_for_select([["全部用户",0],["普通用户",User::NORMAL_USER],["Kejian.TV专家",User::EXPERT_USER],["Kejian.TV精英",User::ELITE_USER]],params[:user_type]),:style=>"margin-right:50px;" %>
       <%=label_tag(:sort_by,"排序:")%>
       <%=select_tag :sort_by,options_for_select([["按回答时间",""],["按赞成数","vote_up_count"],["按反对数","vote_down_count"],["按评论数","comments_count"],["按感谢数","thanked_count"],["按没帮助数","spams_count"]],params[:sort_by]),:style=>"margin-right:50px;" %>
       <button type="submit">搜索</button>

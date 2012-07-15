@@ -2,21 +2,19 @@ class AvatarUploader < BaseUploader
   def default_url
     "/assets/avatar/#{version_name}.jpg"
   end
-
-  version :small do
-    process :resize_and_pad => [23,23,'rgba(255, 255, 255, 0.0)']
-  end
-  
-  version :small38 do
-    process :resize_and_pad => [38,38,'rgba(255, 255, 255, 0.0)']
-  end
-  
-  version :mid do
-    process :resize_and_pad => [50,50,'rgba(255, 255, 255, 0.0)']
-  end
-  
-  version :normal do
-    process :resize_and_pad => [100,100,'rgba(255, 255, 255, 0.0)']
-  end
-  
+  SIZES = {
+    :small => 23,
+    :small30 => 30,
+    :small38 => 38,
+    :small47 => 47,
+    :mid => 50,
+    :mid60 => 60,
+    :normal => 100,
+    :normal180 => 180,
+  }
+  SIZES.each do |key,value|    
+    version key do
+      process :resize_to_fill => [value,value]
+    end
+  end  
 end

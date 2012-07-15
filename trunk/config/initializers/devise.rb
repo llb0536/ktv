@@ -1,17 +1,12 @@
+# coding: utf-8
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
-  # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "support@huacnlee.com"
+  
+  config.mailer_sender = Setting.email_sender
 
-  # Configure the class responsible to send e-mails.
-  config.mailer = "DeviseMailer"
+  #config.mailer = "DeviseMailer"
 
-  # ==> ORM configuration
-  # Load and configure the ORM. Supports :active_record (default) and
-  # :mongoid (bson_ext recommended) by default. Other ORMs may be
-  # available as additional gems.
   require 'devise/orm/mongoid'
 
   # ==> Configuration for any authentication mechanism
@@ -21,6 +16,9 @@ Devise.setup do |config|
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
   config.authentication_keys = [ :email ]
+  config.case_insensitive_keys = [ :email ]
+  config.strip_whitespace_keys = [ :email ]
+  config.skip_session_storage = [:http_auth]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -37,7 +35,7 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  config.stretches = 10
+  config.stretches = Rails.env.test? ? 1 : 10
 
   # Define which will be the encryption algorithm. Devise also supports encryptors
   # from others authentication tools as :clearance_sha1, :authlogic_sha512 (then
@@ -46,7 +44,17 @@ Devise.setup do |config|
   # config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "c7d4ed7d1ea1a7fee16e8a79f80ca1d391fc3bb8e79atda9ca23ab8dc5c8ae6cf37c5a6f3d2101129312ab8b036a526bc2e778f1707ced241a1c14c5b93eea60"
+  config.pepper = "c7d4ed723dsfdklgfdtyuuytcndf1321651231das289dc5c8ae6cf37c5a6f3sfdfsdsfdfsdffff526bc2e778f1707ced241a1c14c5b93eea60"
+  config.remember_for = 2.weeks
+  config.reconfirmable = true
+
+  config.maximum_attempts = 20
+
+  config.reset_password_within = 6.hours
+  
+  Ktv::Consumers.values.each do |value|
+    config.omniauth value[0], value[1], value[2]
+  end
 
   # ==> Configuration for :invitable
   # The period the generated invitation token is valid, after
@@ -75,7 +83,6 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true
@@ -85,10 +92,10 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length
-  config.password_length = 4..20
+  #config.password_length = 4..20
 
   # Regex to use to validate the email address
-  config.email_regexp = /^.*$/  # /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
+  #config.email_regexp = /^.*$/  # /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -155,5 +162,6 @@ Devise.setup do |config|
   #   end
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
+
 end
 

@@ -92,7 +92,7 @@ class Answer
   def body_plain
     Nokogiri.HTML(self.body).text()
   end
-  belongs_to :ask, :inverse_of => :answers#, :counter_cache => true [todo]
+  belongs_to :ask, :inverse_of => :answers
   
   after_create proc{
     Resque.enqueue(HookerJob,self.class.to_s,self.id,:msg_center_action)

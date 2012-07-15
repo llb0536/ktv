@@ -1,0 +1,420 @@
+<%
+@slides = 0.upto(@courseware.slides_count-1).collect do |i|
+  asset_url_eb("#{@courseware.id}/slide_#{i}.jpg")
+end
+ %>
+<% content_for :armpit do %>
+  <%= stylesheet_link_tag "ktv/ppt", :media => "all" %>
+  <%= javascript_include_tag "ktv/player_ppt" %>
+  <script>
+    var player = new Player();
+    var timeout = null;
+
+    (function($) {
+      $.preLoadImage = function(idx, count) {
+        if (count == undefined) { count = Slide.urls.length }
+        var idx = idx,
+            url = Slide.urls[idx];
+        if ($('#cache_' + idx).length == 0) {
+          $('#caches').append('<img id="cache_' + idx + '" />');
+          var $cache = $('#cache_' + idx);
+          if (count > 0) {
+            $cache.load(function(){ if(idx + 1 < Slide.urls.length) { $.preLoadImage(idx + 1, count - 1); }; });
+          }
+          $cache.attr('src', url);
+        } else {
+          $.preLoadImage(idx + 1, count - 1);
+        }
+      }
+
+      $.preloadThumbs = function() {
+        $(Slide.thumbs).each(function(i) {
+          $('.previews').prepend('<img id="cache_thumb_' + i + '" data-slide="' + i + '" src="' + this + '" />');
+        });
+      }
+
+      $.fn.disableSelection = function() {
+        return this.each(function() {
+          $(this).attr('unselectable', 'on')
+           .css({
+             '-moz-user-select':'none',
+             '-webkit-user-select':'none',
+             'user-select':'none'
+           })
+           .each(function() {
+             this.onselectstart = function() { return false; };
+           });
+        });
+      }
+    })(jQuery);
+
+    // build my array of image urls
+    var Slide = {
+      presentation_link: '/<%=@courseware.id%>',
+      dragging: false,
+      click: 0,
+      previewx: null,
+      previewy: null,
+      urls: [],
+      slides: {
+        preview: <%=raw @slides.to_json%>,
+        original: <%=raw @slides.to_json%>
+      },
+      thumbs: <%=raw 0.upto(@courseware.slides_count-1).collect{|i| asset_url("cw/#{@courseware.id}/thumb_slide_#{i}.jpg") }.to_json%>,
+      current: 0,
+      next: function() {
+        if (Slide.current == Slide.urls.length - 1) {
+          return false;
+        } else {
+          if ($('.navigation .loading').length == 0) {
+            timeout = setTimeout(function() {$('.navigation .next').addClass('loading');}, 50);
+            Slide.click++;
+            Slide.current++;
+            if (Slide.click == 2) { $.preLoadImage(0) };
+            Slide.show();
+          };
+        };
+      },
+      previous: function() {
+        if (Slide.current == 0) {
+          return false;
+        } else {
+          if ($('.navigation .loading').length == 0) {
+            timeout = setTimeout(function() {$('.navigation .prev').addClass('loading');}, 50);
+            Slide.current--;
+            Slide.show();
+          };
+        };
+      },
+      goToSlide: function(id) {
+        if (id <= 0 || id > this.urls.length) {
+          return false;
+        } else {
+          Slide.current = id - 1;
+          Slide.show();
+        };
+      },
+      show: function() {
+        $('.scrubbed').width(((Slide.current+1) * 100 / Slide.urls.length) + '%');
+        $('#slide_image').attr('src', Slide.urls[Slide.current]);
+        $('.current_slide').text(Slide.current+1);
+        Slide.markFirstOrLast();
+        player.channel.trigger('change', {'number': Slide.current + 1});
+      },
+      markFirstOrLast: function() {
+        $('.navigation').removeClass('first').removeClass('last');
+        if (Slide.current == 0) {
+          $('.navigation').addClass('first');
+        } else if (Slide.current == Slide.urls.length - 1) {
+          $('.navigation').addClass('last');
+        };
+      },
+      showPreview: function(s) {
+        if (s >= Slide.urls.length) {
+          s = Slide.urls.length - 1;
+        }
+        $('.previews img').hide();
+        $('.previews [data-slide=' + s + ']').show();
+        $('.previews p').text('Slide ' + (s+1) + ' of ' + Slide.urls.length);
+      },
+
+      updateShares: function(source) {
+        // triggers every time the user chooses another option
+        // TODO: change the social-sharing addresses
+        var link = Slide.presentation_link,
+            embed = $('#embed_input').val().replace(/data-slide="\d+" /, '');
+
+        if (source == 'slide') {
+          link += '?slide=' + (Slide.current+1);
+          embed = embed.replace(/class="speakerdeck-embed"/, 'class="speakerdeck-embed" data-slide="' + (Slide.current + 1) + '"');
+        }
+      },
+
+      openFullScreen: function() {
+        var elem = document.body;
+
+        if (elem.requestFullScreen) {
+          elem.requestFullScreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullScreen) {
+          elem.webkitRequestFullScreen();
+        } else {
+          var height = 1022 / 1.3333333333333333 + 65;
+          window.open(window.location.href.split('?')[0]+'?slide='+(Slide.current+1)+'&windowed=true','popup','width=1024,height='+height);
+        }
+        return false;
+      },
+
+      closeFullScreen: function() {
+        if (document.cancelFullScreen) {
+          document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        }
+        return false;
+      },
+
+      toggleFullScreen: function() {
+        if ($('body').hasClass('fullscreen')) {
+          Slide.closeFullScreen();
+        } else {
+          Slide.openFullScreen();
+        }
+
+        return false;
+      },
+
+      toggleFullScreenState: function() {
+        if ($('body').hasClass('fullscreen')) {
+          $('body').removeClass('fullscreen');
+        } else {
+          $('body').addClass('fullscreen');
+        }
+      },
+
+      setSlideSize: function() {
+        var max;
+
+        if ($('body').hasClass('fullscreen') || $(window).width() > 640) {
+          Slide.urls = Slide.slides.original;
+          max = 1024;
+        } else {
+          Slide.urls = Slide.slides.preview;
+          max = 640;
+        }
+        $('#slide_image').attr('src', Slide.urls[Slide.current]);
+
+        var $wrapper = $('#slide'),
+            $img     = $('#slide img'),
+            w        = $wrapper.width(),
+            h        = $wrapper.height(),
+            ratio    = <%= @courseware.wh_ratio %>,
+            left, top, width, height;
+
+        if (w <= max) {
+          width  = w;
+          height = w/ratio;
+          top = 0;
+          left = 0;
+          $img.css({top:0, left:0});
+        } else {
+          width = max;
+          height = max / ratio;
+          left = (w - max) / 2;
+          top = (h - height) / 2;
+        }
+
+        if (height > h + 2) {
+          height = h;
+          width = h * ratio;
+          left = (w - width) / 2;
+          top = 0;
+        }
+<% if @courseware.thin? %>
+        $img.width(<%= @courseware.real_width %>);
+        $img.height(<%= @courseware.real_height %>);
+<% else %>
+        $img.width(width);
+        $img.height(height);
+<% end %>
+        $img.css({top: top, left: left});
+      }
+    };
+
+    // jquery stuff on load
+    $(function(){
+      Slide.setSlideSize();
+
+      // bind to events for fullscreen
+      $(document).bind("fullscreenchange", Slide.setSlideSize);
+      $(document).bind("fullscreenchange", Slide.toggleFullScreenState);
+      $(document).bind("webkitfullscreenchange", Slide.setSlideSize);
+      $(document).bind("webkitfullscreenchange", Slide.toggleFullScreenState);
+      $(document).bind("mozfullscreenchange", Slide.setSlideSize);
+      $(document).bind("mozfullscreenchange", Slide.toggleFullScreenState);
+
+      $('a#fullscreen,a#share_button').bind('click', Slide.toggleFullScreen);
+
+      $(window).bind('resize', _.throttle(Slide.setSlideSize, 100));
+
+      // start images downloading
+      $.preLoadImage(Slide.current + 1, 4);
+
+      $('ul.choices li').click(function() {
+        $(this).closest('ul').find('li.current').removeClass('current');
+        $(this).closest('div').find('div.panel').hide();
+        $($(this).addClass('current').find('a').attr('href')).show().find('input[type=text]').focus().select();
+        return false;
+      });
+
+      Slide.updateShares('presentation');
+
+      $('[name=link_to]').change(function() {
+        Slide.updateShares($(this).val());
+      });
+
+      $('#slide_image').load(function() {
+        if (timeout != null) {
+          clearTimeout(timeout);
+        }
+        $('.navigation .loading').removeClass('loading');
+      });
+
+      // wire up navigation buttons
+      $('a.prev').click(function(){
+        Slide.previous();
+        return false;
+      });
+      $('a.next').click(function(){
+        Slide.next();
+        return false;
+      });
+      // toolbar tricks
+      $('.overlay, .close').click(function(){
+        $('#presenter').toggleClass('share');
+        if ($('#presenter').hasClass('share')) {
+          $('ul.choices li:first').click();
+          $('#link_to_p').click();
+          $('#share div.panel:visible input[type=text]').focus().select();
+        }
+        return false;
+      });
+
+      function scrubSlide(e) {
+        var $el = $('.scrubber_holder'),
+            w   = $el.width(),
+            x   = e.pageX,
+            d   = x - $el.position().left,
+            s   = Math.floor(Slide.urls.length * (d / w));
+
+        if (s >= Slide.urls.length) {
+          s = Slide.urls.length - 1;
+        }
+
+        return s;
+      }
+
+      $('.previews').css('opacity', 0);
+
+      $('.scrubber_holder').bind('mousemove touchmove', function(e) {
+        if (e.pageX != Slide.previewx) {
+          Slide.previewx = e.pageX;
+          if (Slide.dragging) {
+            Slide.current = scrubSlide(e);
+            Slide.show();
+            return false;
+          } else if (!$('html').hasClass('touch')) {
+            $('.previews').css('opacity', 1);
+            Slide.showPreview(scrubSlide(e));
+          }
+        }
+      }).mouseleave(function() {
+        if (!$('html').hasClass('touch')) {
+          $('.previews').css('opacity', 0);
+          Slide.dragging = false;
+          $('.scrubber_holder').removeClass('dragging');
+          Slide.show();
+        }
+      }).bind('mousedown', function(e) {
+        if (!$('html').hasClass('touch')) {
+          $('.previews').css('opacity', 0);
+          Slide.dragging = true;
+          $('.scrubber_holder').addClass('dragging');
+          Slide.current = scrubSlide(e);
+          Slide.show();
+        }
+      }).bind('touchstart', function(e) {
+        $('.previews').css('opacity', 0);
+        Slide.dragging = true;
+        $('.scrubber_holder').addClass('dragging');
+        Slide.current = scrubSlide(e);
+        Slide.show();
+      }).bind('mouseup touchend', function() {
+        $('.scrubber_holder').removeClass('dragging');
+        Slide.dragging = false;
+      });
+
+      Slide.show();
+      $.preloadThumbs();
+      $('.scrubber_holder, .scrubber_holder div, .speakerdeck_toolbar, .navigation').disableSelection();
+
+      document.onkeyup = function(e) {
+        if(document.activeElement.tagName.toLowerCase() !== 'input' && document.activeElement.tagName.toLowerCase() !== 'textarea') {
+          var code = (window.event) ? window.event.keyCode : e.keyCode;
+          switch(code) {
+            case 39:
+              Slide.next();
+              return false;
+              break;
+            case 32:
+              Slide.next();
+              return false;
+              break;
+            case 37:
+              Slide.previous();
+              return false;
+          }
+        }
+      };
+    });
+  </script>
+<% end %>
+
+<div id="presenter">
+  <div class="header">
+    <img alt="Kejian.TV课件交流系统" src="<%=asset_path 'embed_logo.png'%>" />
+    <h5><a href="/<%=@courseware.id%>" target="_parent"><%=@courseware.title%></a></h5>
+    <a href="#" id="fullscreen">全屏</a>
+    <p>课程: <a href="/courses/<%=@courseware.course_id%>" target="_parent"><%=@courseware.course_long_name%></a></p>
+
+  </div>
+  <div id="slide">
+    <img id="slide_image" src="<%= @slides.first %>" class='visible' />
+  </div>
+  <div class="overnav">
+    <a href="#" class="prev">上张幻灯片</a>
+    <a href="#" class="next">下张幻灯片</a>
+  </div>
+  <div class="navigation">
+    <a href="#" class="prev">上张幻灯片</a>
+    <a href="#" class="next">下张幻灯片</a>
+  </div>
+  <div class="speakerdeck_toolbar">
+  </div>
+  <div class="scrubber_holder">
+    <div class="scrubber">
+      <div class="scrubbed" style="width:0;"></div>
+    </div>
+  </div>
+  <div class="previews"><p>Slide 1 of 6</p></div>
+  <div class="standard_buttons">
+    <a href="#" id="share_button">全屏</a>
+  </div>
+  <div class="overlay"></div>
+  <div id="share">
+    <a href="#" class="close">关闭</a>
+    <ul class="choices">
+      <li><a href="#link" class="button">链接</a></li>
+      <li><a href="#embed" class="button">外站嵌套</a></li>
+      <li><a href="#social" class="button">社会化媒体</a></li>
+    </ul>
+    <div class="selections">
+      <p><input type="radio" name="link_to" value="presentation" id="link_to_p" checked /> <label for="link_to_p">自幻灯片起始</label></p>
+      <p><input type="radio" name="link_to" value="slide" id="link_to_s" /> <label for="link_to_s">本张幻灯片 (<span class="current_slide">1</span> of <%=@courseware.slides_count%>)</label></p>
+    </div>
+    <div id="link" class="panel">
+      <input type="text" id="shorturl" value="http://<%=Setting.ktv_domain%>/<%=@courseware.id%>" />
+    </div>
+    <div id="embed" class="panel">
+      <input type="text" id="embed_input" value='<script async class="speakerdeck-embed" data-course-slug="<%=@courseware.course_id%>" data-courseware-slug="<%=@courseware.id%>" data-ratio="<%= @courseware.wh_ratio %>" src="<%= asset_path 'ktv/embed.js'%>"></script>' />
+    </div>
+    <div id="social" class="panel">
+      <%# render 'jiathis_mini' %>
+    </div>
+  </div>
+</div>
+<div id="caches">
+</div>

@@ -158,11 +158,7 @@ var getElementsByClassName = function (a, b, c) {
             for (c = 0, d = b.length; c < d; c++) a = b[c], e.push((new f(a)).setup());
             return e
         }, f.prototype.url = function () {
-          if('---show-embed_books---'===this.courseware_slug){
-            return "/courses/" + this.course_slug + '/embed_books' + "?" + this.toParam()
-          }else{
-            return "/embed/" + this.course_slug + '/' + this.courseware_slug + "?" + this.toParam()
-          }
+            return "/embed/" + this.courseware_slug + "?" + this.toParam()
         }, f.prototype.toParam = function () {
             var a, b;
             return function () {

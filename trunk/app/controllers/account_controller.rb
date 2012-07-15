@@ -6,12 +6,21 @@ class AccountController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     welcome_inactive_sign_up_path
   end
-  def new
-    render text:'Reg Denied' and return
+  def new    
+    if not Setting.allow_register
+      render_404
+      return false
+    end
+    resource = build_resource({})
+    respond_with resource
   end
   # POST /resource
   def create
-    render text:'Reg Denied' and return
+    if not Setting.allow_register
+      render_404
+      return false
+    end
+    
     build_resource
     # 安全覆写™
     resource.during_registration = true

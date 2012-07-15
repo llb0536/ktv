@@ -7,7 +7,7 @@
       <%=label_tag(:email,"注册邮箱:",:style=>"margin-left:3px;")%>
       <%=text_field_tag(:email,nil,:style=>"width:180px;",:value=>params[:email])%>
       <%=label_tag(:user_type,"用户组:",:style=>"margin-left:10px;")%>
-      <%=select_tag :user_type,options_for_select([["全部用户",0],["普通用户",User::NORMAL_USER],["问道专家",User::EXPERT_USER],["问道精英",User::ELITE_USER],["冻结用户",User::FROZEN_USER],["屏蔽用户",User::BAN_USER]],params[:user_type]) %>
+      <%=select_tag :user_type,options_for_select([["全部用户",0],["普通用户",User::NORMAL_USER],["Kejian.TV专家",User::EXPERT_USER],["Kejian.TV精英",User::ELITE_USER],["冻结用户",User::FROZEN_USER],["屏蔽用户",User::BAN_USER]],params[:user_type]) %>
       <%=label_tag(:admin_type,"管理组:",:style=>"margin-left:10px;")%>
       <%=select_tag :admin_type,options_for_select([["全部用户",0],["无权限",User::NO_ADMIN],["管理员",User::SUP_ADMIN],["副管理员",User::SUB_ADMIN]],params[:admin_type]) %>
     </div>

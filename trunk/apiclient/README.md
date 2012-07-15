@@ -1,6 +1,6 @@
 # Wendao
 
-这是[智联招聘问道](http://wendao.zhaopin.com)[开放API](http://api.zhaopin.com/apidoc)的一个简单的Ruby类包装。
+这是[智联招聘Kejian.TV](http://wendao.zhaopin.com)[开放API](http://api.zhaopin.com/apidoc)的一个简单的Ruby类包装。
 
 ## 使用方法
 
@@ -45,27 +45,27 @@ Run `bundle exec rake spec`.
 
 ## Demo App
 
-这个应用程序是一个用Sinatra开发的使用问道API的示例，基于Ruby客户端库wendao(http://rubygems.org/gems/wendao)。 
+这个应用程序是一个用Sinatra开发的使用Kejian.TVAPI的示例，基于Ruby客户端库wendao(http://rubygems.org/gems/wendao)。 
 
 ## 相关链接
 
-	1. 问道：这是普通用户访问问道的地址，即问道主站。
+	1. Kejian.TV：这是普通用户访问Kejian.TV的地址，即Kejian.TV主站。
 	
 	  http://wendao.zhaopin.com
 	  
-	2. 问道API：这是API用户访问问道的入口。
+	2. Kejian.TVAPI：这是API用户访问Kejian.TV的入口。
 	
 	  http://api.zhaopin.com
 	  
-	3. 问道API文档：此文档面向第三方应用程序开发者以及第三方库的开发者，详细记录了问道API的使用方法。
+	3. Kejian.TVAPI文档：此文档面向第三方应用程序开发者以及第三方库的开发者，详细记录了Kejian.TVAPI的使用方法。
 	
 	  http://api.zhaopin.com/apidoc
 	  
-	4. 问道API第三方应用程序管理：面向第三方应用程序开发者，在此获得和管理访问问道API的客户端ID和密钥。
+	4. Kejian.TVAPI第三方应用程序管理：面向第三方应用程序开发者，在此获得和管理访问Kejian.TVAPI的客户端ID和密钥。
 	
 	  http://api.zhaopin.com/cpanel
 	  
-	5. Ruby客户端库：用Ruby实现的一个问道API客户端库。
+	5. Ruby客户端库：用Ruby实现的一个Kejian.TVAPI客户端库。
 	
 	  http://rubygems.org/gems/wendao
 	  

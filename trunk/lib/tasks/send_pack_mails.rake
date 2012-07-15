@@ -89,7 +89,7 @@ namespace :mail do
       <a href="http://wendao.zhaopin.com"><img src="http://wendao.zhaopin.com/assets/usermailerlogo.png" width="650" height="47" /></a>
       </div>
 <div class="main" style="width:650px;margin:0 auto;border:1px solid #ccc;background-color:#fff;">
-	<div class="notifier" style="border-bottom:1px solid #ccc;font-weight:bold;width:600px;margin:0 auto;height:40px; line-height:50px;">您在问道上最近的通知</div>
+	<div class="notifier" style="border-bottom:1px solid #ccc;font-weight:bold;width:600px;margin:0 auto;height:40px; line-height:50px;">您在Kejian.TV上最近的通知</div>
 DOC
 realcontent = ''
       user.current_mails.each do |ar|
@@ -123,7 +123,7 @@ DOC
         p e
       end
 
-      UserMailer.simple(user.email, '[问道]'+title, bodycombo,{adid: iid,adsite: "edm_#{datenow}"}).deliver!
+      UserMailer.simple(user.email, '[Kejian.TV]'+title, bodycombo,{adid: iid,adsite: "edm_#{datenow}"}).deliver!
       p "send ok to #{user.email}"
 
 #end

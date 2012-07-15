@@ -16,6 +16,28 @@ Quora::Application.routes.draw do
   end
   match "/account/auth/:provider/unbind", :to => "users#auth_unbind"
 
+
+  # ________________________________ajax__________________________________________
+  get '/all_unread_notification_num' => 'ajax#all_unread_notification_num'
+  post '/ajax/seg'=>'ajax#seg'
+  post '/presentations' => 'ajax#presentations_upload_finished'
+  put '/presentations/:id' => 'ajax#presentations_update'
+  get '/presentations/:id/status' => 'ajax#presentations_status'
+  get '/ajax/checkUsername'
+  get '/ajax/checkEmailAjax'
+  get '/ajax/xl_req_get_method_vod'
+  post '/ajax/logincheck'
+  # ---=small=----
+  get 'hack/htc'
+  get '/welcome/inactive_sign_up'
+  # ________________________________ktv__________________________________________
+  resources :courses
+  resources :coursewares do
+    member do
+      get 'download'
+    end
+  end
+  get '/embed/:id' => 'coursewares#embed'
   # ________________________________wendao__________________________________________
 
   match '/mobile'=>'home#mobile'
@@ -24,7 +46,7 @@ Quora::Application.routes.draw do
 
   get '/refresh_sugg' => 'home#refresh_sugg'
   get '/refresh_sugg_ex' => 'home#refresh_sugg_ex'  
-  post '/ajax/seg'=>'ajax#seg'
+
   get '/bugtrack'=>'application#bugtrack'
   get '/agreement'=>'home#agreement'
   get "traverse/index",as:'traverse'
@@ -49,12 +71,6 @@ Quora::Application.routes.draw do
     end
   end
 
-  scope 'embed',:as=>'embed' do
-    controller "embed" do
-      get '/search' => 'embed#search',:as=>:search
-      get '/mail_icon'
-    end
-  end
 
   match "/uploads/*path" => "gridfs#serve"
   match "/update_in_place" => "home#update_in_place"

@@ -1,5 +1,14 @@
 # coding: utf-8
 module ApplicationHelper
+  def cancel_href
+    if 'GET'==request.method
+      'javascript:history.go(-1)'
+    else
+      root_path
+    end
+  end
+
+
   def pos_signature
     "#{params[:controller].parameterize}_#{params[:action].parameterize}"
   end
@@ -22,7 +31,7 @@ module ApplicationHelper
   def title_for_this_page
     case controller.controller_name
     when 'logs'
-      '问道正在发生'
+      'Kejian.TV正在发生'
     else
       '我的动态'
     end

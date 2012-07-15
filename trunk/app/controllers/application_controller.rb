@@ -45,6 +45,18 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 500 }
     end
   end
+  before_filter :set_subject
+  def set_subject
+    if Ktv::SubdomainMath.matches?(request)
+      @psvr_subject = 'math'
+      @psvr_subject2 = '·数学'
+      @psvr_subject3 = 683
+    else
+      @psvr_subject = :all
+      @psvr_subject2 = ''
+      @psvr_subject3 = 730
+    end
+  end
   before_filter :set_vars
   def set_vars
     @seo = Hash.new('')
@@ -57,7 +69,9 @@ class ApplicationController < ActionController::Base
     @is_ie9 = (agent.index('msie 9')!=nil)
     @is_ie10 = (agent.index('msie 10')!=nil)
   end
-  before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
+  unless Setting.allow_register
+    before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
+  end
   def check_user_logged_in
     if !user_signed_in?
       @seo[:title]='请登录或获取注册邀请'
@@ -130,19 +144,16 @@ class ApplicationController < ActionController::Base
   # set page title, meta keywords, meta description
   def set_seo_meta(title, options = {})
     #todo
-    keywords = options[:keywords] || "职业规划,问答,职场,加薪,问道,"
-    description = options[:description] || "问道是智联招聘旗下的职场领域问答交流平台.问道助你制定专业的职业规划,提供求职指导,分享职场知识,赢取工作机会.问道拥有大批职场专家,行业资深人士,知名企业HR,同行,校友."
+    keywords = options[:keywords] || "问答"
+    description = options[:description] || "同行,校友."
 
     if title.length > 0
       @seo[:title] = "#{title} &raquo; "
     end
-    @meta_keywords = keywords
-    @meta_description = description
+    @seo[:keywords] = keywords
+    @seo[:description] = description
   end
 
-  def render_404
-    render_optional_error_file(404)
-  end
 
   def render_optional_error_file(status_code)
     @render_no_sidebar = true
@@ -311,5 +322,16 @@ class ApplicationController < ActionController::Base
     raise 'todo'
     # redirect_to root_path, alert: "Json values is not an array"
   end
+  
+  def pagination_get_ready
+    params[:page] ||= 1
+    params[:per_page] ||= 30
+    @page = params[:page].to_i
+    @per_page = params[:per_page].to_i
+  end
+  def pagination_over(sumcount)
+    @page_count = (sumcount*1.0 / @per_page).ceil
+  end
+  
   
 end

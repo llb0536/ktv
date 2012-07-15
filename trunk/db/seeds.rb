@@ -25,7 +25,7 @@ Client.delete_all
 @client.name = "第三方应用程序示例"
 @client.site_uri = "http://wendao.ofpsvr.org"
 @client.redirect_uri = "http://wendao.ofpsvr.org/redirect_receive"
-@client.info = '这个应用程序是一个用Sinatra开发的使用问道API的示例，基于Ruby客户端库wendao(http://rubygems.org/gems/wendao)。 '
+@client.info = '这个应用程序是一个用Sinatra开发的使用Kejian.TVAPI的示例，基于Ruby客户端库wendao(http://rubygems.org/gems/wendao)。 '
 @client.user = User.admins.first
 @client.uri          = "#{@client.id}"
 @client.scope = ['all']

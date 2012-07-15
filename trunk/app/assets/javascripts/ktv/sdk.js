@@ -27,7 +27,7 @@ function showProcessProgress(a) {
                 $("#reupload",'.__sdk').hide();
                 $("#presentation_" + a,'.__sdk').html("").parent().addClass("slide_frame");
                 $(".slide_frame.processing",'.__sdk').removeClass("processing");
-                $("body").append("<script type='text/javascript' src='/embed/" + b.course_slug + '/' + b.slug + ".js?container=presentation_" + a + "'></scr" + "ipt>")
+                $("body").append("<script type='text/javascript' src='/embed/" + b.id + ".js?container=presentation_" + a + "'></scr" + "ipt>")
             }, 2e3)
         }
     })

@@ -10,8 +10,8 @@
       <% else %>
         <li style="cursor:pointer;" class="<%= ' current' if request.path=='/asks' %>"><span class="asks"></span><a href="<%= asks_path %>">所有问题</a></li>
       <% end %>
-      <li style="cursor:pointer;display:none" class="<%= ' current' if params[:controller] == "logs" and params[:action] == "index" %>"><span class="doing"></span><a href="<%= doing_path %>">问道正在发生</a></li>
-      <li style="cursor:pointer;" class="<%=' current ' if params[:controller]=='home' and ['newbie'].index(params[:action])%>"><span class="newbie"></span><a href="/newbie">问道广场</a></li>
+      <li style="cursor:pointer;display:none" class="<%= ' current' if params[:controller] == "logs" and params[:action] == "index" %>"><span class="doing"></span><a href="<%= doing_path %>">Kejian.TV正在发生</a></li>
+      <li style="cursor:pointer;" class="<%=' current ' if params[:controller]=='home' and ['newbie'].index(params[:action])%>"><span class="newbie"></span><a href="/newbie">Kejian.TV广场</a></li>
       <li style="cursor:pointer;" class="<%=' current ' if request.path=='/zero_asks'%>"><span class="doing"></span><a href="/zero_asks">零回答问题</a></li>
     </ul>
     <div class="block40"></div>

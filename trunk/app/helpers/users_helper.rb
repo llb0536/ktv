@@ -1,5 +1,21 @@
 # coding: utf-8
 module UsersHelper
+  def avatar_url(user,size=:normal)
+    s=AvatarUploader::SIZES[size]
+    url = eval("user.avatar.#{size}.url")
+    if user.avatar.blank? or url.blank?
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      d = CGI::escape("http://#{Setting.ktv_domain}/defaults/avatar/#{size}.jpg")
+      url = "http://gravatar.com/avatar/#{gravatar_id}.png?r=PG&s=#{s}&d=#{d}"
+    end
+    return url
+  end
+  def avatar_tag(user,size=:normal)
+    s=AvatarUploader::SIZES[size]
+    url = avatar_url(user,size)
+    ret="<img src=\"#{url}\" class=\"imgHead\" width=\"#{s}\" height=\"#{s}\" alt=\"\">".html_safe
+    return ret
+  end
   def user_path2(user)
     if user.slug
       slug = user.slug.split('.').join('_')

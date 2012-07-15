@@ -82,7 +82,7 @@ var Users = {
   // modify 2012-2-6 by lesanc.li
   userLogin: function(){
     var lhtml = [];
-    lhtml.push('<header>欢迎使用智联招聘账号登录问道 <a class="close" href="javascript:void(0);"></a></header>');
+    lhtml.push('<header>欢迎使用智联招聘账号登录Kejian.TV <a class="close" href="javascript:void(0);"></a></header>');
     lhtml.push('<section class="form clearfix">');
     lhtml.push('<form name="frmLogin" id="frmLogin" method="post" action="http://my.zhaopin.com/loginmgr/loginproc.asp">');
     lhtml.push('<dl>');
@@ -176,7 +176,7 @@ var Users = {
     lhtml.push('<dd><input type="password" class="fl input-x-validate" name="password2" id="password2" value="" size="32" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_password2"></div></dd>');
     lhtml.push('<dt></dt>');
-    lhtml.push('<dd class="clear"><div class="details"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">问道用户协议</a> 和 <a target="_blank" href="http://jobseeker.zhaopin.com/zhaopin/aboutus/secrecy.html">智联隐私协议</a></div></dd>');
+    lhtml.push('<dd class="clear"><div class="details"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">Kejian.TV用户协议</a> 和 <a target="_blank" href="http://jobseeker.zhaopin.com/zhaopin/aboutus/secrecy.html">智联隐私协议</a></div></dd>');
     lhtml.push('</dl>');
     lhtml.push('</form></section>');
     lhtml.push('<footer>');

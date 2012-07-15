@@ -35,7 +35,7 @@
       <h5><em id="user_name"><%= (truncate2(user.name,:length=>14)==user.name)? user.name : truncate2(user.name,:length=>12) %><%= v_icon(user) %></em>
         <!-- to 小潘：本行为默认显示签名，点击后面的A标签后隐藏（添加hide class） -->
         <div class="details">
-          <span id="user_tagline"><%= ((user.tagline==nil || user.tagline == '')&&(!user.tagline_changed_at)) ? (   (user.is_expert) ? '问道专家' : '问道新人'   ) : (user.tagline) %></span>&nbsp;
+          <span id="user_tagline"><%= ((user.tagline==nil || user.tagline == '')&&(!user.tagline_changed_at)) ? (   (user.is_expert) ? 'Kejian.TV专家' : 'Kejian.TV新人'   ) : (user.tagline) %></span>&nbsp;
           <% if owner?user %>
             <img class="modifyLogo" src="/assets/transparent.png"><%= in_place_edit_tag(user,:tagline,:rich => false, :text_id => "user_tagline") %>
           <% end %>

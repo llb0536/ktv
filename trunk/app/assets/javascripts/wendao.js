@@ -126,7 +126,7 @@ $(document).ready(function(){
 $("#login_link").click(Users.userLogin);
     $("#reg_link").click(Users.userReg);
     $("#logout_link").click(Users.userLogout);
-    // 问道广场 欢迎页热门话题关注 2012-2-5 by lesanc.li
+    // Kejian.TV广场 欢迎页热门话题关注 2012-2-5 by lesanc.li
     var hotTopicTable = $(".newbie .hotTopicTable");
     if (hotTopicTable.length > 0){
         // topics hover event

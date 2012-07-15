@@ -1,17 +1,17 @@
-<h1 id="section">智联招聘: 问道开放应用程序接口 - 访问需要用户认证的资源</h1>
+<h1 id="section">智联招聘: Kejian.TV开放应用程序接口 - 访问需要用户认证的资源</h1>
 
 <h2>访问需要用户认证的资源</h2>
-<p>有些资源是需要登录才能操作的，例如以某用户的身份关注另外的用户。智联招聘问道API使用OAuth来进行单个用户的认证。特殊受信应用程序无需OAuth认证。</p>
+<p>有些资源是需要登录才能操作的，例如以某用户的身份关注另外的用户。智联招聘Kejian.TVAPI使用OAuth来进行单个用户的认证。特殊受信应用程序无需OAuth认证。</p>
 
 <h2>什么是OAuth</h2>
 <p>正如现在的汽车往往提供一把仆从钥匙（Valet Key），即只能点火以及打开驾驶员侧门，而打不开往往放有贵重物品的后备箱和杂物箱的一把钥匙，Oauth就是为了让用户在不提供他的用户名密码的情况下，授予应用程序一些权限，让它访问用户的部分资源。</p>
-<p>智联招聘问道API实现的是Oauth 2.0。</p>
+<p>智联招聘Kejian.TVAPI实现的是Oauth 2.0。</p>
 
 <h2>如何通过获取访问令牌(即仆从钥匙)？</h2>
 
-<p>以下以获取用户在智联招聘问道的已登录用户的用户名为例，演示如何使用问道API的OAuth认证功能。</p>
+<p>以下以获取用户在智联招聘Kejian.TV的已登录用户的用户名为例，演示如何使用Kejian.TVAPI的OAuth认证功能。</p>
 
-<p>需要两个步骤，第一个步骤是，您的应用程序需要向着用户询问获取他们数据的权限。如果用户同意，客户端将收到一个授权码。第二个步骤是客户端将带着授权码以及（以前注册应用程序的时候获得的）访问密钥去问道的服务器上获取访问令牌(即仆从钥匙)。</p>
+<p>需要两个步骤，第一个步骤是，您的应用程序需要向着用户询问获取他们数据的权限。如果用户同意，客户端将收到一个授权码。第二个步骤是客户端将带着授权码以及（以前注册应用程序的时候获得的）访问密钥去Kejian.TV的服务器上获取访问令牌(即仆从钥匙)。</p>
 
 <p>首先，您需要构建一个请求URL，需要提供以下参数：scope=想获取的认证范畴，response_type=code（常量），client_id=您的客户端ID，redirect_uri=您注册客户端时填写的回调地址(必须与服务器记录保持一致)。</p>
 
@@ -25,7 +25,7 @@ http://api.zhaopin.com/oauth/authorization?response_type=code&scope=all&client_i
 
 <p><%= api 1011 %></p>
 
-<p>若用户同意，那么问道将跳转到我们的应用所制定的回调地址，给您一个授权码。在这个实例里面，这个地址是http://wendao.ofpsvr.org/redirect_receive?code=<授权码>。我们现在应该拿着授权码来换取访问令牌。我们通过向服务器端的`/oauth/token`去POST这些参数来实现：code=授权码、grant_type=authorization_code、client_id=客户端ID、client_secred=客户端密钥。</p>
+<p>若用户同意，那么Kejian.TV将跳转到我们的应用所制定的回调地址，给您一个授权码。在这个实例里面，这个地址是http://wendao.ofpsvr.org/redirect_receive?code=<授权码>。我们现在应该拿着授权码来换取访问令牌。我们通过向服务器端的`/oauth/token`去POST这些参数来实现：code=授权码、grant_type=authorization_code、client_id=客户端ID、client_secred=客户端密钥。</p>
 
 <p>例如，(Ruby)</p>
 
@@ -94,7 +94,7 @@ Set-Cookie: _quora_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWQ5NmQ2NGE3YmM2MGUxN
 
 
 <h2>刷新令牌</h2>
-当您的令牌过期，问道服务器将返回401响应。您可以通过向`/oauth/token`去POST带有如下参数的请求来获取新的令牌：grant_type=refresh_token、client_id=客户端ID、client_secred=客户端密钥。例如：
+当您的令牌过期，Kejian.TV服务器将返回401响应。您可以通过向`/oauth/token`去POST带有如下参数的请求来获取新的令牌：grant_type=refresh_token、client_id=客户端ID、client_secred=客户端密钥。例如：
 <p>例如，(Ruby)</p>
 
 <pre>

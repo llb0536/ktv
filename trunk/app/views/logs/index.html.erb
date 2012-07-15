@@ -15,7 +15,7 @@
 <section>
   <h3><%=title_for_this_page%></h3>
   <% if @logs.blank? %>
-    你关注的内容没有新动态，去<%= link_to '问道广场','/newbie' %>关注更多内容吧
+    你关注的内容没有新动态，去<%= link_to 'Kejian.TV广场','/newbie' %>关注更多内容吧
   <% else %>
     <% for log in @logs %>
       <%= render "logs/log", :log => log %>

@@ -7,7 +7,7 @@ Feature: Get Pages
     
   Scenario: newbie page
     I go to url "/newbie"
-    I should see "关注你感兴趣的内容，开始问道吧！"
+    I should see "关注你感兴趣的内容，开始Kejian.TV吧！"
   
   Scenario: root page
     I go to url "/root"

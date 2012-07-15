@@ -5,15 +5,15 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <% yield :head%>
-  <title>问道-智联旗下职场问答交流平台</title>
+  <title>Kejian.TV-智联旗下职场问答交流平台</title>
   <% if use_yahei_font?(request.env["HTTP_USER_AGENT"]) %>
   <%= stylesheet_link_tag "font","application","users","asks","front","facebox","jquery.jdialog","jquery.qeditor","jquery.autocomplete", "jquery.tipsy" %>
   <% else %>
   <%= stylesheet_link_tag "font_no_cleartype","application","users","asks","front","facebox","jquery.jdialog","jquery.qeditor","jquery.autocomplete", "jquery.tipsy" %>
   <% end %>
 	<%= yield :styles %>
-  <meta name="keywords" content="职业规划,问答,职场,加薪,问道," />
-  <meta name="description" content="问道是智联招聘旗下的职场领域问答交流平台.问道助你制定专业的职业规划,提供求职指导,分享职场知识,赢取工作机会.问道拥有大批职场专家,行业资深人士,知名企业HR,同行,校友." />
+  <meta name="keywords" content="职业规划,问答,职场,加薪,Kejian.TV," />
+  <meta name="description" content="Kejian.TV是智联招聘旗下的职场领域问答交流平台.Kejian.TV助你制定专业的职业规划,提供求职指导,分享职场知识,赢取工作机会.Kejian.TV拥有大批职场专家,行业资深人士,知名企业HR,同行,校友." />
   <link rel="shortcut icon" href="/favicon.ico?v=003" /> 
   <%= csrf_meta_tag %>
   <%= javascript_include_tag "jquery.min","rails","facebox","jquery.jdialog","jquery.qeditor","jquery.autocomplete_embed", "jquery.cookie","jquery.tipsy" ,"jcaches","application","asks","topics","users","inbox" %>

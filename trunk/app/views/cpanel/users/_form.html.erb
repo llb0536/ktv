@@ -41,9 +41,9 @@
         <%= radio_button_tag("user[user_type]",User::NORMAL_USER,@user.user_type==User::NORMAL_USER) %>
         <%= label_tag(:user_type, "普通用户") %>
         <%= radio_button_tag("user[user_type]",User::ELITE_USER,@user.user_type==User::ELITE_USER,:style=>"margin-left:29px;") %>
-        <%= label_tag(:user_type, "问道精英") %>
+        <%= label_tag(:user_type, "Kejian.TV精英") %>
         <%= radio_button_tag("user[user_type]",User::EXPERT_USER,@user.user_type==User::EXPERT_USER,:style=>"margin-left:18px;") %>
-        <%= label_tag(:user_type, "问道专家") %>
+        <%= label_tag(:user_type, "Kejian.TV专家") %>
         <%= radio_button_tag("user[user_type]",User::BAN_USER,@user.user_type==User::BAN_USER,:style=>"margin-left:30px;") %>
         <%= label_tag(:user_type, "屏蔽用户") %>
         <%= radio_button_tag("user[user_type]",User::FROZEN_USER,@user.user_type==User::FROZEN_USER,:style=>"margin-left:30px;") %>

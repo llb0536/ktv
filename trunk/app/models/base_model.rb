@@ -11,6 +11,23 @@ module BaseModel
     scope :nondeleted, where(:deleted.nin=>[1,3])
     scope :be_deleted, where(:deleted=>1)
   end
+  COMMON_HUMAN_ATTR_NAME = {
+    :slug => '友好资源识别号',
+    :email => '电子邮箱',
+    :created_at => '创建时间',
+    :updated_at => '更新时间'
+  }
+  def view!
+    self.inc(:views_count, 1)
+  end
+  def errors_for_field(field)
+    arr = self.errors[field]
+    if arr.empty?
+      return ''
+    else
+      return (self.class.human_attribute_name(field) + arr.join('且')).html_safe
+    end
+  end
   def send_to_msg_center(msg)
     if msg['Receiver'].blank?
       msg['Receiver']=0

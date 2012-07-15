@@ -7,6 +7,78 @@ class User
   include Mongo::Voter
   include Redis::Search
   include BaseModel
+  has_many :coursewares
+  before_validation :fill_in_unknown_email
+  before_validation :fill_in_unknown_name
+  def fill_in_unknown_email
+    if self.email_unknown
+      self.email_unknown = true
+      self.email = "unknown#{Time.now.to_i}#{rand}@example.com"
+    else
+      self.email_unknown = false
+    end
+    true
+  end
+  def fill_in_unknown_name
+    if self.name_unknown
+      self.name_unknown = true
+      self.name = "姓名请求"
+    else
+      self.name_unknown = false
+    end
+    true
+  end
+  before_validation :english_nameize
+  def english_nameize
+    if new_record? or name_changed?
+      if self.name.present? and !self.name_unknown and self.name_en.blank?
+        str = Pinyin.t(self.name,' ').titleize
+        strs = str.split(' ')
+        family_name = strs.shift
+        given_name = strs.join('').downcase.camelize
+        self.name_en = "#{given_name} #{family_name}"
+      end
+    end
+  end
+  
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :token_authenticatable, :confirmable,
+         :lockable, :timeoutable, :omniauthable, :invitable
+  # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
+  ## Database authenticatable
+  field :email,              :type => String, :null => false, :default => ""
+  index :email, :uniq => true
+  field :encrypted_password, :type => String, :null => false, :default => ""
+
+  ## Recoverable
+  field :reset_password_token,   :type => String
+  field :reset_password_sent_at, :type => Time
+
+  ## Rememberable
+  field :remember_created_at, :type => Time
+
+  ## Trackable
+  field :sign_in_count,      :type => Integer, :default => 0
+  field :current_sign_in_at, :type => Time
+  field :last_sign_in_at,    :type => Time
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip,    :type => String
+
+  ## Confirmable
+  field :confirmation_token,   :type => String
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
+  field :unconfirmed_email,    :type => String # Only if using reconfirmable
+
+  ## Lockable
+  field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
+  field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
+  field :locked_at,       :type => Time
+
+  ## Token authenticatable
+  field :authentication_token, :type => String
+  
   @before_soft_delete = proc{
     redis_search_index_destroy
     $redis_users.hdel self.id,:name
@@ -74,13 +146,6 @@ class User
   SUB_ADMIN=3
   ADMIN_TYPE={User::NO_ADMIN=>"",User::SUP_ADMIN=>"管理员",User::SUB_ADMIN=>"副管理员"}
   has_many :oauth_accesses
-  def self.zhaopin_validate(loginname,password)
-    uri = URI('http://my.zhaopin.com/loginmgr/loginproc.asp')
-    ok_url='http://ok/'
-    res = Net::HTTP.post_form(uri, {"loginname"=> loginname,"password"=> password, "Validate"=>'campusspecial2011unify', 'errbkurl'=>'http://failed/', 'bkurl'=>ok_url})
-    return false unless res.instance_of?(Net::HTTPFound)
-    return ok_url==res['location']
-  end
   def self.admins
     User.where(:user_type.in=>[User::SUB_ADMIN,User::SUP_ADMIN])
   end
@@ -107,10 +172,6 @@ class User
   has_many :tokens, :class_name => "OauthToken"#, :order => "authorized_at desc", :include => [:client_application]
   field :current_mails
   
-  devise :token_authenticatable, :database_authenticatable, :registerable,
-    :recoverable, :rememberable
-  #, :validatable # :invitable
-  # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   field :zhaopin_ud
   field :is_expert, :type=>Boolean, :default=>false
   field :is_jingying, :type=>Boolean, :default=>false
@@ -124,23 +185,153 @@ class User
   field :name
   field :slug
   field :tagline
+  field :autotagline
   field :tagline_changed_at
   field :avatar_changed_at, :type => Time
   field :last_login_at, :type => Time
   field :login_times, :type => Integer, :default => 0
+  field :will_autofollow,:type=>Boolean,:default=>false
+  field :bio
+  field :location
+  field :email_unknown,:type=>Boolean,:default=>false
+  field :name_unknown,:type=>Boolean,:default=>false
+  field :name_pinyin
+  field :name_en
+  field :school_id
+  field :department_id
+  field :died_at, :type => Date
+  belongs_to :school
+  belongs_to :department
+
+  before_save :autotagline_schoolize
+  def autotagline_schoolize
+    if new_record? or school_id_changed? or department_id_changed?
+      self.autotagline = ""
+      self.autotagline += self.school.name if self.school.present?
+      self.autotagline += self.department.name if self.department.present?
+    end
+  end
   before_save Proc.new{
     if self.tagline_changed?
       self.tagline_changed_at = Time.now
     end
   }
-  field :will_autofollow,:type=>Boolean,:default=>false
-  field :bio
-  validates_length_of :name,:maximum=>20
+  before_save :downcase_email
+  def downcase_email
+    self.email.downcase!
+  end
+  before_save :counter_work
+  def counter_work
+    self.followers_count = self.follower_ids.count if self.follower_ids
+    self.following_count = self.following_ids.count if self.following_ids
+    if new_record?
+    end
+  end
+  
+  def state
+    if self.name_unknown
+      {:name => STATE_TEXT[:name_unknown],:css => :error}
+    elsif self.banished
+      {:name => STATE_TEXT[:banished],:css => :nothing}
+    elsif !!self.died_at
+      {:name => STATE_TEXT[:dead],:css => :nothing}
+    elsif self.email_unknown
+      {:name => STATE_TEXT[:email_unknown],:css => :warn}
+    elsif !self.confirmed?
+      {:name => STATE_TEXT[:nonconfirmed],:css => :black_white}
+    else #if self.valid?
+      {:name => STATE_TEXT[:normal],:css => :ok}
+    # else
+    #   {:name => '奇异状态',:css => :error}
+    end
+  end
+  STATE_TEXT = {
+    :name_unknown => '姓名请求',
+    :email_unknown => '邮箱请求',
+    :nonconfirmed => '等待邮件确认',
+    :banished => '已被禁',
+    :dead => '已过世',
+    :normal => '正常'
+  }
+  # 是否允许登陆
+  def active_for_authentication?
+    self.encrypted_password.present? && !banished && !access_locked? && !died_at && confirmed?
+  end
+  scope :name_unknown, where(:name_unknown => true)
+  scope :email_unknown, where(:email_unknown => true)
+  scope :nonconfirmed, where(:confirmed_at => nil)
+  scope :dead, where('died_at != NULL')
+  scope :banished, where(:banished => true)
+  # validations----------------------------------------------------------------------
+  validate :vali_name_check, :if => :name_required?
+  def vali_name_check
+    if self.name.blank?
+      errors.add(:name,"不能为空字符")
+      return false      
+    end
+    unless self.name.starts_with?('_')
+      if Ktv::Utils.js_strlen(self.name)>12
+       errors.add(:name,"不能多于6个汉字或者12个字符")
+       return false
+      end
+      if Ktv::Utils.js_chinese(self.name)<2
+       errors.add(:name,"不是真实中文姓名")
+       return false
+      end
+      if !Ktv::Renren.name_okay?(self.name)
+       errors.add(:name,"不是合法的中文姓名<br><span style=\"font-size:12px\">(若不愿透露姓名，请输入一个下划线开头的名字以跳过此测试)</span>")
+       return false
+      end
+    end
+  end
   validate :bio_lengthvali
   def bio_lengthvali
     errors.add(:bio, '太长') unless Nokogiri.HTML(self.bio).text().length() <= 4000
   end
   validates_length_of :tagline,:maximum=>40
+  validates_presence_of :name, :slug
+  validates_uniqueness_of :slug,:message=>'与已有个性域名重复，请尝试其他域名'
+  validates_format_of :slug, :with => /[a-z0-9\-\_]{1,20}/i
+  validate :name_change_not_too_often
+  # 用户修改昵称，一个月只能修改一次
+  def name_change_not_too_often
+    unless self.new_record?
+      if self.name_changed?
+        if self.name_last_changed_at and self.name_last_changed_at > 1.months.ago
+          errors[:base] << "对不起，昵称一个月只能修改一次"
+          return false
+        else
+          self.name_last_changed_at = Time.now
+          return true
+        end
+      end
+    end
+  end
+  attr_accessor :during_registration,:force_confirmation_instructions,:inviting
+  alias_method :send_on_create_confirmation_instructions_before_psvr,:send_on_create_confirmation_instructions
+  alias_method :send_confirmation_instructions_before_psvr,:send_confirmation_instructions
+  def send_on_create_confirmation_instructions
+    unless self.email_unknown or self.name_unknown
+      if self.inviting or self.during_registration or self.force_confirmation_instructions
+        send_on_create_confirmation_instructions_before_psvr
+      end
+    end
+  end
+  def send_confirmation_instructions
+    unless self.email_unknown or self.name_unknown
+      send_confirmation_instructions_before_psvr
+    end
+  end
+  def password_required?
+    return true if self.during_registration
+    return false
+  end
+  def name_required?
+    !self.name_unknown
+  end
+  # ----------------------------------------------------------------------------------
+  
+  
   field :avatar
   field :website
   # 是否是女人
@@ -187,13 +378,6 @@ class User
   field :invited_count, :type => Integer, :default => 0
   field :thank_count, :type => Integer, :default => 0
   field :thanked_count, :type => Integer, :default => 0
-  before_save :counter_work
-  def counter_work
-    self.followers_count = self.follower_ids.count if self.follower_ids
-    self.following_count = self.following_ids.count if self.following_ids
-    if new_record?
-    end
-  end
   has_many :answers
   has_many :notifications
   has_many :inboxes
@@ -208,7 +392,6 @@ class User
   index :followed_ask_ids
   index :followed_topic_ids
   index :slug, :uniq => true
-  index :email, :uniq => true
   index :follower_ids
   index :following_ids
   index :name
@@ -258,31 +441,7 @@ class User
     end
   end
   field :tags
-  # Security fix by P.S.V.R:
-  # don't put the following in here.
-  #     :credible, :is_expert, :is_expert_why, :tags, :will_autofollow
-  # this white list will not affect update_attribute.
-  attr_accessible :email, :password,:name, :slug, :tagline, :bio, :avatar, :website, :girl, 
-    :mail_new_answer, :mail_be_followed, :mail_invite_to_ask, :mail_ask_me
-  validates_presence_of :name, :slug
-  validates_uniqueness_of :slug,:message=>'与已有个性域名重复，请尝试其他域名'
-  validates_format_of :slug, :with => /[a-z0-9\-\_]{1,20}/i
   field :name_last_changed_at
-  #validate :name_change_not_too_often
-  # 用户修改昵称，一个月只能修改一次
-  def name_change_not_too_often
-    unless self.new_record?
-      if self.name_changed?
-        if self.name_last_changed_at and self.name_last_changed_at > 1.months.ago
-          errors[:base] << "对不起，昵称一个月只能修改一次"
-          return false
-        else
-          self.name_last_changed_at = Time.now
-          return true
-        end
-      end
-    end
-  end
   
   # 以下两个方法是给 redis search index 用
 
@@ -375,7 +534,8 @@ class User
     end
   end
 
-  before_save :downcase_email
+
+
   def self.find_for_authentication(conditions) 
     conditions[:email].try(:downcase!)
     super
@@ -386,13 +546,7 @@ class User
     super
   end
 
-  def downcase_email
-    self.email.downcase!
-  end
 
-  def password_required?
-    !persisted? || password.present? || password_confirmation.present?
-  end
   
   mount_uploader :avatar, AvatarUploader
 
@@ -791,54 +945,6 @@ class User
   #   end
   #   saved_count
   # end
-
-  def self.authenticate_through_ui!(ui,name,created_from_mobile=false)
-    return nil unless ui
-
-    result = Cryptor.decryptData(ui)
-    hash = {}
-    hash[:__raw] = result
-    result.to_s.split(';').each do |item|
-    	items = item.split('=')
-      hash[items[0].strip] = items[1].strip if items[0] and items[1]
-    end
-    if hash["U\x00D"] and hash["\x00L\x00N"] and ''!=hash["U\x00D"] and ''!=hash["\x00L\x00N"]
-      ud = hash["U\x00D"].to_s
-      email = hash["\x00L\x00N"].split("\x00").join('').downcase
-      u = User.where(email: email).first
-
-      unless u
-        begin
-          u = User.new
-
-        	u.email = email
-
-        	u.name = email.split('@')[0]
-
-        	u.name = name.force_encoding("UTF-8") if name and name!=''
-
-          u.name = u.name.split('@')[0]
-
-        	u.zhaopin_ud = ud
-        	u.password=(Time.now.to_i+(rand*10000).to_i).to_s
-        	u.password_confirmation=u.password
-
-        	u.slug=nil
-          u.name = u.name[0..19] if u.name.length > 20
-          u.created_from_mobile = created_from_mobile
-        	u.save!
-        	u.update_consultant!
-        rescue => e
-          p e
-          return User.where(email: email).first
-        end
-      end
-      u.update_attribute(:zhaopin_ud,ud)
-      return u
-    end
-    nil
-  end
-
   cache_consultant :name,:no_callbacks=>true
   cache_consultant :slug,:no_callbacks=>true
   cache_consultant :avatar_filename,:no_callbacks=>true
