@@ -1,0 +1,1 @@
+echo sudo bundle exec rails s -p 80

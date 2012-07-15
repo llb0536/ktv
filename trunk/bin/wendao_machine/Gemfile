@@ -1,0 +1,8 @@
+source 'http://ruby.taobao.org/'
+
+gem 'rake'
+gem 'activerecord','3.2.3'
+gem 'activesupport','3.2.3'
+
+gem 'mechanize','2.4'
+gem 'pry'

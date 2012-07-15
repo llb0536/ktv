@@ -1,0 +1,16 @@
+#!/bin/bash -x
+
+#FTP 接口地址：v1.ftp.upyun.com (电信)
+#　　　　　　　v2.ftp.upyun.com (联通网通)
+#　　　　　　　v3.ftp.upyun.com (移动铁通)
+#　　　　　　　v0.ftp.upyun.com (自动判断）
+
+
+USERNAME="pmq20/ktv-pic"
+PASSWORD="jknlff8-pro-17m7755"
+SERVER="v0.ftp.upyun.com"
+
+ORIGIN=$1
+TARGET=$2
+
+ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN/thumb_slide_*

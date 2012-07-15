@@ -1,0 +1,5 @@
+#!/usr/local/bin/ruby
+str = `djvudump "#{ARGV[0]}"|grep pages`
+if str=~/(\d+) pages/
+  puts $1
+end

@@ -1,0 +1,3 @@
+#!/bin/bash -x
+
+bundle exec unicorn_rails -c config/unicorn_ktv.conf.rb -E development -D

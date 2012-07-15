@@ -1,0 +1,4 @@
+line = `mdls #{ARGV[0]} | grep kMDItemPageWidth`
+if line =~ /(\d+)/
+  puts $1
+end

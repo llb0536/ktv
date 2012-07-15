@@ -1,0 +1,17 @@
+#!/bin/sh
+# djvu -> jpgs converter
+
+i=1
+sum=`bin/djvu_pages "$1"`
+echo $sum
+mkdir -p auxiliary/ftp/cw/$2
+
+while [ $i -ne $sum ]
+  do
+    ddjvu -size=960x9999 -page=$i -format=pnm "$1" $i.pnm
+    pnmtojpeg $i.pnm -quality=90 > auxiliary/ftp/cw/$2/slide_`expr $i - 1`.jpg
+    rm -f $i.pnm
+    echo "page $i done"
+    i=`expr $i + 1`
+    done
+

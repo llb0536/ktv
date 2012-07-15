@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=960">
+      <meta http-equiv="x-dns-prefetch-control" content="off">
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <title>问道</title>
+      <link rel="shortcut icon" href="http://wendaodev.zhaopin.com/favicon.ico?v=003"> 
+      <meta charset="UTF-8">
+      <meta content="authenticity_token" name="csrf-param">
+<meta content="FgSdsYGcq/ubaVJx0KkcEfAIosVLYlm+I87tjj4RNmU=" name="csrf-token">
+
+  	  <!--[if lt IE 9 ]>
+	    <script src="/assets/html5.js?body=1" type="text/javascript"></script>
+      <![endif]-->
+<style type="text/css">
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,header,footer,menu,nav,section,article,aside,figure{margin:0;padding:0}
+section,figure,header,footer,aside,article,hgroup,figcaption,nav,menu{display:block}
+fieldset,img,abbr,acronym{border:none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}
+a{outline:none}
+input{border:none;background:none;}
+button{border:none;vertical-align:middle;cursor:pointer}
+label{cursor:pointer}
+table {border-collapse:collapse;border-spacing:0;}
+address,caption,cite,code,dfn,em,th,var {font-weight:normal;font-style:normal;}
+ol,ul {list-style:none;}
+
+body {
+    font:normal 14px/22px "Hiragino Sans GB",simsun;
+    background: url("/assets/container_bg.png") repeat-x #f4fafd;
+    color:#555;
+	word-wrap:break-word; 
+	word-break:break-all;
+}
+a, .details .summary a {
+    color:#369;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+	cursor:pointer;
+}
+button {
+	background-color:transparent;
+}
+h2,h3 {
+	color:#555;
+	font-weight:bold;
+	border-bottom:1px solid #cfcfcf;
+	height:30px; line-height:30px;
+	font-size:14px;
+}
+h2 {
+	border:none;
+}
+h6 {
+	font-weight:bold;
+}
+em {
+	color:#5b5b5b;
+}
+mark {
+	background:transparent;
+	color:#900;
+}
+input,textarea {
+	font-size:12px;
+	color:#999;
+	border:1px solid #ccc;
+	padding:2px;
+}
+input:focus,textarea:focus {
+	border-color:#84bd2f;
+}
+input.error {
+	border-color:red;
+	background-color:#ffe5e5;
+}
+.fr {
+	float:right;
+}
+.errorPage {
+	margin:90px auto;
+	width:600px;
+	height:252px;
+	position: relative;
+}
+/*.errorPage aside {
+	float:right;
+	line-height:50px;
+}*/
+.err500 {
+    background: url("err500.png") no-repeat;
+}
+.englishFont {
+    font:normal 12px/1em "arial";
+}
+.noBorder {
+	border:none;
+}
+.wrapper {
+    width:950px;
+    margin:0 auto;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear:both;
+    visibility: hidden;
+}
+.fs14 {
+	font-size:14px;
+}
+.fc999,.fc369 {
+	color:#999;
+	font-size:12px;
+	font-weight:400;
+}
+.bold {
+	font-weight:bold;
+}
+.fc369 {
+	color:#369;
+}
+.fcRed {
+	color:red;
+}
+.mt5 {
+	margin-top:5px;
+}
+.mt10 {
+	margin-top:10px;
+}
+.mt20 {
+	margin-top:20px !important;
+}
+.mt30 {
+	margin-top:30px;
+}
+.mt40 {
+	margin-top:40px;
+}
+.hide {
+	display:none;
+}
+.posRela {
+	position:relative;
+}
+/* 分割线，上灰色2px下灰色1px */
+.dline {
+	height:1px;
+	font-size:0;
+	border:1px solid #cfcfcf;
+	border-width:2px 0 1px 0;
+	line-height:0;
+}
+.borderLeftDot {
+	border-left:1px dotted #cfcfcf;
+}
+.borderBottomDot {
+	border-bottom:1px dotted #cfcfcf;
+}
+
+/* 行内小图标通用属性 */
+.verifyLogoS, .modifyLogo, .questionLogo {
+	background:url("/assets/btn.png") no-repeat;
+	display:inline-block;
+	vertical-align:-2px;
+}
+/* 行内 名字后面绿色V认证图标（小） */
+.verifyLogoS {
+	width:12px;
+	height:12px;
+	background-position:0 -50px;
+}
+/* 行内 修改灰色图标 */
+.modifyLogo {
+	width:10px;
+	height:10px;
+	background-position:-140px -52px;
+	margin-right:5px;
+}
+/* 行内 绿色问号图标 */
+.questionLogo {
+	width:14px;
+	height:14px;
+	background-position:-432px 0;
+	margin-left:5px;
+}
+
+.arrUp, .close,  .close_topic, .shuffle, .icoCorrect, .icoInCorrect{
+	background:url("/assets/btn.png") no-repeat;
+	position:absolute;
+	display:block;
+}
+/* 问题页，评论框体，左上位置向上箭头 */
+.arrUp {
+	width:11px;
+	height:6px;
+	background-position:-432px -19px;
+}
+/* 叉子图标 */
+.close,.close_topic {
+	background-position:-210px -50px;
+	width:11px;
+	height:11px;
+	position:absolute;
+}
+.close:hover {
+	background-position:-244px -50px;
+}
+/* 换一换图标 */
+.shuffle {
+	background-position:-433px -29px;
+	width:14px;
+	height:14px;
+	top:9px;
+	right:0;
+}
+/* input框右侧出现的验证正确与否图标 */
+.icoCorrect,.icoInCorrect {
+	background-position:-405px -46px;
+	width:14px;height:14px;
+}
+.icoInCorrect {
+	background-position:-405px -61px;
+}
+
+/* hover后不显示底线链接的样式 */
+#userInfoPop a, #mainNav a, .topicNav a:hover, .pager a, .hotTopicTable a {
+	text-decoration:none;
+}
+/* 普通绿色、银色按钮 */
+.btnNormalGreen, .btnNormalSilver {
+	border:1px solid #8ac431 !important;
+	float:left !important;
+	cursor:pointer !important;
+}
+.btnNormalGreen span, .btnNormalSilver span {
+	padding:3px 10px !important;
+	border:1px solid #c6ef7d !important;
+	background:url("/assets/btn_bg.png") repeat-x !important;
+	line-height:1em !important;
+	float:left !important;
+	color:#447208 !important;
+}
+.btnNormalSilver {
+	border-color:#e5e5e5 !important;
+	font-size:12px !important;
+}
+.btnNormalSilver span {
+	border-color:#fff !important;
+	background-position:left bottom !important;
+	color:#690 !important;
+}
+/* 所有头像图片包灰边 */
+.imgHead {
+	border:1px solid #ddd;
+}
+
+/* layout部分 */
+#pageHeader {
+    height:50px;
+    background: url("top.png") 0 -74px;
+	font-size:12px;
+}
+#pageHeader a {
+    color:#d9d9d9;
+}
+#pageHeader .wrapper {
+    height: 50px;
+    position: relative;
+}
+#pageHeader .wrapper div {
+    position:absolute;
+}
+/* 站点LOGO */
+.sitelogo {
+    background: url("top.png") 0 -33px;
+    display:block;
+    width:127px; height:39px;
+    position:absolute;
+    top:7px; left:30px;
+}
+/* 搜索框 */
+.searchbox {
+    background: url("top.png") no-repeat;
+    width:309px;height:31px;
+    top:9px; left:187px;
+}
+#searchInput {
+    color:#999;
+    font-size:14px;
+    margin:5px 0 0 10px;
+    width:290px;
+	border:0;
+}
+/* 提问按钮 */
+.btnGoAsk {
+    background: url("top.png") -129px -33px no-repeat;
+    width:95px; height:29px;
+    position:absolute;
+    top:10px; left:500px;
+}
+/* 首页 */
+.userHomepage {
+    left:740px; top:15px;
+}
+/* 通知 */
+.userNotify {
+    background-color:#ff0445;
+    color:#fff;
+    left:770px; top:19px;
+    padding:1px 3px;
+}
+/* 用户名 */
+.userInfoName {
+    width:90px;
+    color:#d9d9d9;
+	top:15px;
+	left:844px;
+}
+#header .arrowDown {
+	display:inline-block;
+	margin:0 0 3px 5px;
+}
+/* 用户信息框弹层 */
+.userInfoPop {
+    left:813px;top:9px;
+    width:136px;
+    border:1px solid #000;
+    background-color: #2f2f2f;
+    position: absolute;
+	z-index:500;
+}
+.userInfoPop li {
+    border:1px solid #464646;
+    height:41px;line-height: 41px;
+    color:#d9d9d9;
+	cursor:pointer;
+}
+.userInfoPop li.blackline {
+    border:none;
+    height:1px;
+}
+.userInfoPop li.username {
+    padding-left:9px;
+    position:relative;
+    height:30px; line-height: 30px;
+}
+.userInfoPop li.username:hover {
+    background-color: #2f2f2f;
+}
+#pageHeader .userInfoPop a {
+	font-weight:bold;
+	font-size:14px;
+	color:#95D633;
+}
+
+#container {
+    border: 1px solid #bed0db;
+    margin-top:20px;
+	background:url("/assets/sidebar_bg.png") repeat-y 700px 0 #FFF;
+}
+/* 不要边栏背景时的class */
+#container.noSidebar {
+	background:none #fff;
+}
+#main {
+    float:left;
+    width:700px;
+	overflow:hidden;
+}
+
+/* Footer */
+#pagerFooter {
+    color:#7396b9;
+    margin: 0 auto;
+    width:950px;
+    text-align: center;
+    line-height: 2em;
+	font-size:12px;
+}
+#pagerFooter a {
+    color:#7396b9;
+}
+/* Footer End */
+</style>
+    </head>
+
+    <body data-subdomain="wendaodev">
+        <header id="pageHeader">
+            <section class="wrapper">
+                <a class="sitelogo" title="回到首页" href="http://wendao.zhaopin.com/"></a>
+            </section>
+        </header>
+          <section class="wrapper noSidebar clearfix" id="container">
+			<div class="errorPage err500">
+				<div class="errContent" style="padding:120px 0 0 280px;line-height:2.5em">
+				稍后再<a href="#" style="color:#690;text-decoration:underline">刷新</a>一下页面吧~<br/>或者你可以去<a href="http://wendao.zhaopin.com/newbie/" style="color:#690;text-decoration:underline">问道广场</a>溜达一下
+				</div>
+			</div>
+        </section>
+        <footer id="pagerFooter" class="mt20">
+            <div class="copyright">
+                Copyright © Zhaopin.com All Rights Reserved.
+            </div>
+        </footer>
+      <script type="text/javascript">
+        var logined = false;
+
+        (function(){
+                window["ga_JsNewlogin"] = getCookie("JsNewlogin");
+        function getCookie(name){
+                       var dc=document.cookie;
+                       var prefix=name+"=";
+                       var begin=dc.indexOf("; "+prefix);
+                       if(begin==-1){
+                               begin=dc.indexOf(prefix);
+                               if(begin!=0)return null;
+                       }
+                       else begin+=2;
+                       var end=document.cookie.indexOf(";",begin);
+                       if(end==-1)end=dc.length;
+                       return dc.substring(begin+prefix.length,end).replace(/\+/g,' ');
+        }
+        })();
+
+        var _dyweq = _dyweq || [];
+        _dyweq.push(['_setAccount','log000001']);
+        _dyweq.push(['_setDomainName','.zhaopin.com']);
+        _dyweq.push(['_trackPageview']);
+        (function(){
+                var dywe = document.createElement('script'); dywe.type = 'text/javascript'; dywe.async = true;
+                dywe.src = 'http://img01.zhaopin.cn/2012/js/dywe.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dywe, s);
+        })()
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount','UA-7874902-2']);
+        _gaq.push(['_setDomainName','zhaopin.com']);
+        _gaq.push(['_addOrganic','youdao','q']);
+        _gaq.push(['_addOrganic','sogou','query']);
+        _gaq.push(['_addOrganic','soso','w']);
+        if(window["ga_JsNewlogin"]){
+                _gaq.push(['_setCustomVar',1,'Login','Y',2]);
+                _gaq.push(['_setCustomVar',2,'Member',ga_JsNewlogin,1]);
+          }
+        _gaq.push(['_trackPageview']);
+        (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })()
+        function recordOutboundLink(link, category, action) {
+          function ed(d,a){
+                var c=encodeURIComponent;
+                return c instanceof Function?(a?encodeURI(d):c(d)):escape(d);
+          }
+          try{
+            _dywet._getTrackerByName()._trackEvent(category, action);
+                try{
+                       _gat._getTrackerByName()._trackEvent(category, action);
+                }catch(err){}
+                if(link.target!="_blank") setTimeout('document.location = "' + link.href + '"', 100);
+          }catch(err){
+                var i=new Image(1,1);
+                var e=document.location;
+            i.src="http://l.zhaopin.com/track_err.gif?dywee=5("+category+"*"+action+")&dywehn="+ed(e.hostname)+"&dywep="+ed(e.pathname+e.search,true);
+          }
+        }
+      </script>
+</body></html>

@@ -1,0 +1,4 @@
+#!/bin/bash -x
+
+ps aux|grep '[s]idekiq'
+ps aux|grep '[r]ails'

@@ -1,0 +1,32 @@
+User
+//field :asks_count, :type => Integer, :default => 0  
+//field :answers_count, :type => Integer, :default => 0
+//field :comments_count, :type => Integer, :default => 0
+//field :followers_count, :type => Integer, :default => 0
+//field :following_count, :type => Integer, :default => 0
+//field :vote_up_count, :type => Integer, :default => 0
+//field :vote_down_count, :type => Integer, :default => 0
+////field :share_count, :type => Integer, :default => 0
+//field :invite_count, :type => Integer, :default => 0
+//field :invited_count, :type => Integer, :default => 0
+//field :thank_count, :type => Integer, :default => 0
+//field :thanked_count, :type => Integer, :default => 0
+
+Answer
+//field :comments_count, :type => Integer, :default => 0
+//field :vote_up_count, :type => Integer, :default => 0
+//field :vote_down_count, :type => Integer, :default => 0
+//field :thanked_count, :type => Integer, :default => 0
+////field :spams_count, :type => Integer, :default => 0
+
+Ask
+//field :answers_count, :type => Integer, :default => 0
+//field :comments_count, :type => Integer, :default => 0
+//field :followed_count, :type => Integer, :default => 0
+//field :topic_count, :type => Integer, :default => 0
+////field :shared_count, :type => Integer, :default => 0
+////field :spams_count, :type => Integer, :default => 0
+////field :views_count, :type => Integer, :default => 0
+
+Topic
+field :asks_count, :type => Integer, :default => 0

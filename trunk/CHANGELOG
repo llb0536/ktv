@@ -1,0 +1,4 @@
+1. ASKS的缓存启用了
+2. Renderer多了3个子类，见wendao_link_renderer.rb
+3. SearchController返回默认图片
+4. https://github.com/Lelylan/rest-oauth2-server

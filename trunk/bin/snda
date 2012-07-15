@@ -1,0 +1,1 @@
+/root/downloads3/snda-cloud-storage-python-tool-0.1.0/cscmd sync /home/main/KTV_PSVR/core/auxiliary/ftp/cw/$1 cs://ktv-eb/$1

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>问道</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="问道,职场问答,职场规划,求职,职场疑惑,跨专业,简历制作,HR答疑" />
+        <meta name="description" content="问道,职场问答,职场规划,求职,职场疑惑,跨专业,简历制作,HR答疑" />
+        <link rel="shortcut icon" href="/favicon.ico?v=003" />
+		<!--[if lt IE 9 ]>
+        <script src="js/html5.js"></script>
+        <![endif]-->
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/css.css"/>
+		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="css/sidebar.css"/>
+		<link rel="stylesheet" href="css/user.css"/>
+        <!--[if lt IE 8 ]>
+        <link rel="stylesheet" type="text/css" href="css/css_ie.css" />
+        <![endif]-->
+    </head>
+    <body>
+        <header id="pageHeader">
+            <section class="wrapper">
+                <a class="sitelogo" title="问道首页" href="/"></a>
+                <div class="searchbox">
+                    <input id="searchInput" placeholder="搜索求职、职场疑问">
+                </div>
+                <button class="btnGoAsk"></button>
+                <div class="userHomepage"><a href="/" title="回到首页">首页</a></div>
+                <div class="userNotify englishFont">99+</div>
+                
+                <!-- to 小潘：在未登录时显示
+                <div class="userInfoName">登录 注册</div>
+                -->
+                <!-- to 小潘：登录成功时显示 -->                
+                <div class="userInfoName">苏门答腊<cite class="arrowDown"></cite></div><!-- to 小潘：该用户名，只在判断登录成功后出现 -->
+                <!-- to 小潘：该绿色箭头，只在判断登录成功后出现 -->
+                <menu class="userInfoPop" id="userInfoPop">
+                    <ul>
+                        <li class="username">苏门答腊<cite class="arrowDown"></cite></li>
+                        <li class="blackline"></li>
+                        <li><span class="homepage"></span><a href="#">个人主页</a></li>
+                        <li class="blackline"></li>
+                        <li><span class="setup"></span><a href="#">设置</a></li>
+                        <li class="blackline"></li>
+                        <li><span class="logout"></span><a href="#">退出</a></li>
+                    </ul>
+                </menu>
+            </section>
+        </header>
+        <section id="container" class="wrapper clearfix">
+            <section id="main">
+				<section id="mainContent">
+					<!-- 主题内容头 -->
+					<header class="userHeader mainContentHeader clearfix">
+						<figure>
+							<img src="img/tmp/head98.png" title="用户名" class="imgHead" height="98" width="98" />
+							<div class="changeUserHead">修改头像</div>
+						</figure>
+						<section>
+							<h5><em>苏门答腊</em>&nbsp;
+								<!-- to 小潘：本行为默认显示签名，点击后面的A标签后隐藏（添加hide class） -->
+								<div class="hide details">这里是可以更改的东西哦&nbsp;<a class="fc999" href="" title="修改"><img class="modifyLogo" src="img/transparent.png">修改</a></div> 
+								<!-- to 小潘：本行为点击上面一行中的A标签后显示出来（remove hide class) -->
+								<input type="" class="fc999" /><div class="btnNormalSilver"><span>保 存</span></div><a href="">取消</a>
+							</h5>
+							<p class="fc999">
+								<!-- to 小潘：个人经历为空时显示下面的p内容【IF二选一】 -->
+								<a class="fc999" href="" title="添加个人经历"><img class="modifyLogo" src="img/transparent.png">添加个人经历</a>
+								<!-- to 小潘：个人经历有值时显示下面的p内容【IF二选一】 -->
+								经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊经历啊&nbsp;<a class="fc999" href="" title="修改"><img class="modifyLogo" src="img/transparent.png">修改</a>
+							</p>
+							<!-- 点击添加经历或者修改经历后显示如下编辑器 -->
+							<div class="editorBox">
+								<!-- to 宪科：这里放上编辑器代码 -->
+								<textarea name="content" id="content" class="textarea"></textarea>
+								<!-- 提交按钮 -->
+								<div class="bar"><div class="btnNormalSilver"><span>保 存</span></div>&nbsp;<a href="">取消</a></div>
+							</div>
+						</section>
+						<aside>
+							<!-- to 小潘：是否关注判断输出的class > 未被关注时：bBtnFocus；已被关注是：bBtnUnFocus -->
+							<a class="bBtn bBtnFocus bBtnUnFocus"></a>
+						</aside>
+						<div class="clearfix"></div>
+						<!-- 这里是非本人访问才出现的“向此人提问”框体 -->
+						<div class="askTo editorBox mt10 clearfix">
+							<!-- XXX是这个人人名 -->
+							<textarea name="" id="" rows="1" class="textarea">向XXX提问：</textarea>
+							<div class="bar">你还可以输入XXX字</div>
+							<textarea name="" id="" rows="1" class="textarea">问题描述（可选）</textarea>
+							<div class="bar">
+								<div class="btnNormalSilver"><span>发布问题</span></div>&nbsp;<label><input type="checkbox" />只有TA才能回答</label>
+							</div>
+						</div>
+						<div class="dline mt20"></div>
+					</header>
+					
+					<nav class="tabNav clearfix">
+						<ul>
+							<li class="current">主页</li>
+							<li>问我(11)</li>
+							<li>答过(22)</li>
+							<li>问过(33)</li>
+							<li>关注的内容(44)</li>
+						</ul>
+					</nav>
+					
+					<section class="userNavContent">
+						<!-- 这里是点击导航“主页”“问过”“答过”后显示的样式 -->
+						这里是点击导航“主页”“问过”“答过”后显示的样式
+						<article class="askInfoAll clearfix">
+							<header class="clearfix">
+								<hgroup>
+									<h6><a href="#">标题名称啊，可能称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！</a><span class="fc999">（20个答案）</span></h6>
+									<div class="summary">
+										<a href="#">苏门答腊</a><a href=""><img src="img/transparent.png" class="verifyLogoS" /></a> 提出的问题 · 9个答案 · <a href="#">取消关注</a>
+									</div>
+								</hgroup>
+							</header>
+							<section>
+								<aside>
+									<span><em class="englishFont">99</em></span>
+								</aside>
+								<div class="details">
+									<div class="summary">
+										<a href="#" class="bold">苏门答腊</a>，河外星系银河系太阳系地球之主<br />	2票：来自 苏门答腊大爷 苏门答腊二姨
+									</div>
+									<p>这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！</p>
+								</div>
+							</section>
+						</article>
+						<article class="askInfoAll clearfix">
+							<header class="clearfix">
+								<hgroup>
+									<h6><a href="#">标题名称啊，可能称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！</a><span class="fc999">（20个答案）</span></h6>
+									<div class="summary">
+										<a href="#">苏门答腊</a><a href=""><img src="img/transparent.png" class="verifyLogoS" /></a> 提出的问题 · 9个答案 · <a href="#">取消关注</a>
+									</div>
+								</hgroup>
+							</header>
+							<section>
+								<aside>
+									<span><em class="englishFont">99</em></span>
+								</aside>
+								<div class="details">
+									<div class="summary">
+										<a href="#" class="bold">苏门答腊</a>，河外星系银河系太阳系地球之主<br />	2票：来自 苏门答腊大爷 苏门答腊二姨
+									</div>
+									<p>这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！</p>
+								</div>
+							</section>
+						</article>
+						<article class="askInfoAll clearfix">
+							<header class="clearfix">
+								<hgroup>
+									<h6><a href="#">标题名称啊，可能称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！</a><span class="fc999">（20个答案）</span></h6>
+									<div class="summary">
+										<a href="#">苏门答腊</a><a href=""><img src="img/transparent.png" class="verifyLogoS" /></a> 提出的问题 · 9个答案 · <a href="#">取消关注</a>
+									</div>
+								</hgroup>
+							</header>
+							<section>
+								<aside>
+									<span><em class="englishFont">99</em></span>
+								</aside>
+								<div class="details">
+									<div class="summary">
+										<a href="#" class="bold">苏门答腊</a>，河外星系银河系太阳系地球之主<br />	2票：来自 苏门答腊大爷 苏门答腊二姨
+									</div>
+									<p>这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！这里是回答的问题内容，文字啊！有木有！！！</p>
+								</div>
+							</section>
+						</article>
+					</section>
+					
+					<nav class="tabNav clearfix">
+						<ul>
+							<li>主页</li>
+							<li class="current">问我(11)</li>
+							<li>答过(22)</li>
+							<li>问过(33)</li>
+							<li>关注的内容(44)</li>
+						</ul>
+					</nav>
+					
+					<section class="userNavContent">
+						<!-- 这里是点击导航“问我”后显示的样式 -->
+						关注的内容下面的子导航
+						<nav class="tabNavSub clearfix">
+							<ul>
+								<li class="current">全部问题</li>
+								<li>待回答</li>
+							</ul>
+						</nav>
+						
+						<article class="askInfoAll clearfix">
+							<header class="clearfix">
+								<hgroup>
+									<h6><a href="#">标题名称啊，可能称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！</a><span class="fc999">（20个答案）</span></h6>
+									<div class="summary">
+										<a href="#">苏门答腊</a><a href=""><img class="verifyLogoS" src="img/transparent.png"></a> 提出的问题 · 9个答案 · <a href="#">取消关注</a>
+									</div>
+								</hgroup>
+							</header>
+						</article>
+						<article class="askInfoAll clearfix">
+							<header class="clearfix">
+								<hgroup>
+									<h6><a href="#">标题名称啊，可能称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！标题名称啊，可能很长哦！！</a><span class="fc999">（20个答案）</span></h6>
+									<div class="summary">
+										<a href="#">苏门答腊</a><a href=""><img class="verifyLogoS" src="img/transparent.png"></a> 提出的问题 · 9个答案 · <a href="#">取消关注</a>
+									</div>
+								</hgroup>
+							</header>
+						</article>
+					</section>
+					
+					<nav class="tabNav clearfix">
+						<ul>
+							<li>主页</li>
+							<li>问我(11)</li>
+							<li>答过(22)</li>
+							<li>问过(33)</li>
+							<li class="current">关注的内容(44)</li>
+						</ul>
+					</nav>
+					
+					<section class="userNavContent">
+						关注的内容下面的子导航
+						<nav class="tabNavSub clearfix">
+							<ul>
+								<li class="current">我关注的话题</li>
+								<li>我关注的人</li>
+								<li>关注我的人</li>
+							</ul>
+						</nav>
+						
+						<!-- 我关注的话题区域 -->
+						<section>
+							<ul class="topicList">
+								<li><em><a href="#">话题名字</a></em><a class="nBtn nBtnUnFocus"></a></li>
+								<li><em><a href="#">话题名字</a></em><a class="nBtn nBtnUnFocus"></a></li>
+								<li><em><a href="#">话题名字</a></em><a class="nBtn nBtnFocus"></a></li>
+								<li><em><a href="#">话题名字</a></em><a class="nBtn nBtnFocus"></a></li>
+							</ul>
+						</section>
+						
+						<!-- 关注的人区域，共会出现两个，样式一样 -->
+						<section class="cList">
+							<article class="borderBottomDot clearfix">
+								<figure><img width="50" height="50" class="imgHead" title="人名" alt="人名" src="img/tmp/head48.png"></figure>
+								<h6><a href="#" title="这里是人名">人名</a></h6>
+								<div>这里是灰色文本说明<br/><span class="fc999">20人关注·300个问题</span></div>
+								<a class="nBtn nBtnFocus"></a>
+							</article>
+							<article class="borderBottomDot clearfix">
+								<figure><img width="50" height="50" class="imgHead" title="人名" alt="人名" src="img/tmp/head48.png"></figure>
+								<h6><a href="#" title="这里是人名">人名</a></h6>
+								<div>这里是灰色文本说明<br/><span class="fc999">20人关注·300个问题</span></div>
+								<a class="nBtn nBtnFocus"></a>
+							</article>
+							<article class="borderBottomDot clearfix">
+								<figure><img width="50" height="50" class="imgHead" title="人名" alt="人名" src="img/tmp/head48.png"></figure>
+								<h6><a href="#" title="这里是人名">人名</a></h6>
+								<div>这里是灰色文本说明<br/><span class="fc999">20人关注·300个问题</span></div>
+								<a class="nBtn nBtnFocus"></a>
+							</article>
+						</section>
+						
+					</section>
+					
+					
+				</section>
+			</section>
+            <aside id="sidebar">
+                <nav id="mainNav">
+                    <ul>
+                        <li class="current"><span class="homepage"></span><a href="">我的首页</a><div class="userNotify englishFont">99+</div></li>
+                        <li><span class="followed"></span><a href="">我关注的问题</a></li>
+                        <li><span class="recommended"></span><a href="">或许能回答</a></li>
+                        <li><span class="asks"></span><a href="">所有问题</a></li>
+                        <li><span class="doing"></span><a href="">问道正在发生</a></li>
+                        <li><span class="newbie"></span><a href="">问道广场</a></li>
+                    </ul>
+					<div class="block40"></div>
+                </nav>
+            </aside>
+        </section>
+        <footer id="pagerFooter" class="mt20">
+            <a href="http://special.zhaopin.com/sh/2009/aboutus/about.html" target="_blank">智联介绍</a> |
+            <a href="http://special.zhaopin.com/sh/2009/aboutus/join.html" target="_blank">加入智联</a> |
+            <a href="http://special.zhaopin.com/sh/2009/aboutus/law.html" target="_blank">法律声明</a> |
+            <a href="http://special.zhaopin.com/sh/2009/aboutus/secrecy.html" target="_blank">保密承诺</a> |
+            <a href="http://my.zhaopin.com/loginmgr/regist_serviceitem.asp" target="_blank">个人注册</a> |
+            <a href="http://special.zhaopin.com/sh/2009/aboutus/contact.html" target="_blank">联系方式</a> |
+            <a href="http://jobseeker.zhaopin.com/zhaopin/faq/question.html" target="_blank">常见问题</a> |
+            <a href="/bugtrack" target="_blank">意见反馈</a> |
+            <a href="http://article.zhaopin.com/pub/ch.jsp?cid=1237" target="_blank">媒体报道</a>
+            <div class="copyright">
+                Copyright &copy; Zhaopin.com All Rights Reserved.
+            </div>
+        </footer>
+		<script src="js/jquery-1.6.4.min.js"></script>
+		<script src="js/wendao.js"></script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+#!/bin/bash -x
+
+kill -USR2 `cat tmp/pids/unicorn.pid`
+kill -TERM `cat tmp/pids/sidekiq.pid`
+bin/ls_unicorn
+sleep 20
+bin/ls_unicorn
+ps aux|grep '[s]idekiq'
+nohup bundle exec sidekiq -C config/sidekiq.yml >>log/sidekiq.log 2>&1 &
+ps aux|grep '[s]idekiq'

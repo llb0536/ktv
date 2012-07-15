@@ -1,0 +1,40 @@
+/*
+Summerized by P.S.V.R
+Note. Log related relations are omitted.
+*/
+
+digraph quora {
+  //
+  Answer->Ask[label="ask_id"]
+  Answer->User[label="user_id"]
+  //
+  Ask->User[label="to_user_id"]
+  Ask->User[label="user_id"]
+  Ask->User[label="*spam_voter_ids"]
+  Ask->User[label="*to_user_ids"]
+  //
+  AskInvite->Ask[label="ask_id"]
+  AskInvite->User[label="user_id"]
+  AskInvite->User[label="*invitor_ids"]
+  //
+  AskSuggestTopic->Ask[label="ask_id"]
+  AskSuggestTopic->Topic[label="*topics"]
+  //
+  Comment->Answer[label="commentable_id"]
+  Comment->Ask[label="commentable_id"]
+  Comment->User[label="user_id"]
+  //
+  //Notification->Log[label="log_id"]
+  Notification->User[label="user_id"]
+  //
+  Topic->User[label="*follower_ids"]
+  //
+  User->User[label="*follower_ids"]
+  User->User[label="*following_ids"]
+  User->Ask[label="*followed_ask_ids"]
+  User->Topic[label="*followed_topic_ids"]
+  User->Ask[label="*muted_ask_ids"]
+  User->Answer[label="*thanked_answer_ids"]
+  User->Ask[label="*answered_ask_ids"]
+  User->Topic[label="*followed_topic_ids"]
+}

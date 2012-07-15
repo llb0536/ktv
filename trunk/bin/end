@@ -1,0 +1,41 @@
+#!/bin/bash -x
+
+
+# ========================Redis===========================
+/usr/local/bin/redis-cli -p 6379 SHUTDOWN
+/usr/local/bin/redis-cli -p 6380 SHUTDOWN
+/usr/local/bin/redis-cli -p 6381 SHUTDOWN
+
+# =======================Memcached==================
+sudo killall memcached
+
+
+# ================MONGO==========================
+/usr/local/bin/mongo admin --eval "db.shutdownServer()"
+
+
+
+
+# =======================Postgresql DB==================
+# sudo -u pg echo I\'m user pg
+
+# By default, it will send a TERM signal to all
+# processes with a real UID identical to the caller of killall that match the name procname.
+
+# sudo -u pg killall -INT postgres
+# sleep 1
+# tail log/postgre.log
+# tail log/postgre_error.log
+
+#SIGTERM
+
+# This is the Smart Shutdown mode. After receiving SIGTERM, the server disallows new connections, but lets existing sessions end their work normally. It shuts down only after all of the sessions terminate. If the server is in online backup mode, it additionally waits until online backup mode is no longer active. While backup mode is active, new connections will still be allowed, but only to superusers (this exception allows a superuser to connect to terminate online backup mode). If the server is in recovery when a smart shutdown is requested, recovery and streaming replication will be stopped only after all regular sessions have terminated.
+
+#SIGINT
+
+# This is the Fast Shutdown mode. The server disallows new connections and sends all existing server processes SIGTERM, which will cause them to abort their current transactions and exit promptly. It then waits for all server processes to exit and finally shuts down. If the server is in online backup mode, backup mode will be terminated, rendering the backup useless.
+
+#SIGQUIT
+
+# This is the Immediate Shutdown mode. The master postgres process will send a SIGQUIT to all child processes and exit immediately, without properly shutting itself down. The child processes likewise exit immediately upon receiving SIGQUIT. This will lead to recovery (by replaying the WAL log) upon next start-up. This is recommended only in emergencies.
+

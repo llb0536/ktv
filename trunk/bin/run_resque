@@ -1,0 +1,3 @@
+#!/bin/bash -x
+
+RAILS_ENV=production QUEUE=* COUNT=3 bundle exec rake resque:workers >> log/resque.log 2>&1 &

@@ -1,0 +1,24 @@
+#!/bin/bash -x
+
+# ========================Redis===========================
+sudo /usr/local/bin/redis-server config/redis1.conf
+sudo /usr/local/bin/redis-server config/redis2.conf
+sudo /usr/local/bin/redis-server config/redis3.conf
+sleep 1
+
+# =======================Memcached==================
+sudo -u pan /usr/local/bin/memcached -d -vvv >>log/memcached.log 2>>log/memcached_error.log
+tail log/memcached.log
+tail log/memcached_error.log
+
+
+# ================MONGO==========================
+sudo /usr/local/bin/mongod --dbpath /mongodata --logpath /var/log/mongod.log --logappend --vv --fork --verbose
+
+
+# =======================Postgresql DB==================
+# sudo -u pg echo I\'m user pg
+# sudo -u pg /usr/local/pgsql/bin/postgres -D /usr/local/pgsql/data >>log/postgre.log 2>>log/postgre_error.log &
+# sleep 1
+# tail log/postgre_error.log
+# tail log/postgre.log

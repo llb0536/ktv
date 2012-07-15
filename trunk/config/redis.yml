@@ -1,0 +1,50 @@
+defaults: &defaults
+  host: '127.0.0.1'
+  port: 6379
+  select: '0'
+  
+  host_search: '127.0.0.1'
+  port_search: 6379
+  select_search: '1'
+  
+  host_resque: '127.0.0.1'
+  port_resque: 6379
+  select_resque: '2'
+  
+  host_users: '127.0.0.1'
+  port_users: 6379
+  select_users: '3'
+  
+  host_topics: '127.0.0.1'
+  port_topics: 6379
+  select_topics: '4'
+  
+  host_asks: '127.0.0.1'
+  port_asks: 6379
+  select_asks: '5'
+  
+  host_experts: '127.0.0.1'
+  port_experts: 6379
+  select_experts: '6'
+  
+development:
+  <<: *defaults
+  host_search_slave: '127.0.0.1'
+  port_search_slave: 6379
+  select_search_slave: '1'
+  
+test:
+  <<: *defaults
+  port: 6380
+  port_search: 6380
+  port_resque: 6380
+  port_users: 6380
+  port_topics: 6380
+  port_asks: 6380
+  port_experts: 6380
+  
+production:
+  <<: *defaults
+  
+development_mongohq:
+  <<: *defaults

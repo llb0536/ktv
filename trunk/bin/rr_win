@@ -1,0 +1,22 @@
+#!/usr/local/bin/ruby
+# -*- encoding : utf-8 -*-
+require 'fileutils'
+unless 1==ARGV.size
+  p 'the first arg is the id of the cw'
+end
+
+PATHNAME = "./app/assets/images/cw/#{ARGV[0]}"
+EXTNAME = '.PNG'
+DEBUG_OPTS = ''
+
+Dir["#{PATHNAME}/*#{EXTNAME}"].each do |file|
+  filename = File.basename(file)
+  if filename =~ /幻灯片(\d+)#{EXTNAME}/
+    i = $1.to_i-1
+    puts `convert #{file} -resize 640x480 -gravity North -extent 640x480 #{File.dirname(file)}/preview_slide_#{i}.png`
+    puts `convert #{file} -resize 210x158 -gravity North -extent 210x158 #{File.dirname(file)}/thumb_slide_#{i}.png`
+    File.rename(file,"#{File.dirname(file)}/slide_#{i}.png")
+  else
+    binding.pry
+  end
+end

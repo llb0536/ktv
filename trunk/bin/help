@@ -1,0 +1,11 @@
+#!/bin/bash
+
+/usr/local/pgsql/bin/postgres --version
+echo "http://www.postgresql.org/docs/9.1/interactive/index.html"
+
+
+# initdb --locale="zh_CN.UTF-8" -D /usr/local/pgsql/data
+# createuser -P -s -e super
+# createdb --echo --encoding=UTF8 --locale="zh_CN.UTF-8" --owner=super --template=template0 faxianshu_development
+# createdb --echo --encoding=UTF8 --locale="zh_CN.UTF-8" --owner=super --template=template0 faxianshu_test
+# createdb --echo --encoding=
