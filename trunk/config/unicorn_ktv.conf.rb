@@ -26,7 +26,6 @@ before_fork do |server, worker|
       sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
       Process.kill(sig, File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
-      system("echo 'Quora Unicorn reload failed.'")
       # someone else did our job for us
     end
   end

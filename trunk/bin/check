@@ -1,4 +1,4 @@
 #!/bin/bash -x
 
-ps aux|grep '[r]ails'
-ps aux|grep '[r]esque'
+ps -ef f |grep '[r]ails'
+ps -ef f | grep '[r]esque'

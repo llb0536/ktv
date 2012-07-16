@@ -284,6 +284,10 @@ GEM
       redis (>= 2.1.1)
     responders (0.9.1)
       railties (~> 3.1)
+    resque-pool (0.2.0)
+      rake
+      resque (~> 1.13)
+      trollop (~> 1.16)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmmseg-cpp-huacnlee (0.2.9)
@@ -354,6 +358,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    trollop (1.16.2)
     turn (0.8.2)
       ansi (>= 1.2.2)
     tzinfo (0.3.33)
@@ -427,6 +432,7 @@ DEPENDENCIES
   redis-objects
   redis-search!
   resque!
+  resque-pool
   rest-client
   rmmseg-cpp-huacnlee
   rspec-rails

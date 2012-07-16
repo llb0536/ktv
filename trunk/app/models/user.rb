@@ -438,7 +438,8 @@ class User
     if ret
       ret.split('/')[-1]
     else
-      ''
+      gravatar_id = Digest::MD5.hexdigest(self.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png"
     end
   end
   field :tags

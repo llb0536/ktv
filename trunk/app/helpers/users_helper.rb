@@ -1,5 +1,16 @@
 # coding: utf-8
 module UsersHelper
+  def avatar_url_quick(user,size=:normal)
+    s=AvatarUploader::SIZES[size]
+    url = User.get_avatar_filename(user)
+    if url.starts_with?('http://')
+      d = CGI::escape("http://#{Setting.ktv_domain}/defaults/avatar/#{size}.jpg")
+      url = "#{url}?r=PG&s=#{s}&d=#{d}"
+    else
+      url = "#{Setting.upload_url}/user/avatar/#{user}/#{size}_#{url}"
+    end
+    return url
+  end
   def avatar_url(user,size=:normal)
     s=AvatarUploader::SIZES[size]
     url = eval("user.avatar.#{size}.url")

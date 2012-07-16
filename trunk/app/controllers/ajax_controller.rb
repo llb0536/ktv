@@ -58,7 +58,7 @@ utf8	✓
     cw.course_long_name = presentation[:course_long_name]
     cw.course_long_name = '课程请求' if cw.course_long_name.blank?
     cw.title = presentation[:title]
-    cw.title = cw.pdf_filename if cw.title.blank?
+    cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
     cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
     cw.status = 1
     cw.save!

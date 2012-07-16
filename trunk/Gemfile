@@ -101,6 +101,7 @@ gem 'whenever'
 
 # Background Jobs
 gem "resque", :require => "resque/server", :path => 'vendor/resque'
+gem 'resque-pool'
 # gem "resque_mailer"
 
 # Comet

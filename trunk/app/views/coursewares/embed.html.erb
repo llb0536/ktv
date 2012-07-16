@@ -50,7 +50,7 @@ end
 
     // build my array of image urls
     var Slide = {
-      presentation_link: '/<%=@courseware.id%>',
+      presentation_link: '/coursewares/<%=@courseware.id%>',
       dragging: false,
       click: 0,
       previewx: null,
@@ -366,9 +366,9 @@ end
 <div id="presenter">
   <div class="header">
     <img alt="Kejian.TV课件交流系统" src="<%=asset_path 'embed_logo.png'%>" />
-    <h5><a href="/<%=@courseware.id%>" target="_parent"><%=@courseware.title%></a></h5>
+    <h5><a href="/coursewares/<%=@courseware.id%>" target="_parent"><%=@courseware.title%></a></h5>
     <a href="#" id="fullscreen">全屏</a>
-    <p>课程: <a href="/topic/<%=@courseware.topic_id%>" target="_parent"><%=@courseware.course_long_name%></a></p>
+    <p>课程: <a href="/topics/<%=@courseware.topic_id%>" target="_parent"><%=@courseware.course_long_name%></a></p>
 
   </div>
   <div id="slide">
@@ -406,7 +406,7 @@ end
       <p><input type="radio" name="link_to" value="slide" id="link_to_s" /> <label for="link_to_s">本张幻灯片 (<span class="current_slide">1</span> of <%=@courseware.slides_count%>)</label></p>
     </div>
     <div id="link" class="panel">
-      <input type="text" id="shorturl" value="http://<%=Setting.ktv_domain%>/<%=@courseware.id%>" />
+      <input type="text" id="shorturl" value="http://<%=Setting.ktv_domain%>/coursewares/<%=@courseware.id%>" />
     </div>
     <div id="embed" class="panel">
       <input type="text" id="embed_input" value='<script async class="speakerdeck-embed" data-course-slug="<%=@courseware.topic_id %>" data-courseware-slug="<%=@courseware.id%>" data-ratio="<%= @courseware.wh_ratio %>" src="<%= asset_path 'ktv/embed.js'%>"></script>' />

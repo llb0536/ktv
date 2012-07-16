@@ -9,3 +9,6 @@ module Ktv
     'github' => [:github,'df89e77ea92fc8d0bd6c', 'adbf7b1ca83dc439c80097593b9576eb239fbcea', 'Github'],  # https://github.com/settings/applications
   ]
 end
+
+$debug_logger = Logger.new("#{Rails.root}/log/#{Rails.env}.debug.log", File::WRONLY | File::APPEND)
+
