@@ -56,6 +56,8 @@ class Courseware
   field :thanks_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
   field :views_count, :type => Integer, :default => 0
+  #-=xunlei=-
+  field :xunlei_url
   belongs_to :user
   index :user_id
   before_validation :titleize
