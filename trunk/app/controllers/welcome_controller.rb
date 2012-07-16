@@ -9,4 +9,10 @@ class WelcomeController < ApplicationController
   def inactive_sign_up
     render layout:'application_for_devise'
   end
+  def about
+    
+  end
+  def shuffle
+    redirect_to Courseware.skip(rand(Courseware.count)).first
+  end
 end

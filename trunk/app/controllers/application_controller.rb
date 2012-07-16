@@ -195,21 +195,10 @@ class ApplicationController < ActionController::Base
     else
       redirect_path = request.path
     end
-    login_url = Setting.zhaopin_login+CGI::escape('http://'+Setting.wendao_domain_name+redirect_path)
+    login_url = "/login?redirect_to=#{redirect_path}"
     if format == "html"
-      if current_user
-        #Pan>
-        # if some deprecated path is reqested
-        # at this point, the user is already authenticated
-        # so redirecting to index page
-        if 'require_user'==params[:action] and 'application'==params[:controller]
-          redirect_to 'http://'+Setting.wendao_domain_name+'/'
-        end
-      else
-        redirect_to login_url
-      end
+      redirect_to login_url
       return false
-      #authenticate_user!
     elsif format == "json"
       if current_user.blank?
         render :json => { :success => false, :msg => "你还没有登录。" }

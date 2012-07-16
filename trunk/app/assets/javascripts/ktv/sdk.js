@@ -4191,12 +4191,18 @@ var swfobject = function () {function A() {
                 fileDesc: "Presentation",
                 fileExt: "*.pdf;",
                 onSelect: function (b, c, d) {
+                  $('#presentation_title').val(d.name);
+                  $('#biaozhu_cw').show();
+                  $('#ok_to_leave').show();
+                  return false;
+                  
                     return $("#presentation_pdfUploader",'.__sdk').css({
                         left: "-5000px"
                     }), a.start(d.name)
                 },
                 onComplete: function (b, c, d, e) {
-                    return a.form.attr("enctype", "").find("input#presentation_pdf").remove(), a.form.ajaxSubmit({
+                    a.form.attr("enctype", "").find("input#presentation_pdf").remove();
+                    a.form.ajaxSubmit({
                         url: a.form.attr("action") + ".json",
                         data: {
                             "presentation[pdf_filename]": d.name
@@ -4205,7 +4211,10 @@ var swfobject = function () {function A() {
                         success: function (b) {
                             return a.complete(b)
                         }
-                    })
+                    });
+                    $('#presentation_title').val(d.name);
+                    $('#biaozhu_cw').show();
+                    $('#ok_to_leave').show();
                 },
                 onProgress: function (b, c, d, e) {
                     return a.progress(e.bytesLoaded, d.size)

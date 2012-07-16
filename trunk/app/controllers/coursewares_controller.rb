@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CoursewaresController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
   before_filter :find_item,:only => [:show,:embed,:download]
   def index
     pagination_get_ready

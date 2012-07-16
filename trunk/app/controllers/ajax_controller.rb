@@ -119,15 +119,13 @@ HEREDOC
     render json:json
   end
   def presentations_update
+    binding.pry
     @courseware = Courseware.find(params[:id])
     presentation = params[:presentation]
     @courseware.course_long_name = presentation[:course_long_name]
     @courseware.title = presentation[:title]
-    if @courseware.save
-      redirect_to @courseware
-    else
-      render 'edit'
-    end
+    @courseware.save!
+    redirect_to @courseware
   end
   def seg
     params[:q] = params[:q].strip

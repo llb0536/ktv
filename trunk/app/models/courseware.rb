@@ -84,25 +84,6 @@ class Courseware
           self.course_name = self.course_long_name.strip
         else
           self.user_name = rests[0].strip
-          if self.user_name.blank?
-            errors.add(:user_name,"不能为空字符")
-            return false
-          end
-          unless self.user_name.starts_with?('_')
-            if Ktv::Utils.js_strlen(self.user_name)>12
-             errors.add(:user_name,"不能多于6个汉字或者12个字符")
-             return false
-            end
-            if Ktv::Utils.js_chinese(self.user_name)<2
-             errors.add(:user_name,"不是真实中文姓名")
-             return false
-            end
-            if !Ktv::Renren.name_okay?(self.user_name)
-             errors.add(:user_name,"不是合法的中文姓名<br><span style=\"font-size:12px\">(若不愿透露姓名，请输入一个下划线开头的名字以跳过此测试)</span>")
-             return false
-            end
-          end
-      
           self.course_name = rests[1..-1].join(delim).strip
         end
     
@@ -140,7 +121,7 @@ class Courseware
         school = School.find_or_create_by(:name => self.school_name)
         user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)
         user.email_unknown = true if user.new_record?
-        user.save!
+        user.save(:validate => false)
         self.school_id = school.id
         self.user_id = user.id
       else
