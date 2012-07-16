@@ -20,7 +20,7 @@ default: &defaults
   # aws_access_key_id: 'your aws access_key_id'
   # aws_secret_access_key: 'your aws secret_access_key'
   # 是否开放注册
-  allow_register: true
+  allow_register: false
   # 问题被多少次 spam 隐藏
   ask_spam_max: 8
   # 回答被多少次 spam 会删除线

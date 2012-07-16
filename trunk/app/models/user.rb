@@ -198,17 +198,16 @@ class User
   field :name_pinyin
   field :name_en
   field :school_id
-  field :department_id
+  field :department
   field :died_at, :type => Date
   belongs_to :school
-  belongs_to :department
 
   before_save :autotagline_schoolize
   def autotagline_schoolize
-    if new_record? or school_id_changed? or department_id_changed?
+    if new_record? or school_id_changed? or department_changed?
       self.autotagline = ""
       self.autotagline += self.school.name if self.school.present?
-      self.autotagline += self.department.name if self.department.present?
+      self.autotagline += self.department if self.department.present?
     end
   end
   before_save Proc.new{
