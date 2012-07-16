@@ -1,5 +1,5 @@
 # coding: utf-8
-class Courseware  
+class Courseware
   include Mongoid::Document
   include Mongoid::Timestamps
   include Redis::Search
@@ -8,8 +8,6 @@ class Courseware
     0 => :normal,
     1 => :waiting4downloading,
     2 => :waiting4transcoding,
-    3 => :generating_thumbs,
-    4 => :reuploading
   }
   STATE_TEXT = {
     :normal => '已上线',
@@ -35,8 +33,8 @@ class Courseware
   field :school_id
   field :user_name
   field :user_id
-  field :course_name
-  field :course_id
+  field :topic
+  field :topic_id
   
   field :title
   field :title_en
@@ -57,7 +55,7 @@ class Courseware
   field :slides_count, :type => Integer, :default => 0
   field :thanks_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
-  field :views_count, :type => Integer, :default => 0  
+  field :views_count, :type => Integer, :default => 0
   belongs_to :user
   index :user_id
   before_validation :titleize
@@ -77,33 +75,33 @@ class Courseware
         rests = the_rest.split(delim)
         if 1 == rests.size
           delim = '：'
-          rests = the_rest.split(delim) 
+          rests = the_rest.split(delim)
         end
         if 1 == rests.size
           self.user_name = self.uploader.name
-          self.course_name = self.course_long_name.strip
+          self.topic = self.course_long_name.strip
         else
           self.user_name = rests[0].strip
-          self.course_name = rests[1..-1].join(delim).strip
+          self.topic = rests[1..-1].join(delim).strip
         end
     
         if self.school_name.present?
-          self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.course_name}"
+          self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
         else
-          self.course_long_name = "#{self.user_name}: #{self.course_name}"
+          self.course_long_name = "#{self.topic}"
         end
       end
-      if self.course_name.blank?
-        self.course_name = '课程请求'
+      if self.topic.blank?
+        self.topic = '课程请求'
       end
     end
   end
   def uploader
     User.find(self.uploader_id)
   end
-  def course
-    return nil if self.course_id.blank?
-    Course.where(:_id => self.course_id).first
+  def topic_inst
+    return nil if self.topic_id.blank?
+    Topic.where(:_id => self.topic_id).first
   end
   def school
     return nil if self.school_id.blank?
@@ -127,8 +125,8 @@ class Courseware
       else
         self.user_id = self.uploader_id
       end
-      course = Course.find_or_create_by(:user_id => self.user_id, :name => self.course_name)
-      self.course_id = course.id
+      topic = Topic.find_or_create_by(:name => self.topic)
+      self.topic_id = topic.id
     end
   end
   

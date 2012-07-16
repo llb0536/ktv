@@ -1,5 +1,5 @@
-# source 'http://ruby.taobao.org/'
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org/'
+# source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 
@@ -15,11 +15,11 @@ gem "bson_ext"
 # Gems used only for assets and not required
 # in production environments by default.
 
-group :assets do
+#group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-end
+#end
 gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
@@ -168,3 +168,4 @@ gem 'to_xls', '~> 1.0.0'
 
 gem 'sndacs'
 gem 'grim', '>= 0.3.0'
+gem 'dalli'

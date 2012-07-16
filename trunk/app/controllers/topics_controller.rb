@@ -41,6 +41,7 @@ class TopicsController < ApplicationController
     else
       @topic = Topic.find_by_name(name)
     end
+    @topic ||= Topic.where(:_id=>params[:id]).first
     if @topic.blank? or @topic.deleted==1
       return render_404
     end

@@ -368,7 +368,7 @@ end
     <img alt="Kejian.TV课件交流系统" src="<%=asset_path 'embed_logo.png'%>" />
     <h5><a href="/<%=@courseware.id%>" target="_parent"><%=@courseware.title%></a></h5>
     <a href="#" id="fullscreen">全屏</a>
-    <p>课程: <a href="/courses/<%=@courseware.course_id%>" target="_parent"><%=@courseware.course_long_name%></a></p>
+    <p>课程: <a href="/topic/<%=@courseware.topic_id%>" target="_parent"><%=@courseware.course_long_name%></a></p>
 
   </div>
   <div id="slide">
@@ -409,7 +409,7 @@ end
       <input type="text" id="shorturl" value="http://<%=Setting.ktv_domain%>/<%=@courseware.id%>" />
     </div>
     <div id="embed" class="panel">
-      <input type="text" id="embed_input" value='<script async class="speakerdeck-embed" data-course-slug="<%=@courseware.course_id%>" data-courseware-slug="<%=@courseware.id%>" data-ratio="<%= @courseware.wh_ratio %>" src="<%= asset_path 'ktv/embed.js'%>"></script>' />
+      <input type="text" id="embed_input" value='<script async class="speakerdeck-embed" data-course-slug="<%=@courseware.topic_id %>" data-courseware-slug="<%=@courseware.id%>" data-ratio="<%= @courseware.wh_ratio %>" src="<%= asset_path 'ktv/embed.js'%>"></script>' />
     </div>
     <div id="social" class="panel">
       <%# render 'jiathis_mini' %>

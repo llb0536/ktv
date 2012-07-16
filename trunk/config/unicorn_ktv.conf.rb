@@ -1,10 +1,13 @@
-worker_processes 2
+worker_processes 4
 working_directory Dir.pwd
-listen 7000, :tcp_nopush => true
+listen "/web/ktv.sock", :backlog => 64
+timeout 30
 pid "#{Dir.pwd}/tmp/pids/unicorn.pid"
-stderr_path "#{Dir.pwd}/log/unicorn.log"
+stderr_path "#{Dir.pwd}/log/unicorn.err.log"
 stdout_path "#{Dir.pwd}/log/unicorn.log"
 preload_app true
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
 
 before_fork do |server, worker|
   ##
@@ -17,18 +20,18 @@ before_fork do |server, worker|
   # we send it a QUIT.
   #
   # Using this method we get 0 downtime deploys.
-
-  old_pid = "#{Dir.pwd}/tmp/pids/unicorn.pid.oldbin"
-  if File.exists?(old_pid) && server.pid != old_pid
+  old_pid = "#{server.config[:pid]}.oldbin"
+  if old_pid != server.pid
     begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
+      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+      Process.kill(sig, File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
       system("echo 'Quora Unicorn reload failed.'")
       # someone else did our job for us
     end
   end
+
   $im_running_under_unicorn = true
-  
 end
 
 after_fork do |server, worker|

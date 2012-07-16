@@ -378,6 +378,8 @@ class User
   field :invited_count, :type => Integer, :default => 0
   field :thank_count, :type => Integer, :default => 0
   field :thanked_count, :type => Integer, :default => 0
+  field :coursewares_count, :type => Integer, :default => 0
+  field :upload_count, :type => Integer, :default => 0
   has_many :answers
   has_many :notifications
   has_many :inboxes

@@ -6,7 +6,7 @@ Quora::Application.configure do
   config.active_support.deprecation = :notify
   config.i18n.fallbacks = true  
   # Code is not reloaded between requests
-  config.cache_classes = true
+  config.cache_classes = false # SHOULD BE true
   config.cache_store = :dalli_store, 'localhost'
       { :namespace => 'ktv', :expires_in => 1.day, :compress => true }
  # config.cache_store = :memory_store, :size => 128.megabytes
@@ -59,7 +59,7 @@ Quora::Application.configure do
   }
   config.serve_static_assets = false
   # 别忘了同时修改:
-  # /home/main/KTV_PSVR/core/config/initializers/z_ktv.rb
+  # config/initializers/z_ktv.rb
   config.action_controller.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
   config.assets.prefix = ''
   # assets-----------

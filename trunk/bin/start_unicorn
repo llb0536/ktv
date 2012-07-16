@@ -1,5 +1,4 @@
 #!/bin/bash -x
 
 bundle exec unicorn_rails -c config/unicorn_ktv.conf.rb -E production -D
-nohup bundle exec sidekiq -C config/sidekiq.yml >>log/sidekiq.log 2>&1 &
 bin/check

@@ -10,7 +10,7 @@ USERNAME="pmq20/ktv-intrinsic"
 PASSWORD="jknlff8-pro-17m7755"
 SERVER="v0.ftp.upyun.com"
 
-ORIGIN="/home/main/KTV_PSVR/_assets/*"
+ORIGIN="/home/main/ktv/_assets/*"
 TARGET="/"
 
 ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN

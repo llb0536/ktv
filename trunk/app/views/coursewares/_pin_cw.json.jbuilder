@@ -1,5 +1,3 @@
-
-topic = courseware.topic.present? ? Topic.find_or_create_by(name:courseware.topic) : nil
 user = courseware.user
 course = courseware.course
 
@@ -16,6 +14,7 @@ json.path courseware_path(courseware)
 json.title courseware.title
 json.boardPicId 825398
 json.price courseware.topic
+json.price_slug Topic.get_id(courseware.topic)
 json.isOriginal true
 json.nickName user.name
 json.userId user.id

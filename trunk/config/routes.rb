@@ -33,7 +33,6 @@ Quora::Application.routes.draw do
   get '/welcome/shuffle'
   get '/welcome/about'
   # ________________________________ktv__________________________________________
-  resources :courses
   resources :coursewares do
     member do
       get 'download'
