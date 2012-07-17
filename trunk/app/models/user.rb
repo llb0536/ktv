@@ -298,7 +298,7 @@ class User
   }
   # 是否允许登陆
   def active_for_authentication?
-    self.encrypted_password.present? && '0'==self.banished && !access_locked? && died_at.blank? && confirmed?
+    self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?
   end
   scope :name_unknown, where(:name_unknown => true)
   scope :email_unknown, where(:email_unknown => true)

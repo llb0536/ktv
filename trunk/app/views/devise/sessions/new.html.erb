@@ -9,11 +9,11 @@
   </div>
   <div class="field">
     <%= f.label :password,'密码' %><div class="field_error" id="regerror_email"><%= resource.errors_for_field(:email) %></div><br class="clear">
-    <%= f.password_field :password,:class => 's462',:tabindex => 2 %>
+    <%= f.password_field :password,:class => 's462',:tabindex => 2,:onkeypress=>"if(event.keyCode==13){$('#submit_btn_form').submit();}" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me,:style=>'height:19px;margin-left:5px' %> <%= f.label :remember_me,'记住我的登录状态' %></div>
+    <div><%= f.check_box :remember_me,:style=>'height:19px;margin-left:5px',:onkeypress=>"if(event.keyCode==13){$('#submit_btn_form').submit();}" %> <%= f.label :remember_me,'记住我的登录状态' %></div>
   <% end -%>
 
   <div class="clearfix" style="margin-top:20px;padding-bottom:8px">
