@@ -150,7 +150,8 @@ App.login = ->
 App.preload([
   App.logo_css_src1,
   App.browsetext_css_src1,
-  App.browsetext_css_src1
+  App.browsetext_css_src1,
+  '<%= Ktv.config.asset_host %><%=asset_path('edit_hover.png')%>'
 ])
 $(document).ready ->
   $('#q').autocomplete({

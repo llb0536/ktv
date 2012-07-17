@@ -51,17 +51,20 @@ presentation[publish]	1
 presentation[published_at]	2012/07/13
 utf8	✓
 =end
-    cw = Courseware.new
-    cw.uploader_id = current_user.id
-    cw.sort = 'pdf'
-    cw.pdf_filename = presentation[:pdf_filename]
-    cw.course_long_name = presentation[:course_long_name]
-    cw.course_long_name = '课程请求' if cw.course_long_name.blank?
-    cw.title = presentation[:title]
-    cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
-    cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
-    cw.status = 1
-    cw.save!
+    cw = Courseware.where(:_id => presentation[:id]).first
+    if cw.nil?
+        cw = Courseware.new
+        cw.uploader_id = current_user.id
+        cw.sort = 'pdf'
+        cw.pdf_filename = presentation[:pdf_filename]
+        cw.course_long_name = presentation[:course_long_name]
+        cw.course_long_name = '课程请求' if cw.course_long_name.blank?
+        cw.title = presentation[:title]
+        cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+        cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
+        cw.status = 1
+        cw.save!
+    end
     Resque.enqueue(TranscoderJob,cw.id)
     json = {
       category_ids: [ nil ],
@@ -119,7 +122,6 @@ HEREDOC
     render json:json
   end
   def presentations_update
-    binding.pry
     @courseware = Courseware.find(params[:id])
     presentation = params[:presentation]
     @courseware.course_long_name = presentation[:course_long_name]

@@ -213,7 +213,7 @@ end
           left = (w - width) / 2;
           top = 0;
         }
-<% if @courseware.thin? %>
+<% if params[:preview].blank? and @courseware.thin? %>
         $img.width(<%= @courseware.real_width %>);
         $img.height(<%= @courseware.real_height %>);
 <% else %>

@@ -85,37 +85,43 @@ class Courseware
   belongs_to :user
   index :user_id
   before_validation :titleize
+  def analyse2(two)
+    if two
+      the_rest = two.dup
+      delim = ':'
+      rests = the_rest.split(delim)
+      if 1 == rests.size
+        delim = '：'
+        rests = the_rest.split(delim)
+      end
+      if 1 == rests.size
+        self.user_name = self.uploader.name
+        self.topic = self.course_long_name.strip
+      else
+        self.user_name = rests[0].strip
+        self.topic = rests[1..-1].join(delim).strip
+      end
+  
+      if self.school_name.present?
+        self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
+      else
+        self.course_long_name = "#{self.topic}"
+      end
+    end
+    
+  end
   def titleize
     if self.course_long_name.present? and self.course_long_name_changed?
       self.course_long_name.strip!
       if self.course_long_name =~ /^\[([^\[\]]+)\](.*)$/
         self.school_name = $1.strip
+        self.analyse2($2)
       elsif self.course_long_name =~ /^【([^【】]+)】(.*)$/
         self.school_name = $1.strip
+        self.analyse2($2)
       else
         self.school_name = nil
-      end
-      if $2
-        the_rest = $2.dup
-        delim = ':'
-        rests = the_rest.split(delim)
-        if 1 == rests.size
-          delim = '：'
-          rests = the_rest.split(delim)
-        end
-        if 1 == rests.size
-          self.user_name = self.uploader.name
-          self.topic = self.course_long_name.strip
-        else
-          self.user_name = rests[0].strip
-          self.topic = rests[1..-1].join(delim).strip
-        end
-    
-        if self.school_name.present?
-          self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
-        else
-          self.course_long_name = "#{self.topic}"
-        end
+        self.topic = self.course_long_name.strip
       end
       if self.topic.blank?
         self.topic = '课程请求'
@@ -140,7 +146,6 @@ class Courseware
   before_save :create_stuff!
   def create_stuff!
     if self.course_long_name_changed?
-      puts "Bang!!"
       if self.school_name.present?
         school = School.find_or_create_by(:name => self.school_name)
         user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)

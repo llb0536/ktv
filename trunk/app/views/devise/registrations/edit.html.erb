@@ -28,7 +28,7 @@ end
     <%= f.email_field :email,:class => 's462',:tabindex => 2,:placeholder => placeholder2,:autocomplete=>"off" %><br>
   </div>
   <div class="field">
-    <a id="change_password_link" href="javascript:void(0)" style="<%= 'display:none' if show_pass %>">修改密码请点击这里</a>
+    <a id="change_password_link" href="javascript:void(0)" style="<%= 'display:none' if show_pass %>">修改密码</a>
   </div>
   <div class="clearfix" style="<%= 'display:none' unless show_pass %>" id="change_password">
     <div class="field fl"><%= f.label :password,'密码' %><div class="field_error" id="regerror_password"><%= resource.errors_for_field(:password) %></div><br class="clear">

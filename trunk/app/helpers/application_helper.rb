@@ -157,6 +157,9 @@ module ApplicationHelper
     if user_id == current_user.id
       return true
     end
+    if item.repond_to?(:uploader_id) and item.uploader_id == current_user.id
+      return true
+    end
     return false
   end
 

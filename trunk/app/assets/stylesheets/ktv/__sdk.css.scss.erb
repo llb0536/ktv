@@ -1469,10 +1469,10 @@
       font-size: 13px;
       line-height: 25px;
   }
-  .feature .extras a.grey {
+  a.grey {
       color: #929292;
   }
-  .feature .extras a.grey:hover {
+  a.grey:hover {
       color: #c2c2c2;
   }
   .feature .extras .edit_header {
@@ -1481,12 +1481,14 @@
   .feature .extras .edit_header a {
       float: right;
   }
-  .feature .extras .edit_header a#edit_presentation {
-      background: url("<%=asset_path('edit.png')%>") 25px 0px no-repeat;
-      padding-right: 30px;
+  #edit_presentation {
+      background: url("<%=asset_path('edit.png')%>") 0 0px no-repeat;
+      font-size:13px;
+      padding-left:26px;
+      padding-top:10px;
   }
-  .feature .extras .edit_header a#edit_presentation:hover {
-      background: url("<%=asset_path('edit_hover.png')%>") 25px 0px no-repeat;
+  #edit_presentation:hover {
+      background: url("<%=asset_path('edit_hover.png')%>") 0 0px no-repeat;
   }
   .feature .extras .presenter {
       position: relative;

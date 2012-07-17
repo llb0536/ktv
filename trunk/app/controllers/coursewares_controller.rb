@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class CoursewaresController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
-  before_filter :find_item,:only => [:show,:embed,:download]
+  before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy]
   def index
     pagination_get_ready
     @coursewares = Courseware.normal.order('updated_at desc')
@@ -10,19 +10,7 @@ class CoursewaresController < ApplicationController
   end
   def new
     @seo[:title] = '上传课件'
-    @uptime = Time.now.to_i
-    policy = {
-      'save-key' =>  "/#{current_user.id}/#{@uptime}.pdf",
-      expiration: "#{1.hour.since.to_i}",
-      bucket: 'ktv-up',
-      'allow-file-type' =>  'pdf',
-      'content-length-range' =>  '0,199000000',
-    }.to_json
-    policy = Base64.encode64(policy).split("\n").join('')
-    @config = {
-      policy: policy,
-      signature: Digest::MD5.hexdigest(policy+'&'+'Vv0WpPhlztxkPn7c9F3x3S8zgRE=')
-    }
+    prepare_s3
   end
   def embed
     @courseware.view!
@@ -34,6 +22,10 @@ class CoursewaresController < ApplicationController
   def show
     @seo[:title] = @courseware.title
     render "show"
+  end
+  def edit
+    @seo[:title] = '编辑课件'
+    prepare_s3
   end
   def update
 
@@ -59,5 +51,20 @@ protected
       render_404
       return false
     end
+  end
+  def prepare_s3
+    @uptime = Time.now.to_i
+    policy = {
+      'save-key' =>  "/#{current_user.id}/#{@uptime}.pdf",
+      expiration: "#{1.hour.since.to_i}",
+      bucket: 'ktv-up',
+      'allow-file-type' =>  'pdf',
+      'content-length-range' =>  '0,199000000',
+    }.to_json
+    policy = Base64.encode64(policy).split("\n").join('')
+    @config = {
+      policy: policy,
+      signature: Digest::MD5.hexdigest(policy+'&'+'Vv0WpPhlztxkPn7c9F3x3S8zgRE=')
+    }    
   end
 end
