@@ -5,10 +5,6 @@ case $response in
     [yY][eE][sS]|[yY]) 
         cd ~
         scp data@kejian.tv:/home/data/ktvmongodump.tar.gz ~
-        scp data@kejian.tv:/home/data/de_dump.sql ~
-        dropdb --username=super ktv
-        createdb --echo --encoding=UTF8 --locale="zh_CN.UTF-8" --owner=super --template=template0 --username=super ktv
-        psql --username=super --set ON_ERROR_STOP=on ktv < ~/de_dump.sql
         rm -rf home/data/ktvmongodump/
         tar xzf ktvmongodump.tar.gz
         mongorestore home/data/ktvmongodump/

@@ -1,6 +1,5 @@
 #!/bin/bash -x
 
-pg_dump --username=super ktv > /home/data/de_dump.sql
 rm -rf /home/data/ktvmongodump
 rm -f  /home/data/ktvmongodump.tar.gz
 /usr/local/bin/mongodump --db ktv -o /home/data/ktvmongodump
