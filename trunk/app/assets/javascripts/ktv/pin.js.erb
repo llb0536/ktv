@@ -85,7 +85,7 @@ im20consts.constData = eval({
     PIN_LOGIN_PAGE: "/pin/login",
     PIN_LOGIN_BIND: "/pin/bind",
     PIN_SUCCESS: "/pin/success",
-    LOGIN_USER_STATION: "/profile/station",
+    LOGIN_USER_STATION: "/users/station",
     URI_FLASH_CROSS_DOMAIN: "/crossdomain.xml",
     URI_JAVASCRIPT_CONSTS: "/consts.js",
     URI_JAVASCRIPT_CONSTS_CACHED: "/consts-cached.js",
@@ -110,20 +110,20 @@ im20consts.constData = eval({
     URI_KAPTCHA: "/kaptcha.jpg",
     URI_CAPTCHA: "/captcha/image.html",
     URI_CAPTCHA_CHECK: "/captcha/check",
-    URI_USER: "/profile/{userId}",
-    URI_USER_INFO_UPDATE: "/profile/info",
-    URI_USER_PASSWORD_UPDATE: "/profile/password",
-    URI_USER_FIND_PASSWORD: "/profile/findPassword",
-    URI_USER_AJAX_FIND_PASSWORD: "/profile/ajaxfindpassword",
-    URI_USER_FIND_PASSWORD_UPDATE: "/profile/findPassword/update",
-    URI_USER_FIND_PASSWORD_ENTRY: "/profile/findPassword/{param}",
-    URI_USER_OPEN_SYNC: "/profile/sync",
+    URI_USER: "/users/{userId}",
+    URI_USER_INFO_UPDATE: "/users/info",
+    URI_USER_PASSWORD_UPDATE: "/users/password",
+    URI_USER_FIND_PASSWORD: "/users/findPassword",
+    URI_USER_AJAX_FIND_PASSWORD: "/users/ajaxfindpassword",
+    URI_USER_FIND_PASSWORD_UPDATE: "/users/findPassword/update",
+    URI_USER_FIND_PASSWORD_ENTRY: "/users/findPassword/{param}",
+    URI_USER_OPEN_SYNC: "/users/sync",
     PROFILE_INVITE_PAGE: "/reg/{inviteurl}",
     USER_SHARE_ENTRY: "/share/entry/{stat}",
-    URI_USER_CONCERNS_DEL: "/profile/concerns/delete",
-    URI_USER_CONCERNS_POST: "/profile/concerns/post",
-    URI_USER_PROFILE_WIDGET: "/widget/profile/{userId}",
-    URI_USER_PROFILE_WIDGET_BOARD: "/widget/profile/{userId}/{boardId}",
+    URI_USER_CONCERNS_DEL: "/users/concerns/delete",
+    URI_USER_CONCERNS_POST: "/users/concerns/post",
+    URI_USER_PROFILE_WIDGET: "/widget/users/{userId}",
+    URI_USER_PROFILE_WIDGET_BOARD: "/widget/users/{userId}/{boardId}",
     URI_USER_PROFILE_WIDGET_MEDIUM: "/widget/profilem/{userId}",
     URI_USER_PROFILE_WIDGET_BAR: "/widget/profilebar/{userId}",
     URI_USER_PROFILE_WIDGET_BAR_BOARD: "/widget/profilebar/{userId}/{boardId}",
@@ -375,11 +375,11 @@ im20consts.constData = eval({
     URI_TAG_USER_SINGLE_ADD: "/tagUser/single/add/{tagId}",
     URI_TAG_USER_DELETE: "/tagUser/delete/{tagId}",
     URI_TAG_USERS_AJAX: "/tagUserAjax/userList/{tagId}/{page}",
-    URI_USER_EMAIL_EDIT: "/profile/edit/email",
-    URI_USER_EMAIL_BIND: "/profile/bind/email",
-    URI_USER_PASSWORD_VERIFY: "/profile/verify/password",
-    URI_USER_EMAIL_VERIFY: "/profile/verify/email",
-    URI_EMAIL_LOGIN_URL: "/profile/email/loginUrl",
+    URI_USER_EMAIL_EDIT: "/users/edit/email",
+    URI_USER_EMAIL_BIND: "/users/bind/email",
+    URI_USER_PASSWORD_VERIFY: "/users/verify/password",
+    URI_USER_EMAIL_VERIFY: "/users/verify/email",
+    URI_EMAIL_LOGIN_URL: "/users/email/loginUrl",
     URI_USER_CARD: "/user/card/{userId}",
     URI_UNSUBSCRIBE: "/unsubscribe/{type}",
     URI_UNSUBSCRIBE_CONFIRM: "/unsubscribe/{type}/confirm",
@@ -4150,9 +4150,9 @@ im.zm.autoLayout.prototype = {
             m = 0
         }
         if (picBoard[j].boardName == "我的收集") {
-            q = ['<li class="share-owner cf"><a href="/profile/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/profile/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + F + "收集</p><p>" + v + "</p></div></li>"].join("")
+            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + F + "收集</p><p>" + v + "</p></div></li>"].join("")
         } else {
-            q = ['<li class="share-owner cf"><a href="/profile/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/profile/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '发布到课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
+            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '发布到课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
         }
         var b;
         if (picBoard[j].userId == loginUser.id) {
@@ -4237,7 +4237,7 @@ im.zm.autoLayout.prototype = {
             //     }
             // }
             e = d[a].comment;
-            xHtml = ['<li class="cf"><a href="/profile/' + d[a].userId + '" class="avatar"><img havecard="1" src="' + f + '" usercard="' + d[a].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/profile/' + d[a].userId + '" class="username changecolor" havecard="1" usercard="' + d[a].userId + '">' + d[a].userName + "</a>" + c + "</p>", '<p commentId="' + d[a].id + '">' + e + "&nbsp;" + g + "</p></div></li>"].join("");
+            xHtml = ['<li class="cf"><a href="/users/' + d[a].userId + '" class="avatar"><img havecard="1" src="' + f + '" usercard="' + d[a].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/users/' + d[a].userId + '" class="username changecolor" havecard="1" usercard="' + d[a].userId + '">' + d[a].userName + "</a>" + c + "</p>", '<p commentId="' + d[a].id + '">' + e + "&nbsp;" + g + "</p></div></li>"].join("");
             b[a] = xHtml
         }
         return b.join("")
@@ -5120,9 +5120,9 @@ window.autoLayout = {
                     isOrigin = 0
                 }
                 if (picBoard[j].boardName == "我的收集") {
-                    shareContent = ['<li class="share-owner cf"><a href="/profile/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/profile/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + cel + "收集</p><p>" + isO + "</p></div></li>"].join("")
+                    shareContent = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + cel + "收集</p><p>" + isO + "</p></div></li>"].join("")
                 } else {
-                    shareContent = ['<li class="share-owner cf"><a href="/profile/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/profile/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + '发布于课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + isO + "</p></div></li>"].join("")
+                    shareContent = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + '发布于课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + isO + "</p></div></li>"].join("")
                 }
                 var _action;
                 if (picBoard[j].userId == loginUser.id) {
@@ -5271,7 +5271,7 @@ window.autoLayout = {
                     //     }
                     // }
                     comStr = json[m].comment;
-                    xHtml = ['<li class="cf"><a href="/profile/' + json[m].userId + '" class="avatar"><img havecard="1" src="' + _picUrl + '" usercard="' + json[m].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/profile/' + json[m].userId + '" class="username changecolor" havecard="1" usercard="' + json[m].userId + '">' + json[m].userName + "</a>" + cels + "</p>", '<p commentId="' + json[m].id + '">' + comStr + "&nbsp;" + ask + "</p></div></li>"].join("");
+                    xHtml = ['<li class="cf"><a href="/users/' + json[m].userId + '" class="avatar"><img havecard="1" src="' + _picUrl + '" usercard="' + json[m].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/users/' + json[m].userId + '" class="username changecolor" havecard="1" usercard="' + json[m].userId + '">' + json[m].userName + "</a>" + cels + "</p>", '<p commentId="' + json[m].id + '">' + comStr + "&nbsp;" + ask + "</p></div></li>"].join("");
                     commentHtml[m] = xHtml
                 }
                 return commentHtml.join("")
@@ -10104,7 +10104,7 @@ $(function () {
                 //         types = ""
                 //     }
                 // }
-                var _html = ['<span class="cardArr png"></span>', '<div class="shadow-cd png">', '<div class="cardbody-cd">', '<div class="userinfo-cd cf">', '<a class="avatar-cd" href="/profile/' + data.userId + '" target="_blank"><img src="' + data.avatarTiny + '" /></a>', '<div class="profile-cd">', '<p class="name-cd"><a class="username-cd" href="/profile/' + data.userId + '"  target="_blank" title="' + data.nickname + '">' + $.fn.fixStr(data.nickname, 24, "...") + "</a>" + types + "</p>", '<p class="boardprofile-cd">', '<a href="/follow/' + data.userId + '/1"  target="_blank"><em>' + data.followCount + "</em><br /><span>关注</span></a>", '<a href="/fans/' + data.userId + '/1"  target="_blank"><em>' + data.fansCount + "</em><br /><span>粉丝</span></a>", '<a href="' + uri("URI_BOARDS_LIST", data.userId) + '"  target="_blank"><em>' + data.boardCount + "</em><br /><span>图格</span></a>", "</p>", "</div>", "</div>", '<div class="userprofile-cd">' + des + "</div>", '<div class="cardbottom">', '<div class="platform">' + sSina + sRenren + sQQT + sQZone + sTaobao + sDouban + "</div>", '<div class="cardfollow">' + fllowMe + message + "</div>", "</div>", "</div>", "</div>"].join("");
+                var _html = ['<span class="cardArr png"></span>', '<div class="shadow-cd png">', '<div class="cardbody-cd">', '<div class="userinfo-cd cf">', '<a class="avatar-cd" href="/users/' + data.userId + '" target="_blank"><img src="' + data.avatarTiny + '" /></a>', '<div class="profile-cd">', '<p class="name-cd"><a class="username-cd" href="/users/' + data.userId + '"  target="_blank" title="' + data.nickname + '">' + $.fn.fixStr(data.nickname, 24, "...") + "</a>" + types + "</p>", '<p class="boardprofile-cd">', '<a href="/follow/' + data.userId + '/1"  target="_blank"><em>' + data.followCount + "</em><br /><span>关注</span></a>", '<a href="/fans/' + data.userId + '/1"  target="_blank"><em>' + data.fansCount + "</em><br /><span>粉丝</span></a>", '<a href="' + uri("URI_BOARDS_LIST", data.userId) + '"  target="_blank"><em>' + data.boardCount + "</em><br /><span>图格</span></a>", "</p>", "</div>", "</div>", '<div class="userprofile-cd">' + des + "</div>", '<div class="cardbottom">', '<div class="platform">' + sSina + sRenren + sQQT + sQZone + sTaobao + sDouban + "</div>", '<div class="cardfollow">' + fllowMe + message + "</div>", "</div>", "</div>", "</div>"].join("");
                 $("#cardTip").html(_html);
                 _l = that.offset().left - ($("body").width() - that.width() - that.offset().left);
                 _t = (that.offset().top - $(document).scrollTop()) - ($(document).scrollTop() + document.documentElement.clientHeight - that.offset().top);
@@ -10485,7 +10485,7 @@ function showShareOrBoardTip() {
             path: "/"
         });
         var b = window.location.pathname;
-        var a = /^\/profile\/\d+$/;
+        var a = /^\/users\/\d+$/;
         if (a.exec(b)) {
             showFollowBtnTip()
         }

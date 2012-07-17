@@ -4,6 +4,30 @@ class Courseware
   include Mongoid::Timestamps
   include Redis::Search
   include BaseModel
+  def self.human_attribute_name(attr, options = {})
+    case attr.to_sym
+    when :user;'课件的作者'
+    when :slides_count;'幻灯片片数'
+    when :course;'课件所属课程'
+    when :courseware_series;'课件所属课件系列'
+    when :title;'课件标题'
+    when :title_en;'课件英文标题'
+    when :title_pinyin;'课件拼音标题'
+    when :desc;'课件描述'
+    when :title_series_concerned;'标题(长)'
+    when :sort1;'课件角色类型'
+    when :sort2;'课件文件类型'
+    when :sort_humanized;'课件类型'
+    when :slug;'课件的友好资源标识号'
+    when :course_slug;'所属课程的的友好资源标识号'
+    when :course_name;'所属课程的的名字'
+    when :xunlei_link;'迅雷播放特权地址'
+    when :fallback_playback_link;'视频后援地址'
+    when :link_memo;'链接备注'
+    else
+      COMMON_HUMAN_ATTR_NAME[attr].present? ? COMMON_HUMAN_ATTR_NAME[attr] : attr.to_s
+    end
+  end
   STATE_SYM = {
     0 => :normal,
     1 => :waiting4downloading,

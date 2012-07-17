@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class WelcomeController < ApplicationController
   def index
-    @seo[:title] = '讲义·作业·复习资料·往年试卷·课堂录像'
+    @seo[:title] = '讲义·电子书·课堂录像·习题解答·互动交流'
     # @course = Course.find(Setting.ktv_course_id)
     # @courseware = Courseware.find(Setting.ktv_courseware_id)
     @newest_cw = Courseware.normal.order('id desc').limit(9)

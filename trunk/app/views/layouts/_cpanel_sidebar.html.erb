@@ -1,4 +1,19 @@
 <div id="cpanel_sidebar">
+  <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area&["user_xml","user_normal","user_avatar"]).count>0)%>
+    <div class="side_table">
+      <div class="side_th">用户管理</div>
+      <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area.include?("user_xml") or current_user.admin_area.include?("user_normal")))%>
+        <div class="side_td">
+          <a href="<%= cpanel_users_path %>">用户管理</a>
+        </div>
+      <%end%>
+      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("user_avatar"))%>
+        <div class="side_td">
+          <a href="/cpanel/user/avatar_admin">用户头像管理</a>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
   <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area&["normal_ask","spam_ask","answer","comment","topic"]).count>0)%>
     <div class="side_table">
       <div class="side_th">内容管理</div>
@@ -51,21 +66,6 @@
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("deleted"))%>
         <div class="side_td">
           <a href="/cpanel/autofollow/deleted">已删除内容</a>
-        </div>
-      <%end%>
-    </div>
-  <%end%>
-  <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area&["user_xml","user_normal","user_avatar"]).count>0)%>
-    <div class="side_table">
-      <div class="side_th">用户管理</div>
-      <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area.include?("user_xml") or current_user.admin_area.include?("user_normal")))%>
-        <div class="side_td">
-          <a href="<%= cpanel_users_path %>">用户管理</a>
-        </div>
-      <%end%>
-      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("user_avatar"))%>
-        <div class="side_td">
-          <a href="/cpanel/user/avatar_admin">用户头像管理</a>
         </div>
       <%end%>
     </div>

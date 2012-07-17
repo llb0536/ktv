@@ -24,20 +24,20 @@
     </div>
   </header>
   <% if !cookies[:spetial].blank? %>
-    <p class="flash_alert"><%=  cookies[:spetial] %></p>
+    <p class="flash_alert"><%=raw  cookies[:spetial] %></p>
     <%= content_for :butt2 do %>
         $(".flash_alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
     <% end %>
     <% cookies[:spetial] = nil %>
   <% else %>  
     <% if !notice.blank? %>
-      <p class="flash_notice"><%= notice %></p>
+      <p class="flash_notice"><%=raw notice %></p>
       <%= content_for :butt2 do %>
           $(".flash_notice").fadeOut().fadeIn();
       <% end %>
     <% end %>
     <% if !alert.blank? %>
-      <p class="flash_alert"><%= alert %></p>
+      <p class="flash_alert"><%=raw alert %></p>
       <%= content_for :butt2 do %>
           $(".flash_alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
       <% end %>

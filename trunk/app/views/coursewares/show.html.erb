@@ -1,7 +1,7 @@
 <div class="__sdk"><%# todo: 710px ..ratio %>
 <section id="presentation" class="feature">
   <div class="wrapper">
-    <h1>
+    <h1 style="<%if @courseware.thin?%>width:516px<%end%>">
       <%if @cws%>第<%=@courseware.courseware_series_no%>集. <%end%>
       <%= @courseware.title %>
       <%if @cws%>
@@ -20,15 +20,18 @@
       <%= render :partial => 'presenter', :locals => {user:@courseware.user} %>
     </div>
     
-    <div class="extras" style="float:right">
-      <ul class="delimited share">
+    <div class="extras" style="float:right;margin-top:-26px">
+      <div class="edit_header">
+        <a id="edit_presentation" class="grey" href="/u/pmq20/p/chemistry/edit">Edit</a>
+      </div>
+      <ul class="delimited share" style="margin-bottom:0">
         <li class="dianjiliang">点击量 <a href="#watch-view-count"><%= number_with_delimiter @courseware.views_count %> 次</a></li>
         <li style=""><a href="<%= download_courseware_path @courseware %>" target="_blank" class="grey" id="share_pdf">下载源文件</a></li>
       </ul>
     </div>
     
-    <div class="extras" style="float:right;margin-right:18px">
-      <ul class="delimited">
+    <div class="extras" style="float:right;margin-right:18px;margin-top:-26px">
+      <ul class="delimited" style="margin-bottom:0">
         <li class="like">
           <a href="javascript:void(0)" class="like grey" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">为作者发送感谢</a>
           <a href="#fans" class="likes"><span id="weizuozhefasongganxie2"><%= @courseware.thanks_count %></span> 感谢</a>
@@ -36,7 +39,7 @@
         <li class="category">课程 <a href="/topics/<%= @courseware.topic_id %>"><%= @courseware.topic %></a></li>
       </ul>
     </div>
-    <div class="main" style="width:100%">
+    <div class="main" style="width:100%;margin-top:12px">
         <div class="slide_frame" id="slides_container">
               <script async="async" class="speakerdeck-embed" data-course-slug="<%=@courseware.topic_id%>" data-courseware-slug="<%=@courseware.id%>" data-ratio="<%= @courseware.wh_ratio %>" src="<%=asset_path 'ktv/embed.js'%>" type="text/javascript"></script>
         </div>

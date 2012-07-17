@@ -249,6 +249,7 @@ class Cpanel::UsersController < CpanelController
           @user.soft_delete(true)
           @user.info_delete(current_user.id)
         end
+        @user.update_consultant!
         format.html { redirect_to(cpanel_users_path, :notice => 'User 更新成功。') }
         format.json
       else

@@ -29,7 +29,7 @@ default: &defaults
   spam_words: /敏感词1|敏感词2/
   zhaopin_login: "http://wendaoqa.zhaopin.com/newbie?from="#"http://my.zhaopin.com/loginmgr/login.asp?BkUrl="
   zhaopin_logout: "http://my.zhaopin.com/loginmgr/logout.asp"
-  wendao_domain_name: "wendaoqa.zhaopin.com"
+  wendao_domain_name: "kejian.tv"
   error_tracker_url: 'http://etsrv.dev.zhaopin.com/ErrorTrackerRestfulImpl.svc/adderrorlog'
   error_tracker_enabled: false
   # Kejian.TV开放API的信任客户端，以下客户端可以在用户不知情的情况下随意获得任何用户的授权
@@ -68,6 +68,7 @@ default: &defaults
 development:
   <<: *defaults
   ktv_domain: kejian.lvh.me
+  wendao_domain_name: "kejian.lvh.me"
   open_timeout: 1
   timeout: 1
 

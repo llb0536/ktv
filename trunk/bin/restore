@@ -7,7 +7,7 @@ case $response in
         scp data@kejian.tv:/home/data/ktvmongodump.tar.gz ~
         rm -rf home/data/ktvmongodump/
         tar xzf ktvmongodump.tar.gz
-        mongorestore home/data/ktvmongodump/
+        mongorestore --drop home/data/ktvmongodump/
         ;;
     *)
         ;;

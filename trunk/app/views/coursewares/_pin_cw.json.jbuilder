@@ -14,7 +14,7 @@ json.price courseware.topic
 json.price_slug Topic.get_id(courseware.topic)
 json.isOriginal true
 json.nickName User.get_name(courseware.user_id)
-json.userId courseware.user_id
+json.userId User.get_slug(courseware.user_id)
 json.avatars Hash[]
 json.certifyType 2
 json.boardName courseware.topic

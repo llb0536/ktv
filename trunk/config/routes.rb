@@ -39,7 +39,7 @@ Quora::Application.routes.draw do
     end
   end
   get '/embed/:id' => 'coursewares#embed'
-  # ________________________________wendao__________________________________________
+  # ________________________________q-n-a__________________________________________
 
   match '/mobile'=>'home#mobile'
   get '/under_verification' => 'home#under_verification'

@@ -29,6 +29,13 @@ defaults: &defaults
   
 development:
   <<: *defaults
+  port: 6379
+  port_search: 6379
+  port_resque: 6379
+  port_users: 6379
+  port_topics: 6379
+  port_asks: 6379
+  port_experts: 6379
   
 test:
   <<: *defaults

@@ -146,6 +146,8 @@ class User
   SUB_ADMIN=3
   ADMIN_TYPE={User::NO_ADMIN=>"",User::SUP_ADMIN=>"管理员",User::SUB_ADMIN=>"副管理员"}
   has_many :oauth_accesses
+  # the way to set admins:
+  #   user.update_attribute(:admin_type,User::SUP_ADMIN)
   def self.admins
     User.where(:user_type.in=>[User::SUB_ADMIN,User::SUP_ADMIN])
   end
@@ -158,13 +160,56 @@ class User
   def self.human_attribute_name(attr, options = {})
     case attr.to_sym
     when :tagline
-      '一句话描述'
-    when :name
-      '昵称'
+      '一句话介绍'
     when :slug
       '个性域名'
+    when :inviting;'立即发送邀请'
+    when :website;'个人网站'
+    when :location;'地理位置'
+    when :company;'公司'
+    when :available_for_hire;'是否接受雇主联系'
+    when :bio;'个人简介'
+    when :department;'用户所属院系'
+    when :school;'用户所属学校'
+    when :email_human;'电子邮箱'
+    when :slug;'用户的个性域名'
+    when :password;'密码'
+    when :password_confirmation;'密码确认'
+    when :remember_me;'记住我的登录状态'
+    when :name;'真实姓名'
+    when :encrypted_password;'加密后密码'
+    when :reset_password_token;'重置密码链接字符串'
+    when :reset_password_sent_at;'重置密码链接字符串发送时间'
+    when :remember_created_at;'记住我的登录状态创建时间'
+    when :sign_in_count;'累计登录次数'
+    when :current_sign_in_at;'本次登录于时间'
+    when :last_sign_in_at;'上次登录时间'
+    when :current_sign_in_ip;'本次登录IP'
+    when :last_sign_in_ip;'上次登录IP'
+    when :confirmation_token;'验证链接字符串'
+    when :confirmed_at;'验证于时间'
+    when :confirmation_sent_at;'验证链接发送于时间'
+    when :unconfirmed_email;'待验证电子邮箱'
+    when :failed_attempts;'失败登录尝试次数'
+    when :unlock_token;'解锁链接字符串'
+    when :locked_at;'锁定于时间'
+    when :authentication_token;'认证字符串'
+    when :email_unknown;'是否邮箱请求'
+    when :name_unknown;'是否姓名请求'
+    when :coursewares_count;'发布课件数'
+    when :courseware_series_count;'发布课件系列数'
+    when :hits_count;'资料被阅数'
+    when :name_en;'英文名'
+    when :avatar;'头像'
+    when :tagline;'一句话简介'
+    when :autotagline;'自动一句话简介'
+    when :name_pinyin;'姓名拼音'
+    when :thanks_count;'被感谢次数'
+    when :banished;'是否被禁'
+    when :born_at;'生日'
+    when :died_at;'卒于'
     else
-      attr.to_s
+      COMMON_HUMAN_ATTR_NAME[attr].present? ? COMMON_HUMAN_ATTR_NAME[attr] : attr.to_s
     end
   end
   
@@ -185,7 +230,6 @@ class User
   field :name
   field :slug
   field :tagline
-  field :autotagline
   field :tagline_changed_at
   field :avatar_changed_at, :type => Time
   field :last_login_at, :type => Time
@@ -205,9 +249,9 @@ class User
   before_save :autotagline_schoolize
   def autotagline_schoolize
     if new_record? or school_id_changed? or department_changed?
-      self.autotagline = ""
-      self.autotagline += self.school.name if self.school.present?
-      self.autotagline += self.department if self.department.present?
+      self.tagline = ""
+      self.tagline += self.school.name if self.school.present?
+      self.tagline += self.department if self.department.present?
     end
   end
   before_save Proc.new{
@@ -254,13 +298,13 @@ class User
   }
   # 是否允许登陆
   def active_for_authentication?
-    self.encrypted_password.present? && !banished && !access_locked? && !died_at && confirmed?
+    self.encrypted_password.present? && '0'==self.banished && !access_locked? && died_at.blank? && confirmed?
   end
   scope :name_unknown, where(:name_unknown => true)
   scope :email_unknown, where(:email_unknown => true)
   scope :nonconfirmed, where(:confirmed_at => nil)
   scope :dead, where('died_at != NULL')
-  scope :banished, where(:banished => true)
+  scope :banished, where(:banished => '1')
   # validations----------------------------------------------------------------------
   validate :vali_name_check, :if => :name_required?
   def vali_name_check
@@ -274,7 +318,7 @@ class User
        return false
       end
       if Ktv::Utils.js_chinese(self.name)<2
-       errors.add(:name,"不是真实中文姓名")
+       errors.add(:name,"并非真实中文姓名")
        return false
       end
       if !Ktv::Renren.name_okay?(self.name)
@@ -297,7 +341,7 @@ class User
     unless self.new_record?
       if self.name_changed?
         if self.name_last_changed_at and self.name_last_changed_at > 1.months.ago
-          errors[:base] << "对不起，昵称一个月只能修改一次"
+          errors[:base] << "对不起，真实姓名一个月只能修改一次"
           return false
         else
           self.name_last_changed_at = Time.now

@@ -12,7 +12,7 @@
     user_hash: '<%= Digest::SHA1.hexdigest('923pqmn2' + current_user.email) %>',
     custom_data: {
       'courseware count': <%= current_user.coursewares_count %>,
-      'profile link': 'http://kejian.tv/profile/<%= current_user.slug %>'
+      'profile link': 'http://kejian.tv/users/<%= current_user.slug %>'
     },
     widget: {
         activator: '#Intercom',

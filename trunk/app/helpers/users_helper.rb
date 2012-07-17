@@ -1,5 +1,8 @@
 # coding: utf-8
 module UsersHelper
+  def profile_path(user)
+    "/users/#{user.slug}"
+  end
   def avatar_url_quick(user,size=:normal)
     s=AvatarUploader::SIZES[size]
     url = User.get_avatar_filename(user)
