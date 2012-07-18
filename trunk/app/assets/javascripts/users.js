@@ -82,9 +82,9 @@ var Users = {
   // modify 2012-2-6 by lesanc.li
   userLogin: function(){
     var lhtml = [];
-    lhtml.push('<header>欢迎使用智联招聘账号登录Kejian.TV <a class="close" href="javascript:void(0);"></a></header>');
+    lhtml.push('<header>欢迎使用课件交流系统账号登录Kejian.TV <a class="close" href="javascript:void(0);"></a></header>');
     lhtml.push('<section class="form clearfix">');
-    lhtml.push('<form name="frmLogin" id="frmLogin" method="post" action="http://my.zhaopin.com/loginmgr/loginproc.asp">');
+    lhtml.push('<form name="frmLogin" id="frmLogin" method="post" action="http://my.kejian.tv/loginmgr/loginproc.asp">');
     lhtml.push('<dl>');
     lhtml.push('<dt>账&nbsp;&nbsp;号:</dt>');
     lhtml.push('<dd><input type="text" class="fl input-x-validate" name="loginname" maxlength="100" value="" />');
@@ -93,7 +93,7 @@ var Users = {
     lhtml.push('<dd><input type="password" class="fl input-x-validate" name="password" maxlength="25" value="" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_password"></div></dd>');
     lhtml.push('<dt></dt>');
-    lhtml.push('<dd  style="height:18px;"><span style="float:right;"><a href="http://my.zhaopin.com/loginmgr/forgetpassword.asp" target="_blank">忘记密码？</a></span>');
+    lhtml.push('<dd  style="height:18px;"><span style="float:right;"><a href="http://my.kejian.tv/loginmgr/forgetpassword.asp" target="_blank">忘记密码？</a></span>');
     lhtml.push('<input style="width:18px;" type="checkbox" class="noBorder" name="isautologin" value="1" />记住登录状态</dd>');
     lhtml.push('<input type="hidden" name="Validate" id="Validate" value="campusspecial2011unify" />');
     lhtml.push('<input type="hidden" name="errbkurl" id="errbkurl" value="'+location.href+((location.href.indexOf('error=1')>-1)?'':'?error=1')+'" />');
@@ -101,7 +101,7 @@ var Users = {
     lhtml.push('</dl></form></section>');
     lhtml.push('<footer>');
     lhtml.push('<div class="btnNormalGreen bold mt20 login"><span>&nbsp;登 录&nbsp;</span></div>');
-    lhtml.push('<div class="goLog mt20">没有智联招聘账号？<a href="#" onclick="Users.userReg()">立即注册</a></div>');
+    lhtml.push('<div class="goLog mt20">没有课件交流系统账号？<a href="#" onclick="Users.userReg()">立即注册</a></div>');
     lhtml.push('</footer>');
     $.facebox({ html : lhtml.join(""), overlay : false });
     var form = document.forms["frmLogin"];
@@ -150,7 +150,7 @@ var Users = {
   userLogout: function(){
     var url = location.href;
     if (/(^http:\/\/[^\/]+\/)/i.test(url)){
-      location.href='http://my.zhaopin.com/loginmgr/logout.asp?strBkUrl='+RegExp['$1'];
+      location.href='http://my.kejian.tv/loginmgr/logout.asp?strBkUrl='+RegExp['$1'];
     }
     return false;
   },
@@ -161,9 +161,9 @@ var Users = {
       url=RegExp['$1'];
     }
     var lhtml = [];
-    lhtml.push('<header>注册智联招聘账号 <a class="close" href="javascript:void(0);"></a></header>');     
+    lhtml.push('<header>注册课件交流系统账号 <a class="close" href="javascript:void(0);"></a></header>');     
     lhtml.push('<section class="form clearfix">');
-    lhtml.push('<form name="regform" id="regform" method="post" action="http://my.zhaopin.com/loginmgr/registerProc.asp">');
+    lhtml.push('<form name="regform" id="regform" method="post" action="http://my.kejian.tv/loginmgr/registerProc.asp">');
     lhtml.push('<dl>');
     lhtml.push('<dt>常用邮箱:</dt>');
     lhtml.push('<dd><input type="hidden" name="redirect_url" value="'+url+'" />');
@@ -176,12 +176,12 @@ var Users = {
     lhtml.push('<dd><input type="password" class="fl input-x-validate" name="password2" id="password2" value="" size="32" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_password2"></div></dd>');
     lhtml.push('<dt></dt>');
-    lhtml.push('<dd class="clear"><div class="details"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">Kejian.TV用户协议</a> 和 <a target="_blank" href="http://jobseeker.zhaopin.com/zhaopin/aboutus/secrecy.html">智联隐私协议</a></div></dd>');
+    lhtml.push('<dd class="clear"><div class="details"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">Kejian.TV用户协议</a> 和 <a target="_blank" href="http://jobseeker.kejian.tv/zhaopin/aboutus/secrecy.html">课件交流系统隐私协议</a></div></dd>');
     lhtml.push('</dl>');
     lhtml.push('</form></section>');
     lhtml.push('<footer>');
     lhtml.push('<div class="btnNormalGreen bold mt20 reg"><span>&nbsp;注 册&nbsp;</span></div>');
-    lhtml.push('<div class="goLog mt20">已有智联招聘账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
+    lhtml.push('<div class="goLog mt20">已有课件交流系统账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
     lhtml.push('</footer>');
     $.facebox({ html : lhtml.join(""), overlay : false });
     var form = document.forms["regform"];
@@ -204,11 +204,11 @@ var Users = {
       },{
         type: "ajax",
         rule: function(){
-          $.getScript("http://my.zhaopin.com/myzhaopin/CEF_markhome.asp?opt=1&email=" + email.val(), function(){
+          $.getScript("http://my.kejian.tv/myzhaopin/CEF_markhome.asp?opt=1&email=" + email.val(), function(){
             if (typeof cefmarkhome != 'undefined'){
               if (cefmarkhome == 1){
                 email.parent().attr("class", "input-x-validate-error");
-                $("#tip_email").html('该邮箱已注册智联账号，可<a onclick="Users.userLogin()" href="#">直接登录</a>');
+                $("#tip_email").html('该邮箱已注册课件交流系统账号，可<a onclick="Users.userLogin()" href="#">直接登录</a>');
                 formFlag["email"] = false;
               } else if (cefmarkhome == 0){
                 email.parent().attr("class","input-x-validate-valid");

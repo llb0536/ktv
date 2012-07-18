@@ -1,5 +1,6 @@
 window.App = {}
 window.App.Utilities = {}
+window.App.data = {}
 
 if window.psvr_subject is 'math'
   App.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math_hover.png") %>'
@@ -229,20 +230,15 @@ $(document).ready ->
     , 2000);
   )
   $('#login,#loginhuge').click(App.login)
-  # $('#weizuozhefasongganxie').click( ->
-  #   num = parseInt($('#weizuozhefasongganxie2').html())
-  #   if $('#weizuozhefasongganxie').is('.like')
-  #     $('#weizuozhefasongganxie').removeClass('grey')
-  #     $('#weizuozhefasongganxie').addClass('purple')
-  #     $('#weizuozhefasongganxie').removeClass('like')
-  #     $('#weizuozhefasongganxie').addClass('unlike')
-  #     $('#weizuozhefasongganxie').html('已发送感谢')
-  #     $('#weizuozhefasongganxie2').html(num+1)
-  #   else
-  #     $('#weizuozhefasongganxie').removeClass('purple')
-  #     $('#weizuozhefasongganxie').addClass('grey')
-  #     $('#weizuozhefasongganxie').removeClass('unlike')
-  #     $('#weizuozhefasongganxie').addClass('like')
-  #     $('#weizuozhefasongganxie').html('为作者发送感谢')
-  #     $('#weizuozhefasongganxie2').html(num-1)
-  # )
+  $('#weizuozhefasongganxie').click( ->
+    num = parseInt($('#weizuozhefasongganxie2').html())
+    if $('#weizuozhefasongganxie').is('.like')
+      $.get('/coursewares/'+App.data.courseware_id+'/thank',->
+        $('#weizuozhefasongganxie').removeClass('grey')
+        $('#weizuozhefasongganxie').addClass('purple')
+        $('#weizuozhefasongganxie').removeClass('like')
+        $('#weizuozhefasongganxie').addClass('unlike')
+        $('#weizuozhefasongganxie').html('已感谢')
+        $('#weizuozhefasongganxie2').html(num+1)        
+      )
+  )

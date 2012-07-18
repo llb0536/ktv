@@ -38,7 +38,7 @@ module BaseModel
     f.print "\n---------------------------------------------\n"
     f.print msg.to_json
     f.close
-    raise RestClient.post("http://studentcdcapi.zhaopin.com/MessageCenter.svc/SendMessage", msg.to_json, :content_type => :json, :accept => :json)
+    raise RestClient.post("http://studentcdcapi.kejian.tv/MessageCenter.svc/SendMessage", msg.to_json, :content_type => :json, :accept => :json)
   end
   def normal_deleting_status(current_user=nil)
     return true if current_user and self.respond_to?(:user_id) and current_user.id==self.user_id

@@ -14,7 +14,7 @@ module Wendao
       :auto_traversal].freeze
 
     DEFAULT_ADAPTER        = Faraday.default_adapter
-    DEFAULT_API_ENDPOINT    = "http://api.zhaopin.com".freeze
+    DEFAULT_API_ENDPOINT    = "http://api.kejian.tv".freeze
     DEFAULT_USER_AGENT     = "Wendao Ruby Gem #{Wendao::VERSION}".freeze
     DEFAULT_AUTO_TRAVERSAL = false
 

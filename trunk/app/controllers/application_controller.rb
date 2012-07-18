@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_notice
   before_filter Proc.new{
     # render text:request.subdomain and return
-    # $redis.incr('stat1231')  if 'http://article.zhaopin.com/zt/2011/1231.html'==request.referer
+    # $redis.incr('stat1231')  if 'http://article.kejian.tv/zt/2011/1231.html'==request.referer
   
   if user_signed_in?
     if current_user.banished.present? and (current_user.banished=="1" or current_user.banished==true)
@@ -267,7 +267,7 @@ class ApplicationController < ActionController::Base
   #
   
   def login_via_zhaopin
-    src='http://my.zhaopin.com/loginmgr/loginproc.asp'
+    src='http://my.kejian.tv/loginmgr/loginproc.asp'
     canshu = {loginname:params[:loginname],password:params[:password],'Validate'=>params[:Validate],int_count:params[:int_count],bkurl:params[:bkurl]}
     proxy_addr = '192.168.20.6'
     proxy_port = 3128
@@ -279,7 +279,7 @@ class ApplicationController < ActionController::Base
     when Net::HTTPSuccess, Net::HTTPRedirection
       redirect_to params[:bkurl]
     else
-      redirect_to 'http://my.zhaopin.com/loginmgr/login.asp'
+      redirect_to 'http://my.kejian.tv/loginmgr/login.asp'
     end
   end
 

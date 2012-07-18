@@ -2,7 +2,7 @@ require 'helper'
 
 describe Wendao::Client do
   it 'should work with basic auth and password' do       
-    stub_request(:get, "http://foo:bar@api.zhaopin.com/users/user_myself/asks").
+    stub_request(:get, "http://foo:bar@api.kejian.tv/users/user_myself/asks").
       with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
       to_return(:status => 200, :body => "", :headers => {})
 
@@ -13,18 +13,18 @@ describe Wendao::Client do
   end
 
   it "should traverse a paginated response if auto_traversal is on" do
-    stub_get("https://api.zhaopin.com/foo/bar").
+    stub_get("https://api.kejian.tv/foo/bar").
       to_return(:status => 200, :body => %q{["stuff"]}, :headers => 
-        { 'Link' => %q{<https://api.zhaopin.com/foo/bar?page=2>; rel="next", <https://api.zhaopin.com/foo/bar?page=3>; rel="last"} })
+        { 'Link' => %q{<https://api.kejian.tv/foo/bar?page=2>; rel="next", <https://api.kejian.tv/foo/bar?page=3>; rel="last"} })
 
-    stub_get("https://api.zhaopin.com/foo/bar?page=2").
+    stub_get("https://api.kejian.tv/foo/bar?page=2").
       to_return(:status => 200, :body => %q{["even more stuff"]}, :headers => 
-        { 'Link' => %q{<https://api.zhaopin.com/foo/bar?page=3>; rel="next", <https://api.zhaopin.com/foo/bar?page=3>; rel="last", <https://api.zhaopin.com/foo/bar?page=1>; rel="prev", <https://api.zhaopin.com/foo/bar?page=1>; rel="first"} })
+        { 'Link' => %q{<https://api.kejian.tv/foo/bar?page=3>; rel="next", <https://api.kejian.tv/foo/bar?page=3>; rel="last", <https://api.kejian.tv/foo/bar?page=1>; rel="prev", <https://api.kejian.tv/foo/bar?page=1>; rel="first"} })
 
-    stub_get("https://api.zhaopin.com/foo/bar?page=3").
+    stub_get("https://api.kejian.tv/foo/bar?page=3").
       to_return(:status => 200, :body => %q{["stuffapalooza"]}, :headers => 
-        { 'Link' => %q{<https://api.zhaopin.com/foo/bar?page=2>; rel="prev", <https://api.zhaopin.com/foo/bar?page=1>; rel="first"} })
+        { 'Link' => %q{<https://api.kejian.tv/foo/bar?page=2>; rel="prev", <https://api.kejian.tv/foo/bar?page=1>; rel="first"} })
 
-    Wendao::Client.new(:auto_traversal => true).get("https://api.zhaopin.com/foo/bar", {}).should == ['stuff', 'even more stuff', 'stuffapalooza']
+    Wendao::Client.new(:auto_traversal => true).get("https://api.kejian.tv/foo/bar", {}).should == ['stuff', 'even more stuff', 'stuffapalooza']
   end
 end

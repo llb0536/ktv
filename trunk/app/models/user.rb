@@ -131,6 +131,7 @@ class User
     self.followers.each{|u| u.inc(:following_count,-1)}
     self.following.each{|u| u.inc(:followers_count,-1)}
     self.thanked_answers.each{|an| an.inc(:thanked_count,-1)}
+    self.thanked_coursewares.each{|an| an.inc(:thanked_count,-1)}
     self.followed_asks.each{|ask| ask.inc(:followed_count,-1)}
   end
   #user_type
@@ -204,7 +205,7 @@ class User
     when :tagline;'一句话简介'
     when :autotagline;'自动一句话简介'
     when :name_pinyin;'姓名拼音'
-    when :thanks_count;'被感谢次数'
+    when :thanked_count;'被感谢次数'
     when :banished;'是否被禁'
     when :born_at;'生日'
     when :died_at;'卒于'
@@ -398,9 +399,14 @@ class User
   field :mail_invite_to_ask, :type => Boolean, :default => true
   field :mail_ask_me, :type => Boolean, :default => true
   field :thanked_answer_ids, :type => Array, :default => []
+  field :thanked_courseware_ids, :type => Array, :default => []
   def thanked_answers
     Answer.where(:_id.in=>self.thanked_answer_ids)
   end
+  def thanked_coursewares
+    Answer.where(:_id.in=>self.thanked_courseware_ids)
+  end
+
   # 邀请字段
   field :invitation_token
   field :invitation_sent_at, :type => Time
@@ -421,6 +427,8 @@ class User
   field :invited_count, :type => Integer, :default => 0
   field :thank_count, :type => Integer, :default => 0
   field :thanked_count, :type => Integer, :default => 0
+  field :thank_coursewares_count, :type => Integer, :default => 0
+  field :thanked_coursewares_count, :type => Integer, :default => 0
   field :coursewares_count, :type => Integer, :default => 0
   field :upload_count, :type => Integer, :default => 0
   has_many :answers
@@ -548,7 +556,7 @@ class User
     ret
   end
   # after_validation Proc.new{
-  #   if(user = User.where(email:'angela.cai@zhaopin.com.cn').first)
+  #   if(user = User.where(email:'angela.cai@kejian.tv.cn').first)
   #     self.following_ids << user.id
   #     user.follower_ids << self.id
   #   end
@@ -687,7 +695,6 @@ class User
     self.muted_ask_ids.delete(ask_id)
     self.save
   end
-  
   def follow_ask(ask,nolog=false)
     return if self.followed_ask_ids.include? ask.id
     self.followed_ask_ids << ask.id
@@ -765,8 +772,8 @@ class User
       "MsgSubType"=>3020,
       "Receiver"=>user_ud,
       "Sender"=>"#{self.name}",
-      "SenderUrl"=>"http://wendao.zhaopin.com/users/#{self.slug}",
-      "SendContent"=>"<P><a href=\"http://wendao.zhaopin.com/users/#{self.slug}\">#{self.name}</a>关注了你。</P>",
+      "SenderUrl"=>"http://kejian.tv/users/#{self.slug}",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.slug}\">#{self.name}</a>关注了你。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})
@@ -808,8 +815,8 @@ class User
       "MsgSubType"=>3040,
       "Receiver"=>userb.zhaopin_ud,
       "Sender"=>"#{usera.name}",
-      "SenderUrl"=>"http://wendao.zhaopin.com/users/#{usera.slug}",
-      "SendContent"=>"<P><a href=\"http://wendao.zhaopin.com/users/#{usera.slug}\">#{usera.name}</a>赞同了你的回答“<a href=\"http://wendao.zhaopin.com/asks/#{ask.id}\">#{ask.title}</a>”。</P>",
+      "SenderUrl"=>"http://kejian.tv/users/#{usera.slug}",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>赞同了你的回答“<a href=\"http://kejian.tv/asks/#{ask.id}\">#{ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})    
@@ -838,6 +845,14 @@ class User
     self.save
     insert_follow_log("THANK_ANSWER", answer, answer.ask)
   end
+  def thank_courseware(courseware)
+    self.thanked_courseware_ids ||= []
+    return true if self.thanked_courseware_ids.index(courseware.id)
+    self.thanked_courseware_ids << courseware.id
+    self.save
+    insert_follow_log("THANK_COURSEWARE", courseware, courseware.topic)
+  end
+  
 
   # 软删除
   # 只是把用户信息修改了

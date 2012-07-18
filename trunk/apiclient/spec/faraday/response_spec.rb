@@ -21,7 +21,7 @@ describe Faraday::Response do
     context "when HTTP status is #{status}" do
 
       before do
-        stub_request(:get, "http://api.zhaopin.com/users/psvr").
+        stub_request(:get, "http://api.kejian.tv/users/psvr").
           with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
           to_return(:status => status, :body => "", :headers => {})
       end

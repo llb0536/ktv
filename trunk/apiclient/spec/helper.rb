@@ -61,10 +61,10 @@ def zhaopin_url(url)
   if url =~ /^http/
     url
   elsif @client && @client.authenticated?
-    "https://pengwynn%2Ftoken:OU812@api.zhaopin.com#{url}"
+    "https://pengwynn%2Ftoken:OU812@api.kejian.tv#{url}"
   elsif @client && @client.oauthed?
-    "https://api.zhaopin.com#{url}?access_token=#{@client.oauth_token}"
+    "https://api.kejian.tv#{url}?access_token=#{@client.oauth_token}"
   else
-    "https://api.zhaopin.com#{url}"
+    "https://api.kejian.tv#{url}"
   end
 end

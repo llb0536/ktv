@@ -7,7 +7,7 @@ namespace :mail do
   User.all.each do |user|
     begin
 
-#if ["yunlong.lee@msn.com", "yunlong.li@zhaopin.com.cn"].include?(user.email)
+#if ["yunlong.lee@msn.com", "yunlong.li@kejian.tv.cn"].include?(user.email)
 
       next if !user.current_mails || user.current_mails.empty?
       title = "有#{user.current_mails.count}条新通知等待您的查看" 
@@ -68,7 +68,7 @@ namespace :mail do
       	font-size:12px;
       }
       .contentItem {
-      	background:url("http://wendao.zhaopin.com/assets/usermailerbg.png") repeat-x left bottom;
+      	background:url("http://kejian.tv/assets/usermailerbg.png") repeat-x left bottom;
       	padding:20px;
       }
       .contentItem div {
@@ -84,9 +84,9 @@ namespace :mail do
       </style>
       </head>
       <body style="color:#666;font:14px/2em simsun;background-color:#f1feea;">
-      <div visibility=hidden><IMG SRC="http://cnt.zhaopin.com/Market/edm.gif?sid=#{iid}&site=edm_#{datenow}&zpsenddate=#{datenow}&zpemail=#{Setting.smtp_username}&zpuserid=" width="0" height="0" ></div>
+      <div visibility=hidden><IMG SRC="http://cnt.kejian.tv/Market/edm.gif?sid=#{iid}&site=edm_#{datenow}&zpsenddate=#{datenow}&zpemail=#{Setting.smtp_username}&zpuserid=" width="0" height="0" ></div>
 <div class="header" style="width:650px;height:47px;margin:5px auto;">
-      <a href="http://wendao.zhaopin.com"><img src="http://wendao.zhaopin.com/assets/usermailerlogo.png" width="650" height="47" /></a>
+      <a href="http://kejian.tv"><img src="http://kejian.tv/assets/usermailerlogo.png" width="650" height="47" /></a>
       </div>
 <div class="main" style="width:650px;margin:0 auto;border:1px solid #ccc;background-color:#fff;">
 	<div class="notifier" style="border-bottom:1px solid #ccc;font-weight:bold;width:600px;margin:0 auto;height:40px; line-height:50px;">您在Kejian.TV上最近的通知</div>
@@ -106,7 +106,7 @@ realcontent = ''
       </div>
       <div class="footer" style="width:650px;margin:0 auto;text-align:right;font-size:12px;">
       这是一封系统邮件，请勿回复<br/>
-      <a href="http://wendao.zhaopin.com">http://wendao.zhaopin.com</a> | <a href="http://wendao.zhaopin.com/users/edit">邮件通知设置</a>
+      <a href="http://kejian.tv">http://kejian.tv</a> | <a href="http://kejian.tv/users/edit">邮件通知设置</a>
 
       </div>
       </body>
@@ -115,7 +115,7 @@ DOC
       user.current_mails = []
       user.save! if user.changed?
       begin
-        url_prefix="http://cnt.zhaopin.com/Market/whole_counter_edm.jsp?sid=#{iid}&site=edm_#{datenow}&zpsenddate=#{datenow}&zpemail=#{Setting.smtp_username}&zpuserid=&url="
+        url_prefix="http://cnt.kejian.tv/Market/whole_counter_edm.jsp?sid=#{iid}&site=edm_#{datenow}&zpsenddate=#{datenow}&zpemail=#{Setting.smtp_username}&zpuserid=&url="
         bodycombo.gsub!(/<a([^<>]+)href="([^"]+)"([^<>]*)>/) do |match|
           "<a#{$1}href=\"#{url_prefix}#{$2}\"#{$3}>"
         end

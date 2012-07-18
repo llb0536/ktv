@@ -23,8 +23,8 @@ class AskInvite
       "MsgSubType"=>3030,
       "Receiver"=>userb.zhaopin_ud,
       "Sender"=>"#{usera.name}",
-      "SenderUrl"=>"http://wendao.zhaopin.com/users/#{usera.slug}",
-      "SendContent"=>"<P><a href=\"http://wendao.zhaopin.com/users/#{usera.slug}\">#{usera.name}</a>邀请你回答问题“<a href=\"http://wendao.zhaopin.com/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+      "SenderUrl"=>"http://kejian.tv/users/#{usera.slug}",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>邀请你回答问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})

@@ -1,12 +1,19 @@
 # -*- encoding : utf-8 -*-
 class CoursewaresController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy]
-  before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy]
+  before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy,:thank]
+  before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
   def index
     pagination_get_ready
     @coursewares = Courseware.normal.order('updated_at desc')
     pagination_over(@coursewares.count)
     @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+  end
+  def thank
+    current_user.inc(:thank_coursewares_count,1)
+    @courseware.user.inc(:thanked_coursewares_count,1)
+    @courseware.inc(:thanked_count,1)
+    current_user.thank_courseware(@courseware)
+    render :text => "1"
   end
   def new
     @seo[:title] = '上传课件'

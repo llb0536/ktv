@@ -877,7 +877,7 @@ function judgeEmail(sValue) {
 //检查Email是否存在
 function checkEmail(strEmail) {
     var d = new Date();
-    var url = "http://my.zhaopin.com/myzhaopin/CEF_markhome.asp?timestamp=" + d.getTime();
+    var url = "http://my.kejian.tv/myzhaopin/CEF_markhome.asp?timestamp=" + d.getTime();
     var query = "opt=1&email=" + strEmail;
     CallbackPosition(query, url)
 }

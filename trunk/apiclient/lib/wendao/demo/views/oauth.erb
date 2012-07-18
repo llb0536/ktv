@@ -14,7 +14,7 @@
       <tr>
         <td><button class="btn" href="<%= SERVER_endpoint %>/oauth/authorization?response_type=code&scope=all&client_id=<%= CLIENT_client_id %>&redirect_uri=<%= CLIENT_redirect %>" class="">获取授权码</button></td>
         <td>这个主要是针对欲访问Kejian.TVAPI的服务器端web应用程序，这种情况下需要两个步骤，第一个步骤是，您的应用程序需要向着用户询问获取他们数据的权限。如果用户同意，客户端将收到一个授权码。第二个步骤是客户端将带着授权码以及（以前注册应用程序的时候获得的）访问密钥去Kejian.TV的服务器上获取访问令牌。</td>
-        <td><a href="http://wendao.zhaopin.com"><%= SERVER_endpoint %>/oauth/authorization?response_type=code&scope=all&client_id=<%= CLIENT_client_id %>&redirect_uri=<%= CLIENT_redirect %></a></td>
+        <td><a href="http://kejian.tv"><%= SERVER_endpoint %>/oauth/authorization?response_type=code&scope=all&client_id=<%= CLIENT_client_id %>&redirect_uri=<%= CLIENT_redirect %></a></td>
       </tr>
       <tr>
         <td></td>

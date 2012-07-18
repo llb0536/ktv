@@ -1,5 +1,5 @@
 
-<h1 id="section">智联招聘: Kejian.TV开放应用程序接口 - 为问题添加答案</h1>
+<h1 id="section">课件交流系统: Kejian.TV开放应用程序接口 - 为问题添加答案</h1>
 
 <h2>认证级别</h2>
 <p>访问敏感资源需要Oauth认证，证明您获得了用户的许可，且只能查看、更新用户自己的资源。</p>
@@ -11,7 +11,7 @@
 <p>例如：</p>
 <pre>
 require 'rest_client'
-response = RestClient.post "http://api.zhaopin.com/asks/4fbf3cd49bd4bf03b8000028/answer?client_id=4f853634c3666e05e1000002", { "answer"=>{"body"=>"Body Content Here"}}
+response = RestClient.post "http://api.kejian.tv/asks/4fbf3cd49bd4bf03b8000028/answer?client_id=4f853634c3666e05e1000002", { "answer"=>{"body"=>"Body Content Here"}}
 </pre>
 
 
@@ -26,7 +26,7 @@ response = RestClient.post "http://api.zhaopin.com/asks/4fbf3cd49bd4bf03b8000028
 <p>例如：</p>
 <pre>
 require 'rest_client'
-response = RestClient.post "http://api.zhaopin.com/asks/4e9480a661300314720001b3/answer?client_id=4f853634c3666e05e1000002", { "answer"=>{"body"=>"范德萨的方式"}}
+response = RestClient.post "http://api.kejian.tv/asks/4e9480a661300314720001b3/answer?client_id=4f853634c3666e05e1000002", { "answer"=>{"body"=>"范德萨的方式"}}
 </pre>
 
 

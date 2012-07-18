@@ -1,15 +1,15 @@
-<h1 id="section">智联招聘: Kejian.TV开放应用程序接口 - 访问需要用户认证的资源</h1>
+<h1 id="section">课件交流系统: Kejian.TV开放应用程序接口 - 访问需要用户认证的资源</h1>
 
 <h2>访问需要用户认证的资源</h2>
-<p>有些资源是需要登录才能操作的，例如以某用户的身份关注另外的用户。智联招聘Kejian.TVAPI使用OAuth来进行单个用户的认证。特殊受信应用程序无需OAuth认证。</p>
+<p>有些资源是需要登录才能操作的，例如以某用户的身份关注另外的用户。课件交流系统Kejian.TVAPI使用OAuth来进行单个用户的认证。特殊受信应用程序无需OAuth认证。</p>
 
 <h2>什么是OAuth</h2>
 <p>正如现在的汽车往往提供一把仆从钥匙（Valet Key），即只能点火以及打开驾驶员侧门，而打不开往往放有贵重物品的后备箱和杂物箱的一把钥匙，Oauth就是为了让用户在不提供他的用户名密码的情况下，授予应用程序一些权限，让它访问用户的部分资源。</p>
-<p>智联招聘Kejian.TVAPI实现的是Oauth 2.0。</p>
+<p>课件交流系统Kejian.TVAPI实现的是Oauth 2.0。</p>
 
 <h2>如何通过获取访问令牌(即仆从钥匙)？</h2>
 
-<p>以下以获取用户在智联招聘Kejian.TV的已登录用户的用户名为例，演示如何使用Kejian.TVAPI的OAuth认证功能。</p>
+<p>以下以获取用户在课件交流系统Kejian.TV的已登录用户的用户名为例，演示如何使用Kejian.TVAPI的OAuth认证功能。</p>
 
 <p>需要两个步骤，第一个步骤是，您的应用程序需要向着用户询问获取他们数据的权限。如果用户同意，客户端将收到一个授权码。第二个步骤是客户端将带着授权码以及（以前注册应用程序的时候获得的）访问密钥去Kejian.TV的服务器上获取访问令牌(即仆从钥匙)。</p>
 
@@ -18,7 +18,7 @@
 <p>一个例子如下。</p>
 
 <pre>
-http://api.zhaopin.com/oauth/authorization?response_type=code&scope=all&client_id=4f8adcae8abf9f09fb000002&redirect_uri=http://wendao.ofpsvr.org/redirect_receive
+http://api.kejian.tv/oauth/authorization?response_type=code&scope=all&client_id=4f8adcae8abf9f09fb000002&redirect_uri=http://wendao.ofpsvr.org/redirect_receive
 </pre>
 
 <p>让用户访问这个地址，并选择是否同意。</p>
@@ -53,7 +53,7 @@ http://api.zhaopin.com/oauth/authorization?response_type=code&scope=all&client_i
 <p>您只需将令牌附在请求URI的最后，"token=..."。例如：</p>
 
 <pre>
-$ curl -i "http://api.zhaopin.com/current_user?token=750c7c283528df4335049a7339fc8c78687250bbcd422b7b4ec5359644e92c6a"
+$ curl -i "http://api.kejian.tv/current_user?token=750c7c283528df4335049a7339fc8c78687250bbcd422b7b4ec5359644e92c6a"
 HTTP/1.1 200 OK 
 Content-Type: application/json; charset=utf-8
 X-Ua-Compatible: IE=Edge
@@ -73,7 +73,7 @@ Set-Cookie: _quora_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWQ5NmQ2NGE3YmM2MGUxN
 
 <p>或者放置在请求HTTP头的“Authorization”中。例如</p>
 <pre>
-$ curl -H "Authorization: token 750c7c283528df4335049a7339fc8c78687250bbcd422b7b4ec5359644e92c6a" http://api.zhaopin.com/current_user
+$ curl -H "Authorization: token 750c7c283528df4335049a7339fc8c78687250bbcd422b7b4ec5359644e92c6a" http://api.kejian.tv/current_user
 HTTP/1.1 200 OK 
 Content-Type: application/json; charset=utf-8
 X-Ua-Compatible: IE=Edge

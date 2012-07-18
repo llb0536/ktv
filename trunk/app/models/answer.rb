@@ -104,8 +104,8 @@ class Answer
       "MsgSubType"=>3010,
       "Receiver"=>self.ask.user.zhaopin_ud,
       "Sender"=>"#{self.user.name}",
-      "SenderUrl"=>"http://wendao.zhaopin.com/users/#{self.user.slug}",
-      "SendContent"=>"<P><a href=\"http://wendao.zhaopin.com/users/#{self.user.slug}\">#{self.user.name}</a>回答了你的问题“<a href=\"http://wendao.zhaopin.com/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+      "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>回答了你的问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})
@@ -116,8 +116,8 @@ class Answer
         "MsgSubType"=>3020,
         "Receiver"=>item.zhaopin_ud,
         "Sender"=>"#{self.user.name}",
-        "SenderUrl"=>"http://wendao.zhaopin.com/users/#{self.user.slug}",
-        "SendContent"=>"<P><a href=\"http://wendao.zhaopin.com/users/#{self.user.slug}\">#{self.user.name}</a>回答了你关注的问题“<a href=\"http://wendao.zhaopin.com/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+        "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
+        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>回答了你关注的问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
         "SendContentUrl"=>"",
         "OperateUrl"=>""
     	})

@@ -47,7 +47,17 @@ class Courseware
     'doc' => 'Word文档',
     'books' => '课本封皮'
   }
-  
+  def asynchronously_clean_me
+    bad_ids = [self.id]
+    Util.bad_id_out_of!(User,:thanked_courseware_ids,bad_ids)
+    thanked = false
+    User.where(:thanked_courseware_ids=>self.id).each do |u|
+      u.inc(:thank_coursewares_count,-1)
+      thanked = true
+    end
+    self.user.inc(:thank_coursewares_count,-1) if thanked
+    self.topic_inst.redis_search_index_create
+  end
   field :status
   field :uploader_id
   
@@ -77,7 +87,7 @@ class Courseware
   field :width, :type => Integer, :default => 0
   field :height, :type => Integer, :default => 0
   field :slides_count, :type => Integer, :default => 0
-  field :thanks_count, :type => Integer, :default => 0
+  field :thanked_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
   field :views_count, :type => Integer, :default => 0
   field :version, :type => Integer, :default => 0

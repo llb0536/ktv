@@ -17,7 +17,7 @@ Client.delete_all
 
 @scope        = Scope.new
 @scope.name   = 'all'
-@scope.uri    = "http://wendao.zhaopin.com/scopes/#{@scope.id}"
+@scope.uri    = "http://kejian.tv/scopes/#{@scope.id}"
 @scope.values = @scope.normalize("asks/index asks/show asks/create asks/update asks/destroy users/index users/show users/create users/update users/destroy")
 @scope.save!
 

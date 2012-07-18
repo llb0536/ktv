@@ -4007,15 +4007,9 @@ var swfobject = function () {function A() {
 }), $(function () {
     if ($("#presentation",'.__sdk')) {
         var a = $("#presentation",'.__sdk');
-        $(".like.signed_out a",'.__sdk').click(function () {
-            return $("#sign_in",'.__sdk').click(), !1
-        }), $("a.like",'.__sdk').live("ajax:success", function (a, b) {
-            $("a.likes",'.__sdk').text(b.likes_count + " Fan" + (b.likes_count != 1 ? "s" : "")), $(".like",'.__sdk').hide(), $(".unlike",'.__sdk').show()
-        }), $("a.unlike",'.__sdk').live("ajax:success", function (a, b) {
-            $("a.likes",'.__sdk').text(b.likes_count + " Fan" + (b.likes_count != 1 ? "s" : "")), $(".unlike",'.__sdk').hide(), $(".like",'.__sdk').show()
-        }), $("#fans",'.__sdk').hide(), $("ul.delimited a.likes",'.__sdk').click(function () {
+        $("ul.delimited a.likes",'.__sdk').click(function () {
             $('#tabs a[href="#fans"]','.__sdk').click()
-        })
+        });
     }
 }), $(function () {
     $("div.preview",'.__sdk').hover(function () {

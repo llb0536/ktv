@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
   
   gem.authors = ["Minqi Pan", "Yunlong Lee"]
   gem.description = %q{Simple Ruby wrapper for wendao API}
-  gem.email = ['pmq2001@gmail.com', 'yunlong.li@zhaopin.com.cn']
+  gem.email = ['pmq2001@gmail.com', 'yunlong.li@kejian.tv.cn']
   gem.files = `git ls-files`.split("\n")
   gem.homepage = 'https://github.com/pmq20/wendao'
   gem.name = 'wendao'

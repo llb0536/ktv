@@ -36,6 +36,7 @@ Quora::Application.routes.draw do
   resources :coursewares do
     member do
       get 'download'
+      get "thank"
     end
   end
   get '/embed/:id' => 'coursewares#embed'
