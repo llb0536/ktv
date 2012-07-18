@@ -62,6 +62,7 @@
     window.loginUser = "";
   <% end %>
   </script>
+  <%= yield :armpit %>
 </head>
 
 <body id="psvr_subject_<%= @psvr_subject %>" style="<%=yield :body_style%>">
@@ -74,7 +75,7 @@
     <div class="wrapper">
       <h1><a href="/" id="core_logotext_wrap"><%= image_tag "logotext-#{@psvr_subject}.png",:alt => "课件交流系统#{@psvr_subject2}",:id=>'core_logotext' %></a></h1>
       <form accept-charset="UTF-8" action="/search" id="search_form" method="get" data-width-tobe="<%= @psvr_subject3 %>">
-        <input type="text" id="q" name="q" value="" autocomplete="off" class="placeholded" placeholder="快速查找..." />
+        <input type="text" id="q" name="q" value="" autocomplete="off" class="placeholded" placeholder="快速搜索..." />
       </form>
       <div class="navigation">
         <ul>
@@ -123,23 +124,19 @@
   <% end %>
   </div>
 </div>
-<div style="background:none repeat scroll 0 0 #F5F5F5;" id="results_tray_div"><div class="wrapper"><div class="__qua" id="results_tray" data-data-height="56" style="height:0px">
-  <div class=" search full_search" id="results_tray_content" style="display:none">
-    <div class=" search_contents navigator">
-      <div id="shell_wrapper">
-       <div id="__w2_aLRc1oN_results_frame" class="results_frame">
-       <ul id="core_search_ul">
-         <li class="instruction"><a href="#" class="result_item result_item0">请输入汉字、拼音或英文单词作为关键词，这里将快速显示定位结果</a></li>
-       </ul>
-       <ul id="core_search_ul_new">
-       </ul>
-       </div>
-      </div>
-    </div>
-  </div>
-  <div class="row results_tray" style="display: block;height: 100%;"> </div>
-</div></div></div>
 
+<div style="background:none repeat scroll 0 0 #F5F5F5;" id="results_tray_div">
+<div class="wrapper">
+<div class="__qua" id="results_tray" data-data-height="32" style="height:0px">
+<div id="__w2_bOT1DHU_results_frame" class="results_frame new_results_frame" style="">
+  <ul id="core_search_ul">
+<li class="instruction" id="__w2_eqidaIV_list_item_0"><a class="result_item" href="#">请输入汉字或拼音作为关键词，这里将立即显示搜索结果</a></li>
+  </ul></div>
+                  
+                  
+</div>
+</div>
+</div>
 
   <%= yield %>
   

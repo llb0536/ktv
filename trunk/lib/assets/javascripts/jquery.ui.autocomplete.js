@@ -1,5 +1,5 @@
 /*!
- * jQuery UI Autocomplete 1.8.20
+ * jQuery UI Autocomplete 1.8.21
  *
  * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -57,16 +57,22 @@ $.widget( "ui.autocomplete", {
 				var keyCode = $.ui.keyCode;
 				switch( event.keyCode ) {
 				case keyCode.PAGE_UP:
-					self._move( "previousPage", event );
+          // self._move( "previousPage", event );
+          return;
 					break;
 				case keyCode.PAGE_DOWN:
-					self._move( "nextPage", event );
+          // self._move( "nextPage", event );
+          return;
 					break;
 				case keyCode.UP:
-					self._keyEvent( "previous", event );
+          // self._keyEvent( "previous", event );
+          App.search_move(-1);
+          return;
 					break;
 				case keyCode.DOWN:
-					self._keyEvent( "next", event );
+          // self._keyEvent( "next", event );
+          App.search_move(1);
+          return;
 					break;
 				case keyCode.ENTER:
 				case keyCode.NUMPAD_ENTER:
@@ -296,7 +302,7 @@ $.widget( "ui.autocomplete", {
 	_search: function( value ) {
 		this.pending++;
 		this.element.addClass( "ui-autocomplete-loading" );
-
+    // clue starts
 		this.source( { term: value }, this._response() );
 	},
 

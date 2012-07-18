@@ -85,6 +85,9 @@ class Topic
   field :will_autofollow,:type=>Boolean,:default=>false
   field :has_autofollow,:type=>Boolean,:default=>false
   field :name
+  def title
+    self.name
+  end
   field :summary
   field :cover
   mount_uploader :cover, CoverUploader
@@ -205,9 +208,14 @@ class Topic
     end
     ret
   end
+
   after_save{
     self.class.set_id(self.name,self.id)
   }
+  def update_consultant!
+    self.class.set_name(self.id,self.name)
+    self.class.set_id(self.name,self.id)
+  end
  
   protected
   def insert_action_log(action)

@@ -4096,7 +4096,7 @@ im.zm.autoLayout.prototype = {
         var q = "";
         var a, d;
         J.isSurprise ? d = "price-label small-label-gift" : d = "price-label small-label";
-        a = '<div class="' + d + '"><span class="leftfold png"></span><span class="rightfold png"><a href="/topics/'+picBoard[j].price_slug+'">' + picBoard[j].price + "</a></span></div>";
+        a = '<div class="' + d + '"><span class="leftfold png"></span><span class="rightfold png"><a href="/topics/'+picBoard[j].boardId+'">' + picBoard[j].price + "</a></span></div>";
         if (picBoard[j].isSurprise) {
             a = '<div class="' + d + '"><span class="leftfold png"></span><span class="rightfold png">免费中</span></div>'
         }
@@ -4152,7 +4152,7 @@ im.zm.autoLayout.prototype = {
         if (picBoard[j].boardName == "我的收集") {
             q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + F + "收集</p><p>" + v + "</p></div></li>"].join("")
         } else {
-            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '发布到课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
+            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '发布到课程 <a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
         }
         var b;
         if (picBoard[j].userId == loginUser.id) {
@@ -5029,7 +5029,7 @@ window.autoLayout = {
                 autoLayout.isHasNextPage = false;
                 $("#loadMore").hide();
                 $("#firstload").hide();
-                                console.log(5026);
+                                console.log(5032);
                 return
             }
             if (autoLayout.pageNums > 1 && !loginUser.id) {
@@ -5051,7 +5051,7 @@ window.autoLayout = {
                 } else {
                     surpriseClass = "price-label small-label"
                 }
-                priceCon = '<div class="' + surpriseClass + '"><span class="leftfold png"></span><span class="rightfold png"><a href="/topics/'+picBoard[j].price_slug+'">' + picBoard[j].price + "</a></span></div>"
+                priceCon = '<div class="' + surpriseClass + '"><span class="leftfold png"></span><span class="rightfold png"><a href="/topics/'+picBoard[j].boardId+'">' + picBoard[j].price + "</a></span></div>"
                 // if (parseInt(picBoard[j].price)) {
                 //     priceCon = '<div class="' + surpriseClass + '"><span class="leftfold png"></span><span class="rightfold png">¥' + Math.floor(picBoard[j].price) / 100 + "</span></div>"
                 // } else {
@@ -5122,7 +5122,10 @@ window.autoLayout = {
                 if (picBoard[j].boardName == "我的收集") {
                     shareContent = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + cel + "收集</p><p>" + isO + "</p></div></li>"].join("")
                 } else {
-                    shareContent = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + '发布于课程 <a href="/board/' + picBoard[j].userId + "/" + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + isO + "</p></div></li>"].join("")
+                    shareContent = [
+                    '<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>',
+                    '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + picBoard[j].timeAgo+'发布于课程<a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a>.</p><p>" + isO + "</p></div></li>"
+                    ].join("")
                 }
                 var _action;
                 if (picBoard[j].userId == loginUser.id) {
@@ -5207,7 +5210,7 @@ window.autoLayout = {
             $("#footer").removeClass("fixedfooter").show();
             if (document.getElementById("firstload")) {
                 document.getElementById("firstload").style.display = "none"
-                                // console.log(5204);
+                $("abbr.timeago").timeago()
             }
             autoLayout.loading = true;
 
@@ -5590,7 +5593,7 @@ window.autoLayout = {
             k($(this))
         });
         window.App.pin_resize_psvr_handler = function () {
-          console.log(autoLayout);
+          console.log('resized!');
             if (!autoLayout.defaults.isFixed) {
                 autoLayout.debounceFunc(autoLayout.updateDiv(), 30, true)
             }

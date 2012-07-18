@@ -30,9 +30,9 @@ def redis_connect!(index=0)
 
   Redis::Search.configure do |config|
     config.redis = $redis_search
-    config.redis_slave = $redis_search_slave
     config.complete_max_length = 100
     config.pinyin_match = true
+    config.disable_rmmseg = false
   end
 
   # Resque

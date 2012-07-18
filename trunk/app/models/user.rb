@@ -229,6 +229,9 @@ class User
   field :is_expert_why
   field :is_jingying_why
   field :name
+  def title
+    self.name
+  end
   field :slug
   field :tagline
   field :tagline_changed_at
@@ -520,7 +523,7 @@ class User
   
   redis_search_index(:title_field => :name2,
     :prefix_index_enable => false,
-    :ext_fields => [:id, :slug,:avatar_small38,:tagline, :score, :followers_count, :answers_count, :search_score],
+    :ext_fields => [:id, :slug,:avatar_small38,:tagline, :score, :followers_count, :answers_count, :search_score, :coursewares_count],
     :score_field => :search_score)
   def name2
     "#{self.name}@@#{self.tagline}"

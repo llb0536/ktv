@@ -8,6 +8,7 @@ case $response in
         rm -rf home/data/ktvmongodump/
         tar xzf ktvmongodump.tar.gz
         mongorestore --drop home/data/ktvmongodump/
+        bundle exec rake consultant:index  
         ;;
     *)
         ;;

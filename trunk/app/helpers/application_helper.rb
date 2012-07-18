@@ -1,5 +1,11 @@
 # coding: utf-8
 module ApplicationHelper
+  def timeago(time, options = {})
+    options[:class]
+    options[:class] = options[:class].blank? ? "timeago" : [options[:class],"timeago"].join(" ")
+    content_tag(:abbr, "", options.merge(:title => time.iso8601)) if time
+  end
+
   def cancel_href
     if 'GET'==request.method
       'javascript:history.go(-1)'

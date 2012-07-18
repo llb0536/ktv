@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     render layout:'application_for_devise'
   end
   def about
-    
+    @seo[:title] = '关于我们'
   end
   def shuffle
     redirect_to Courseware.skip(rand(Courseware.count)).first

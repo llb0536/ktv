@@ -27,10 +27,10 @@ module UsersHelper
     end
     return url
   end
-  def avatar_tag(user,size=:normal)
+  def avatar_tag(user,size=:normal,style='')
     s=AvatarUploader::SIZES[size]
     url = avatar_url(user,size)
-    ret="<img src=\"#{url}\" class=\"imgHead\" width=\"#{s}\" height=\"#{s}\" alt=\"\">".html_safe
+    ret="<img src=\"#{url}\" class=\"imgHead\" width=\"#{s}\" height=\"#{s}\" alt=\"\" style=\"#{style}\">".html_safe
     return ret
   end
   def user_path2(user)

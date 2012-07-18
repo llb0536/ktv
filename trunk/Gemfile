@@ -21,6 +21,11 @@ gem "bson_ext"
   gem 'uglifier', '>= 1.0.3'
 #end
 gem 'jquery-rails'
+gem "jquery-atwho-rails", ">=0.1.6"
+# 禁用 assets 日志
+gem 'quiet_assets', ">=1.0.1"
+# 分享功能
+gem "social-share-button", ">= 0.0.3"
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 
@@ -110,7 +115,7 @@ gem 'resque-pool'
 # Diff 内容并输出 HTML 格式
 # gem "htmldiff", :git => "git://github.com/huacnlee/htmldiff.git"
 
-gem "redis-search",path:'vendor/redis-search'
+gem "redis-search",'>=0.8.0'
 gem 'redis-namespace'
 
 group :development do

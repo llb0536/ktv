@@ -1,6 +1,6 @@
 json.avatarTiny avatar_url_quick(courseware.user_id,:small30)
 json.selectedBoardIds []
-json.boardId 1481195
+json.boardId Topic.get_id(courseware.topic)
 json.isSurprise false
 json.sharePicId 159510
 json.shareTitle courseware.title
@@ -11,7 +11,6 @@ json.path courseware_path(courseware)
 json.title courseware.title
 json.boardPicId 825398
 json.price courseware.topic
-json.price_slug Topic.get_id(courseware.topic)
 json.isOriginal true
 json.nickName User.get_name(courseware.user_id)
 json.userId User.get_slug(courseware.user_id)
@@ -21,3 +20,4 @@ json.boardName courseware.topic
 json.comments []
 json.boardUserId 251621
 json.mediumZoom asset_url(courseware.pinpic)
+json.timeAgo timeago(courseware.created_at)

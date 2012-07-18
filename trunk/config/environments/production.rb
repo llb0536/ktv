@@ -58,6 +58,7 @@ Quora::Application.configure do
     cpanel_oauth.js
     validationEngine.js
     keditor/*
+    about.css
   }
   config.serve_static_assets = false
   # 别忘了同时修改:
