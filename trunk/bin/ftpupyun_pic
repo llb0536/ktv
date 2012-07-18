@@ -13,5 +13,5 @@ SERVER="v0.ftp.upyun.com"
 ORIGIN=$1
 TARGET=$2
 
-ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN/thumb_slide_*
-ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN/pin.*
+ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN/$3thumb_slide_*
+ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN/$3pin.*

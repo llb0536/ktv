@@ -52,19 +52,18 @@ presentation[published_at]	2012/07/13
 utf8	✓
 =end
     cw = Courseware.where(:_id => presentation[:id]).first
-    if cw.nil?
-        cw = Courseware.new
-        cw.uploader_id = current_user.id
-        cw.sort = 'pdf'
-        cw.pdf_filename = presentation[:pdf_filename]
-        cw.course_long_name = presentation[:course_long_name]
-        cw.course_long_name = '课程请求' if cw.course_long_name.blank?
-        cw.title = presentation[:title]
-        cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
-        cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
-        cw.status = 1
-        cw.save!
-    end
+    cw = Courseware.new if cw.nil?
+    cw.uploader_id = current_user.id
+    cw.sort = 'pdf'
+    cw.pdf_filename = presentation[:pdf_filename]
+    cw.course_long_name = presentation[:course_long_name]
+    cw.course_long_name = '课程请求' if cw.course_long_name.blank?
+    cw.title = presentation[:title]
+    cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+    cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
+    cw.status = 1
+    cw.save!
+
     Resque.enqueue(TranscoderJob,cw.id)
     json = {
       category_ids: [ nil ],
@@ -124,6 +123,50 @@ HEREDOC
   def presentations_update
     @courseware = Courseware.find(params[:id])
     presentation = params[:presentation]
+    if presentation[:pdf_filename].present?
+      # reupload
+      cw = @courseware
+      cw.uploader_id = current_user.id
+      cw.sort = 'pdf'
+      cw.pdf_filename = presentation[:pdf_filename]
+      cw.course_long_name = presentation[:course_long_name]
+      cw.course_long_name = '课程请求' if cw.course_long_name.blank?
+      cw.title = presentation[:title]
+      cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+      cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
+      cw.status = 1
+      # reset before re-upload
+      cw.slides_count = 0
+      cw.pdf_slide_processed = 0
+      cw.version += 1
+      # over
+      cw.save!
+
+      Resque.enqueue(TranscoderJob,cw.id)
+      json = {
+        category_ids: [ nil ],
+        created_at: '2012-07-13T09:53:10-04:00',
+        creator_id: '4f2fb64e0f6f27001f010a3a',
+        description: cw.desc,
+        event_id: nil,
+        featured_at: nil,
+        id: "#{cw.id}",
+        likes_count: 0,
+        name: "#{cw.title}",
+        pdf_filename: "#{cw.pdf_filename}",
+        published_at: '2012-07-13T00:00:00-04:00',
+        searches: nil,
+        short_url: nil,
+        slides: [],
+        slug: "#{cw.id}",
+        state: 'pending',
+        tags: [],
+        updated_at: '2012-07-13T09:53:10-04:00',
+        updater_id: "#{current_user.id}"
+      }
+      render json:json
+      return
+    end
     @courseware.course_long_name = presentation[:course_long_name]
     @courseware.title = presentation[:title]
     @courseware.save!

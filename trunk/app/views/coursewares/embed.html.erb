@@ -1,6 +1,6 @@
 <%
 @slides = 0.upto(@courseware.slides_count-1).collect do |i|
-  asset_url_eb("#{@courseware.id}/slide_#{i}.jpg")
+  asset_url_eb("#{@courseware.id}/#{@courseware.revision}slide_#{i}.jpg")
 end
  %>
 <% content_for :armpit do %>
@@ -60,7 +60,7 @@ end
         preview: <%=raw @slides.to_json%>,
         original: <%=raw @slides.to_json%>
       },
-      thumbs: <%=raw 0.upto(@courseware.slides_count-1).collect{|i| asset_url("cw/#{@courseware.id}/thumb_slide_#{i}.jpg") }.to_json%>,
+      thumbs: <%=raw 0.upto(@courseware.slides_count-1).collect{|i| asset_url("cw/#{@courseware.id}/#{@courseware.revision}thumb_slide_#{i}.jpg") }.to_json%>,
       current: 0,
       next: function() {
         if (Slide.current == Slide.urls.length - 1) {

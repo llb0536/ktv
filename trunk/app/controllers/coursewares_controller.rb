@@ -35,7 +35,7 @@ class CoursewaresController < ApplicationController
     if @courseware.xunlei_url.present?
       downurl = @courseware.xunlei_url
     else
-      resource = "#{@courseware.id}.zip"
+      resource = "#{@courseware.id}#{@courseware.revision}.zip"
       expires = 2.minutes.since.to_i
       signature = Sndacs::Signature.generate_temporary_url_signature(:bucket => 'ktv-down',:resource => resource,:secret_access_key => Setting.snda_key,:expires_at => expires)
       downurl = "http://storage-huabei-1.sdcloud.cn/ktv-down/#{resource}?SNDAAccessKeyId=#{Setting.snda_id}&Expires=#{expires}&Signature=#{signature}"

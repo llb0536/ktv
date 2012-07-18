@@ -32,6 +32,11 @@ Ktv.configure do |config|
      proxy}.each do |item|
     config.send(:"#{item}=",Setting.send(item))
   end
+  config.upyun_username = "pmq20"
+  config.upyun_password = 'jknlff8-pro-17m7755'
+  config.upyun_bucket = "ktv-pic"
+  config.upyun_api_host = 'http://v0.api.upyun.com'
+  config.upyun_bucket_domain = "http://ktv-pic.b0.upaiyun.com"
 end
 
 # c.f. /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.6/lib/sprockets/helpers/rails_helper.rb  Line: 53/173:0                                                                    

@@ -2,6 +2,7 @@
 <section class="supplimental">
   <div class="wrapper">
 <%= form_for @courseware,:url => "/presentations/#{@courseware.id}", :html => { :method => :put,'data-s3' =>@config.to_json,  :class => 'uploaded', :id=>'upload_presentation', :autocomplete=>"off" } do |f| %>
+  <input id="presentation_uptime" name="presentation[uptime]" type="hidden" value="<%=@uptime%>" />
       <div class="primary_info">
 
         <h1>标注课件信息</h1>
@@ -24,6 +25,9 @@
               <script src="/embed/<%= @courseware.id %>.js"></script>
             </div>
         </div>
+        <% content_for :upload_armpit do %>
+          <a class="button cancel reupload" id="reupload" href="javascript:void(0)" style="float:right">取消</a>
+        <%end%>
         <%= render 'upload' %>
         
 

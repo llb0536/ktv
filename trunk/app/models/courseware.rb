@@ -80,6 +80,7 @@ class Courseware
   field :thanks_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
   field :views_count, :type => Integer, :default => 0
+  field :version, :type => Integer, :default => 0
   #-=xunlei=-
   field :xunlei_url
   belongs_to :user
@@ -184,6 +185,14 @@ class Courseware
     return true if self.width.present? and self.height.present? and self.width < self.height
     return false
   end
+  def revision
+    if self.version > 0
+      revision = self.version
+    else
+      revision = ''
+    end
+    revision
+  end
   def slide_width
     return 960 if self.thin?
     return 1024
@@ -191,9 +200,6 @@ class Courseware
   def go_to_normal
     self.update_attribute(:status,0)
     # insert_courseware_action_log('GONE_NORMAL')
-  end
-  def img_path
-    "cw/#{self.id}/thumb_slide_0.png"
   end
   def pinpic
     "cw/#{self.id}/#{self.pinpicname}"

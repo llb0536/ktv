@@ -1,7 +1,9 @@
 #!/bin/bash -x
 
 kill -USR2 `cat tmp/pids/unicorn.pid`
-kill -HUP `cat tmp/pids/resque-pool.pid`
+kill -QUIT `cat tmp/pids/resque-pool.pid`
+rm tmp/pids/resque-pool.pid
+bundle exec resque-pool --daemon --environment production --pidfile tmp/pids/resque-pool.pid
 bin/check
 sleep 20
 bin/check
