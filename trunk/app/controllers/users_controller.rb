@@ -42,7 +42,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @coursewares = @user.coursewares.normal.order('id desc').page params[:page]
+    # todo now!
+    @coursewares = @user.coursewares.normal.order('id desc')
     # 
     # @per_page = 10
     # @logs = []

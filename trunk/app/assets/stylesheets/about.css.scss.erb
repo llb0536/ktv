@@ -12,7 +12,7 @@
 		margin-top: 0.5em;
 		padding-bottom: 0.5em;
 	}
-	h2 em, h2 em dfn, h2 em abbr, h2 em acronym {
+	h2 em, h2 em a, h2 em abbr, h2 em acronym {
 		color: #767676;
 	}
 	h3 {
@@ -24,7 +24,7 @@
 		margin-bottom: 0.8em;
 		padding-bottom: 0.2em;
 	}
-	dfn, abbr, acronym {
+	abbr, acronym {
 		border-bottom: #333333 1px dotted;
 		color: #333333;
 		cursor: help;
@@ -214,7 +214,7 @@
 		margin-left: -999em;
 	}
 	#main h1 {
-		background: #FFFFFF url(<%=asset_path('abt/avatar.png')%>) no-repeat -5px 28px;
+		background: #FFFFFF url(<%=asset_path('abt/avatar.png')%>) no-repeat 14px 28px;
 		font-size: 1.5em;
 		font-weight: normal;
 		padding: 15px 0;
@@ -311,12 +311,15 @@
 	#copy:hover {
 		color: inherit;
 	}
-	#copy:hover dfn {
-		border-bottom: #767676 1px dotted;
-		color: #000000;
-	}
-	#copy dfn {
+	#copy a {
+	  text-decoration:none;
+		border-bottom: #333333 1px dotted;
+		color: #333333;
 		border-bottom: 0;
 		color: #999999;
+	}
+	#copy:hover a {
+		border-bottom: #767676 1px dotted;
+		color: #000000;
 	}
 }
