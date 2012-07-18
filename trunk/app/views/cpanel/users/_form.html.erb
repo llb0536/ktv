@@ -67,7 +67,8 @@
       <div class="search_form_row" style="float:left;margin-left:80px;border:1px solid #ccc;">
         <div style="margin-right:10px;float:left;line-height:30px;">当前头像:</div>
         <div class="row" id="preview" style="float:left;margin: 10px 20px;">
-          <%= image_tag(@user.avatar.normal.url,:id=>"imghead") %>
+          <img src="<%= @user.avatar.normal.url %>" id="imghead">
+          
         </div>
       </div>
       <div style="clear:both;"></div>

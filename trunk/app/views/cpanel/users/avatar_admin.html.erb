@@ -15,7 +15,7 @@
       <%@users.each do |u|%>
         <div style="float:left;width:100px;height:125px;margin-left:45px;margin-top:10px;">
           <a href="/users/<%=u.slug%>" target="_blank" style="color:black;" title="<%=u.name%>">    
-            <%= image_tag(u.avatar.normal.url,width:100,height:100) %>
+            <img src="<%=u.avatar.normal.url%>" width="100" height="100" %>
           </a>
           <input name="avatars[]" type="checkbox" value="<%=u.id%>" style="width:13px;" class="sub_check">
           <a href="<%=edit_cpanel_user_path u%>" target="_blank" style="color:black;" title="<%=u.name%>">
