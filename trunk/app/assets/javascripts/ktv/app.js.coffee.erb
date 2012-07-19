@@ -171,10 +171,8 @@ $(document).ready ->
         $('#search_form').addClass("searching")
         request.q = request.term
         request.term = null
-        $.getJSON( "/search/all", request, ( data, status, xhr ) ->
+        $.get("/search/all", request, ( data, status, xhr ) ->
           $('#search_form').removeClass("searching")
-          App.search_cache[ term ] = data
-          App.search_cater( data , term)
         )
   })
   $('#q').bind( "input.autocomplete", ->

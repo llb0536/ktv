@@ -106,6 +106,7 @@ class Topic
   field :cover
   mount_uploader :cover, CoverUploader
 
+  field :coursewares_count, :type => Integer, :default => 0
   field :asks_count, :type => Integer, :default => 0
   field :followed_count, :type => Integer, :default => 0
 

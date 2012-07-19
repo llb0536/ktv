@@ -176,3 +176,5 @@ gem 'to_xls', '~> 1.0.0'
 gem 'sndacs'
 gem 'grim', '>= 0.3.0'
 gem 'dalli'
+
+gem 'rails_kindeditor', '~> 0.3.0'

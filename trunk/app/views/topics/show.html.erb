@@ -52,7 +52,7 @@ App.data = {
   									<div id="ld_llfWRv_13710">
   										<div id="ld_Sb8jgF_15697">
   											<div class="profile_photo" id="__w2_hvmdzzb_photo">
-  												<a href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_f78iPLQ_link"><img class="profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-t-46339-100-3e3aRtDheKdnLmAPYWnSHZhkHfnbGwUH.jpeg" width="100" alt="Analysis (mathematical)" height="100"/></a>
+  												<a href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_f78iPLQ_link"><img class="profile_photo_img" src="<%= cover_url(@topic) %>" width="100" alt="Analysis (mathematical)" height="100"/></a>
   												<div class="edit_profile_photo hidden" id="__w2_hvmdzzb_edit">
   													<a href="#" id="__w2_rxgk7xr_open_edit_photo">Edit Photo</a>
   												</div>
@@ -65,13 +65,12 @@ App.data = {
   										<div class="simple_tabs">
   											<ul class="list_contents" id="__w2_WIUnu5g_tabs">
   												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/organize" id="__w2_WIUnu5g_organize">我要提问</a></li>
-  												<li class="tab linked_list_item first"><a class="link" href="/Analysis-mathematical/faq" id="__w2_WIUnu5g_faq">上传课件</a></li>>
+  												<li class="tab linked_list_item first"><a class="link" href="/Analysis-mathematical/faq" id="__w2_WIUnu5g_faq">上传课件</a></li>
   												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/mentions" id="__w2_WIUnu5g_mentions">1 @提到该课程</a></li>
   												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/log" id="__w2_WIUnu5g_log">变更历史</a></li>
   											</ul>
   										</div>
   									</div>
-  									<span class="row p0_5 light"><a class="# repost_link" href="#" id="__w2_jkUFoFP_link">转发</a></span>
   								</div>
   								<div id="ld_llfWRv_13712">
   									<div class="row section section_border">
@@ -146,7 +145,7 @@ App.data = {
                         		</span>
                         		<div class="edit_link_divider">
                         		</div>
-                        		<a id="__w2_qT1rmRt_inline_editor_link" href="#" class="edit inline_editor_edit"><span id="__w2_qT1rmRt_inline_editor_link_text">Edit</span></a>
+                        		<a id="__w2_qT1rmRt_inline_editor_link" href="#" class="edit inline_editor_edit"><span id="__w2_qT1rmRt_inline_editor_link_text">编辑课程简介</span></a>
                         	</div>
                         	<div id="__w2_qT1rmRt_inline_editor_form" class="rteditor inline_editor_content inline_editor_compact">
                         		<div class="inline_editor_form">
@@ -177,10 +176,10 @@ App.data = {
   											<div class="row p0_5">
   												<div class="topic_wiki">
   													<div class="inline_editor_content" id="__w2_hKtwq4z_inline_editor_content">
-  														<span class="inline_editor_value"><%= @topic.summary %></span>
+  														<span class="inline_editor_value"><%=raw @topic.summary %></span>
   														<div class="edit_link_divider">
   														</div>
-  														<a class="edit inline_editor_edit" href="#" id="__w2_hKtwq4z_inline_editor_link"><span id="__w2_hKtwq4z_inline_editor_link_text">Edit</span></a>
+  														<a class="edit inline_editor_edit" href="#" id="__w2_hKtwq4z_inline_editor_link"><span id="__w2_hKtwq4z_inline_editor_link_text">编辑课程简介</span></a>
   													</div>
   													<div class="rteditor inline_editor_content hidden" id="__w2_hKtwq4z_inline_editor_form">
   														<div class="inline_editor_form">
@@ -249,7 +248,7 @@ App.data = {
                     		<div class="col w3">
                     			<div id="ld_7wKBxq_157767">
                     				<div style="padding-top:10px;" class="row">
-                    					<h3><span id="ld_7wKBxq_157783">86 个最佳问题</span></h3>
+                    					<h3><span id="ld_7wKBxq_157783"><%= @topic.coursewares_count %> 个课件</span></h3>
                     					<div class="topic_open_questions_feed">
                     						<div class="p1 row feed_item">
                     							<div id="ld_7wKBxq_157784">
@@ -286,7 +285,7 @@ App.data = {
                     						</div>
                     					</div>
                     					<div class="p1 row">
-                    						<span class="light"><a href="/Mathematics/best_questions">更多最佳问题</a></span>
+                    						<span class="light"><a href="/Mathematics/best_questions">更多课件</a></span>
                     					</div>
                     				</div>
                     			</div>
@@ -295,7 +294,7 @@ App.data = {
                     	<div class="e_col w3_5">
                     		<div id="ld_7wKBxq_157768">
                     			<div style="padding-top:10px;" class="row">
-                    				<h3><span id="ld_7wKBxq_157793">322 个悬而未决的问题</span></h3>
+                    				<h3><span id="ld_7wKBxq_157793"><%= @topic.asks_count %> 个提问</span></h3>
                     				<div class="topic_open_questions_feed">
                     					<div class="p1 row feed_item">
                     						<div id="ld_7wKBxq_157794">
@@ -332,7 +331,7 @@ App.data = {
                     					</div>
                     				</div>
                     				<div class="p1 row">
-                    					<span class="light"><a href="/Mathematics/open_questions">更多悬而未决的问题</a></span>
+                    					<span class="light"><a href="/Mathematics/open_questions">更多提问</a></span>
                     				</div>
                     			</div>
                     		</div>
@@ -345,37 +344,17 @@ App.data = {
   								</div>
   								<div class="row row_border section" id="feed">
   									<div class="col w4_5">
-  										<div class="topic_search search w4_5" id="__w2_dJIYEdS_topic_search">
-  											<div class="search_contents navigator">
-  												<form class="search_form" action="#" onsubmit="return false;" method="get" name="search_form">
-  													<div class="search_input">
-  														<div class="input_wrapper">
-  															<input class="question_box" group="__w2_dJIYEdS_interaction" placeholder="快速定位<%= @topic.name %>课程下的问题和课件..." value="" autocomplete="off" maxlength="250" type="text" tabindex="1" w2cid="dJIYEdS" id="__w2_dJIYEdS_input"/>
-  														</div>
-  													</div>
-  												</form>
-  												<div class="add_question_note attention col w3_5 hidden" id="__w2_FHcAQlD_note">
-  													<div class="notice_tip_nub">
-  														&nbsp;
-  													</div>
-  													<div class="notice_tip br5">
-  														<div class="p0_5" style="padding-top:0;">
-  															Similar questions will display as you type. If your question is available, choose it from the list.
-  														</div>
-  													</div>
-  												</div>
-  												<div id="__w2_dJIYEdS_results_shell">
-  													<div class="results_frame" id="__w2_K0rEtTO_results_frame">
-  														<ul id="__w2_K0rEtTO_results_list">
-  															<li class="instruction" id="__w2_K0rEtTO_list_item_0"><a class="result_item" href="#">搜索<%= @topic.name %>下的问题和课件</a></li>
-  														</ul>
-  													</div>
-  												</div>
-  											</div>
-  											<div class="add_topic_question" id="__w2_dJIYEdS_add_question">
-  												<a href="#" id="__w2_dJIYEdS_add_new_question"><strong>我要提问</strong></a><span class="hidden"><a href="#" id="__w2_mPJDGeT_link">Add Question</a></span>
-  											</div>
-  										</div>
+
+
+
+
+
+
+
+                      <div id="__w2_iCb47x2_topic_search" class="topic_search search w4_5"><div class="search_contents navigator"><form name="search_form" method="get" onsubmit="return false;" action="#" class="search_form"><div class="search_input"><div class="input_wrapper"><input type="text" id="__w2_iCb47x2_input" w2cid="iCb47x2" tabindex="1" maxlength="250" autocomplete="off" value="" placeholder="Search Business School Questions and Topics" group="__w2_iCb47x2_interaction" class="question_box"></div></div></form><div id="__w2_etyGLdK_note" class="add_question_note attention col w3_5 hidden"><div class="notice_tip_nub">&nbsp;</div><div class="notice_tip br5"><div style="padding-top:0;" class="p0_5">Similar questions will display as you type. If your question is available,
+                                                          choose it from the list.</div></div></div><div id="__w2_iCb47x2_results_shell"><div id="__w2_fNbMFjN_results_frame" class="results_frame" style="display: none;"><ul id="__w2_fNbMFjN_results_list"><li id="__w2_fNbMFjN_list_item_0" class="instruction"><a href="#" class="result_item">Search Business School Questions and Topics</a></li></ul></div></div></div><div id="__w2_iCb47x2_add_question" class="add_topic_question"><a id="__w2_iCb47x2_add_new_question" href="#"><strong>Add Question</strong></a><span class="hidden"><a id="__w2_ZuIblc3_link" href="#">Add Question</a></span></div></div>
+                                                          
+                                                          
   										<div id="ld_llfWRv_13721">
   											<div class="pagedlist_item" id="ld_llfWRv_13731">
   												<div class="row topic_set_feed_item" id="__w2_l3F4gS4_item">
