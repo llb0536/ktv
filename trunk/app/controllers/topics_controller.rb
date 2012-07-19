@@ -20,6 +20,10 @@ class TopicsController < ApplicationController
     if old
       render json:{suc:false,why:'这个名字已经被占用'}
     else
+      # todo: potentially slow operation
+      Courseware.where(:topic => @topic.name).each do |x|
+        x.update_attribute(:topic,params[:name])
+      end
       @topic.update_attribute(:name,params[:name])
       render json:{suc:true,name:@topic.name}
     end

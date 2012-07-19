@@ -116,12 +116,6 @@ class Courseware
         self.user_name = rests[0].strip
         self.topic = rests[1..-1].join(delim).strip
       end
-  
-      if self.school_name.present?
-        self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
-      else
-        self.course_long_name = "#{self.topic}"
-      end
     end
     
   end
@@ -170,8 +164,16 @@ class Courseware
     else
       self.user_id = self.uploader_id
     end
+  end
+  before_save :create_topic!,:if=>'self.topic_changed?'
+  def create_topic!
     topic = Topic.find_or_create_by(:name => self.topic)
     self.topic_id = topic.id
+    if self.school_name.present?
+      self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
+    else
+      self.course_long_name = "#{self.topic}"
+    end
   end
   before_save :counter_work
   def counter_work
