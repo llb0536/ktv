@@ -5,14 +5,17 @@ Quora::Application.routes.draw do
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,
       :confirmations => :account_confirmations,
+      :passwords =>  :account_passwords,
+      :sessions => :account_sessions,
+      :unlocks => :account_unlocks,
       :omniauth_callbacks => "users/omniauth_callbacks"
   }
   devise_scope :user do
     # finishing reg process
     put '/account/confirmation' => 'account_confirmations#show'
     get "/register", :to => "account#new",as:'register'
-    get "/login", :to => "devise/sessions#new",as:'login'
-    get '/logout', :to => "devise/sessions#destroy", as:'logout'
+    get "/login", :to => "account_sessions#new",as:'login'
+    get '/logout', :to => "account_sessions#destroy", as:'logout'
   end
   match "/account/auth/:provider/unbind", :to => "users#auth_unbind"
 

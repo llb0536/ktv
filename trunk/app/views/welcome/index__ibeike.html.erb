@@ -1,0 +1,87 @@
+<%
+# todo: only beike cw
+@coursewares = Courseware.normal.order('id desc').limit(3)
+%>
+<div id="content">
+             
+      <div id="widebartop">
+       <p class="navigation">您现在的位置:<a href="/">首页</a></p>
+       <p class="alllist"><a href="<%= coursewares_path %>">查看所有课件列表</a></p>
+      </div>
+      <div id="menu">
+        <ul>
+          <li><a class="current" href="/" title="最新上传"><span class="current">最新上传</span></a></li>
+          <li><a href="/coursewares/hot" title="热门Hot"><span>热门Hot</span></a></li>
+          <li><a href="/coursewares/elective" title="公共课程"><span>公共课程</span></a></li>
+          <li><a href="/coursewares/pro" title="专业课"><span>专业课</span></a></li>
+          <li><a href="/coursewares/teachers" title="教师"><span>教师</span></a></li>
+          <li><a href="/coursewares/other" title="其他"><span>其他</span></a></li>
+          <li><a href="/coursewares/all" title="课件列表"><span>所有</span></a></li>
+        </ul>
+      </div>
+      <div id="account">现收录课件条目共<%= Courseware.count %>条，总下载量次。</div>
+      <div class="post">
+      
+
+        <table>                   
+
+        <tbody><tr>
+          <% @coursewares.each do |cw| %>
+          <td style="width:190px">  
+        <table style="text-align:left" class="coursetable" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td colspan="2" style="text-align:center">
+              <a href="<%= courseware_path(cw) %>"><img alt="Coursepic1" src="<%= asset_url(cw.pinpic) %>" width="104"></a>
+          </td></tr>
+          <tr>
+            <td colspan="2" style="height:15px;overflow:hidden;font-weight:600">课件名称：</td>
+        </tr><tr>
+            <td colspan="2" align="left"><%= cw.course_long_name %></td>
+          </tr>
+          <tr>
+             <td colspan="2" style="width:60px;height:15px;overflow:hidden;font-weight:600">科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目：</td>
+             </tr>
+           <tr>
+             <td colspan="2" align="left"><%= cw.topic %></td>
+          </tr> 
+          <tr>
+             <td style="width:70px;height:15px;overflow:hidden;font-weight:600">授课教师：</td>
+             <td align="left"><%= cw.user.name %></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+             <table class="blog_info">
+              <tbody><tr>
+              <td><a href="/courses/2323#lastpost"><span class="comment">评论(0)</span></a></td>
+              <td> <span class="view"><%= cw.views_count %>人浏览</span></td>
+              </tr>
+            <tr>
+                <td><span class="date"><%= timeago(cw.created_at) %></span></td>
+                <td><span style="padding-left:1px;"><img alt="Course_down_small" src="<%=asset_path('ibeike/course_down_small.gif')%>" height="12" width="12">下载<%= cw.downloads_count %>次</span></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="padding-left:5px" align="left"><a target="_blank" href="<%= user_path cw.uploader %>"><%= cw.uploader.name %></a></td>
+              </tr>
+
+             </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        </td>
+    <% end %>
+    </tr>
+
+
+
+
+
+
+
+
+        </tbody></table>
+
+
+      
+      </div>

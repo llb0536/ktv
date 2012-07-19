@@ -2,12 +2,10 @@
 class WelcomeController < ApplicationController
   def index
     @seo[:title] = '讲义·电子书·课堂录像·习题解答·互动交流'
-    # @course = Course.find(Setting.ktv_course_id)
-    # @courseware = Courseware.find(Setting.ktv_courseware_id)
-    @newest_cw = Courseware.normal.order('id desc').limit(9)
+    render "index#{@subsite}"
   end
   def inactive_sign_up
-    render layout:'application_for_devise'
+    render "inactive_sign_up#{@subsite}",layout:'application_for_devise'
   end
   def about
     @seo[:title] = '关于我们'

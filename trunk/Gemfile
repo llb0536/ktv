@@ -50,6 +50,7 @@ gem 'chinese_pinyin'
 gem 'rmmseg-cpp-huacnlee'
 
 # 用户系统
+# 这个必须锁定版本！！我们定制的太多了
 gem 'devise','2.1.0'
 gem "omniauth-weibo", :git => 'git://github.com/pmq20/omniauth-weibo.git'
 gem "omniauth-renren", :git => 'git://github.com/pmq20/omniauth-renren.git'

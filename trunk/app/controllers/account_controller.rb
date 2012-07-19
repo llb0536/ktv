@@ -2,6 +2,7 @@
 class AccountController < Devise::RegistrationsController
   def edit
     @user = current_user
+    render "edit#{@subsite}"
   end
   def after_inactive_sign_up_path_for(resource)
     welcome_inactive_sign_up_path
@@ -13,6 +14,7 @@ class AccountController < Devise::RegistrationsController
     end
     resource = build_resource({})
     respond_with resource
+    render "new#{@subsite}"
   end
   # POST /resource
   def create
@@ -39,15 +41,19 @@ class AccountController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      respond_with resource
+      respond_with resource do |format|
+        format.html{ render "new#{@subsite}"}
+      end
     end
   end
   
   def update
-    # 安全覆写™
-    resource.name_unknown = false
-    resource.email_unknown = false
     begin
+      # 安全覆写™
+      if params[:user][:name].present? or params[:user][:email].present?
+        resource.name_unknown = false
+        resource.email_unknown = false
+      end
       resource.mail_be_followed = ('on'==params[resource_name]["mail_be_followed"] ? '1' : '0')
       resource.mail_new_answer = ('on'==params[resource_name]["mail_new_answer"] ? '1' : '0')
       resource.mail_invite_to_ask = ('on'==params[resource_name]["mail_invite_to_ask"] ? '1' : '0')
@@ -90,13 +96,13 @@ class AccountController < Devise::RegistrationsController
         redirect_to edit_user_registration_path,:notice => '个人资料修改成功'
       else
         flash[:alert] = "修改失败：#{resource.errors.full_messages.join(", ")}"
-        render 'edit',:layout => "application_for_devise"
+        render "edit#{@subsite}",:layout => "application_for_devise"
       end
     rescue => e
       puts "#{e}"
       $debug_logger.fatal("#{e}")
       flash[:alert] = "修改失败：#{resource.errors.full_messages.join(", ")}"
-      render 'edit',:layout => "application_for_devise"
+      render "edit#{@subsite}",:layout => "application_for_devise"
     end
   end
 

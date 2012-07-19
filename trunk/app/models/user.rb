@@ -434,6 +434,12 @@ class User
   field :thanked_coursewares_count, :type => Integer, :default => 0
   field :coursewares_count, :type => Integer, :default => 0
   field :upload_count, :type => Integer, :default => 0
+  field :money, :type => Integer, :default => 0
+  field :level, :type => Integer, :default => 0
+  def level_name
+    #todo
+    '1级'
+  end
   has_many :answers
   has_many :notifications
   has_many :inboxes

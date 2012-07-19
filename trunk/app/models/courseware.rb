@@ -90,6 +90,7 @@ class Courseware
   field :thanked_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
   field :views_count, :type => Integer, :default => 0
+  field :downloads_count, :type => Integer, :default => 0
   field :version, :type => Integer, :default => 0
   #-=xunlei=-
   field :xunlei_url
@@ -171,6 +172,21 @@ class Courseware
       self.topic_id = topic.id
     end
   end
+  before_save :counter_work
+  def counter_work
+    if user_id_changed?
+      if user_id_was.present? and old_user = User.where(:_id=>user_id_was).first
+        old_user.inc(:coursewares_count,-1)
+      end
+      self.user.inc(:coursewares_count,1)
+    end
+    if uploader_id_changed?
+      if uploader_id_was.present? and old_user = User.where(:_id=>uploader_id_was).first
+        old_user.inc(:upload_count,-1)
+      end
+      self.uploader.inc(:upload_count,1)
+    end
+  end  
   
   scope :normal, where(:status => 0)
   scope :waiting4downloading, where(:status => 1)

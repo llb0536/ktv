@@ -1,16 +1,41 @@
 # -*- encoding : utf-8 -*-
 class AccountConfirmationsController < Devise::ConfirmationsController
+  def new
+    super
+    render "new#{@subsite}"
+  end
+  def create
+    def create
+      self.resource = resource_class.send_confirmation_instructions(resource_params)
+
+      if successfully_sent?(resource)
+        respond_with({}, :location => after_resending_confirmation_instructions_path_for(resource_name))
+      else
+        respond_with(resource) do |format|
+          format.html{render "new#{@subsite}"}
+        end
+      end
+    end
+  end
   def show
     self.resource = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
     if resource.encrypted_password.present?
-      super
+      self.resource = resource_class.confirm_by_token(params[:confirmation_token])
+
+      if resource.errors.empty?
+        set_flash_message(:notice, :confirmed) if is_navigational_format?
+        sign_in(resource_name, resource)
+        respond_with_navigational(resource){ redirect_to after_confirmation_path_for(resource_name, resource) }
+      else
+        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render "new#{@subsite}" }
+      end
       return
     end
     if 'GET'==request.method
       if resource.errors.empty?
-        render
+        render "show#{@subsite}"
       else
-        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :new }
+        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render "new#{@subsite}" }
       end
       return
     end
@@ -28,10 +53,10 @@ class AccountConfirmationsController < Devise::ConfirmationsController
         sign_in(resource_name, resource)
         respond_with_navigational(resource){ redirect_to after_confirmation_path_for(resource_name, resource) }
       else
-        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :show }
+        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render "show#{@subsite}" }
       end
     else
-      respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :show }
+      respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render "show#{@subsite}" }
     end
   end
   

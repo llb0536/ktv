@@ -63,6 +63,7 @@ utf8	✓
     cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
     cw.status = 1
     cw.save!
+    current_user.inc(:coursewares_upload_count,1)
 
     Resque.enqueue(TranscoderJob,cw.id)
     json = {

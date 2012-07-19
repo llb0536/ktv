@@ -48,7 +48,7 @@ Devise.setup do |config|
   config.remember_for = 2.weeks
   config.reconfirmable = true
 
-  config.maximum_attempts = 20
+  config.maximum_attempts = 888
 
   config.reset_password_within = 6.hours
   

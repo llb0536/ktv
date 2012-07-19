@@ -12,7 +12,7 @@
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>课件交流系统<%= "#{@psvr_subject2}" %> - <%= @seo[:title] %><%=yield :title%></title>
+  <title>课件交流系统 - <%= @seo[:title] %><%=yield :title%></title>
 
   <meta name="keywords" content="<%= @seo[:keywords] %>">
   <meta name="description" content="<%= @seo[:description] %>">
@@ -45,7 +45,7 @@
   <![endif]-->
   <script src="/js/libs/modernizr-2.5.3.min.js"></script>
   <script type="text/javascript" charset="utf-8">
-    window.psvr_subject = '<%= @psvr_subject %>';  
+    window.psvr_subject = 'all';  
   <% if false and user_signed_in? %>
     window.loginUser = {
       "id": '<%= current_user.id %>',
@@ -65,7 +65,7 @@
   <%= yield :armpit %>
 </head>
 
-<body id="psvr_subject_<%= @psvr_subject %>" style="<%=yield :body_style%>">
+<body id="psvr_subject_all" style="<%=yield :body_style%>">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -73,8 +73,8 @@
 <div class="__sdk">
   <header>
     <div class="wrapper">
-      <h1><a href="/" id="core_logotext_wrap"><%= image_tag "logotext-#{@psvr_subject}.png",:alt => "课件交流系统#{@psvr_subject2}",:id=>'core_logotext' %></a></h1>
-      <form accept-charset="UTF-8" action="/search" id="search_form" method="get" data-width-tobe="<%= @psvr_subject3 %>">
+      <h1><a href="/" id="core_logotext_wrap"><%= image_tag "logotext-all.png",:alt => "课件交流系统",:id=>'core_logotext' %></a></h1>
+      <form accept-charset="UTF-8" action="/search" id="search_form" method="get" data-width-tobe="730">
         <input type="text" id="q" name="q" value="" autocomplete="off" class="placeholded" placeholder="快速搜索..." />
       </form>
       <div class="navigation">

@@ -42,8 +42,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    # todo now!
+    pagination_get_ready    
     @coursewares = @user.coursewares.normal.order('id desc')
+    pagination_over(@coursewares.count)
+    @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+    render "show#{@subsite}"
     # 
     # @per_page = 10
     # @logs = []

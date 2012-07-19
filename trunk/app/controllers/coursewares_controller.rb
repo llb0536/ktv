@@ -39,6 +39,7 @@ class CoursewaresController < ApplicationController
   end
   def download
     downurl = ''
+    @courseware.inc(:downloads_count,1)
     if @courseware.xunlei_url.present?
       downurl = @courseware.xunlei_url
     else

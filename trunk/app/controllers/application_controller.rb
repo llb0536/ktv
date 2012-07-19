@@ -5,16 +5,10 @@ require 'uri'
 class ApplicationController < ActionController::Base
   has_mobile_fu
   protect_from_forgery
-  layout :layout_by_resource
-  def layout_by_resource
-    if devise_controller?
-      "application_for_devise"
-    elsif request.path.starts_with?('/embed/')
-      "embedded"
-    else
-      "application"
-    end
-  end
+  before_filter proc{
+    # thing = request.domain
+    # render text:thing and return
+  }
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from AbstractController::ActionNotFound, with: :render_404
@@ -44,20 +38,9 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 500 }
     end
   end
-  before_filter :set_subject
-  def set_subject
-    if Ktv::SubdomainMath.matches?(request)
-      @psvr_subject = 'math'
-      @psvr_subject2 = '·数学'
-      @psvr_subject3 = 683
-    else
-      @psvr_subject = :all
-      @psvr_subject2 = ''
-      @psvr_subject3 = 730
-    end
-  end
   before_filter :set_vars
   def set_vars
+    @subsite = Ktv::Subdomain.match(request)
     @seo = Hash.new('')
     agent = request.env['HTTP_USER_AGENT'].downcase
     @is_bot = (agent.match(/\(.*https?:\/\/.*\)/)!=nil)
@@ -68,9 +51,17 @@ class ApplicationController < ActionController::Base
     @is_ie9 = (agent.index('msie 9')!=nil)
     @is_ie10 = (agent.index('msie 10')!=nil)
   end
-  unless Setting.allow_register
-    before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
+  layout :layout_by_resource
+  def layout_by_resource
+    if devise_controller?
+      "application_for_devise#{@subsite}"
+    elsif request.path.starts_with?('/embed/')
+      "embedded"
+    else
+      "application#{@subsite}"
+    end
   end
+  before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?} unless Setting.allow_register
   def check_user_logged_in
     if !user_signed_in?
       @seo[:title]='请登录或获取注册邀请'
