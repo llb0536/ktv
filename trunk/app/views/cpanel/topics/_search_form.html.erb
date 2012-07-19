@@ -5,7 +5,7 @@
       <%=label_tag(:name, "话题名:")%>
       <%=text_field_tag(:name,nil,:style=>"width:60px;",:value=>params[:name])%>
       <%=label_tag(:tag,"分类:")%>
-      <%=select_tag :tag,options_for_select([["全部",""],["行业","行业"],["公司","公司"],["职业","职业"],["求职","求职"],["职场","职场"]],params[:tag]),:style=>"margin-right:20px;" %>
+      <%=select_tag :tag,options_for_select([["全部",""],["行业","行业"],["公司","公司"],["职业","职业"],["解题","解题"],["师生","师生"]],params[:tag]),:style=>"margin-right:20px;" %>
       <% t=Time.now.getlocal %>
       <%=label_tag(:created_at,"时间:")%>
       <input style="margin-right:0px;width:80px;" class="validate[custom[date]]" id="datepicker_from" name="datepicker_from" type="text" value="<%=params[:datepicker_from]%>">

@@ -33,6 +33,7 @@ class SearchController < ApplicationController
       if result.length <= the_limit
         result0 = Redis::Search.query("Ask",params[:q].strip,:limit => the_limit - result.length + 1,:sort_field=>'answers_count')
         tmp1=[]
+
         result0.each do |item|
           tmp1 << item if Time.parse(item['created_at'].split('T').first) >= 1.month.ago
           tmp1.sort!{|x,y| x['answers_count']<=>y['answers_count']}

@@ -44,7 +44,7 @@ Quora::Application.routes.draw do
   end
   get '/embed/:id' => 'coursewares#embed'
   # ________________________________q-n-a__________________________________________
-
+  get '/home/index'
   match '/mobile'=>'home#mobile'
   get '/under_verification' => 'home#under_verification'
   get '/frozen_page' => 'home#frozen_page'
@@ -145,6 +145,8 @@ Quora::Application.routes.draw do
     member do
       get "follow"
       get "unfollow"
+      post 'update_fathers'
+      post 'update_title'
     end
   end
   resources :logs

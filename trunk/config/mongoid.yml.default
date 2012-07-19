@@ -1,5 +1,5 @@
 defaults: &defaults
-  host: '127.0.0.1'
+  host: '0.0.0.0'
   autocreate_indexes: false
   allow_dynamic_fields: true
   include_root_in_json: false
@@ -10,7 +10,8 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: quora_development
+  host: '0.0.0.0'
+  database: ktv
 
 development_mongohq:
   <<: *defaults
@@ -20,11 +21,11 @@ development_mongohq:
 
 test:
   <<: *defaults
-  database: quora_test
+  database: ktv_test
 
 # set these environment variables on your prod server
 production:
   <<: *defaults
-  host: '127.0.0.1'
-  database: quora
+  host: '0.0.0.0'
+  database: ktv
 

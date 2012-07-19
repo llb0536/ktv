@@ -387,9 +387,9 @@ private
       @auth.update_attribute(:user_id, @user.id)
       sign_in(@user)
       if(@user.name_unknown or @user.email_unknown)
-        redirect_to(edit_user_registration_path(:force_password_change => 1), :notice => '谢谢！您已经成功登陆，请补充您的真实姓名和邮箱地址，并设置新密码。')
+        redirect_to(edit_user_registration_path(:force_password_change => 1), :notice => '谢谢！您已经成功登录，请补充您的真实姓名和邮箱地址，并设置新密码。')
       else
-        redirect_to(root_path, :notice =>  '谢谢！您已经成功登陆。')
+        redirect_to(root_path, :notice =>  '谢谢！您已经成功登录。')
       end
     else
       raise @user.errors

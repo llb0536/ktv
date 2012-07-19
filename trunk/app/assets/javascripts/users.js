@@ -82,7 +82,7 @@ var Users = {
   // modify 2012-2-6 by lesanc.li
   userLogin: function(){
     var lhtml = [];
-    lhtml.push('<header>欢迎使用课件交流系统账号登录Kejian.TV <a class="close" href="javascript:void(0);"></a></header>');
+    lhtml.push('<header>请登录 <a class="close" href="javascript:void(0);"></a></header>');
     lhtml.push('<section class="form clearfix">');
     lhtml.push('<form name="frmLogin" id="frmLogin" method="post" action="http://my.kejian.tv/loginmgr/loginproc.asp">');
     lhtml.push('<dl>');
@@ -101,7 +101,7 @@ var Users = {
     lhtml.push('</dl></form></section>');
     lhtml.push('<footer>');
     lhtml.push('<div class="btnNormalGreen bold mt20 login"><span>&nbsp;登 录&nbsp;</span></div>');
-    lhtml.push('<div class="goLog mt20">没有课件交流系统账号？<a href="#" onclick="Users.userReg()">立即注册</a></div>');
+    lhtml.push('<div class="goLog mt20">没有互动问答平台账号？<a href="#" onclick="Users.userReg()">立即注册</a></div>');
     lhtml.push('</footer>');
     $.facebox({ html : lhtml.join(""), overlay : false });
     var form = document.forms["frmLogin"];
@@ -161,41 +161,79 @@ var Users = {
       url=RegExp['$1'];
     }
     var lhtml = [];
-    lhtml.push('<header>注册课件交流系统账号 <a class="close" href="javascript:void(0);"></a></header>');     
+    lhtml.push('<header>注册新用户 <a class="close" href="javascript:void(0);"></a></header>');     
     lhtml.push('<section class="form clearfix">');
-    lhtml.push('<form name="regform" id="regform" method="post" action="http://my.kejian.tv/loginmgr/registerProc.asp">');
+    lhtml.push('<form name="regform" id="regform" method="post" action="/account">');
+    lhtml.push('<input name="authenticity_token" type="hidden" value="'+$('meta[name=csrf-token]').attr('content')+'">');
     lhtml.push('<dl>');
+    lhtml.push('<dt>真实姓名:</dt>');
+    lhtml.push('<dd><input type="text" class="fl input-x-validate" name="user[name]" id="zhenshixingming" value="" size="32" />');
+    lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_zhenshixingming"></div></dd>');
+
     lhtml.push('<dt>常用邮箱:</dt>');
     lhtml.push('<dd><input type="hidden" name="redirect_url" value="'+url+'" />');
-    lhtml.push('<input type="text" size="32" name="email" id="email" class="user_email fl input-x-validate" value="" maxlength="100" />');
+    lhtml.push('<input type="text" size="32" name="user[email]" id="email" class="user_email fl input-x-validate" value="" maxlength="100" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_email"></div></dd>');
+
     lhtml.push('<dt>登录密码:</dt>');
-    lhtml.push('<dd><input type="password" class="fl input-x-validate" name="password1" id="password1" value="" size="32" />');
+    lhtml.push('<dd><input type="password" class="fl input-x-validate" name="user[password]" id="password1" value="" size="32" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_password1"></div></dd>');
     lhtml.push('<dt>确认密码:</dt>');
-    lhtml.push('<dd><input type="password" class="fl input-x-validate" name="password2" id="password2" value="" size="32" />');
+    lhtml.push('<dd><input type="password" class="fl input-x-validate" name="user[password_confirmation]" id="password2" value="" size="32" />');
     lhtml.push('<div class="validImg fl"></div><div class="validTip fl" id="tip_password2"></div></dd>');
     lhtml.push('<dt></dt>');
-    lhtml.push('<dd class="clear"><div class="details"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">Kejian.TV用户协议</a> 和 <a target="_blank" href="http://jobseeker.kejian.tv/zhaopin/aboutus/secrecy.html">课件交流系统隐私协议</a></div></dd>');
+    lhtml.push('<dd class="clear"><div class="details" style="display:none"><input type="checkbox" class="noBorder accept" name="accept" checked="checked" style="width:20px;" />我接受 <a target="_blank" href="/agreement">Kejian.TV用户协议</a> 和 <a target="_blank" href="http://jobseeker.kejian.tv/zhaopin/aboutus/secrecy.html">课件交流系统隐私协议</a></div></dd>');
     lhtml.push('</dl>');
     lhtml.push('</form></section>');
     lhtml.push('<footer>');
     lhtml.push('<div class="btnNormalGreen bold mt20 reg"><span>&nbsp;注 册&nbsp;</span></div>');
-    lhtml.push('<div class="goLog mt20">已有课件交流系统账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
+    lhtml.push('<div class="goLog mt20">已有互动问答平台账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
     lhtml.push('</footer>');
     $.facebox({ html : lhtml.join(""), overlay : false });
     var form = document.forms["regform"];
+    var zhenshixingming = $("#facebox input[name='user[name]']");
     var email = $("#facebox input[name='email']");
-    var password1 = $("#facebox input[name='password1']");
-    var password2 = $("#facebox input[name='password2']");
+    var password1 = $("#facebox input[name='user[password]']");
+    var password2 = $("#facebox input[name='user[password_confirmation]']");
     var accept = $("#facebox input[name='accept']");
     var reg = $("#facebox .reg");
-    var form = $("#facebox form");
-    var email = $("#facebox input[name='email']");
-    var password1 = $("#facebox input[name='password1']");
-    var password2 = $("#facebox input[name='password2']");
-    var accept = $("#facebox input[name='accept']");
-    var reg = $("#facebox .reg");
+    
+    zhenshixingming.validate({
+      rules : [{
+          text : '请输入真实中文姓名',
+          rule : function(){
+            _b7=zhenshixingming.val();
+            if(_b7==""){
+              return false;
+            }
+            if(App.strlen(_b7)>12){
+              zhenshixingming.parent().attr("class", "input-x-validate-error");
+              $("#tip_zhenshixingming").html('不能多于6个汉字或者12个字符');
+              formFlag["zhenshixingming"] = false;
+              return false;
+            }
+            if(App.chinese(_b7)<2){
+              zhenshixingming.parent().attr("class", "input-x-validate-error");
+              $("#tip_zhenshixingming").html('请输入真实中文姓名');
+              formFlag["zhenshixingming"] = false;
+              return false;
+            }
+            $.ajax({
+              url: '/ajax/checkUsername',
+              data:{q:_b7},
+              success: function(data){
+                if(!data.okay){
+                  zhenshixingming.parent().attr("class", "input-x-validate-error");
+                  $("#tip_zhenshixingming").html('请输入真实中文姓名');
+                  formFlag["zhenshixingming"] = false;
+                }
+              }
+            })
+            return true;
+          }
+        }],
+      tipTag : $("#tip_zhenshixingming")
+    });
     // email validate
     email.validate({
       rules: [{
@@ -204,13 +242,8 @@ var Users = {
       },{
         type: "ajax",
         rule: function(){
-          $.getScript("http://my.kejian.tv/myzhaopin/CEF_markhome.asp?opt=1&email=" + email.val(), function(){
-            if (typeof cefmarkhome != 'undefined'){
-              if (cefmarkhome == 1){
-                email.parent().attr("class", "input-x-validate-error");
-                $("#tip_email").html('该邮箱已注册课件交流系统账号，可<a onclick="Users.userLogin()" href="#">直接登录</a>');
-                formFlag["email"] = false;
-              } else if (cefmarkhome == 0){
+          $.getJSON("/ajax/checkEmailAjax",{q:email.val()}, function(data){
+              if (data.okay){
                 email.parent().attr("class","input-x-validate-valid");
                 formFlag["email"] = true;
                 for (var flag in formFlag){
@@ -219,8 +252,12 @@ var Users = {
                   }
                 }
                 form.submit();
+              } else {
+                email.parent().attr("class", "input-x-validate-error");
+                $("#tip_email").html('该邮箱已注册新用户，可<a onclick="Users.userLogin()" href="#">直接登录</a>');
+                formFlag["email"] = false;
               }
-            }
+
           });
         }
       }],
@@ -243,7 +280,7 @@ var Users = {
            return /^[a-zA-Z0-9_]{6,25}$/.test(b);
           }
         },{
-          text : '两次输入密码不相同',
+          text : '两次输入密码不相同', 
           rule : function(a,b){
            return password1.val() == password2.val();
           }

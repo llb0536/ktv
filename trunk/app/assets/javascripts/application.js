@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require application_instinct
+//= require ktv/ie/check
 //= require facebox
 //= require jquery.jdialog
 //= require jquery.qeditor

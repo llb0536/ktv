@@ -756,7 +756,7 @@ var Asks = {
         }
         //var txtTitle = $("#hidden_new_ask textarea:nth-of-type(1)");
         var txtTitle = $("#hidden_new_ask textarea").eq(0);
-        ask_search_text = $("#searchInput").val() != "搜索求职、职场疑问" ? $("#searchInput").val() : "";
+        ask_search_text = $("#searchInput").val() != "搜索解题、搜索解题、课程疑问" ? $("#searchInput").val() : "";
         txtTitle.text(ask_search_text);
         txtTitle.focus();
     $.facebox({ div : "#hidden_new_ask", overlay : false });  

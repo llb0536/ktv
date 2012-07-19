@@ -2,11 +2,11 @@ zh-CN:
   devise:
     account_confirmations:
       user:
-        confirmed: 谢谢！邮箱成功确认，您现在已经登陆。
+        confirmed: 谢谢！邮箱成功确认，您现在已经登录。
         send_instructions: 几分钟后，您将收到确认帐号的电子邮件.
         send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封确认账号的邮件.
     confirmations:
-      confirmed: 谢谢！邮箱成功确认，您现在已经登陆。
+      confirmed: 谢谢！邮箱成功确认，您现在已经登录。
       send_instructions: 几分钟后，您将收到确认帐号的电子邮件.
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封确认账号的邮件.
     failure:

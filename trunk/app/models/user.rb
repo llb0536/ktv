@@ -44,7 +44,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :token_authenticatable, :confirmable,
-         :lockable, :timeoutable, :omniauthable, :invitable
+         :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
   field :email,              :type => String, :null => false, :default => ""
@@ -300,7 +300,7 @@ class User
     :dead => '已过世',
     :normal => '正常'
   }
-  # 是否允许登陆
+  # 是否允许登录
   def active_for_authentication?
     self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?
   end

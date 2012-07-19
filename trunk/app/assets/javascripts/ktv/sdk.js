@@ -4049,23 +4049,23 @@ var swfobject = function () {function A() {
         $(this).find("img[data-slide]:visible").hide()
     })
 }), jQuery(function (a) {
-    var b, c, d, e;
-    return b = a("#search_form"), c = a("#q"), d = c.val(), b.bind("submit", function () {
-        return !1
-    }), e = function (e) {
-        var f;
-        f = c.val();
-        if (f.length > 1 && f !== d) return d = f, b.addClass("searching"), a.pjax({
-            url: "/search?" + a.param({
-                q: c.val()
-            }),
-            container: "#content",
-            timeout: 3e3,
-            success: function () {
-                return b.removeClass("searching")
-            }
-        })
-    }, c.bind("keyup", _.debounce(e, 350))
+    // var b, c, d, e;
+    // return b = a("#search_form"), c = a("#q"), d = c.val(), b.bind("submit", function () {
+    //     return !1
+    // }), e = function (e) {
+    //     var f;
+    //     f = c.val();
+    //     if (f.length > 1 && f !== d) return d = f, b.addClass("searching"), a.pjax({
+    //         url: "/search?" + a.param({
+    //             q: c.val()
+    //         }),
+    //         container: "#content",
+    //         timeout: 3e3,
+    //         success: function () {
+    //             return b.removeClass("searching")
+    //         }
+    //     })
+    // }, c.bind("keyup", _.debounce(e, 350))
 }), $(function () {
     $("#new_session",'.__sdk').dialog({
         autoOpen: !1,

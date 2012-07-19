@@ -1,6 +1,29 @@
 # coding: utf-8
 class TopicsController < ApplicationController
-
+  def update_fathers
+    @name = params[:name].strip
+    @add = params[:add] == "1" ? true : false
+    @topic = Topic.find(params[:id])
+    if @add
+      @new_topic = Topic.find_or_create_by(name:params[:name])
+      @topic.add_father(@new_topic)
+      render :json=>@new_topic
+    else
+      @new_topic = Topic.find(params[:name])
+      @topic.remove_father(@new_topic)
+      render :json=>@new_topic
+    end
+  end
+  def update_title
+    @topic = Topic.find(params[:id])
+    old = Topic.where(name:params[:name]).first
+    if old
+      render json:{suc:false,why:'这个名字已经被占用'}
+    else
+      @topic.update_attribute(:name,params[:name])
+      render json:{suc:true,name:@topic.name}
+    end
+  end
   def fol
     suc=0
     params[:q].split(',').each do |id|
@@ -45,6 +68,13 @@ class TopicsController < ApplicationController
     if @topic.blank? or @topic.deleted==1
       return render_404
     end
+    father = @topic.fathers.first
+    @fathers = []
+    while father
+      topic = Topic.find_by_name(father)
+      @fathers << topic
+      father = topic.fathers.first
+    end
     @asks = Ask.where(:topics => name).normal
     @topic_unanswered_asks_count = @asks.unanswered.count
     if params[:filter]=='new'
@@ -74,10 +104,9 @@ class TopicsController < ApplicationController
       # if !params[:page].blank?
       #   render "/asks/index.js"
       # else
-      render
+      render "show#{@subsite}"
       # end
     end
-    
     
   end
   

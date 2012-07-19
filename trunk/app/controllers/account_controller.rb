@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AccountController < Devise::RegistrationsController
   def edit
+    @seo[:title] = '账号设置'
     @user = current_user
     render "edit#{@subsite}"
   end
@@ -8,13 +9,15 @@ class AccountController < Devise::RegistrationsController
     welcome_inactive_sign_up_path
   end
   def new    
+    @seo[:title] = '注册新用户'
     if not Setting.allow_register
       render_404
       return false
     end
     resource = build_resource({})
-    respond_with resource
-    render "new#{@subsite}"
+    respond_with resource do |format|
+      format.html{render "new#{@subsite}"}
+    end
   end
   # POST /resource
   def create
@@ -85,7 +88,7 @@ class AccountController < Devise::RegistrationsController
         resource.during_registration = true
         resource.password = params[:user][:password]
         resource.password_confirmation = params[:user][:password_confirmation]
-        pass_warning='您的密码已经成功修改，请用新密码登陆'
+        pass_warning='您的密码已经成功修改，请用新密码登录'
       else
         pass_warning=''
       end

@@ -4,6 +4,9 @@ class Courseware
   include Mongoid::Timestamps
   include Redis::Search
   include BaseModel
+  @before_soft_delete = proc{
+    redis_search_index_destroy
+  }
   def self.human_attribute_name(attr, options = {})
     case attr.to_sym
     when :user;'课件的作者'
@@ -155,22 +158,20 @@ class Courseware
     return nil if self.user_id.blank?
     User.where(:_id => self.user_id).first
   end
-  before_save :create_stuff!
+  before_save :create_stuff!,:if=>'self.course_long_name_changed?'
   def create_stuff!
-    if self.course_long_name_changed?
-      if self.school_name.present?
-        school = School.find_or_create_by(:name => self.school_name)
-        user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)
-        user.email_unknown = true if user.new_record?
-        user.save(:validate => false)
-        self.school_id = school.id
-        self.user_id = user.id
-      else
-        self.user_id = self.uploader_id
-      end
-      topic = Topic.find_or_create_by(:name => self.topic)
-      self.topic_id = topic.id
+    if self.school_name.present?
+      school = School.find_or_create_by(:name => self.school_name)
+      user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)
+      user.email_unknown = true if user.new_record?
+      user.save(:validate => false)
+      self.school_id = school.id
+      self.user_id = user.id
+    else
+      self.user_id = self.uploader_id
     end
+    topic = Topic.find_or_create_by(:name => self.topic)
+    self.topic_id = topic.id
   end
   before_save :counter_work
   def counter_work
@@ -235,5 +236,8 @@ class Courseware
   end
   validates_inclusion_of :sort,:in=>SORTSTR.keys
   
-  # redis_search_index(:title_field => :title,:ext_fields => [:topics,:answers_count,:created_at], :score_field => :views_count)
+  redis_search_index(:title_field => :course_long_name,
+                     :score_field => :views_count,
+                     :condition_fields => [:user_id,:sort],
+                     :ext_fields => [:topic,:thanked_count,:comments_count,:created_at])
 end

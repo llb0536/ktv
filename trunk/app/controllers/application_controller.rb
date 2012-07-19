@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
   layout :layout_by_resource
   def layout_by_resource
-    if devise_controller?
+    if devise_controller? and (not '__cnu'==@subsite)
       "application_for_devise#{@subsite}"
     elsif request.path.starts_with?('/embed/')
       "embedded"
@@ -138,7 +138,7 @@ class ApplicationController < ActionController::Base
     description = options[:description] || "同行,校友."
 
     if title.length > 0
-      @seo[:title] = "#{title} &raquo; "
+      @seo[:title] = "#{title}"
     end
     @seo[:keywords] = keywords
     @seo[:description] = description

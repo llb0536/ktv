@@ -1,114 +1,2279 @@
-<%= content_for :scripts do %>
-  <%= javascript_include_tag("topics") %>
-  <script type="text/javascript">
-    var current_page = 2;
-    var topic_id = "<%= @topic.id %>";
-    function loadAsks(){
-      App.loading();
-      $.get("<%= topic_path(@topic.name) %>?page="+current_page,function(){
-          App.loading(false);
-      });
-      return false;
-    }
-  </script>
-<% end %>
-<!-- 主题内容头 -->
-<header class="userHeader mainContentHeader clearfix">
-	<figure class="cover">
-    <%= image_tag(@topic.cover.normal.url,:width=>100,:height=>100,:alt=>@topic.name,:title=>@topic.name) %>
-    <% if current_user and current_user.admin? %>
-      <div class="edit hide"><a href="javascript:void(0)" class="changeUserHead">修改图片</a></div>
-      <div id="edit_topic_cover" class="setupProfile hide" style="display:none">
-        <h2>修改话题图片</h2>
-        <%= simple_form_for(@topic,:class => "form",:html => { :multipart =>  true, :onsubmit => "App.loading();" }) do |f| %>
-          <div id="file_wrapper">
-              <div id="file_faker">
-                  <input id="file_uploader_text" type="text" />
-                  <div id="file_btn" class="btnNormalGreen">
-                      <span>浏 览</span>
-                  </div>
-                  <!-- 隐藏真正的上传 -->
-              </div>
-              <input class="file" id="file_uploader" name="topic[cover]" type="file" />
-          </div>
-          <div class="actions">
-            <button type="submit">上传图片</button>
-            <a href="#" onclick="$.facebox.close(); return false;">关闭</a>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-	</figure>
-	<section>
-		<h5><em><%= @topic.name %></em></h5>
-		<div class="fc999 tfmt">
-      <div id="topic_summary"><%= md_body @topic.summary  %></div>
-      <% if current_user and current_user.admin? %>
-        <% if @topic.summary.blank? %>
-          <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary",:label => "添加补充资料" %>
-        <% else %>
-          <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary" %>
-        <% end %>
-      <% end %>
-		</div>
-	</section>
-	<aside>
-	  <%= render 'topic__bfollow',topic:@topic %>
-	</aside>
-	<div class="clearfix"></div>
-	<div class="dline mt20"></div>
-</header>
 <% content_for :butt2 do %>
-Topics.editCover($("figure.cover"));
+App.data = {
+  topic_id: '<%=@topic.id%>'
+}
 <% end %>
 
 
 
-<section>
-  <%= render 'subnav',topic:@topic %>
-  <% @asks.each do |item| %>
-    <%= render "topics/ask", :item => item, :simple=>true %>
-  <% end %>
-  <%= will_paginate @asks, :renderer=>WendaoLinkRenderer,:inner_window=>2 %>
-</section>
+<div class="__qua">
+  <div class="">
+
+
+
+  	<div id="ld_9fR3Ac_814">
+  		<div>
+  			<div style="display:none;" id="live_mutation_pending">
+  			</div>
+  			<div class="header wrapper" id="layout_header">
+  				<div class="contents">
+  				  <div class="lingyudaohang">课程树: </div>
+            <ul id="__w2_SFQ53OF_default_nav" class="nav_list">
+            	  <li id="ld_gdYur9_12141"><a href="/topics" class="inbox has_count nav_item"><strong>根</strong></a><span class="qua_raquo">&raquo;</span></li>
+            	<% @fathers.each do |father| %>
+            	  <li id="ld_gdYur9_12141"><a href="<%= topic_path father %>" class="inbox has_count nav_item"><strong><%= father.name %></strong></a><span class="qua_raquo">&raquo;</span></li>
+            	<% end %>
+            	<li id="ld_gdYur9_12141"><a href="<%= topic_path @topic %>" class="inbox has_count nav_item"><strong id="here_topic_name2"><%= @topic.name %></strong></a></li>
+            </ul>
+  				</div>  <!-- contents over-->
+  			</div>
+  			<div class="hidden row results_tray" id="__w2_N18H480_results_tray">
+  			</div>
+  			<div id="ld_Tyv4uK_12722">
+  			</div>
+  		</div>
+  	</div>
+  	
+  	
+  	
+  	
+  	<div id="ld_9fR3Ac_815">
+  		<div class=" pmsg_container main wrapper hidden" id="__w2_GVbU37B_pmsg_container">
+  		</div>
+  		<div class=" main wrapper">
+  			<div class="topic_page contents content main_content">
+  				<div id="__w2_ouDTjXV_content">
+  					<div id="ld_llfWRv_13708">
+  						<div id="ld_llfWRv_13709">
+  						</div>
+  						<div class="row section">
+  							<div class="side_col w1">
+  								<div class="row section">
+  									<div id="ld_llfWRv_13710">
+  										<div id="ld_Sb8jgF_15697">
+  											<div class="profile_photo" id="__w2_hvmdzzb_photo">
+  												<a href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_f78iPLQ_link"><img class="profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-t-46339-100-3e3aRtDheKdnLmAPYWnSHZhkHfnbGwUH.jpeg" width="100" alt="Analysis (mathematical)" height="100"/></a>
+  												<div class="edit_profile_photo hidden" id="__w2_hvmdzzb_edit">
+  													<a href="#" id="__w2_rxgk7xr_open_edit_photo">Edit Photo</a>
+  												</div>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  								<div class="row section">
+  									<div id="ld_llfWRv_13711">
+  										<div class="simple_tabs">
+  											<ul class="list_contents" id="__w2_WIUnu5g_tabs">
+  												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/organize" id="__w2_WIUnu5g_organize">我要提问</a></li>
+  												<li class="tab linked_list_item first"><a class="link" href="/Analysis-mathematical/faq" id="__w2_WIUnu5g_faq">上传课件</a></li>>
+  												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/mentions" id="__w2_WIUnu5g_mentions">1 @提到该课程</a></li>
+  												<li class="tab linked_list_item"><a class="link" href="/Analysis-mathematical/log" id="__w2_WIUnu5g_log">变更历史</a></li>
+  											</ul>
+  										</div>
+  									</div>
+  									<span class="row p0_5 light"><a class="# repost_link" href="#" id="__w2_jkUFoFP_link">转发</a></span>
+  								</div>
+  								<div id="ld_llfWRv_13712">
+  									<div class="row section section_border">
+  										<ul class="light">
+  											<li class="row p0_5"><a href="#questions">此课程全部课件</a></li>
+  											<li class="row p0_5"><a href="#feed">课程动态</a></li>
+  										</ul>
+  									</div>
+  								</div>
+  							</div>
+  							<div class="e_col w7">
+  								<div class="row">
+  									<div class="e_col w5_5">
+  										<div id="ld_llfWRv_13713">
+
+
+                        <div class="question_topics row">
+                        	<div id="ld_C4qa3A_415650">
+                        		<div id="ld_C4qa3A_415667">
+                        			<% @topic.fathers.each do |father| %>
+                        			<span id="<%= Topic.get_id(father) %>_already_father">
+                        			<div id="__w2_Jh9rGl8_topic_list_item" class="topic_list_item">
+                        				<span id="ld_C4qa3A_415683">
+                        				<a href="/topics/<%= Topic.get_id(father) %>" class="topic_name"><span class="name_text"><span id="ld_C4qa3A_415690"><%= father %></span></span></a></span>
+                        				<a id="<%= Topic.get_id(father) %>_topic_remove" href="#" class="topic_remove" style="display:none"></a>
+                        			</div>
+                        			</span>
+                        			<% end %>
+                        		</div>
+                        	</div>
+                          <div class="question_topic_selector" style="display:none" id="the_question_topic_selector">
+                          	<div id="__w2_tlet7hq_selector_wrapper" class="selector">
+                          		<div class="selector_wrapper">
+                          			<input type="text" id="__w2_M152MfC_input" w2cid="tlet7hq" tabindex="1" maxlength="64" autocomplete="off" value="" placeholder="请输入课程名" group="__w2_tlet7hq_interaction" class="question_box light" style=""><span id="ld_CNbgUu_8996"><span class="selector_add_btn"><input type="button" id="__w2_i9CBdfj_add_btn" w2cid="i9CBdfj" value="添加父课程" group="__w2_i9CBdfj_interaction" class="submit_button"></span></span>
+                          		</div>
+                          	</div>
+                          	<a id="the_done_editing_topics" href="#" class="cancel done_editing_topics">完成</a>
+                          </div>
+                        	
+                        	<span class="" id="__w2_P47vozg_inline_editor_link"><span id="ld_CNbgUu_8962"><a class="edit" href="#" id="__w2_zFYJDH4_edit">编辑父课程</a></span></span>
+                        </div>
+
+  										</div>
+  										<div id="ld_llfWRv_13714">
+  											<div class="row topic_name_editor" id="topic_name_here">
+  												<div class="inline_editor_content" id="__w2_P47vozg_inline_editor_content">
+  													<span class="inline_editor_value">
+  													<h1 class="inline"><span id="here_topic_name"><%= @topic.name %></span></h1>
+  													</span>
+  													<div class="edit_link_divider">
+  													</div>
+  													<a class="edit inline_editor_edit" href="#" id="__w2_P47vozg_inline_editor_link"><span id="__w2_P47vozg_inline_editor_link_text">编辑课程名</span></a>
+  												</div>
+  												<div class="rteditor inline_editor_content inline_editor_compact hidden" id="__w2_P47vozg_inline_editor_form">
+  													<div class="inline_editor_form">
+  														<div class="inline_editor_input">
+  															<textarea group="__w2_P47vozg_interaction" name="topic_name_edit" w2cid="P47vozg" id="__w2_P47vozg_topic_name_edit">Analysis (mathematical)</textarea>
+  														</div>
+  														<div class="inline_editor_buttons">
+  															<a class="submit_button" href="#" id="__w2_P47vozg_inline_editor_submit">更新课程名</a><a class="inline_editor_button inline_editor_cancel_button" href="#" id="__w2_P47vozg_inline_editor_cancel">取消</a>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											
+  											
+  											
+                        <div class="row topic_name_editor" id="the_topic_name_editor" style="display:none">
+                        	<div id="__w2_qT1rmRt_inline_editor_content" class="inline_editor_content hidden">
+                        		<span class="inline_editor_value">
+                        		<h1 class="inline"><span id="ld_sme3rf_447463"><%= @topic.name %></span></h1>
+                        		</span>
+                        		<div class="edit_link_divider">
+                        		</div>
+                        		<a id="__w2_qT1rmRt_inline_editor_link" href="#" class="edit inline_editor_edit"><span id="__w2_qT1rmRt_inline_editor_link_text">Edit</span></a>
+                        	</div>
+                        	<div id="__w2_qT1rmRt_inline_editor_form" class="rteditor inline_editor_content inline_editor_compact">
+                        		<div class="inline_editor_form">
+                        			<div class="inline_editor_input">
+                        				<textarea id="__w2_qT1rmRt_topic_name_edit" w2cid="qT1rmRt" name="topic_name_edit" group="__w2_qT1rmRt_interaction" style=""><%= @topic.name %></textarea>
+                        			</div>
+                        			<div class="inline_editor_buttons">
+                        				<a id="__w2_qT1rmRt_inline_editor_submit" href="#" class="submit_button">更新</a><a id="__w2_qT1rmRt_inline_editor_cancel" href="#" class="inline_editor_button inline_editor_cancel_button">取消</a>
+                        			</div>
+                        		</div>
+                        	</div>
+                        </div>
+  											
+  											
+  										</div>
+  									</div>
+  									<div id="ld_llfWRv_13715">
+  										<div class="side_col">
+  											<div id="ld_llfWRv_13727">
+  												<a class="topic_follow follow_button" href="#" id="__w2_FMjUtZs_follow">关注此课程</a>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  								<div class="row page_header" style="border-width:2px;">
+  									<div class="e_col w5_5">
+  										<div id="ld_llfWRv_13716">
+  											<div class="row p0_5">
+  												<div class="topic_wiki">
+  													<div class="inline_editor_content" id="__w2_hKtwq4z_inline_editor_content">
+  														<span class="inline_editor_value"><%= @topic.summary %></span>
+  														<div class="edit_link_divider">
+  														</div>
+  														<a class="edit inline_editor_edit" href="#" id="__w2_hKtwq4z_inline_editor_link"><span id="__w2_hKtwq4z_inline_editor_link_text">Edit</span></a>
+  													</div>
+  													<div class="rteditor inline_editor_content hidden" id="__w2_hKtwq4z_inline_editor_form">
+  														<div class="inline_editor_form">
+  															<div class="qtext_editor" id="__w2_Hg0O9kS_editor_outer">
+  																<div class="qtext_editor_buttons_wrapper row" id="__w2_Hg0O9kS_qtext_editor_buttons_wrapper">
+  																	<ul class="qtext_editor_buttons" id="__w2_Hg0O9kS_qtext_editor_buttons">
+  																		<li class="qtext_editor_button qtext_button_bold"><a href="#" id="__w2_Hg0O9kS_cmd_bold">B</a></li>
+  																		<li class="qtext_editor_button qtext_button_italic"><a href="#" id="__w2_Hg0O9kS_cmd_italic">I</a></li>
+  																		<li class="qtext_editor_button qtext_button_underline"><a href="#" id="__w2_Hg0O9kS_cmd_underline">U</a></li>
+  																		<li class="qtext_editor_sep">&nbsp;</li>
+  																		<li class="qtext_editor_button qtext_button_blockquote"><a href="#" id="__w2_Hg0O9kS_cmd_blockquote">&nbsp;</a></li>
+  																		<li class="qtext_editor_button qtext_button_insertorderedlist"><a href="#" id="__w2_Hg0O9kS_cmd_insertorderedlist">&nbsp;</a></li>
+  																		<li class="qtext_editor_button qtext_button_insertunorderedlist"><a href="#" id="__w2_Hg0O9kS_cmd_insertunorderedlist">&nbsp;</a></li>
+  																		<li class="qtext_editor_sep">&nbsp;</li>
+  																		<li class="qtext_editor_button qtext_button_qlink"><a href="#" id="__w2_Hg0O9kS_add_qlink">@</a></li>
+  																		<li class="qtext_editor_sep">&nbsp;</li>
+  																		<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_Hg0O9kS_cmd_qimg">&nbsp;</a></li>
+  																	</ul>
+  																</div>
+  																<div class="editor_wrapper" id="__w2_Hg0O9kS_editor_wrapper">
+  																	<div class="qtext_editor_content" group="__w2_Hg0O9kS_interaction" interactive="true" w2cid="Hg0O9kS" id="__w2_Hg0O9kS_editor">
+  																		includes the theories of differentiation, integration and measure, limits, infinite series, and analytic functions.<br/>
+  																	</div>
+  																	<div class="hidden qlink_editor br5" id="__w2_Hg0O9kS_qlink_editor">
+  																		<div class="qlink_editor_contents">
+  																			<input group="__w2_Hg0O9kS_interaction" type="hidden" w2cid="Hg0O9kS" id="__w2_Hg0O9kS_qlink_key"/><a class="__w2_Hg0O9kS_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																			<div class="hidden row">
+  																				<input class="text" group="__w2_Hg0O9kS_interaction" style="width:240px;" type="text" value="" w2cid="Hg0O9kS" id="__w2_Hg0O9kS_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_Hg0O9kS_qlink_update">Update</a></small>
+  																			</div>
+  																			<div id="__w2_Hg0O9kS_qlink_selector">
+  																				<div class="qlink_text" id="__w2_Hg0O9kS_qlink_title">
+  																					<strong>Link to Questions, Topics and People</strong>
+  																				</div>
+  																				<div class="row" id="__w2_Hg0O9kS_qlink_selector_row">
+  																					<div style="width:360px;" id="__w2_Hg0O9kS_link_selector">
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="form_buttons row " id="__w2_hKtwq4z_inline_editor_buttons">
+  																<div class="inline_editor_buttons">
+  																	<a class="inline_editor_button inline_editor_cancel_button" href="#" id="__w2_hKtwq4z_inline_editor_cancel">Cancel</a><a class="submit_button" href="#" id="__w2_hKtwq4z_inline_editor_submit">Update</a>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  								<div id="ld_llfWRv_13717">
+  								</div>
+  								<div id="ld_llfWRv_13718">
+  								</div>
+  								<div id="ld_llfWRv_13719">
+
+
+                    <div id="questions" class="row row_border">
+                    	<div id="ld_7wKBxq_157766">
+                    	</div>
+                    	<div class="col w3_5">
+                    		<div class="col w3">
+                    			<div id="ld_7wKBxq_157767">
+                    				<div style="padding-top:10px;" class="row">
+                    					<h3><span id="ld_7wKBxq_157783">86 个最佳问题</span></h3>
+                    					<div class="topic_open_questions_feed">
+                    						<div class="p1 row feed_item">
+                    							<div id="ld_7wKBxq_157784">
+                    								<div class="feed_item_question">
+                    									<h2><span id="ld_7wKBxq_157788"><a id="__w2_JR9K4tw_link" routing="q://question/(690588)" href="/Mathematics/What-are-the-methods-to-increase-problem-solving-speed-and-accuracy" class="question_link">
+                    									<div class="question_text_icons">
+                    										<span id="ld_7wKBxq_157866"><span id="__w2_njcDZAJ_icon" class=" best_source_icon"></span></span>
+                    									</div>
+                    									What are the methods to increase problem solving speed and accuracy?</a></span></h2>
+                    								</div>
+                    							</div>
+                    						</div>
+                    						<div class="p1 row feed_item">
+                    							<div id="ld_7wKBxq_157785">
+                    								<div class="feed_item_question">
+                    									<h2><span id="ld_7wKBxq_157789"><a id="__w2_rwYwiKS_link" routing="q://question/(675262)" href="/Fractals/Why-is-the-Mandelbrot-set-a-fractal" class="question_link">
+                    									<div class="question_text_icons">
+                    										<span id="ld_7wKBxq_157867"><span id="__w2_vYBurrJ_icon" class=" best_source_icon"></span></span>
+                    									</div>
+                    									<span id="ld_7wKBxq_157801"><span class="question_context"><span id="ld_7wKBxq_157888">Fractals</span><span class="normal">:</span>&nbsp;</span></span>Why is the Mandelbrot set a fractal?</a></span></h2>
+                    								</div>
+                    							</div>
+                    						</div>
+                    						<div class="p1 row feed_item">
+                    							<div id="ld_7wKBxq_157786">
+                    								<div class="feed_item_question">
+                    									<h2><span id="ld_7wKBxq_157790"><a id="__w2_C9jAnVd_link" routing="q://question/(662275)" href="/Computer-Science/How-it-can-be-shown-that-any-computation-you-can-perform-on-a-computer-can-be-encoded-into-the-problem-of-finding-integer-solutions-to-a-system-of-polynomial-equations-What-are-consequences-of-it-Does-it-mean-that-any-program-can-be-encoded-as-such" class="question_link">
+                    									<div class="question_text_icons">
+                    										<span id="ld_7wKBxq_157868"><span id="__w2_sq3Qgnu_icon" class=" best_source_icon"></span></span>
+                    									</div>
+                    									<span id="ld_7wKBxq_157802"><span class="question_context"><span id="ld_7wKBxq_157889">Computer Science</span><span class="normal">:</span>&nbsp;</span></span>How it can be shown that any computation&nbsp; you can perform on a computer can be encoded into the problem of finding integer solutions to a system of polynomial equations?... <span class="question_more">(continue)</span></a></span></h2>
+                    								</div>
+                    							</div>
+                    						</div>
+                    					</div>
+                    					<div class="p1 row">
+                    						<span class="light"><a href="/Mathematics/best_questions">更多最佳问题</a></span>
+                    					</div>
+                    				</div>
+                    			</div>
+                    		</div>
+                    	</div>
+                    	<div class="e_col w3_5">
+                    		<div id="ld_7wKBxq_157768">
+                    			<div style="padding-top:10px;" class="row">
+                    				<h3><span id="ld_7wKBxq_157793">322 个悬而未决的问题</span></h3>
+                    				<div class="topic_open_questions_feed">
+                    					<div class="p1 row feed_item">
+                    						<div id="ld_7wKBxq_157794">
+                    							<div class="feed_item_question">
+                    								<h2><span id="ld_7wKBxq_157798"><a id="__w2_K3FlvzS_link" routing="q://question/(706146)" href="/Mathematics/What-are-the-geometrical-meanings-for-rational-irrational-and-transcendental-numbers" class="question_link">
+                    								<div class="question_text_icons">
+                    									<span id="ld_7wKBxq_157897"></span>
+                    								</div>
+                    								What are the geometrical meanings for rational, irrational and transcendental numbers?</a></span></h2>
+                    							</div>
+                    						</div>
+                    					</div>
+                    					<div class="p1 row feed_item">
+                    						<div id="ld_7wKBxq_157795">
+                    							<div class="feed_item_question">
+                    								<h2><span id="ld_7wKBxq_157799"><a id="__w2_GmPiC11_link" routing="q://question/(706120)" href="/Germany/What-is-it-like-to-go-to-math-grad-school-in-Germany" class="question_link">
+                    								<div class="question_text_icons">
+                    									<span id="ld_7wKBxq_157898"></span>
+                    								</div>
+                    								<span id="ld_7wKBxq_157895"><span class="question_context"><span id="ld_7wKBxq_157906">Germany</span><span class="normal">:</span>&nbsp;</span></span>What is it like to go to math grad school in Germany?</a></span></h2>
+                    							</div>
+                    						</div>
+                    					</div>
+                    					<div class="p1 row feed_item">
+                    						<div id="ld_7wKBxq_157796">
+                    							<div class="feed_item_question">
+                    								<h2><span id="ld_7wKBxq_157800"><a id="__w2_xiqQuiB_link" routing="q://question/(706119)" href="/France/What-is-it-like-to-go-to-math-grad-school-in-France" class="question_link">
+                    								<div class="question_text_icons">
+                    									<span id="ld_7wKBxq_157899"></span>
+                    								</div>
+                    								<span id="ld_7wKBxq_157896"><span class="question_context"><span id="ld_7wKBxq_157907">France</span><span class="normal">:</span>&nbsp;</span></span>What is it like to go to math grad school in France?</a></span></h2>
+                    							</div>
+                    						</div>
+                    					</div>
+                    				</div>
+                    				<div class="p1 row">
+                    					<span class="light"><a href="/Mathematics/open_questions">更多悬而未决的问题</a></span>
+                    				</div>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+
+
+  								</div>
+  								<div id="ld_llfWRv_13720">
+  								</div>
+  								<div class="row row_border section" id="feed">
+  									<div class="col w4_5">
+  										<div class="topic_search search w4_5" id="__w2_dJIYEdS_topic_search">
+  											<div class="search_contents navigator">
+  												<form class="search_form" action="#" onsubmit="return false;" method="get" name="search_form">
+  													<div class="search_input">
+  														<div class="input_wrapper">
+  															<input class="question_box" group="__w2_dJIYEdS_interaction" placeholder="快速定位<%= @topic.name %>课程下的问题和课件..." value="" autocomplete="off" maxlength="250" type="text" tabindex="1" w2cid="dJIYEdS" id="__w2_dJIYEdS_input"/>
+  														</div>
+  													</div>
+  												</form>
+  												<div class="add_question_note attention col w3_5 hidden" id="__w2_FHcAQlD_note">
+  													<div class="notice_tip_nub">
+  														&nbsp;
+  													</div>
+  													<div class="notice_tip br5">
+  														<div class="p0_5" style="padding-top:0;">
+  															Similar questions will display as you type. If your question is available, choose it from the list.
+  														</div>
+  													</div>
+  												</div>
+  												<div id="__w2_dJIYEdS_results_shell">
+  													<div class="results_frame" id="__w2_K0rEtTO_results_frame">
+  														<ul id="__w2_K0rEtTO_results_list">
+  															<li class="instruction" id="__w2_K0rEtTO_list_item_0"><a class="result_item" href="#">搜索<%= @topic.name %>下的问题和课件</a></li>
+  														</ul>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="add_topic_question" id="__w2_dJIYEdS_add_question">
+  												<a href="#" id="__w2_dJIYEdS_add_new_question"><strong>我要提问</strong></a><span class="hidden"><a href="#" id="__w2_mPJDGeT_link">Add Question</a></span>
+  											</div>
+  										</div>
+  										<div id="ld_llfWRv_13721">
+  											<div class="pagedlist_item" id="ld_llfWRv_13731">
+  												<div class="row topic_set_feed_item" id="__w2_l3F4gS4_item">
+  													<div class="feed_item p1 w4_5" id="__w2_l3F4gS4_inner_item">
+  														<div class="row" id="__w2_l3F4gS4_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_llfWRv_13782">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_OAIr2kM_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_OAIr2kM_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_OAIr2kM_link"><span class="name_text"><span id="ld_llfWRv_13820">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite/answer/Stuart-Spence">5h ago</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13785">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13817"><a class="question_link" href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite" routing="q://question/(704915)" id="__w2_nyEbq69_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13865"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13841"><span class="question_context"><span id="ld_llfWRv_13868">Limits</span><span class="normal">:</span>&nbsp;</span></span>How much higher would the horizon be if the world was flat (and infinite)?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_llfWRv_13786">
+  																	<div class="feed_item_answer answer_text" id="__w2_aXtFI9I_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_aXtFI9I_answer_rating">
+  																			<div id="ld_llfWRv_13844">
+  																				<strong class="rating_value " id="__w2_LcL8w3x_rating"><span class="numbers">1</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_aXtFI9I_answer_voting">
+  																				<div id="ld_llfWRv_13845">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_mEA2k3d_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_mEA2k3d_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_mEA2k3d_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_aXtFI9I_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_aXtFI9I_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_aXtFI9I_answer_user_sig"><a class="user" href="/Stuart-Spence" routing="q://user/(2213517)" id="__w2_LXnDkkv_link">Stuart Spence</a>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_xYzhKmE_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_xYzhKmE_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_xYzhKmE_link"></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_aXtFI9I_answer_voters">
+  																					<div id="ld_llfWRv_13846">
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_llfWRv_13847">
+  																			</div>
+  																			<div id="__w2_aXtFI9I_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_r3ks6Ym_truncated">
+  																					<div id="ld_llfWRv_13848">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						It depends on your height.<br/><br/>Lets introduce two variables: camera height, and camera tilt. The question implies that camera tilt will be tangent to the surface it is on.<br/>... <a class="more_link" href="#" id="__w2_qIVQcSt_switch_link">(more)</a><span class="more_link hidden" id="__w2_GNopiw5_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_r3ks6Ym_expanded">
+  																					<div id="ld_llfWRv_13849">
+  																						It depends on your height.<br/><br/>Lets introduce two variables: camera height, and camera tilt. The question implies that camera tilt will be tangent to the surface it is on.<br/><br/>A camera on a sphere at zero height (height approaches 0+) will have exactly the same vision as a camera at any height above an infinite plane, if its camera tilt is tangent to that surface.<br/><br/>An intuitive proof: Imagine camera tilt pointing towards the center of a sphere. The camera height starts far from the sphere. As the camera height linearly decreases and approaches 0+, the sphere&#039;s area projected onto the 2D plane of our camera increases exponentially. At height 0+ it fills the camera&#039;s vision entirely. The 2D projected shape of the sphere is able to completely fill a 2D space. What completely fills 2D space? A plane. And so having the height approach 0+ has caused the 2D projection of our sphere to approach the shape of an infinite plane.<br/><br/>However, as we know a camera on a sphere with non-zero height lowers the horizon. But what is the maximum horizon? Answer: 50%. Any infinite 2D plane slices infinite three dimensional space into two identically sized halves. If our camera has a tilt tangent to the plane, and any height, it will view 3D space that has been perfectly sliced in two.<span id="ld_llfWRv_13871"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_aXtFI9I_answer_actions">
+  																				<span id="ld_llfWRv_13850"><a class=" answer_permalink" href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite/answer/Stuart-Spence" id="__w2_ZA8Jrj8_link">1:31pm</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13789"><a class="vote_item_link add_upvote" href="#" id="__w2_LpAozFP_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_LpAozFP_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13790"><a class="view_comments supp " href="#" id="__w2_rpetObA_view_comment_link">讨论</a><span class="light hidden" id="__w2_rpetObA_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_vSiBIyR_link">转发</a><span id="ld_llfWRv_13823"></span>
+  															</div>
+  															<div id="ld_llfWRv_13791">
+  																<div class="trackbacks_list hidden" id="__w2_Z33tZxg_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_Z33tZxg_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_llfWRv_13792">
+  																<div class=" threaded_comments hidden" id="__w2_xLolYAz_comments">
+  																	<div id="ld_QFxMa5_12868">
+  																		<div class="hidden" id="__w2_IYqklyd_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_IYqklyd_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_QFxMa5_12869">
+  																					<div id="__w2_WuAnnPb_add_root">
+  																						<div class="comment add_root_comment" id="__w2_WuAnnPb_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_QIxlHik_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_aYoB3Yo_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_aYoB3Yo_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_aYoB3Yo_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_aYoB3Yo_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_aYoB3Yo_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_aYoB3Yo_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_aYoB3Yo_interaction" interactive="true" w2cid="aYoB3Yo" id="__w2_aYoB3Yo_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_aYoB3Yo_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_aYoB3Yo_interaction" type="hidden" w2cid="aYoB3Yo" id="__w2_aYoB3Yo_qlink_key"/><a class="__w2_aYoB3Yo_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_aYoB3Yo_interaction" style="width:240px;" type="text" value="" w2cid="aYoB3Yo" id="__w2_aYoB3Yo_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_aYoB3Yo_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_aYoB3Yo_qlink_selector">
+  																													<div class="qlink_text" id="__w2_aYoB3Yo_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_aYoB3Yo_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_aYoB3Yo_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_WuAnnPb_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13732">
+  												<div class="row topic_set_feed_item" id="__w2_og1jB8y_item">
+  													<div class="feed_item p1 w4_5" id="__w2_og1jB8y_inner_item">
+  														<div class="row" id="__w2_og1jB8y_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Question added to topic <span id="ld_llfWRv_13748">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_p095GWv_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_p095GWv_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_p095GWv_link"><span class="name_text"><span id="ld_llfWRv_13779">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite">Tue</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13750">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13770"><a class="question_link" href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite" routing="q://question/(704915)" id="__w2_eb5rIeo_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13831"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13826"><span class="question_context"><span id="ld_llfWRv_13836">Limits</span><span class="normal">:</span>&nbsp;</span></span>How much higher would the horizon be if the world was flat (and infinite)?</a></span></h2>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13753"><a class="follow_question" href="#" id="__w2_G1f6jiF_follow">Follow</a></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_V5f84MU_link">转发</a><span id="ld_llfWRv_13771"></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13754"><a class="number_answers" href="/Limits/How-much-higher-would-the-horizon-be-if-the-world-was-flat-and-infinite#answers" routing="q://question/(704915)" id="__w2_mxRASFm_link">1 Answer</a></span>
+  															</div>
+  															<div id="ld_llfWRv_13755">
+  																<div class="trackbacks_list hidden" id="__w2_TpOQy7h_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_TpOQy7h_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13733">
+  												<div class="row topic_set_feed_item" id="__w2_BadJmBO_item">
+  													<div class="feed_item p1 w4_5" id="__w2_BadJmBO_inner_item">
+  														<div class="row" id="__w2_BadJmBO_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_llfWRv_13794">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_nU9NnlX_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_nU9NnlX_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_nU9NnlX_link"><span class="name_text"><span id="ld_llfWRv_13821">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Infosec/What-is-the-difference-between-qualitative-measurement-and-quantitative-measurement/answer/Cam-Tovey">Tue</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13797">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13818"><a class="question_link" href="/Infosec/What-is-the-difference-between-qualitative-measurement-and-quantitative-measurement" routing="q://question/(471575)" id="__w2_ee0Sit0_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13866"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13842"><span class="question_context"><span id="ld_llfWRv_13869">Infosec</span><span class="normal">:</span>&nbsp;</span></span>What is the difference between qualitative measurement and quantitative measurement?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_llfWRv_13798">
+  																	<div class="feed_item_answer answer_text" id="__w2_fwwxJaw_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_fwwxJaw_answer_rating">
+  																			<div id="ld_llfWRv_13851">
+  																				<strong class="rating_value " id="__w2_XMNwKAB_rating"><span class="numbers">1</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_fwwxJaw_answer_voting">
+  																				<div id="ld_llfWRv_13852">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_DODxnuL_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_DODxnuL_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_DODxnuL_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_fwwxJaw_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_fwwxJaw_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_fwwxJaw_answer_user_sig"><a class="user" href="/Cam-Tovey" routing="q://user/(5325557)" id="__w2_PlrcVhs_link">Cam Tovey</a>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_DQKhsAc_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_DQKhsAc_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_DQKhsAc_link"></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_fwwxJaw_answer_voters">
+  																					<div id="ld_llfWRv_13853">
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_llfWRv_13854">
+  																			</div>
+  																			<div id="__w2_fwwxJaw_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_EqjZjWN_truncated">
+  																					<div id="ld_llfWRv_13855">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						Quantitative information is based on numerical data.&nbsp; Quantitative metrics can often be clearly expressed as ratios, percentages, averages, currency values, etc.&nbsp; Number of... <a class="more_link" href="#" id="__w2_qWZ6pit_switch_link">(more)</a><span class="more_link hidden" id="__w2_CYnD02v_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_EqjZjWN_expanded">
+  																					<div id="ld_llfWRv_13856">
+  																						Quantitative information is based on numerical data.&nbsp; Quantitative metrics can often be clearly expressed as ratios, percentages, averages, currency values, etc.&nbsp; Number of incidents per period, software expenses per period, headcount, and events per second are all examples of quantitative metrics. <br/><br/>Qualitative information is based on non-numerical data.&nbsp; Qualitative information can often be difficult to measure due to ambiguity.&nbsp; Qualitative data can include human experience or judgement as a factor in its calculation.&nbsp; Conclusions based on qualitative information can be changed by bringing the data sources or the interpretation thereof into question.&nbsp; Potential breach impact, and likelihood of compromise are examples of qualitative metrics.<span id="ld_llfWRv_13872"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_fwwxJaw_answer_actions">
+  																				<span id="ld_llfWRv_13857"><a class=" answer_permalink" href="/Infosec/What-is-the-difference-between-qualitative-measurement-and-quantitative-measurement/answer/Cam-Tovey" id="__w2_A1L29XS_link">6:19am on Tuesday</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13801"><a class="vote_item_link add_upvote" href="#" id="__w2_a3uVQSr_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_a3uVQSr_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13802"><a class="view_comments supp " href="#" id="__w2_hAbDBbd_view_comment_link">讨论</a><span class="light hidden" id="__w2_hAbDBbd_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_KgfdEc8_link">转发</a><span id="ld_llfWRv_13824"></span>
+  															</div>
+  															<div id="ld_llfWRv_13803">
+  																<div class="trackbacks_list hidden" id="__w2_M2EcA85_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_M2EcA85_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_llfWRv_13804">
+  																<div class=" threaded_comments hidden" id="__w2_ZczmnHt_comments">
+  																	<div id="ld_Tyv4uK_12736">
+  																		<div class="hidden" id="__w2_jYOvdek_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_jYOvdek_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_Tyv4uK_12737">
+  																					<div id="__w2_oKUmLhJ_add_root">
+  																						<div class="comment add_root_comment" id="__w2_oKUmLhJ_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_asgeS3a_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_ev3XTaO_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_ev3XTaO_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_ev3XTaO_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_ev3XTaO_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_ev3XTaO_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_ev3XTaO_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_ev3XTaO_interaction" interactive="true" w2cid="ev3XTaO" id="__w2_ev3XTaO_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_ev3XTaO_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_ev3XTaO_interaction" type="hidden" w2cid="ev3XTaO" id="__w2_ev3XTaO_qlink_key"/><a class="__w2_ev3XTaO_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_ev3XTaO_interaction" style="width:240px;" type="text" value="" w2cid="ev3XTaO" id="__w2_ev3XTaO_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_ev3XTaO_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_ev3XTaO_qlink_selector">
+  																													<div class="qlink_text" id="__w2_ev3XTaO_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_ev3XTaO_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_ev3XTaO_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_oKUmLhJ_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13734">
+  												<div class="row topic_set_feed_item" id="__w2_bd9VmEY_item">
+  													<div class="feed_item p1 w4_5" id="__w2_bd9VmEY_inner_item">
+  														<div class="row" id="__w2_bd9VmEY_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Question added to topic <span id="ld_llfWRv_13757">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_obg7G5a_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_obg7G5a_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_obg7G5a_link"><span class="name_text"><span id="ld_llfWRv_13780">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Numerical-Methods/Where-can-I-find-a-good-implementation-of-BDF-backwards-differentiation-method">1 Jun</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13759">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13772"><a class="question_link" href="/Numerical-Methods/Where-can-I-find-a-good-implementation-of-BDF-backwards-differentiation-method" routing="q://question/(668262)" id="__w2_ng51Tl3_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13832"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13827"><span class="question_context"><span id="ld_llfWRv_13837">Numerical Methods</span><span class="normal">:</span>&nbsp;</span></span>Where can I find a good implementation of BDF (backwards differentiation) method?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div class="feed_item_question_details">
+  																	<div class="inline truncated_q_text" id="__w2_z2l0N3j_truncated">
+  																		<span id="ld_llfWRv_13773">
+  																		<div class="truncated_thumbnail_holder">
+  																		</div>
+  																		I&#039;m looking for a code example, language doesn&#039;t really matter. The only prerequisite is that it should be losly coupled, so I can study ... <a class="more_link" href="#" id="__w2_uMURDsl_switch_link">(more)</a><span class="more_link hidden" id="__w2_VMU17hU_switch_indicator"><span class="light">Loading...</span></span></span>
+  																	</div>
+  																	<div class="hidden expanded_q_text" id="__w2_z2l0N3j_expanded">
+  																		<span id="ld_llfWRv_13774">I&#039;m looking for a code example, language doesn&#039;t really matter. The only prerequisite is that it should be losly coupled, so I can study the code without studying a lot of third-party libraries.</span>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13762"><a class="follow_question" href="#" id="__w2_NNpwjF1_follow">Follow</a></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_lx5iz8C_link">转发</a><span id="ld_llfWRv_13775"></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13763"><a class="number_answers" href="/Numerical-Methods/Where-can-I-find-a-good-implementation-of-BDF-backwards-differentiation-method#answers" routing="q://question/(668262)" id="__w2_KIaxOLF_link">0 Answers</a></span>
+  															</div>
+  															<div id="ld_llfWRv_13764">
+  																<div class="trackbacks_list hidden" id="__w2_Jpi7ObT_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_Jpi7ObT_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13735">
+  												<div class="row topic_set_feed_item" id="__w2_XWu5Hmv_item">
+  													<div class="feed_item p1 w4_5" id="__w2_XWu5Hmv_inner_item">
+  														<div class="row" id="__w2_XWu5Hmv_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_llfWRv_13806">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_COvQGkW_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_COvQGkW_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_COvQGkW_link"><span class="name_text"><span id="ld_llfWRv_13822">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Olivier-Gérard">23 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13809">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13819"><a class="question_link" href="/Why-do-some-people-like-analysis-while-others-like-algebra" routing="q://question/(486675)" id="__w2_wNhXif8_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13867"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13843"></span>Why do some people like analysis while others like algebra?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_llfWRv_13810">
+  																	<div class="feed_item_answer answer_text" id="__w2_gbmExyl_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_gbmExyl_answer_rating">
+  																			<div id="ld_llfWRv_13858">
+  																				<strong class="rating_value " id="__w2_TbuWcQ2_rating"><span class="numbers">7</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_gbmExyl_answer_voting">
+  																				<div id="ld_llfWRv_13859">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_LrAm1pC_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_LrAm1pC_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_LrAm1pC_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_gbmExyl_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_gbmExyl_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_gbmExyl_answer_user_sig"><a class="user" href="/Olivier-Gérard" routing="q://user/(16149)" id="__w2_HgzxxrS_link">Olivier Gérard</a><span class="rep">, </span>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_nfFPy9N_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_nfFPy9N_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_nfFPy9N_link"><span class="rep">Mathematician and data scientist</span></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_gbmExyl_answer_voters">
+  																					<div id="ld_llfWRv_13860">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_llfWRv_13870"><strong class="voter_count">6</strong> votes</span></span> by <span id="__w2_xekK0LF_view_all"><a class="user" href="/Daniel-Freedman-3" routing="q://user/(4173340)" id="__w2_b19Lx3J_link">Daniel Freedman</a>, <a class="user" href="/Marc-Bodnick" routing="q://user/(472)" id="__w2_e44R73Z_link">Marc Bodnick</a>, <a class="user" href="/Sean-Breckling" routing="q://user/(3196309)" id="__w2_F8tKlRf_link">Sean Breckling</a>, </span><span class="view_all_span" id="__w2_xekK0LF_view_all_span"><span class="more_link"> (<a href="#" id="__w2_xekK0LF_view_all_link">more</a>)</span></span><span class="hidden" id="__w2_xekK0LF_all_phrases"><a class="user" href="/Daniel-Freedman-3" routing="q://user/(4173340)" id="__w2_b19Lx3J_link">Daniel Freedman</a>, <a class="user" href="/Marc-Bodnick" routing="q://user/(472)" id="__w2_e44R73Z_link">Marc Bodnick</a>, <a class="user" href="/Sean-Breckling" routing="q://user/(3196309)" id="__w2_F8tKlRf_link">Sean Breckling</a>, <a class="user" href="/Shan-Kothari" routing="q://user/(2756233)" id="__w2_ekZ6f4l_link">Shan Kothari</a>, <a class="user" href="/Chris-Jojo" routing="q://user/(5208157)" id="__w2_m4gQVPA_link">Chris Jojo</a>, and <a class="user" href="/Jessica-Su" routing="q://user/(2437289)" id="__w2_YRW6I6N_link">Jessica Su</a></span></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_llfWRv_13861">
+  																			</div>
+  																			<div id="__w2_gbmExyl_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_xppcvLv_truncated">
+  																					<div id="ld_llfWRv_13862">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						Why someone consider himself more an analyst than an algebraist is a matter of individual history and exposition to mathematics.<br/><br/>The idea that there are (at least) two cul... <a class="more_link" href="#" id="__w2_ixgoAwj_switch_link">(more)</a><span class="more_link hidden" id="__w2_pOLCCgz_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_xppcvLv_expanded">
+  																					<div id="ld_llfWRv_13863">
+  																						Why someone consider himself more an analyst than an algebraist is a matter of individual history and exposition to mathematics.<br/><br/>The idea that there are (at least) two cultures of mathematics is often heard among students of mathematics, but most answers, commentaries and explanations are shallow. What students call algebra or analysis (or geometry, or topology) are just entry points into these subjects with associated teaching traditions (choice of topics, theorems, proof style). These teaching traditions, even at the graduate level, are rather restrictive in their presentation of the subject.<br/><br/>What most students appreciate and follow are success, sentiment of understanding, connections with other knowledge and disciplines they know about, association with role models (such as a charismatic teacher or fellow pupils) or great realizations (such as proof of conjectures by historical figures).<br/><br/>Choosing a side, speaking oneself into a &quot;type&quot; is easy and helpful at first. It gives structure and confidence. After a while it may limit or even cripple you. Heartily disliking a subfield or a method can make you creative to find another way to understand or prove something. But then you forget to ask yourself basic questions on those parts of mathematics and lose a part of the view.<br/><br/>Many of the most creative mathematicians realize that there are several languages and styles of mathematics but that they speak of the same thing (see for instance Yuri Manin comments on this effect) and that you gain much by accepting to start again and again being a pupil, being naïve about the ones you do not feel comfortable with.<br/><br/>If you feel at home as an X and rejected as an Y, find a friend with reverse feelings and try to work things out :-)<span id="ld_llfWRv_13873"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_gbmExyl_answer_actions">
+  																				<span id="ld_llfWRv_13864"><a class=" answer_permalink" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Olivier-Gérard" id="__w2_V10fJ91_link">May 23, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13813"><a class="vote_item_link add_upvote" href="#" id="__w2_UVraRQm_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_UVraRQm_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13814"><a class="view_comments supp " href="#" id="__w2_kOZrvF4_view_comment_link">1+ 讨论s</a><span class="light hidden" id="__w2_kOZrvF4_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_CWAYGL0_link">转发</a><span id="ld_llfWRv_13825"></span>
+  															</div>
+  															<div id="ld_llfWRv_13815">
+  																<div class="trackbacks_list hidden" id="__w2_jm3ccWu_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_jm3ccWu_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_llfWRv_13816">
+  																<div class=" threaded_comments hidden" id="__w2_oqX0zjx_comments">
+  																	<div id="ld_Tyv4uK_12738">
+  																		<div class="hidden" id="__w2_g4R3ihR_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_g4R3ihR_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_Tyv4uK_12739">
+  																					<div id="__w2_GsxB0Mv_add_root">
+  																						<div class="comment add_root_comment" id="__w2_GsxB0Mv_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_a0neXAE_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_HA6NmVz_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_HA6NmVz_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_HA6NmVz_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_HA6NmVz_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_HA6NmVz_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_HA6NmVz_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_HA6NmVz_interaction" interactive="true" w2cid="HA6NmVz" id="__w2_HA6NmVz_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_HA6NmVz_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_HA6NmVz_interaction" type="hidden" w2cid="HA6NmVz" id="__w2_HA6NmVz_qlink_key"/><a class="__w2_HA6NmVz_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_HA6NmVz_interaction" style="width:240px;" type="text" value="" w2cid="HA6NmVz" id="__w2_HA6NmVz_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_HA6NmVz_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_HA6NmVz_qlink_selector">
+  																													<div class="qlink_text" id="__w2_HA6NmVz_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_HA6NmVz_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_HA6NmVz_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_GsxB0Mv_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																				<div id="ld_Tyv4uK_12740">
+  																					<div id="ld_Tyv4uK_12741">
+  																						<div class="comment_wrapper last comment_to_append" id="__w2_blFxeXo_comment">
+  																							<div class="comment_highlight_wrapper" id="__w2_blFxeXo_comment_highlight_wrapper">
+  																								<div class="comment threaded_comment" id="__w2_blFxeXo_comment_inner">
+  																									<div class="comment_contents">
+  																										<p class="comment_text">
+  																											<div class="full_comment_text" id="__w2_blFxeXo_full_comment_text">
+  																												<a href="/Harri-Edwards" routing="q://user/(4226378)" id="__w2_sYn3uG5_link"><img class=" profile_photo_img comment_image" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Harri Edwards" height="25"/></a>
+  																												<div class="comment_author_name">
+  																													<a class="user" href="/Harri-Edwards" routing="q://user/(4226378)" id="__w2_QDs90RL_link">Harri Edwards</a><span id="ld_Tyv4uK_12742"></span>
+  																												</div>
+  																												Link on Yuri Manin? Thanks
+  																											</div>
+  																											<span class="hidden" id="__w2_blFxeXo_show_downvoted_link_wrapper">
+  																											<div class="comment_image comment_image_empty">
+  																											</div>
+  																											<a class="light_gray _show_downvoted" href="#" id="__w2_blFxeXo_show_downvoted_link">讨论 downvoted</a><span class="bullet"> &bull; </span><a class="comment_timestamp_deleted" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Olivier-Gérard/comment/953514">23 May</a></span>
+  																										</p>
+  																									</div>
+  																									<div id="__w2_blFxeXo_footer_wrapper">
+  																										<div id="ld_Tyv4uK_12743">
+  																											<div class="hidden comment_reply_box" id="__w2_oMIme44_reply_box">
+  																												<div class="reply_to_comment comment" id="__w2_oMIme44_reply_box_enabled">
+  																													<div class="tcomment_editor_wrapper" id="__w2_WPEWkeY_tcomment_editor_wrapper">
+  																														<div class="qtext_editor" id="__w2_WPEWkeY_editor_outer">
+  																															<div class="qtext_editor_buttons_wrapper row" id="__w2_WPEWkeY_qtext_editor_buttons_wrapper">
+  																																<ul class="qtext_editor_buttons" id="__w2_WPEWkeY_qtext_editor_buttons">
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_WPEWkeY_cmd_qimg">&nbsp;</a></li>
+  																																</ul>
+  																															</div>
+  																															<div class="editor_wrapper" id="__w2_WPEWkeY_editor_wrapper">
+  																																<div class="qtext_editor_content" group="__w2_WPEWkeY_interaction" interactive="true" w2cid="WPEWkeY" id="__w2_WPEWkeY_editor">
+  																																	<br/>
+  																																</div>
+  																																<div class="hidden qlink_editor br5" id="__w2_WPEWkeY_qlink_editor">
+  																																	<div class="qlink_editor_contents">
+  																																		<input group="__w2_WPEWkeY_interaction" type="hidden" w2cid="WPEWkeY" id="__w2_WPEWkeY_qlink_key"/><a class="__w2_WPEWkeY_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																																		<div class="hidden row">
+  																																			<input class="text" group="__w2_WPEWkeY_interaction" style="width:240px;" type="text" value="" w2cid="WPEWkeY" id="__w2_WPEWkeY_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_WPEWkeY_qlink_update">Update</a></small>
+  																																		</div>
+  																																		<div id="__w2_WPEWkeY_qlink_selector">
+  																																			<div class="qlink_text" id="__w2_WPEWkeY_qlink_title">
+  																																				<strong>Link to Questions, Topics and People</strong>
+  																																			</div>
+  																																			<div class="row" id="__w2_WPEWkeY_qlink_selector_row">
+  																																				<div style="width:360px;" id="__w2_WPEWkeY_link_selector">
+  																																				</div>
+  																																			</div>
+  																																		</div>
+  																																	</div>
+  																																</div>
+  																															</div>
+  																														</div>
+  																														<div class="clear">
+  																														</div>
+  																													</div>
+  																													<div class="reply_submit_button_wrapper">
+  																														<a class="submit_button comment_submit_button" href="#" id="__w2_oMIme44_add_comment_link">Reply</a><span class="light editor_cancel_text"> or <a href="#" id="__w2_oMIme44_cancel_link">Cancel</a></span>
+  																														<div class="clear">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																										<div id="ld_Tyv4uK_12744">
+  																											<div class="comment_footer_link" id="__w2_H05b1ck_action_bar">
+  																												<span class="light"><input class="show_reply_box_link" group="__w2_H05b1ck_interaction" placeholder="Reply..." w2cid="H05b1ck" id="__w2_H05b1ck_show_reply_box_link"/>&nbsp;&nbsp;<a class="add_upvote vote_item_link" action="comment投赞成票:" href="#" arg="{&quot;type&quot;: &quot;answer&quot;, &quot;cid&quot;: 953514}" id="__w2_H05b1ck_comment_upvote">投赞成票</a><a class="add_downvote vote_item_link" action="commentDownvote:" href="#" arg="{&quot;type&quot;: &quot;answer&quot;, &quot;cid&quot;: 953514}" id="__w2_H05b1ck_comment_downvote">Downvote</a><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_Plo8h9A_link">转发</a><span class="bullet"> &bull; </span></span><span class="timestamp light_gray" id="__w2_H05b1ck_timestamp"><a class="" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Olivier-Gérard/comment/953514">23 May</a></span>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																							</div>
+  																							<div id="ld_Tyv4uK_12745">
+  																								<div class="hidden" id="__w2_RuyP6eD_comment_list_wrapper">
+  																									<div class="comment_list" id="__w2_RuyP6eD_comment_list">
+  																										<div class="comment_list_nub">
+  																										</div>
+  																										<div id="__w2_RuyP6eD_comment_list_placeholder">
+  																										</div>
+  																									</div>
+  																								</div>
+  																							</div>
+  																							<div id="ld_Tyv4uK_12746">
+  																								<div class="hidden" id="__w2_XXTcagp_show_child_link_wrapper">
+  																									<a class="comment_replies_show_child_link last" href="#" id="__w2_XXTcagp_show_child_link">
+  																									<div class="comment_replies_show_child_nub">
+  																									</div>
+  																									<span class="light"><strong>Olivier Gérard</strong>: &ldquo;There are many documents available on...&rdquo;</span></a>
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13736">
+  												<div class="row topic_set_feed_item" id="__w2_hmqM0Nt_item">
+  													<div class="feed_item p1 w4_5" id="__w2_hmqM0Nt_inner_item">
+  														<div class="row" id="__w2_hmqM0Nt_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_llfWRv_13875">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_LVdLxU2_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_LVdLxU2_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_LVdLxU2_link"><span class="name_text"><span id="ld_llfWRv_13887">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful/answer/Alexander-Goldfeld">23 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_llfWRv_13878">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_llfWRv_13886"><a class="question_link" href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful" routing="q://question/(639817)" id="__w2_CqzDgQV_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_llfWRv_13897"></span>
+  																		</div>
+  																		<span id="ld_llfWRv_13889"><span class="question_context"><span id="ld_llfWRv_13898">Measure Theory</span><span class="normal">:</span>&nbsp;</span></span>What are some very new fields/problems where Measure Theory can be useful?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_llfWRv_13879">
+  																	<div class="feed_item_answer answer_text" id="__w2_NB7NbAI_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_NB7NbAI_answer_rating">
+  																			<div id="ld_llfWRv_13890">
+  																				<strong class="rating_value " id="__w2_xkF3vyD_rating"><span class="numbers">2</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_NB7NbAI_answer_voting">
+  																				<div id="ld_llfWRv_13891">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_XxosioV_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_XxosioV_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_XxosioV_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_NB7NbAI_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_NB7NbAI_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_NB7NbAI_answer_user_sig"><a class="user" href="/Alexander-Goldfeld" routing="q://user/(4684056)" id="__w2_HSimCxf_link">Alexander Goldfeld</a><span class="rep">, </span>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_uIllVhU_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_uIllVhU_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_uIllVhU_link"><span class="rep">Engineering professor</span></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_NB7NbAI_answer_voters">
+  																					<div id="ld_llfWRv_13892">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_llfWRv_13899"><strong class="voter_count">1</strong> vote</span></span> by <a class="user" href="/Siddharth-Bora" routing="q://user/(3978171)" id="__w2_pV2eJWC_link">Siddharth Bora</a></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_llfWRv_13893">
+  																			</div>
+  																			<div id="__w2_NB7NbAI_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_T8D40Xe_truncated">
+  																					<div id="ld_llfWRv_13894">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						Measure theory is mostly like the back end of a software application - you don&#039;t see it when you interact with the UI but really it is what makes the whole thing work in th... <a class="more_link" href="#" id="__w2_PBzyk7y_switch_link">(more)</a><span class="more_link hidden" id="__w2_DCyAR86_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_T8D40Xe_expanded">
+  																					<div id="ld_llfWRv_13895">
+  																						Measure theory is mostly like the back end of a software application - you don&#039;t see it when you interact with the UI but really it is what makes the whole thing work in the first place. We mainly use measure theory to make sure notions like random variables are well-defined; without measure theory, it would be unclear what a statement like&nbsp; &quot;generate a uniformly random number between 0 and 1&quot; actually means. <br/><br/>As for usefulness to &quot;new&quot; fields/problems, I suppose it depends on what you mean by useful. Certainly, everywhere probability theory is used measure theory appears implicitly. Manipulating certain probabilistic quantities (i.e., stochastic integrals) also often requires knowing a bit of measure theory. The more geometric aspects of measure theory do have some more direct applications.&nbsp; The Kakeya problem (<a href="http://en.wikipedia.org/wiki/Kakeya_set#Kakeya_needle_problem" target="_blank" class="external_link">http://en.wikipedia.org/<wbr/>wiki/Kak...</a> ) is an open question in geometric measure theory has attracted a lot of recent attention due to connections with number theory and harmonic analysis. Federer&#039;s book <i>Geometric Measure Theory</i> has lots of applications to differential geometry and calculus of variations, though those fields are hardly &quot;new.&quot;<span id="ld_llfWRv_13900"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_NB7NbAI_answer_actions">
+  																				<span id="ld_llfWRv_13896"><a class=" answer_permalink" href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful/answer/Alexander-Goldfeld" id="__w2_dICGQxH_link">May 23, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_llfWRv_13882"><a class="vote_item_link add_upvote" href="#" id="__w2_KzJOQGC_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_KzJOQGC_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_llfWRv_13883"><a class="view_comments supp " href="#" id="__w2_ONDAfBB_view_comment_link">讨论</a><span class="light hidden" id="__w2_ONDAfBB_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_y1Oc5V7_link">转发</a><span id="ld_llfWRv_13888"></span>
+  															</div>
+  															<div id="ld_llfWRv_13884">
+  																<div class="trackbacks_list hidden" id="__w2_JazsnU4_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_JazsnU4_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_llfWRv_13885">
+  																<div class=" threaded_comments hidden" id="__w2_MmzMSuI_comments">
+  																	<div id="ld_zeewpY_19024">
+  																		<div class="hidden" id="__w2_tWl35sl_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_tWl35sl_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_zeewpY_19025">
+  																					<div id="__w2_yS1vDDw_add_root">
+  																						<div class="comment add_root_comment" id="__w2_yS1vDDw_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_HgVncew_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_Fos8qSd_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_Fos8qSd_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_Fos8qSd_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_Fos8qSd_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_Fos8qSd_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_Fos8qSd_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_Fos8qSd_interaction" interactive="true" w2cid="Fos8qSd" id="__w2_Fos8qSd_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_Fos8qSd_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_Fos8qSd_interaction" type="hidden" w2cid="Fos8qSd" id="__w2_Fos8qSd_qlink_key"/><a class="__w2_Fos8qSd_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_Fos8qSd_interaction" style="width:240px;" type="text" value="" w2cid="Fos8qSd" id="__w2_Fos8qSd_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_Fos8qSd_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_Fos8qSd_qlink_selector">
+  																													<div class="qlink_text" id="__w2_Fos8qSd_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_Fos8qSd_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_Fos8qSd_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_yS1vDDw_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13737">
+  												<div class="row topic_set_feed_item" id="__w2_DJ1skQO_item">
+  													<div class="feed_item p1 w4_5" id="__w2_DJ1skQO_inner_item">
+  														<div class="row" id="__w2_DJ1skQO_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_9z7AcI_14351">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_QUFCCzR_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_QUFCCzR_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_QUFCCzR_link"><span class="name_text"><span id="ld_9z7AcI_14363">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful/answer/Daniel-McLaury">21 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_9z7AcI_14354">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_9z7AcI_14362"><a class="question_link" href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful" routing="q://question/(639817)" id="__w2_k4HIPrV_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_9z7AcI_14373"></span>
+  																		</div>
+  																		<span id="ld_9z7AcI_14365"><span class="question_context"><span id="ld_9z7AcI_14374">Measure Theory</span><span class="normal">:</span>&nbsp;</span></span>What are some very new fields/problems where Measure Theory can be useful?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_9z7AcI_14355">
+  																	<div class="feed_item_answer answer_text" id="__w2_BiyDZUr_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_BiyDZUr_answer_rating">
+  																			<div id="ld_9z7AcI_14366">
+  																				<strong class="rating_value " id="__w2_DSkZxT2_rating"><span class="numbers">3</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_BiyDZUr_answer_voting">
+  																				<div id="ld_9z7AcI_14367">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_uVoe24o_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_uVoe24o_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_uVoe24o_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_BiyDZUr_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_BiyDZUr_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_BiyDZUr_answer_user_sig"><a class="user" href="/Daniel-McLaury" routing="q://user/(31205)" id="__w2_GAOuSUG_link">Daniel McLaury</a><span class="rep">, </span>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_BwtnuGh_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_BwtnuGh_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_BwtnuGh_link"><span class="rep">Graduate Student in Mathematics</span></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_BiyDZUr_answer_voters">
+  																					<div id="ld_9z7AcI_14368">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_9z7AcI_14375"><strong class="voter_count">2</strong> votes</span></span> by <a class="user" href="/Richard-Careaga" routing="q://user/(522589)" id="__w2_aksiN5s_link">Richard Careaga</a> and <a class="user" href="/Joshua-Engel" routing="q://user/(243133)" id="__w2_G54Xgx8_link">Joshua Engel</a></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_9z7AcI_14369">
+  																			</div>
+  																			<div id="__w2_BiyDZUr_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_WSEr0Ok_truncated">
+  																					<div id="ld_9z7AcI_14370">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						Measure theory is the basis of modern probability theory.&nbsp; There are lots of important open problems in probability, many of which come from statistical mechanics.&nbsp; Here&#039;s ... <a class="more_link" href="#" id="__w2_O5ATniG_switch_link">(more)</a><span class="more_link hidden" id="__w2_Hn4nwvk_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_WSEr0Ok_expanded">
+  																					<div id="ld_9z7AcI_14371">
+  																						Measure theory is the basis of modern probability theory.&nbsp; There are lots of important open problems in probability, many of which come from statistical mechanics.&nbsp; Here&#039;s a list:<br/><br/><a href="http://mathoverflow.net/questions/37151/what-are-the-big-problems-in-probability-theory" rel="nofollow" target="_blank" class="external_link">http://mathoverflow.net/q<wbr/>uestion...</a><br/><br/>In essence, any problem with a random component can be described in terms of a stochastic process.&nbsp; The theory of stochastic processes was originally developed with physical and engineering applications in mind, but it&#039;s now used heavily in finance.&nbsp; Often, trying to get certain types of qualitative information about the behavior of a process will lead to difficult problems in probability.<span id="ld_9z7AcI_14376"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_BiyDZUr_answer_actions">
+  																				<span id="ld_9z7AcI_14372"><a class=" answer_permalink" href="/Measure-Theory/What-are-some-very-new-fields-problems-where-Measure-Theory-can-be-useful/answer/Daniel-McLaury" id="__w2_rDruiN8_link">May 21, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_9z7AcI_14358"><a class="vote_item_link add_upvote" href="#" id="__w2_FUnET8x_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_FUnET8x_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_9z7AcI_14359"><a class="view_comments supp " href="#" id="__w2_GqgSUWj_view_comment_link">讨论</a><span class="light hidden" id="__w2_GqgSUWj_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_BWtitUY_link">转发</a><span id="ld_9z7AcI_14364"></span>
+  															</div>
+  															<div id="ld_9z7AcI_14360">
+  																<div class="trackbacks_list hidden" id="__w2_mNKGKww_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_mNKGKww_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_9z7AcI_14361">
+  																<div class=" threaded_comments hidden" id="__w2_bifFBgz_comments">
+  																	<div id="ld_zeewpY_19022">
+  																		<div class="hidden" id="__w2_WpZ6nMM_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_WpZ6nMM_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_zeewpY_19023">
+  																					<div id="__w2_lOsIFb5_add_root">
+  																						<div class="comment add_root_comment" id="__w2_lOsIFb5_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_aU8yQvT_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_DmipkgP_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_DmipkgP_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_DmipkgP_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_DmipkgP_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_DmipkgP_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_DmipkgP_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_DmipkgP_interaction" interactive="true" w2cid="DmipkgP" id="__w2_DmipkgP_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_DmipkgP_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_DmipkgP_interaction" type="hidden" w2cid="DmipkgP" id="__w2_DmipkgP_qlink_key"/><a class="__w2_DmipkgP_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_DmipkgP_interaction" style="width:240px;" type="text" value="" w2cid="DmipkgP" id="__w2_DmipkgP_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_DmipkgP_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_DmipkgP_qlink_selector">
+  																													<div class="qlink_text" id="__w2_DmipkgP_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_DmipkgP_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_DmipkgP_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_lOsIFb5_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13738">
+  												<div class="row topic_set_feed_item" id="__w2_DiUmXFz_item">
+  													<div class="feed_item p1 w4_5" id="__w2_DiUmXFz_inner_item">
+  														<div class="row" id="__w2_DiUmXFz_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_Sb8jgF_15699">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_kGRRiqW_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_kGRRiqW_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_kGRRiqW_link"><span class="name_text"><span id="ld_Sb8jgF_15711">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Alan-Guo-1">17 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_Sb8jgF_15702">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_Sb8jgF_15710"><a class="question_link" href="/Why-do-some-people-like-analysis-while-others-like-algebra" routing="q://question/(486675)" id="__w2_MXRrMjT_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_Sb8jgF_15721"></span>
+  																		</div>
+  																		<span id="ld_Sb8jgF_15713"></span>Why do some people like analysis while others like algebra?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_Sb8jgF_15703">
+  																	<div class="feed_item_answer answer_text" id="__w2_nKZXNXS_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_nKZXNXS_answer_rating">
+  																			<div id="ld_Sb8jgF_15714">
+  																				<strong class="rating_value " id="__w2_vdWmd8a_rating"><span class="numbers">10</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_nKZXNXS_answer_voting">
+  																				<div id="ld_Sb8jgF_15715">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_Q3bhl0H_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_Q3bhl0H_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_Q3bhl0H_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_nKZXNXS_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_nKZXNXS_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_nKZXNXS_answer_user_sig"><a class="user" href="/Alan-Guo-1" routing="q://user/(1920050)" id="__w2_Fc5u9k9_link">Alan Guo</a><span class="rep">, </span>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_H6bQ3vo_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_H6bQ3vo_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_H6bQ3vo_link"><span class="rep">PhD student at MIT</span></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_nKZXNXS_answer_voters">
+  																					<div id="ld_Sb8jgF_15716">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_Sb8jgF_15722"><strong class="voter_count">9</strong> votes</span></span> by <span id="__w2_CGhx9zN_view_all"><a class="user" href="/Alex-K-Chen" routing="q://user/(16272)" id="__w2_jmFAGnz_link">Alex K. Chen</a>, <a class="user" href="/Hongwan-Liu" routing="q://user/(1408919)" id="__w2_pFOBSPx_link">Hongwan Liu</a>, <a class="user" href="/Edwin-Khoo" routing="q://user/(11724)" id="__w2_OrQvVlR_link">Edwin Khoo</a>, </span><span class="view_all_span" id="__w2_CGhx9zN_view_all_span"><span class="more_link"> (<a href="#" id="__w2_CGhx9zN_view_all_link">more</a>)</span></span><span class="hidden" id="__w2_CGhx9zN_all_phrases"><a class="user" href="/Alex-K-Chen" routing="q://user/(16272)" id="__w2_jmFAGnz_link">Alex K. Chen</a>, <a class="user" href="/Hongwan-Liu" routing="q://user/(1408919)" id="__w2_pFOBSPx_link">Hongwan Liu</a>, <a class="user" href="/Edwin-Khoo" routing="q://user/(11724)" id="__w2_OrQvVlR_link">Edwin Khoo</a>, <a class="user" href="/Boris-Trayvas" routing="q://user/(3900542)" id="__w2_ncsf2kA_link">Boris Trayvas</a>, <a class="user" href="/Jessica-Su" routing="q://user/(2437289)" id="__w2_Hy6EwA6_link">Jessica Su</a>, <a class="user" href="/Anwar-Alhazmi" routing="q://user/(4626440)" id="__w2_wGUVKCg_link">Anwar Alhazmi</a>, <a class="user" href="/Shan-Kothari" routing="q://user/(2756233)" id="__w2_OOMT4im_link">Shan Kothari</a>, <a class="user" href="/Daniel-McLaury" routing="q://user/(31205)" id="__w2_Kc6yEAH_link">Daniel McLaury</a>, and <a class="user" href="/Chris-Jojo" routing="q://user/(5208157)" id="__w2_VtBpnJP_link">Chris Jojo</a></span></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_Sb8jgF_15717">
+  																			</div>
+  																			<div id="__w2_nKZXNXS_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_JdxgcYv_truncated">
+  																					<div id="ld_Sb8jgF_15718">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						These are my own opinions about analysis and algebra, which I know some other mathematicians share. Disclaimer: my algebra background is a lot more extensive than my analys... <a class="more_link" href="#" id="__w2_NSXmcsW_switch_link">(more)</a><span class="more_link hidden" id="__w2_s1YgHZ6_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_JdxgcYv_expanded">
+  																					<div id="ld_Sb8jgF_15719">
+  																						These are my own opinions about analysis and algebra, which I know some other mathematicians share. Disclaimer: my algebra background is a lot more extensive than my analysis background, so I&#039;ll compare analysis and algebra at the undergraduate and early graduate levels (as it&#039;s most likely that a mathematician would develop his or her tastes for these fields during those stages of his or her career).<br/><br/><b>Analysis - </b>Proofs of theorems are often long, tedious, and possibly annoying or un-insightful, but are more &quot;intuitive&quot; in the sense that many statements in analysis are not surprising at all. Oftentimes it&#039;s intuitively clear why a statement should be true (&quot;all differentiable functions are continuous&quot;) and it&#039;s a matter of checking the messy details.<br/><br/><b>Algebra - </b>Proofs of theorems are frequently concise, clean, and elegant, and theorems are not as intuitively obvious. It&#039;s usually harder to even come up with the correct statement one wants to prove, and even given a statement to prove, the proof often involves some clever trick. Once you come up with the trick, though, the proof is often very short.<br/><br/>So I think it comes down to preferences for how to prove things and what kinds of things one likes to prove. I dislike wading through messy details and have great admiration for clean, elegant proofs so I much prefer algebra.<span id="ld_Sb8jgF_15723"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_nKZXNXS_answer_actions">
+  																				<span id="ld_Sb8jgF_15720"><a class=" answer_permalink" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Alan-Guo-1" id="__w2_bxCA2qy_link">May 17, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_Sb8jgF_15706"><a class="vote_item_link add_upvote" href="#" id="__w2_zc4nam9_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_zc4nam9_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_Sb8jgF_15707"><a class="view_comments supp " href="#" id="__w2_xcTo2q8_view_comment_link">讨论</a><span class="light hidden" id="__w2_xcTo2q8_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_uciJl2i_link">转发</a><span id="ld_Sb8jgF_15712"></span>
+  															</div>
+  															<div id="ld_Sb8jgF_15708">
+  																<div class="trackbacks_list hidden" id="__w2_h1eqgfw_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_h1eqgfw_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_Sb8jgF_15709">
+  																<div class=" threaded_comments hidden" id="__w2_K2AFmHU_comments">
+  																	<div id="ld_Sb8jgF_15724">
+  																		<div class="hidden" id="__w2_CR5rsDd_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_CR5rsDd_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_Sb8jgF_15725">
+  																					<div id="__w2_QRNN67f_add_root">
+  																						<div class="comment add_root_comment" id="__w2_QRNN67f_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_jLn66EW_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_DupTgpN_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_DupTgpN_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_DupTgpN_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_DupTgpN_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_DupTgpN_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_DupTgpN_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_DupTgpN_interaction" interactive="true" w2cid="DupTgpN" id="__w2_DupTgpN_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_DupTgpN_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_DupTgpN_interaction" type="hidden" w2cid="DupTgpN" id="__w2_DupTgpN_qlink_key"/><a class="__w2_DupTgpN_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_DupTgpN_interaction" style="width:240px;" type="text" value="" w2cid="DupTgpN" id="__w2_DupTgpN_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_DupTgpN_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_DupTgpN_qlink_selector">
+  																													<div class="qlink_text" id="__w2_DupTgpN_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_DupTgpN_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_DupTgpN_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_QRNN67f_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13739">
+  												<div class="row topic_set_feed_item" id="__w2_mwEmFTH_item">
+  													<div class="feed_item p1 w4_5" id="__w2_mwEmFTH_inner_item">
+  														<div class="row" id="__w2_mwEmFTH_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_QFxMa5_12841">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_YYXu4mr_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_YYXu4mr_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_YYXu4mr_link"><span class="name_text"><span id="ld_QFxMa5_12853">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Sarah-Constantin">17 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_QFxMa5_12844">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_QFxMa5_12852"><a class="question_link" href="/Why-do-some-people-like-analysis-while-others-like-algebra" routing="q://question/(486675)" id="__w2_T5yip2q_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_QFxMa5_12863"></span>
+  																		</div>
+  																		<span id="ld_QFxMa5_12855"></span>Why do some people like analysis while others like algebra?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_QFxMa5_12845">
+  																	<div class="feed_item_answer answer_text" id="__w2_mV85uJS_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_mV85uJS_answer_rating">
+  																			<div id="ld_QFxMa5_12856">
+  																				<strong class="rating_value " id="__w2_LbmjVT3_rating"><span class="numbers">10</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_mV85uJS_answer_voting">
+  																				<div id="ld_QFxMa5_12857">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_GY60kTB_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_GY60kTB_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_GY60kTB_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_mV85uJS_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_mV85uJS_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_mV85uJS_answer_user_sig"><a class="user" href="/Sarah-Constantin" routing="q://user/(3351591)" id="__w2_n7MdnpF_link">Sarah Constantin</a><span class="rep">, </span>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_GclDn8v_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_GclDn8v_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_GclDn8v_link"><span class="rep">Graduate student in mathematics</span></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_mV85uJS_answer_voters">
+  																					<div id="ld_QFxMa5_12858">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_QFxMa5_12864"><strong class="voter_count">9</strong> votes</span></span> by <span id="__w2_n9o3QMa_view_all"><a class="user" href="/Marc-Bodnick" routing="q://user/(472)" id="__w2_rymDRmx_link">Marc Bodnick</a>, <a class="user" href="/Alex-K-Chen" routing="q://user/(16272)" id="__w2_izcdmX8_link">Alex K. Chen</a>, <a class="user" href="/Tarun-Chitra" routing="q://user/(604935)" id="__w2_WnfDDsc_link">Tarun Chitra</a>, </span><span class="view_all_span" id="__w2_n9o3QMa_view_all_span"><span class="more_link"> (<a href="#" id="__w2_n9o3QMa_view_all_link">more</a>)</span></span><span class="hidden" id="__w2_n9o3QMa_all_phrases"><a class="user" href="/Marc-Bodnick" routing="q://user/(472)" id="__w2_rymDRmx_link">Marc Bodnick</a>, <a class="user" href="/Alex-K-Chen" routing="q://user/(16272)" id="__w2_izcdmX8_link">Alex K. Chen</a>, <a class="user" href="/Tarun-Chitra" routing="q://user/(604935)" id="__w2_WnfDDsc_link">Tarun Chitra</a>, <a class="user" href="/Jessica-Su" routing="q://user/(2437289)" id="__w2_S70mCmT_link">Jessica Su</a>, <a class="user" href="/Shan-Kothari" routing="q://user/(2756233)" id="__w2_Ua0FAZa_link">Shan Kothari</a>, <a class="user" href="/Jun-Yong-Park" routing="q://user/(2111017)" id="__w2_t83YBrd_link">Jun-Yong Park</a>, <a class="user" href="/Daniel-McLaury" routing="q://user/(31205)" id="__w2_dqiVmRZ_link">Daniel McLaury</a>, <a class="user" href="/Kenneth-Tiong" routing="q://user/(1966652)" id="__w2_cBr23pL_link">Kenneth Tiong</a>, and <a class="user" href="/Kerry-Champion" routing="q://user/(48704)" id="__w2_GmfGbti_link">Kerry Champion</a></span></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_QFxMa5_12859">
+  																			</div>
+  																			<div id="__w2_mV85uJS_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_ZYL9RyI_truncated">
+  																					<div id="ld_QFxMa5_12860">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						I once heard a mathematician say that the test for whether you should be an analyst is &quot;Do you like inequalities?&quot;<br/><br/>If you find computations and approximations hard or anno... <a class="more_link" href="#" id="__w2_O4ARapt_switch_link">(more)</a><span class="more_link hidden" id="__w2_g4k2syb_switch_indicator"><span class="light">Loading...</span></span>
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_ZYL9RyI_expanded">
+  																					<div id="ld_QFxMa5_12861">
+  																						I once heard a mathematician say that the test for whether you should be an analyst is &quot;Do you like inequalities?&quot;<br/><br/>If you find computations and approximations hard or annoying, you probably won&#039;t be an analyst.&nbsp; If you get frustrated by extreme generality, there are at least parts of algebra that won&#039;t appeal to you.<span id="ld_QFxMa5_12865"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_mV85uJS_answer_actions">
+  																				<span id="ld_QFxMa5_12862"><a class=" answer_permalink" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Sarah-Constantin" id="__w2_WiPzrcU_link">May 17, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_QFxMa5_12848"><a class="vote_item_link add_upvote" href="#" id="__w2_c4nahlJ_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_c4nahlJ_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_QFxMa5_12849"><a class="view_comments supp " href="#" id="__w2_s8PMwkD_view_comment_link">讨论</a><span class="light hidden" id="__w2_s8PMwkD_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_IOgdl1i_link">转发</a><span id="ld_QFxMa5_12854"></span>
+  															</div>
+  															<div id="ld_QFxMa5_12850">
+  																<div class="trackbacks_list hidden" id="__w2_C7OcQBN_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_C7OcQBN_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_QFxMa5_12851">
+  																<div class=" threaded_comments hidden" id="__w2_m8fMsFd_comments">
+  																	<div id="ld_QFxMa5_12866">
+  																		<div class="hidden" id="__w2_HsXdaiR_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_HsXdaiR_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_QFxMa5_12867">
+  																					<div id="__w2_ifrmCh8_add_root">
+  																						<div class="comment add_root_comment" id="__w2_ifrmCh8_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_cHHeuom_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_lkpXc0Q_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_lkpXc0Q_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_lkpXc0Q_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_lkpXc0Q_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_lkpXc0Q_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_lkpXc0Q_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_lkpXc0Q_interaction" interactive="true" w2cid="lkpXc0Q" id="__w2_lkpXc0Q_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_lkpXc0Q_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_lkpXc0Q_interaction" type="hidden" w2cid="lkpXc0Q" id="__w2_lkpXc0Q_qlink_key"/><a class="__w2_lkpXc0Q_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_lkpXc0Q_interaction" style="width:240px;" type="text" value="" w2cid="lkpXc0Q" id="__w2_lkpXc0Q_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_lkpXc0Q_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_lkpXc0Q_qlink_selector">
+  																													<div class="qlink_text" id="__w2_lkpXc0Q_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_lkpXc0Q_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_lkpXc0Q_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_ifrmCh8_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div class="pagedlist_item" id="ld_llfWRv_13740">
+  												<div class="row topic_set_feed_item" id="__w2_gIxc4Kt_item">
+  													<div class="feed_item p1 w4_5" id="__w2_gIxc4Kt_inner_item">
+  														<div class="row" id="__w2_gIxc4Kt_contents">
+  															<div class="feed_item_photo">
+  															</div>
+  															<strong class="feed_item_title"><span class="feed_item_reasons_user"></span><span class="light_gray normal">Answer added to topic <span id="ld_zeewpY_18997">
+  															<div class="hover_menu hidden" style="display: none" id="__w2_wO31bb0_menu">
+  																<div class="hover_menu_nub">
+  																</div>
+  																<div class="hover_menu_contents" id="__w2_wO31bb0_menu_contents">
+  																</div>
+  															</div>
+  															<a class="topic_name" href="/Analysis-mathematical" routing="q://topic/(46339)" id="__w2_wO31bb0_link"><span class="name_text"><span id="ld_zeewpY_19009">Analysis (mathematical)</span></span></a></span>. <span class="timestamp"><a href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Daniel-Freedman-3">16 May</a></span></span></strong>
+  															<div class="row">
+  																<div id="ld_zeewpY_19000">
+  																	<div class="feed_item_question">
+  																		<h2><span id="ld_zeewpY_19008"><a class="question_link" href="/Why-do-some-people-like-analysis-while-others-like-algebra" routing="q://question/(486675)" id="__w2_reLQft3_link">
+  																		<div class="question_text_icons">
+  																			<span id="ld_zeewpY_19019"></span>
+  																		</div>
+  																		<span id="ld_zeewpY_19011"></span>Why do some people like analysis while others like algebra?</a></span></h2>
+  																	</div>
+  																</div>
+  																<div id="ld_zeewpY_19001">
+  																	<div class="feed_item_answer answer_text" id="__w2_ZQbhcVk_answer">
+  																		<div class="rating_buttons">
+  																			<a class="rating" href="#" id="__w2_ZQbhcVk_answer_rating">
+  																			<div id="ld_zeewpY_19012">
+  																				<strong class="rating_value " id="__w2_JdSLxMW_rating"><span class="numbers">10</span></strong>
+  																			</div>
+  																			</a>
+  																			<div class="hidden" id="__w2_ZQbhcVk_answer_voting">
+  																				<div id="ld_zeewpY_19013">
+  																					<div class=" rating_buttons">
+  																						<div class="rating_options" id="__w2_q9w6yAh_buttons">
+  																							<a class="lil_button rate_up" href="#" id="__w2_q9w6yAh_answer_vote_up_link">&nbsp;</a><a class="lil_button rate_down" href="#" id="__w2_q9w6yAh_answer_vote_down_link">&nbsp;</a>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																		<div class="feed_item_answer_content answer_content" id="__w2_ZQbhcVk_answer_wrapper">
+  																			<div class="answer_user answer_user_inline" id="__w2_ZQbhcVk_answer_user_wrapper">
+  																				<span class="feed_item_answer_user" id="__w2_ZQbhcVk_answer_user_sig"><a class="user" href="/Daniel-Freedman-3" routing="q://user/(4173340)" id="__w2_VCmiL9I_link">Daniel Freedman</a>
+  																				<div class="hover_menu hidden" style="display: none" id="__w2_PfMgAZx_menu">
+  																					<div class="hover_menu_nub">
+  																					</div>
+  																					<div class="hover_menu_contents" id="__w2_PfMgAZx_menu_contents">
+  																					</div>
+  																				</div>
+  																				<span id="__w2_PfMgAZx_link"></span></span>
+  																				<div class="answer_voters_row hidden" id="__w2_ZQbhcVk_answer_voters">
+  																					<div id="ld_zeewpY_19014">
+  																						<span class="answer_voters"><span class="answer_voter_callout"><span id="ld_zeewpY_19020"><strong class="voter_count">9</strong> votes</span></span> by <span id="__w2_rFuIgX9_view_all"><a class="user" href="/Hongwan-Liu" routing="q://user/(1408919)" id="__w2_BhXxpxh_link">Hongwan Liu</a>, <a class="user" href="/Sean-Breckling" routing="q://user/(3196309)" id="__w2_xtmdTcu_link">Sean Breckling</a>, <a class="user" href="/Jessica-Su" routing="q://user/(2437289)" id="__w2_EHrfstO_link">Jessica Su</a>, </span><span class="view_all_span" id="__w2_rFuIgX9_view_all_span"><span class="more_link"> (<a href="#" id="__w2_rFuIgX9_view_all_link">more</a>)</span></span><span class="hidden" id="__w2_rFuIgX9_all_phrases"><a class="user" href="/Hongwan-Liu" routing="q://user/(1408919)" id="__w2_BhXxpxh_link">Hongwan Liu</a>, <a class="user" href="/Sean-Breckling" routing="q://user/(3196309)" id="__w2_xtmdTcu_link">Sean Breckling</a>, <a class="user" href="/Jessica-Su" routing="q://user/(2437289)" id="__w2_EHrfstO_link">Jessica Su</a>, <a class="user" href="/Olivier-Gérard" routing="q://user/(16149)" id="__w2_CPpwejq_link">Olivier Gérard</a>, <a class="user" href="/Shan-Kothari" routing="q://user/(2756233)" id="__w2_FZXkAAV_link">Shan Kothari</a>, <a class="user" href="/Elden-Elmanto" routing="q://user/(4911895)" id="__w2_LyBXXaD_link">Elden Elmanto</a>, <a class="user" href="/Daniel-McLaury" routing="q://user/(31205)" id="__w2_lNvlYMp_link">Daniel McLaury</a>, <a class="user" href="/Jun-Yong-Park" routing="q://user/(2111017)" id="__w2_JsnMfIx_link">Jun-Yong Park</a>, and <a class="user" href="/Chris-Jojo" routing="q://user/(5208157)" id="__w2_TFUOwEh_link">Chris Jojo</a></span></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div id="ld_zeewpY_19015">
+  																			</div>
+  																			<div id="__w2_ZQbhcVk_answer_content_wrapper">
+  																				<div class="inline truncated_q_text" id="__w2_Epa37hR_truncated">
+  																					<div id="ld_zeewpY_19016">
+  																						<div class="truncated_thumbnail_holder">
+  																						</div>
+  																						<img src="http://qlx.cf.quoracdn.net/main-281ef1857e1515d6.png" width="8" height="9" class="math" title="\epsilon" alt="\epsilon"/> is kind of ugly
+  																					</div>
+  																				</div>
+  																				<div class="hidden expanded_q_text" id="__w2_Epa37hR_expanded">
+  																					<div id="ld_zeewpY_19017">
+  																						<img src="http://qlx.cf.quoracdn.net/main-281ef1857e1515d6.png" width="8" height="9" class="math" title="\epsilon" alt="\epsilon"/> is kind of ugly<span id="ld_zeewpY_19021"></span>
+  																					</div>
+  																				</div>
+  																			</div>
+  																			<div class="answer_voters_row hidden item_action_bar row" id="__w2_ZQbhcVk_answer_actions">
+  																				<span id="ld_zeewpY_19018"><a class=" answer_permalink" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Daniel-Freedman-3" id="__w2_ZaBOOU4_link">May 16, 2012</a></span>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div class="row item_action_bar">
+  																<span id="ld_zeewpY_19004"><a class="vote_item_link add_upvote" href="#" id="__w2_jdyRisp_answer_vote_up_link">投赞成票</a><a class="vote_item_link add_downvote" href="#" id="__w2_jdyRisp_answer_vote_down_link">Downvote</a></span><span class="bullet"> &bull; </span><span id="ld_zeewpY_19005"><a class="view_comments supp " href="#" id="__w2_mLpKKu2_view_comment_link">1 讨论</a><span class="light hidden" id="__w2_mLpKKu2_loading_comment_link">Loading...</span></span><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_keRRy8W_link">转发</a><span id="ld_zeewpY_19010"></span>
+  															</div>
+  															<div id="ld_zeewpY_19006">
+  																<div class="trackbacks_list hidden" id="__w2_LgVE6qK_trackbacks">
+  																	<div class="comment_list" style="overflow:hidden;">
+  																		<div id="__w2_LgVE6qK_trackback_list">
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  															<div id="ld_zeewpY_19007">
+  																<div class=" threaded_comments hidden" id="__w2_Kmfhnii_comments">
+  																	<div id="ld_Tyv4uK_12727">
+  																		<div class="hidden" id="__w2_DHrqsD8_comment_list_wrapper">
+  																			<div class="comment_list comment_list_level_0" id="__w2_DHrqsD8_comment_list">
+  																				<div class="comment_list_nub">
+  																				</div>
+  																				<div id="ld_Tyv4uK_12728">
+  																					<div id="__w2_qSnasWL_add_root">
+  																						<div class="comment add_root_comment" id="__w2_qSnasWL_add_root_inner">
+  																							<a href="/Minqi-Pan" routing="q://user/(4452019)" id="__w2_t4XGl1l_link"><img class=" profile_photo_img comment_image_add_root" src="http://qph.cf.quoracdn.net/main-thumb-4452019-25-MfaeJFykV8q2Etp6595lh6RKTLWfWuGo.jpeg" width="25" alt="Minqi Pan" height="25"/></a>
+  																							<div class="tcomment_editor_wrapper" id="__w2_TZa1QQy_tcomment_editor_wrapper">
+  																								<div class="qtext_editor" id="__w2_TZa1QQy_editor_outer">
+  																									<div class="qtext_editor_buttons_wrapper row" id="__w2_TZa1QQy_qtext_editor_buttons_wrapper">
+  																										<ul class="qtext_editor_buttons" id="__w2_TZa1QQy_qtext_editor_buttons">
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_sep">&nbsp;</li>
+  																											<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_TZa1QQy_cmd_qimg">&nbsp;</a></li>
+  																										</ul>
+  																									</div>
+  																									<div class="editor_wrapper" id="__w2_TZa1QQy_editor_wrapper">
+  																										<div class="qtext_editor_content" group="__w2_TZa1QQy_interaction" interactive="true" w2cid="TZa1QQy" id="__w2_TZa1QQy_editor">
+  																											<br/>
+  																										</div>
+  																										<div class="hidden qlink_editor br5" id="__w2_TZa1QQy_qlink_editor">
+  																											<div class="qlink_editor_contents">
+  																												<input group="__w2_TZa1QQy_interaction" type="hidden" w2cid="TZa1QQy" id="__w2_TZa1QQy_qlink_key"/><a class="__w2_TZa1QQy_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																												<div class="hidden row">
+  																													<input class="text" group="__w2_TZa1QQy_interaction" style="width:240px;" type="text" value="" w2cid="TZa1QQy" id="__w2_TZa1QQy_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_TZa1QQy_qlink_update">Update</a></small>
+  																												</div>
+  																												<div id="__w2_TZa1QQy_qlink_selector">
+  																													<div class="qlink_text" id="__w2_TZa1QQy_qlink_title">
+  																														<strong>Link to Questions, Topics and People</strong>
+  																													</div>
+  																													<div class="row" id="__w2_TZa1QQy_qlink_selector_row">
+  																														<div style="width:360px;" id="__w2_TZa1QQy_link_selector">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																							<div class="add_root_submit_button_wrapper">
+  																								<a class="submit_button comment_submit_button" href="#" id="__w2_qSnasWL_add_root_link">讨论</a>
+  																								<div class="clear">
+  																								</div>
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																				<div id="ld_Tyv4uK_12729">
+  																					<div id="ld_Tyv4uK_12730">
+  																						<div class="comment_wrapper last comment_to_append" id="__w2_bZkkmXl_comment">
+  																							<div class="comment_highlight_wrapper" id="__w2_bZkkmXl_comment_highlight_wrapper">
+  																								<div class="comment threaded_comment" id="__w2_bZkkmXl_comment_inner">
+  																									<div class="comment_contents">
+  																										<p class="comment_text">
+  																											<div class="full_comment_text" id="__w2_bZkkmXl_full_comment_text">
+  																												<a href="/Olivier-Gérard" routing="q://user/(16149)" id="__w2_MF8MJRb_link"><img class=" profile_photo_img comment_image" src="http://qph.cf.quoracdn.net/main-thumb-16149-25-ChaZ0BSn3v9D0W2VP6tdnoV3KN9rQQBC.jpeg" width="25" alt="Olivier Gérard" height="25"/></a>
+  																												<div class="comment_author_name">
+  																													<a class="user" href="/Olivier-Gérard" routing="q://user/(16149)" id="__w2_YUAJD4b_link">Olivier Gérard</a><span id="ld_Tyv4uK_12731"></span>
+  																												</div>
+  																												and &#039;x&#039; is so intriguing ...
+  																											</div>
+  																											<span class="hidden" id="__w2_bZkkmXl_show_downvoted_link_wrapper">
+  																											<div class="comment_image comment_image_empty">
+  																											</div>
+  																											<a class="light_gray _show_downvoted" href="#" id="__w2_bZkkmXl_show_downvoted_link">讨论 downvoted</a><span class="bullet"> &bull; </span><a class="comment_timestamp_deleted" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Daniel-Freedman-3/comment/954891">24 May</a></span>
+  																										</p>
+  																									</div>
+  																									<div id="__w2_bZkkmXl_footer_wrapper">
+  																										<div id="ld_Tyv4uK_12732">
+  																											<div class="hidden comment_reply_box" id="__w2_oMJh3nS_reply_box">
+  																												<div class="reply_to_comment comment" id="__w2_oMJh3nS_reply_box_enabled">
+  																													<div class="tcomment_editor_wrapper" id="__w2_hNNXo8t_tcomment_editor_wrapper">
+  																														<div class="qtext_editor" id="__w2_hNNXo8t_editor_outer">
+  																															<div class="qtext_editor_buttons_wrapper row" id="__w2_hNNXo8t_qtext_editor_buttons_wrapper">
+  																																<ul class="qtext_editor_buttons" id="__w2_hNNXo8t_qtext_editor_buttons">
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_sep">&nbsp;</li>
+  																																	<li class="qtext_editor_button qtext_button_qimg"><a href="#" id="__w2_hNNXo8t_cmd_qimg">&nbsp;</a></li>
+  																																</ul>
+  																															</div>
+  																															<div class="editor_wrapper" id="__w2_hNNXo8t_editor_wrapper">
+  																																<div class="qtext_editor_content" group="__w2_hNNXo8t_interaction" interactive="true" w2cid="hNNXo8t" id="__w2_hNNXo8t_editor">
+  																																	<br/>
+  																																</div>
+  																																<div class="hidden qlink_editor br5" id="__w2_hNNXo8t_qlink_editor">
+  																																	<div class="qlink_editor_contents">
+  																																		<input group="__w2_hNNXo8t_interaction" type="hidden" w2cid="hNNXo8t" id="__w2_hNNXo8t_qlink_key"/><a class="__w2_hNNXo8t_qlink_close remove qlink_close" href="#">&nbsp;</a>
+  																																		<div class="hidden row">
+  																																			<input class="text" group="__w2_hNNXo8t_interaction" style="width:240px;" type="text" value="" w2cid="hNNXo8t" id="__w2_hNNXo8t_qlink_text"/><small><a class="action_button" style="height:16px;padding:3px 8px;font-size:1em;" href="#" id="__w2_hNNXo8t_qlink_update">Update</a></small>
+  																																		</div>
+  																																		<div id="__w2_hNNXo8t_qlink_selector">
+  																																			<div class="qlink_text" id="__w2_hNNXo8t_qlink_title">
+  																																				<strong>Link to Questions, Topics and People</strong>
+  																																			</div>
+  																																			<div class="row" id="__w2_hNNXo8t_qlink_selector_row">
+  																																				<div style="width:360px;" id="__w2_hNNXo8t_link_selector">
+  																																				</div>
+  																																			</div>
+  																																		</div>
+  																																	</div>
+  																																</div>
+  																															</div>
+  																														</div>
+  																														<div class="clear">
+  																														</div>
+  																													</div>
+  																													<div class="reply_submit_button_wrapper">
+  																														<a class="submit_button comment_submit_button" href="#" id="__w2_oMJh3nS_add_comment_link">Reply</a><span class="light editor_cancel_text"> or <a href="#" id="__w2_oMJh3nS_cancel_link">Cancel</a></span>
+  																														<div class="clear">
+  																														</div>
+  																													</div>
+  																												</div>
+  																											</div>
+  																										</div>
+  																										<div id="ld_Tyv4uK_12733">
+  																											<div class="comment_footer_link" id="__w2_r2a8luz_action_bar">
+  																												<span class="light"><input class="show_reply_box_link" group="__w2_r2a8luz_interaction" placeholder="Reply..." w2cid="r2a8luz" id="__w2_r2a8luz_show_reply_box_link"/>&nbsp;&nbsp;<a class="add_upvote vote_item_link" action="comment投赞成票:" href="#" arg="{&quot;type&quot;: &quot;answer&quot;, &quot;cid&quot;: 954891}" id="__w2_r2a8luz_comment_upvote">投赞成票</a><a class="add_downvote vote_item_link" action="commentDownvote:" href="#" arg="{&quot;type&quot;: &quot;answer&quot;, &quot;cid&quot;: 954891}" id="__w2_r2a8luz_comment_downvote">Downvote</a><span class="bullet"> &bull; </span><a class="# repost_link" href="#" id="__w2_XBlDVAm_link">转发</a><span class="bullet"> &bull; </span></span><span class="timestamp light_gray" id="__w2_r2a8luz_timestamp"><a class="" href="/Why-do-some-people-like-analysis-while-others-like-algebra/answer/Daniel-Freedman-3/comment/954891">24 May</a></span>
+  																											</div>
+  																										</div>
+  																									</div>
+  																								</div>
+  																							</div>
+  																							<div id="ld_Tyv4uK_12734">
+  																							</div>
+  																							<div id="ld_Tyv4uK_12735">
+  																							</div>
+  																						</div>
+  																					</div>
+  																				</div>
+  																			</div>
+  																		</div>
+  																	</div>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  											<div id="ld_llfWRv_13741">
+  												<div class="hidden pager_next" id="__w2_p2Fhrqc_loading">
+  													<span class="__wn2_loading"><span class="__wn2_loading_spinner"></span><span class="__wn2_loading_text">Loading...</span></span>
+  												</div>
+  												<div class="pager_next action_button row" id="__w2_p2Fhrqc_more">
+  													更多动态
+  												</div>
+  												<div class="pager_sentinel" id="__w2_p2Fhrqc_sentinel">
+  												</div>
+  											</div>
+  										</div>
+  									</div>
+  									<div class="side_col w2 p1">
+  										<div id="ld_llfWRv_13722">
+  											<div class="section share_question section_top">
+  												<h3>分享课程<span class="bullet"> &bull; </span><strong class="light"><span id="ld_QFxMa5_12839"><a href="#" id="__w2_wvsLrh1_link">邀请他人来参与</a></span></strong></h3>
+  												<div class="row share_icons_row">
+  													<a class="has_icon twitter" href="#" id="__w2_WmFYm8x_share">Twitter</a><a class="has_icon facebook" href="#" id="__w2_MECX42e_share">Facebook</a><a class="has_icon quora" href="#" id="__w2_eCRzr0w_share">Quora</a>
+  												</div>
+  											</div>
+  										</div>
+  										<div id="ld_llfWRv_13723">
+  											<div class="row section ">
+  												<h3>课程专家</h3>
+  												<div id="ld_zeewpY_18970">
+  													<div class="usercard_row row usercard_answerer" id="__w2_wRBIBy8_answerer">
+  														<span id="ld_zeewpY_18976"></span>
+  														<div id="ld_zeewpY_18977">
+  															<div class="usercard">
+  																<div class="pic">
+  																	<a href="/Edwin-Chen-1" routing="q://user/(888421)" id="__w2_gyutJEd_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-888421-25-oujENnZbgEsq6EOcBsRZKbIQlSClrEs0.jpeg" width="25" alt="Edwin Chen" height="25"/></a>
+  																</div>
+  																<div class="usercard_info">
+  																	<span class="usercard_name"><a class="user" href="/Edwin-Chen-1" routing="q://user/(888421)" id="__w2_zy7bVtE_link">Edwin Chen</a></span><br/><span class="light num_answers"><span id="ld_zeewpY_18986"><a style="white-space:nowrap;" href="/Edwin-Chen-1/answers/Analysis-mathematical">1 Answer</a></span></span><span id="ld_zeewpY_18987">
+  																	<div class="hover_menu hidden" style="display: none" id="__w2_SKnWbCp_menu">
+  																		<div class="hover_menu_nub">
+  																		</div>
+  																		<div class="hover_menu_contents" id="__w2_SKnWbCp_menu_contents">
+  																		</div>
+  																	</div>
+  																	<span id="__w2_SKnWbCp_link"></span></span>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  												<div id="ld_zeewpY_18971">
+  													<div class="usercard_row row usercard_answerer" id="__w2_Jqd02jq_answerer">
+  														<span id="ld_zeewpY_18978"></span>
+  														<div id="ld_zeewpY_18979">
+  															<div class="usercard">
+  																<div class="pic">
+  																	<a href="/Sarah-Constantin" routing="q://user/(3351591)" id="__w2_yLtIBnF_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-3351591-25-iAiG3z3Db3Yx8YNNGWuP43Ufo3FDakd8.jpeg" width="25" alt="Sarah Constantin" height="25"/></a>
+  																</div>
+  																<div class="usercard_info">
+  																	<span class="usercard_name"><a class="user" href="/Sarah-Constantin" routing="q://user/(3351591)" id="__w2_omKJmZX_link">Sarah Constantin</a></span><br/><span class="light num_answers"><span id="ld_zeewpY_18988"><a style="white-space:nowrap;" href="/Sarah-Constantin/answers/Analysis-mathematical">2 Answers</a></span></span><span id="ld_zeewpY_18989">
+  																	<div class="hover_menu hidden" style="display: none" id="__w2_iqfFG8I_menu">
+  																		<div class="hover_menu_nub">
+  																		</div>
+  																		<div class="hover_menu_contents" id="__w2_iqfFG8I_menu_contents">
+  																		</div>
+  																	</div>
+  																	<span id="__w2_iqfFG8I_link"></span></span>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  												<div id="ld_zeewpY_18972">
+  													<div class="usercard_row row usercard_answerer" id="__w2_WPinoq0_answerer">
+  														<span id="ld_zeewpY_18980"></span>
+  														<div id="ld_zeewpY_18981">
+  															<div class="usercard">
+  																<div class="pic">
+  																	<a href="/Tarun-Chitra" routing="q://user/(604935)" id="__w2_Hk6x6m5_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-604935-25-0Zkw4hphz6UM5wQ4LkGezm26TfuKWJvJ.jpeg" width="25" alt="Tarun Chitra" height="25"/></a>
+  																</div>
+  																<div class="usercard_info">
+  																	<span class="usercard_name"><a class="user" href="/Tarun-Chitra" routing="q://user/(604935)" id="__w2_wrFlwYh_link">Tarun Chitra</a></span><br/><span class="light num_answers"><span id="ld_zeewpY_18990"><a style="white-space:nowrap;" href="/Tarun-Chitra/answers/Analysis-mathematical">4 Answers</a></span></span><span id="ld_zeewpY_18991">
+  																	<div class="hover_menu hidden" style="display: none" id="__w2_kr5as5F_menu">
+  																		<div class="hover_menu_nub">
+  																		</div>
+  																		<div class="hover_menu_contents" id="__w2_kr5as5F_menu_contents">
+  																		</div>
+  																	</div>
+  																	<span id="__w2_kr5as5F_link"></span></span>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  												<div id="ld_zeewpY_18973">
+  													<div class="usercard_row row usercard_answerer" id="__w2_c250NsS_answerer">
+  														<span id="ld_zeewpY_18982"></span>
+  														<div id="ld_zeewpY_18983">
+  															<div class="usercard">
+  																<div class="pic">
+  																	<a href="/Harris-B-Daniels" routing="q://user/(933066)" id="__w2_gCzcleD_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-933066-25-L1XxhCWRA4Uk7iDQtXpu9STjSTg6vLMR.jpeg" width="25" alt="Harris B. Daniels" height="25"/></a>
+  																</div>
+  																<div class="usercard_info">
+  																	<span class="usercard_name"><a class="user" href="/Harris-B-Daniels" routing="q://user/(933066)" id="__w2_snoa93d_link">Harris B. Daniels</a></span><br/><span class="light num_answers"><span id="ld_zeewpY_18992"><a style="white-space:nowrap;" href="/Harris-B-Daniels/answers/Analysis-mathematical">1 Answer</a></span></span><span id="ld_zeewpY_18993">
+  																	<div class="hover_menu hidden" style="display: none" id="__w2_X0zjDfx_menu">
+  																		<div class="hover_menu_nub">
+  																		</div>
+  																		<div class="hover_menu_contents" id="__w2_X0zjDfx_menu_contents">
+  																		</div>
+  																	</div>
+  																	<span id="__w2_X0zjDfx_link"><span class="rep">Passed my qualifying exams in Measure Theory and Complex Analysis.</span></span></span>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  												<div id="ld_zeewpY_18974">
+  													<div class="usercard_row row usercard_answerer" id="__w2_EDVZSHh_answerer">
+  														<span id="ld_zeewpY_18984"></span>
+  														<div id="ld_zeewpY_18985">
+  															<div class="usercard">
+  																<div class="pic">
+  																	<a href="/Alan-Guo-1" routing="q://user/(1920050)" id="__w2_QcHgYT3_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1920050-25-hwEXzCnORGt2JiTtSQWnFeW2vWe45AS7.jpeg" width="25" alt="Alan Guo" height="25"/></a>
+  																</div>
+  																<div class="usercard_info">
+  																	<span class="usercard_name"><a class="user" href="/Alan-Guo-1" routing="q://user/(1920050)" id="__w2_mIh7uAh_link">Alan Guo</a></span><br/><span class="light num_answers"><span id="ld_zeewpY_18994"><a style="white-space:nowrap;" href="/Alan-Guo-1/answers/Analysis-mathematical">1 Answer</a></span></span><span id="ld_zeewpY_18995">
+  																	<div class="hover_menu hidden" style="display: none" id="__w2_t9Eqg3U_menu">
+  																		<div class="hover_menu_nub">
+  																		</div>
+  																		<div class="hover_menu_contents" id="__w2_t9Eqg3U_menu_contents">
+  																		</div>
+  																	</div>
+  																	<span id="__w2_t9Eqg3U_link"></span></span>
+  																</div>
+  															</div>
+  														</div>
+  													</div>
+  												</div>
+  												<div id="ld_zeewpY_18975">
+  												</div>
+  											</div>
+  										</div>
+  										<div class="row">
+  											<div id="ld_llfWRv_13724">
+  												<h3 class="section_header"><span id="ld_Tyv4uK_12726">有 <a href="/Analysis-mathematical/followers"><strong><%= @topic.followed_count %></strong></a> 人关注此课程</span></h3>
+  												<div class="usercard">
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_ZDuufDs_photo_tooltip">
+  															<a href="/Slava-Akhmechet" routing="q://user/(5983)" id="__w2_T1d0U4L_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-5983-25-JnTTgaPXxEBYxJ8RaDhREyFkdy0XQT7o.jpeg" width="25" alt="Slava Akhmechet" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_aCv3JE7_photo_tooltip">
+  															<a href="/Rolando-Espinoza-La-Fuente" routing="q://user/(29849)" id="__w2_ZRGn1Ei_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-29849-25-s2ehtTYN6ivCgkODiMQbSiZdH1A8sjLq.jpeg" width="25" alt="Rolando Espinoza La Fuente" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_AxURTdg_photo_tooltip">
+  															<a href="/Pasquale-Ferrara" routing="q://user/(82335)" id="__w2_jttaSec_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-82335-25-E16TJLBugaNb0mmUQL0ccYJODJRsNQfF.jpeg" width="25" alt="Pasquale Ferrara" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_UxOBnJs_photo_tooltip">
+  															<a href="/Caleb-Oki" routing="q://user/(161313)" id="__w2_OMypK0w_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-161313-25-2QM8s7kBaSB6erx2jOfzPOWeWKIVcjau.jpeg" width="25" alt="Caleb Oki" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_kPjbeh8_photo_tooltip">
+  															<a href="/Todd-Akira-Morikawa" routing="q://user/(234114)" id="__w2_uUolrGx_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-234114-25-0VWh678styTV3TLjMfAglA8fOa9pg1GF.jpeg" width="25" alt="Todd Akira Morikawa" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_KxUDMlD_photo_tooltip">
+  															<a href="/Nestor-Pestelos" routing="q://user/(277074)" id="__w2_uvAboWR_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-277074-25-fkOOYfFwZBGhNLHoP09MrSzIjiTl5dNm.jpeg" width="25" alt="Nestor Pestelos" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_o3kFLTB_photo_tooltip">
+  															<a href="/Rohitha-Dassanayake" routing="q://user/(296929)" id="__w2_rR0LtfK_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-296929-25-i7uyINlW5Y9gngGRkNTAy1HkEPhA9sW0.jpeg" width="25" alt="Rohitha Dassanayake" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_u0rjhZJ_photo_tooltip">
+  															<a href="/Girish-Duvuru" routing="q://user/(524798)" id="__w2_Le8pEND_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Girish Duvuru" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_GnLm59k_photo_tooltip">
+  															<a href="/Carbon-Zhu" routing="q://user/(594059)" id="__w2_kjkBJd2_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-594059-25-VI2CDIrYicIWcUFf7OzIS5ojcTmtxueq.jpeg" width="25" alt="Carbon Zhu" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_gyatBww_photo_tooltip">
+  															<a href="/Harris-B-Daniels" routing="q://user/(933066)" id="__w2_OqRuSak_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-933066-25-L1XxhCWRA4Uk7iDQtXpu9STjSTg6vLMR.jpeg" width="25" alt="Harris B. Daniels" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_SnUsZ8w_photo_tooltip">
+  															<a href="/Steve-Denton" routing="q://user/(953021)" id="__w2_qt8rtkI_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-953021-25-JWgIYEhsxOeeNLfSMxs4j6l5KkpKZN0a.jpeg" width="25" alt="Steve Denton" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_tT7pmHb_photo_tooltip">
+  															<a href="/Gabrio-Rizzuti" routing="q://user/(1035159)" id="__w2_T87r6OH_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1035159-25-eLqSbVHnbQWNriuZ3RyFMzv9m9xxjlZn.jpeg" width="25" alt="Gabrio Rizzuti" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_cw3QKxH_photo_tooltip">
+  															<a href="/Sakunthala-Panditharatne" routing="q://user/(1209142)" id="__w2_xSi3anQ_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1209142-25-rTqc0Ia4BCRFVoj9bBP5YabWChpcGipG.jpeg" width="25" alt="Sakunthala Panditharatne" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_TXMbsD1_photo_tooltip">
+  															<a href="/Darwin-Ezequiel" routing="q://user/(1586445)" id="__w2_oXKk3iW_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Darwin Ezequiel" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_dlLEXyz_photo_tooltip">
+  															<a href="/Simon-Lilburn" routing="q://user/(1624122)" id="__w2_O1Mrww3_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1624122-25-SqHw9t55xkUiXn2YsHJLwAz5mj0Zo3l6.jpeg" width="25" alt="Simon Lilburn" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_wksQthx_photo_tooltip">
+  															<a href="/Calvin-Condon" routing="q://user/(1668026)" id="__w2_idgWLut_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Calvin Condon" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_u6iMSZ3_photo_tooltip">
+  															<a href="/Ramesh-Thulasiram" routing="q://user/(1732891)" id="__w2_z1Jf6Ue_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1732891-25-vAamPS4oQBiZETM2Dus9qgydyOzrIsK5.jpeg" width="25" alt="Ramesh Thulasiram" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_oFwd65m_photo_tooltip">
+  															<a href="/Ron-Feasel" routing="q://user/(1765416)" id="__w2_ReDA7Lh_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1765416-25-KLp4FhvXv7WJVKNnTyKttFAhKTeryuwT.jpeg" width="25" alt="Ron Feasel" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_K22at62_photo_tooltip">
+  															<a href="/Ashok-Venkatesan" routing="q://user/(1781351)" id="__w2_kQnVmAF_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1781351-25-lecV8SLYJx2psGHeDAO0ftZ1UgCoDtbH.jpeg" width="25" alt="Ashok Venkatesan" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_cWLvb74_photo_tooltip">
+  															<a href="/Joseph-Boyle" routing="q://user/(1879935)" id="__w2_d9MkU7W_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1879935-25-M9yWQQiVK2Hf3CPaTfG5LmCDvQ1ezkzO.jpeg" width="25" alt="Joseph Boyle" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_tSdjT1f_photo_tooltip">
+  															<a href="/Charles-Zhu" routing="q://user/(1920619)" id="__w2_rY6kWs8_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-1920619-25-88GdOYg7GOXW4aEjmencCQg2uQebEbJA.jpeg" width="25" alt="Charles Zhu" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_Hh3Ysjo_photo_tooltip">
+  															<a href="/Tom-Ward-4" routing="q://user/(1949913)" id="__w2_Z2GsHJW_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Tom Ward" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_RAaz4M4_photo_tooltip">
+  															<a href="/Pete-Troyan" routing="q://user/(1988021)" id="__w2_IW3IAuQ_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Pete Troyan" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_nuNWCK6_photo_tooltip">
+  															<a href="/Bidit-Acharya" routing="q://user/(2014461)" id="__w2_Shrbalz_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-2014461-25-3lRpGxereFvuX1P3AsALpNvLFJqqlBE4.jpeg" width="25" alt="Bidit Acharya" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_Oe3VG1m_photo_tooltip">
+  															<a href="/Tim-Lee-5" routing="q://user/(2163620)" id="__w2_ahZiK96_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Tim Lee" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_c4gKQXV_photo_tooltip">
+  															<a href="/Chris-Buechler" routing="q://user/(2431245)" id="__w2_NLgDNYe_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-2431245-25-SdpjmEPOoK9DyhTe0hCbgrezOxitPZUt.jpeg" width="25" alt="Chris Buechler" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_OLIVKBE_photo_tooltip">
+  															<a href="/Fortuona-Athaem-Devi-Paendrag" routing="q://user/(2741922)" id="__w2_advpkC8_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-2741922-25-dJ9myGX7mfnb5jzWGXbogj93ZUNggNBR.jpeg" width="25" alt="Fortuona Athaem Devi Paendrag" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_Pcw2qg4_photo_tooltip">
+  															<a href="/Andrew-Weaver-1" routing="q://user/(2818303)" id="__w2_jnDu9Xe_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-2818303-25-g3pKPJDCujyRZqmlI9StkRisX1jDNvT1.jpeg" width="25" alt="Andrew Weaver" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_YTvr5Kp_photo_tooltip">
+  															<a href="/Ali-Baba-Murtabak" routing="q://user/(2976842)" id="__w2_R7i7BOF_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Ali Baba Murtabak" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_VsI8YVK_photo_tooltip">
+  															<a href="/Sassan-Haradji" routing="q://user/(3416676)" id="__w2_bBk9GtJ_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Sassan Haradji" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_XUcD5dx_photo_tooltip">
+  															<a href="/Rory-Wang" routing="q://user/(3661780)" id="__w2_pdwaD6W_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-3661780-25-qJ7Lw3tTsji4d90NVWFxS1O3RsSBjt83.jpeg" width="25" alt="Rory Wang" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_nkmCghF_photo_tooltip">
+  															<a href="/Michael-Dillon-2" routing="q://user/(3736211)" id="__w2_WYQA7NA_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-3736211-25-MK7XMEjqG1Y1s2A2DI8MCacPusDK8td5.jpeg" width="25" alt="Michael Dillon" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_iMZ6pmS_photo_tooltip">
+  															<a href="/Ajinkya-Dhanagare" routing="q://user/(3766590)" id="__w2_aL0Zjqc_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-3766590-25-K5q7Y653Rn5k3M1gEjVd8z8VVFk0v2B9.jpeg" width="25" alt="Ajinkya Dhanagare" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_rF93AIi_photo_tooltip">
+  															<a href="/Azumi-Hayakawa" routing="q://user/(4353393)" id="__w2_n36cUzy_link"><img class=" profile_photo_img" src="http://qph.cf.quoracdn.net/main-thumb-4353393-25-PZ6BbXwO8uxoH4Rr74RdLSYmivXer6lP.jpeg" width="25" alt="Azumi Hayakawa" height="25"/></a>
+  														</div>
+  													</div>
+  													<div class="pic">
+  														<div class="photo_tooltip" id="__w2_nF3NLPM_photo_tooltip">
+  															<a href="/Anil-Kumar-Upadrasta" routing="q://user/(4894086)" id="__w2_kINpm3J_link"><img class=" profile_photo_img" src="http://qsf.cf.quoracdn.net/-983d40ab650976cc.png" width="25" alt="Anil Kumar Upadrasta" height="25"/></a>
+  														</div>
+  													</div>
+  												</div>
+  											</div>
+  										</div>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+              <% unless 0==@topic.children.count %>
+  						<div id="ld_llfWRv_13725">
+  							<div id="ld_llfWRv_13742">
+  								<div class="row row_border p1">
+  									<h3 class="section_heading">子课程</h3>
+  									<% @topic.children.limit(8).each do |child| %>
+  									<div class="col w1">
+  										<div class="form_row">
+  											<div id="ld_9z7AcI_14377">
+  												<a href="/topics/<%= child.id %>" id="__w2_keemCsx_link"><img class="profile_photo_img no_photo" src="<%= cover_url(child) %>" width="100" height="100"/></a>
+  											</div>
+  										</div>
+  										<strong><span id="ld_9z7AcI_14378">
+  										<div class="hover_menu hidden" style="display: none" id="__w2_NvGnpku_menu">
+  											<div class="hover_menu_nub">
+  											</div>
+  											<div class="hover_menu_contents" id="__w2_NvGnpku_menu_contents">
+  											</div>
+  										</div>
+  										<a class="topic_name" href="/topics/<%= child.id %>" id="__w2_NvGnpku_link"><span class="name_text"><span id="ld_9z7AcI_14393"><%= child.name %></span></span></a></span></strong>
+  									</div>
+  									<% end %>
+  								</div>
+  							</div>
+  						</div>
+  						<% end %>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	
+  </div>
+  <div>
+  	<div class="above_page_banner hidden" id="__w2_jOnmjBk_banner">
+  		There are some updates to this page that haven&#039;t been applied yet because you&#039;ve entered some data into a form. You can <a href="#" id="__w2_jOnmjBk_resume">resume live updates</a> if you want.
+  	</div>
+  </div>
+  <div class="__livenode_loading hidden" id="__w2_BOi6yOy_loading">
+  	<div class="__livenode_loading_spinner">
+  	</div>
+  	Loading...
+  </div>
+  <div class="__connection_warning hidden" id="__w2_OOU3b5d_warning">
+  	Trying to regain internet connection...
+  </div>
+  <div id="ld_9fR3Ac_817">
+  </div>
+  <div id="ld_9fR3Ac_818">
+  </div>
+  <div class="tiny_swf">
+  	<div id="__w2_l7wpLdP_flash">
+  	</div>
+  </div>
+  <div id="ld_9fR3Ac_819">
+  </div>
 </div>
 
-<% content_for :sidebar do %>
-
-<%= render file:'home/refresh_sugg_ex.html' %>
-
-
-<section class="sideBox clearfix">
-<h3>最近关注此话题的人</h3>
-<ul class="headList23">
-	<% for follower in @topic.follower_ids.rlimit(48) %>
-		<li><%= user_avatar_tag2(follower, :small,{:size2 => 23}) %></li>
-	<% end %>
-</ul>
-</section>
-		
-
-<% if false and !@related_topics.blank? %>
-  <section class="sideBox clearfix">
-  					<h3>相关话题</a></h3>
-  					<ul class="topicList">
-          		<% for topic in @related_topics %>
-          		  <% topicname = topic %>
-          		  <% topic = Topic.get_id(topic) %>
-                <% next if topic.blank? %>
-  						<li><em>
-  						  <a href="<%= topic_path(topicname) %>"><%= truncate(topicname,:length=>7,omission:'⋯') %></a>
-  						  </em>
-                <% if current_user and current_user.topic_followed?(topic) %>
-                <a class="nBtn nBtnUnFocus" onclick="return Topics.unfollow(this, '<%= topicname %>','small');"></a>
-                <% else %>
-                <a class="nBtn nBtnFocus" onclick="return Topics.follow(this, '<%= topicname %>','small');"></a>
-                <% end %>
-
-  						  </li>
-						  <% end %>
-  					</ul>
-  				</section>
-<% end %>
-<% end %>
-
+<%= render 'qua_footer' %>

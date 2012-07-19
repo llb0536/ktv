@@ -47,7 +47,7 @@ $(document).ready(function(){
     });
 
     //searchInput输入框提示
-    App.placeHolder($("#searchInput"), "搜索求职、职场疑问");
+    App.placeHolder($("#searchInput"), "搜索解题、课程疑问");
     //个人页 对某人提问相关提示
     var txtATU = $("#new_ask_title_ta");
     var txtABT = $("#new_ask_body_ta");
@@ -126,7 +126,7 @@ $(document).ready(function(){
 $("#login_link").click(Users.userLogin);
     $("#reg_link").click(Users.userReg);
     $("#logout_link").click(Users.userLogout);
-    // Kejian.TV广场 欢迎页热门话题关注 2012-2-5 by lesanc.li
+    // 问答广场 欢迎页热门话题关注 2012-2-5 by lesanc.li
     var hotTopicTable = $(".newbie .hotTopicTable");
     if (hotTopicTable.length > 0){
         // topics hover event

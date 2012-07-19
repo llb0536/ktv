@@ -31,7 +31,7 @@
       -->
       <div class="search_form_row" style="margin-bottom:20px;">
         <span style="margin-right:10px;">分&nbsp;&nbsp;&nbsp;类:</span>
-        <%=select_tag "topic[tags_array]",options_for_select([["",""],["行业","行业"],["公司","公司"],["职业","职业"],["求职","求职"],["职场","职场"]],@topic.tags_array) %>
+        <%=select_tag "topic[tags_array]",options_for_select([["",""],["行业","行业"],["公司","公司"],["职业","职业"],["解题","解题"],["师生","师生"]],@topic.tags_array) %>
       </div>
       <div class="search_form_row">
         <%= f.input :will_autofollow,:as=>:boolean,:label=>'设为自动关注' %>

@@ -148,7 +148,7 @@ class HomeController < ApplicationController
   
   def newbie
     suggest
-    set_seo_meta('Kejian.TV广场')
+    set_seo_meta('问答广场')
     @already=[]
     @already = current_user.followed_topic_ids if user_signed_in?
     #where(:created_at.gt => 30.days.ago.utc)

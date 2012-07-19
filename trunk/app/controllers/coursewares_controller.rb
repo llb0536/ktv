@@ -2,9 +2,10 @@
 class CoursewaresController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy,:thank]
   before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
+  before_filter :authenticate_user_ownership!, :only => [:update,:destroy]
   def index
     pagination_get_ready
-    @coursewares = Courseware.normal.order('updated_at desc')
+    @coursewares = Courseware.nondeleted.normal.order('updated_at desc')
     pagination_over(@coursewares.count)
     @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
   end
@@ -34,8 +35,9 @@ class CoursewaresController < ApplicationController
     @seo[:title] = '编辑课件'
     prepare_s3
   end
-  def update
-
+  def destroy
+    @courseware.soft_delete
+    redirect_to '/',:notice=>'已成功删除'
   end
   def download
     downurl = ''
@@ -74,5 +76,11 @@ protected
       policy: policy,
       signature: Digest::MD5.hexdigest(policy+'&'+'Vv0WpPhlztxkPn7c9F3x3S8zgRE=')
     }    
+  end
+  def authenticate_user_ownership!
+    unless current_user.id==@courseware.user_id or current_user.id==@courseware.uploader_id
+      render text:'这不是你的课件.', status: 401
+      return false
+    end
   end
 end

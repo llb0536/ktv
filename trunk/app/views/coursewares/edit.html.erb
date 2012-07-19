@@ -18,7 +18,7 @@
         <div id="the_slides">
           <div class="edit_presentation_buttons">
             <a href="javascript:void(0)" id="reupload" class="button reupload">重新上传此课件</a>
-            <a href="/presentations/4f4cb6189a9ff0002200e9c7" class="button delete delete_presentation" data-confirm="Are you sure you want to delete this presentation?" data-method="delete" rel="nofollow">删除课件</a>
+            <%= link_to '删除课件',courseware_path(@courseware),:method => :delete, :confirm => '您确认要删除这个课件吗？',:class => 'button delete delete_presentation' %>
           </div>
           <h1>编辑课件</h1>
             <div class="slide_frame">

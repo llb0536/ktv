@@ -1,6 +1,7 @@
 window.App = {}
 window.App.Utilities = {}
 window.App.data = {}
+App.search_cache = {}
 
 if window.psvr_subject is 'math'
   App.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math_hover.png") %>'
@@ -84,70 +85,74 @@ App.search_li_hover = ->
   )
   if $('#core_search_ul li.selected').length is 0
     $('#core_search_ul li').first().addClass('selected')
-App.search_cater = (data) ->
-  $('#core_search_ul').html('')
-  $('#core_search_ul_new').html('')
+App.search_cater = (data,term) ->
+  $('#core_search_ul').html('')  
   keyword = 'unknown-keyword'
   last_one = new_one = ''
   failed = false
-  $.each(data,(index,itemRaw)->
-    item = JSON.parse(itemRaw)
-    if 'Course' == item['type']
-      title = App.Utilities.wrap_with_matches(item['title'],keyword)
-      title = item['title'] if false==title
-      slice1 = false # App.Utilities.slice_with_matches(item['name_en'],keyword,38)
-      slice2 = false #App.Utilities.slice_with_matches(item['name_pinyin'],keyword,6)
-      if false==slice1
-        if false==slice2
-          # do nothing
+  if data is null
+    last_one = "<li class=\"lightlink\">未找到与“#{term}”相关的内容，请尝试其他关键词</li>"
+  else
+    $.each(data,(index,itemRaw)->
+      item = JSON.parse(itemRaw)
+      if 'Course' == item['type']
+        title = App.Utilities.wrap_with_matches(item['title'],keyword)
+        title = item['title'] if false==title
+        slice1 = false # App.Utilities.slice_with_matches(item['name_en'],keyword,38)
+        slice2 = false #App.Utilities.slice_with_matches(item['name_pinyin'],keyword,6)
+        if false==slice1
+          if false==slice2
+            # do nothing
+          else
+            title += " <span class=\"en_match\">(#{slice2})</span>"
         else
-          title += " <span class=\"en_match\">(#{slice2})</span>"
-      else
-        title += " <span class=\"en_match\">(#{slice1})</span>"
-      $('#core_search_ul').append("<li class=\"topic with_img\"><a class=\"result_item\" href=\"#\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"><img src=\"http://qph.cf.quoracdn.net/main-thumb-t-12709-100-Chrp3pWVUjUuilUt0sp1dNoloqxjiTSd.jpeg\" height=\"22\" width=\"22\"></div><div style=\"margin-top: 7px\">#{item['field_name']}</div></span></div></a></li>")
-    else if 'User' == item['type']
-      title = App.Utilities.wrap_with_matches(item['title'],keyword)
-      title = item['title'] if false==title
-      slice1 = App.Utilities.slice_with_matches(item['name_en'],keyword,18)
-      slice2 = App.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
-      if false==slice1
-        if false==slice2
-          # do nothing
+          title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append("<li class=\"topic with_img\"><a class=\"result_item\" href=\"#\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"><img src=\"http://qph.cf.quoracdn.net/main-thumb-t-12709-100-Chrp3pWVUjUuilUt0sp1dNoloqxjiTSd.jpeg\" height=\"22\" width=\"22\"></div><div style=\"margin-top: 7px\">#{item['field_name']}</div></span></div></a></li>")
+      else if 'User' == item['type']
+        title = App.Utilities.wrap_with_matches(item['title'],keyword)
+        title = item['title'] if false==title
+        slice1 = App.Utilities.slice_with_matches(item['name_en'],keyword,18)
+        slice2 = App.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
+        if false==slice1
+          if false==slice2
+            # do nothing
+          else
+            title += " <span class=\"en_match\">(#{slice2})</span>"
         else
-          title += " <span class=\"en_match\">(#{slice2})</span>"
-      else
-        title += " <span class=\"en_match\">(#{slice1})</span>"
-      $('#core_search_ul').append( "<li class=\"user\"><a href=\"#\" class=\"result_item\"><div class=\"text\"><div class=\"pic\"><img width=\"40\" height=\"40\" alt=\"#{item['text']}\" class=\"[]\" src=\"http://qph.cf.quoracdn.net/main-thumb-20806-25-lWRBrYp5S76HESRmO19OYorGun7B2QjQ.jpeg\"></div>#{title} <span class=\"faded\">#{item['real_tagline']}</span></div></a></li>" )
-    else if 'Courseware' == item['type']
-      title = App.Utilities.wrap_with_matches(item['title'],keyword)
-      title = item['title'] if false==title
-      slice1 = App.Utilities.slice_with_matches(item['title_en'],keyword,12)
-      slice2 = App.Utilities.slice_with_matches(item['title_pinyin'],keyword,6)
-      if false==slice1
-        if false==slice2
-          # do nothing
+          title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append( "<li class=\"user\"><a href=\"#\" class=\"result_item\"><div class=\"text\"><div class=\"pic\"><img width=\"40\" height=\"40\" alt=\"#{item['text']}\" class=\"[]\" src=\"http://qph.cf.quoracdn.net/main-thumb-20806-25-lWRBrYp5S76HESRmO19OYorGun7B2QjQ.jpeg\"></div>#{title} <span class=\"faded\">#{item['real_tagline']}</span></div></a></li>" )
+      else if 'Courseware' == item['type']
+        title = App.Utilities.wrap_with_matches(item['title'],keyword)
+        title = item['title'] if false==title
+        slice1 = App.Utilities.slice_with_matches(item['title_en'],keyword,12)
+        slice2 = App.Utilities.slice_with_matches(item['title_pinyin'],keyword,6)
+        if false==slice1
+          if false==slice2
+            # do nothing
+          else
+            title += " <span class=\"en_match\">(#{slice2})</span>"
         else
-          title += " <span class=\"en_match\">(#{slice2})</span>"
+          title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append( "<li class=\"topic with_img\"><a class=\"result_item\" href=\"/#{item['course_slug']}/#{item['slug']}\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"></div><div style=\"margin-top: 7px\">#{item['course_name']}</div></span></div></a></li>")
+      else if 'more' == item['type']
+        keyword = item['what']
+        last_one = "<li class=\"lightlink\"><a href=\"#\" class=\"result_item result_item_more\">全部搜索结果: #{item['what']}</a></li>"
+        new_one = "<li class=\"addquestionitem\" style=\"padding-top:10px\"><strong class=\"inline_label col\">#{item['what']}</strong><span class=\"lil_action_button submit_button col\" style=\"font-weight:normal\">开设新课程</span></li>"
       else
-        title += " <span class=\"en_match\">(#{slice1})</span>"
-      $('#core_search_ul').append( "<li class=\"topic with_img\"><a class=\"result_item\" href=\"/#{item['course_slug']}/#{item['slug']}\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"></div><div style=\"margin-top: 7px\">#{item['course_name']}</div></span></div></a></li>")
-    else if 'more' == item['type']
-      keyword = item['what']
-      last_one = "<li class=\"lightlink\"><a href=\"#\" class=\"result_item result_item_more\">全部搜索结果: #{item['what']}</a></li>"
-      new_one = "<li class=\"addquestionitem\" style=\"padding-top:10px\"><strong class=\"inline_label col\">#{item['what']}</strong><span class=\"lil_action_button submit_button col\" style=\"font-weight:normal\">开设新课程</span></li>"
-    else
-      failed = true
-      keyword = item['what']
-      last_one = "<li class=\"lightlink\">未找到与“#{item['what']}”相关的内容，请尝试其他关键词</li>"
-  )  
+        failed = true
+        keyword = item['what']
+        last_one = "<li class=\"lightlink\">未找到与“#{item['what']}”相关的内容，请尝试其他关键词</li>"
+    )  
   $('#core_search_ul').append(last_one)
-  $('#core_search_ul_new').append(new_one)
   $('.results_frame li').removeClass('selected')
   App.search_li_hover()
 App.login = ->
   im.zm.login();
   $("#loginLayout").definedDialog("open");
-  
+App.topic_remove = ->
+  $.post("/topics/#{App.data.topic_id}/update_fathers",{add:-1,name:$(this).attr('id').split('_')[0]},(data)->
+    $("##{data.id}_already_father").remove()
+  )
 App.preload([
   App.logo_css_src1,
   App.browsetext_css_src1,
@@ -159,16 +164,17 @@ $(document).ready ->
     minLength: 1,
     source: ( request, response ) ->
       term = request.term
-      console.log term
-      if false and cache[term] # todo: turn it on
+      if false and App.search_cache[term] # todo: turn it on
         console.log 'cache hit'
-        App.search_cater( cache[ term ] )
+        App.search_cater( App.search_cache[ term ] )
       else
-        console.log '!'
-        lastXhr = $.getJSON( "/searches", request, ( data, status, xhr ) ->
-          cache[ term ] = data
-          if xhr == lastXhr
-            App.search_cater( data )
+        $('#search_form').addClass("searching")
+        request.q = request.term
+        request.term = null
+        $.getJSON( "/search/all", request, ( data, status, xhr ) ->
+          $('#search_form').removeClass("searching")
+          App.search_cache[ term ] = data
+          App.search_cater( data , term)
         )
   })
   $('#q').bind( "input.autocomplete", ->
@@ -240,4 +246,41 @@ $(document).ready ->
       $('#weizuozhefasongganxie').addClass('unlike')
       $('#weizuozhefasongganxie').html('已感谢')
       $('#weizuozhefasongganxie2').html(num+1)
+  )
+  $('#__w2_P47vozg_inline_editor_link').click(->
+    $(this).hide()
+    $('#the_question_topic_selector').show()
+    $('.topic_remove').show()
+  )
+  $('#the_question_topic_selector .submit_button').click(->
+    $.post("/topics/#{App.data.topic_id}/update_fathers",{add:1,name:$('#__w2_M152MfC_input').val()},(data)->
+      if $("##{data.id}_already_father").length is 0
+        $('#ld_C4qa3A_415667').append("<span id=\"#{data.id}_already_father\"><div id=\"__w2_Jh9rGl8_topic_list_item\" class=\"topic_list_item\"><span id=\"ld_C4qa3A_415683\"><a href=\"/topics/#{data.id}\" class=\"topic_name\"><span class=\"name_text\"><span>#{data.name}</span></span></a></span><a id=\"#{data.id}_topic_remove\" href=\"#\" class=\"topic_remove\"></a></div></span>")
+        $('.topic_remove').click(App.topic_remove)
+    )
+  )
+  $('.topic_remove').click(App.topic_remove)
+  $('#the_done_editing_topics').click(->
+    $('#__w2_P47vozg_inline_editor_link').show()
+    $('#the_question_topic_selector').hide()
+    $('.topic_remove').hide()
+  )
+  $('#__w2_P47vozg_inline_editor_link_text').click(->
+    $('#topic_name_here').hide()
+    $('#the_topic_name_editor').show()
+  )
+  $('#__w2_qT1rmRt_inline_editor_cancel').click(->
+    $('#topic_name_here').show()
+    $('#the_topic_name_editor').hide()
+  )
+  $('#__w2_qT1rmRt_inline_editor_submit').click(->
+    $.post("/topics/#{App.data.topic_id}/update_title",{name:$('#__w2_qT1rmRt_topic_name_edit').val()},(data)->
+      if data.suc         
+        $('#here_topic_name').html(data.name)
+        $('#here_topic_name2').html(data.name)
+        document.title = "#{document.title.split(' - ')[0]} - #{data.name}"
+        $('#__w2_qT1rmRt_inline_editor_cancel').trigger('click')
+      else
+        alert(data.why)
+    )
   )

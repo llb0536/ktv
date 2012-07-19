@@ -77,6 +77,20 @@ class Topic
   end
 
   index :created_at
+  def add_father(topic)
+    self.fathers << topic.name
+    self.fathers.uniq!
+    self.save!
+  end
+  def children
+    Topic.where(:fathers=>self.name)
+  end
+  def remove_father(topic)
+    self.fathers.delete topic.name
+    self.fathers.uniq!
+    self.save!
+  end
+  field :fathers,:type => Array,:default => []
   field :tags
   index :tags
   field :hot_rank,:type=>Integer,:default=>9999

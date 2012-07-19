@@ -11,6 +11,9 @@ module BaseModel
     scope :nondeleted, where(:deleted.nin=>[1,3])
     scope :be_deleted, where(:deleted=>1)
   end
+  def deleted?
+    [1,3].include?(self.deleted)
+  end
   COMMON_HUMAN_ATTR_NAME = {
     :slug => '友好资源识别号',
     :email => '电子邮箱',

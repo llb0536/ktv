@@ -77,7 +77,7 @@ jQuery(function ($) {
     if ($.browser.msie){
       $('form[data-remote]').bind('submit', function (e) {    //add 2011-10-31 by lesanc.li
           var searchTopic = $("#searchTopic", $(this));
-          if ($(this).parent().hasClass("edit_topics") && (searchTopic.val() == "" || searchTopic.val() == "搜索求职、职场疑问" || searchTopic.val() == "输入话题")){
+          if ($(this).parent().hasClass("edit_topics") && (searchTopic.val() == "" || searchTopic.val() == "搜索解题、课程疑问" || searchTopic.val() == "输入话题")){
             App.loading(false);
             return false;
           }
@@ -87,7 +87,7 @@ jQuery(function ($) {
     } else {
       $('form[data-remote]').live('submit', function (e) {
           var searchTopic = $("#searchTopic", $(this));
-          if ($(this).parent().hasClass("edit_topics") && (searchTopic.val() == "" || searchTopic.val() == "搜索求职、职场疑问" || searchTopic.val() == "输入话题")){
+          if ($(this).parent().hasClass("edit_topics") && (searchTopic.val() == "" || searchTopic.val() == "搜索解题、课程疑问" || searchTopic.val() == "输入话题")){
             App.loading(false);
             return false;
           }

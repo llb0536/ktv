@@ -98,12 +98,12 @@
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("hot_ask"))%>
         <div class="side_td">
-          <a href="/cpanel/stats/hot_asks">广场热门问题</a>
+          <a href="/cpanel/stats/hot_asks">问答广场热门问题</a>
         </div>
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("hot_topic"))%>
         <div class="side_td">
-          <a href="/cpanel/stats/hot_topics">广场热门话题</a>
+          <a href="/cpanel/stats/hot_topics">问答广场热门话题</a>
         </div>
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("api"))%>

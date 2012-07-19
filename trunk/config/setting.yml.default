@@ -1,43 +1,86 @@
 default: &defaults
+  wendaoguangchang_threshold: 30
+  wendaoguangchang_ans_threshold: 1
   # 网站名称
-  app_name: "者也"
+  app_name: "Kejian.TV"
   # 页脚版权
-  foot_html: "&copy; 者也 zheye.org - 非营利问答平台，开源项目，<a href=\"http://github.com/huacnlee/quora\">代码</a>。内测期间，如有问题还请谅解。"
+  foot_html: "Copyright © Kejian.TV All Rights Reserved."
   # 网站的域名
-  domain: "127.0.0.1:3000"
+  domain: "kejian.tv"
+  apidomain: "api.kejian.tv"
   # 配置图片的域名
-  upload_url: "http://127.0.0.1:3000/uploads"
+  upload_url: "/uploads"
   # 设置管理员，在下面填写需要设置为管理员的用户 email
-  admin_emails: 
-    - "huacnlee@gmail.com"
-  email_sender: 'no-reply@zheye.org'
-  aws_access_key_id: 'your aws access_key_id'
-  aws_secret_access_key: 'your aws secret_access_key'
+  admin_emails: ['pmq2001@gmail.com']
+  email_sender: '"Kejian.TV 课件交流系统" <kejian.tv@gmail.com>'
+
+  smtp_username: 'wendao@kejian.tv.cn'
+  smtp_password: 'user_0104'
+
+  # aws_access_key_id: 'your aws access_key_id'
+  # aws_secret_access_key: 'your aws secret_access_key'
   # 是否开放注册
-  allow_register: true
+  allow_register: false
   # 问题被多少次 spam 隐藏
   ask_spam_max: 8
   # 回答被多少次 spam 会删除线
-  answer_spam_max: 5
+  answer_spam_max: 8
   google_analytics_id: "UA-22413508-1"
   spam_words: /敏感词1|敏感词2/
+  zhaopin_login: "http://wendaoqa.kejian.tv/newbie?from="#"http://my.kejian.tv/loginmgr/login.asp?BkUrl="
+  zhaopin_logout: "http://my.kejian.tv/loginmgr/logout.asp"
+  wendao_domain_name: "kejian.tv"
+  error_tracker_url: 'http://etsrv.dev.kejian.tv/ErrorTrackerRestfulImpl.svc/adderrorlog'
+  error_tracker_enabled: false
+  # Kejian.TV开放API的信任客户端，以下客户端可以在用户不知情的情况下随意获得任何用户的授权
+  # 请填写client_id.
+  trusted_client_ips: ['127.0.0.1', '0.0.0.0']
+  hexdigest_pass: '287dshfkjdhFF09GG&*^^#!*&Hjkh%&!^&!G9787h8230*&T@@&*@(*JJHJHGGG)'
+  snda_id: '7HDL3HVT04F5RF6BRW90BJUXH'
+  snda_key: 'MzdmYTkzNjMtYTViZi00NWY4LWI4MTMtZGE0OWJlZTIxMWMw'
+  user_qingqiu_id: 72
+  course_qingqiu_id: 2116
+  topic_qingqiu: '领域请求'
+  ktv_course_id: 1
+  ktv_courseware_id: 1
+  ktv_domain: kejian.tv
+  
+  google_analytics_key: UA-28971136-1
+  # Length of time to wait until a connection is opened in seconds
+  open_timeout: 1
+  # Connections that have not been used in this many seconds will be reset.
+  # Sets the idle timeout to idle_timeout. The default timeout is 5 seconds. If you experience “too many connection resets”, reducing this value may help.
+  idle_timeout: 5
+  # Length of time to wait for data from the server
+  read_timeout: 1
+  timeout: 1
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0"
+  # 每页读取多少条记录？这个影响到打开这个页面的速度，
+  # 时间太长会超时。所以控制一下。
+  mechanize_per_page: 88
+  proxy:
+  # 不使用代理的时候把下面四行注释掉，但是上面这行保留。
+     # addr: 192.168.20.6
+     # port: 3128
+     # user:
+     # pass:
 
 development:
   <<: *defaults
+  ktv_domain: kejian.lvh.me
+  wendao_domain_name: "kejian.lvh.me"
+  open_timeout: 1
+  timeout: 1
 
 development_mongohq:
   <<: *defaults
 
 test:
   <<: *defaults
-
+  read_timeout: 50
+  idle_timeout: 50
+  open_timeout: 50
+  timeout: 50
+  
 production:
   <<: *defaults
-  app_name: "者也"
-  # 页脚版权
-  foot_html: "&copy; 者也 zheye.org - 非营利问答平台，开源项目，<a href=\"http://github.com/huacnlee/quora\">代码</a>，内测期间，如有问题还请谅解。"
-  # 网站的域名
-  domain: "zheye.org"
-  # 配置图片的域名
-  upload_url: "http://zheye.org/uploads"
-  google_analytics_id: "UA-22413508-1"
