@@ -2,6 +2,11 @@
 class HomeController < ApplicationController
   before_filter :require_user_text, :only => [:update_in_place,:mute_suggest_item]
   before_filter :authenticate_user!, :except => [:newbie,:about,:index,:general_show,:agreement,:mobile]
+  before_filter :we_are_inside_qa
+  def we_are_inside_qa
+    @we_are_inside_qa = true
+  end
+
   def mobile
     render :layout=>false
   end

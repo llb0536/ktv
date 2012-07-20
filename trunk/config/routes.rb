@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 Quora::Application.routes.draw do
-  root :to => 'coursewares#latest'
+  root :to => 'home#index'
   # ________________________________user__________________________________________
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,
@@ -37,6 +37,9 @@ Quora::Application.routes.draw do
   get '/welcome/about'
   # ________________________________ktv__________________________________________
   resources :coursewares do
+    collection do
+      get 'latest'
+    end
     member do
       get 'download'
       get "thank"
@@ -64,7 +67,7 @@ Quora::Application.routes.draw do
   get '/root'=>'home#index'
   match '/topics_follow' => 'topics#fol'
   post '/topics_unfollow'=>'topics#unfol'  
-  get '/zero_asks' => 'asks#index'
+  get '/zero_asks' => 'asks#index',:as => 'zero_asks'
 
   scope 'mobile',:as=>'mobile' do
     controller "mobile" do
@@ -80,7 +83,7 @@ Quora::Application.routes.draw do
   match "/uploads/*path" => "gridfs#serve"
   match "/update_in_place" => "home#update_in_place"
   #match "/muted" => "home#muted"
-  match "/newbie" => "home#newbie"
+  match "/newbie" => "home#newbie",:as => :newbie
   match "/followed" => "home#followed"
   match "/recommended" => "home#recommended"
   match "/mark_all_notifies_as_read" => "home#mark_all_notifies_as_read"

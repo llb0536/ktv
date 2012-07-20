@@ -61,6 +61,7 @@ class Courseware
     self.user.inc(:thank_coursewares_count,-1) if thanked
     self.topic_inst.redis_search_index_create
   end
+  field :md5
   field :status
   field :uploader_id
   

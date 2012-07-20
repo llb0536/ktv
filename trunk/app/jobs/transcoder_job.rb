@@ -25,6 +25,7 @@ class TranscoderJob
     `mkdir -p "#{working_dir}"`
     if @courseware.remote_filepath
       `curl "#{@courseware.remote_filepath}" > "#{pdf_path}"`
+      @courseware.md5 = Digest::MD5.hexdigest(File.read(pdf_path))
       info = `pdfinfo "#{pdf_path}"`.split("\n")
       if info = info2page_size(info)
         @courseware.pdf_size_note = info

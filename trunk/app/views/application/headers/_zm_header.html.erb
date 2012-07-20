@@ -1,0 +1,29 @@
+<div class="__zm">
+<div id="header" style="position:static">
+
+    <div class="headerContainer cf" id="zm_header">
+
+
+    <div class="navigator yahe cf">
+    <ul>
+      <li class="<%= 'current' if '/'==request.path %>"><a href="/">我的首页</a></li>
+<li class="dot"></li>
+      <li class="<%= 'current' if latest_coursewares_path==request.path %>"><a href="<%= latest_coursewares_path %>">最新上传</a></li>
+<li class="dot"></li>
+      <li class="<%= 'current' if logs_path==request.path %>"><a href="<%= logs_path %>">正在发生</a></li>
+<li class="dot"></li>
+      <li class="<%= 'current' if newbie_path==request.path %>"><a href="<%= newbie_path %>">风云榜</a></li>
+<li class="dot"></li>
+      <li class="<%= 'current' if zero_asks_path==request.path %>"><a href="<%= zero_asks_path %>">悬而未决</a></li>
+    </ul>
+    </div>
+    </div>
+    <% content_for :butt2 do %>
+    // 用于添加新资源
+    im("#addBs").die().live("click", function () {
+        openAddDialog(this);
+    });
+    im.zm.fnDropmenu($('#header li'), 'navhover'); //导航菜单实现
+    <% end %>
+</div>
+</div>
