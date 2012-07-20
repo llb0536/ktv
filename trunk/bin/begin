@@ -12,7 +12,7 @@ tail log/memcached_error.log
 
 
 # ================MONGO==========================
-sudo /usr/local/bin/mongod --dbpath /mongodata --logpath /var/log/mongod.log --logappend --vv --fork --verbose
+sudo /usr/local/bin/mongod --config /home/main/ktv/trunk/config/mongod.conf
 
 
 # =======================Postgresql DB==================
