@@ -7,7 +7,7 @@
       <%=label_tag(:title,"内容关键词:",:id=>"title_label")%>
       <%=text_field_tag(:title,nil,:style=>"width:180px;margin-right:40px;",:value=>params[:title])%>
       <%=label_tag(:content_type,"内容类型:",:style=>"margin-right:10px;")%>
-      <%=select_tag :content_type,options_for_select([["全部","All"],["问题","Ask"],["回答","Answer"],["评论","Comment"]],params[:content_type]) %>
+      <%=select_tag :content_type,options_for_select([["全部","All"],["问题","Ask"],["解答","Answer"],["评论","Comment"]],params[:content_type]) %>
       <button type="submit">搜索</button>
     </div>
   <% end %>

@@ -44,7 +44,7 @@ when "AskLog"
       <% when "EDIT" %>
       <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= log.target_attr == "TITLE" ? "修改了该问题" : "修改了该问题的补充说明" %>
       <% when "ADD_TOPIC" %>
-      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 给该问题添加了课程 
+      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 给该问题添加了领域 
         <%
           topics = log.title.split(',')
           for topic in topics
@@ -52,7 +52,7 @@ when "AskLog"
         <%= topic %> &nbsp;
         <% end %>
       <% when "DEL_TOPIC" %>
-      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 从该问题删除了课程 
+      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 从该问题删除了领域 
         <%
           topics = log.title.split(',')
           for topic in topics
@@ -61,7 +61,7 @@ when "AskLog"
         <% end %>
       <% when "INVITE_TO_ANSWER" %>
       <% to_user = User.where(_id:log.target_id).first  %>
-        <%= user_name_tag(log.user) %>邀请<%= user_name_tag(to_user) if to_user %>回答此问题
+        <%= user_name_tag(log.user) %>邀请<%= user_name_tag(to_user) if to_user %>解答此问题
       <% end %>
       
       <% if ["NEW", "EDIT"].include?(log.action) %>
@@ -98,19 +98,19 @@ items=Topic.all_in(:id=>log.target_ids).to_a if log.target_ids
 %>	
 <li>
 		<% if ["FOLLOW_TOPIC", "UNFOLLOW_TOPIC"].include?(action) %>
-	  <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "FOLLOW_TOPIC" ? "关注" : "取消关注" %>了课程 <%= item.name %><%if log.target_ids%> <%i=0;log.target_ids.reverse.each do |id|;i+=1;it=Topic.where(_id:id).first;next unless it%> <%= it.name %><%=',' unless i==log.target_ids.length%>  <%end%><%end%> </div>
+	  <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "FOLLOW_TOPIC" ? "关注" : "取消关注" %>了领域 <%= item.name %><%if log.target_ids%> <%i=0;log.target_ids.reverse.each do |id|;i+=1;it=Topic.where(_id:id).first;next unless it%> <%= it.name %><%=',' unless i==log.target_ids.length%>  <%end%><%end%> </div>
 		<% elsif ["FOLLOW_USER", "UNFOLLOW_USER"].include?(action) %>
 	  <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "FOLLOW_USER" ? "关注" : "取消关注" %>了 <%= user_name_tag(item) %></div>
     <% elsif action == "THANK_ANSWER"  %>
       <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 感谢了 <%= user_name_tag(item.user) %> <%= v_icon(item.user) %>
-        在 <a href="/asks/<%= log.target_parent_id %>?nr=1#answer_<%= log.target_id %>"><%= log.target_parent_title %></a> 中的回答。 </div>
+        在 <a href="/asks/<%= log.target_parent_id %>?nr=1#answer_<%= log.target_id %>"><%= log.target_parent_title %></a> 中的解答。 </div>
 		<% else %>
 			<div class="savatar">
 	      <%= user_avatar_tag22(log.user,:small) %>
 	    </div>
     <div class="title<% if ["FOLLOW", "UNFOLLOW"].include?(action) %> small_title<% end %>"><%= ask_title_tag2(item) %></div>
       <div class="info">
-        <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "FOLLOW" ? "关注了该问题" : (action == "UNFOLLOW" ? "取消关注了该问题" : "赞同该回答") %>
+        <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "FOLLOW" ? "关注了该问题" : (action == "UNFOLLOW" ? "取消关注了该问题" : "赞同该解答") %>
         • <%= item.answers_count %> 个答案 
 
       </div>
@@ -151,7 +151,7 @@ when "AnswerLog"
     </div>
     <div class="title"><%= ask_title_tag2(item) %></div>
 	    <div class="info">
-	      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "NEW" ? "回答了该问题" : "修改了自己的回答" %>
+	      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> <%= action == "NEW" ? "解答了该问题" : "修改了自己的解答" %>
 	      • <%= item.answers_count %> 个答案 
 
 	    </div> 
@@ -188,10 +188,10 @@ when "TopicLog"
 <li>
     <div class="title small_title">
     <% if log.action == "EDIT" %>
-      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 为课程 <a href="/topics/<%= item.name %>">#<%= item.name %></a> 
+      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 为领域 <a href="/topics/<%= item.name %>">#<%= item.name %></a> 
       的<%= log.target_attr == "COVER" ?  "上传了封面图片。" : "提交了介绍。" %>
     <% else %>
-      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 创建了课程 <a href="/topics/<%= item.name %>">#<%= item.name %></a>
+      <%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 创建了领域 <a href="/topics/<%= item.name %>">#<%= item.name %></a>
     <% end %>
       
     </div>
@@ -214,7 +214,7 @@ when "CommentLog"
 		when "Answer"
 %>
 <li>
-	  <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 评论了问题 <a href="/asks/<%= log.target_parent_id %>?eawc=yes&awid=<%= log.title %>#answer_<%= log.title %>"><%= log.target_parent_title %></a> 中的回答</div>
+	  <div class="title small_title"><%= user_name_tag(log.user) %><%= v_icon2(log.user) %> 评论了问题 <a href="/asks/<%= log.target_parent_id %>?eawc=yes&awid=<%= log.title %>#answer_<%= log.title %>"><%= log.target_parent_title %></a> 中的解答</div>
     </li>
 <%
 		end

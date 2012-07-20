@@ -11,7 +11,7 @@ namespace :info do
   task :all=>:environment do
     puts '有关注行为的用户：'
     pp user_emails( Log.where(:action.in=>['FOLLOW_TOPIC','FOLLOW_ASK','UNFOLLOW_ASK','FOLLOW_USER','UNFOLLOW_USER','UNFOLLOW_TOPIC']) )
-    puts '有回答行为的用户：'
+    puts '有解答行为的用户：'
     pp user_emails(Answer.all)
     puts '投票（赞成、反对）'
     emails = []

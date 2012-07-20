@@ -2,7 +2,7 @@
 namespace :extract do
   task :data=>:environment do
     File.open(File.join(Rails.root,'auxiliary/au.txt')) do |f|
-      puts "Email,提问数,回答数,评论数,赞成数,反对数"
+      puts "Email,提问数,解答数,评论数,赞成数,反对数"
       while line = f.gets
         begin
           u = User.where(email:line.strip).first

@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class WelcomeController < ApplicationController
   def index
+    # todo
+    redirect_to latest_coursewares_path
   end
   def inactive_sign_up
     render "inactive_sign_up#{@subsite}",layout:'application_for_devise'

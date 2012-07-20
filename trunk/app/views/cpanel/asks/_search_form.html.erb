@@ -15,7 +15,7 @@
       <input placeholder="<%= t.strftime("%H:%M") %>" style="margin-right:0px;width:60px;" class="validate[custom[time]]" type="text" name="time_to" id="time_to"  value="<%= params[:time_to] %>"/>
     </div>
     <div class="search_form_row">
-      <%=label_tag(:answers_count,"回答数:")%>
+      <%=label_tag(:answers_count,"解答数:")%>
       <%=text_field_tag(:answers_count_left,nil,:class=>"validate[custom[integer],numRange[grp1]] left_count",:value=>params[:answers_count_left])%>——<%=text_field_tag(:answers_count_right,nil,:class=>"validate[custom[integer],numRange[grp1]] right_count",:value=>params[:answers_count_right])%>
       <%=label_tag(:comments_count,"评论数:")%>
       <%=text_field_tag(:comments_count_left,nil,:class=>"validate[custom[integer],numRange[grp2]] left_count",:value=>params[:comments_count_left])%>——<%=text_field_tag(:comments_count_right,nil,:class=>"validate[custom[integer],numRange[grp2]] right_count",:value=>params[:comments_count_right])%>
@@ -34,7 +34,7 @@
         <span style="margin-right:80px;">烂问题</span>
       <%end%>
       <%=label_tag(:sort_by,"结果排序:")%>
-      <%=select_tag :sort_by,options_for_select([["按提问时间",""],["按回答数","answers_count"],["按评论数","comments_count"],["按关注数","followed_count"],["按浏览数","views_count"]],params[:sort_by]) %>
+      <%=select_tag :sort_by,options_for_select([["按提问时间",""],["按解答数","answers_count"],["按评论数","comments_count"],["按关注数","followed_count"],["按浏览数","views_count"]],params[:sort_by]) %>
       <button type="submit">搜索</button>
     </div>
   <% end %>

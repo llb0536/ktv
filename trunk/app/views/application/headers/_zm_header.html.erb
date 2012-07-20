@@ -6,15 +6,15 @@
 
     <div class="navigator yahe cf">
     <ul>
-      <li class="<%= 'current' if '/'==request.path %>"><a href="/">我的首页</a></li>
-<li class="dot"></li>
       <li class="<%= 'current' if latest_coursewares_path==request.path %>"><a href="<%= latest_coursewares_path %>">最新上传</a></li>
 <li class="dot"></li>
-      <li class="<%= 'current' if logs_path==request.path %>"><a href="<%= logs_path %>">正在发生</a></li>
+      <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">学科领域</a></li>
 <li class="dot"></li>
-      <li class="<%= 'current' if newbie_path==request.path %>"><a href="<%= newbie_path %>">风云榜</a></li>
+      <li class="<%= 'current' if users_path==request.path %>"><a href="<%= users_path %>">全部老师</a></li>
 <li class="dot"></li>
-      <li class="<%= 'current' if zero_asks_path==request.path %>"><a href="<%= zero_asks_path %>">悬而未决</a></li>
+      <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校</a></li>
+<li class="dot"></li>
+      <li class="<%= 'current' if home_index_path==request.path %>"><a href="<%= home_index_path %>">解题互助</a></li>
     </ul>
     </div>
     </div>

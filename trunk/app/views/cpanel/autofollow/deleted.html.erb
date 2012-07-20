@@ -35,7 +35,7 @@
                 <td class="wordwrap" title="<%=item.title%>"><%= link_to truncate2(item.title,:length=>50),"/asks/#{item.id}",:target=>'_blank',:style=>"color:#1F4CA5;" %></td>
               <%end%>
               <%if item.class.name=="Answer"%>
-                <td class="wordwrap">回答</td>
+                <td class="wordwrap">解答</td>
               <%elsif item.class.name=="Comment"%>
                 <td class="wordwrap">评论</td>
               <%else%>

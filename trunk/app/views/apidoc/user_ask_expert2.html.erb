@@ -6,7 +6,7 @@
 <p>特殊受信应用可以获取、更新任何用户的任何资源。</p>
 
 <h2>输入</h2>
-<p>向<code>/asks/:id</code>发送<code>post</code>请求，内容为一个json哈希，示例如下：{ "ask"=>{"to_user_slug"=>"28675777", "title"=>"ask_title_1", "body"=>"body"}, "onlyhim"=>"on",'as_user'=>'kevin'}。我们来说明一下各个参数的含义，to_user_slug为定向提问的用户的slug，title为问题的标题，body为问题的内容，onlyhim是是否只允许这个人回答问题，as_user是以谁的身份添加问题。</p>
+<p>向<code>/asks/:id</code>发送<code>post</code>请求，内容为一个json哈希，示例如下：{ "ask"=>{"to_user_slug"=>"28675777", "title"=>"ask_title_1", "body"=>"body"}, "onlyhim"=>"on",'as_user'=>'kevin'}。我们来说明一下各个参数的含义，to_user_slug为定向提问的用户的slug，title为问题的标题，body为问题的内容，onlyhim是是否只允许这个人解答问题，as_user是以谁的身份添加问题。</p>
 <p>例如(ruby)：</p>
 <pre>
 require 'rest_client'

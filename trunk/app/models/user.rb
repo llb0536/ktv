@@ -394,7 +394,7 @@ class User
   field :muted_topics, :type => Array, :default => []
   # 关注的问题
   field :followed_ask_ids, :type => Array, :default => []
-  # 回答过的问题
+  # 解答过的问题
   field :answered_ask_ids, :type => Array, :default => []
   # Email 提醒的状态
   field :mail_be_followed, :type => Boolean, :default => true
@@ -748,7 +748,7 @@ class User
     topic.followers_count_changed = true
     topic.save
 
-    # 清除推荐课程
+    # 清除推荐领域
     # UserSuggestItem.delete(self.id, "Topic", topic.id)
     
     insert_follow_log("FOLLOW_TOPIC", topic) unless nolog
@@ -801,7 +801,7 @@ class User
       user.followers_count = user.follower_ids.count
       user.save
 
-      # 清除推荐课程
+      # 清除推荐领域
       # UserSuggestItem.delete(self.id, "User", user.id)
 
       # 发送被 Follow 的邮件
@@ -825,7 +825,7 @@ class User
       "Receiver"=>userb.zhaopin_ud,
       "Sender"=>"#{usera.name}",
       "SenderUrl"=>"http://kejian.tv/users/#{usera.slug}",
-      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>赞同了你的回答“<a href=\"http://kejian.tv/asks/#{ask.id}\">#{ask.title}</a>”。</P>",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>赞同了你的解答“<a href=\"http://kejian.tv/asks/#{ask.id}\">#{ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})    
@@ -846,7 +846,7 @@ class User
     user.redis_search_index_create
   end
 
-  # 感谢回答
+  # 感谢解答
   def thank_answer(answer)
     self.thanked_answer_ids ||= []
     return true if self.thanked_answer_ids.index(answer.id)
@@ -905,7 +905,7 @@ class User
       end
     end
   end
-  #回答的疑似广告检验与处理
+  #解答的疑似广告检验与处理
   def answer_advertise(answer_id)
     range=SettingItem.where(:key=>"answer_advertise_limit_time_range").first.value.to_i
     count=SettingItem.where(:key=>"answer_advertise_limit_count").first.value.to_i
@@ -966,7 +966,7 @@ class User
     [notifies, notifications]
   end
 
-  # 推荐给我的人或者课程
+  # 推荐给我的人或者领域
   def suggest_items
     # return UserSuggestItem.gets(self.id, :limit => 6)
     topics = Topic.desc('hot_rank').collect{|x| [x.name,x.followers_count]}

@@ -1163,7 +1163,7 @@ json.mediumZoom "http://b5.imimg.cn/20120714/9212/4f70/73468639746.1.222.295.jpg
       <div class="primary_info">
         <h1><em><%= image_tag 'h1.png',:alt => '轻松分享' %></em><br><%= image_tag 'h2.png',:alt => '讲义·作业·复习资料·往年试卷·课堂录像' %></h1>
         <p>
-          <%= image_tag 'p.png',:alt => '以前，我总要下课追着老师复制PPT；过去，面对一个难题的我苦于找不到人请教；曾几何时，我因靠前找不到足够的复习资料而惆怅不已。所有这些麻烦已经成为过去！通过课件交流系统，我可以迅速定位到我所学的课程，发现志同道合的人；分享我手中的资源，同时轻松下载他人发布的课件。' %>
+          <%= image_tag 'p.png',:alt => '以前，我总要下课追着老师复制PPT；过去，面对一个难题的我苦于找不到人请教；曾几何时，我因靠前找不到足够的复习资料而惆怅不已。所有这些麻烦已经成为过去！通过课件交流系统，我可以迅速定位到我所学的领域，发现志同道合的人；分享我手中的资源，同时轻松下载他人发布的课件。' %>
         </p>
           <p><a href="javascript:void(0)" id="loginhuge" class="button primary">用人人 / 微博 / QQ账号瞬间登录</a></p>
       </div>
@@ -1229,7 +1229,7 @@ json.mediumZoom "http://b5.imimg.cn/20120714/9212/4f70/73468639746.1.222.295.jpg
                     <ul>
                       <li>
                         <span class="icon six-things-icons-team"></span>
-                        <p>最开放的学习社区，自由开课或加入他人课程，迅速发现志同道合的学习伙伴</p>
+                        <p>最开放的学习社区，自由开课或加入他人领域，迅速发现志同道合的学习伙伴</p>
                       </li>
                       <li>
                         <span class="icon six-things-icons-devices"></span>

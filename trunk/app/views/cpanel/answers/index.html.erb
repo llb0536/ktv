@@ -11,7 +11,7 @@
           <tr>
             <th style="width:50px;">序号</th>
             <th style="width:180px;">问题标题</th>
-            <th>回答</th>
+            <th>解答</th>
             <th style="width:50px;">
         <div>赞成/</div>
         <div>反对数</div>
@@ -21,8 +21,8 @@
         <div>感谢数/</div>
         <div>没帮助数</div>
         </th>
-        <th style="width:100px;">回答人</th>
-        <th style="width:125px;">回答时间</th>
+        <th style="width:100px;">解答人</th>
+        <th style="width:125px;">解答时间</th>
         <th style="width:50px;">修改</th>
         <th style="width:60px;text-align:center;"><input id="check_btn" type="button" value="全选" onclick="checkAll()"></th>
         </tr>
@@ -60,9 +60,9 @@
       </table>
       <div style="text-align:center;margin-top:20px;margin-bottom:10px;">
         <%= radio_button_tag(:deal_action,1,false,:style=>"width:13px;") %>
-        <%= label_tag(:delete_action, "删除回答") %>
+        <%= label_tag(:delete_action, "删除解答") %>
         <%= radio_button_tag(:deal_action,2,false,:style=>"width:13px;margin-left:30px;") %>
-        <%= label_tag(:destroy_action, "删除回答并屏蔽用户") %>
+        <%= label_tag(:destroy_action, "删除解答并屏蔽用户") %>
       </div>
       <div style="text-align:center;">
         <input type="submit" value="提交" style="width:120px;cursor:pointer;" />

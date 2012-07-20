@@ -11,11 +11,11 @@ class UserMailer < BaseMailer
     mail(:to => @user.email,:subject => @title, :from => Setting.email_sender,:template_path => 'user_mailer', :template_name => 'welcome')
   end
 
-  # 问题有了新回答
+  # 问题有了新解答
   def new_answer(answer_id,email)
     @answer = Answer.find(answer_id)
     @ask = Ask.find(@answer.ask_id)
-    @title = "问题“#{@ask.title}”有了新的回答"
+    @title = "问题“#{@ask.title}”有了新的解答"
     mail(:to => email, :subject => @title, :from => Setting.email_sender,:template_path => 'user_mailer', :template_name => 'new_answer')
   end
   # 被关注
@@ -50,9 +50,9 @@ class UserMailer < BaseMailer
     @invitors = User.find(invitor_ids)
     @ask = Ask.find(ask_id)
     if(@invitors.length > 1)
-      @title = "#{@invitors[0].name}等人邀请你回答《#{@ask.title}》"
+      @title = "#{@invitors[0].name}等人邀请你解答《#{@ask.title}》"
     else
-      @title = "#{@invitors[0].name}邀请你回答《#{@ask.title}》"
+      @title = "#{@invitors[0].name}邀请你解答《#{@ask.title}》"
     end
     mail(:to => @user.email, :subject => @title, :from => Setting.email_sender,:template_path => 'user_mailer', :template_name => 'invite_to_answer')
   end

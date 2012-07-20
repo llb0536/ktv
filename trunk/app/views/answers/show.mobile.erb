@@ -1,5 +1,5 @@
 <div data-role="content">
-    <h4><%= @answer.user.name %>的回答 · <span class="voteNo"><%= @answer.up_votes_count %></span>个赞成</h4>
+    <h4><%= @answer.user.name %>的解答 · <span class="voteNo"><%= @answer.up_votes_count %></span>个赞成</h4>
     <p><%= @answer.body_plain %></p>
     <% item = @answer %>
 		<% if not owner?(item) %>

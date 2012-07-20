@@ -24,7 +24,7 @@ class AskInvite
       "Receiver"=>userb.zhaopin_ud,
       "Sender"=>"#{usera.name}",
       "SenderUrl"=>"http://kejian.tv/users/#{usera.slug}",
-      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>邀请你回答问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>邀请你解答问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})

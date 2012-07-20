@@ -60,7 +60,7 @@ class Comment
         "Receiver"=>self.commentable.user.zhaopin_ud,
         "Sender"=>"#{self.user.name}",
         "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
-        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.id}\">#{self.user.name}</a>评论了你的回答“<a href=\"http://kejian.tv/asks/#{self.commentable.ask.id}\">#{self.commentable.ask.title}</a>”。</P>",
+        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.id}\">#{self.user.name}</a>评论了你的解答“<a href=\"http://kejian.tv/asks/#{self.commentable.ask.id}\">#{self.commentable.ask.title}</a>”。</P>",
         "SendContentUrl"=>"",
         "OperateUrl"=>""
     	})

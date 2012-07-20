@@ -22,7 +22,7 @@ response = RestClient.post "http://api.kejian.tv/asks/4fbf3cd49bd4bf03b8000028/a
 </pre>
 
 <h2>输入(示例2)</h2>
-<p>当已经回答过一次，就会提示不能重复回答。</p>
+<p>当已经解答过一次，就会提示不能重复解答。</p>
 <p>例如：</p>
 <pre>
 require 'rest_client'
@@ -33,5 +33,5 @@ response = RestClient.post "http://api.kejian.tv/asks/4e9480a661300314720001b3/a
 <h2>输出（示例2）</h2>
 <p>例如：</p>
 <pre>
-{ success: false, errors: [  '您已经回答过了' ] }
+{ success: false, errors: [  '您已经解答过了' ] }
 </pre>

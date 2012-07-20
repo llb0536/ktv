@@ -44,8 +44,8 @@
         one: 评论
         other: 评论
       course:
-        one: 课程
-        other: 课程
+        one: 领域
+        other: 领域
       courseware:
         one: 课件
         other: 课件

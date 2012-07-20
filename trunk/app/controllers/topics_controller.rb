@@ -1,5 +1,10 @@
 # coding: utf-8
 class TopicsController < ApplicationController
+  before_filter :we_are_inside_lingyu
+  def we_are_inside_lingyu
+    @we_are_inside_lingyu = true
+  end  
+
   def update_fathers
     @name = params[:name].strip
     @add = params[:add] == "1" ? true : false
@@ -57,7 +62,6 @@ class TopicsController < ApplicationController
   def index
     @per_page = 20
     @topics = Topic.all.paginate(:page => params[:page], :per_page => @per_page)
-    render 'index.mobile'
   end
 
   def show
@@ -149,9 +153,9 @@ class TopicsController < ApplicationController
     end
     @topic.cover = params[:topic][:cover]
     if @topic.save
-      flash[:notice] = "课程封面上传成功。"
+      flash[:notice] = "领域封面上传成功。"
     else
-      flash[:alert] = "课程封面上传失败，请检查你上传的图片适合符合格式要求。"
+      flash[:alert] = "领域封面上传失败，请检查你上传的图片适合符合格式要求。"
     end
     redirect_to topic_path(@topic.name)
   end

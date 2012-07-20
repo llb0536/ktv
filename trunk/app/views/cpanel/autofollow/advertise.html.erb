@@ -33,7 +33,7 @@
                 <td class="wordwrap"><%= link_to truncate2(item.title,:length=>60),"/asks/#{item.id}",:target=>'_blank',:style=>"color:#1F4CA5;" %></td>
               <%end%>
               <%if item.class.name=="Answer"%>
-                <td class="wordwrap">回答</td>
+                <td class="wordwrap">解答</td>
               <%elsif item.class.name=="Comment"%>
                 <td class="wordwrap">评论</td>
               <%else%>
@@ -105,20 +105,20 @@
     <div style="clear:both;height:20px;"></div>
   <% end %>
 </div>
-<div class="green_header">回答/评论过滤设置</div>
+<div class="green_header">解答/评论过滤设置</div>
 <div class="search_form">
   <%=form_tag("/cpanel/autofollow/edit_ac_advertise") do%>
     <div class="search_form_row">
-      <input name="answer_advertise_limit_open" type="checkbox" <%if @ac_open=="1"%>checked="checked"<%end%> value="1" style="width:15px;margin-right:2px;">开启所有用户回答/评论频率限制
+      <input name="answer_advertise_limit_open" type="checkbox" <%if @ac_open=="1"%>checked="checked"<%end%> value="1" style="width:15px;margin-right:2px;">开启所有用户解答/评论频率限制
     </div>
     <div class="search_form_row">
       用户在
       <%=text_field_tag "answer_advertise_limit_time_range",@ac_time,:style=>"width:60px;margin-right:0px;"%>
-      分钟内，回答数或评论数大于
+      分钟内，解答数或评论数大于
       <%=text_field_tag "answer_advertise_limit_count",@ac_count,:style=>"width:60px;margin-right:0px;"%>
       个，该用户前
       <%=text_field_tag "answer_advertise_limit_deal_range",@ac_deal,:style=>"width:60px;margin-right:0px;"%>
-      个小时内的所有回答或评论进入疑似广告类内容。
+      个小时内的所有解答或评论进入疑似广告类内容。
     </div>
     <div class="search_form_row">
       这些问题处于未发布状态，无URL地址；这些用户为正常用户，可以继续发布提问。

@@ -28,7 +28,7 @@
           <td><%= asks.collect(&:user_id).uniq.count %> / <%= asks.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <% answers = (!@user.blank?) ? @answers : @answers.any_in(user_id:@expert_ids) %>
           <% answers3 = (!@user.blank?) ? @answers : @answers.any_in(user_id:@elite_ids) %>
           <% answers2 = (!@user.blank?) ? @answers : @answers.not_in(user_id:@elite_ids+@expert_ids) %>
@@ -66,7 +66,7 @@
           <td><%= users.collect(&:id).uniq.count %> / <%= users.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <% answers = (!@user.blank?) ? @answers : @answers.any_in(user_id:@expert_ids) %>
           <% answers3 = (!@user.blank?) ? @answers : @answers.any_in(user_id:@elite_ids) %>
           <% answers2 = (!@user.blank?) ? @answers : @answers.not_in(user_id:@elite_ids+@expert_ids) %>
@@ -122,7 +122,7 @@
           <td><%= asks3.collect(&:user_id).uniq.count %> / <%= asks3.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= answers3.collect(&:user_id).uniq.count %> / <%= answers3.count %></td>
         </tr>
       </tbody>
@@ -145,7 +145,7 @@
           <td><%= users3.collect(&:id).uniq.count %> / <%= users3.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= answers3.collect(&:user_id).uniq.count %> / <%= answers3.count %></td>
         </tr>
         <tr>
@@ -186,7 +186,7 @@
           <td><%= asks2.collect(&:user_id).uniq.count %> / <%= asks2.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= answers2.collect(&:user_id).uniq.count %> / <%= answers2.count %></td>
         </tr>
       </tbody>
@@ -209,7 +209,7 @@
           <td><%= users2.collect(&:id).uniq.count %> / <%= users2.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= answers2.collect(&:user_id).uniq.count %> / <%= answers2.count %></td>
         </tr>
         <tr>
@@ -252,7 +252,7 @@
           <td><%= @asks.collect(&:user_id).uniq.count %> / <%= @asks.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= @answers.collect(&:user_id).uniq.count %> / <%= @answers.count %></td>
         </tr>
       </tbody>
@@ -267,7 +267,7 @@
           <td><%= @asks.collect(&:user_id).uniq.count %> / <%= @asks.count %></td>
         </tr>
         <tr>
-          <td>新增课程数量</td>
+          <td>新增领域数量</td>
           <td><%= @topics.count %></td>
         </tr>
         <tr>
@@ -279,7 +279,7 @@
           <td><%= @users.collect(&:id).uniq.count %> / <%= @users.count %></td>
         </tr>
         <tr>
-          <td>回答新增数量 UV / PV</td>
+          <td>解答新增数量 UV / PV</td>
           <td><%= @answers.collect(&:user_id).uniq.count %> / <%= @answers.count %></td>
         </tr>
         <tr>

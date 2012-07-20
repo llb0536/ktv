@@ -102,7 +102,7 @@ class Ask
   def body_plain
     Nokogiri.HTML(self.body).text()
   end
-  # 最后回答时间
+  # 最后解答时间
   # field :answer_up_count, :type => Integer, :default => 0 # 首答案赞成票数
   field :answers_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
@@ -172,13 +172,13 @@ class Ask
   # 对指定人的提问
   belongs_to :to_user, :class_name => "User"
 
-  # 回答
+  # 解答
   has_many :answers
   # Log
   has_many :logs, :class_name => "Log", :foreign_key => "target_id"
-  # 最后个回答
+  # 最后个解答
   belongs_to :last_answer, :class_name => 'Answer'
-  # 最后回答者
+  # 最后解答者
   belongs_to :last_answer_user, :class_name => 'User'
   # Followers
   references_and_referenced_in_many :followers, :inverse_of => :followed_asks, :class_name => "User"
@@ -291,7 +291,7 @@ class Ask
     end
   end
 
-  # 更新课程
+  # 更新领域
   # 参数 topics 可以是数组或者字符串
   # 参数 add  true 增加, false 去掉
   def update_topics(topics, add = true, current_user_id = nil)
@@ -303,7 +303,7 @@ class Ask
     action = nil
 
     if add
-      # 保存为独立的课程
+      # 保存为独立的领域
       new_topics = Topic.save_topics(topics, current_user_id)
       self.topics += new_topics
       action = "ADD_TOPIC"

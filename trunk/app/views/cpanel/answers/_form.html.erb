@@ -13,7 +13,7 @@
     });
   });
 </script>
-<div class="green_header">修改回答</div>
+<div class="green_header">修改解答</div>
 <div id="cpanel_answer" class="search_form">
   <%= form_for(@answer,:url => (@answer.id.blank? ? cpanel_answers_path : cpanel_answer_path(@answer.id)), :html => { :enctype =>  "multipart/form-data" } ) do |f| %>
 
@@ -21,7 +21,7 @@
   <%#= f.input :ask_id %>
   <%#= f.input :user_id %>
       <div class="search_form_row">
-        <div style="margin-right:28px;float:left;">回答内容:</div>
+        <div style="margin-right:28px;float:left;">解答内容:</div>
         <%=text_area_tag "content",@answer.body,:style=>"width:500px;height:120px;",:class=>"validate[required,funcCall[checkSize5000]]"%>
       </div>
   <%#= f.input :comments_count %>

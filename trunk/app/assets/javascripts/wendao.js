@@ -47,7 +47,7 @@ $(document).ready(function(){
     });
 
     //searchInput输入框提示
-    App.placeHolder($("#searchInput"), "搜索解题、课程疑问");
+    App.placeHolder($("#searchInput"), "搜索解题、领域疑问");
     //个人页 对某人提问相关提示
     var txtATU = $("#new_ask_title_ta");
     var txtABT = $("#new_ask_body_ta");
@@ -92,7 +92,7 @@ $(document).ready(function(){
     }
     // asks/new 用户提问前检测登录状态
     $("#new_ask").submit(App.testLogin);
-    // 用户回答问题字数限制
+    // 用户解答问题字数限制
     var new_answer = $("#new_answer_form .qeditor_preview");
     if (new_answer.length>0){
         new_answer.click(App.testLogin);
@@ -126,7 +126,7 @@ $(document).ready(function(){
 $("#login_link").click(Users.userLogin);
     $("#reg_link").click(Users.userReg);
     $("#logout_link").click(Users.userLogout);
-    // 问答广场 欢迎页热门课程关注 2012-2-5 by lesanc.li
+    // 风云榜 欢迎页热门领域关注 2012-2-5 by lesanc.li
     var hotTopicTable = $(".newbie .hotTopicTable");
     if (hotTopicTable.length > 0){
         // topics hover event
@@ -294,7 +294,7 @@ $("#login_link").click(Users.userLogin);
     // 分享 Email和转发地址
     $(".shareEmail").facebox();
     $(".shareFw").facebox();
-    // 问题页 问题添加课程操作
+    // 问题页 问题添加领域操作
     $("div.topics li.modify").click(function(){
         Asks.toggleEditTopics(true);
     });

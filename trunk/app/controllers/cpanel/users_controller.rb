@@ -118,7 +118,7 @@ class Cpanel::UsersController < CpanelController
       format.xls do
         render :xls => @users_xls,
           :columns => [ :name,:tagline,:user_type,:admin_type,:asks_count,:answers_count,:comments_count,:followers_count,:email,:created_at ],
-          :headers => %w[ 昵称 一句话介绍 用户组 管理组 提问数 回答数 评论数 被关注数 注册邮箱 注册时间 ]
+          :headers => %w[ 昵称 一句话介绍 用户组 管理组 提问数 解答数 评论数 被关注数 注册邮箱 注册时间 ]
       end
     end
   end

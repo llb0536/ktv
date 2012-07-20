@@ -48,7 +48,7 @@ var Users = {
     return false;
   },
 
-  /* 不感兴趣推荐的用户或课程 */
+  /* 不感兴趣推荐的用户或领域 */
   mute_suggest_item : function(el, type, id){
     $(el).parent().parent().fadeOut("fast");
     $.get("/mute_suggest_item", { type : type, id : id },function(res){
@@ -187,7 +187,7 @@ var Users = {
     lhtml.push('</form></section>');
     lhtml.push('<footer>');
     lhtml.push('<div class="btnNormalGreen bold mt20 reg"><span>&nbsp;注 册&nbsp;</span></div>');
-    lhtml.push('<div class="goLog mt20">已有互动问答平台账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
+    lhtml.push('<div class="goLog mt20">已有解题互助平台账号？<a href="#" onclick="Users.userLogin()">直接登录</a></div>');
     lhtml.push('</footer>');
     $.facebox({ html : lhtml.join(""), overlay : false });
     var form = document.forms["regform"];

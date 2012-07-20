@@ -14,7 +14,7 @@
     <div class="search_form_row">
       <%=label_tag(:asks_count,"提问数:")%>
       <%=text_field_tag(:asks_count_left,nil,:class=>"validate[custom[integer],numRange[grp1]] left_count",:value=>params[:asks_count_left])%>——<%=text_field_tag(:asks_count_right,nil,:class=>"validate[custom[integer],numRange[grp1]] right_count",:value=>params[:asks_count_right])%>
-      <%=label_tag(:answers_count,"回答数:")%>
+      <%=label_tag(:answers_count,"解答数:")%>
       <%=text_field_tag(:answers_count_left,nil,:class=>"validate[custom[integer],numRange[grp2]] left_count",:value=>params[:answers_count_left])%>——<%=text_field_tag(:answers_count_right,nil,:class=>"validate[custom[integer],numRange[grp2]] right_count",:value=>params[:answers_count_right],:style=>"margin-right:25px;")%>
       <%=label_tag(:comments_count,"评论数:")%>
       <%=text_field_tag(:comments_count_left,nil,:class=>"validate[custom[integer],numRange[grp3]] left_count",:value=>params[:comments_count_left])%>——<%=text_field_tag(:comments_count_right,nil,:class=>"validate[custom[integer],numRange[grp3]] right_count",:value=>params[:comments_count_right],:style=>"margin-right:15px;")%>
@@ -41,7 +41,7 @@
       <%=label_tag(:login_times,"登录次数:")%>
       <%=text_field_tag(:login_times_left,nil,:class=>"validate[custom[integer],numRange[grp5]] left_count",:value=>params[:login_times_left])%>——<%=text_field_tag(:login_times_right,nil,:class=>"validate[custom[integer],numRange[grp5]] right_count",:value=>params[:login_times_right])%>
       <%=label_tag(:sort,"排序:",:style=>"margin-left:233px;")%>
-      <%=select_tag :sort,options_for_select([["按注册时间",""],["按提问数","asks_count"],["按回答数","answers_count"],["按评论数","comments_count"],["按被关注数","followers_count"],["按登录次数","login_times"],["按最后登录时间","last_login_at"]],params[:sort]) %>
+      <%=select_tag :sort,options_for_select([["按注册时间",""],["按提问数","asks_count"],["按解答数","answers_count"],["按评论数","comments_count"],["按被关注数","followers_count"],["按登录次数","login_times"],["按最后登录时间","last_login_at"]],params[:sort]) %>
       <button type="submit">搜索</button>
     </div>
   <% end %>

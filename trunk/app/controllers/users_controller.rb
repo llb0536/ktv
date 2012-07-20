@@ -1,10 +1,14 @@
 # coding: utf-8
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auth_callback]
-  before_filter :init_user, :except => [:auth_callback]
+  before_filter :init_user, :except => [:auth_callback,:index]
   before_filter :we_are_inside_qa
   def we_are_inside_qa
     @we_are_inside_qa = true
+  end
+  def index
+    @we_are_inside_qa = false
+    @users = User.all
   end
   def init_user
     @user = User.find_by_slug(params[:id])
@@ -20,7 +24,7 @@ class UsersController < ApplicationController
     @asks = Ask.recent.any_in(_id:@user.answered_ask_ids)
     .nondeleted()
     .paginate(:page => params[:page], :per_page => @per_page)
-    set_seo_meta("#{@user.name}回答过的问题")
+    set_seo_meta("#{@user.name}解答过的问题")
     if params[:format] == "js"
       render "/users/answered_asks.js"
     end
@@ -90,7 +94,7 @@ class UsersController < ApplicationController
     @topics = @user.followed_topic_ids.reverse
     .paginate(:page => params[:page], :per_page => @per_page)
     
-    set_seo_meta("#{@user.name}关注的课程")
+    set_seo_meta("#{@user.name}关注的领域")
     if params[:format] == "js"
       render "following_topics.js"
     end

@@ -5,7 +5,7 @@
         <%= render(file:"asks/_ask",locals:{item:item},:formats => [:mobile]) %>
       <% end %>
     </ul>
-    <p>热门课程</p>
+    <p>热门领域</p>
     <ul data-role="listview" data-inset="true">
       <%@topics.each do |arr|%>
         <% topic=arr.name %>

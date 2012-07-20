@@ -2,7 +2,7 @@
 $(document).bind("mobileinit", function(){
 });
 $(document).ready(function(){
-    // 点击“我要回答”按钮，定位到屏幕最底，同时输入框获得焦点。
+    // 点击“我要解答”按钮，定位到屏幕最底，同时输入框获得焦点。
     $('#btnGoToAnswer').click(function(){
         $.mobile.silentScroll($(document).height());
         $('#inputAnswerTextarea').focus();

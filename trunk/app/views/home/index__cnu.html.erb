@@ -12,13 +12,13 @@
   <% end %></h3>
 
 <%if @asks and !@asks.empty?%>
-  <!-- 下面的每个article样式为：左侧头像，右侧课程分类、课程标题课程摘要 -->
+  <!-- 下面的每个article样式为：左侧头像，右侧领域分类、领域标题领域摘要 -->
   <% @asks.each do |item| %>
     <%= render "asks/ask", :item => item, :only_title => true %>
   <% end %>
   <%= will_paginate @asks, :renderer=>WendaoLinkRenderer,:inner_window=>2 %>
 <%else %>
-你关注的内容没有新动态，去<%= link_to '问答广场','/newbie' %>关注更多内容吧
+你关注的内容没有新动态，去<%= link_to '风云榜','/newbie' %>关注更多内容吧
 <%end%>
 
 </section>

@@ -19,7 +19,7 @@
     <% if current_user and current_user.admin? %>
       <div class="edit hide"><a href="javascript:void(0)" class="changeUserHead">修改图片</a></div>
       <div id="edit_topic_cover" class="setupProfile hide" style="display:none">
-        <h2>修改课程图片</h2>
+        <h2>修改领域图片</h2>
         <%= simple_form_for(@topic,:class => "form",:html => { :multipart =>  true, :onsubmit => "App.loading();" }) do |f| %>
           <div id="file_wrapper">
               <div id="file_faker">
@@ -79,7 +79,7 @@ Topics.editCover($("figure.cover"));
 
 
 <section class="sideBox clearfix">
-<h3>最近关注此课程的人</h3>
+<h3>最近关注此领域的人</h3>
 <ul class="headList23">
 	<% for follower in @topic.follower_ids.rlimit(48) %>
 		<li><%= user_avatar_tag2(follower, :small,{:size2 => 23}) %></li>
@@ -90,7 +90,7 @@ Topics.editCover($("figure.cover"));
 
 <% if false and !@related_topics.blank? %>
   <section class="sideBox clearfix">
-  					<h3>相关课程</a></h3>
+  					<h3>相关领域</a></h3>
   					<ul class="topicList">
           		<% for topic in @related_topics %>
           		  <% topicname = topic %>

@@ -31,12 +31,12 @@ h6 {
 }
 
 
-/* 课程nav中的文本靠左fix */
+/* 领域nav中的文本靠左fix */
 .topicNav li {
 	padding-left:10px;
 }
 
-/* 问答广场 关注全部按钮位置fix */
+/* 风云榜 关注全部按钮位置fix */
 .hotTopicTable .nBtnFocusAll {
 	position:relative;
 	top:-28px;
@@ -84,12 +84,12 @@ min-height: 1% ;
 	width:100%;
 }
 
-/* 取消鼠标移入回答区出现“感谢”“没有帮助”的效果 */
+/* 取消鼠标移入解答区出现“感谢”“没有帮助”的效果 */
 .reply footer em {
 	visibility:visible;
 }
 
-/* 问题页，回答下吗的信息功能栏 */
+/* 问题页，解答下吗的信息功能栏 */
 .replys footer a, .reply footer em {
 	float:left;
 }
@@ -98,7 +98,7 @@ min-height: 1% ;
 }
 
 
-/* 他关注的课程 */
+/* 他关注的领域 */
 .cList article {
 	position:relative;
 }
@@ -136,7 +136,7 @@ min-height: 1% ;
 .tabNav li {
 	padding-left:21px;
 }
-/* 他关注的课程 */
+/* 他关注的领域 */
 .cList article {
 	position:relative;
 }
@@ -179,7 +179,7 @@ min-height: 1% ;
 	word-wrap:normal; 
 }
 
-/* 他关注的课程 */
+/* 他关注的领域 */
 .cList article {
 	position:relative;
 }
@@ -197,7 +197,7 @@ min-height: 1% ;
 }
 
 
-/* 修改课程图片，HOVER灰层 */
+/* 修改领域图片，HOVER灰层 */
 .changeUserHead {
 	background-color:#555;
 }

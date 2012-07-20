@@ -7,7 +7,7 @@
     <meta name="keywords" content="职业规划,问答,师生,加薪,Kejian.TV," />
     <meta name="description" content="Kejian.TV是课件交流系统旗下的师生领域问答交流平台.Kejian.TV助你制定专业的职业规划,提供解题指导,分享师生知识,赢取工作机会.Kejian.TV拥有大批师生专家,行业资深人士,知名企业HR,同行,校友." />
     <meta property="wb:webmaster" content="8511185f3b58f41f" />
-    <title>首师大师生互动问答平台 - <%= @seo[:title] %></title></title>
+    <title>首师大解题互助平台 - <%= @seo[:title] %></title></title>
     <link rel="shortcut icon" href="/favicon.ico?v=003" /> 
     <meta charset="UTF-8">
     <%= csrf_meta_tag %>
@@ -32,7 +32,7 @@
         <% @no_header ||= ['devise-sessions_new','registrations_new'].include?("#{params[:controller].parameterize}_#{params[:action].parameterize}") %>
         <% unless @no_header %>
           <div class="searchbox">
-            <input placeholder="搜索解题、课程疑问" id="searchInput">
+            <input placeholder="搜索解题、领域疑问" id="searchInput">
           </div>
           <%= content_for :butt2 do %>
             Asks.completeAll($("#searchInput"));

@@ -1,10 +1,10 @@
 ﻿/*
 说明：
 
-1. nBtn为小绿色关注按钮，用于课程，人物等等列表中的关注操作。
+1. nBtn为小绿色关注按钮，用于领域，人物等等列表中的关注操作。
 	与其配套的是 nBtnFocus（关注） 和 nBtnUnFocus（取消关注） 两个class。
 	使用方法：<a class="nBtn nBtnFocus"></a>
-2. bBtn为大绿色关注按钮，用于课程，人物单一出现的显眼关注操作。
+2. bBtn为大绿色关注按钮，用于领域，人物单一出现的显眼关注操作。
 	与其配套的是 bBtnFocus（关注） 和 bBtnUnFocus（取消操作）
 	使用方法：<a class="bBtn bBtnFocus"></a>
 3. nBtnFocusAll为关注全部按钮，目前此按钮只有小样式。

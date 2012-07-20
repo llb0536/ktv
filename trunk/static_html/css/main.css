@@ -42,7 +42,7 @@
 	margin:10px 0 5px;
 }
 
-/* 课程横列样式 */
+/* 领域横列样式 */
 .topicNav li {
 	border:1px solid #ccd8e8;
 	float:left;
@@ -67,24 +67,24 @@
 .topicNav a {
 	color:#7c9cc3;
 }
-/* 课程横列样式【课程页修改】 */
+/* 领域横列样式【领域页修改】 */
 .topicNav.modify li {
 	border-color:#dfe8f3;
 	background-color:#dfe8f3;
 	color:#369;
 }
-/* 课程横列每项右侧叉子图标 */
+/* 领域横列每项右侧叉子图标 */
 .topicNav .close {
 	float:right;
 	position:static;
 	margin-left:3px;
 }
-/* 添加课程box */
+/* 添加领域box */
 .topicNav .addTopic {
 	font-size:12px;
 }
 
-/* 课程样式，上下结果，下方左侧带有头像 */
+/* 领域样式，上下结果，下方左侧带有头像 */
 .askInfoAll, .askInfoMinor, .reply {
 	margin-top:25px;
 	padding-bottom:25px;
@@ -147,7 +147,7 @@ article h6 {
 }
 
 
-/* 课程平铺显示 */
+/* 领域平铺显示 */
 .hotTopicTable li {
 	font-size:14px;
 	margin:14px 14px 0 0;
@@ -159,7 +159,7 @@ article h6 {
 }
 
 
-/* 课程页样式 */
+/* 领域页样式 */
 .askPage .bBtn {
 	float:right;
 }
@@ -170,7 +170,7 @@ article h6 {
 	float:left;
 	width:570px;
 }
-/* 问题页，顶部课程列表，添加课程框体 */
+/* 问题页，顶部领域列表，添加领域框体 */
 .addTopic {
 	font-size:12px;
 }
@@ -181,7 +181,7 @@ article h6 {
 .askPage .topicNav li {
 	margin-top:5px;
 }
-/* 开始输出回答最上面的总结 */
+/* 开始输出解答最上面的总结 */
 .replyTop {
 	border-bottom:1px solid #ccc;
 	height:33px;

@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 Quora::Application.routes.draw do
-  root :to => 'home#index'
+  root :to => 'welcome#index'
   # ________________________________user__________________________________________
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,
@@ -36,6 +36,7 @@ Quora::Application.routes.draw do
   get '/welcome/shuffle'
   get '/welcome/about'
   # ________________________________ktv__________________________________________
+  resources :schools
   resources :coursewares do
     collection do
       get 'latest'
@@ -47,7 +48,7 @@ Quora::Application.routes.draw do
   end
   get '/embed/:id' => 'coursewares#embed'
   # ________________________________q-n-a__________________________________________
-  get '/home/index'
+  get '/home/index',:as=>'home_index'
   match '/mobile'=>'home#mobile'
   get '/under_verification' => 'home#under_verification'
   get '/frozen_page' => 'home#frozen_page'

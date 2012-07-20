@@ -11,7 +11,7 @@ class Courseware
     case attr.to_sym
     when :user;'课件的作者'
     when :slides_count;'幻灯片片数'
-    when :course;'课件所属课程'
+    when :course;'课件所属领域'
     when :courseware_series;'课件所属课件系列'
     when :title;'课件标题'
     when :title_en;'课件英文标题'
@@ -22,8 +22,8 @@ class Courseware
     when :sort2;'课件文件类型'
     when :sort_humanized;'课件类型'
     when :slug;'课件的友好资源标识号'
-    when :course_slug;'所属课程的的友好资源标识号'
-    when :course_name;'所属课程的的名字'
+    when :course_slug;'所属领域的的友好资源标识号'
+    when :course_name;'所属领域的的名字'
     when :xunlei_link;'迅雷播放特权地址'
     when :fallback_playback_link;'视频后援地址'
     when :link_memo;'链接备注'
@@ -134,7 +134,7 @@ class Courseware
         self.topic = self.course_long_name.strip
       end
       if self.topic.blank?
-        self.topic = '课程请求'
+        self.topic = '领域请求'
       end
     end
   end

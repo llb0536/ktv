@@ -9,7 +9,7 @@ if(reply.length>0){
 
 reply.eq(reply.length-1).after(html);
 
-$("#answer_sum").text("有<%=@answer.ask.answers_count%>个回答");
+$("#answer_sum").text("有<%=@answer.ask.answers_count%>个解答");
 
 }else{
 
@@ -17,7 +17,7 @@ $(".mainContentHeader").append('<div class="dline mt10"></div>')
 
   .after(html)
 
-  .after('<div class="replyTop"><strong id="answer_sum">有1个回答</strong><span>按时间 | <a href="">按投票</a></span></div>');
+  .after('<div class="replyTop"><strong id="answer_sum">有1个解答</strong><span>按时间 | <a href="">按投票</a></span></div>');
 
 }
 

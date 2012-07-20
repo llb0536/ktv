@@ -86,7 +86,7 @@
       </form>
       <div class="navigation">
         <ul>
-          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要提问</a></li>
+          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要解题</a></li>
           <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addtext_wrap">我要上传</a></li>
         </ul>
         <div id="amazing-shadow"></div>
@@ -146,6 +146,7 @@
   <% end %>
 <% end %>
 </div></div>
+
 
 <% if !@we_are_inside_qa or @raw_raw_raw %>
   <%= yield %>

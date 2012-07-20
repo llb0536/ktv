@@ -7,7 +7,7 @@
     <div class="search_form_row">
       最近
       <%=text_field_tag "hot_asks_created_at",@created_at,:style=>"width:60px;margin-right:0px;",:class=>"validate[required,custom[int],max[365]]"%>
-      天内创建的提问，回答数≥
+      天内创建的提问，解答数≥
       <%=text_field_tag "hot_asks_answers_count",@answers_count,:style=>"width:60px;margin-right:0px;",:class=>"validate[required,custom[int],max[365]]"%>
       个；
     </div>
@@ -16,9 +16,9 @@
     </div>
     <div class="search_form_row">
       <%= radio_button_tag("hot_asks_sort_by","last_answer_at",@sort_by!="answers_count",:style=>"width:15px;margin-right:0px;") %>
-      <%= label_tag(:hot_asks_sort_by, "最新有回答在最前") %>
+      <%= label_tag(:hot_asks_sort_by, "最新有解答在最前") %>
       <%= radio_button_tag("hot_asks_sort_by","answers_count",@sort_by=="answers_count",:style=>"width:15px;margin-right:0px;margin-left:40px;") %>
-      <%= label_tag(:hot_asks_sort_by, "回答数最多在最前") %>
+      <%= label_tag(:hot_asks_sort_by, "解答数最多在最前") %>
     </div>
     <div class="search_form_row" style="margin-top:20px;">
       <span style="font-weight:800;">刷新频率:</span>
