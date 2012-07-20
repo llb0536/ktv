@@ -61,7 +61,7 @@ var Asks = {
             html += '<li><a onclick="return Asks.redirect_ask_cancel(this);" href="#">取消重定向</a></li>';
         }
         else{
-            html += '<li><a onclick="return Asks.redirect_ask(this);" href="#">问题重定向</a></li>';
+            html += '<li><a onclick="return Asks.redirect_ask(this);" href="#">题重定向</a></li>';
         }
         html += '<li><a onclick="return Asks.report(this);" href="#">举报</a></li>';
         $(el).jDialog({
@@ -131,7 +131,7 @@ var Asks = {
             $("#redirected_tip").remove();
         }
         else{
-            label_text = "问题已重定向到: "
+            label_text = "题已重定向到: "
             ask_link = "/asks/" + id + "?nr=1&rf=" + rf_id;
             if(type == "rf"){
                 label_text = "重定向来自: ";
@@ -144,7 +144,7 @@ var Asks = {
         }
     },
 
-    /* 问题，领域，人搜索自动完成 */
+    /* 题，领域，人搜索自动完成 */
     completeAll : function(el){
         input = $(el);
         input.autocomplete("/search/all",{
@@ -237,7 +237,7 @@ var Asks = {
         return false;
     },
 
-    /* 邀请人解答问题 */
+    /* 邀请人解答题 */
     completeInviteToAnswer : function(){
         input = $("#ask_to_answer");
         App.placeHolder(input, "可通过人名、领域、职务等搜索");
@@ -307,7 +307,7 @@ var Asks = {
         }
         html += ' <span class="fc999">领域</span>';
         html += '<br>';
-        html += count1+'个关注者·'+count2+'个问题';
+        html += count1+'个关注者·'+count2+'个题';
         return html;
     },
 
@@ -353,7 +353,7 @@ var Asks = {
         }     
         html += ' <span class="fc999">'+tagline+'</span>';
         html += '<br>';
-        html += count1+'个关注者·答过'+count2+'个问题';
+        html += count1+'个关注者·答过'+count2+'个题';
         return html;
     },
 
@@ -403,12 +403,12 @@ var Asks = {
             Users.userLogin();
             return false;
         }
-        if(!confirm("多人评价为烂问题后，此问题将会被屏蔽，而且无法撤销！\n你确定要这么评价吗？")){
+        if(!confirm("多人评价为烂题后，此题将会被屏蔽，而且无法撤销！\n你确定要这么评价吗？")){
             return false;
         }
 
         App.loading();
-        $(el).replaceWith("烂问题");
+        $(el).replaceWith("烂题");
         $.get("/asks/"+id+"/spam",function(count){
             if(!App.requireUser(count,"text")){
                 return false;
@@ -671,7 +671,7 @@ var Asks = {
     },
 
     showSuggestTopics : function(topics){
-        html = '<div id="ask_suggest_topics" class="ask"><div class="container"><label>根据您的问题，我们推荐这些领域(点击添加):</label>';
+        html = '<div id="ask_suggest_topics" class="ask"><div class="container"><label>根据您的题，我们推荐这些领域(点击添加):</label>';
         for(var i=0;i<topics.length;i++) {
             html += '<a href="#" class="topic nofloat" onclick="return Asks.addSuggestTopic(this,\''+topics[i]+'\');">'+topics[i]+'</a>';
         }
@@ -748,7 +748,7 @@ var Asks = {
             return false;
         }
     },
-    /* 添加问题 */
+    /* 添加题 */
     addAsk: function(){
         if(!logined){
             Users.userLogin();
@@ -765,8 +765,8 @@ var Asks = {
         var body = $("#inner_new_ask textarea[name=\"ask\[body\]\"]", facebox);
         var topic = $("#inner_new_ask input[name=\"topic\"]", facebox);
         var topics = $("#inner_new_ask input[name=\"topics\"]", facebox);
-        App.placeHolder(title, "问题标题");
-        App.placeHolder(body, "问题描述（可选）");
+        App.placeHolder(title, "题标题");
+        App.placeHolder(body, "题描述（可选）");
         App.placeHolder(topic, "输入领域标签");
         App.inputLimit(title, 50);
         App.inputLimit(body, 3000);
@@ -774,7 +774,7 @@ var Asks = {
         topic.attr("maxlength","20");
         Asks.completeTopicForAsk(topic);
         title.blur(function(){
-            if ($.trim($(this).val()) !== "" && $.trim($(this).val()) !== "问题标题"){
+            if ($.trim($(this).val()) !== "" && $.trim($(this).val()) !== "题标题"){
                 $("#theAddTopic", facebox).show();
             }
         });
@@ -807,7 +807,7 @@ var Asks = {
         });
         // submit
         $(".submit", facebox).unbind("click").click(function(){
-            if(title.val() === "" || title.val() === "问题标题"){
+            if(title.val() === "" || title.val() === "题标题"){
 				setTimeout(function(){title.css({"border-color":"#f8d97c","background":"#ffffe1"});}, 0);
 				setTimeout(function(){title.css({"border-color":"#d9edce","background":"#ffffff"});}, 200);
 				setTimeout(function(){title.css({"border-color":"#f8d97c","background":"#ffffe1"});}, 400);
@@ -816,7 +816,7 @@ var Asks = {
 				setTimeout(function(){title.css({"border-color":"#d9edce","background":"#ffffff"});}, 1000);
                 return false;
             }
-			if (body.val() === "问题描述（可选）"){
+			if (body.val() === "题描述（可选）"){
 				body.val('');
 			}
             if (real_length(title.val())>50 || real_length(body.val())>3000){

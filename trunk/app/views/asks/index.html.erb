@@ -1,7 +1,7 @@
 <%= render 'asks/base' %>
 
 <section>
-<h3><%= request.path.starts_with?('/zero_asks') ? '零解答问题' : '所有问题' %></h3>
+<h3><%= request.path.starts_with?('/zero_asks') ? '悬而未决的题' : '所有题' %></h3>
 <!-- 下面的每个article样式为：左侧头像，右侧领域分类、领域标题领域摘要 -->
 <% @asks.each do |item| %>
 <%= render "asks/ask", :item => item %>

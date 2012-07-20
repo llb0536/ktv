@@ -23,7 +23,7 @@
             end
             if !ask
             %>
-              该问题已被原作者删除。
+              该题已被原作者删除。
             <%
             else
             %>
@@ -40,9 +40,9 @@
                 end
               %>
                 <% if children[:type] == "THANK_ANSWER" %>
-                  <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于问题 <a href="<%= ask_path(ask) %>?nr=1#answer_<%= k %>"><%= ask.title %></a>
+                  <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于题 <a href="<%= ask_path(ask) %>?nr=1#answer_<%= k %>"><%= ask.title %></a>
                 <% else %>
-                  <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于问题 <a href="<%= ask_path(ask) %>"><%= ask.title %></a>
+                  <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于题 <a href="<%= ask_path(ask) %>"><%= ask.title %></a>
                 <% end %>
                   <ul class="notification-items" id="NASK_<%= ask.id %>_items" style="margin-left:25px;">
                   <%

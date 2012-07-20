@@ -10,5 +10,5 @@
     <%= raw title %></a></h6>
 	<div>
 	<%=truncate(topic.summary_plain,:length=>20) %>
-  <br><span class="fc999"><%= topic.followers_count %>人关注·<%= topic.asks_count %>个问题·<%= render 'topic__simple_follow',topic:topic %></span></div>
+  <br><span class="fc999"><%= topic.followers_count %>人关注·<%= topic.asks_count %>个题·<%= render 'topic__simple_follow',topic:topic %></span></div>
 </article>

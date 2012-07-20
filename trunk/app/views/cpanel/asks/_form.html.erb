@@ -13,28 +13,28 @@
     });
   });
 </script>
-<div class="green_header">修改问题</div>
+<div class="green_header">修改题</div>
 <div id="cpanel_ask" class="search_form">
   <%= form_for(@ask,:url => (@ask.id.blank? ? cpanel_asks_path : cpanel_ask_path(@ask.id)) ) do |f| %>
     <%= render "/shared/error_messages", :target => @ask %>
 
     <div class="inputs">
       <div class="search_form_row">
-        <div style="margin-right:14px;float:left;">问题标题:</div>
+        <div style="margin-right:14px;float:left;">题标题:</div>
         <%=text_area_tag "ask[title]",@ask.title,:style=>"width:495px!important;height:40px!important;",:class=>"validate[required,funcCall[checkSize50]]"%>
       </div>
       <div class="search_form_row">
-        <div style="margin-right:14px;float:left;">问题内容:</div>
+        <div style="margin-right:14px;float:left;">题内容:</div>
         <%=text_area_tag "content",@ask.body,:style=>"width:500px;height:120px;",:class=>"validate[funcCall[checkSize3000]]"%>
       </div>
   <%#= f.input :user_id %>
       <div class="search_form_row">
-        <span style="margin-right:10px;">问题领域:</span>
+        <span style="margin-right:10px;">题领域:</span>
         <%=text_field_tag "topics",@ask.topics.join(","),:style=>"width:300px;",:class=>"validate[funcCall[checkTopics]]"%>
         <span>请以","分隔多个领域</span>
       </div>
       <div class="search_form_row">
-        <span style="margin-right:10px;">烂问题数:</span>
+        <span style="margin-right:10px;">烂题数:</span>
         <%=text_field_tag "ask[spams_count]",@ask.spams_count,:style=>"width:100px;"%>
       </div>
       <div class="search_form_row">

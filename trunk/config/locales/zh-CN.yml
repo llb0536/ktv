@@ -32,8 +32,8 @@
         one: 答案
         other: 答案
       ask:
-        one: 问题
-        other: 问题
+        one: 题
+        other: 题
       authorization:
         one: 第三方认证
         other: 第三方认证

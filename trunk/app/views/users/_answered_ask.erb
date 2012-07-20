@@ -3,7 +3,7 @@
   <div class="title"><a href="/asks/<%= item.id %>"><%= item.title %></a></div>
     <div class="info">
       <% unless item.user.blank? %>
-      <%= user_name_tag(item.user) %><%= v_icon(item.user) %> 提出的问题
+      <%= user_name_tag(item.user) %><%= v_icon(item.user) %> 出的题
       <% end %>
       • <%= item.answers_count %> 个答案 
 

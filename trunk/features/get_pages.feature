@@ -11,14 +11,14 @@ Feature: Get Pages
   
   Scenario: root page
     I go to url "/root"
-    I should see "我关注的问题"
+    I should see "我关注的题"
 
   Scenario: cpanel
     I go to url "/cpanel"
     I should see "查看所有"
     I follow "用户"
     I should see "查看所有"
-    I follow "问题"
+    I follow "题"
     I should see "查看所有"
     I follow "解答"
     I should see "查看所有"
@@ -32,7 +32,7 @@ Feature: Get Pages
     I should see "修改"
     I follow "修改"
     I should see "提交"
-    I follow "问题"
+    I follow "题"
     I should see "修改"
     I follow "修改"
     I should see "提交"

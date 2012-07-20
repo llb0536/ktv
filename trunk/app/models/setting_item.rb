@@ -9,10 +9,10 @@ class SettingItem
   #  "need_verification_start_time"   先审后发机制每天几点开始
   #  "need_verification_end_time"     先审后发机制每天几点结束
  
-  #  "hot_asks_created_at"            限制热门问题为最近几天内发布的
-  #  "hot_asks_answers_count"         限制热门问题为解答数不少于几的
-  #  "hot_asks_refresh_minute"        几分钟刷新一次热门问题
-  #  "hot_asks_sort_by"               热门问题排序规则
+  #  "hot_asks_created_at"            限制热门题为最近几天内发布的
+  #  "hot_asks_answers_count"         限制热门题为解答数不少于几的
+  #  "hot_asks_refresh_minute"        几分钟刷新一次热门题
+  #  "hot_asks_sort_by"               热门题排序规则
   
   #  "hot_topics_followers_count"     限制热门领域为被关注数大于几的
   #  "hot_topics_asks_count"          限制热门领域为提问数大于几的
@@ -21,8 +21,8 @@ class SettingItem
  
   # "ask_advertise_limit_open"        是否开启所有用户提问频率限制
   # "ask_advertise_limit_time_range"  所有用户提问频率限制在几分钟内
-  # "ask_advertise_limit_count"       所有用户提问频率限制问题数
-  # "ask_advertise_limit_deal_range"  所有用户提问频率限制处理几个小时内的问题
+  # "ask_advertise_limit_count"       所有用户提问频率限制题数
+  # "ask_advertise_limit_deal_range"  所有用户提问频率限制处理几个小时内的题
   
   # "answer_advertise_limit_open"     是否开启所有用户解答/评论频率限制
   # "answer_advertise_limit_time_range"所有用户解答/评论频率限制在几分钟内

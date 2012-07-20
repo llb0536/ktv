@@ -10,9 +10,9 @@
     </div>
     <div style="margin-top:8px;" id="content">
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("normal_ask")%>checked="checked"<%end%> value="normal_ask" class="sub_check" style="margin-left:40px;">
-      <span>普通问题管理</span>
+      <span>普通题管理</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("spam_ask")%>checked="checked"<%end%> value="spam_ask" class="sub_check">
-      <span>烂问题管理</span>
+      <span>烂题管理</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("answer")%>checked="checked"<%end%> value="answer" class="sub_check">
       <span>解答管理</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("comment")%>checked="checked"<%end%> value="comment" class="sub_check">
@@ -61,7 +61,7 @@
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("stat")%>checked="checked"<%end%> value="stat" class="sub_check">
       <span>数据统计概况</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("hot_ask")%>checked="checked"<%end%> value="hot_ask" class="sub_check">
-      <span>风云榜热门问题</span>
+      <span>风云榜热门题</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("hot_topic")%>checked="checked"<%end%> value="hot_topic" class="sub_check">
       <span>风云榜热门领域</span>
       <input name="admins[]" type="checkbox" style="margin-left:40px;margin-top:10px;" <%if @user.admin_area.include?("api")%>checked="checked"<%end%> value="api" class="sub_check">

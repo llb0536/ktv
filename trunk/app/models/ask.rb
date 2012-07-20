@@ -123,9 +123,9 @@ class Ask
   field :answered_at, :type => Time
   field :topics, :type => Array, :default => []
   field :spam_voter_ids, :type => Array, :default => []
-  # 最后活动时间，这个时间应该设置为该问题下辖最后一条log的发生时间
+  # 最后活动时间，这个时间应该设置为该题下辖最后一条log的发生时间
   field :last_updated_at, :type => Time
-  # 重定向问题编号
+  # 重定向题编号
   field :redirect_ask_id
   #后台删除操作记录
   field :deletor_id
@@ -146,7 +146,7 @@ class Ask
       c.update_attribute(:deleted_at,Time.now)
     end
   end
-  #更新首页热门问题
+  #更新首页热门题
   def refresh_hot_asks
     $asks = Ask.normal.nondeleted.where(:created_at.gt=>SettingItem.find_or_create_by(:key=>"hot_asks_created_at").value.to_i.days.ago,:answers_count.gte=>SettingItem.find_or_create_by(:key=>"hot_asks_answers_count").value.to_i).to_a.collect{|x| [x,x.last_answer.blank? ? 0 : x.last_answer.created_at]}
     if SettingItem.find_or_create_by(:key=>"hot_asks_sort_by").value.to_s=="answers_count"
@@ -194,7 +194,7 @@ class Ask
   validates_presence_of :current_user_id, :if => proc { |obj| obj.title_changed? or obj.body_changed? }
   validates_length_of :title,:maximum=>100
 
-  # 正常可显示的问题, 前台调用都带上这个过滤
+  # 正常可显示的题, 前台调用都带上这个过滤
   scope :normal, where(:spams_count.lt => Setting.ask_spam_max)
   scope :unanswered, where(:answers_count => 0)
   def is_normal?
@@ -202,10 +202,10 @@ class Ask
   end
   scope :last_actived, desc(:answered_at)
   scope :recent, desc("created_at")
-  # 除开一些 id，如用到 mute 的问题，传入用户的 muted_ask_ids
+  # 除开一些 id，如用到 mute 的题，传入用户的 muted_ask_ids
   scope :exclude_ids, lambda { |id_array| not_in("_id" => (id_array ||= [])) } 
   scope :only_ids, lambda { |id_array| any_in("_id" => (id_array ||= [])) } 
-  # 问我的问题
+  # 问我的题
   field :to_user_ids
   scope :asked_to, lambda { |to_user_id| any_of({:to_user_id => to_user_id},{:to_user_ids=>to_user_id}) }
 
@@ -322,7 +322,7 @@ class Ask
     insert_topic_action_log(action, topics, current_user_id)
   end
 
-  # 提交问题为 spam
+  # 提交题为 spam
   def spam(voter_id,size = 1)
     self.spams_count ||= 0
     self.spam_voter_ids ||= []
@@ -344,12 +344,12 @@ class Ask
     first(:conditions => {:title => title})
   end
   
-  # 重定向问题
+  # 重定向题
   def redirect_to_ask(to_id)
     # 不能重定向自己
     return -2 if to_id.to_s == self.id.to_s
     @to_ask = Ask.find(to_id)
-    # 如果重定向目标的是重定向目前这个问题的，就跳过，防止无限重定向
+    # 如果重定向目标的是重定向目前这个题的，就跳过，防止无限重定向
     return -1 if @to_ask.redirect_ask_id.to_s == self.id.to_s
     self.redirect_ask_id = to_id
     self.save

@@ -37,7 +37,7 @@
               <%elsif item.class.name=="Comment"%>
                 <td class="wordwrap">评论</td>
               <%else%>
-                <td class="wordwrap">问题</td>
+                <td class="wordwrap">题</td>
               <%end%>
               <td class="wordwrap"><%= link_to user_name_tag(item.user,:target=>'target="_blank"',:no_truncate=>true) %></td>
               <td><%= item.created_at.getlocal.strftime("%Y-%m-%d %H:%M") %></td>
@@ -87,14 +87,14 @@
     <div class="search_form_row">
       用户在
       <%=text_field_tag "ask_advertise_limit_time_range",@ask_time,:style=>"width:60px;margin-right:0px;",:class=>"validate[required,custom[int]]"%>
-      分钟内，发表问题数大于
+      分钟内，发表题数大于
       <%=text_field_tag "ask_advertise_limit_count",@ask_count,:style=>"width:60px;margin-right:0px;",:class=>"validate[required,custom[int]]"%>
       个，该用户前
       <%=text_field_tag "ask_advertise_limit_deal_range",@ask_deal,:style=>"width:60px;margin-right:0px;",:class=>"validate[required,custom[int]]"%>
-      个小时内的所有问题进入疑似广告类问题。
+      个小时内的所有题进入疑似广告类题。
     </div>
     <div class="search_form_row">
-      疑似广告问题处于隐藏状态，同时用户处于冻结状态，无法再进行提问等操作。
+      疑似广告题处于隐藏状态，同时用户处于冻结状态，无法再进行提问等操作。
     </div>
     <div class="search_form_row" style="float:left;">
       <button type="submit">保存</button>
@@ -121,7 +121,7 @@
       个小时内的所有解答或评论进入疑似广告类内容。
     </div>
     <div class="search_form_row">
-      这些问题处于未发布状态，无URL地址；这些用户为正常用户，可以继续发布提问。
+      这些题处于未发布状态，无URL地址；这些用户为正常用户，可以继续发布提问。
     </div>
     <div class="search_form_row" style="float:left;">
       <button type="submit">保存</button>

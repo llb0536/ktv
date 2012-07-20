@@ -11,7 +11,7 @@
 
         <div class="ask-head"><%= @ask.title %></div>
         <div class="ask-info">
-            <%= @ask.user.name %>提出的问题 · <%= @ask.answers_count %>个答案
+            <%= @ask.user.name %>出的题 · <%= @ask.answers_count %>个答案
         </div>
         <div class="ask-body">
             <p><%= @ask.body_plain %></p>
@@ -32,9 +32,9 @@
     <div>
 <% if current_user %>
   <% if user_answered %>
-    <div class="disabled_answer">一个问题你只能解答一次，但你可以对现有的解答进行修改。</div>
+    <div class="disabled_answer">一个题你只能解答一次，但你可以对现有的解答进行修改。</div>
   <% elsif !@ask.to_user.blank? and current_user.id != @ask.to_user_id %>
-    <div class="disabled_answer">这个问题是对 <%= @ask.to_user.name %> 提问的，只有<%= user_sex_title(@ask.to_user) %>才能解答。</div>
+    <div class="disabled_answer">这个题是对 <%= @ask.to_user.name %> 提问的，只有<%= user_sex_title(@ask.to_user) %>才能解答。</div>
   <% else %>
     <%= form_for(@answer, :remote => true, :html => { :onsubmit => "return Asks.beforeAnswer(this);" },
                  :url => answer_ask_path(@ask.id)) do |f| %>
@@ -47,7 +47,7 @@
     <% end %>
   <% end %>
 <% else %>
-<div>请先<a href="/mobile/login/">登录</a>或<a href="/mobile/register/">注册</a>以解答该问题</div>
+<div>请先<a href="/mobile/login/">登录</a>或<a href="/mobile/register/">注册</a>以解答该题</div>
 <% end %>
   </div>
 </div>

@@ -62,7 +62,7 @@ module AsksHelper
     return ask.spam_voter_ids.count(current_user.id) > 0
   end
 
-  # 判断是否是 spam 的问题
+  # 判断是否是 spam 的题
   def spam_ask?(ask)
     point = ask.spams_count || 0
     return point >= Setting.ask_spam_max

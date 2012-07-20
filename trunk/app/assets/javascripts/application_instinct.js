@@ -281,7 +281,7 @@ var App = {
         $(el).bind("blur", function(){clearInterval(timeId);
             // Added by P.S.V.R
             // 2011.2.14
-            if('new_ask_title_gl'==$(el).attr('id') && $(el).val() && $(el).val() != "问题标题"){
+            if('new_ask_title_gl'==$(el).attr('id') && $(el).val() && $(el).val() != "题标题"){
                 $.ajax({
                     type: 'POST',
                     url: '/ajax/seg',

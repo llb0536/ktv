@@ -36,7 +36,7 @@ module Wendao
     end
 
     def self.tabs
-      @tabs ||= {"Overview"=>'首页', "OAuth"=>'用户认证', "Asks"=>'问题'}
+      @tabs ||= {"Overview"=>'首页', "OAuth"=>'用户认证', "Asks"=>'题'}
     end
     def json_body
       @body = HashWithIndifferentAccess.new(JSON.parse(@ret))

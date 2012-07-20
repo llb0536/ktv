@@ -9,6 +9,6 @@
       <% end %>
 			<p style="margin:0;padding:0;">
         <%= link_to @follower.name, user_url(@follower.slug), :target=>'_blank', :style=>'color:#360;font-weight:bold;font-size:14px;text-decoration:none;' %><br>
-			  在<%= Setting.app_name %>上，他有 <%= @follower.asks_count %>个问题, <%= @follower.answers_count %>个解答 </p>
+			  在<%= Setting.app_name %>上，他有 <%= @follower.asks_count %>个题, <%= @follower.answers_count %>个解答 </p>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<div class="green_header">问题管理</div>
+<div class="green_header">题管理</div>
 <div class="search_form">
   <%=form_tag(cpanel_asks_path, :method => "get") do%>
     <div class="search_form_row">
@@ -25,13 +25,13 @@
     <div class="search_form_row">
       <%=label_tag(:views_count,"浏览数:")%>
       <%=text_field_tag(:views_count_left,nil,:class=>"validate[custom[integer],numRange[grp4]] left_count",:value=>params[:views_count_left])%>——<%=text_field_tag(:views_count_right,nil,:class=>"validate[custom[integer],numRange[grp4]] right_count",:value=>params[:views_count_right])%>
-      <%=label_tag(:spams_count,"问题类型:")%>
+      <%=label_tag(:spams_count,"题类型:")%>
       <%if current_user.admin_type==User::SUP_ADMIN or (current_user.admin_area.include?("normal_ask") and current_user.admin_area.include?("spam_ask"))%>    
-        <%=select_tag :spams_count,options_for_select([["所有问题",0],["普通问题",1],["烂问题",2]],params[:spams_count]) %>
+        <%=select_tag :spams_count,options_for_select([["所有题",0],["普通题",1],["烂题",2]],params[:spams_count]) %>
       <%elsif current_user.admin_area.include?("normal_ask")%>
-        <span style="margin-right:80px;">普通问题</span>
+        <span style="margin-right:80px;">普通题</span>
       <%elsif current_user.admin_area.include?("spam_ask")%>
-        <span style="margin-right:80px;">烂问题</span>
+        <span style="margin-right:80px;">烂题</span>
       <%end%>
       <%=label_tag(:sort_by,"结果排序:")%>
       <%=select_tag :sort_by,options_for_select([["按提问时间",""],["按解答数","answers_count"],["按评论数","comments_count"],["按关注数","followed_count"],["按浏览数","views_count"]],params[:sort_by]) %>

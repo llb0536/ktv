@@ -1,5 +1,5 @@
 <div data-role="content" class="ui-body-c ui-body">	
-    <p>热门问题</p>
+    <p>热门题</p>
     <ul data-role="listview" data-inset="true" class="asksList" id="gonna_be_app">
       <% @newasks.each do |item| %>
         <%= render(file:"asks/_ask",locals:{item:item},:formats => [:mobile]) %>

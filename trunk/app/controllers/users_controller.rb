@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @asks = Ask.recent.any_in(_id:@user.answered_ask_ids)
     .nondeleted()
     .paginate(:page => params[:page], :per_page => @per_page)
-    set_seo_meta("#{@user.name}解答过的问题")
+    set_seo_meta("#{@user.name}解答过的题")
     if params[:format] == "js"
       render "/users/answered_asks.js"
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @asks = @asks.recent.nondeleted
     .paginate(:page => params[:page], :per_page => @per_page)
     
-    set_seo_meta("问#{@user.name}的问题")
+    set_seo_meta("问#{@user.name}的题")
 
     if params[:format] == "js"
       render "/asks/index.js"
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     @asks = @user.asks.recent
     .nondeleted
     .paginate(:page => params[:page], :per_page => @per_page)
-    set_seo_meta("#{@user.name}问过的问题")
+    set_seo_meta("#{@user.name}问过的题")
     if params[:format] == "js"
       render "/asks/index.js"
     end

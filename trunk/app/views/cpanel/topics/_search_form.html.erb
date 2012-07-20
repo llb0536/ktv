@@ -14,7 +14,7 @@
       <input placeholder="<%= t.strftime("%Y-%m-%d") %>" style="margin-right:0px;width:80px;" class="validate[custom[date]]" id="datepicker_to" name="datepicker_to" value="<%= params[:datepicker_to] %>" type="text">
       <input placeholder="<%= t.strftime("%H:%M") %>" style="margin-right:0px;width:60px;" class="validate[custom[time]]" type="text" name="time_to" id="time_to"  value="<%= params[:time_to] %>"/>
       <%=label_tag(:sort_by,"排序:",:style=>"margin-left:10px;")%>
-      <%=select_tag :sort,options_for_select([["按创建时间","created_at"],["按问题数","asks_count"],["按关注人数","followed_count"]],params[:sort]),:style=>"margin-right:20px;" %>
+      <%=select_tag :sort,options_for_select([["按创建时间","created_at"],["按题数","asks_count"],["按关注人数","followed_count"]],params[:sort]),:style=>"margin-right:20px;" %>
       <button type="submit">搜索</button>
     </div>
   <% end %>

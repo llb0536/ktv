@@ -387,14 +387,14 @@ class User
   # 是否是可信用户，可信用户有更多修改权限
   field :credible, :type => Boolean, :default => false
 
-  # 不感兴趣的问题
+  # 不感兴趣的题
   field :muted_ask_ids, :type => Array, :default => []
   field :muted_expert_ids, :type => Array, :default => []
   field :muted_user_ids, :type => Array, :default => []
   field :muted_topics, :type => Array, :default => []
-  # 关注的问题
+  # 关注的题
   field :followed_ask_ids, :type => Array, :default => []
-  # 解答过的问题
+  # 解答过的题
   field :answered_ask_ids, :type => Array, :default => []
   # Email 提醒的状态
   field :mail_be_followed, :type => Boolean, :default => true
@@ -661,7 +661,7 @@ class User
     where({:slug => slug}).first
   end
 
-  # 不感兴趣问题
+  # 不感兴趣题
   def ask_muted?(ask_id)
     self.muted_ask_ids.include?(ask_id)
   end

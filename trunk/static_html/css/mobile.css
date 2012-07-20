@@ -33,7 +33,7 @@ root {
     margin:0;
 }
 
-/* 问题左侧图标大小固定 */
+/* 题左侧图标大小固定 */
 .asksList img {
     max-height: 25px;
     max-width: 25px;
@@ -55,7 +55,7 @@ root {
     margin:10px;
 }
 
-/* 问题页面 问题内容样式 */
+/* 题页面 题内容样式 */
 .ask-content:after {
     content:'.'
 }

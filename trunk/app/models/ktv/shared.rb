@@ -12,8 +12,8 @@ module Ktv
     end
     
     # 又是一个异常类
-    # 表示用户提供的数据有问题
-    # 不是我们的问题
+    # 表示用户提供的数据有题
+    # 不是我们的题
     class UserDataException < StandardError
     end
 

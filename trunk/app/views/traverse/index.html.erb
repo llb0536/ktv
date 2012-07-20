@@ -8,7 +8,7 @@
 		<li class="<%= 'current' unless ['1','2','3'].include? params[:mode] %>"><%= link_to '所有',traverse_path(q:params[:q],mode:'0') %></li>
 		<li class="<%= 'current' if '1'==params[:mode] %>"><%= link_to '领域',traverse_path(q:params[:q],mode:'1') %></li>
 		<li class="<%= 'current' if '2'==params[:mode] %>"><%= link_to '用户',traverse_path(q:params[:q],mode:'2') %></li>
-		<li class="<%= 'current' if '3'==params[:mode] %>"><%= link_to '问题',traverse_path(q:params[:q],mode:'3',sortc:'timewise') %></li>
+		<li class="<%= 'current' if '3'==params[:mode] %>"><%= link_to '题',traverse_path(q:params[:q],mode:'3',sortc:'timewise') %></li>
 	</ul>
 </nav>
 
@@ -65,8 +65,8 @@
   	<% end %>
   </section>
 
-  <!-- 搜索结果的问题列表 -->
-  <h3 class="mt40">关于“<mark><%=params[:q]%>”</mark>的问题<span class="fc369"><a href="<%= traverse_path(q:params[:q],mode:'3') %>">（问题<%= @asks.count %>个）</a></span><span class="fr fs12"><a href="<%= traverse_path(q:params[:q],mode:'3') %>">更多&gt;&gt;</a></span></h3>
+  <!-- 搜索结果的题列表 -->
+  <h3 class="mt40">关于“<mark><%=params[:q]%>”</mark>的题<span class="fc369"><a href="<%= traverse_path(q:params[:q],mode:'3') %>">（题<%= @asks.count %>个）</a></span><span class="fr fs12"><a href="<%= traverse_path(q:params[:q],mode:'3') %>">更多&gt;&gt;</a></span></h3>
   <section>
     <% @asks.limit(10).each do |ask| %>
       <%= render 'ask',ask:ask %>

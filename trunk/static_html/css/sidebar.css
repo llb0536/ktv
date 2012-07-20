@@ -103,7 +103,7 @@
 }
 */
 
-/* 强调文本 用于总结性普通文本，比如问题状态中存在 */
+/* 强调文本 用于总结性普通文本，比如题状态中存在 */
 /* 换一换
 .sideBox .changeList {
 	float:right;
@@ -171,7 +171,7 @@
 	margin-top:10px;
 }
 
-/* 相关问题、纯文本链接列表样式 */
+/* 相关题、纯文本链接列表样式 */
 .linkList li {
 	margin:5px 0 10px;
 }
@@ -180,7 +180,7 @@
 }
 
 
-/* 分享问题 Email、转发地址 */
+/* 分享题 Email、转发地址 */
 .shareEmail, .shareFw {
 	background:url("../img/btn.png") no-repeat -432px -45px;
 	padding:0 20px;
@@ -190,7 +190,7 @@
 }
 
 
-/* 邀请他人解答问题 */
+/* 邀请他人解答题 */
 .peopleSearchBar {
 	background-color:#fff;
 	height:21px;

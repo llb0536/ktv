@@ -13,8 +13,8 @@
   <section class="setupNotify clearfix">
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :enctype =>  "multipart/form-data", :id => 'form_2' }) do |f| %>
       <label><input class="noBorder" type="checkbox" name='user[mail_be_followed]' <%= 'checked="checked"' if resource.mail_be_followed %>/>被人关注</label>
-      <label><input class="noBorder" type="checkbox" name='user[mail_new_answer]' <%= 'checked="checked"' if resource.mail_new_answer %>/>关注的问题有新解答</label>
-      <label><input class="noBorder" type="checkbox" name='user[mail_invite_to_ask]' <%= 'checked="checked"' if resource.mail_invite_to_ask %>/>有人邀请我解答问题</label>
+      <label><input class="noBorder" type="checkbox" name='user[mail_new_answer]' <%= 'checked="checked"' if resource.mail_new_answer %>/>关注的题有新解答</label>
+      <label><input class="noBorder" type="checkbox" name='user[mail_invite_to_ask]' <%= 'checked="checked"' if resource.mail_invite_to_ask %>/>有人邀请我解答题</label>
       <label><input class="noBorder" type="checkbox" name='user[mail_ask_me]' <%= 'checked="checked"' if resource.mail_ask_me %>/>有人向我提问</label>
       <div class="clearfix"></div>
       <div class="btnNormalGreen" onclick="$('#form_2').submit()"><span>&nbsp;保 存&nbsp;</span></div>

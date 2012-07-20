@@ -39,7 +39,7 @@ module ApplicationHelper
     when 'logs'
       'Kejian.TV正在发生'
     else
-      '我的动态'
+      '解题动态'
     end
   end
 
@@ -77,12 +77,12 @@ module ApplicationHelper
     case a
     when "AGREE_ANSWER", "NEW_ANSWER_COMMENT"
       tag += user_tag + " #{a == "AGREE_ANSWER" ? "赞成" : "评论"}了你在"
-      ask_tag = "<a  href=\"#{ask_path(ask)}#{a == "AGREE_ANSWER" ? "#answer_" + log.target_id.to_s : "?eawc=yes&awid=" + log.title.to_s + "#answer_" + log.title.to_s}\">#{show_ask ? ask.title : "该问题中的解答。"}</a>" + (show_ask ? " 中的解答。" : "")
-      tag += (show_ask ? "问题 " : "") + ask_tag
+      ask_tag = "<a  href=\"#{ask_path(ask)}#{a == "AGREE_ANSWER" ? "#answer_" + log.target_id.to_s : "?eawc=yes&awid=" + log.title.to_s + "#answer_" + log.title.to_s}\">#{show_ask ? ask.title : "该题中的解答。"}</a>" + (show_ask ? " 中的解答。" : "")
+      tag += (show_ask ? "题 " : "") + ask_tag
     when "NEW_ANSWER", "NEW_ASK_COMMENT"
       tag += user_tag + " #{a == "NEW_ANSWER" ? "解答" : "评论"}了"
-      ask_tag = "<a  href=\"#{ask_path(ask)}#{a == "NEW_ASK_COMMENT" ? "?easc=yes&asid=" + log.target_parent_id.to_s : ""}#answer_#{log.target_id.to_s}\">#{show_ask ? ask.title : "该问题。"}</a>"
-      tag += (show_ask ? "问题 " : "") + ask_tag
+      ask_tag = "<a  href=\"#{ask_path(ask)}#{a == "NEW_ASK_COMMENT" ? "?easc=yes&asid=" + log.target_parent_id.to_s : ""}#answer_#{log.target_id.to_s}\">#{show_ask ? ask.title : "该题。"}</a>"
+      tag += (show_ask ? "题 " : "") + ask_tag
     when "THANK_ANSWER"
       tag += user_tag + "感谢了你"
       if show_ask
@@ -119,12 +119,12 @@ module ApplicationHelper
     case a
     when "AGREE_ANSWER", "NEW_ANSWER_COMMENT"
       tag += user_tag + " #{a == "AGREE_ANSWER" ? "赞成" : "评论"}了你在"
-      ask_tag = "<a onclick=\"mark_notifies_as_read(this, '#{notify.id}');\" href=\"#{ask_path(ask)}#{a == "AGREE_ANSWER" ? "#answer_" + log.target_id.to_s : "?eawc=yes&awid=" + log.title.to_s + "#answer_" + log.title.to_s}\">#{show_ask ? ask.title : "该问题中的解答。"}</a>" + (show_ask ? " 中的解答。" : "")
-      tag += (show_ask ? "问题 " : "") + ask_tag
+      ask_tag = "<a onclick=\"mark_notifies_as_read(this, '#{notify.id}');\" href=\"#{ask_path(ask)}#{a == "AGREE_ANSWER" ? "#answer_" + log.target_id.to_s : "?eawc=yes&awid=" + log.title.to_s + "#answer_" + log.title.to_s}\">#{show_ask ? ask.title : "该题中的解答。"}</a>" + (show_ask ? " 中的解答。" : "")
+      tag += (show_ask ? "题 " : "") + ask_tag
     when "NEW_ANSWER", "NEW_ASK_COMMENT"
       tag += user_tag + " #{a == "NEW_ANSWER" ? "解答" : "评论"}了"
-      ask_tag = "<a onclick=\"mark_notifies_as_read(this, '#{notify.id}');\" href=\"#{ask_path(ask)}#{a == "NEW_ASK_COMMENT" ? "?easc=yes&asid=" + log.target_parent_id.to_s : ""}#answer_#{log.target_id.to_s}\">#{show_ask ? ask.title : "该问题。"}</a>"
-      tag += (show_ask ? "问题 " : "") + ask_tag
+      ask_tag = "<a onclick=\"mark_notifies_as_read(this, '#{notify.id}');\" href=\"#{ask_path(ask)}#{a == "NEW_ASK_COMMENT" ? "?easc=yes&asid=" + log.target_parent_id.to_s : ""}#answer_#{log.target_id.to_s}\">#{show_ask ? ask.title : "该题。"}</a>"
+      tag += (show_ask ? "题 " : "") + ask_tag
     when "THANK_ANSWER"
       tag += user_tag + "感谢了你"
       if show_ask

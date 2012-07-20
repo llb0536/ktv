@@ -9,7 +9,7 @@
   <a href="<%= cpanel_asks_path %>" class="button small left<%= ' checked' if params[:action] == "index" %>">查看所有</a>
   <a href="/cpanel/asks_un2" class="button small left<%= ' checked' if params[:action] == "index_un2" %>">待审核</a>
   <%= link_to '全部审核！',"/cpanel/asks_un2all", :method=>:post, :class=>"button small left" %>
-  <a href="/cpanel/asks_un" class="button small left<%= ' checked' if params[:action] == "index_un" %>">待解答问题</a>
+  <a href="/cpanel/asks_un" class="button small left<%= ' checked' if params[:action] == "index_un" %>">待解答题</a>
   <% if ["edit","update"].index(params[:action]) %>
   <a href="#" class="button small checked">编辑</a>
   <% end %>

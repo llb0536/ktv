@@ -11,11 +11,11 @@ class UserMailer < BaseMailer
     mail(:to => @user.email,:subject => @title, :from => Setting.email_sender,:template_path => 'user_mailer', :template_name => 'welcome')
   end
 
-  # 问题有了新解答
+  # 题有了新解答
   def new_answer(answer_id,email)
     @answer = Answer.find(answer_id)
     @ask = Ask.find(@answer.ask_id)
-    @title = "问题“#{@ask.title}”有了新的解答"
+    @title = "题“#{@ask.title}”有了新的解答"
     mail(:to => email, :subject => @title, :from => Setting.email_sender,:template_path => 'user_mailer', :template_name => 'new_answer')
   end
   # 被关注

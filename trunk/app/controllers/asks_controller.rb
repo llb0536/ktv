@@ -17,9 +17,9 @@ class AsksController < ApplicationController
     @asks = @asks.recent.where(:no_display_at_index.ne=>true).paginate(:page => params[:page], :per_page => @per_page)
     
     if request.path=='/zero_asks'
-      set_seo_meta("零解答问题")
+      set_seo_meta("悬而未决的题")
     else
-      set_seo_meta("所有问题")
+      set_seo_meta("所有题")
     end
     
     if '1'==params[:force_mobile]
@@ -56,7 +56,7 @@ class AsksController < ApplicationController
 
     if !@ask.redirect_ask_id.blank?
       if params[:nr].blank?
-        # 转向问题
+        # 转向题
         redirect_to ask_path(@ask.redirect_ask_id,:rf => params[:id], :nr => "1", :force_mobile=>params[:force_mobile])
         return
       else
@@ -71,7 +71,7 @@ class AsksController < ApplicationController
       end
     end
     
-    # 由于 voteable_mongoid 目前的按 votes_point 排序有问题，没投过票的无法排序
+    # 由于 voteable_mongoid 目前的按 votes_point 排序有题，没投过票的无法排序
     @answers = @ask.answers.nondeleted
     if 'new'==params[:filter]
       @answers = @answers.desc('created_at')
@@ -126,7 +126,7 @@ class AsksController < ApplicationController
       when "email"
         if params[:to]!="" and params[:subject]!="" and params[:body]!=""
           UserMailer.simple(params[:to], params[:subject], params[:body].gsub("\n","<br />")).deliver
-          flash[:notice] = "已经将问题连接发送到了 #{params[:to]}"
+          flash[:notice] = "已经将题连接发送到了 #{params[:to]}"
         elsif  params[:to]==""
           flash[:notice] = "收件人不能为空！"
         else
@@ -217,7 +217,7 @@ an params example:
     end
     if SettingItem.get_deleted_nin_boolean
       Deferred.create!(user_id:current_user.id,controller:'asks', body:params, content:params[:ask][:title])
-      flash[:notice] = "问题"
+      flash[:notice] = "题"
       redirect_to "/under_verification"
       return
     end
@@ -231,9 +231,9 @@ an params example:
     when 1
       flash[:notice] = ""
       if '1'==params[:force_mobile]
-        redirect_to("/asks/#{@ask.id}?force_mobile=1",:notice => '已有相同的问题存在。') and return
+        redirect_to("/asks/#{@ask.id}?force_mobile=1",:notice => '已有相同的题存在。') and return
       else
-        redirect_to ask_path(@ask.id, :notice => '已有相同的问题存在。')
+        redirect_to ask_path(@ask.id, :notice => '已有相同的题存在。')
       end
 
     when 2
@@ -241,9 +241,9 @@ an params example:
         Resque.enqueue(HookerJob,"User",@ask.user_id,:ask_advertise,@ask.id)
       end
       if '1'==params[:force_mobile]
-        redirect_to("/mobile/noticepage",:notice => '问题创建成功。<a href="/asks/'+@ask.id.to_s+'?force_mobile=1">点击这里</a>跳转到该问题。') and return
+        redirect_to("/mobile/noticepage",:notice => '题创建成功。<a href="/asks/'+@ask.id.to_s+'?force_mobile=1">点击这里</a>跳转到该题。') and return
       else
-        redirect_to(ask_path(@ask.id), :notice => '问题创建成功。')
+        redirect_to(ask_path(@ask.id), :notice => '题创建成功。')
       end
     else
       if '1'==params[:force_mobile]
@@ -261,7 +261,7 @@ an params example:
 
     respond_to do |format|
       if @ask.update_attributes(params[:ask])
-        format.html { redirect_to(ask_path(@ask.id), :notice => '问题更新成功。') }
+        format.html { redirect_to(ask_path(@ask.id), :notice => '题更新成功。') }
         format.json
       else
         format.html { render :action => "edit" }

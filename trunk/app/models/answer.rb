@@ -105,7 +105,7 @@ class Answer
       "Receiver"=>self.ask.user.zhaopin_ud,
       "Sender"=>"#{self.user.name}",
       "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
-      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>解答了你的问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>解答了你的题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
       "SendContentUrl"=>"",
       "OperateUrl"=>""
   	})
@@ -117,7 +117,7 @@ class Answer
         "Receiver"=>item.zhaopin_ud,
         "Sender"=>"#{self.user.name}",
         "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
-        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>解答了你关注的问题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
+        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.slug}\">#{self.user.name}</a>解答了你关注的题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
         "SendContentUrl"=>"",
         "OperateUrl"=>""
     	})
@@ -152,7 +152,7 @@ class Answer
   def check_to_user
     ask = self.ask
     if !ask.to_user.blank? and self.user_id != ask.to_user_id
-      errors.add(:base, '这个问题是定向提问，您不是提问对象故不能解答')
+      errors.add(:base, '这个题是定向提问，您不是提问对象故不能解答')
     end
   end
   # 支持者
@@ -207,10 +207,10 @@ class Answer
     self.ask.set_first_answer
     self.ask.save
     self.user.save
-    # 解答默认关注问题
+    # 解答默认关注题
     self.user.follow_ask(self.ask) if !self.user.ask_followed?(self.ask)
     
-    # 保存用户解答过的问题列表
+    # 保存用户解答过的题列表
     if !self.user.answered_ask_ids.index(self.ask_id)
       self.user.answered_ask_ids << self.ask_id
       self.user.save

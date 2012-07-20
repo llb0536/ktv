@@ -52,7 +52,7 @@ $(document).ready(function(){
     var txtATU = $("#new_ask_title_ta");
     var txtABT = $("#new_ask_body_ta");
     if (txtATU.length && txtABT.length){
-        var strATU = "对"+$.trim($("#user_name").text())+"提问，请输入问题标题：";
+        var strATU = "对"+$.trim($("#user_name").text())+"提问，请输入题标题：";
         txtATU.focus(function(){
             if(!App.testLogin()){
                 return false;
@@ -73,11 +73,11 @@ $(document).ready(function(){
                 }, 0);
             }
         }).blur(function(){
-            if($.trim($(this).val()) == "" || $(this).val() == "问题描述（可选）"){
+            if($.trim($(this).val()) == "" || $(this).val() == "题描述（可选）"){
             }
     });;
         App.placeHolder(txtATU, strATU);
-        App.placeHolder(txtABT, "问题描述（可选）");
+        App.placeHolder(txtABT, "题描述（可选）");
         App.inputLimit(txtATU, 50);
         App.inputLimit(txtABT, 3000);
         $("#new_ask_submit_ta").bind("click", function(){
@@ -92,7 +92,7 @@ $(document).ready(function(){
     }
     // asks/new 用户提问前检测登录状态
     $("#new_ask").submit(App.testLogin);
-    // 用户解答问题字数限制
+    // 用户解答题字数限制
     var new_answer = $("#new_answer_form .qeditor_preview");
     if (new_answer.length>0){
         new_answer.click(App.testLogin);
@@ -286,15 +286,15 @@ $("#login_link").click(Users.userLogin);
             }
         });
     }
-    // 所有问题、个人页问题补充描述截断
+    // 所有题、个人页题补充描述截断
     Asks.shortDetail();
-    // 问题页代码迁移至此 2011-10-14 by lesanc.li
+    // 题页代码迁移至此 2011-10-14 by lesanc.li
     Asks.completeInviteToAnswer(); 
 
     // 分享 Email和转发地址
     $(".shareEmail").facebox();
     $(".shareFw").facebox();
-    // 问题页 问题添加领域操作
+    // 题页 题添加领域操作
     $("div.topics li.modify").click(function(){
         Asks.toggleEditTopics(true);
     });

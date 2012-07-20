@@ -56,7 +56,7 @@ class HomeController < ApplicationController
       if !no_redirect and current_user.following_ids.size + current_user.followed_ask_ids.size + current_user.followed_topic_ids.size < 10
         redirect_to newbie_path and return
       else
-        # TODO: 这里需要过滤掉烂问题
+        # TODO: 这里需要过滤掉烂题
         @logs = []
         user_asks=[]
         user_answers=[]
@@ -209,7 +209,7 @@ class HomeController < ApplicationController
     end
   end
 
-  # 查看用户不感兴趣的问题
+  # 查看用户不感兴趣的题
   # def muted
   #   @per_page = 20
   #   @asks = Ask.normal.includes(:user,:last_answer,:last_answer_user,:topics)
@@ -217,7 +217,7 @@ class HomeController < ApplicationController
   #                 .desc(:answered_at,:id)
   #                 .paginate(:page => params[:page], :per_page => @per_page)
   # 
-  #   set_seo_meta("我屏蔽掉的问题")
+  #   set_seo_meta("我屏蔽掉的题")
   # 
   #   if params[:format] == "js"
   #     render "/asks/index.js"

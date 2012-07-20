@@ -21,7 +21,7 @@
           <td><%= users.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <% asks = (!@user.blank?) ? @asks : @asks.any_in(user_id:@expert_ids) %>
           <% asks3 = (!@user.blank?) ? @asks : @asks.any_in(user_id:@elite_ids) %>
           <% asks2 = (!@user.blank?) ? @asks : @asks.not_in(user_id:@elite_ids+@expert_ids) %>
@@ -38,14 +38,14 @@
     <%else%>
       <tbody>
         <tr>
-          <td>问题邀请行为 UV / PV</td>
+          <td>题邀请行为 UV / PV</td>
           <% asklogs = (!@user.blank?) ? @asklogs : @asklogs.any_in(user_id:@expert_ids) %>
           <% asklogs3 = (!@user.blank?) ? @asklogs : @asklogs.any_in(user_id:@elite_ids) %>
           <% asklogs2 = (!@user.blank?) ? @asklogs : @asklogs.not_in(user_id:@elite_ids+@expert_ids) %>
           <td><%= asklogs.collect(&:user_id).uniq.count %> / <%= asklogs.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <% asks = (!@user.blank?) ? @asks : @asks.any_in(user_id:@expert_ids) %>
           <% asks3 = (!@user.blank?) ? @asks : @asks.any_in(user_id:@elite_ids) %>
           <% asks2 = (!@user.blank?) ? @asks : @asks.not_in(user_id:@elite_ids+@expert_ids) %>
@@ -118,7 +118,7 @@
           <td><%= users3.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= asks3.collect(&:user_id).uniq.count %> / <%= asks3.count %></td>
         </tr>
         <tr>
@@ -129,11 +129,11 @@
     <%else%>
       <tbody>
         <tr>
-          <td>问题邀请行为 UV / PV</td>
+          <td>题邀请行为 UV / PV</td>
           <td><%= asklogs3.collect(&:user_id).uniq.count %> / <%= asklogs3.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= asks3.collect(&:user_id).uniq.count %> / <%= asks3.count %></td>
         </tr>
         <tr>
@@ -182,7 +182,7 @@
           <td><%= users2.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= asks2.collect(&:user_id).uniq.count %> / <%= asks2.count %></td>
         </tr>
         <tr>
@@ -193,11 +193,11 @@
     <%else%>
       <tbody>
         <tr>
-          <td>问题邀请行为 UV / PV</td>
+          <td>题邀请行为 UV / PV</td>
           <td><%= asklogs2.collect(&:user_id).uniq.count %> / <%= asklogs2.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= asks2.collect(&:user_id).uniq.count %> / <%= asks2.count %></td>
         </tr>
         <tr>
@@ -248,7 +248,7 @@
           <td><%= @users.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= @asks.collect(&:user_id).uniq.count %> / <%= @asks.count %></td>
         </tr>
         <tr>
@@ -259,11 +259,11 @@
     <%else%>
       <tbody>
         <tr>
-          <td>问题邀请行为 UV / PV</td>
+          <td>题邀请行为 UV / PV</td>
           <td><%= @asklogs.collect(&:user_id).uniq.count %> / <%= @asklogs.count %></td>
         </tr>
         <tr>
-          <td>新增问题数量 UV / PV</td>
+          <td>新增题数量 UV / PV</td>
           <td><%= @asks.collect(&:user_id).uniq.count %> / <%= @asks.count %></td>
         </tr>
         <tr>

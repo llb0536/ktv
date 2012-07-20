@@ -302,7 +302,7 @@ var KKPlayerError= KankanEventObj.extend({
 			0x1057:	'高清播放组件读取数据失败，请刷新页面重试或更换其他影片观看',
 			0x1197:	'高清播放组件读取数据失败，请刷新页面重试或更换其他影片观看',
 			0x1198:	'高清播放组件读取数据失败，请刷新页面重试或更换其他影片观看',
-			0x11B3:	'网络问题，请检查网络是否连接正常，或刷新页面重试',
+			0x11B3:	'网络题，请检查网络是否连接正常，或刷新页面重试',
 			0x11C0:	'无法播放此影片，请刷新页面重试或更换其他影片观看',
 			0x11CD:	'高清播放组件异常，请刷新页面重试或更换其他影片观看'
 			
@@ -624,7 +624,7 @@ var KKPlayerInstance= KankanEventObj.extend({
 			this.pobject.flv_stop();
 		}catch(e){};
 		if(suggest=='')
-		var suggest = "如果还无法观看，请查看<font color='#097BB3'><u><a href='javascript:G_PLAYER_INSTANCE.windowOpen(\"http://www.xunlei.com/help/\")' target='_self'>常见问题</a></u></font> 或 <font color='#097BB3'><u><a href='javascript:G_PLAYER_INSTANCE.windowOpen(\"http://www.xunlei.com/help/feedback.html"+G_PLAYER_ERROR.feedbackParam+"\")' target='_self'>反馈给我们</a></u></font>！";
+		var suggest = "如果还无法观看，请查看<font color='#097BB3'><u><a href='javascript:G_PLAYER_INSTANCE.windowOpen(\"http://www.xunlei.com/help/\")' target='_self'>常见题</a></u></font> 或 <font color='#097BB3'><u><a href='javascript:G_PLAYER_INSTANCE.windowOpen(\"http://www.xunlei.com/help/feedback.html"+G_PLAYER_ERROR.feedbackParam+"\")' target='_self'>反馈给我们</a></u></font>！";
 		this.pobject.flv_handleError(error,suggest);
 	},
 	getPlayStatus:function(){

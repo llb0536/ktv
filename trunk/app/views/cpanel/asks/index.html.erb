@@ -10,13 +10,13 @@
         <thead>
           <tr>
             <th style="width:50px;">序号</th>
-            <th>问题标题</th>
+            <th>题标题</th>
             <th style="width:50px;">解答数</th>
             <th style="width:50px;">评论数</th>
             <th style="width:100px;">被关注/浏览数</th>
             <th style="width:100px;">提问人</th>
             <th style="width:125px;">提问时间</th>
-            <th style="width:80px;">问题类型</th>
+            <th style="width:80px;">题类型</th>
             <th style="width:50px;">修改</th>
             <th style="width:60px;text-align:center;"><input id="check_btn" type="button" value="全选" onclick="checkAll()"></th>
           </tr>
@@ -32,9 +32,9 @@
               <td class="wordwrap"><%= link_to user_name_tag(item.user,:target=>'target="_blank"',:no_truncate=>true) %></td>
               <td><%= item.created_at.getlocal.strftime("%Y-%m-%d %H:%M") %></td>
               <%if item.is_normal?%>
-                <td>普通问题</td>
+                <td>普通题</td>
               <%else%>
-                <td style="color:red;">烂问题</td>
+                <td style="color:red;">烂题</td>
               <%end%>
               <td style="width:50px;">
                 <%= link_to '修改', edit_cpanel_ask_path(item.id),:style=>"color:#1f4ca5;",:target=>"_blank" %>
@@ -49,9 +49,9 @@
       </table>
       <div style="text-align:center;margin-top:20px;margin-bottom:10px;">
         <%= radio_button_tag(:deal_action,1,false,:style=>"width:13px;") %>
-        <%= label_tag(:delete_action, "删除问题") %>
+        <%= label_tag(:delete_action, "删除题") %>
         <%= radio_button_tag(:deal_action,2,false,:style=>"width:13px;margin-left:20px;") %>
-        <%= label_tag(:destroy_action, "删除问题并屏蔽用户") %>
+        <%= label_tag(:destroy_action, "删除题并屏蔽用户") %>
       </div>
       <div style="text-align:center;">
         <input type="submit" value="提交" style="width:120px;cursor:pointer;" />

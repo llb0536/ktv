@@ -37,9 +37,9 @@
               <div class="notification-title" id="NASK_<%= ask.id %>_title">
                 <div class="title">
                   <% if children[:type] == "THANK_ANSWER" %>
-                    <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于问题 <a href="<%= ask_path(ask) %>?nr=1#answer_<%= k %>"><%= ask.title %></a>
+                    <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于题 <a href="<%= ask_path(ask) %>?nr=1#answer_<%= k %>"><%= ask.title %></a>
                   <% else %>
-                    <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于问题 <a href="<%= ask_path(ask) %>"><%= ask.title %></a>
+                    <a href="#" class="expand" onclick="return expand_notification(this, 'ASK', '<%= ask.id %>')"><%= items.size %>项</a> 关于题 <a href="<%= ask_path(ask) %>"><%= ask.title %></a>
                   <% end %>
                 </div>
               </div>

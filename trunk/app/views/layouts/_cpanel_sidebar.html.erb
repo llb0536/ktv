@@ -19,7 +19,7 @@
       <div class="side_th">内容管理</div>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area.include?("normal_ask") or current_user.admin_area.include?("spam_ask")))%>
         <div class="side_td">
-          <a href="<%= cpanel_asks_path %>">问题管理</a>
+          <a href="<%= cpanel_asks_path %>">题管理</a>
         </div>
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("answer"))%>
@@ -98,7 +98,7 @@
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("hot_ask"))%>
         <div class="side_td">
-          <a href="/cpanel/stats/hot_asks">风云榜热门问题</a>
+          <a href="/cpanel/stats/hot_asks">风云榜热门题</a>
         </div>
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("hot_topic"))%>

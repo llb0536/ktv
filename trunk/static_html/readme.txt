@@ -22,7 +22,7 @@
 注意：
 
 1. 修改资料的时候，选择头像图片URL后，浏览器无法预览本地图片文件（头像）。
-2. 问题页<section id="mainContent" class="askPage">注意后面比其他页面多了一个askPage的class。
+2. 题页<section id="mainContent" class="askPage">注意后面比其他页面多了一个askPage的class。
 3. 不需要侧边栏的页面，需要给wrapper添加noSidebar类，如下：
 	<section class="wrapper noSidebar clearfix" id="container">
 4. css.css文件中 #popTopic 里面的top和left属性需要删除。

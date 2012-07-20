@@ -15,7 +15,7 @@
             <%elsif params[:content_type]=="comments"%>
               <th>评论内容</th>
             <%elsif params[:content_type]=="asks"%>
-              <th>问题标题</th>
+              <th>题标题</th>
             <%else%>
               <th>内容</th>
             <%end%>
@@ -78,10 +78,10 @@
       <%=select_tag :time_start,options_for_select([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],@verify_start),:style=>"margin-right:2px;" %>
       时至
       <%=select_tag :time_end,options_for_select([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],@verify_end),:style=>"margin-right:2px;" %>
-      时，所有提问进入先审后发类问题区。
+      时，所有提问进入先审后发类题区。
     </div>
     <div class="search_form_row">
-      这些问题处于未发布状态，无URL地址；这些用户为正常用户，可以继续发布提问。
+      这些题处于未发布状态，无URL地址；这些用户为正常用户，可以继续发布提问。
     </div>
     <div class="search_form_row" style="float:left;">
       <button type="submit">保存</button>

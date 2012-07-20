@@ -26,7 +26,7 @@ h2 {
 h6 {
 	font-weight:bold;
 }
-/* 强调文本 用于总结性普通文本，比如问题状态中存在 */
+/* 强调文本 用于总结性普通文本，比如题状态中存在 */
 em {
 	color:#5b5b5b;
 }
@@ -174,7 +174,7 @@ label input {
 	position:absolute;
 	display:block;
 }
-/* 问题页，评论框体，左上位置向上箭头 */
+/* 题页，评论框体，左上位置向上箭头 */
 .arrUp {
 	width:11px;
 	height:6px;

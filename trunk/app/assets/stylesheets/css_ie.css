@@ -89,7 +89,7 @@ min-height: 1% ;
 	visibility:visible;
 }
 
-/* 问题页，解答下吗的信息功能栏 */
+/* 题页，解答下吗的信息功能栏 */
 .replys footer a, .reply footer em {
 	float:left;
 }

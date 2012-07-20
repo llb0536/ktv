@@ -18,7 +18,7 @@
   	<hgroup>
   		<h6><%= ask_title_tag(item) %><% unless simple %><span class="fc999"></span><% end %></h6>
 			<div class="summary">
-				<a href="/users/<%= item.user.slug %>"><%= item.user.name %></a><%= v_icon(item.user) %> 提出的问题 · <% unless simple %><%= item.answers_count %>个答案 · <%end%><%= render 'ask__simple_follow',ask:item %>
+				<a href="/users/<%= item.user.slug %>"><%= item.user.name %></a><%= v_icon(item.user) %> 出的题 · <% unless simple %><%= item.answers_count %>个答案 · <%end%><%= render 'ask__simple_follow',ask:item %>
   	</div></hgroup>
   </header>
   <% if defined?(designated_answer) and designated_answer %>

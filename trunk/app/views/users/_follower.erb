@@ -12,7 +12,7 @@ return unless user.present?
             			</a>
             		</figure>
 								<h6><a href="<%= followerpath %>"><%= followername %></a></h6>
-								<div><%= user.tagline %><br><span class="fc999"><%= user.followers_count %>人关注·<%= user.asks_count %>个问题</span></div>
+								<div><%= user.tagline %><br><span class="fc999"><%= user.followers_count %>人关注·<%= user.asks_count %>个题</span></div>
                 <% if current_user and current_user.followed?(follower) %>
                 <a class="nBtn nBtnUnFocus" onclick="return Users.unfollow(this, '<%= followerslug %>','small');"></a>
                 <% else %>

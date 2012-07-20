@@ -21,7 +21,7 @@ default: &defaults
   # aws_secret_access_key: 'your aws secret_access_key'
   # 是否开放注册
   allow_register: false
-  # 问题被多少次 spam 隐藏
+  # 题被多少次 spam 隐藏
   ask_spam_max: 8
   # 解答被多少次 spam 会删除线
   answer_spam_max: 8

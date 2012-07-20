@@ -6,7 +6,7 @@
       <%=text_field_tag(:user_name,nil,:style=>"width:60px;margin-right:5px;",:value=>params[:user_name])%>
       <%=label_tag(:body,"解答:")%>
       <%=text_field_tag(:body,nil,:style=>"width:110px;margin-right:5px;",:value=>params[:body])%>
-      <%=label_tag(:title,"问题:")%>
+      <%=label_tag(:title,"题:")%>
       <%=text_field_tag(:title,nil,:style=>"width:120px;margin-right:5px;",:value=>params[:title])%>
       <% t=Time.now.getlocal %>
       <%=label_tag(:created_at,"解答时间:")%>

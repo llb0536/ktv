@@ -46,7 +46,7 @@
       <% else %>
 
         <% if current_user and can_edit?(@ask) %>
-          <li class="modify"><span class="no_result fc999">添加领域标签，能让更多人看到你的问题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">添加标签</a></span>
+          <li class="modify"><span class="no_result fc999">添加领域标签，能让更多人看到你的题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">添加标签</a></span>
           <% end %>
 
         <% end %>
@@ -78,13 +78,13 @@
 
 
   <div class="clearfix height0"></div>
-  <!-- to 宪科：默认显示下面的H6，问题标题【IF二选一】 -->
+  <!-- to 宪科：默认显示下面的H6，题标题【IF二选一】 -->
 
   <div>	<h6><span id="ask_title"><%= @ask.title %></span><% if can_edit?(@ask) %>
         <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__title__<%= @ask.id %>" data-width="598" data-url="/update_in_place" data-type="textarea" data-text-id="ask_title" data-rich="false" data-height="40" class="in_place_edit fc999"><img class="modifyLogo" src="/assets/transparent.png">修改</a>
       <% end %></h6>
   </div>
-  <!-- to 宪科：点击修改问题标题后，隐藏上面的H6，出现下面的DIV（编辑器）【IF二选一】 -->
+  <!-- to 宪科：点击修改题标题后，隐藏上面的H6，出现下面的DIV（编辑器）【IF二选一】 -->
   <div>
     <div class="mt10 tfmt" id="ask_body"><%= md_body(@ask.chomp_body,:with_tfmt => false) %></div>
     <% if can_edit?(@ask) %>
@@ -107,9 +107,9 @@
 
     <%unless current_user and current_user.already_jubao( request.path) %>      | <a href="#" onclick="return Asks.report(this);">举报</a>  <% else %>| 已举报<% end %>
     <% if current_user and @ask.spam_voter_ids.include?(current_user.id) %>
-      | 烂问题
+      | 烂题
     <% else %>
-      | <a rel="tipsyr" title="你认为这个不算是一个问题,或者答案可以很容易在Google,Baidu上面找到" class="spam<%= ' spamed' if spamed?(@ask) %>" onclick="return Asks.spamAsk(this,'<%= @ask.id %>');" title="问题被<%= Setting.ask_spam_max %>个网友认为是烂问题以后,问题将会隐藏。" href="#">烂问题</a>
+      | <a rel="tipsyr" title="你认为这个不算是一个题,或者答案可以很容易在Google,Baidu上面找到" class="spam<%= ' spamed' if spamed?(@ask) %>" onclick="return Asks.spamAsk(this,'<%= @ask.id %>');" title="题被<%= Setting.ask_spam_max %>个网友认为是烂题以后,题将会隐藏。" href="#">烂题</a>
     <% end %>
     <% if !@ask.spams_count.blank? %>(<span id="spams_count"><%= @ask.spams_count %></span>人认为)<% end %>
 
@@ -179,9 +179,9 @@
 
 <% if current_user %>
   <% if user_answered %>
-    <div class="disabled_answer">一个问题你只能解答一次，但你可以对现有的解答进行修改。</div>
+    <div class="disabled_answer">一个题你只能解答一次，但你可以对现有的解答进行修改。</div>
   <% elsif !@ask.to_user.blank? and current_user.id != @ask.to_user_id %>
-    <div class="disabled_answer">这个问题是对 <%= user_name_tag(@ask.to_user) %> 提问的，只有<%= user_sex_title(@ask.to_user) %>才能解答。</div>
+    <div class="disabled_answer">这个题是对 <%= user_name_tag(@ask.to_user) %> 提问的，只有<%= user_sex_title(@ask.to_user) %>才能解答。</div>
   <% else %>
     <section class="appendAnswer clearfix">
       <h6 class="mt10">添加答案</h6>
@@ -219,7 +219,7 @@
   <!-- {relation_asks -->
   <% if !@relation_asks.blank? %>
     <section class="sideBox clearfix">
-      <h3>相关问题</h3>
+      <h3>相关题</h3>
       <ul class="linkList">
         <% @relation_asks.each_with_index do |ask,i| %>
           <% asktitle = Ask.get_title(ask) %>
@@ -228,7 +228,7 @@
         <% end %>
       </ul>
       <% if @relation_asks.count > 4 %>
-        <strong><a href="#"  onclick="$(this).parent().parent().find('li').show();$(this).hide();return false;">查看更多相关问题</a></strong>
+        <strong><a href="#"  onclick="$(this).parent().parent().find('li').show();$(this).hide();return false;">查看更多相关题</a></strong>
       <% end %>
     </section>
 
@@ -236,7 +236,7 @@
 
   <% if user_signed_in? %>
     <section class="sideBox clearfix">
-      <h3>分享问题</h3>
+      <h3>分享题</h3>
       <div class="mt5">
         <a rel="nofollow" class="shareEmail" href="<%= share_ask_path(@ask.id) %>?type=email"><span class="has_icon email">Email</span></a>
         <a rel="nofollow" class="shareFw" href="<%= share_ask_path(@ask.id) %>?type=url"><span class="has_icon url">转发地址</span></a>
@@ -246,7 +246,7 @@
 
     <%if @ask.to_user_id.blank?%>
       <section class="sideBox clearfix">
-        <h3>邀请他人解答此问题<span id="shared_span_count"><% if @invites.count > 0 %> (<%= @invites.count %>)<% end %></span></h3>
+        <h3>邀请他人解答此题<span id="shared_span_count"><% if @invites.count > 0 %> (<%= @invites.count %>)<% end %></span></h3>
         <div class="peopleSearchBar mt10">
           <input type="text" placeholder="可通过人名、领域、职务等搜索" class="ac_input" autocomplete="off" id="ask_to_answer" onchange="checklen(this,20)" maxlength="20">
           <span id="ask_to_answer_tno" style="display:none;"></span>
@@ -275,8 +275,8 @@
     <%end%>
   <% end %>
   <section class="sideBox clearfix">
-    <h3>问题状态</h3>
-    <div class="mt5">最近活动：<%= l @ask.last_updated_at ? @ask.last_updated_at.getlocal : (@ask.answered_at ? @ask.answered_at.getlocal : @ask.updated_at.getlocal), :format => :min %><br>被浏览<%= @ask.views_count %>次，<%= @ask.follower_ids.count %>人关注该问题</div>
+    <h3>题状态</h3>
+    <div class="mt5">最近活动：<%= l @ask.last_updated_at ? @ask.last_updated_at.getlocal : (@ask.answered_at ? @ask.answered_at.getlocal : @ask.updated_at.getlocal), :format => :min %><br>被浏览<%= @ask.views_count %>次，<%= @ask.follower_ids.count %>人关注该题</div>
     <% @followers = @ask.follower_ids %>
     <% if !@followers.blank? %>
       <ul class="headList23">

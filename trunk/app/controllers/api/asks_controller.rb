@@ -28,7 +28,7 @@ def create
   if ret==2
     render json:{success:true}
   elsif 1==ret
-    render json:{success:false,errors:['同名的问题已经被创建过了'], ask_id:@ask.id}
+    render json:{success:false,errors:['同名的题已经被创建过了'], ask_id:@ask.id}
   else
     render json:{success:false,errors:@ask.errors.full_messages}
   end

@@ -39,7 +39,7 @@
               <%elsif item.class.name=="Comment"%>
                 <td class="wordwrap">评论</td>
               <%else%>
-                <td class="wordwrap">问题</td>
+                <td class="wordwrap">题</td>
               <%end%>
               <td class="wordwrap"><%= link_to user_name_tag(item.user,:target=>'_blank',:no_truncate=>true) %></td>
               <td><%= item.created_at.getlocal.strftime("%Y-%m-%d %H:%M") %></td>
