@@ -2,7 +2,10 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auth_callback]
   before_filter :init_user, :except => [:auth_callback]
-
+  before_filter :we_are_inside_qa
+  def we_are_inside_qa
+    @we_are_inside_qa = true
+  end
   def init_user
     @user = User.find_by_slug(params[:id])
     @user = User.find_by_slug(params[:id].force_encoding_zhaopin.split('_').join('.')) if @user.blank? or !@user.deleted.blank?
@@ -63,7 +66,7 @@ class UsersController < ApplicationController
       end
     end
     @logs=@logs.paginate(:page => params[:page], :per_page => @per_page)
-    set_seo_meta(@user.name)    
+    set_seo_meta(@user.name)
     if params[:format] == "js"
       render "/logs/index.js"
     end
@@ -87,7 +90,7 @@ class UsersController < ApplicationController
     @topics = @user.followed_topic_ids.reverse
     .paginate(:page => params[:page], :per_page => @per_page)
     
-    set_seo_meta("#{@user.name}关注的话题")
+    set_seo_meta("#{@user.name}关注的课程")
     if params[:format] == "js"
       render "following_topics.js"
     end

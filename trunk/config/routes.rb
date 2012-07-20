@@ -1,6 +1,6 @@
 # -*- coding: utf-8-*-
 Quora::Application.routes.draw do
-  root :to => 'welcome#index'
+  root :to => 'coursewares#latest'
   # ________________________________user__________________________________________
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,

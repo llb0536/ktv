@@ -6,7 +6,7 @@
 <nav class="tabNav mt20 clearfix">
 	<ul>
 		<li class="<%= 'current' unless ['1','2','3'].include? params[:mode] %>"><%= link_to '所有',traverse_path(q:params[:q],mode:'0') %></li>
-		<li class="<%= 'current' if '1'==params[:mode] %>"><%= link_to '话题',traverse_path(q:params[:q],mode:'1') %></li>
+		<li class="<%= 'current' if '1'==params[:mode] %>"><%= link_to '课程',traverse_path(q:params[:q],mode:'1') %></li>
 		<li class="<%= 'current' if '2'==params[:mode] %>"><%= link_to '用户',traverse_path(q:params[:q],mode:'2') %></li>
 		<li class="<%= 'current' if '3'==params[:mode] %>"><%= link_to '问题',traverse_path(q:params[:q],mode:'3',sortc:'timewise') %></li>
 	</ul>
@@ -49,8 +49,8 @@
 	<button type="submit"></button>
   <%end %>
 </div>
-  <!-- 话题列表【左右两列样式】 -->
-  <h3 class="mt40">关于“<mark><%=params[:q]%>”</mark>的话题<span class="fc369"><a href="<%= traverse_path(q:params[:q],mode:'1') %>">（话题<%=@topics.size %>个）</a></span><span class="fr fs12"><a href="<%= traverse_path(q:params[:q],mode:'1') %>">更多&gt;&gt;</a></span></h3>
+  <!-- 课程列表【左右两列样式】 -->
+  <h3 class="mt40">关于“<mark><%=params[:q]%>”</mark>的课程<span class="fc369"><a href="<%= traverse_path(q:params[:q],mode:'1') %>">（课程<%=@topics.size %>个）</a></span><span class="fr fs12"><a href="<%= traverse_path(q:params[:q],mode:'1') %>">更多&gt;&gt;</a></span></h3>
   <section class="cList twoCols clearfix">
     <%@topics.limit(6).each do |topic|%>
       <%= render 'topic0',topic:topic %>

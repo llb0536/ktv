@@ -14,10 +14,10 @@ class SettingItem
   #  "hot_asks_refresh_minute"        几分钟刷新一次热门问题
   #  "hot_asks_sort_by"               热门问题排序规则
   
-  #  "hot_topics_followers_count"     限制热门话题为被关注数大于几的
-  #  "hot_topics_asks_count"          限制热门话题为提问数大于几的
-  #  "hot_topics_refresh_minute"      几分钟刷新一次热门话题
-  #  "hot_topics_sort_by"             热门话题排序规则
+  #  "hot_topics_followers_count"     限制热门课程为被关注数大于几的
+  #  "hot_topics_asks_count"          限制热门课程为提问数大于几的
+  #  "hot_topics_refresh_minute"      几分钟刷新一次热门课程
+  #  "hot_topics_sort_by"             热门课程排序规则
  
   # "ask_advertise_limit_open"        是否开启所有用户提问频率限制
   # "ask_advertise_limit_time_range"  所有用户提问频率限制在几分钟内

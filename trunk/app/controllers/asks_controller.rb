@@ -3,7 +3,10 @@ class AsksController < ApplicationController
   before_filter :authenticate_user!, :only => [:answer,:create]
   before_filter :require_user_js, :only => [:answer,:invite_to_answer]
   before_filter :require_user_text, :only => [:update_topic,:redirect,:spam, :mute, :unmute, :follow, :unfollow]
-  
+  before_filter :we_are_inside_qa
+  def we_are_inside_qa
+    @we_are_inside_qa = true
+  end  
   def index
     suggest
     @per_page = 20
@@ -37,6 +40,7 @@ class AsksController < ApplicationController
   end
 
   def show
+    @we_are_inside_qa = true
     begin
       @ask = Ask.nondeleted.where(_id:BSON::ObjectId(params[:id])).first
     rescue => e
@@ -75,7 +79,7 @@ class AsksController < ApplicationController
       @answers = @answers.order_by(:"votes.up_count".desc,:"votes.down_count".asc,:"created_at".asc) # :spams_count.asc,
     end
     @answer = Answer.new
-    # 推荐话题,如果没有设置话题的话
+    # 推荐课程,如果没有设置课程的话
     @suggest_topics = AskSuggestTopic.find_by_ask(@ask)
     set_seo_meta(@ask.title)
     @invites = @ask.ask_invites

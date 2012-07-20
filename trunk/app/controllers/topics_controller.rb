@@ -149,9 +149,9 @@ class TopicsController < ApplicationController
     end
     @topic.cover = params[:topic][:cover]
     if @topic.save
-      flash[:notice] = "话题封面上传成功。"
+      flash[:notice] = "课程封面上传成功。"
     else
-      flash[:alert] = "话题封面上传失败，请检查你上传的图片适合符合格式要求。"
+      flash[:alert] = "课程封面上传失败，请检查你上传的图片适合符合格式要求。"
     end
     redirect_to topic_path(@topic.name)
   end

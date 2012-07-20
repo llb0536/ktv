@@ -24,7 +24,7 @@
     <![endif]-->
   </head>
 
-  <body data-subdomain="<%= request.subdomain %>">
+  <body data-subdomain="<%= request.subdomain %>" class="__qa">
     <header id="pageHeader">
       <section class="wrapper">
         <a class="sitelogo" title="回到首页" href="<%= user_signed_in? ? '/root' : '/'%>"></a>
@@ -121,7 +121,7 @@
       </section>
 
     <% end %>
-    <%= render 'footer__cnu' %>
+    <%= render file:'/application/footers/_footer__cnu' %>
     <div class="backToZp">
       <a href="http://www.kejian.tv/" target="_blank"><img src="<%= asset_path('zhaopin.png') %>" width="38" height="123" /></a>
     </div>

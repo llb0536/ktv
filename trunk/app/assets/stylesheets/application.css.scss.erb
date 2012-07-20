@@ -38,22 +38,7 @@
   .fl{
     float:left;
   }
-  #facebox .validImg{
-    width:18px;
-    height:18px;
-    background-repeat:no-repeat;
 
-  }
-  #facebox .input-x-validate-error .validImg{
-    background: url(<%=asset_path 'zlzp/error.jpg'%>);
-  }
-  #facebox .input-x-validate-valid .validImg{
-    background: url(<%=asset_path 'zlzp/ok.jpg'%>);
-  }
-  #facebox .input-x-validate-error .input-x-validate{
-    background:#ffe5e5;
-    border-color:#ff0000;
-  }
   #loading {
       background: none repeat scroll 0 0 #999999;
       border-radius:5px;
@@ -83,13 +68,6 @@
       float: left;
       margin: 9px 0 0;
   }
-  #facebox_overlay {
-      background-color: #000000;
-      z-index: 800;
-  }
-  #facebox {
-      z-index: 900;
-  }
   .spamed{
     text-decoration: line-through;
     font-size:small;
@@ -99,4 +77,31 @@
     display:none;
   }
     
+}
+
+
+#facebox_overlay {
+    background-color: #000000;
+    z-index: 800000;
+}
+.__qa{
+  #facebox {
+      z-index: 900000;
+  }
+  #facebox .validImg{
+    width:18px;
+    height:18px;
+    background-repeat:no-repeat;
+
+  }
+  #facebox .input-x-validate-error .validImg{
+    background: url(<%=asset_path 'zlzp/error.jpg'%>);
+  }
+  #facebox .input-x-validate-valid .validImg{
+    background: url(<%=asset_path 'zlzp/ok.jpg'%>);
+  }
+  #facebox .input-x-validate-error .input-x-validate{
+    background:#ffe5e5;
+    border-color:#ff0000;
+  }
 }

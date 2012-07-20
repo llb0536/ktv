@@ -144,7 +144,7 @@ var Asks = {
         }
     },
 
-    /* 问题，话题，人搜索自动完成 */
+    /* 问题，课程，人搜索自动完成 */
     completeAll : function(el){
         input = $(el);
         input.autocomplete("/search/all",{
@@ -240,7 +240,7 @@ var Asks = {
     /* 邀请人回答问题 */
     completeInviteToAnswer : function(){
         input = $("#ask_to_answer");
-        App.placeHolder(input, "可通过人名、话题、职务等搜索");
+        App.placeHolder(input, "可通过人名、课程、职务等搜索");
         input.autocomplete("/search/users", {
             mincChars: 1,
             x: -5,
@@ -305,7 +305,7 @@ var Asks = {
         else{
             html += data[0];
         }
-        html += ' <span class="fc999">话题</span>';
+        html += ' <span class="fc999">课程</span>';
         html += '<br>';
         html += count1+'个关注者·'+count2+'个问题';
         return html;
@@ -449,7 +449,7 @@ var Asks = {
             t2.show();
             a.show();
             t1.hide();
-            App.placeHolder(a.find("input"),"输入话题");
+            App.placeHolder(a.find("input"),"输入课程标签");
         }
         else{
             t1.show();
@@ -671,7 +671,7 @@ var Asks = {
     },
 
     showSuggestTopics : function(topics){
-        html = '<div id="ask_suggest_topics" class="ask"><div class="container"><label>根据您的问题，我们推荐这些话题(点击添加):</label>';
+        html = '<div id="ask_suggest_topics" class="ask"><div class="container"><label>根据您的问题，我们推荐这些课程(点击添加):</label>';
         for(var i=0;i<topics.length;i++) {
             html += '<a href="#" class="topic nofloat" onclick="return Asks.addSuggestTopic(this,\''+topics[i]+'\');">'+topics[i]+'</a>';
         }
@@ -741,7 +741,7 @@ var Asks = {
             }
         });
         if (!exist){
-            topicList.append('<li>'+topic+'<a class="close_topic" href="javascript:void(0);" title="删除本话题标签"></a></li>');
+            topicList.append('<li>'+topic+'<a class="close_topic" href="javascript:void(0);" title="删除本课程标签"></a></li>');
             topics.val(topics.val()==""?topic:(topics.val()+","+topic));
             return true;
         }else{
@@ -767,7 +767,7 @@ var Asks = {
         var topics = $("#inner_new_ask input[name=\"topics\"]", facebox);
         App.placeHolder(title, "问题标题");
         App.placeHolder(body, "问题描述（可选）");
-        App.placeHolder(topic, "输入话题");
+        App.placeHolder(topic, "输入课程标签");
         App.inputLimit(title, 50);
         App.inputLimit(body, 3000);
         App.inputLimit(topic, 10,"val","no");
@@ -788,7 +788,7 @@ var Asks = {
                 return false;
             }
             var t = $.trim(topic.val());
-            if(t && t!=="输入话题" && Asks.add_topic_to_new_ask_dialog(t)){
+            if(t && t!=="输入课程标签" && Asks.add_topic_to_new_ask_dialog(t)){
                 topic.val('');
             }
             return false;

@@ -103,7 +103,7 @@ $('#change_password_link').click(function(){
 <% end %>
 <% content_for :butt2 do %>
 $('#user_name').blur(function(){
-  App.checkUsername(this);
+  KTV.checkUsername(this);
   return true;
 });
 $('#submit_btn').unbind('click').click(function(event){

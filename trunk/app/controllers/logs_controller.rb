@@ -1,5 +1,9 @@
 # coding: utf-8
 class LogsController < ApplicationController
+  before_filter :we_are_inside_qa
+  def we_are_inside_qa
+    @we_are_inside_qa = true
+  end
   def index
     @per_page = 20
     @logs = Log.desc("$natural")

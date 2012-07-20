@@ -24,7 +24,7 @@ class Topic
     end
     self.update_attribute(:has_autofollow,1)
   end
-  #更新首页热门话题
+  #更新首页热门课程
   def refresh_hot_topics
     $topics = Topic.nondeleted.where(:asks_count.gt=>SettingItem.find_or_create_by(:key=>"hot_topics_asks_count").value.to_i,:followed_count.gt=>SettingItem.find_or_create_by(:key=>"hot_topics_followers_count").value.to_i).to_a.collect{|x| [x.name,x.followers_count,(last_ask=AskLog.where(:action=>'ADD_TOPIC').where(:title=>x.name).last).blank? ? 0 : last_ask.created_at,(last_follow=UserLog.where(:action=>'FOLLOW_TOPIC').where(:target_parent_title=>x.name).last).blank? ? 0 : last_follow.created_at]}
     if SettingItem.find_or_create_by(:key=>"hot_topics_sort_by").value.to_s=="last_followed_at"

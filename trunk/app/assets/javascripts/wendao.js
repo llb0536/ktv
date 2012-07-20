@@ -126,7 +126,7 @@ $(document).ready(function(){
 $("#login_link").click(Users.userLogin);
     $("#reg_link").click(Users.userReg);
     $("#logout_link").click(Users.userLogout);
-    // 问答广场 欢迎页热门话题关注 2012-2-5 by lesanc.li
+    // 问答广场 欢迎页热门课程关注 2012-2-5 by lesanc.li
     var hotTopicTable = $(".newbie .hotTopicTable");
     if (hotTopicTable.length > 0){
         // topics hover event
@@ -294,7 +294,7 @@ $("#login_link").click(Users.userLogin);
     // 分享 Email和转发地址
     $(".shareEmail").facebox();
     $(".shareFw").facebox();
-    // 问题页 问题添加话题操作
+    // 问题页 问题添加课程操作
     $("div.topics li.modify").click(function(){
         Asks.toggleEditTopics(true);
     });

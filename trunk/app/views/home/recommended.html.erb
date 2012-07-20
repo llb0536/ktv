@@ -2,7 +2,7 @@
 
 <section>
   <h3>或许能回答</h3>
-  <!-- 下面的每个article样式为：话题分类、话题标题（两类信息） -->
+  <!-- 下面的每个article样式为：课程分类、课程标题（两类信息） -->
   <%if @asks.total_entries>0%>
     <% @asks.each do |item| %>
       <%= render "asks/recommended_ask", :item => item %>
@@ -10,7 +10,7 @@
     <%= will_paginate @asks, :renderer=>WendaoLinkRenderer,:inner_window=>2 %>
   <%else%>
     <div class="mt5">
-      请先关注话题，去<a href="/newbie">Kejian.TV热门看看</a>
+      请先关注课程，去<a href="/newbie">Kejian.TV热门看看</a>
     </div>
   <%end%>
 </section>

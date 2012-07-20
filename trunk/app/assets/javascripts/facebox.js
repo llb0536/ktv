@@ -91,11 +91,13 @@
       closeImage   : '/assets/x.gif',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
+    <div class="__qa"> \
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
         <div class="content"> \
         </div> \
       </div> \
+    </div> \
     </div>'
     },
 

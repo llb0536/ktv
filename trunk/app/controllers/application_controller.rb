@@ -135,7 +135,7 @@ class ApplicationController < ActionController::Base
   def set_seo_meta(title, options = {})
     #todo
     keywords = options[:keywords] || "问答"
-    description = options[:description] || "同行,校友."
+    description = options[:description] || "Kejian.TV 课件交流系统是中国最大的教育资源在线集散平台，同时，课件交流系统也是中国最专业的在线学习社区。"
 
     if title.length > 0
       @seo[:title] = "#{title}"

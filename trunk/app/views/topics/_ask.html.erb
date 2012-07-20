@@ -13,7 +13,7 @@
 
 
 
-  		<h6><%= ask_title_tag(item) %></a><% unless simple %><span class="fc999">（<%= item.answers_count %>个答案）</span><% end %></h6>
+  		<h6><%= ask_title_tag(item) %><% unless simple %><span class="fc999">（<%= item.answers_count %>个答案）</span><% end %></h6>
 			<div class="summary">
 				<a href="/users/<%= (item.user.slug) %>"><%= item.user.name %></a><%= v_icon(item.user) %> 提出的问题 · <%= item.answers_count %>个答案 · <%= render 'ask__simple_follow',ask:item %>
     	</div>

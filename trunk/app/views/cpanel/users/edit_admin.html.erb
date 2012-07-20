@@ -18,7 +18,7 @@
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("comment")%>checked="checked"<%end%> value="comment" class="sub_check">
       <span>评论管理</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("topic")%>checked="checked"<%end%> value="topic" class="sub_check">
-      <span>话题管理</span>
+      <span>课程管理</span>
     </div>
 
     <div style="margin-top:20px;">
@@ -63,7 +63,7 @@
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("hot_ask")%>checked="checked"<%end%> value="hot_ask" class="sub_check">
       <span>问答广场热门问题</span>
       <input name="admins[]" type="checkbox" <%if @user.admin_area.include?("hot_topic")%>checked="checked"<%end%> value="hot_topic" class="sub_check">
-      <span>问答广场热门话题</span>
+      <span>问答广场热门课程</span>
       <input name="admins[]" type="checkbox" style="margin-left:40px;margin-top:10px;" <%if @user.admin_area.include?("api")%>checked="checked"<%end%> value="api" class="sub_check">
       <span>Kejian.TV开放API</span>
       <input name="admins[]" type="checkbox" style="margin-left:50px;" <%if @user.admin_area.include?("kpi")%>checked="checked"<%end%> value="kpi" class="sub_check">

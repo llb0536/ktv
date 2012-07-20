@@ -34,7 +34,7 @@
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("topic"))%>
         <div class="side_td">
-          <a href="<%= cpanel_topics_path %>">话题管理</a>
+          <a href="<%= cpanel_topics_path %>">课程管理</a>
         </div>
       <%end%>
     </div>
@@ -103,7 +103,7 @@
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("hot_topic"))%>
         <div class="side_td">
-          <a href="/cpanel/stats/hot_topics">问答广场热门话题</a>
+          <a href="/cpanel/stats/hot_topics">问答广场热门课程</a>
         </div>
       <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("api"))%>

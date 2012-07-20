@@ -3,6 +3,10 @@ class CoursewaresController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy,:thank]
   before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
   before_filter :authenticate_user_ownership!, :only => [:update,:destroy]
+  def latest
+    @seo[:title] = '讲义·电子书·课堂录像·习题解答·互动交流'
+    render "latest#{@subsite}"
+  end
   def index
     pagination_get_ready
     @coursewares = Courseware.nondeleted.normal.order('updated_at desc')

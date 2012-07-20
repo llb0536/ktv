@@ -26,7 +26,7 @@
 <% if !@followed_topics.blank? %>
 <section class="sideBox clearfix">
   <section class="sideBox clearfix">
-  					<h3>关注<a href="<%= following_topics_user_path(@user.slug) %>"><%= @user.followed_topic_ids.size %>个话题</a></h3>
+  					<h3>关注<a href="<%= following_topics_user_path(@user.slug) %>"><%= @user.followed_topic_ids.size %>个课程</a></h3>
   					<ul class="topicList">
           		<% for topic in @followed_topics %>
           		  <% topicname = Topic.get_name(topic) %>

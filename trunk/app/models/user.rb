@@ -748,7 +748,7 @@ class User
     topic.followers_count_changed = true
     topic.save
 
-    # 清除推荐话题
+    # 清除推荐课程
     # UserSuggestItem.delete(self.id, "Topic", topic.id)
     
     insert_follow_log("FOLLOW_TOPIC", topic) unless nolog
@@ -801,7 +801,7 @@ class User
       user.followers_count = user.follower_ids.count
       user.save
 
-      # 清除推荐话题
+      # 清除推荐课程
       # UserSuggestItem.delete(self.id, "User", user.id)
 
       # 发送被 Follow 的邮件
@@ -966,7 +966,7 @@ class User
     [notifies, notifications]
   end
 
-  # 推荐给我的人或者话题
+  # 推荐给我的人或者课程
   def suggest_items
     # return UserSuggestItem.gets(self.id, :limit => 6)
     topics = Topic.desc('hot_rank').collect{|x| [x.name,x.followers_count]}

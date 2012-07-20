@@ -291,7 +291,7 @@ class Ask
     end
   end
 
-  # 更新话题
+  # 更新课程
   # 参数 topics 可以是数组或者字符串
   # 参数 add  true 增加, false 去掉
   def update_topics(topics, add = true, current_user_id = nil)
@@ -303,7 +303,7 @@ class Ask
     action = nil
 
     if add
-      # 保存为独立的话题
+      # 保存为独立的课程
       new_topics = Topic.save_topics(topics, current_user_id)
       self.topics += new_topics
       action = "ADD_TOPIC"

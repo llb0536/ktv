@@ -43,6 +43,13 @@
   iePngFix.fix('.png');
   </script>
   <![endif]-->
+  <%= stylesheet_link_tag "application" %>
+  <!--[if IE 8 ]>
+    <link href="<%= asset_path('css_ie8.css')%>" media="all" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if lt IE 8 ]>
+    <link href="<%= asset_path('css_ie.css')%>" media="all" rel="stylesheet" type="text/css" />
+  <![endif]-->
   <script src="/js/libs/modernizr-2.5.3.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     window.psvr_subject = 'all';  
@@ -65,7 +72,7 @@
   <%= yield :armpit %>
 </head>
 
-<body id="psvr_subject_all" style="<%=yield :body_style%>">
+<body id="psvr_subject_all" style="<%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -79,7 +86,7 @@
       </form>
       <div class="navigation">
         <ul>
-          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap">我要提问</a></li>
+          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要提问</a></li>
           <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addtext_wrap">我要上传</a></li>
         </ul>
         <div id="amazing-shadow"></div>
@@ -87,9 +94,9 @@
           <ul id="account-settings">
             <li><a class="user" href="<%= user_path(current_user) %>"><%= avatar_tag(current_user,:small47) %><%= current_user.name %></a>
               <ul>
-                <li><a href="<%= profile_path current_user %>">邀请好友注册</a></a>
-                <li><a href="<%= edit_user_registration_path %>">账号设置</a></a>
-                <li><a href="#" id="Intercom">意见反馈</a></a>
+                <li><a href="<%= profile_path current_user %>">邀请好友注册</a></li>
+                <li><a href="<%= edit_user_registration_path %>">账号设置</a></li>
+                <li><a href="#" id="Intercom">意见反馈</a></li>
                 <li><a href="<%= logout_path %>">退出</a></li>
               </ul>
             </li>
@@ -103,26 +110,6 @@
       </div>
     </div>
   </header>
-  <div id="sdk_flashes">
-  <% if !notice.blank? %>
-    <p class="flash notice"><%=raw notice %></p>
-    <%= content_for :butt2 do %>
-        $("#sdk_flashes .notice").fadeOut().fadeIn();
-    <% end %>
-  <% end %>
-  <% if !alert.blank? %>
-    <p class="flash alert"><%=raw alert %></p>
-    <%= content_for :butt2 do %>
-        $("#sdk_flashes .alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
-    <% end %>
-  <% end %>
-  <% if !flash[:insuf_info].blank? %>
-    <p class="flash warning"><%=raw flash[:insuf_info] %></p>
-    <%= content_for :butt2 do %>
-        $("#sdk_flashes .warning").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
-    <% end %>
-  <% end %>
-  </div>
 </div>
 
 <div style="background:none repeat scroll 0 0 #F5F5F5;" id="results_tray_div">
@@ -138,8 +125,141 @@
 </div>
 </div>
 
+<div class="__sdk">
+<div id="sdk_flashes">
+<% if !notice.blank? %>
+  <p class="flash notice"><%=raw notice %></p>
+  <%= content_for :butt2 do %>
+      $("#sdk_flashes .notice").fadeOut().fadeIn();
+  <% end %>
+<% end %>
+<% if !alert.blank? %>
+  <p class="flash alert"><%=raw alert %></p>
+  <%= content_for :butt2 do %>
+      $("#sdk_flashes .alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
+  <% end %>
+<% end %>
+<% if !flash[:insuf_info].blank? %>
+  <p class="flash warning"><%=raw flash[:insuf_info] %></p>
+  <%= content_for :butt2 do %>
+      $("#sdk_flashes .warning").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
+  <% end %>
+<% end %>
+</div></div>
+
+<% if !@we_are_inside_qa or @raw_raw_raw %>
   <%= yield %>
+<% else %>
+  <div class="__qa">
+    <section id="container" class="wrapper clearfix" style="<%='background:white' if @render_no_sidebar %>">
+      <section id="main" style="<%= 'width:100%' if @render_no_sidebar %>">
+        <section id="mainContent" class="<%= 'askPage' if 'asks_show'==pos_signature %>">
+          <% if !@notice.blank? %>
+            <% if cookies[:hide_notice] != @notice.id.to_s %>
+              <div id="sys_notice">
+                <%= raw @notice.body %>
+                <div class="info">
+                  <span class="date"><%= l @notice.updated_at.getlocal, :format => :long %></span>
+                  <a href="#" class="gray_button small" onclick="return App.hideNotice('<%= @notice.id %>');">我知道了</a>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <% if !notice.blank? %>
+            <div class="notice_message"><%= notice %></div>
+            <%= content_for :butt do %>
+              <script type="text/javascript">
+                $(".notice_message").fadeOut().fadeIn();
+              </script>
+            <% end %>
+          <% end %>
+          <% if !alert.blank? %>
+            <div class="alert_message"><%= alert %></div>
+            <%= content_for :butt do %>
+              <script type="text/javascript">
+                $(".alert_message").fadeOut().fadeIn();
+              </script>
+            <% end %>
+          <% end %>
+
+
+          <%= yield %>
+        </section>
+      </section>
+      <% unless @render_no_sidebar %>
+        <aside id="sidebar">
+          <%= yield :sidebar %>
+          <div class="clearfix mt20">
+          </div>
+        </aside>
+      <% end %>
+    </section>
+
+    <%= render file:'/application/footers/_qa_footer' %>
+  </div>
+<% end %>
+
+<div class="__qa">
+    
+  <div id="hidden_new_ask" style="display: none;">
+    <form action="/asks" method="post" id="inner_new_ask">
+      <%= auth_token %>
+      <header>
+        创建新问题
+        <a class="close"  onclick="$.facebox.close(); return false;"></a>
+      </header>
+      <section>
+        <div class="editorBox mt10 clearfix">
+          <!-- XXX是这个人人名 -->
+          <textarea name="ask[title]" id="new_ask_title_gl" rows="1" class="textarea"></textarea>
+          <div class="bar limitwords"></div>
+          <textarea name="ask[body]" id="new_ask_body_gl" rows="1" class="textarea mt10"></textarea>
+          <div class="bar limitwords"></div>
+        </div>
+        <ul class="topicNav modify clearfix">
+        </ul>
+        <div class="addTopic mt5 clearfix" id="theAddTopic" >
+          <input type="text" name="topic"><div class="btnNormalSilver"><span class="add_topic">添加</span></div>
+        </div>
+      </section>
+      <input type="hidden" name="topics" value="">
+      <footer>
+        <div class="btnNormalGreen bold mt20 submit rightbtn"><span>发布问题</span></div>
+      </footer>
+    </form>
+  </div>
+
+  <div style="display: none;" id="loading">
+    <div class="logo"></div>
+    <div class="text">加载中…</div>
+  </div>
   
+  
+  
+  <div style="overflow:hidden;" class="hide">
+    <%= image_tag("loading.gif") %>
+    <div id="report_page">
+      <header>举报内容 <a class="close" href="javascript:void(0);"></a></header>
+      <section>
+        <form id="report_page_form" action="/report.js" onsubmit="App.loading();" method="post" class="simple_form"> 
+          <%= auth_token %>
+          <input type="hidden" name="url" value="<%= request.path %>" />
+          <p class="fc999">请填写举报原因:</p>
+          <div class="editorBox mt10 clearfix">
+            <textarea name="desc" style="height:80px;"></textarea>
+          </div>
+        </form>
+      </section>
+      <footer>
+        <div class="btnNormalGreen bold mt20 rightbtn" id="report_submit" >
+          <span>提 交</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  
+</div>
+
 
   <div class="__zm">
     <div id="loginLayout"></div>
@@ -152,6 +272,18 @@
     <%= yield :butt2 %>
   });
   </script>
+  <%= yield :bottom %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :scripts %>
+  
+  <script type="text/javascript">
+  <% if current_user %>
+    var logined = true;
+  <% else %>
+    var logined = false;
+  <% end %>
+  </script>
+  <%= yield :butt %>
   <!-- end scripts -->
 
   <%= render 'analytics' if Rails.env.production? %>

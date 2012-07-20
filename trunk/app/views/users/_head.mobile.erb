@@ -43,7 +43,7 @@
   <a<%= ' class=actived' if params[:action] == "answered" %> href="<%= answered_user_path(user.slug) %>">回答过(<%= user.answered_ask_ids.count %>)</a>
 	<!-- <a<%= ' class=actived' if params[:action] == "following" %> href="<%= following_user_path(user.slug) %>">关注(<%= user.following_ids.count %>)</a>
 		<a<%= ' class=actived' if params[:action] == "followers" %> href="<%= followers_user_path(user.slug) %>">被关注(<%= user.follower_ids.count %>)</a> -->
-	<a<%= ' class=actived' if params[:action] == "following_topics" %> href="<%= following_topics_user_path(user.slug) %>">关注的话题(<%= user.followed_topic_ids.count %>)</a>
+	<a<%= ' class=actived' if params[:action] == "following_topics" %> href="<%= following_topics_user_path(user.slug) %>">关注的课程(<%= user.followed_topic_ids.count %>)</a>
 </div>
 
 <% if not owner? user %>

@@ -1,6 +1,10 @@
 # coding: utf-8
 class AnswersController < ApplicationController
   before_filter :require_user_text,:except=>[:show]
+  before_filter :we_are_inside_qa
+  def we_are_inside_qa
+    @we_are_inside_qa = true
+  end
   def up_voter_links arg
   end
   def show

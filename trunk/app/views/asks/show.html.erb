@@ -32,7 +32,7 @@
 <header class="mainContentHeader" id="ask_<%= @ask.id %>">
 
   <div class="topics">
-    <!-- to 宪科：这里是话题列表，默认显示【IF二选一】 -->
+    <!-- to 宪科：这里是课程列表，默认显示【IF二选一】 -->
     <ul class="topicNav clearfix">    
       <% unless @ask.topics.blank? %>
 
@@ -46,7 +46,7 @@
       <% else %>
 
         <% if current_user and can_edit?(@ask) %>
-          <li class="modify"><span class="no_result fc999">添加话题标签，能让更多人看到你的问题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">添加标签</a></span>
+          <li class="modify"><span class="no_result fc999">添加课程标签，能让更多人看到你的问题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">添加标签</a></span>
           <% end %>
 
         <% end %>
@@ -54,14 +54,14 @@
     <% if can_edit?(@ask) %>
       <ul class="topicNav modify clearfix hide">
         <% @ask.topics.each do |topic| %>
-          <li><%= topic %><a title="删除本话题标签" href="javascript:void(0)" class="close"></a></li>
+          <li><%= topic %><a title="删除本课程标签" href="javascript:void(0)" class="close"></a></li>
         <% end %>
       </ul>
       <div class="addTopic mt5 hide">
         <form data-remote="true" action="<%= ask_path(@ask.id) %>/update_topic" onsubmit="return Asks.beforeAddTopic(this);" method="post" id="update_topics_form">
           <%= auth_token  %>
           <div class="addTopic mt5">
-            <input type="text" class="name" id="searchTopic" maxlength="10" style="width:100px;" name="name" value="" placeholder="输入话题" >
+            <input type="text" class="name" id="searchTopic" maxlength="10" style="width:100px;" name="name" value="" placeholder="输入课程标签" >
             <div class="btnNormalSilver" onclick="$('#update_topics_form').submit()" class="small"><span>添加</span></div>&nbsp;<a href="javascript:void(0)" class="complete_topics">完成</a>
           </div>
           <input type="hidden" name="add" value="1" /> 
@@ -248,7 +248,7 @@
       <section class="sideBox clearfix">
         <h3>邀请他人回答此问题<span id="shared_span_count"><% if @invites.count > 0 %> (<%= @invites.count %>)<% end %></span></h3>
         <div class="peopleSearchBar mt10">
-          <input type="text" placeholder="可通过人名、话题、职务等搜索" class="ac_input" autocomplete="off" id="ask_to_answer" onchange="checklen(this,20)" maxlength="20">
+          <input type="text" placeholder="可通过人名、课程、职务等搜索" class="ac_input" autocomplete="off" id="ask_to_answer" onchange="checklen(this,20)" maxlength="20">
           <span id="ask_to_answer_tno" style="display:none;"></span>
           <button></button>
         </div>
