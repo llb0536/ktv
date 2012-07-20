@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
 kill -QUIT `cat tmp/pids/unicorn.pid`
-kill -INT `cat tmp/pids/resque-pool.pid`
+kill -QUIT `cat tmp/pids/resque-pool.pid`
 sleep 4
 bin/check

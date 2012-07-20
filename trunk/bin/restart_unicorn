@@ -2,7 +2,13 @@
 
 kill -USR2 `cat tmp/pids/unicorn.pid`
 kill -QUIT `cat tmp/pids/resque-pool.pid`
-rm tmp/pids/resque-pool.pid
+
+while [ -f tmp/pids/resque-pool.pid ]
+do
+  echo Waiting for resque-pool to QUIT ...
+  sleep 1
+done
+
 bundle exec resque-pool --daemon --environment production --pidfile tmp/pids/resque-pool.pid
 bin/check
 sleep 20
