@@ -43,6 +43,9 @@ module Ktv
         ) if Ktv.config.proxy.present?
         @history = @agent.history
       end
+      def site
+        @site ||= Site.find_or_create_by(name:self.class.name)
+      end
     end
   end
 end

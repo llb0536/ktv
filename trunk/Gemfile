@@ -178,3 +178,4 @@ gem 'grim', '>= 0.3.0'
 gem 'dalli'
 
 gem 'rails_kindeditor', '~> 0.3.0'
+gem 'mechanize', '>=2.5.1'

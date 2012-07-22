@@ -4,11 +4,11 @@ module Ktv
     # To execute the block code in a exception-free manner
     # all exceptions are sent to the logger on the error level for inspection.
     # returns nil on error
-    def self.safely(&block)
+    def self.safely(ret=nil,&block)
       return yield
     rescue => e
       Ktv.config.logger.error "#{e}"
-      return nil
+      return ret
     end
 
     def self.get_parser(page)
