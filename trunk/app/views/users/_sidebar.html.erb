@@ -65,7 +65,7 @@
 
   <!-- followers} -->
 </section>
-  <% end %>
+<% end %>
 <%# cache :action_suffix => 'followed_topics' do %>
 <% @following = @user.following_ids.rlimit(50) %>
 <% if !@following.blank? %>

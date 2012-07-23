@@ -6,6 +6,15 @@ class UsersController < ApplicationController
   def we_are_inside_qa
     @we_are_inside_qa = true
   end
+  def update
+    unless view_context.owner?(@user)
+      render_401
+      return
+    end
+    @user.avatar = params[:user][:avatar]
+    @user.save!
+    redirect_to @user,notice:'头像更新成功！'
+  end  
   def hot
     @we_are_inside_qa = false
   end
@@ -55,6 +64,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @we_are_inside_qa = false    
     pagination_get_ready    
     @coursewares = @user.coursewares.normal.order('id desc')
     pagination_over(@coursewares.count)
@@ -138,6 +148,14 @@ class UsersController < ApplicationController
     current_user.follow(@user)
     render :text => "1"
   end
+  def zm_follow
+    if not @user
+      render json:false
+      return
+    end
+    current_user.follow(@user)
+    render json:true
+  end
   
   def unfollow
     if not @user
@@ -146,6 +164,14 @@ class UsersController < ApplicationController
     end
     current_user.unfollow(@user)
     render :text => "1"
+  end
+  def zm_unfollow
+    if not @user
+      render json:false
+      return
+    end
+    current_user.unfollow(@user)
+    render json:true
   end
 
   def auth_callback

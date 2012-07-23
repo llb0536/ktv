@@ -11,6 +11,7 @@ class AvatarUploader < BaseUploader
     :mid60 => 60,
     :normal => 100,
     :normal180 => 180,
+    :huge => 300
   }
   SIZES.each do |key,value|    
     version key do

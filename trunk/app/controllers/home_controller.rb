@@ -230,15 +230,19 @@ class HomeController < ApplicationController
     # TODO: Here need to chack permission
     klass, field, id = params[:id].split('__')
     puts params[:id]
-
-    # 验证权限,用户是否有修改制定信息的权限
-    case klass
-    when "user" then return if current_user.id.to_s != id
-    end
     
     params[:value] = simple_format(params[:value].to_s.strip) if params[:did_editor_content_formatted] == "no"
 
     object = klass.camelize.constantize.find(id)
+    # 验证权限,用户是否有修改制定信息的权限
+    case klass
+    when "user"
+      unless view_context.owner?(object)
+        render_401
+        return
+      end
+    end
+    
     update_hash = {field => params[:value]}
     if ["ask","topic"].include?(klass) and current_user
       update_hash[:current_user_id] = current_user.id

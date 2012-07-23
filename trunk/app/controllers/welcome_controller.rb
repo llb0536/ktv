@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
   def index
     @seo[:title] = '首页'
     @latest_user = User.already_confirmed.recent.first
+    @hottest_user = UserCache.where(:hot_rank => 1).first.user
   end
   def inactive_sign_up
     render "inactive_sign_up#{@subsite}",layout:'application_for_devise'

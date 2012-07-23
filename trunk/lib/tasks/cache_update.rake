@@ -86,4 +86,12 @@ namespace :update do
       ec.save!
     end
   end
+  task :user_cache => :environment do
+    Mongoid.database.collection('user_caches').drop
+    User.where('coursewares_count > 8').desc('coursewares_count').limit(100).each_with_index do |item,i|
+      ec = UserCache.create!(name:item.name,hot_rank:i,followers_count:item.followers_count)
+    end
+  end
+
+
 end

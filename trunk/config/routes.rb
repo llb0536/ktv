@@ -110,6 +110,8 @@ Quora::Application.routes.draw do
       get "asked"
       get "asked_to"
       get "follow"
+      post "follow" => 'users#zm_follow'
+      post "unfollow" => 'users#zm_unfollow'
       get "unfollow"
       get "followers"
       get "following"

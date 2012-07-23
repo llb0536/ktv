@@ -92,7 +92,7 @@ im20consts.constData = eval({
     URI_AJAX_NEED_LOGIN: "/ajaxLoginFailed",
     URI_AJAX_EXCEPTION: "/ajaxException",
     URI_JAVASCRIPT_CONSTS_JSP: "/consts",
-    URI_USER_AJAX: "/user/{userId}",
+    URI_USER_AJAX: "/users/{userId}",
     URI_BACKEND_USER_AJAX: "/userAjax/{userId}",
     URI_LOGIN: "/login",
     URI_AJAX_LOGIN: "/ajaxlogin",
@@ -130,7 +130,7 @@ im20consts.constData = eval({
     URI_BOARD_WIDGET_BAR: "/widget/board/{boardId}",
     URI_BOARD_CATEGORY_LIST: "/boardcategory",
     URI_BOARD: "/board/{userId}/{boardId}",
-    URI_BOARD_USER_AJAX: "/board/user/ajax/{boardId}",
+    URI_BOARD_USER_AJAX: "/board/users/ajax/{boardId}",
     URI_BOARD_SHARE: "/board/share/{userId}/{boardId}/{boardPicId}",
     URI_BOARD_SHARE_AJAX: "/board/share/{userId}/{boardId}/{reshareId}/{page}",
     URI_GET_BOARD_SHARE_AJAX: "/singleBoard/{reshareId}",
@@ -180,9 +180,9 @@ im20consts.constData = eval({
     URI_DOUBAN_GET: "/login/douban/return",
     URI_SNS_CHECK: "/sns/check",
     URI_QQT_SEND_T: "/qqt/send/t",
-    URI_GET_USER_SYNC: "/user/sync/{userId}",
-    URI_USER_SYNC: "/user/sync",
-    URI_USER_SHARE: "/user/share",
+    URI_GET_USER_SYNC: "/users/sync/{userId}",
+    URI_USER_SYNC: "/users/sync",
+    URI_USER_SHARE: "/users/share",
     URI_FANS_FRIENDS: "/friends/{userId}/{page}",
     URI_FANS_FRIENDS_AJAX: "/friendsAjax/{userId}",
     URI_FANS_FOLLOWEDS_AJAX: "/followedsAjax/{userId}",
@@ -195,8 +195,8 @@ im20consts.constData = eval({
     URI_FOLLOWED_USER_FIND: "/followedFind",
     URI_FRIEND_USER_FIND: "/friendFind",
     URI_FANS_BOARD_FANS: "/fans/{boardId}/{boardUserId}",
-    URI_FANS_ADD_FOLLOW_USER: "/user/{followedUserId}/follow",
-    URI_FANS_UNFOLLOW_USER: "/user/{followedUserId}/unfollow",
+    URI_FANS_ADD_FOLLOW_USER: "/users/{followedUserId}/follow",
+    URI_FANS_UNFOLLOW_USER: "/users/{followedUserId}/unfollow",
     URI_FANS_ADD_FOLLOW_BOARD: "/board/{boardUserId}/{boardId}/follow",
     URI_FANS_ADD_FOLLOW_BOARD_WITHOUT_USER: "/board/{boardId}/follow",
     URI_FANS_UNFOLLOW_BOARD: "/board/{boardUserId}/{boardId}/unfollow",
@@ -242,7 +242,7 @@ im20consts.constData = eval({
     URI_ALL_UNREAD_NOTIFICATION_NUM: "/all_unread_notification_num",
     URI_CHANNEL_INDEX: "/",
     URI_NEW_INDEX: "/newIndex",
-    URI_CERTIFY_GET: "/certify/user/get/{userId}",
+    URI_CERTIFY_GET: "/certify/users/get/{userId}",
     URI_CERTIFY_PERSON: "/certify/person/{page}",
     URI_CERTIFY_SHOP: "/certify/shop/{page}",
     URI_INDEX_ZHIMEI_STAR_REFRESH: "/index/zhimei/star/refresh",
@@ -270,8 +270,8 @@ im20consts.constData = eval({
     URI_PAGE_KNOW: "/page/know",
     URI_PAGE_PERSON: "/page/certify_person",
     URI_PAGE: "/page/{path}",
-    URI_SEARCH_USER: "/search/user/{page}",
-    URI_SEARCH_USER_AJAX: "/searchAjax/user/{page}",
+    URI_SEARCH_USER: "/search/users/{page}",
+    URI_SEARCH_USER_AJAX: "/searchAjax/users/{page}",
     URI_SEARCH_SHARE: "/search/share/{page}",
     URI_SEARCH_SHARE_AJAX: "/searchAjax/share/{page}",
     URI_SEARCH_BOARD: "/search/board/{page}",
@@ -296,9 +296,9 @@ im20consts.constData = eval({
     URI_UPLOAD_INDEX: "/backend/upload/index",
     URI_UPLOAD_FILE: "/backend/upload",
     URI_UPLOAD_FILE_CUT: "/backend/upload/cut",
-    URI_BACKEND_AUDIT_USER: "/backend/audit/user/{page}",
-    URI_BACKEND_AUDIT_USER_SEARCH: "/backend/audit/user/search/{page}",
-    URI_BACKEND_AUDIT_USER_FLAG: "/backend/audit/user/flag",
+    URI_BACKEND_AUDIT_USER: "/backend/audit/users/{page}",
+    URI_BACKEND_AUDIT_USER_SEARCH: "/backend/audit/users/search/{page}",
+    URI_BACKEND_AUDIT_USER_FLAG: "/backend/audit/users/flag",
     URI_BACKEND_SEND_USER_MESSAGE: "/backend/notification",
     URI_BACKEND_AUDIT_SHARE: "/backend/audit/share",
     URI_BACKEND_AUDIT_SHARE_SEARCH: "/backend/audit/share/search/{page}",
@@ -380,7 +380,7 @@ im20consts.constData = eval({
     URI_USER_PASSWORD_VERIFY: "/users/verify/password",
     URI_USER_EMAIL_VERIFY: "/users/verify/email",
     URI_EMAIL_LOGIN_URL: "/users/email/loginUrl",
-    URI_USER_CARD: "/user/card/{userId}",
+    URI_USER_CARD: "/users/card/{userId}",
     URI_UNSUBSCRIBE: "/unsubscribe/{type}",
     URI_UNSUBSCRIBE_CONFIRM: "/unsubscribe/{type}/confirm",
     URI_UNSUBSCRIBE_SUCCESS: "/unsubscribe/{type}/success",
@@ -561,9 +561,9 @@ im20consts.constData = eval({
     SAVING_MESSAGE_PLACARD_DETAIL: "/saving/{subarea}/placard/{placardId}",
     SAVING_LEAVEWORD_LIST: "/saving/{subarea}/leaveWord/{pageNo}",
     SAVING_LEAVEWORD_ADD: "/saving/{subarea}/addLeaveWord",
-    SAVING_USER_ADDRESS: "/saving/user/address/{addressId}",
-    SAVING_USER_ADDRESS_SAVE: "/saving/user/address/save",
-    SAVING_USER_ALL_ADDRESS: "/saving/user/allAddress/{userId}",
+    SAVING_USER_ADDRESS: "/saving/users/address/{addressId}",
+    SAVING_USER_ADDRESS_SAVE: "/saving/users/address/save",
+    SAVING_USER_ALL_ADDRESS: "/saving/users/allAddress/{userId}",
     SAVING_QUESRION_LIST: "/saving/{subarea}/question/list",
     SAVING_ABOUT: "/saving/about",
     SAVING_TOP_LIST: "/saving/{subarea}/top",
@@ -659,7 +659,7 @@ im20consts.constData = eval({
     EXCHANGE_NEED_CODE: "-501509"
 });
 var consts = im20consts;
-var uri = im20uri;
+window.uri = im20uri;
 window.im = jQuery;
 im.fn = jQuery.fn;
 jQuery.zm = {};
@@ -1137,7 +1137,7 @@ jQuery.zm = {};
                 $("#search-all").attr("href", "/search/share/1?keyWords=" + sindex);
                 $("#jquery-searchlist >a").eq(0).attr("href", "/search/share/1?keyWords=" + sindex);
                 $("#jquery-searchlist >a").eq(1).attr("href", "/search/board/1?keyWords=" + sindex);
-                $("#jquery-searchlist >a").eq(2).attr("href", "/search/user/1?keyWords=" + sindex)
+                $("#jquery-searchlist >a").eq(2).attr("href", "/search/users/1?keyWords=" + sindex)
             } else {
                 $("#search-all , #jquery-searchlist >a").attr("href", "javascript:;")
             }
@@ -1189,7 +1189,7 @@ jQuery.zm = {};
                             location.href = "/search/board/1?keyWords=" + words;
                             break;
                         case 2:
-                            location.href = "/search/user/1?keyWords=" + words;
+                            location.href = "/search/users/1?keyWords=" + words;
                             break;
                         default:
                             location.href = "/search/share/1?keyWords=" + words;
@@ -1807,7 +1807,7 @@ jQuery.cookie = function (b, k, n) {
         posAlert: function (obj, text) {
             var _left = parseInt(obj.offset().left) + parseInt(obj.width() / 2) - 120;
             var _top = parseInt(obj.offset().top) - 131;
-            var _html = ['<div class="positionAlt altdiv png">', '<span class="altsuccess png">' + text + "</span>", "</div>"].join("");
+            var _html = ['<div class="__zm"><div class="positionAlt altdiv png">', '<span class="altsuccess png">' + text + "</span>", "</div></div>"].join("");
             $("body").append(_html);
             $(".altdiv").css({
                 top: _top,
@@ -1918,7 +1918,7 @@ jQuery.cookie = function (b, k, n) {
             } else {
                 _top = parseInt(obj.offset().top) - 131
             }
-            var _html = ['<div style="height:0;" class="confirmclass">', '<div class="altdiv ' + altConfirmUp + ' png">', '<span class="altconfirm png">' + text + "</span>", '<p class="btcontainer"><a href="javascript:void(0);" class="submitbtn confirm-btn">确认</a>&nbsp;<a href="javascript:void(0);" class="submitbtn cancel-btn">取消</a></p>', "</div>", "</div>"].join("");
+            var _html = ['<div class="__zm"><div style="height:0;" class="confirmclass">', '<div class="altdiv ' + altConfirmUp + ' png">', '<span class="altconfirm png">' + text + "</span>", '<p class="btcontainer"><a href="javascript:void(0);" class="submitbtn confirm-btn">确认</a>&nbsp;<a href="javascript:void(0);" class="submitbtn cancel-btn">取消</a></p>', "</div>", "</div></div>"].join("");
             $("body").append(_html);
             $(".altdiv").css({
                 top: _top,
@@ -1942,7 +1942,7 @@ jQuery.cookie = function (b, k, n) {
             }
             var _left = (document.documentElement.clientWidth) / 2 - 131;
             var _top = $(window).scrollTop() + (document.documentElement.clientHeight) / 2 - 120;
-            var _html = ['<div style="height:0;" class="confirmclass">', '<div class="altdivCenter png">', '<span class="altconfirm png">' + text + "</span>", '<p class="btcontainer"><a href="javascript:void(0);" class="submitbtn confirm-btn">确认</a>&nbsp;<a href="javascript:void(0);" class="submitbtn cancel-btn">取消</a></p>', "</div>", "</div>"].join("");
+            var _html = ['<div class="__zm"><div style="height:0;" class="confirmclass">', '<div class="altdivCenter png">', '<span class="altconfirm png">' + text + "</span>", '<p class="btcontainer"><a href="javascript:void(0);" class="submitbtn confirm-btn">确认</a>&nbsp;<a href="javascript:void(0);" class="submitbtn cancel-btn">取消</a></p>', "</div>", "</div></div>"].join("");
             $("body").append(_html);
             $(".altdivCenter").css({
                 top: _top,
@@ -8514,7 +8514,7 @@ var ShareDialog = {
     },
     initOpenPlatformSync: function () {
         if (ShareDialog.openPlatformSyncHtml == null) {
-            $.get(im20uri("DOMAIN_URI") + "/user/sync", function (c) {
+            $.get(im20uri("DOMAIN_URI") + "/users/sync", function (c) {
                 var a = "";
                 if (c.sys_1 != undefined || c.sys_2 != undefined || c.sys_4 != undefined || c.sys_8 != undefined) {
                     a += '<span class="size">分享到:</span>';
@@ -8907,7 +8907,7 @@ var ShareDialog = {
                     f.push($(this).val())
                 });
                 if (f.length > 0) {
-                    $.post("/user/share", {
+                    $.post("/users/share", {
                         cbpid: g.boardPicId,
                         sns_id: f.join(",")
                     }, function () {})
@@ -9369,14 +9369,14 @@ reshareDialog.syncToSns = function (a) {
         b += $("#reshare_sync_qzone").val()
     }
     if (b != "") {
-        $.post("/user/share", {
+        $.post("/users/share", {
             cbpid: a.id,
             sns_id: b
         }, function () {})
     }
 };
 reshareDialog.initSyncToSns = function () {
-    var a = "/user/sync";
+    var a = "/users/sync";
     $.get(a, function (c) {
         if (c == "") {
             c = "{}"

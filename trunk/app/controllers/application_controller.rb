@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownController, with: :render_404
     rescue_from ActionController::UnknownAction, with: :render_404
   end
+  def render_401(exception=nil)
+    redirect_to root_path,:alert => '对不起，权限不足！'
+  end
   def render_404(exception=nil)
     @not_found_path = exception ? exception.message : ''
     respond_to do |format|

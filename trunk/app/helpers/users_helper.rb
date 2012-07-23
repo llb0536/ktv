@@ -1,5 +1,12 @@
 # coding: utf-8
 module UsersHelper
+  def renzheng_teacher(user)
+    if user.is_expert
+      "<span class=\"ctf-icon small-ctf-star-w\" title=\"认证老师\"></span>".html_safe
+    else
+      ''
+    end
+  end
   def profile_path(user)
     "/users/#{user.slug}"
   end

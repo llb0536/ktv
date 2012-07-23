@@ -136,7 +136,7 @@ var App = {
         csrf_param = $('meta[name=csrf-param]').attr('content');
 
         editPanel = $('<form action="'+remote_url+'" method="post" id="ipe_'+linkId+'" \
-        data-text-id="'+textId+'" data-id="'+linkId+'" class="in_place_editing">\
+        data-text-id="'+textId+'" data-id="'+linkId+'" class="in_place_editing __qa">\
                   <input type="hidden" name="id" value="'+linkId+'" /> \
                   <input type="hidden" name="'+csrf_param+'" value="'+csrf_token+'" /> \
                   '+ editHtml +' \

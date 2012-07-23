@@ -173,8 +173,8 @@
 <div class="likenum">
 <div class="padding-top cf" style="padding-top:10px">
 <span class="floatright" style="padding-top:3px">
-<iframe width="136" height="24" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" scrolling="no" border="0" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&width=136&height=24&uid=2443589715&style=2&btn=red&dpc=1"></iframe>
-<iframe id=review height=27 width="150" marginheight=0 src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=zhimeicom&style=4&t=1329905467846&f=1" frameborder=0 width=182 allowtransparency marginwidth=0 scrolling=auto></iframe>
+<iframe width="136" height="24" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" scrolling="no" border="0" src="http://widget.weibo.com/relationship/followbutton.php?language=zh_cn&width=136&height=24&uid=1947145061&style=2&btn=red&dpc=1"></iframe>
+<iframe id=review height=27 width="150" marginheight=0 src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=zhimeicom&style=4&t=<%= Time.now.to_i %>&f=1" frameborder=0 width=182 allowtransparency marginwidth=0 scrolling=auto></iframe>
 </span>
 <a href="<%= new_courseware_path %>" class="icon addme png">轻松分享上传课件</a>
 <a href="<%= coursewares_path %>" class="icon shareme png" target="_blank">下载大家分享的学习资料</a>
@@ -185,41 +185,34 @@
 <div id="content">
 <div class="boxnoun cf">
 <div class="foreign-rec">
-<h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">今日</b>达人</span></span></h2>
-<div class="bigshow">				
-<a href="/profile/15329" target="_blank"><img src="http://b.imimg.cn//index/2012/06/1340932113550.300.300.jpg" /></a>
+<h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热</b>作者</span></span></h2>
+<div class="bigshow">
+<a href="<%= user_path(@hottest_user) %>" target="_blank"><img src="<%= avatar_url(@hottest_user,:huge) %>" /></a>
 </div>
 <div class="taright">
-<h3 class="ttname" style="line-height: 1"><a href="/profile/15329" target="_blank"><span class="yahe blue bigtitle" style="color:#1D8B74;" >小貂倍儿馋</span></a><span class="ctf-icon small-ctf-star-w" title="认证达人"></span> 
-
-<a class="hotbutton follow-btn" id="15329" followed="15329" follow="false">关注</a>
-
-</h3>
-<p><a href="/profile/15329" class="gray" target="_blank">3只狗狗的好妈妈！热爱给自己和&ldquo;孩子&rdquo;们淘尖儿货，对猫猫狗狗永远没有抵抗力。坚信找个男友不如养只萌宠！</a></p>
-<h3 class="ttname" style="line-height: 1"><span class="yahe">TA的收集</span></h3>
+  <h3 class="ttname" style="line-height: 1">
+      <a href="<%= user_path(@hottest_user) %>" target="_blank"><span class="yahe blue bigtitle" style="color:#1D8B74;"><%= @hottest_user.name %></span></a>
+      <%= renzheng_teacher(@hottest_user) %>
+      <a class="hotbutton follow-btn" id="15329" followed="15329" follow="false">关注</a>
+  </h3>
+  <p>
+      <a href="<%= user_path @hottest_user %>" class="gray" target="_blank">
+        <%= @hottest_user.bio %>
+      </a>
+  </p>
+  <h3 class="ttname" style="line-height: 1">
+      <span class="yahe"><a href="<%= user_path @hottest_user %>">代表作</a></span>
+  </h3>
+  
 <ul class="cf">
-
-<li><a href="/board/share/15329/7030927/5014911" target="_blank"><img src="http://b0.imimg.cn/20120719/168c/7b06/87096246733.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014859" target="_blank"><img src="http://b6.imimg.cn/20120719/bf02/2168/87052408703.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014736" target="_blank"><img src="http://b3.imimg.cn/20120719/199a/b2dc/86873474563.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014651" target="_blank"><img src="http://b2.imimg.cn/20120719/da6c/6622/86795718415.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014364" target="_blank"><img src="http://b8.imimg.cn/20120719/a492/8310/86534385859.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014323" target="_blank"><img src="http://b0.imimg.cn/20120719/781a/c4c4/86493376532.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014298" target="_blank"><img src="http://b8.imimg.cn/20120719/2a20/259a/86442326271.3.60.60.jpg" /></a></li>
-
-<li><a href="/board/share/15329/7030927/5014246" target="_blank"><img src="http://b7.imimg.cn/20120719/5ca0/4fa8/86382054913.3.60.60.jpg" /></a></li>
-					
+<% @hottest_user.coursewares.desc('views_count').limit(3).each do |item| %>
+<li><a href="<%= courseware_path item %>" target="_blank"><%= item.title %></a> (<span class="orange"><%=number_with_delimiter  item.views_count %></span>&nbsp;次点击)</li>
+<% end %>
 </ul>
 </div>
 </div>
 <div class="site-rec">
-<h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a>&nbsp;&nbsp;<a href="/certify/person/1">更多&#8250;&#8250;</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>达人</span></span></h2>
+<h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a>&nbsp;&nbsp;<a href="<%=  %>">更多&#8250;&#8250;</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>达人</span></span></h2>
 <ul id="zhimei_star_ul">
 
 <li class=" cf">
@@ -275,7 +268,7 @@
 </div>
 <!--end-->
 <div class="gather-item cf">
-<h2 class="itemhead"><span class="more"><a id="recommend_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a> <a href="/hot/recommend/">更多&#8250;&#8250;</a></span><span class="greenline size_3"><span class="item-title"><b class="blue">最热</b>作者</span></span></h2>
+<h2 class="itemhead"><span class="more"><a id="recommend_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a> <a href="/hot/recommend/">更多&#8250;&#8250;</a></span><span class="greenline size_3"><span class="item-title"><b class="blue">最热</b>课件</span></span></h2>
 <ul id="recommend_ul" class="cf">
 
 <li >
@@ -1981,7 +1974,6 @@ im.zm.autoImg.init({
     curClass: 'curImg'
 });
 
-im.zm.load("/defa.js");
 <% end %>
 </script>
 

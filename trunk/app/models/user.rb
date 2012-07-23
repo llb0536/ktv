@@ -574,23 +574,6 @@ class User
     ret += [80, answers_count].min * zancheng_piaoshu
     ret
   end
-  # after_validation Proc.new{
-  #   if(user = User.where(email:'angela.cai@kejian.tv.cn').first)
-  #     self.following_ids << user.id
-  #     user.follower_ids << self.id
-  #   end
-  # }
-  # after_create Proc.new{
-  #   User.where(:will_autofollow=>true).each{ |user|
-  #     self.follow(user,true)
-  #   }
-  #   Topic.where(:will_autofollow=>true).each{ |topic|
-  #     self.follow_topic(topic,true)
-  #   }
-  #   Ask.where(:will_autofollow=>true).each{ |ask|
-  #     self.follow_ask(ask,true)
-  #   }
-  # }
   before_validation :check_spam_words
   def check_spam_words
     if self.spam?("tagline")
@@ -1029,7 +1012,11 @@ class User
   cache_consultant :slug,:no_callbacks=>true
   cache_consultant :avatar_filename,:no_callbacks=>true
   cache_consultant :is_expert_why,:redis_varname=>'$redis_experts',:no_callbacks=>true
-
+  before_create :check_slug_presence
+  def check_slug_presence
+    self.slug = self.id.to_s unless self.slug.present?
+    return true
+  end
   after_create :update_consultant!
   def update_consultant!
     $redis_users.hset(self.id,:name,self.name)
@@ -1051,6 +1038,7 @@ class User
     end
     return false
   end
+  
   protected
   
   def insert_follow_log(action, item, parent_item = nil)
