@@ -165,7 +165,11 @@ Quora::Application.routes.draw do
       post 'update_title'
     end
   end
-  resources :logs
+  resources :logs do
+    collection do
+      get 'all'
+    end
+  end
   resources :inbox
 
   namespace :cpanel do

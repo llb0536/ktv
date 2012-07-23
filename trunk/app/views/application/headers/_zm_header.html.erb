@@ -12,15 +12,15 @@
       hot_users_path,
       latest_coursewares_path,
       hot_topics_path,
-      logs_path,
+      all_logs_path,
       ].include? request.path %>"><a class="navmark" href="/">首页<span class="iconbg arrow"></span></a>
       <div class="dropdown w200" style="display: none;">
       <span class="iconbg uparrow"></span>
+        <a href="<%= hot_users_path %>">达人</a>
       <a href="<%= hot_coursewares_path %>">热门</a>
-      <a href="<%= hot_users_path %>">达人</a>
+        <a href="<%= hot_topics_path %>">领域</a>
       <a href="<%= latest_coursewares_path %>">最新</a>
-      <a href="<%= hot_topics_path %>">领域</a>
-      <a href="<%= logs_path %>">动态</a>
+      <a href="<%= all_logs_path %>">动态</a>
       </div>
       </li>
       <li class="dot"></li>
@@ -29,7 +29,7 @@
       <li class="dot"></li>
       <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校/老师</a></li>
       <li class="dot"></li>
-      <li class="<%= 'current' if maps_path==request.path %>"><a href="<%= maps_path %>">全部路线图</a></li>
+      <li class="<%= 'current' if maps_path==request.path %>"><a href="<%= maps_path %>">学习路线图</a></li>
       <li class="dot"></li>
       <li class="<%= 'current' if [surprise_path,
       videos_coursewares_path,

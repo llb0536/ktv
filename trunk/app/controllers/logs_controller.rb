@@ -4,6 +4,9 @@ class LogsController < ApplicationController
   def we_are_inside_qa
     @we_are_inside_qa = true
   end
+  def all
+    @we_are_inside_qa = false
+  end
   def index
     @per_page = 20
     @logs = Log.desc("$natural")
