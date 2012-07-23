@@ -72,7 +72,7 @@
   <%= yield :armpit %>
 </head>
 
-<body id="psvr_subject_all" style="<%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
+<body id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -82,11 +82,11 @@
     <div class="wrapper">
       <h1><a href="/" id="core_logotext_wrap"><%= image_tag "logotext-all.png",:alt => "课件交流系统",:id=>'core_logotext' %></a></h1>
       <form accept-charset="UTF-8" action="/search" id="search_form" method="get" data-width-tobe="730">
-        <input type="text" id="q" name="q" value="" autocomplete="off" class="placeholded" placeholder="快速搜索..." />
+        <input type="text" id="q" name="q" value="" autocomplete="off" class="placeholded" placeholder="快速搜索领域、资源..." />
       </form>
       <div class="navigation">
         <ul>
-          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要解题</a></li>
+          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要提问</a></li>
           <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addtext_wrap">我要上传</a></li>
         </ul>
         <div id="amazing-shadow"></div>
@@ -94,7 +94,7 @@
           <ul id="account-settings">
             <li><a class="user" href="<%= user_path(current_user) %>"><%= avatar_tag(current_user,:small47) %><%= current_user.name %></a>
               <ul>
-                <li><a href="<%= profile_path current_user %>">邀请好友注册</a></li>
+                <li><a href="<%= invite_users_path %>">邀请好友注册</a></li>
                 <li><a href="<%= edit_user_registration_path %>">账号设置</a></li>
                 <li><a href="#" id="Intercom">意见反馈</a></li>
                 <li><a href="<%= logout_path %>">退出</a></li>
@@ -147,10 +147,12 @@
 <% end %>
 </div></div>
 
-
 <% if !@we_are_inside_qa or @raw_raw_raw %>
   <%= yield %>
 <% else %>
+  <% unless @we_are_no_zm_header %>
+  <%= render file:'/application/headers/_zm_header' %>
+  <% end %>
   <div class="__qa">
     <section id="container" class="wrapper clearfix" style="<%='background:white' if @render_no_sidebar %>">
       <section id="main" style="<%= 'width:100%' if @render_no_sidebar %>">
@@ -168,7 +170,7 @@
           <% end %>
           <% if !notice.blank? %>
             <div class="notice_message"><%= notice %></div>
-            <%= content_for :butt do %>
+            <% content_for :butt do %>
               <script type="text/javascript">
                 $(".notice_message").fadeOut().fadeIn();
               </script>
@@ -176,7 +178,7 @@
           <% end %>
           <% if !alert.blank? %>
             <div class="alert_message"><%= alert %></div>
-            <%= content_for :butt do %>
+            <% content_for :butt do %>
               <script type="text/javascript">
                 $(".alert_message").fadeOut().fadeIn();
               </script>
@@ -263,6 +265,7 @@
 
 
   <div class="__zm">
+    <div class="totop" id="backtotop" style="display: none;"><a href="javascript:void(0);">返回 </a></div>
     <div id="loginLayout"></div>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->

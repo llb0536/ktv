@@ -10,6 +10,15 @@ class User
   has_many :coursewares
   before_validation :fill_in_unknown_email
   before_validation :fill_in_unknown_name
+  def self.shoudongtianjia!(name,email,password)
+    u=self.new
+    u.name=name
+    u.email=email
+    u.password=password
+    u.password_confirmation=password
+    u.during_registration=true
+    u.save!
+  end
   def fill_in_unknown_email
     if self.email_unknown
       self.email_unknown = true
@@ -304,6 +313,7 @@ class User
   def active_for_authentication?
     self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?
   end
+  scope :already_confirmed,where(:confirmed_at.ne => nil)
   scope :name_unknown, where(:name_unknown => true)
   scope :email_unknown, where(:email_unknown => true)
   scope :nonconfirmed, where(:confirmed_at => nil)

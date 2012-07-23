@@ -97,7 +97,7 @@
   </div>
   <div class="summary">
     <%if current_user and (!@ask.to_user_id || @ask.to_user_id==current_user.id) %>
-      <a href="javascript:void(0)" onclick="return $('#new_answer_form .qeditor_preview').trigger('focus');">添加答案</a>      | 
+      <a href="javascript:void(0)" onclick="return $('#new_answer_form .qeditor_preview').trigger('focus');">添加题解</a>      | 
     <%end %>
     <% if @ask.comments_count == 0 %>
       <a href="#" onclick="return Asks.toggleComments('ask','<%= @ask.id %>');" id="ask_<%= @ask.id %>_linktrigger">添加评论</a>
@@ -184,7 +184,7 @@
     <div class="disabled_answer">这个题是对 <%= user_name_tag(@ask.to_user) %> 提问的，只有<%= user_sex_title(@ask.to_user) %>才能解答。</div>
   <% else %>
     <section class="appendAnswer clearfix">
-      <h6 class="mt10">添加答案</h6>
+      <h6 class="mt10">添加题解</h6>
       <%= form_for(@answer, :remote => true, :html => { :onsubmit => "return Asks.beforeAnswer(this);",:id=>'new_answer_form' },
         :url => answer_ask_path(@ask.id)) do |f| %>
 
@@ -200,7 +200,7 @@
   <% end %>
 <% else %>
   <section class="appendAnswer clearfix">
-    <h6 class="mt10">添加答案</h6>
+    <h6 class="mt10">添加题解</h6>
     <%= form_for(@answer, :remote => true, :html => { :onsubmit => "return Asks.beforeAnswer(this);",:id=>'new_answer_form' },
       :url => answer_ask_path(@ask.id)) do |f| %>
 

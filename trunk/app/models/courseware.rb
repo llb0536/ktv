@@ -11,8 +11,6 @@ class Courseware
     case attr.to_sym
     when :user;'课件的作者'
     when :slides_count;'幻灯片片数'
-    when :course;'课件所属领域'
-    when :courseware_series;'课件所属课件系列'
     when :title;'课件标题'
     when :title_en;'课件英文标题'
     when :title_pinyin;'课件拼音标题'
@@ -22,8 +20,6 @@ class Courseware
     when :sort2;'课件文件类型'
     when :sort_humanized;'课件类型'
     when :slug;'课件的友好资源标识号'
-    when :course_slug;'所属领域的的友好资源标识号'
-    when :course_name;'所属领域的的名字'
     when :xunlei_link;'迅雷播放特权地址'
     when :fallback_playback_link;'视频后援地址'
     when :link_memo;'链接备注'
@@ -65,7 +61,7 @@ class Courseware
   field :status
   field :uploader_id
   
-  field :course_long_name
+  field :title_short
   
   field :school_name
   field :school_id
@@ -112,26 +108,26 @@ class Courseware
       end
       if 1 == rests.size
         self.user_name = self.uploader.name
-        self.topic = self.course_long_name.strip
+        self.title_short = self.title.strip
       else
         self.user_name = rests[0].strip
-        self.topic = rests[1..-1].join(delim).strip
+        self.title_short = rests[1..-1].join(delim).strip
       end
     end
     
   end
   def titleize
-    if self.course_long_name.present? and self.course_long_name_changed?
-      self.course_long_name.strip!
-      if self.course_long_name =~ /^\[([^\[\]]+)\](.*)$/
+    if self.title.present? and self.title_changed?
+      self.title.strip!
+      if self.title =~ /^\[([^\[\]]+)\](.*)$/
         self.school_name = $1.strip
         self.analyse2($2)
-      elsif self.course_long_name =~ /^【([^【】]+)】(.*)$/
+      elsif self.title =~ /^【([^【】]+)】(.*)$/
         self.school_name = $1.strip
         self.analyse2($2)
       else
         self.school_name = nil
-        self.topic = self.course_long_name.strip
+        self.title_short = self.title
       end
       if self.topic.blank?
         self.topic = '领域请求'
@@ -153,7 +149,7 @@ class Courseware
     return nil if self.user_id.blank?
     User.where(:_id => self.user_id).first
   end
-  before_save :create_stuff!,:if=>'self.course_long_name_changed?'
+  before_save :create_stuff!,:if=>'self.title_changed?'
   def create_stuff!
     if self.school_name.present?
       school = School.find_or_create_by(:name => self.school_name)
@@ -170,19 +166,16 @@ class Courseware
   def create_topic!
     topic = Topic.find_or_create_by(:name => self.topic)
     self.topic_id = topic.id
-    if self.school_name.present?
-      self.course_long_name = "[#{self.school_name}] #{self.user_name}: #{self.topic}"
-    else
-      self.course_long_name = "#{self.topic}"
-    end
   end
   before_save :counter_work
   def counter_work
     if user_id_changed?
       if user_id_was.present? and old_user = User.where(:_id=>user_id_was).first
         old_user.inc(:coursewares_count,-1)
+        old_user.school.inc(:coursewares_count,-1) if old_user.school
       end
       self.user.inc(:coursewares_count,1)
+      self.user.school.inc(:coursewares_count,1) if self.user.school
     end
     if uploader_id_changed?
       if uploader_id_was.present? and old_user = User.where(:_id=>uploader_id_was).first
@@ -239,7 +232,7 @@ class Courseware
   end
   validates_inclusion_of :sort,:in=>SORTSTR.keys
   
-  redis_search_index(:title_field => :course_long_name,
+  redis_search_index(:title_field => :title,
                      :score_field => :views_count,
                      :condition_fields => [:user_id,:sort],
                      :ext_fields => [:topic,:thanked_count,:comments_count,:created_at])

@@ -10,6 +10,7 @@ module BaseModel
     field :deleted, :type => Integer, :default => 0
     scope :nondeleted, where(:deleted.nin=>[1,3])
     scope :be_deleted, where(:deleted=>1)
+    scope :recent, desc("created_at")
   end
   def deleted?
     [1,3].include?(self.deleted)

@@ -3,15 +3,29 @@ class CoursewaresController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy,:thank]
   before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
   before_filter :authenticate_user_ownership!, :only => [:update,:destroy]
+  
   def latest
-    @seo[:title] = '讲义·电子书·课堂录像·习题解答·互动交流'
+    @seo[:title] = '最新课件'
     render "latest#{@subsite}"
   end
+  def hot
+    @seo[:title] = '最热课件'
+    render "latest#{@subsite}"
+  end
+  def videos
+  end
+  def books
+  end
+  
   def index
-    pagination_get_ready
-    @coursewares = Courseware.nondeleted.normal.order('updated_at desc')
-    pagination_over(@coursewares.count)
-    @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+    respond_to do |format|
+      format.json{
+        pagination_get_ready
+        @coursewares = Courseware.nondeleted.normal.order('updated_at desc')
+        pagination_over(@coursewares.count)
+        @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+      }
+    end
   end
   def thank
     current_user.inc(:thank_coursewares_count,1)
@@ -22,6 +36,7 @@ class CoursewaresController < ApplicationController
   end
   def new
     @seo[:title] = '上传课件'
+    @courseware = Courseware.new
     prepare_s3
   end
   def embed

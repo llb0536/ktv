@@ -10,6 +10,24 @@ class Topic
     $redis_topics.hdel self.id,:summary
     $redis_topics.hdel self.name,:id
   }
+  def self.roots
+    Topic.where(:fathers=>[])
+  end
+  def self.math_and_sciences
+    self.find_or_create_by(name:'数学与自然科学')
+  end
+  def self.engineering
+    self.find_or_create_by(name:'工程')
+  end
+  def self.humanities
+    self.find_or_create_by(name:'人文、艺术与社会科学')
+  end
+  def self.interdisciplinaries
+    self.find_or_create_by(name:'交叉学科')
+  end
+  def self.others
+    self.find_or_create_by(name:'其他')
+  end
   before_save :counter_work
   def counter_work
     self.asks_count=self.asks.nondeleted.count
@@ -82,6 +100,7 @@ class Topic
     self.fathers.uniq!
     self.save!
   end
+
   def children
     Topic.where(:fathers=>self.name)
   end

@@ -5,17 +5,45 @@
 
 
     <div class="navigator yahe cf">
-    <ul>
-      <li class="<%= 'current' if latest_coursewares_path==request.path %>"><a href="<%= latest_coursewares_path %>">最新上传</a></li>
-<li class="dot"></li>
-      <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">学科领域</a></li>
-<li class="dot"></li>
-      <li class="<%= 'current' if users_path==request.path %>"><a href="<%= users_path %>">全部老师</a></li>
-<li class="dot"></li>
-      <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校</a></li>
-<li class="dot"></li>
-      <li class="<%= 'current' if home_index_path==request.path %>"><a href="<%= home_index_path %>">解题互助</a></li>
-    </ul>
+
+      <ul>
+      <li class="<%= 'current' if ['/',
+      hot_coursewares_path,
+      hot_users_path,
+      latest_coursewares_path,
+      hot_topics_path,
+      logs_path,
+      ].include? request.path %>"><a class="navmark" href="/">首页<span class="iconbg arrow"></span></a>
+      <div class="dropdown w200" style="display: none;">
+      <span class="iconbg uparrow"></span>
+      <a href="<%= hot_coursewares_path %>">热门</a>
+      <a href="<%= hot_users_path %>">达人</a>
+      <a href="<%= latest_coursewares_path %>">最新</a>
+      <a href="<%= hot_topics_path %>">领域</a>
+      <a href="<%= logs_path %>">动态</a>
+      </div>
+      </li>
+      <li class="dot"></li>
+
+      <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">全部领域</a></li>
+      <li class="dot"></li>
+      <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校/老师</a></li>
+      <li class="dot"></li>
+      <li class="<%= 'current' if maps_path==request.path %>"><a href="<%= maps_path %>">全部路线图</a></li>
+      <li class="dot"></li>
+      <li class="<%= 'current' if [surprise_path,
+      videos_coursewares_path,
+      books_coursewares_path,
+      ].include? request.path %>"><a class="navmark" href="<%= surprise_path %>">发现<span class="iconbg arrow"></span></a>
+      <div class="dropdown w100" style="display: none;">
+      <span class="iconbg uparrow"></span>
+      <a href="<%= videos_coursewares_path %>">课堂录像</a>
+      <a href="<%= books_coursewares_path %>">电子书</a>
+      </div>
+      </li>
+      <li class="dot"></li>
+      <li class="new<%= ' current ' if @we_are_inside_qa %>"><a href="/home/index">解题风云榜</a><b></b></li>
+      </ul>
     </div>
     </div>
     <% content_for :butt2 do %>

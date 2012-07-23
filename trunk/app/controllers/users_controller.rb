@@ -1,10 +1,16 @@
 # coding: utf-8
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auth_callback]
-  before_filter :init_user, :except => [:auth_callback,:index]
+  before_filter :init_user, :except => [:auth_callback,:index,:hot,:invite]
   before_filter :we_are_inside_qa
   def we_are_inside_qa
     @we_are_inside_qa = true
+  end
+  def hot
+    @we_are_inside_qa = false
+  end
+  def invite
+    @we_are_inside_qa = false    
   end
   def index
     @we_are_inside_qa = false

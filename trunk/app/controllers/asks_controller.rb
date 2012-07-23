@@ -40,7 +40,7 @@ class AsksController < ApplicationController
   end
 
   def show
-    @we_are_inside_qa = true
+    @we_are_no_zm_header = true
     begin
       @ask = Ask.nondeleted.where(_id:BSON::ObjectId(params[:id])).first
     rescue => e

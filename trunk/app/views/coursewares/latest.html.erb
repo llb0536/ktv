@@ -8,7 +8,7 @@
 
 
 
-  <div id="content" class="themeContent" style="margin-top:18px">
+  <div id="content" class="themeContent"  style="box-shadow:none;background:none;margin-top:18px">
   <div id="cols_0" class="column firstCol"></div><!-- /cols_0 -->
   <div id="cols_1" class="column"></div>
   <div id="cols_2" class="column"></div>
@@ -86,7 +86,7 @@ function shareWindow(sync_type, uri) {
     if (sync_type == "qzone") {
         uri = uri.replace('qzone_title', encodeURIComponent($("#input_qzoneTitle").val()));
         uri = uri.replace('descContent', '');
-        uri = uri.replace('summaryContent', encodeURIComponent("知美网，找到真正想要的 —— 购物分享社区"));
+        uri = uri.replace('summaryContent', encodeURIComponent("课件交流系统，找到真正想要的 —— 购物分享社区"));
         param = "height=600, width=650";
     }
     if (param != "") {

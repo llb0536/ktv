@@ -1,8 +1,11 @@
 # -*- encoding : utf-8 -*-
 class WelcomeController < ApplicationController
+  def surprise
+    
+  end
   def index
-    # todo
-    redirect_to latest_coursewares_path
+    @seo[:title] = '首页'
+    @latest_user = User.already_confirmed.recent.first
   end
   def inactive_sign_up
     render "inactive_sign_up#{@subsite}",layout:'application_for_devise'

@@ -4,6 +4,7 @@ class School
   include Mongoid::Timestamps
   include BaseModel
   field :name
+  field :coursewares_count, :type => Integer, :default => 0
   has_many :users
   def self.human_attribute_name(attr, options = {})
     case attr.to_sym

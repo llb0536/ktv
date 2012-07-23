@@ -4,7 +4,9 @@ class TopicsController < ApplicationController
   def we_are_inside_lingyu
     @we_are_inside_lingyu = true
   end  
-
+  def hot
+    @we_are_inside_lingyu = true    
+  end
   def update_fathers
     @name = params[:name].strip
     @add = params[:add] == "1" ? true : false
@@ -60,6 +62,7 @@ class TopicsController < ApplicationController
 
 
   def index
+    @seo[:title] = '全部领域'
     @per_page = 20
     @topics = Topic.all.paginate(:page => params[:page], :per_page => @per_page)
   end

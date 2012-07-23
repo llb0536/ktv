@@ -201,7 +201,6 @@ class Ask
     spams_count < Setting.ask_spam_max
   end
   scope :last_actived, desc(:answered_at)
-  scope :recent, desc("created_at")
   # 除开一些 id，如用到 mute 的题，传入用户的 muted_ask_ids
   scope :exclude_ids, lambda { |id_array| not_in("_id" => (id_array ||= [])) } 
   scope :only_ids, lambda { |id_array| any_in("_id" => (id_array ||= [])) } 

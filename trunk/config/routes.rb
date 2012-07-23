@@ -35,11 +35,16 @@ Quora::Application.routes.draw do
   get '/welcome/inactive_sign_up'
   get '/welcome/shuffle'
   get '/welcome/about'
+  get '/welcome/surprise' => 'welcome#surprise',:as => 'surprise'
   # ________________________________ktv__________________________________________
   resources :schools
+  resources :maps
   resources :coursewares do
     collection do
       get 'latest'
+      get 'hot'
+      get 'videos'
+      get 'books'
     end
     member do
       get 'download'
@@ -96,6 +101,10 @@ Quora::Application.routes.draw do
   match "/doing" => "logs#index"
 
   resources :users do
+    collection do
+      get 'hot'
+      get 'invite'
+    end
     member do
       get "answered"
       get "asked"
@@ -146,6 +155,9 @@ Quora::Application.routes.draw do
   resources :comments 
 
   resources :topics do #, :constraints => { :id => /[a-zA-Z\w\s\.%\-_]+/ }
+    collection do
+      get 'hot'
+    end
     member do
       get "follow"
       get "unfollow"
