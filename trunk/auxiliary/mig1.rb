@@ -68,11 +68,6 @@
 #   t=Topic.find_or_create_by(name:name);t.add_father(father)
 # end
 
-
-
-
-
-
 item=Courseware.first.user
 ec = UserCache.create!(id:item.id,hot_rank:1,followers_count:item.followers_count)
 
