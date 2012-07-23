@@ -116,7 +116,7 @@ gem 'resque-pool'
 # Diff 内容并输出 HTML 格式
 # gem "htmldiff", :git => "git://github.com/huacnlee/htmldiff.git"
 
-gem "redis-search",'>=0.8.0'
+gem "redis-search",:path=>'vendor/redis-search'
 gem 'redis-namespace'
 
 group :development do

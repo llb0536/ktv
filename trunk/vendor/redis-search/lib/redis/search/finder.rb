@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'chinese_pinyin'
-
 class Redis
   module Search
     # use rmmseg to split words
@@ -31,10 +30,10 @@ class Redis
       key = Search.mk_complete_key(type)
       
       
-      if start = Redis::Search.config.redis_slave.zrank(key,prefix)
+      if start = Redis::Search.config.redis.zrank(key,prefix)
         count = limit
         max_range = start+(rangelen*limit)-1
-        range = Redis::Search.config.redis_slave.zrange(key,start,max_range)
+        range = Redis::Search.config.redis.zrange(key,start,max_range)
         while prefix_matchs.length <= count
           start += rangelen
           break if !range or range.length == 0
@@ -68,11 +67,11 @@ class Redis
       # 按词语搜索
       temp_store_key = "tmpsunionstore:#{words.join("+")}"
       if words.length > 1
-        if !Redis::Search.config.redis_slave.exists(temp_store_key)
+        if !Redis::Search.config.redis.exists(temp_store_key)
           # 将多个词语组合对比，得到并集，并存入临时区域   
-          Redis::Search.config.redis_slave.sunionstore(temp_store_key,*words)
+          Redis::Search.config.redis.sunionstore(temp_store_key,*words)
           # 将临时搜索设为1天后自动清除
-          Redis::Search.config.redis_slave.expire(temp_store_key,86400)
+          Redis::Search.config.redis.expire(temp_store_key,86400)
         end
         # 根据需要的数量取出 ids
       else
@@ -83,13 +82,13 @@ class Redis
       if !condition_keys.blank?
         condition_keys << temp_store_key if !words. blank?
         temp_store_key = "tmpsinterstore:#{condition_keys.join('+')}"
-        if !Redis::Search.config.redis_slave.exists(temp_store_key)
-          Redis::Search.config.redis_slave.sinterstore(temp_store_key,*condition_keys)
-          Redis::Search.config.redis_slave.expire(temp_store_key,86400)
+        if !Redis::Search.config.redis.exists(temp_store_key)
+          Redis::Search.config.redis.sinterstore(temp_store_key,*condition_keys)
+          Redis::Search.config.redis.expire(temp_store_key,86400)
         end
       end
       
-      ids = Redis::Search.config.redis_slave.sort(temp_store_key,
+      ids = Redis::Search.config.redis.sort(temp_store_key,
                                             :limit => [0,limit], 
                                             :by => Search.mk_score_key(type,"*"),
                                             :order => "desc")
@@ -135,11 +134,11 @@ class Redis
       temp_store_key = "tmpinterstore:#{words.join("+")}"
       
       if words.length > 1
-        if !Redis::Search.config.redis_slave.exists(temp_store_key)
+        if !Redis::Search.config.redis.exists(temp_store_key)
           # 将多个词语组合对比，得到交集，并存入临时区域
-          Redis::Search.config.redis_slave.sinterstore(temp_store_key,*words)
+          Redis::Search.config.redis.sinterstore(temp_store_key,*words)
           # 将临时搜索设为1天后自动清除
-          Redis::Search.config.redis_slave.expire(temp_store_key,86400)
+          Redis::Search.config.redis.expire(temp_store_key,86400)
           
           # 拼音搜索
           if Search.config.pinyin_match
@@ -151,12 +150,12 @@ class Redis
               temp_pinyin_store_key = "tmpinterstore:#{pinyin_words.join("+")}"
             end
             # 找出拼音的
-            Redis::Search.config.redis_slave.sinterstore(temp_pinyin_store_key,*pinyin_words)
+            Redis::Search.config.redis.sinterstore(temp_pinyin_store_key,*pinyin_words)
             # 合并中文和拼音的搜索结果
-            Redis::Search.config.redis_slave.sunionstore(temp_sunion_key,*[temp_store_key,temp_pinyin_store_key])
+            Redis::Search.config.redis.sunionstore(temp_sunion_key,*[temp_store_key,temp_pinyin_store_key])
             # 将临时搜索设为1天后自动清除
-            Redis::Search.config.redis_slave.expire(temp_pinyin_store_key,86400)
-            Redis::Search.config.redis_slave.expire(temp_sunion_key,86400)
+            Redis::Search.config.redis.expire(temp_pinyin_store_key,86400)
+            Redis::Search.config.redis.expire(temp_sunion_key,86400)
             temp_store_key = temp_sunion_key
           end
         end
@@ -165,7 +164,7 @@ class Redis
       end
       
       # 根据需要的数量取出 ids
-      ids = Redis::Search.config.redis_slave.sort(temp_store_key,
+      ids = Search.config.redis.sort(temp_store_key,
                                             :limit => [0,limit], 
                                             :by => Search.mk_score_key(type,"*"),
                                             :order => "desc")
@@ -182,17 +181,9 @@ class Redis
   
     private
       def self._split(text)
-        #for safety, note that RMMSeg::Algorithm.new(nil) causes Segmentation fault
-        if nil==text
-          msg = 'Refrained from calling RMMSeg::Algorithm with nil'
-          if defined?(Rails) == 'constant' && Rails.class == Class
-            ::Rails.logger.warn(msg)
-          else
-            puts msg
-          end
-          return []
-        end
-        #now it's safe.
+        # return chars if disabled rmmseg
+        return text.split("") if Search.config.disable_rmmseg
+          
         algor = RMMSeg::Algorithm.new(text)
         words = []
         loop do
@@ -204,7 +195,7 @@ class Redis
       end
     
       def self.warn(msg)
-        return if not Search.config.debug
+        return if not Redis::Search.config.debug
         msg = "\e[33m[Redis::Search] #{msg}\e[0m"
         if defined?(Rails) == 'constant' && Rails.class == Class
           ::Rails.logger.warn(msg)
@@ -214,7 +205,7 @@ class Redis
       end
       
       def self.info(msg)
-        return if not Search.config.debug
+        return if not Redis::Search.config.debug
         msg = "\e[32m[Redis::Search] #{msg}\e[0m"
         if defined?(Rails) == 'constant' && Rails.class == Class
           ::Rails.logger.debug(msg)
@@ -244,7 +235,7 @@ class Redis
         result = []
         sort_field = options[:sort_field] || "id"
         return result if ids.blank?
-        Redis::Search.config.redis_slave.hmget(type,*ids).each do |r|
+        Redis::Search.config.redis.hmget(type,*ids).each do |r|
           begin
             result << JSON.parse(r) if !r.blank?
           rescue => e

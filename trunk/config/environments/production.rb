@@ -63,7 +63,6 @@ Quora::Application.configure do
     validationEngine.js
     keditor/*
     about.css
-    css_ie8.css
     css_ie.css
   }
   config.serve_static_assets = false
