@@ -185,7 +185,7 @@
 <div id="content">
 <div class="boxnoun cf">
 <div class="foreign-rec">
-<h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热</b>作者</span></span></h2>
+<h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最受欢迎的</b>课件作者</span></span></h2>
 <div class="bigshow">
 <a href="<%= user_path(@hottest_user) %>" target="_blank"><img src="<%= avatar_url(@hottest_user,:huge) %>" /></a>
 </div>
@@ -201,11 +201,11 @@
   </h3>
   <p>
       <a href="<%= user_path @hottest_user %>" class="gray" target="_blank">
-        <%= @hottest_user.bio %>
+        <%= @hottest_user.bio_plain %>
       </a>
   </p>
   <h3 class="ttname" style="line-height: 1">
-      <span class="yahe"><a href="<%= user_path @hottest_user %>">代表作</a></span>
+      <span class="yahe"><a href="<%= user_path @hottest_user %>">课件选集</a></span>
   </h3>
   
 <ul class="cf">

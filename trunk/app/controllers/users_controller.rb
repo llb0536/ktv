@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
     @user.avatar = params[:user][:avatar]
     @user.save!
-    redirect_to @user,notice:'头像更新成功！'
+    redirect_to "/users/#{@user.slug}",notice:'头像更新成功！'
   end  
   def hot
     @we_are_inside_qa = false

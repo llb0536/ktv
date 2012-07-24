@@ -13,7 +13,7 @@
  * 
  */
 ;
-var imgPath = "/assets/zlzp/";
+var imgPath = "/zlzp/";
 QEDITOR_TOOLBAR_HTML = '\<div class="qeditor_toolbar"> \
 	  <a href="#" onclick="return QEditor.action(this,\'bold\');" title="加粗"><b>B</b></a> \
 	  <a href="#" onclick="return QEditor.action(this,\'italic\');" title="倾斜"><i>I</i></a> \

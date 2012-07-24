@@ -59,7 +59,7 @@
 					<div class="userinfo">
 						<div class="uheadbig">
 						  <figure class="avatar">
-							<img src="<%= avatar_url(@user,:normal180) %>" title="<%= @user.name %>" alt="<%= @user.name %>"/>
+							<img style="height:180px !important;width:180px !important;" src="<%= avatar_url(@user,:normal180) %>" title="<%= @user.name %>" alt="<%= @user.name %>"/>
 							<% if owner? @user %>
 							  <div class="__qa clearfix"><div class="edit hide" ><a class="changeUserHead">修改头像</a></div></div>
 							<% end %>

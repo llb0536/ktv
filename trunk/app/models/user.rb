@@ -342,8 +342,11 @@ class User
     end
   end
   validate :bio_lengthvali
+  def bio_plain
+    Nokogiri.HTML(self.bio).text()
+  end
   def bio_lengthvali
-    errors.add(:bio, '太长') unless Nokogiri.HTML(self.bio).text().length() <= 4000
+    errors.add(:bio, '太长') unless self.bio_plain <= 4000
   end
   validates_length_of :tagline,:maximum=>40
   validates_presence_of :name, :slug
