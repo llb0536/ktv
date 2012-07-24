@@ -86,8 +86,16 @@
       </form>
       <div class="navigation">
         <ul>
-          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap" onclick="return Asks.addAsk()">我要提问</a></li>
-          <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addtext_wrap">我要上传</a></li>
+          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap">我要提问</a></li>
+          <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addcw_wrap">我要上传</a></li>
+          <% content_for :butt2 do %>
+          $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
+          $('#core_addcw_wrap').click(function(){
+            im.zm.newcw();
+            $("#loginLayout").definedDialog("open");
+            return false;
+          });
+          <% end %>
         </ul>
         <div id="amazing-shadow"></div>
         <% if user_signed_in? %>
@@ -267,6 +275,7 @@
   <div class="__zm">
     <div class="totop" id="backtotop" style="display: none;"><a href="javascript:void(0);">返回 </a></div>
     <div id="loginLayout"></div>
+    <div id="newcwLayout"></div>
     <div id="firstload" class="firstload" style="display:none;">加载中...</div>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->

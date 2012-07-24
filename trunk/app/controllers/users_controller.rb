@@ -19,7 +19,12 @@ class UsersController < ApplicationController
     @we_are_inside_qa = false
   end
   def invite
-    @we_are_inside_qa = false    
+    @seo[:title] = '邀请好友注册'
+    @user = User.new
+    render layout:'application_for_devise'
+  end
+  def invite_submit
+    @user.inviter_id = current_user.id
   end
   def index
     @we_are_inside_qa = false
@@ -28,6 +33,7 @@ class UsersController < ApplicationController
   def init_user
     @user = User.find_by_slug(params[:id])
     @user = User.find_by_slug(params[:id].force_encoding_zhaopin.split('_').join('.')) if @user.blank? or !@user.deleted.blank?
+    @user ||= User.where(:_id=>params[:id]).first
     if @user.blank? or !@user.normal_deleting_status(current_user)
       render_404
     end

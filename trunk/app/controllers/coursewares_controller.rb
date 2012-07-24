@@ -3,6 +3,7 @@ class CoursewaresController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create,:edit,:update,:destroy,:thank]
   before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
   before_filter :authenticate_user_ownership!, :only => [:update,:destroy]
+
   def mine
     @seo[:title] = '我关注的'
     render "latest#{@subsite}"
@@ -38,6 +39,15 @@ class CoursewaresController < ApplicationController
     @courseware.inc(:thanked_count,1)
     current_user.thank_courseware(@courseware)
     render :text => "1"
+  end
+  def new_youku
+    @seo[:title] = '导入视频网站视频'
+  end
+  def new_emule
+    @seo[:title] = '导入原始下载地址'
+  end
+  def new_sina
+    @seo[:title] = '导入外站资源链接'
   end
   def new
     @seo[:title] = '上传课件'

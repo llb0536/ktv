@@ -56,6 +56,7 @@ class User
          :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
+  field :inviter_id
   field :email,              :type => String, :null => false, :default => ""
   index :email, :uniq => true
   field :encrypted_password, :type => String, :null => false, :default => ""
@@ -346,7 +347,7 @@ class User
     Nokogiri.HTML(self.bio).text()
   end
   def bio_lengthvali
-    errors.add(:bio, '太长') unless self.bio_plain <= 4000
+    errors.add(:bio, '太长') unless self.bio_plain.length <= 4000
   end
   validates_length_of :tagline,:maximum=>40
   validates_presence_of :name, :slug
@@ -696,20 +697,20 @@ class User
     self.muted_ask_ids ||= []
     return if self.muted_ask_ids.index(ask_id)
     self.muted_ask_ids << ask_id
-    self.save
+    self.save(:validate => false)
   end
   
   def unmute_ask(ask_id)
     self.muted_ask_ids.delete(ask_id)
-    self.save
+    self.save(:validate => false)
   end
   def follow_ask(ask,nolog=false)
     return if self.followed_ask_ids.include? ask.id
     self.followed_ask_ids << ask.id
-    self.save
+    self.save(:validate => false)
     ask.follower_ids << self.id
     ask.followed_count = ask.follower_ids.count
-    ask.save
+    ask.save(:validate => false)
     
     insert_follow_log("FOLLOW_ASK", ask) unless nolog
   end
@@ -721,11 +722,11 @@ class User
   
   def unfollow_ask(ask,nolog=false)
     self.followed_ask_ids.delete(ask.id)
-    self.save
+    self.save(:validate => false)
     
     ask.follower_ids.delete(self.id)
     ask.followed_count = ask.follower_ids.count
-    ask.save
+    ask.save(:validate => false)
     
     insert_follow_log("UNFOLLOW_ASK", ask) unless nolog
   end
@@ -742,10 +743,10 @@ class User
       self.tags << topic.name unless self.tags.include?(topic.name)
     end
     self.followed_topic_ids << topicid
-    self.save
+    self.save(:validate => false)
     topic.follower_ids << self.id
     topic.followers_count_changed = true
-    topic.save
+    topic.save(:validate => false)
 
     # 清除推荐领域
     # UserSuggestItem.delete(self.id, "Topic", topic.id)
@@ -762,11 +763,11 @@ class User
   
   def unfollow_topic(topic,withlog=true)
     self.followed_topic_ids.delete(topic.id)
-    self.save
+    self.save(:validate => false)
     
     topic.follower_ids.delete(self.id)
     topic.followers_count_changed = true
-    topic.save
+    topic.save(:validate => false)
     
     insert_follow_log("UNFOLLOW_TOPIC", topic) if withlog
     
@@ -795,10 +796,10 @@ class User
       return if self.following_ids.include? user.id
       self.following_ids << user.id
       self.following_count = self.following_ids.count
-      self.save
+      self.save(:validate => false)
       user.follower_ids << self.id
       user.followers_count = user.follower_ids.count
-      user.save
+      user.save(:validate => false)
 
       # 清除推荐领域
       # UserSuggestItem.delete(self.id, "User", user.id)
@@ -833,11 +834,11 @@ class User
   def unfollow(user,nolog=false)
     self.following_ids.delete(user.id)
     self.following_count = self.following_ids.count
-    self.save
+    self.save(:validate => false)
     
     user.follower_ids.delete(self.id)
     user.followers_count = user.follower_ids.count
-    user.save
+    user.save(:validate => false)
     
     insert_follow_log("UNFOLLOW_USER", user) unless nolog
 
@@ -850,14 +851,14 @@ class User
     self.thanked_answer_ids ||= []
     return true if self.thanked_answer_ids.index(answer.id)
     self.thanked_answer_ids << answer.id
-    self.save
+    self.save(:validate => false)
     insert_follow_log("THANK_ANSWER", answer, answer.ask)
   end
   def thank_courseware(courseware)
     self.thanked_courseware_ids ||= []
     return true if self.thanked_courseware_ids.index(courseware.id)
     self.thanked_courseware_ids << courseware.id
-    self.save
+    self.save(:validate => false)
     insert_follow_log("THANK_COURSEWARE", courseware, courseware.topic)
   end
   
@@ -1054,7 +1055,7 @@ class User
         log.target_ids ||= []
         log.target_ids.delete(item.id)
         log.target_ids << item.id
-        log.save
+        log.save(:validate => false)
         return
       end
 
@@ -1072,7 +1073,7 @@ class User
         log.target_parent_title = parent_item.title
       end
       log.diff = ""
-      log.save
+      log.save(:validate => false)
 
     rescue Exception => e
         

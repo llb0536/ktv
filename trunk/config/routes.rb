@@ -46,6 +46,9 @@ Quora::Application.routes.draw do
       get 'hot'
       get 'videos'
       get 'books'
+      get 'new_youku'
+      get 'new_emule'
+      get 'new_sina'
     end
     member do
       get 'download'
@@ -105,6 +108,7 @@ Quora::Application.routes.draw do
     collection do
       get 'hot'
       get 'invite'
+      post 'invite_submit'
     end
     member do
       get "answered"

@@ -1,0 +1,111 @@
+<%= image_tag 'ie/ktv_invite.png',:class => 'ktvregh2', :alt => '注册新用户' %>
+<% resource = @user;resource_name='user' %>
+<%= form_for(resource, :as => resource_name, :url => invite_submit_users_path, :html=>{:class => 'normal',:id=>'submit_btn_form',:autocomplete=>"off"}) do |f| %>
+  <%# devise_error_messages! %>
+  <div class="field">
+    <%= f.label :name,'真实姓名' %><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:name) %></div><br class="clear">
+    <%= f.text_field :name,:class => 's462',:tabindex => 1,:autocomplete=>"off" %>
+  </div>
+  <div class="field">
+    <%= f.label :email,'E-mail' %>(<%= link_to "重发激活邮件", new_user_confirmation_path %>)(<%= link_to "忘记密码", new_password_path(resource_name) %>)<div class="field_error" id="regerror_email"><%= resource.errors_for_field(:email) %></div><br class="clear">
+    <%= f.email_field :email,:class => 's462',:tabindex => 2,:autocomplete=>"off" %>
+  </div>
+  <div class="__sdk">
+    <div class="form_sections" style="margin-bottom:18px">
+      <p><label for="user_email">照片</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:avatar) %></div><br class="clear">
+        <input id="file_uploader" name="user[avatar]" type="file" style="height:33px;padding-left:0;text-indent:0" size="30" /><br>
+              上传一张被邀请人的照片吧！支持 jpg, gif, png 格式的图片，不要超过 2MB。建议图片尺寸为大于等于 300×300 的正方形。
+      </p>
+    </div>  
+  </div>
+  <div class="clearfix" style="margin-top:20px;padding-bottom:8px">
+    <div class="field fl">
+      <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">添加到待邀列表</a>
+    </div>
+    <div class="field fr">
+      <a href="<%= cancel_href %>" class="btn btn210_grey">取消</a>
+    </div>
+  </div>
+<% end %>
+<div class="__qua clearfix">
+  <div class="main_col col w4_5">
+  	<div class="p0_5">
+  		<h1 class="heading">待邀列表</h1>
+  		<div class="contacts_previous_invitations">
+  			<div id="ld_NURTav_14632">
+  				<div id="ld_NURTav_14636" class="pagedlist_item">
+  					<div class="col w4_5 item p1 contact_list_item">
+  						<div class="col w0_5">
+  							<img width="50" height="50" src="http://graph.facebook.com/100003118382851/picture?type=square">
+  						</div>
+  						<div class="col w3000">
+  							<div class="name">
+  								<strong>Daxin Han</strong>
+  							</div>
+  							<p class="action_bar">
+  								<a id="__w2_ssdDwXE_email" href="#">handaxin416@gmail.com</a><span class="bullet"> • </span>Invited Apr 27, 2012
+  							</p>
+  						</div>
+  						<div class="side_col col w1">
+  							<div id="ld_NURTav_14667">
+  								<a id="__w2_g1VZBf5_invite" href="#" class="action_button">发送邀请</a>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  				<div id="ld_NURTav_14637" class="pagedlist_item">
+  					<div class="col w4_5 item p1 contact_list_item">
+  						<div class="col w0_5">
+  							<img width="50" height="50" src="http://graph.facebook.com/698261732/picture?type=square">
+  						</div>
+  						<div class="col w3000">
+  							<div class="name">
+  								<strong>Kai Hu</strong>
+  							</div>
+  							<p class="action_bar">
+  								<a id="__w2_M8z2Na7_email" href="#">khu@thoughtworks.com</a>
+  							</p>
+  						</div>
+  						<div class="side_col col w1">
+  							<div id="ld_NURTav_14668">
+  								<a id="__w2_VEThmAh_invite" href="#" class="action_button">发送邀请</a>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  				<div id="ld_NURTav_14638" class="pagedlist_item">
+  					<div class="col w4_5 item p1 contact_list_item">
+  						<div class="col w0_5">
+  							<img width="50" height="50" src="http://a0.twimg.com/profile_images/375504690/_____normal.jpg">
+  						</div>
+  						<div class="col w3000">
+  							<div class="name">
+  								<strong>Liber Liu</strong>
+  							</div>
+  							<p class="action_bar">
+  								<a id="__w2_X0CnqXt_email" href="#">llb0536@gmail.com</a><span class="bullet"> • </span>Invited Apr 27, 2012
+  							</p>
+  						</div>
+  						<div class="side_col col w1">
+  							<div id="ld_NURTav_14669">
+  								<a id="__w2_sZzQbag_invite" href="#" class="action_button">发送邀请</a>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
+<div style="width:100%;height:50px"></div>
+<% content_for :butt2 do %>
+$('#user_name').blur(function(){
+  KTV.checkUsername(this);
+  return true;
+});
+$('#user_email').blur(function(){
+  KTV.checkEmail(this);
+  return true;
+});
+<% end %>
