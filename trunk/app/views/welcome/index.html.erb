@@ -193,7 +193,11 @@
   <h3 class="ttname" style="line-height: 1">
       <a href="<%= user_path(@hottest_user) %>" target="_blank"><span class="yahe blue bigtitle" style="color:#1D8B74;"><%= @hottest_user.name %></span></a>
       <%= renzheng_teacher(@hottest_user) %>
-      <a class="hotbutton follow-btn" id="15329" followed="15329" follow="false">关注</a>
+		  <% if (current_user and current_user.followed?(@hottest_user)) %>
+      <a class="hotbutton follow-btn" id="<%= @hottest_user.id %>" followed="<%= @hottest_user.id %>" follow="false">关注</a>
+      <% else %>
+      <a follow="true" followed="<%= @hottest_user.id %>" id="<%= @hottest_user.id %>" class="hotbutton unfollow-btn">已关注</a>
+      <% end %>
   </h3>
   <p>
       <a href="<%= user_path @hottest_user %>" class="gray" target="_blank">
@@ -1411,25 +1415,25 @@
 
 <li>
 <a href="/profile/1287457" target="_blank"><img src="http://b7.imimg.cn//20120717/9178/46cc/1280067810442943.jpg" /></a>
-<div class="price cf"><a href="/profile/1287457" target="_blank"><span class="floatright blue">39个商品</span>银泰网</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证商家"></span></div>
+<div class="price cf"><a href="/profile/1287457" target="_blank"><span class="floatright blue">39个商品</span>银泰网</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证专家"></span></div>
 <div class="gray"><a href="/profile/1287457" target="_blank" class="gray">精品时尚百货经营的大型电子商务平台。品牌商品一应俱全。</a></div>
 </li>
 
 <li>
 <a href="/profile/356428" target="_blank"><img src="http://b1.imimg.cn//20120614/926a/6e90/17911132111805896.jpg" /></a>
-<div class="price cf"><a href="/profile/356428" target="_blank"><span class="floatright blue">182个商品</span>有男度</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证商家"></span></div>
+<div class="price cf"><a href="/profile/356428" target="_blank"><span class="floatright blue">182个商品</span>有男度</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证专家"></span></div>
 <div class="gray"><a href="/profile/356428" target="_blank" class="gray">汇聚国外设计师及小品牌服装及配饰。以整套生活搭配为Point。</a></div>
 </li>
 
 <li>
 <a href="/profile/387268" target="_blank"><img src="http://b2.imimg.cn//20120605/4e3c/ceae/17129997963218896.jpg" /></a>
-<div class="price cf"><a href="/profile/387268" target="_blank"><span class="floatright blue">31个商品</span>简品100</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证商家"></span></div>
+<div class="price cf"><a href="/profile/387268" target="_blank"><span class="floatright blue">31个商品</span>简品100</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证专家"></span></div>
 <div class="gray"><a href="/profile/387268" target="_blank" class="gray">来杯好茶，简品100。各类好茶，让茶香伴你，放松身心。</a></div>
 </li>
 
 <li>
 <a href="/profile/390708" target="_blank"><img src="http://b5.imimg.cn//20120703/c1e0/3ddc/1817724671652695.jpg" /></a>
-<div class="price cf"><a href="/profile/390708" target="_blank"><span class="floatright blue">36个商品</span>伊朵工坊</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证商家"></span></div>
+<div class="price cf"><a href="/profile/390708" target="_blank"><span class="floatright blue">36个商品</span>伊朵工坊</a><span class="ctf-icon small-ctf-w" title="课件交流系统认证专家"></span></div>
 <div class="gray"><a href="/profile/390708" target="_blank" class="gray">手工皂工坊。纯天然自制护肤品，爱让生活更美好。</a></div>
 </li>
 			
@@ -1701,7 +1705,7 @@ $(function () {
         var ulObj = "recommend_ul";
         groupId = parseInt(groupId) + 1;
         var prefix = 'http://b.imimg.cn';
-        var total = '8';
+        var total = '10';
         var todayFocusTotal = parseInt(total);
         if (groupId > todayFocusTotal) {
             groupId = 1;
@@ -1852,7 +1856,7 @@ $('#zhimei_star_refresh').live("click", function () {
     } catch (e) {}
 });
 $('.hotbutton').live("click", function () {
-    var loginUserId = 0;
+    var loginUserId = <%=raw current_user ? current_user.id.to_s.to_json : 0 %>;
     var follow = $(this).attr("follow");
     var followed = $(this).attr("followed");
     if (loginUserId == 0) {

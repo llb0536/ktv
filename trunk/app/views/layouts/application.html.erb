@@ -54,17 +54,17 @@
   <script type="text/javascript" charset="utf-8">
     window.psvr_subject = 'all';  
   <% if user_signed_in? %>
-    window.loginUser = {
-      "id": '<%= current_user.id %>',
-      "uid": '<%= current_user.id %>',
-      "nickname": "<%= current_user.name %>",
-      "gender": 1,
-      "description": "<%= current_user.bio %>",
-      "avatarLargeCut": "<%= avatar_url(current_user,:normal180)%>",
-      "avatarMedium": "<%= avatar_url(current_user,:mid60)%>",
-      "avatarTiny": "<%= avatar_url(current_user,:small30)%>",
-      "avatarLarge": "<%= avatar_url(current_user,:normal180)%>"
-    };
+    window.loginUser = <%=raw Hash[
+        "id"=> "#{current_user.id}",
+        "uid"=> "#{current_user.id}",
+        "nickname"=> "#{current_user.name}",
+        "gender"=> 1,
+        "description"=> "#{current_user.bio}",
+        "avatarLargeCut"=> "#{avatar_url(current_user,:normal180)}",
+        "avatarMedium"=> "#{avatar_url(current_user,:mid60)}",
+        "avatarTiny"=> "#{avatar_url(current_user,:small30)}",
+        "avatarLarge"=> "#{avatar_url(current_user,:normal180)}",
+      ].to_json.to_json%>;
   <% else %>
     window.loginUser = "";
   <% end %>

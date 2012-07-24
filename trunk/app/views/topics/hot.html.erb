@@ -1141,7 +1141,7 @@ unfollowAllFollows();
 }
 }
 $('#jquery-certufyShopCu .hotbutton').live("click",function(){
-var loginUserId = 0;
+var loginUserId = <%=raw current_user ? current_user.id.to_s.to_json : 0 %>;
 if (loginUserId == 0) {
 var _path = window.location.pathname;
 var flag = consts("REGIST_TYPE_STATION_GET");
@@ -1172,7 +1172,7 @@ $("#allFollows").removeClass();
 $("#allFollows").addClass("btn-xlarge-unfollow");
 });
 $('#jquery-certufyShop .shopCertify').live("click",function(){
-var loginUserId = 0;
+var loginUserId = <%=raw current_user ? current_user.id.to_s.to_json : 0 %>;
 if (loginUserId == 0) {
 var _path = window.location.pathname;
 var flag = consts("REGIST_TYPE_STATION_GET");

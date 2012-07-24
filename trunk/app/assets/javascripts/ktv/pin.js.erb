@@ -3536,12 +3536,10 @@ im.zm.detailPic = function (f, d) {
             x.push("	<h3>");
             x.push('<a href="' + uri("URI_USER", y.userId) + '" usercard="' + y.userId + '" havecard="1">' + y.userName + "</a>");
             if (v == consts("CERTIFY_COMPANY")) {
-                //todo
-                //x.push('<span class="ctf-icon small-ctf-w" title="认证商家 "></span>')
+                x.push('<span class="ctf-icon small-ctf-w" title="认证专家"></span>')
             }
             if (v == consts("CERTIFY_USER")) {
-                //todo
-                //x.push('<span class="ctf-icon small-ctf-star-w" title="Kejian.TV认证达人 "></span>')
+                x.push('<span class="ctf-icon small-ctf-star-w" title="Kejian.TV认证达人"></span>')
             }
             x.push("</h3>");
             x.push("<p>" + y.commentHtmlEscape + "</p>");
@@ -4105,8 +4103,7 @@ im.zm.autoLayout.prototype = {
             K = _getComment(picBoard[j].comments, picBoard[j].avatars)
         }
         var F = "";
-        //todo
-        //picBoard[j].certifyType == 1 ? F = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证商家"></span>' : F = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>';
+        picBoard[j].certifyType == 1 ? F = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证专家"></span>' : F = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>';
         var z, u, E;
         parseInt(picBoard[j].reshareCount) == 0 ? z = "" : z = '<em class="favourite-ico"></em><em>' + picBoard[j].reshareCount + "</em>";
         if (!parseInt(picBoard[j].commentCount)) {
@@ -4227,15 +4224,13 @@ im.zm.autoLayout.prototype = {
             if (typeof h[d[a].userId] == "string") {
                 f = h[d[a].userId]
             }
-            //todo
-            c=''
-            // if (d[a].certifyType == 1) {
-            //     c = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证商家"></span>'
-            // } else {
-            //     if (d[a].certifyType == 2) {
-            //         c = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
-            //     }
-            // }
+            if (d[a].certifyType == 1) {
+                c = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证专家"></span>'
+            } else {
+                if (d[a].certifyType == 2) {
+                    c = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
+                }
+            }
             e = d[a].comment;
             xHtml = ['<li class="cf"><a href="/users/' + d[a].userId + '" class="avatar"><img havecard="1" src="' + f + '" usercard="' + d[a].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/users/' + d[a].userId + '" class="username changecolor" havecard="1" usercard="' + d[a].userId + '">' + d[a].userName + "</a>" + c + "</p>", '<p commentId="' + d[a].id + '">' + e + "&nbsp;" + g + "</p></div></li>"].join("");
             b[a] = xHtml
@@ -5065,14 +5060,13 @@ window.autoLayout = {
                     comentContent = _getComment(picBoard[j].comments, picBoard[j].avatars)
                 }
                 var cel = "";
-                // todo
-                // if (picBoard[j].certifyType == 1) {
-                //     cel = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证商家"></span>'
-                // } else {
-                //     if (picBoard[j].certifyType == 2) {
-                //         cel = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
-                //     }
-                // }
+                if (picBoard[j].certifyType == 1) {
+                    cel = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证专家"></span>'
+                } else {
+                    if (picBoard[j].certifyType == 2) {
+                        cel = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
+                    }
+                }
                 var _reshare, _comment, _commentStyle;
                 parseInt(picBoard[j].reshareCount) == 0 ? _reshare = "" : _reshare = '<em class="favourite-ico"></em><em>' + picBoard[j].reshareCount + "</em>";
                 if (!parseInt(picBoard[j].commentCount)) {
@@ -5265,14 +5259,13 @@ window.autoLayout = {
                         _picUrl = picUrls[json[m].userId]
                     }
                     cels=''
-                    // todo
-                    // if (json[m].certifyType == 1) {
-                    //     cels = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证商家"></span>'
-                    // } else {
-                    //     if (json[m].certifyType == 2) {
-                    //         cels = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
-                    //     }
-                    // }
+                    if (json[m].certifyType == 1) {
+                        cels = '<span class="ctf-icon small-ctf-g" title="Kejian.TV认证专家"></span>'
+                    } else {
+                        if (json[m].certifyType == 2) {
+                            cels = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
+                        }
+                    }
                     comStr = json[m].comment;
                     xHtml = ['<li class="cf"><a href="/users/' + json[m].userId + '" class="avatar"><img havecard="1" src="' + _picUrl + '" usercard="' + json[m].userId + '"/></a>', '<div class="cmt-content"><p class="userinfo"><a href="/users/' + json[m].userId + '" class="username changecolor" havecard="1" usercard="' + json[m].userId + '">' + json[m].userName + "</a>" + cels + "</p>", '<p commentId="' + json[m].id + '">' + comStr + "&nbsp;" + ask + "</p></div></li>"].join("");
                     commentHtml[m] = xHtml
@@ -5459,18 +5452,16 @@ window.autoLayout = {
         var c = null,
             b = null;
         d.live("mouseenter", function () {
-          //todo
             var l = $(this);
             clearTimeout(c);
             c = setTimeout(function () {
-                l.addClass("onshare-mod")//.find(".sharebutton").show();
-                //l.find(".lk-comment").show()
+                l.addClass("onshare-mod").find(".sharebutton").show();
+                l.find(".lk-comment").show()
             }, 50)
         }).live("mouseleave", function () {
-          //todo
             var l = $(this);
             clearTimeout(c);
-            l.removeClass("onshare-mod")//.find(".sharebutton").hide();
+            l.removeClass("onshare-mod").find(".sharebutton").hide();
             l.find("div.boardlist").hide();
             l.find(".btn-select").removeClass("btn-selecting");
             l.find(".lk-comment").hide()
@@ -6082,14 +6073,13 @@ var boardLoad = {
                         sendTo = ""
                     }
                     var userImg = "";
-                    //todo
-                    // if (con.certifyType == 1) {
-                    //     userImg = ':<span class="ctf-icon small-ctf-w" title="Kejian.TV认证商家"></span>'
-                    // } else {
-                    //     if (con.certifyType == 2) {
-                    //         userImg = ':<span class="ctf-icon small-ctf-star-w" title="Kejian.TV认证达人"></span>'
-                    //     }
-                    // }
+                    if (con.certifyType == 1) {
+                        userImg = ':<span class="ctf-icon small-ctf-w" title="Kejian.TV认证专家"></span>'
+                    } else {
+                        if (con.certifyType == 2) {
+                            userImg = ':<span class="ctf-icon small-ctf-star-w" title="Kejian.TV认证达人"></span>'
+                        }
+                    }
                     var _html = ['<li class="cf" id=' + con.id + ">", '<div class="uhead"><a href="' + con.toUserUrl + '"><img src="' + con.toAvatarMedium + '"  /></a></div>', '<div class="usay">', '<p class="f14">' + sendTo + ' <a href="' + con.toUserUrl + '" >' + con.toUserName + "</a>" + userImg + '：<a href="' + con.replayUrl + '" class="blue">' + con.content + "" + newIcon + "</a></p>", '<p class="gray datatime"><span class="floatright"><a href="' + con.replayUrl + '" class="blue"><em class="blue">共' + con.sessionCount + "次对话</em></a> " + backAsk + "</span>" + con.snsDate + "</p>", "</div>", "</li>"].join("");
                     $("#" + id).append(_html)
                 }
@@ -10097,16 +10087,15 @@ $(function () {
                     des = $.fn.filStr(data.description)
                 }
                 types=''
-                //todo
-                // if (data.certifyType == 1) {
-                //     types = '<span class="ctf-icon small-ctf-g"  title="Kejian.TV认证商家"></span>'
-                // } else {
-                //     if (data.certifyType == 2) {
-                //         types = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
-                //     } else {
-                //         types = ""
-                //     }
-                // }
+                if (data.certifyType == 1) {
+                    types = '<span class="ctf-icon small-ctf-g"  title="Kejian.TV认证专家"></span>'
+                } else {
+                    if (data.certifyType == 2) {
+                        types = '<span class="ctf-icon small-ctf-star-g" title="Kejian.TV认证达人"></span>'
+                    } else {
+                        types = ""
+                    }
+                }
                 var _html = ['<span class="cardArr png"></span>', '<div class="shadow-cd png">', '<div class="cardbody-cd">', '<div class="userinfo-cd cf">', '<a class="avatar-cd" href="/users/' + data.userId + '" target="_blank"><img src="' + data.avatarTiny + '" /></a>', '<div class="profile-cd">', '<p class="name-cd"><a class="username-cd" href="/users/' + data.userId + '"  target="_blank" title="' + data.nickname + '">' + $.fn.fixStr(data.nickname, 24, "...") + "</a>" + types + "</p>", '<p class="boardprofile-cd">', '<a href="/follow/' + data.userId + '/1"  target="_blank"><em>' + data.followCount + "</em><br /><span>关注</span></a>", '<a href="/fans/' + data.userId + '/1"  target="_blank"><em>' + data.fansCount + "</em><br /><span>粉丝</span></a>", '<a href="' + uri("URI_BOARDS_LIST", data.userId) + '"  target="_blank"><em>' + data.boardCount + "</em><br /><span>图格</span></a>", "</p>", "</div>", "</div>", '<div class="userprofile-cd">' + des + "</div>", '<div class="cardbottom">', '<div class="platform">' + sSina + sRenren + sQQT + sQZone + sTaobao + sDouban + "</div>", '<div class="cardfollow">' + fllowMe + message + "</div>", "</div>", "</div>", "</div>"].join("");
                 $("#cardTip").html(_html);
                 _l = that.offset().left - ($("body").width() - that.width() - that.offset().left);
@@ -10255,8 +10244,6 @@ $(function () {
         })
     }
     $(".picUrl").die().live("click", function () {
-      return true;
-      // todo
         if ((navigator.userAgent.indexOf("MSIE") > 0 && parseInt($.browser.version) < 7) || navigator.userAgent.toLowerCase().match(/iPad/i) == "ipad") {
             return true
         } else {

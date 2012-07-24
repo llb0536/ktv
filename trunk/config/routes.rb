@@ -41,6 +41,7 @@ Quora::Application.routes.draw do
   resources :maps
   resources :coursewares do
     collection do
+      get 'mine'
       get 'latest'
       get 'hot'
       get 'videos'

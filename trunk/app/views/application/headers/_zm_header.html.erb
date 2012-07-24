@@ -24,7 +24,8 @@
       </div>
       </li>
       <li class="dot"></li>
-
+      <li class="<%= 'current' if mine_coursewares_path==request.path %>"><a href="<%= mine_coursewares_path %>">我关注的</a></li>
+      <li class="dot"></li>
       <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">全部领域</a></li>
       <li class="dot"></li>
       <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校/老师</a></li>
