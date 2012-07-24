@@ -14,13 +14,13 @@
     <div class="form_sections" style="margin-bottom:18px">
       <p><label for="user_email">照片</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:avatar) %></div><br class="clear">
         <input id="file_uploader" name="user[avatar]" type="file" style="height:33px;padding-left:0;text-indent:0" size="30" /><br>
-              上传一张被邀请人的照片吧！支持 jpg, gif, png 格式的图片，不要超过 2MB。建议图片尺寸为大于等于 300×300 的正方形。
+              上传一张被邀请人的照片吧，这样他/她注册后就有默认头像啦：）此项可选。
       </p>
     </div>  
   </div>
   <div class="clearfix" style="margin-top:20px;padding-bottom:8px">
     <div class="field fl">
-      <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">添加到待邀列表</a>
+      <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">立即发送邀请</a>
     </div>
     <div class="field fr">
       <a href="<%= cancel_href %>" class="btn btn210_grey">取消</a>
@@ -31,7 +31,7 @@
 <div class="__qua clearfix">
   <div class="main_col col w4_5">
   	<div class="p0_5">
-  		<h1 class="heading">待邀列表</h1>
+  		<h1 class="heading">邀请动态追踪</h1>
   		<div class="contacts_previous_invitations">
   			<div id="ld_NURTav_14632">
   				<div id="ld_NURTav_14636" class="pagedlist_item">
@@ -47,17 +47,13 @@
   							<p class="action_bar">
   								<a id="__w2_ssdDwXE_email" href="#"><%= item.email %></a>
 	<% if item.inviter_invited_at[current_user.id.to_s].present? %>
-	 <span class="bullet"> • </span>邀请于<%= item.inviter_invited_at[current_user.id] %>
+	 <span class="bullet"> • </span>最后邀请于<%= timeago(item.inviter_invited_at[current_user.id.to_s]) %>
 	<% end %>
   							</p>
   						</div>
   						<div class="side_col col w1">
   							<div id="ld_NURTav_14667">
-	<% if item.inviter_invited_at[current_user.id.to_s].present? %>
-  								<a id="__w2_g1VZBf5_invite" href="#" class="action_button">重新发送</a>
-  <% else  %>
-  								<a id="__w2_g1VZBf5_invite" href="#" class="action_button">发送邀请</a>
-  <% end %>
+              	  <%= link_to '重新发送', invite_send_user_path(item.slug), :method=>:post, class:"action_button" %>
   							</div>
   						</div>
   					</div>

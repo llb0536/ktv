@@ -58,6 +58,7 @@
   <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
     <%= yield :butt2 %>
+    $("abbr.timeago").timeago();
   });
   </script>
   <%= render 'analytics' if Rails.env.production? %>

@@ -374,13 +374,15 @@ class User
       end
     end
   end
-  attr_accessor :during_registration,:force_confirmation_instructions,:inviting
+  attr_accessor :during_registration,:force_confirmation_instructions,:inviting,:current_invitor_id
   alias_method :send_on_create_confirmation_instructions_before_psvr,:send_on_create_confirmation_instructions
   alias_method :send_confirmation_instructions_before_psvr,:send_confirmation_instructions
   def send_on_create_confirmation_instructions
     unless self.email_unknown or self.name_unknown
-      if self.inviting or self.during_registration or self.force_confirmation_instructions
-        send_on_create_confirmation_instructions_before_psvr
+      if self.during_registration or self.force_confirmation_instructions
+        self.devise_mailer.confirmation_instructions(self).deliver
+      elsif self.inviting
+        self.devise_mailer.invitation_instructions(self.id,self.current_invitor_id).deliver
       end
     end
   end

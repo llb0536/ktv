@@ -30,11 +30,24 @@ class UsersController < ApplicationController
     user.invite_by(current_user)
     user.avatar = params[:user][:avatar]
     if user.save
-      redirect_to invite_users_path
+      user.inviting = true
+      user.current_invitor_id = current_user.id
+      user.send_on_create_confirmation_instructions
+      user.inviter_invited_at[current_user.id.to_s] = Time.now
+      user.save!
+      redirect_to invite_users_path,:notice => "已经成功向#{user.name}发去邀请！"
     else
       @user = user
       render 'invite',layout:'application_for_devise'
     end
+  end
+  def invite_send
+    @user.inviting = true
+    @user.current_invitor_id = current_user.id
+    @user.send_on_create_confirmation_instructions
+    @user.inviter_invited_at[current_user.id.to_s] = Time.now
+    @user.save!
+    redirect_to invite_users_path,:notice => "已经成功向#{@user.name}发去邀请！"
   end
   def index
     @we_are_inside_qa = false

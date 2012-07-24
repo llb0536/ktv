@@ -5,7 +5,7 @@ Devise.setup do |config|
   
   config.mailer_sender = Setting.email_sender
 
-  #config.mailer = "DeviseMailer"
+  config.mailer = "DeviseMailer"
 
   require 'devise/orm/mongoid'
 

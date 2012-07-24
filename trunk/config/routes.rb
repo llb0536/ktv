@@ -113,6 +113,7 @@ Quora::Application.routes.draw do
       post 'invite_submit'
     end
     member do
+      post 'invite_send'
       get "answered"
       get "asked"
       get "asked_to"
