@@ -13,8 +13,10 @@ class CoursewaresController < ApplicationController
     render "latest#{@subsite}"
   end
   def videos
+    @seo[:title] = '课堂录像'
   end
   def books
+    @seo[:title] = '电子书'
   end
   
   def index
