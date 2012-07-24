@@ -40,7 +40,7 @@ class User
   before_validation :english_nameize
   def english_nameize
     if new_record? or name_changed?
-      if self.name.present? and !self.name_unknown and self.name_en.blank?
+      if self.name.present? and !self.name_unknown
         str = Pinyin.t(self.name,' ').titleize
         strs = str.split(' ')
         family_name = strs.shift
@@ -630,6 +630,9 @@ class User
         self.slug = self.slug[0..7] if self.slug.size>8
 
         self.slug = self.slug.safe_slug
+      end
+      if self.name_en.present?
+        self.slug = self.name_en.parameterize
       end
       # 如果 slug 被 safe_slug 后是空的,就用 id 代替
       if self.slug.blank?

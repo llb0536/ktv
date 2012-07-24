@@ -109,6 +109,8 @@ class Topic
     self.fathers.uniq!
     self.save!
   end
+  field :quora
+  field :wikipedia
   field :fathers,:type => Array,:default => []
   field :tags
   index :tags
