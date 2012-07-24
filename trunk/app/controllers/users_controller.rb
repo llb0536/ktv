@@ -1,7 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auth_callback]
-  before_filter :init_user, :except => [:auth_callback,:index,:hot,:invite]
+  before_filter :init_user, :except => [:auth_callback,:index,:hot,:invite,:invite_submit]
   before_filter :we_are_inside_qa
   def we_are_inside_qa
     @we_are_inside_qa = true
@@ -21,10 +21,20 @@ class UsersController < ApplicationController
   def invite
     @seo[:title] = '邀请好友注册'
     @user = User.new
+    @invited_users = User.where(inviter_ids:current_user.id).desc('confirmation_sent_at')
     render layout:'application_for_devise'
   end
   def invite_submit
-    @user.inviter_id = current_user.id
+    user = User.where(:email => params[:user][:email]).first
+    user ||= User.new(:email => params[:user][:email], :name => params[:user][:name])
+    user.invite_by(current_user)
+    user.avatar = params[:user][:avatar]
+    if user.save
+      redirect_to invite_users_path
+    else
+      @user = user
+      render 'invite',layout:'application_for_devise'
+    end
   end
   def index
     @we_are_inside_qa = false

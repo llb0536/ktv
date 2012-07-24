@@ -104,6 +104,8 @@ Quora::Application.routes.draw do
   #match "/about" => "home#about"
   match "/doing" => "logs#index"
 
+
+
   resources :users do
     collection do
       get 'hot'

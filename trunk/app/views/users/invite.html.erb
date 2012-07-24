@@ -1,6 +1,6 @@
 <%= image_tag 'ie/ktv_invite.png',:class => 'ktvregh2', :alt => '注册新用户' %>
 <% resource = @user;resource_name='user' %>
-<%= form_for(resource, :as => resource_name, :url => invite_submit_users_path, :html=>{:class => 'normal',:id=>'submit_btn_form',:autocomplete=>"off"}) do |f| %>
+<%= form_for(resource, :as => 'user', :url => invite_submit_users_path, :html=>{:class => 'normal',:id=>'submit_btn_form',:autocomplete=>"off"}) do |f| %>
   <%# devise_error_messages! %>
   <div class="field">
     <%= f.label :name,'真实姓名' %><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:name) %></div><br class="clear">
@@ -27,6 +27,7 @@
     </div>
   </div>
 <% end %>
+<% if @invited_users.present? %>
 <div class="__qua clearfix">
   <div class="main_col col w4_5">
   	<div class="p0_5">
@@ -34,64 +35,33 @@
   		<div class="contacts_previous_invitations">
   			<div id="ld_NURTav_14632">
   				<div id="ld_NURTav_14636" class="pagedlist_item">
+<% @invited_users.each do |item| %>
   					<div class="col w4_5 item p1 contact_list_item">
   						<div class="col w0_5">
-  							<img width="50" height="50" src="http://graph.facebook.com/100003118382851/picture?type=square">
+  							<img width="50" height="50" src="<%= avatar_url(item) %>">
   						</div>
   						<div class="col w3000">
   							<div class="name">
-  								<strong>Daxin Han</strong>
+  								<strong><%= item.name %></strong>
   							</div>
   							<p class="action_bar">
-  								<a id="__w2_ssdDwXE_email" href="#">handaxin416@gmail.com</a><span class="bullet"> • </span>Invited Apr 27, 2012
+  								<a id="__w2_ssdDwXE_email" href="#"><%= item.email %></a>
+	<% if item.inviter_invited_at[current_user.id.to_s].present? %>
+	 <span class="bullet"> • </span>邀请于<%= item.inviter_invited_at[current_user.id] %>
+	<% end %>
   							</p>
   						</div>
   						<div class="side_col col w1">
   							<div id="ld_NURTav_14667">
+	<% if item.inviter_invited_at[current_user.id.to_s].present? %>
+  								<a id="__w2_g1VZBf5_invite" href="#" class="action_button">重新发送</a>
+  <% else  %>
   								<a id="__w2_g1VZBf5_invite" href="#" class="action_button">发送邀请</a>
+  <% end %>
   							</div>
   						</div>
   					</div>
-  				</div>
-  				<div id="ld_NURTav_14637" class="pagedlist_item">
-  					<div class="col w4_5 item p1 contact_list_item">
-  						<div class="col w0_5">
-  							<img width="50" height="50" src="http://graph.facebook.com/698261732/picture?type=square">
-  						</div>
-  						<div class="col w3000">
-  							<div class="name">
-  								<strong>Kai Hu</strong>
-  							</div>
-  							<p class="action_bar">
-  								<a id="__w2_M8z2Na7_email" href="#">khu@thoughtworks.com</a>
-  							</p>
-  						</div>
-  						<div class="side_col col w1">
-  							<div id="ld_NURTav_14668">
-  								<a id="__w2_VEThmAh_invite" href="#" class="action_button">发送邀请</a>
-  							</div>
-  						</div>
-  					</div>
-  				</div>
-  				<div id="ld_NURTav_14638" class="pagedlist_item">
-  					<div class="col w4_5 item p1 contact_list_item">
-  						<div class="col w0_5">
-  							<img width="50" height="50" src="http://a0.twimg.com/profile_images/375504690/_____normal.jpg">
-  						</div>
-  						<div class="col w3000">
-  							<div class="name">
-  								<strong>Liber Liu</strong>
-  							</div>
-  							<p class="action_bar">
-  								<a id="__w2_X0CnqXt_email" href="#">llb0536@gmail.com</a><span class="bullet"> • </span>Invited Apr 27, 2012
-  							</p>
-  						</div>
-  						<div class="side_col col w1">
-  							<div id="ld_NURTav_14669">
-  								<a id="__w2_sZzQbag_invite" href="#" class="action_button">发送邀请</a>
-  							</div>
-  						</div>
-  					</div>
+<% end %>
   				</div>
   			</div>
   		</div>
@@ -99,6 +69,7 @@
   </div>
 </div>
 <div style="width:100%;height:50px"></div>
+<% end %>
 <% content_for :butt2 do %>
 $('#user_name').blur(function(){
   KTV.checkUsername(this);

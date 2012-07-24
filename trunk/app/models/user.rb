@@ -56,7 +56,12 @@ class User
          :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
-  field :inviter_id
+  field :inviter_ids,:type=>Array,:default => []
+  field :inviter_invited_at,:type=>Hash,:default => {}
+  def invite_by(user)
+    return if self.inviter_ids.include? user.id
+    self.inviter_ids << user.id
+  end
   field :email,              :type => String, :null => false, :default => ""
   index :email, :uniq => true
   field :encrypted_password, :type => String, :null => false, :default => ""
@@ -302,6 +307,7 @@ class User
     #   {:name => '奇异状态',:css => :error}
     end
   end
+
   STATE_TEXT = {
     :name_unknown => '姓名请求',
     :email_unknown => '邮箱请求',
@@ -1079,5 +1085,4 @@ class User
         
     end
   end
-
 end
