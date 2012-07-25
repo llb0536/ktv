@@ -88,10 +88,6 @@
         <ul>
           <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap">我要提问</a></li>
           <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addcw_wrap">我要上传</a></li>
-          <% content_for :butt2 do %>
-          $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
-          $('#core_addcw_wrap').click(function(){return KTV.addCW()});
-          <% end %>
         </ul>
         <div id="amazing-shadow"></div>
         <% if user_signed_in? %>
@@ -280,6 +276,8 @@
   <script type="text/javascript" charset="utf-8">
   $(document).ready(function(){
     <%= yield :butt2 %>
+    $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
+    $('#core_addcw_wrap').click(function(){return KTV.addCW()});
   });
   </script>
   <%= yield :bottom %>

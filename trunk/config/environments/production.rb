@@ -6,7 +6,7 @@ Quora::Application.configure do
   config.active_support.deprecation = :notify
   config.i18n.fallbacks = true  
   # Code is not reloaded between requests
-  config.cache_classes = false # SHOULD BE true
+  config.cache_classes = true
   config.cache_store = :dalli_store, 'localhost'
       { :namespace => 'ktv', :expires_in => 1.day, :compress => true }
  # config.cache_store = :memory_store, :size => 128.megabytes
@@ -67,11 +67,27 @@ Quora::Application.configure do
     about.css
     css_ie.css
   }
-  config.serve_static_assets = false
   # 别忘了同时修改:
   # config/initializers/z_ktv.rb
   config.action_controller.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
   config.assets.prefix = ''
   # assets-----------
+  config.action_mailer.raise_delivery_errors = false
+  config.whiny_nils = false
 
+# THIS ｉＳ only TMP!!!!!!  =begin
+  config.cache_classes = false
+  config.consider_all_requests_local       = true
+  config.action_mailer.raise_delivery_errors = true
+  config.whiny_nils = true
+  config.assets.compress = false
+  config.assets.debug = true
+  config.action_controller.asset_host = nil
+  config.assets.prefix = '/assets'
+  config.assets.manifest =nil
+  config.assets.digest = false
+  config.assets.compile = true
+  config.serve_static_assets = true
+  config.consider_all_requests_local = true
+# THIS ｉＳ only TMP!!!!!!  =end
 end

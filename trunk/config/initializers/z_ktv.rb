@@ -14,10 +14,10 @@ end
 
 
 Ktv.configure do |config|
-  if Rails.env.production?
-    config.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
-  else
+  if Rails.configuration.assets.debug
     config.asset_host = ''
+  else
+    config.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
   end
   config.redis = Redis::Search.config.redis
   config.consultants = [Ktv::Baidu,Ktv::Google]

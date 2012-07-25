@@ -178,6 +178,7 @@ HEREDOC
       render json:json
       return
     end
+    @courseware.topic = presentation[:topic]
     @courseware.title = presentation[:title]
     @courseware.save!
     redirect_to @courseware

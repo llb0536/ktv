@@ -2,5 +2,10 @@
 
 kill -QUIT `cat tmp/pids/unicorn.pid`
 kill -QUIT `cat tmp/pids/resque-pool.pid`
-sleep 4
+
+while [ -f tmp/pids/resque-pool.pid ]
+do
+  echo Waiting for resque-pool to QUIT ...
+  sleep 1
+done
 bin/check
