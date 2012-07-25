@@ -105,7 +105,13 @@
 					</div>
 					<p class="charm">
 						<span class="colonleft"></span>
-						<span id="user_tagline"><%= @user.tagline %></span>
+						<span id="user_tagline">
+						<% if @user.tagline.present? %>
+						  <%= @user.tagline %>
+						<% else %>
+						  <%= @user.name %>暂无一句话介绍
+						<% end %>
+						</span>
 						<span class="colonright"></span>
 						<% if owner?@user %>
               <img class="modifyLogo" src="/assets/transparent.png">

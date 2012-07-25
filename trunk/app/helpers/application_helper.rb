@@ -170,7 +170,7 @@ module ApplicationHelper
     if item.respond_to?(:uploader_id) and item.uploader_id == current_user.id
       return true
     end
-    if User==item.class and (item.name_unknown? or item.email_unknown?)
+    if User==item.class and (item.name_unknown? or item.email_unknown? or (item.confirmed_at.blank? and item.inviter_ids.include?(current_user.id)))
       return true
     end
     return false
