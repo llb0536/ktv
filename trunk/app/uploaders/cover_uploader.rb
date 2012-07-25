@@ -1,22 +1,21 @@
 class CoverUploader < BaseUploader
   def default_url
-    "/assets/cover/#{version_name}.jpg"
+    "/defaults/cover/#{version_name}.gif"
   end
-
-  version :small do
-    process :resize_to_fit => [23, 23]
-  end
-  
-  version :small38 do
-    process :resize_to_limit => [38,38]
-  end
-  
-  version :mid do
-    process :resize_to_limit => [50,50]
-  end
-    
-  version :normal do
-    process :resize_to_limit => [100, 100]
-  end
-  
+  SIZES = {
+    :small => 23,
+    :small30 => 30,
+    :small38 => 38,
+    :small47 => 47,
+    :mid => 50,
+    :mid60 => 60,
+    :normal => 100,
+    :normal180 => 180,
+    :huge => 300
+  }
+  SIZES.each do |key,value|    
+    version key do
+      process :resize_to_fill => [value,value]
+    end
+  end  
 end

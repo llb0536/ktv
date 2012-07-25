@@ -65,11 +65,13 @@
 							<% end %>
 							</figure>
 						</div>
+            <div class="uname alignleft cf"><span class="ctf-username floatleft"><%=@user.name%></span></div>
             <% if @user.is_expert %>
 						<div class="uname alignleft cf">
 							<span class="ctf-username floatleft"><%= @user.name %></span><span class="ctf-icon long-ctf-star floatleft"></span>
 						</div>
 						<% end %>
+
             <div class="fc999 tfmt __qa clearfix">
   						<div class="ctf-profile" id="user_bio">
   						  <% if @user.bio.blank? and (not owner?@user) %>

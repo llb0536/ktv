@@ -147,7 +147,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    return unless current_user and current_user.admin?
+    return unless current_user
     @topic = Topic.find(params[:id])
     @topic.current_user_id = current_user.id
     if !params[:topic]
@@ -160,6 +160,6 @@ class TopicsController < ApplicationController
     else
       flash[:alert] = "领域封面上传失败，请检查你上传的图片适合符合格式要求。"
     end
-    redirect_to topic_path(@topic.name)
+    redirect_to topic_path(@topic)
   end
 end

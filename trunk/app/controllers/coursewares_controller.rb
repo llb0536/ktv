@@ -29,6 +29,7 @@ class CoursewaresController < ApplicationController
         pagination_get_ready
         @coursewares = Courseware.nondeleted.normal.order('updated_at desc')
         @coursewares = @coursewares.where(:user_id=>params[:user_id]) if params[:user_id]
+        @coursewares = @coursewares.where(:topic=>params[:topic]) if params[:topic]
         pagination_over(@coursewares.count)
         @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
       }
