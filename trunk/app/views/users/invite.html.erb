@@ -40,13 +40,20 @@
   							<p class="action_bar">
   								<a id="__w2_ssdDwXE_email" href="#"><%= item.email %></a>
 	<% if item.inviter_invited_at[current_user.id.to_s].present? %>
-	 <span class="bullet"> • </span>最后邀请于<%= timeago(item.inviter_invited_at[current_user.id.to_s]) %>
+	  <% if item.confirmed_at.present? %>
+	  <span class="bullet"> • </span>注册于<%= timeago(item.confirmed_at) %>
+	  <% else %>
+	  <span class="bullet"> • </span>最后邀请于<%= timeago(item.inviter_invited_at[current_user.id.to_s]) %>
+	  <% end %>
 	<% end %>
   							</p>
   						</div>
   						<div class="side_col col w1">
   							<div id="ld_NURTav_14667">
+              	  <% if item.confirmed_at.present? %>
+              	  <% else %>
               	  <%= link_to '重新发送', invite_send_user_path(item.slug), :method=>:post, class:"action_button" %>
+              	  <% end %>
   							</div>
   						</div>
   					</div>

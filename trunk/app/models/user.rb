@@ -343,7 +343,7 @@ class User
        return false
       end
       if Ktv::Utils.js_chinese(self.name)<2
-       errors.add(:name,"并非真实中文姓名")
+       errors.add(:name,"貌似不是真实的：）")
        return false
       end
       if !Ktv::Renren.name_okay?(self.name)

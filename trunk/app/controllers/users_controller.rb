@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       user.avatar = params[:user][:avatar]
       if user.save
         user.invite_by(current_user)
-        redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入</a> 他/她的个人主页为您的好友上传头像或添加个人简介：）."
+        redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入个人主页</a> 为他/她上传头像或添加个人简介：）"
       else
         @user = user
         render 'invite',layout:'application_for_devise'
@@ -42,7 +42,8 @@ class UsersController < ApplicationController
   end
   def invite_send
     @user.invite_by(current_user)
-        redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入</a> 他/她的个人主页为您的好友上传头像或添加个人简介：）."
+    user = @user
+    redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入个人主页</a> 为他/她上传头像或添加个人简介：）"
   end
   def index
     @we_are_inside_qa = false
