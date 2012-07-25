@@ -2,25 +2,18 @@
 <% resource = @user;resource_name='user' %>
 <%= form_for(resource, :as => 'user', :url => invite_submit_users_path, :html=>{:class => 'normal',:id=>'submit_btn_form',:autocomplete=>"off"}) do |f| %>
   <%# devise_error_messages! %>
+  <p>只需填写姓名+邮箱即可轻松发送邀请，提交后您可以跟踪邀请进度，看好友用多少时间接受了邀请：）</p>
   <div class="field">
     <%= f.label :name,'真实姓名' %><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:name) %></div><br class="clear">
     <%= f.text_field :name,:class => 's462',:tabindex => 1,:autocomplete=>"off" %>
   </div>
   <div class="field">
-    <%= f.label :email,'E-mail' %>(<%= link_to "重发激活邮件", new_user_confirmation_path %>)(<%= link_to "忘记密码", new_password_path(resource_name) %>)<div class="field_error" id="regerror_email"><%= resource.errors_for_field(:email) %></div><br class="clear">
-    <%= f.email_field :email,:class => 's462',:tabindex => 2,:autocomplete=>"off" %>
-  </div>
-  <div class="__sdk">
-    <div class="form_sections" style="margin-bottom:18px">
-      <p><label for="user_email">照片</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:avatar) %></div><br class="clear">
-        <input id="file_uploader" name="user[avatar]" type="file" style="height:33px;padding-left:0;text-indent:0" size="30" /><br>
-              上传一张被邀请人的照片吧，这样他/她注册后就有默认头像啦：）此项可选。
-      </p>
-    </div>  
+    <%= f.label :email,'E-mail' %><div class="field_error" id="regerror_email"><%= resource.errors_for_field(:email) %></div><br class="clear">
+    <%= f.email_field :email,:class => 's462',:tabindex => 2,:autocomplete=>"off",:onkeypress=>"if(event.keyCode==13){$('#submit_btn_form').submit();}" %>
   </div>
   <div class="clearfix" style="margin-top:20px;padding-bottom:8px">
     <div class="field fl">
-      <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">立即发送邀请</a>
+      <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">提交邀请</a>
     </div>
     <div class="field fr">
       <a href="<%= cancel_href %>" class="btn btn210_grey">取消</a>
@@ -38,11 +31,11 @@
 <% @invited_users.each do |item| %>
   					<div class="col w4_5 item p1 contact_list_item">
   						<div class="col w0_5">
-  							<img width="50" height="50" src="<%= avatar_url(item) %>">
+  							<a href="<%= user_path(item) %>"><img width="50" height="50" src="<%= avatar_url(item) %>"></a>
   						</div>
   						<div class="col w3000">
   							<div class="name">
-  								<strong><%= item.name %></strong>
+  								<strong><%= link_to item.name,user_path(item) %></strong>
   							</div>
   							<p class="action_bar">
   								<a id="__w2_ssdDwXE_email" href="#"><%= item.email %></a>

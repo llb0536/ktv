@@ -5,7 +5,11 @@ module ApplicationHelper
     options[:class] = options[:class].blank? ? "timeago" : [options[:class],"timeago"].join(" ")
     content_tag(:abbr, l(time, :format => :long), options.merge(:title => time.iso8601)) if time
   end
-
+  def mk_url(url)
+    ret = url.strip
+    ret = "http://#{Setting.ktv_domain}#{ret}" unless ret.starts_with?('http://')
+    ret
+  end
   def cancel_href
     if 'GET'==request.method
       'javascript:history.go(-1)'

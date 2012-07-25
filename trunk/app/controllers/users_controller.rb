@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       render_401
       return
     end
-    @user.avatar = params[:user][:avatar]
     @user.save!
     redirect_to "/users/#{@user.slug}",notice:'头像更新成功！'
   end  
@@ -26,28 +25,23 @@ class UsersController < ApplicationController
   end
   def invite_submit
     user = User.where(:email => params[:user][:email]).first
-    user ||= User.new(:email => params[:user][:email], :name => params[:user][:name])
-    user.invite_by(current_user)
-    user.avatar = params[:user][:avatar]
-    if user.save
-      user.inviting = true
-      user.current_invitor_id = current_user.id
-      user.send_on_create_confirmation_instructions
-      user.inviter_invited_at[current_user.id.to_s] = Time.now
-      user.save!
-      redirect_to invite_users_path,:notice => "已经成功向#{user.name}发去邀请！"
+    if user
+      redirect_to invite_users_path,:notice => "这个邮箱已经被注册过了，请 #{link_to '点击这里','/users/'+user.slug} 访问他/她的个人主页.".html_safe
     else
-      @user = user
-      render 'invite',layout:'application_for_devise'
+      user = User.new(:email => params[:user][:email], :name => params[:user][:name])
+      user.avatar = params[:user][:avatar]
+      if user.save
+        user.invite_by(current_user)
+        redirect_to invite_users_path,:notice => "已经成功向#{user.name}发去邀请:)"
+      else
+        @user = user
+        render 'invite',layout:'application_for_devise'
+      end
     end
   end
   def invite_send
-    @user.inviting = true
-    @user.current_invitor_id = current_user.id
-    @user.send_on_create_confirmation_instructions
-    @user.inviter_invited_at[current_user.id.to_s] = Time.now
-    @user.save!
-    redirect_to invite_users_path,:notice => "已经成功向#{@user.name}发去邀请！"
+    @user.invite_by(current_user)
+    redirect_to invite_users_path,:notice => "已经成功向#{@user.name}发去邀请:)"
   end
   def index
     @we_are_inside_qa = false

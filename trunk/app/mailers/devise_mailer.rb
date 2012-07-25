@@ -1,6 +1,7 @@
 # coding: utf-8
 class DeviseMailer < Devise::Mailer
   layout false
+  helper :application,:users
   def invitation_instructions(vip_id,current_invitor_id)
     @vip = User.find(vip_id)
     @invitor = User.find(current_invitor_id)

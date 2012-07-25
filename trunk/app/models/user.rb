@@ -59,8 +59,12 @@ class User
   field :inviter_ids,:type=>Array,:default => []
   field :inviter_invited_at,:type=>Hash,:default => {}
   def invite_by(user)
-    return if self.inviter_ids.include? user.id
-    self.inviter_ids << user.id
+    self.follow(user)
+    user.follow(self)
+    self.devise_mailer.invitation_instructions(self.id,user.id).deliver
+    self.inviter_invited_at[user.id.to_s] = Time.now
+    self.inviter_ids << user.id unless self.inviter_ids.include?(user.id)
+    self.save(:validate=>false)
   end
   field :email,              :type => String, :null => false, :default => ""
   index :email, :uniq => true
@@ -374,15 +378,13 @@ class User
       end
     end
   end
-  attr_accessor :during_registration,:force_confirmation_instructions,:inviting,:current_invitor_id
+  attr_accessor :during_registration,:force_confirmation_instructions
   alias_method :send_on_create_confirmation_instructions_before_psvr,:send_on_create_confirmation_instructions
   alias_method :send_confirmation_instructions_before_psvr,:send_confirmation_instructions
   def send_on_create_confirmation_instructions
     unless self.email_unknown or self.name_unknown
       if self.during_registration or self.force_confirmation_instructions
         self.devise_mailer.confirmation_instructions(self).deliver
-      elsif self.inviting
-        self.devise_mailer.invitation_instructions(self.id,self.current_invitor_id).deliver
       end
     end
   end

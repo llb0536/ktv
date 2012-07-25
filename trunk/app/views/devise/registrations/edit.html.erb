@@ -78,7 +78,7 @@ $('#change_password_link').click(function(){
       <div class="form_sections">
         <p><label for="user_Bio">个人经历:</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:bio) %></div><br class="clear"> <textarea rows="30" name="user[bio]" style="height:110px;width:419px;padding-left:10px" id="user_bio" cols="40"><%= resource.bio %></textarea></p>
       </div>
-      <div class="form_sections" style="margin-top:18px">
+      <div class="form_sections" style="margin-top:18px" id="mail_settings">
         <p><label>邮件提醒设置:</label><br class="clear">
           <label><input class="noBorder" type="checkbox" style="height:16px;margin-right:4px;" name='user[mail_be_followed]' <%= 'checked="checked"' if resource.mail_be_followed %>/>被人关注</label><br class="clear">
           <label><input class="noBorder" type="checkbox" style="height:16px;margin-right:4px;" name='user[mail_new_answer]' <%= 'checked="checked"' if resource.mail_new_answer %>/>关注的题有新解答</label><br class="clear">
