@@ -4188,8 +4188,6 @@ var swfobject = function () {function A() {
                     if(''==$('#presentation_title').val()){
                       $('#presentation_title').val((d.name.lastIndexOf(".") != -1) ? d.name.substring(0, d.name.lastIndexOf(".")) : d.name);
                     }
-                    $('#biaozhu_cw').show();
-                    $('#ok_to_leave').show();
                 
                     return $("#presentation_pdfUploader",'.__sdk').css({
                         left: "-5000px"

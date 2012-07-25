@@ -149,7 +149,10 @@ KTV.search_cater = (data,term) ->
 KTV.login = ->
   im.zm.login();
   $("#loginLayout").definedDialog("open");
-
+KTV.addCW = ->
+  im.zm.newcw()
+  $("#loginLayout").definedDialog("open")
+  return false
 KTV.topic_remove = ->
   $.post("/topics/#{KTV.data.topic_id}/update_fathers",{add:-1,name:$(this).attr('id').split('_')[0]},(data)->
     $("##{data.id}_already_father").remove()

@@ -90,11 +90,7 @@
           <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addcw_wrap">我要上传</a></li>
           <% content_for :butt2 do %>
           $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
-          $('#core_addcw_wrap').click(function(){
-            im.zm.newcw();
-            $("#loginLayout").definedDialog("open");
-            return false;
-          });
+          $('#core_addcw_wrap').click(function(){return KTV.addCW()});
           <% end %>
         </ul>
         <div id="amazing-shadow"></div>

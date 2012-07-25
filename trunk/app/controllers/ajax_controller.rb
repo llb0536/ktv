@@ -134,10 +134,16 @@ HEREDOC
       cw.uploader_id = current_user.id
       cw.sort = 'pdf'
       cw.pdf_filename = presentation[:pdf_filename]
-      cw.course_long_name = presentation[:course_long_name]
-      cw.course_long_name = '领域请求' if cw.course_long_name.blank?
+
+      cw.topic = presentation[:topic]
+      if cw.topic.blank?
+        cw.topic = '领域请求' 
+      else
+        cookies[:presentation_topic] = cw.topic
+      end
       cw.title = presentation[:title]
       cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+      
       cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
       cw.status = 1
       # reset before re-upload
@@ -172,7 +178,6 @@ HEREDOC
       render json:json
       return
     end
-    @courseware.course_long_name = presentation[:course_long_name]
     @courseware.title = presentation[:title]
     @courseware.save!
     redirect_to @courseware
