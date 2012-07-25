@@ -174,8 +174,8 @@
 <% content_for :butt2 do %>
 im(function () {
     autoLayout.pageAuto = true;
-    var linkUrl = "/coursewares",
-        jsonUrl = "/coursewares_with_page";
+    var linkUrl = "/coursewares?user_id=<%=@user.id%>",
+        jsonUrl = "/coursewares_with_page?user_id=<%=@user.id%>";
     autoLayout.init({
         contentID: "contentMain",
         rightLoad: true,
@@ -185,7 +185,7 @@ im(function () {
         loadingID: "imloading",
 
         callBack: function () {
-            var showContent = "她还没有收集";
+            var showContent = "他/她还没有发布课件";
 
             $("#contentMain").prepend('<div style="text-align: center; margin-right: 233px; padding-top: 100px; left: 0px; top: 0px;" class="f14" columns="0">' + showContent + '</div>');
         }

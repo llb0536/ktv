@@ -48,6 +48,8 @@ class Courseware
   }
   def asynchronously_clean_me
     bad_ids = [self.id]
+    self.user.inc(:coursewares_count,-1) if self.user
+    self.uploader.inc(:upload_count,-1) if self.uploader
     Util.bad_id_out_of!(User,:thanked_courseware_ids,bad_ids)
     thanked = false
     User.where(:thanked_courseware_ids=>self.id).each do |u|

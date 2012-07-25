@@ -3307,6 +3307,9 @@ im.zm.fnDropmenu = function (b, a) {
 };
 im.zm.messageShow = !1;
 im.zm.detailPic = function (f, d) {
+  // todo: before entering open a preview window
+  window.location.href="/coursewares/"+f;
+  return false;
     $("#zoomDetail").remove();
     $("#shoujiTips").remove();
     var b = ['<div id="zoomDetail" class="zoomlayer">', '<a id="zoomButt" class="bgimg shut" style="display:none;" href="###"><span>点击两边的空白处也可以关闭</span></a><a class="bgimg preimg" title="上一张" style="display:none;"></a><a class="bgimg nextimg" title="下一张" style="display:none;"></a>', '<div class="sharedetail"></div>', "</div>"].join("");

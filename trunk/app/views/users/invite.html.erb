@@ -2,7 +2,7 @@
 <% resource = @user;resource_name='user' %>
 <%= form_for(resource, :as => 'user', :url => invite_submit_users_path, :html=>{:class => 'normal',:id=>'submit_btn_form',:autocomplete=>"off"}) do |f| %>
   <%# devise_error_messages! %>
-  <p>只需填写姓名+邮箱即可轻松发送邀请，提交后您可以跟踪邀请进度，看好友用多少时间接受了邀请：）</p>
+  <p>只需填写姓名+邮箱即可立即发送邀请，提交后您可以跟踪邀请进度，看好友用多少时间接受了邀请：）</p>
   <div class="field">
     <%= f.label :name,'真实姓名' %><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:name) %></div><br class="clear">
     <%= f.text_field :name,:class => 's462',:tabindex => 1,:autocomplete=>"off" %>
@@ -11,6 +11,8 @@
     <%= f.label :email,'E-mail' %><div class="field_error" id="regerror_email"><%= resource.errors_for_field(:email) %></div><br class="clear">
     <%= f.email_field :email,:class => 's462',:tabindex => 2,:autocomplete=>"off",:onkeypress=>"if(event.keyCode==13){$('#submit_btn_form').submit();}" %>
   </div>
+  <div><input type="checkbox" checked="checked" value="1" style="height:19px;margin-left:5px" name="send_immediately" id="send_immediately"> <label for="send_immediately">立即发送邀请邮件</label></div>
+
   <div class="clearfix" style="margin-top:20px;padding-bottom:8px">
     <div class="field fl">
       <a href="javascript:void(0)" class="btn btn210 submit_btns" id="submit_btn">提交邀请</a>
@@ -51,8 +53,10 @@
   						<div class="side_col col w1">
   							<div id="ld_NURTav_14667">
               	  <% if item.confirmed_at.present? %>
-              	  <% else %>
+                  <% elsif item.inviter_invited_at[current_user.id.to_s].present? %>
               	  <%= link_to '重新发送', invite_send_user_path(item.slug), :method=>:post, class:"action_button" %>
+                  <% else %>
+              	  <%= link_to '发送邀请', invite_send_user_path(item.slug), :method=>:post, class:"action_button" %>
               	  <% end %>
   							</div>
   						</div>

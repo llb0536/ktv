@@ -58,11 +58,13 @@ class User
   ## Database authenticatable
   field :inviter_ids,:type=>Array,:default => []
   field :inviter_invited_at,:type=>Hash,:default => {}
-  def invite_by(user)
+  def invite_by(user,immediately=true)
     self.follow(user)
     user.follow(self)
-    self.devise_mailer.invitation_instructions(self.id,user.id).deliver
-    self.inviter_invited_at[user.id.to_s] = Time.now
+    if immediately
+      self.devise_mailer.invitation_instructions(self.id,user.id).deliver
+      self.inviter_invited_at[user.id.to_s] = Time.now
+    end
     self.inviter_ids << user.id unless self.inviter_ids.include?(user.id)
     self.save(:validate=>false)
   end

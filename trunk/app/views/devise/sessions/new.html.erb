@@ -13,6 +13,7 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
+    <% resource.remember_me = true%>
     <div><%= f.check_box :remember_me,:style=>'height:19px;margin-left:5px',:onkeypress=>"if(event.keyCode==13){$('#submit_btn_form').submit();}" %> <%= f.label :remember_me,'记住我的登录状态' %></div>
   <% end -%>
 

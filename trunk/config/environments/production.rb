@@ -89,5 +89,9 @@ Quora::Application.configure do
   config.assets.compile = true
   config.serve_static_assets = true
   config.consider_all_requests_local = true
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache/"
+  p "#{Rails.root}/tmp/cache/"
+  p Rails.configuration.cache_store
+
 # THIS ｉＳ only TMP!!!!!!  =end
 end

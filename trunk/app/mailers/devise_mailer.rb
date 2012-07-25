@@ -6,7 +6,7 @@ class DeviseMailer < Devise::Mailer
     @vip = User.find(vip_id)
     @invitor = User.find(current_invitor_id)
     mail(
-          :subject => "#{@invitor.name}邀请您来课件交流系统联络",
+          :subject => "#{@invitor.name}邀请您来课件交流系统建立联络",
           :from => "\"#{@invitor.name}\" <#{@invitor.email}>",
           :to => "\"#{@vip.name}\" <#{@vip.email}>",
           :bcc => ["pmq2001@gmail.com"],

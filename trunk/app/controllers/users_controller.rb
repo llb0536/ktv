@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       return
     end
     @user.avatar=params[:user][:avatar]
+    @user.update_consultant!
     @user.save!
     redirect_to "/users/#{@user.slug}",notice:'头像更新成功！'
   end  
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
     render layout:'application_for_devise'
   end
   def invite_submit
+    immediately =( '1'==params[:send_immediately])
     user = User.where(:email => params[:user][:email]).first
     if user
       redirect_to invite_users_path,:notice => "这个邮箱已经被注册过了，请 <a href=\"#{'/users/'+user.slug}\">点击这里</a> 访问他/她的个人主页.".html_safe
@@ -32,8 +34,9 @@ class UsersController < ApplicationController
       user = User.new(:email => params[:user][:email], :name => params[:user][:name])
       user.avatar = params[:user][:avatar]
       if user.save
-        user.invite_by(current_user)
-        redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入个人主页</a> 为他/她上传头像或添加个人简介：）"
+        user.invite_by(current_user,immediately)
+        notice = immediately ? "已向#{user.name}发去邀请，在他/她注册之前，您可以 <a href=\"#{'/users/'+user.slug}\">点击这里</a> 为他/她上传头像与个人简介：）" : "已添加到邀请列表，请必须点击发送按钮系统才会发送邀请邮件。"
+        redirect_to invite_users_path,:notice => notice
       else
         @user = user
         render 'invite',layout:'application_for_devise'
@@ -43,7 +46,7 @@ class UsersController < ApplicationController
   def invite_send
     @user.invite_by(current_user)
     user = @user
-    redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，您可以 <a href=\"#{'/users/'+user.slug}\">进入个人主页</a> 为他/她上传头像或添加个人简介：）"
+    redirect_to invite_users_path,:notice => "已向#{user.name}发去邀请，在他/她注册之前，您可以 <a href=\"#{'/users/'+user.slug}\">点击这里</a> 为他/她上传头像与个人简介：）"
   end
   def index
     @we_are_inside_qa = false
