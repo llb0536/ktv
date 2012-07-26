@@ -35,7 +35,6 @@ class AnswersController < ApplicationController
     end
     
     if params[:inc] == "1"
-      Resque.enqueue(HookerJob,"User",current_user.id,:msg_center_action_vote,answer.user_id,answer.ask_id)
       begin
         current_user.inc(:vote_up_count,1)
         log = UserLog.new

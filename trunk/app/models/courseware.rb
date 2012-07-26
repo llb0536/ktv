@@ -31,17 +31,22 @@ class Courseware
     0 => :normal,
     1 => :waiting4downloading,
     2 => :waiting4transcoding,
+    3 => :finalizing,
+    -1 => :error,
   }
   STATE_TEXT = {
     :normal => '已上线',
     :waiting4downloading => '正在读取文件',
     :waiting4transcoding => '正在转码',
+    :error => '您上传的文件已损坏',
+    :finalizing => '正在完成最后的处理',
   }
   
   SORTSTR = {
     'xunlei' => '迅雷播放特权',
     'ppt' => '幻灯片',
     'pdf' => 'PDF',
+    'djvu' => 'DJVU',
     'webm'=> '原创视频',
     'doc' => 'Word文档',
     'books' => '课本封皮'
@@ -127,6 +132,25 @@ class Courseware
       elsif self.title =~ /^【([^【】]+)】(.*)$/
         self.school_name = $1.strip
         self.analyse2($2)
+      elsif self.title =~ /^@([^:：]*)[:：](.*)$/
+        u=User.where(:slug=>$1).first
+        if !u
+          u = User.new
+          u.name = $1
+          u.valid?
+          if u.errors[:name].present?
+            u.name = "_#{$1}"
+            unless u.errors[:name].present?
+              u.name_unknown = true
+            end
+          end
+          u.slug = $1
+          u.email_unknown = true
+          u.save(:validate => false)
+        end
+        self.user_id = u.id
+        self.school_name = nil
+        self.title_short = $2
       else
         self.school_name = nil
         self.title_short = self.title
@@ -156,8 +180,10 @@ class Courseware
     if self.school_name.present?
       school = School.find_or_create_by(:name => self.school_name)
       user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)
-      user.email_unknown = true if user.new_record?
-      user.save(:validate => false)
+      if user.new_record?
+        user.email_unknown = true
+        user.save(:validate => false)
+      end
       self.school_id = school.id
       self.user_id = user.id
     else

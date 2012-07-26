@@ -48,9 +48,6 @@ class Comment
 
   validates_presence_of :body
   validates_length_of :body,:maximum=>4000
-  after_create proc{
-    Resque.enqueue(HookerJob,self.class.to_s,self.id,:msg_center_action)
-  }
   def msg_center_action
     if 'Answer'==self.commentable_type
       send_to_msg_center({

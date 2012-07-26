@@ -33,7 +33,7 @@
 <% @invited_users.each do |item| %>
   					<div class="col w4_5 item p1 contact_list_item">
   						<div class="col w0_5">
-  							<a href="<%= user_path(item) %>"><img width="50" height="50" src="<%= avatar_url(item) %>"></a>
+  							<a href="<%= user_path(item) %>"><img width="50" height="50" src="<%= avatar_url(item) %>" style="padding:1px;border:1px solid #CCC"></a>
   						</div>
   						<div class="col w3000">
   							<div class="name">

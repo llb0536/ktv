@@ -5,7 +5,6 @@ class AccountConfirmationsController < Devise::ConfirmationsController
     render "new#{@subsite}"
   end
   def create
-    def create
       self.resource = resource_class.send_confirmation_instructions(resource_params)
 
       if successfully_sent?(resource)
@@ -15,7 +14,6 @@ class AccountConfirmationsController < Devise::ConfirmationsController
           format.html{render "new#{@subsite}"}
         end
       end
-    end
   end
   def show
     self.resource = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
@@ -35,7 +33,8 @@ class AccountConfirmationsController < Devise::ConfirmationsController
       if resource.errors.empty?
         render "show#{@subsite}"
       else
-        respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render "new#{@subsite}" }
+        flash[:notice]=resource.errors.full_messages.first
+        respond_with_navigational(resource.errors,:status => :unprocessable_entity){ render "new#{@subsite}" }
       end
       return
     end

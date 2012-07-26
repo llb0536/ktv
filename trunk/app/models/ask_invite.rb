@@ -14,21 +14,6 @@ class AskInvite
 
   scope :unsend, where(:mail_sent => 0, :count.gt => 0)
 
-  def msg_center_action(user_id,invitor_id)
-    usera = User.find(invitor_id)
-    userb = User.find(user_id)
-    send_to_msg_center({
-      "SourceId"=>"",
-      "MsgType"=>30,
-      "MsgSubType"=>3030,
-      "Receiver"=>userb.zhaopin_ud,
-      "Sender"=>"#{usera.name}",
-      "SenderUrl"=>"http://kejian.tv/users/#{usera.slug}",
-      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{usera.slug}\">#{usera.name}</a>邀请你解答题“<a href=\"http://kejian.tv/asks/#{self.ask.id}\">#{self.ask.title}</a>”。</P>",
-      "SendContentUrl"=>"",
-      "OperateUrl"=>""
-  	})
-  end
   def asynchronously_clean_me
     self.user.inc(:invite_count,-1)
     self.invitors.each{|u| u.inc(:invited_count,-1)}

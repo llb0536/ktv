@@ -1,4 +1,4 @@
 #!/bin/bash -x
 
-RAILS_ENV=development VVERBOSE=1 QUEUE=* COUNT=1 bundle exec rake resque:workers --trace
+RAILS_ENV=production VVERBOSE=1 QUEUE=* COUNT=1 bundle exec rake resque:workers --trace
 

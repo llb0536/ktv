@@ -1,0 +1,7 @@
+#!/usr/local/bin/ruby
+str = `djvudump "#{ARGV[0]}"|grep INFO`
+if str=~/DjVu (\d+)x(\d+)/
+  puts $1
+  puts $2
+  exit 0
+end

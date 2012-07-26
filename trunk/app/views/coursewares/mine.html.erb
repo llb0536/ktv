@@ -1,0 +1,199 @@
+<% content_for :body_style do %>background: none repeat scroll 0 0 #F0EEEE<% end %>
+<%= render file:'/application/headers/_zm_header' %>
+
+<div class="tagchannel __zm">
+<div id="wrapper">
+<div class="filterbar" style="margin-top:1px;">
+<input id="queryScope" name="queryScope" type="hidden" value="0" />
+<input id="isProduct" type="hidden" value="0" />
+<input id="queryOrder" type="hidden" value="1" />
+<input id="priceScope" type="hidden" value="" />
+<div class="hotword floatleft cf">
+<h4>只查看：</h4>
+<ul id="ulQueryScope">
+
+<li ><a class="queryScopeCss" rel="2"  href="javascript:;" ><span>达人推荐</span></a></li>
+<li  class='current'><a class="queryScopeCss" rel="0"  href="javascript:;" ><span>全部</span></a></li>
+</ul>
+</div>
+<div class="hotword hwprice floatleft cf">
+<span class="split">|</span>
+<h4>价格 ：</h4>
+<ul>
+<li class="allprice">
+<a href="javascript:;">全部<em class="iconbg arrow"></em></a>
+<div id="priceContent" class="dropdown w100" style='display:none'>
+<span class="iconbg uparrow"></span>
+<a href="javascript:;">全部</a>
+<a href="javascript:;">0~50</a>
+<a href="javascript:;">51~100</a>
+<a href="javascript:;">101~200</a>
+<a href="javascript:;">201~500</a>
+<a href="javascript:;">500以上</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="hotword floatright cf">
+<span><input id="isProductCheckBox" type="checkbox"></span>
+<span class="onlycom">只看视频</span>
+<span class="split">|</span>
+<h4>排序：</h4>
+<ul id="ulQueryOrder">
+<li  class='current'><a class="queryOrderCss" rel="1" href="javascript:;"><span>一天最热</span></a></li>
+<li ><a class="queryOrderCss" rel="2" href="javascript:;"><span>一周最热</span></a></li>
+<li ><a class="queryOrderCss" rel="0" href="javascript:;"><span>最新</span></a></li>
+</ul>
+</div>
+</div>
+<div id="content" class="cf" style="box-shadow:none;background:none;overflow:visible !important;">
+
+  <div  class="topline userbox userbox-home">
+    <div style="overflow:hidden;">
+      <div class="uhead" style="height:60px;"><a href="<%= user_path current_user%>"><img src="<%=avatar_url(current_user,:mid60)%>" /></a></div>
+      <div class="uinfo">
+        <p><a href="/profile/1141902" class="blue arial b"><%=current_user.name%></a></p>
+        <p></p>
+      </div>
+    </div>
+    <ul class="useratten cf">
+      <li>
+      <a id="user_profile_medium_follow_count" class="gray block usernumber" href="/follow/1141902/1">
+        <em><%=current_user.following_ids.size%></em><br />
+        <span>关注</span>
+      </a>
+      </li>
+      <li>
+      <a id="user_profile_medium_fans_count" class="gray block usernumber" href="/fans/1141902/1">
+        <em><%=current_user.follower_ids.size%></em><br />
+        <span>粉丝</span>
+      </a>
+      </li>
+      <li>
+      <a class="gray block usernumber" href="/bds/1141902"><%=current_user.coursewares_count%><br />
+        <span>课件</span></a>
+      </li>
+    </ul>
+    <ul class="cf">
+      <li><a class="current" href="/hot/0"><em>全部领域</em></a></li>
+      <% current_user.followed_topic_ids.each do |topic| %>
+        <li><a class="current" href="/hot/0"><em><%=Topic.get_name(topic)%></em></a></li>
+      <% end %>
+    </ul>
+  </div>
+   
+</div>
+<!--内容容器开始-->
+<div id="imloading" class="imfootloading" style="visibility:hidden;"><div class="loading">正在加载，请稍候......</div></div>
+</div>
+<script type="text/javascript">
+<% content_for :butt2 do %>
+
+  $('.queryScopeCss').live('click',function(){
+      var queryScope = $(this).attr("rel");
+      $('#queryScope').val(queryScope);
+      $('#ulQueryScope > li').removeClass();
+      $(this).parent().addClass('current');
+      queryExec();
+      });
+$('#isProductCheckBox').live('click',function(){
+    var selected = $('#isProductCheckBox').attr("checked");
+    if (typeof(selected) == "undefined") { 
+    $('#isProduct').val(0);
+    } else if(selected == 'checked'){
+    $('#isProduct').val(1);
+    }
+    queryExec();
+    });
+$('#priceContent a').live('click',function(){
+    var price = $(this).text();
+    if(price == '全部'){
+    $('#priceScope').val("");
+    } else if(price == '500以上'){
+    $('#priceScope').val(501);
+    } else {
+    $('#priceScope').val(price);
+    }
+    $('#priceContent').prev('a').html(price+'<em class="iconbg arrow"></em>');
+    $('#priceContent').hide();
+    queryExec();
+    });
+$('.queryOrderCss').live('click',function(){
+    var queryOrder = $(this).attr("rel");
+    $('#queryOrder').val(queryOrder);
+    $('#ulQueryOrder > li').removeClass();
+    $(this).parent().addClass('current');
+    queryExec();
+    });
+$('.allprice').hover(function(){
+    $('#priceContent').show();
+    },function(){
+    $('#priceContent').hide();
+    })
+function queryExec(){
+  var queryScope = $('#queryScope').val();
+  var priceScope = $('#priceScope').val();
+  var isProduct = $('#isProduct').val();
+  var queryOrder = $('#queryOrder').val();
+  $('#leftLabel').nextAll().remove();
+    var linkUrl = "/coursewares",
+        jsonUrl = "/coursewares_with_page/";
+  autoLayout.loading=true;
+  autoLayout.isHasNextPage=true;
+  autoLayout.pageNum = 2;
+  autoLayout.init({
+contentID:"content",
+rightLoad:true,
+leftID:"leftLabel",
+rightID:[],
+linkUrl:linkUrl,
+dataContent:{'queryScope':queryScope,'priceScope':priceScope,'onlyForCommodity':isProduct,'queryOrder':queryOrder},
+noText:"mainempty",
+loadingID:"imloading",
+callBack:function(){
+if(!autoLayout.isFirst){
+}
+}
+});
+autoLayout.eachAction(jsonUrl);
+setTimeout("fnfooter()",500);
+}
+function fnfooter() {
+  var footObj=document.documentElement || document.body;
+  if(document.documentElement.clientHeight<document.body.offsetHeight) {
+    $("#footer").removeClass("fixedfooter");
+  } else {
+    $("#footer").addClass("fixedfooter");
+  }
+}
+im(function(){
+    var queryScope = $('#queryScope').val();
+    var priceScope = $('#priceScope').val();
+    var isProduct = $('#isProduct').val();
+    var queryOrder = $('#queryOrder').val();
+
+    var linkUrl = "/coursewares",
+        jsonUrl = "/coursewares_with_page";
+    autoLayout.init({
+contentID:"content",
+rightLoad:true,
+leftID:"leftLabel",
+rightID:[],
+linkUrl:linkUrl,
+dataContent:{'queryScope':queryScope,'priceScope':priceScope,'onlyForCommodity':isProduct,'queryOrder':queryOrder},
+noText:"mainempty",
+loadingID:"imloading",
+callBack:function(){
+if(!autoLayout.isFirst){
+}
+}
+});
+    autoLayout.eachAction(jsonUrl);
+});
+
+<% end %>
+</script>
+
+
+</div>
+<%= render file:'/application/footers/_flo_footer' %>

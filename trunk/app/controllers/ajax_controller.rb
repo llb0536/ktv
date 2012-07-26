@@ -64,6 +64,8 @@ utf8	✓
     end
     cw.title = presentation[:title]
     cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+    cw.title = '课件标题请求' if cw.title.blank?
+    cookies[:presentation_pretitle] =  (cw.title.split(/[:：]/).size>1) ? cw.title.split(/[:：]/)[0] : ''
     cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
     cw.status = 1
     cw.save!
@@ -132,8 +134,8 @@ HEREDOC
       # reupload
       cw = @courseware
       cw.uploader_id = current_user.id
-      cw.sort = 'pdf'
       cw.pdf_filename = presentation[:pdf_filename]
+      cw.sort = File.extname(cw.pdf_filename)
 
       cw.topic = presentation[:topic]
       if cw.topic.blank?
@@ -143,6 +145,8 @@ HEREDOC
       end
       cw.title = presentation[:title]
       cw.title = File.basename(cw.pdf_filename) if cw.title.blank?
+      cw.title = '课件标题请求' if cw.title.blank?
+      cookies[:presentation_pretitle] =  (cw.title.split(/[:：]/).size>1) ? cw.title.split(/[:：]/)[0] : ''
       
       cw.remote_filepath = "http://ktv-up.b0.upaiyun.com/#{current_user.id}/#{presentation[:uptime]}.pdf"
       cw.status = 1
@@ -152,7 +156,6 @@ HEREDOC
       cw.version += 1
       # over
       cw.save!
-
       Resque.enqueue(TranscoderJob,cw.id)
       json = {
         category_ids: [ nil ],
@@ -179,7 +182,15 @@ HEREDOC
       return
     end
     @courseware.topic = presentation[:topic]
+    cw = @courseware
+    if cw.topic.blank?
+      cw.topic = '领域请求' 
+    else
+      cookies[:presentation_topic] = cw.topic
+    end
     @courseware.title = presentation[:title]
+    cw.title = '课件标题请求' if cw.title.blank?
+    cookies[:presentation_pretitle] =  (cw.title.split(/[:：]/).size>1) ? cw.title.split(/[:：]/)[0] : ''
     @courseware.save!
     redirect_to @courseware
   end

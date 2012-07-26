@@ -6,7 +6,7 @@ class CoursewaresController < ApplicationController
 
   def mine
     @seo[:title] = '我关注的'
-    render "latest#{@subsite}"
+    render "mine#{@subsite}"
   end
   def latest
     @seo[:title] = '最新课件'
@@ -27,7 +27,7 @@ class CoursewaresController < ApplicationController
     respond_to do |format|
       format.json{
         pagination_get_ready
-        @coursewares = Courseware.nondeleted.normal.order('updated_at desc')
+        @coursewares = Courseware.nondeleted.normal.desc('updated_at')
         @coursewares = @coursewares.where(:user_id=>params[:user_id]) if params[:user_id]
         @coursewares = @coursewares.where(:topic=>params[:topic]) if params[:topic]
         pagination_over(@coursewares.count)
@@ -44,6 +44,7 @@ class CoursewaresController < ApplicationController
   end
   def new_youku
     @seo[:title] = '导入视频网站视频'
+    @courseware = Courseware.new
   end
   def new_emule
     @seo[:title] = '导入原始下载地址'

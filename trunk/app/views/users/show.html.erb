@@ -2,7 +2,6 @@
   <%= stylesheet_link_tag "ktv/__zm_user.css", :media => "all" %>
 <% end %>
 <% content_for :body_style do %>background: none repeat scroll 0 0 #F0EEEE<% end %>
-<%= render file:'/application/headers/_zm_header' %>
 
 <div class="__zm">
 <div id="pagewrap">
@@ -126,7 +125,7 @@
 				  <% if !@followers.blank? %>
 					<div class="labelbox">
 						<h3 class="title">
-						<span class="label"><a href="<%= following_topics_user_path(@user.slug) %>"><%= user_sex_title(@user,current_user) %>关注的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.follower_ids.size %></a></em>) </span>
+						<span class="label"><a href="<%= following_topics_user_path(@user.slug) %>"><%= user_sex_title(@user,current_user) %>关注的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.following_ids.size %></a></em>) </span>
 						</h3>
 						<ul class="bp cf">
 

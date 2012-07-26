@@ -226,14 +226,15 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
       <a href="<%= user_path @hottest_user %>" class="gray" >
         <%= @hottest_user.bio_plain %>
       </a>
+      
   </p>
   <h3 class="ttname" style="line-height: 1">
-      <span class="yahe"><a href="<%= user_path @hottest_user %>">课件选集</a></span>
+      <span class="yahe">课件选集 (<a href="<%= user_path @hottest_user %>">共有课件 <span class=“orange"><%= @hottest_user.coursewares_count%></span> 个)</a></span>
   </h3>
   
 <ul class="cf">
-<% @hottest_user.coursewares.desc('views_count').limit(3).each do |item| %>
-<li><a href="<%= courseware_path item %>" ><%= item.title %></a> (<span class="orange"><%=number_with_delimiter  item.views_count %></span>&nbsp;次点击)</li>
+<% @hottest_user.coursewares.desc('views_count').limit(5).each do |item| %>
+<li><a href="<%= courseware_path item %>" ><%= item.title %></a> (<span class="orange"><%=number_with_delimiter  item.views_count %></span>&nbsp;点击)</li>
 <% end %>
 </ul>
 </div>

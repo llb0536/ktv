@@ -234,7 +234,7 @@ qq.FileUploaderBasic = function (a) {
     qq.FileUploaderBasic.apply(this, arguments), qq.extend(this._options, {
         element: null,
         listElement: null,
-        template: '<div class="qq-uploader"><div class="qq-upload-drop-area"><span>Drop files here to upload</span></div><div class="qq-upload-button">请上传课件的PDF版</div><ul class="qq-upload-list"></ul></div>',
+        template: '<div class="qq-uploader"><div class="qq-upload-drop-area"><span>Drop files here to upload</span></div><div class="qq-upload-button">请选择源文件</div><ul class="qq-upload-list"></ul></div>',
         fileTemplate: '<li><span class="qq-upload-file"></span><span class="qq-upload-spinner"></span><span class="qq-upload-size"></span><a class="qq-upload-cancel" href="#">Cancel</a><span class="qq-upload-failed-text">Failed</span></li>',
         classes: {
             button: "qq-upload-button",
@@ -4147,13 +4147,13 @@ var swfobject = function () {function A() {
             return this.form.find('input[name="presentation[id]"]').remove(), a = {
                 authenticity_token: $("meta[name=csrf-token]",'.__sdk').attr("content")
             }, a[this.container.data("session-key-name")] = this.container.data("session-key"), this.uploader = new qq.FileUploader({
-                allowedExtensions: ["pdf"],
+                allowedExtensions: ["pdf",'djvu'],
                 element: this.container.get(0),
                 action: this.form.attr("action") + ".json",
                 requestType: this.form.find("input[name=_method]").val() || "POST",
                 multiple: !1,
                 params: a,
-                template: '<div class="qq-uploader">                  <div class="qq-upload-button">                    <div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>                    <span class="button primary select">选择要上传的PDF文件</span>                    <span class="button primary cancel">PDF文件已选定</span>                  </div>                  <ul class="qq-upload-list"></ul>                </div>',
+                template: '<div class="qq-uploader">                  <div class="qq-upload-button">                    <div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>                    <span class="button primary select">选择要上传的文件</span>                    <span class="button primary cancel">文件已选定</span>                  </div>                  <ul class="qq-upload-list"></ul>                </div>',
                 onProgress: function (a, c, d, e) {
                     return b.progress(d, e)
                 },
@@ -4170,7 +4170,7 @@ var swfobject = function () {function A() {
         }
         return e(a, c), a.prototype.setup = function () {
             var a = this;
-            return $("#uploader",'.__sdk').append('<div class="qq-uploader">        <div class="qq-upload-button">          <span class="button primary select">选择要上传的PDF文件</span>          <span class="button primary cancel">PDF文件已选定</span>        </div>        <ul class="qq-upload-list"></ul>      </div>'), $("#presentation_pdf",'.__sdk').uploadify({
+            return $("#uploader",'.__sdk').append('<div class="qq-uploader">        <div class="qq-upload-button">          <span class="button primary select">选择要上传的文件</span>          <span class="button primary cancel">文件已选定</span>        </div>        <ul class="qq-upload-list"></ul>      </div>'), $("#presentation_pdf",'.__sdk').uploadify({
                 uploader: "/flash/uploadify.swf",
                 hideButton: !0,
                 wmode: "transparent",
@@ -4183,12 +4183,10 @@ var swfobject = function () {function A() {
                     signature: encodeURIComponent(encodeURIComponent(this.config.signature)),
                 },
                 fileDesc: "Presentation",
-                fileExt: "*.pdf;",
+                fileExt: "*.pdf; *.djvu",
                 onSelect: function (b, c, d) {
-                    if(''==$('#presentation_title').val()){
-                      $('#presentation_title').val((d.name.lastIndexOf(".") != -1) ? d.name.substring(0, d.name.lastIndexOf(".")) : d.name);
-                    }
-                
+                    $('#presentation_title').val($('#presentation_title').val()+((d.name.lastIndexOf(".") != -1) ? d.name.substring(0, d.name.lastIndexOf(".")) : d.name));
+                    $('#biaozhu_cw').show();
                     return $("#presentation_pdfUploader",'.__sdk').css({
                         left: "-5000px"
                     }), a.start(d.name)
@@ -4205,9 +4203,8 @@ var swfobject = function () {function A() {
                             return a.complete(b)
                         }
                     });
-                    $('#presentation_title').val(d.name);
-                    $('#biaozhu_cw').show();
                     $('#ok_to_leave').show();
+                    $("#ok_to_leave").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
                 },
                 onProgress: function (b, c, d, e) {
                     return a.progress(e.bytesLoaded, d.size)

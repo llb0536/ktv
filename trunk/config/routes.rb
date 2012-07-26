@@ -39,6 +39,8 @@ Quora::Application.routes.draw do
   # ________________________________ktv__________________________________________
   resources :schools
   resources :maps
+  get '/coursewares_with_page' => 'coursewares#index'
+  get '/coursewares_with_page/:page' => 'coursewares#index'
   resources :coursewares do
     collection do
       get 'mine'

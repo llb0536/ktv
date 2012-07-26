@@ -12,7 +12,7 @@ end
 
     (function($) {
       $.preLoadImage = function(idx, count) {
-        if (count == undefined) { count = Slide.urls.length }
+        if (count == undefined) { count = 4/*Slide.urls.length*/ }
         var idx = idx,
             url = Slide.urls[idx];
         if ($('#cache_' + idx).length == 0) {
@@ -100,6 +100,8 @@ end
         $('.current_slide').text(Slide.current+1);
         Slide.markFirstOrLast();
         player.channel.trigger('change', {'number': Slide.current + 1});
+        $.preLoadImage(Slide.current+1,4) 
+        $.preLoadImage(Slide.current-2 >= 0 ? Slide.current-2 : 0,2) 
       },
       markFirstOrLast: function() {
         $('.navigation').removeClass('first').removeClass('last');

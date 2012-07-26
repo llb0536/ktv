@@ -786,19 +786,6 @@ class User
     topic.redis_search_index_create
   end
 
-  def msg_center_action_follow(user_ud)
-    send_to_msg_center({
-      "SourceId"=>"",
-      "MsgType"=>30,
-      "MsgSubType"=>3020,
-      "Receiver"=>user_ud,
-      "Sender"=>"#{self.name}",
-      "SenderUrl"=>"http://kejian.tv/users/#{self.slug}",
-      "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.slug}\">#{self.name}</a>关注了你。</P>",
-      "SendContentUrl"=>"",
-      "OperateUrl"=>""
-  	})
-  end
   def follow(user,nolog=false)
     if user.respond_to?(:each)
       user.each do |u|
@@ -820,7 +807,6 @@ class User
       UserMailer.deliver_delayed(UserMailer.be_followed(user.id,self.id)) unless nolog
 
       insert_follow_log("FOLLOW_USER", user) unless nolog
-      Resque.enqueue(HookerJob,self.class.to_s,self.id,:msg_center_action_follow,user.zhaopin_ud)
       self.redis_search_index_create
       user.redis_search_index_create
     end

@@ -337,7 +337,6 @@ an params example:
         User.find(params[:user_id]).inc(:invited_count,1)
         @invite = AskInvite.invite(params[:id], params[:user_id], current_user.id)
         @success = true
-        Resque.enqueue(HookerJob,@invite.class.to_s,@invite.id,:msg_center_action,params[:user_id],current_user.id)
       else
         @success = false
       end
