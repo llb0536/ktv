@@ -25,7 +25,7 @@
 				<a href="/topics/<%=@topic.id %>" class="blue"><%= @topic.coursewares_count %>个课件</a>
 				</span>
 			</div>
-			<span class="sheetname marginleft" id="fix-string05"><%= @topic.name %></span>
+			<span class="sheetname marginleft"><%= @topic.name %></span>
 		</div>
 		<script type="text/javascript">
 		<% content_for :butt2 do %>
@@ -87,6 +87,7 @@
                               <div class="e_col w5_5" style="width:186px">
                                 <div id="ld_llfWRv_13713">
 
+                                  <% unless Setting.root_topic_id==@topic.id.to_s%>
                                   <div class="question_topics row">
                                     <div id="ld_C4qa3A_415650">
                                       <div id="ld_C4qa3A_415667">
@@ -101,6 +102,7 @@
                                         <% end %>
                                       </div>
                                     </div>
+                                  <% end %>
 
                                     <div class="question_topic_selector" style="display:none" id="the_question_topic_selector">
                                       <div id="__w2_tlet7hq_selector_wrapper" class="selector">
@@ -113,7 +115,7 @@
                                       </div>
                                     </div>
 
-                                    <span class="" id="__w2_P47vozg_inline_editor_link"><span id="ld_CNbgUu_8962"><a class="edit" href="#" id="__w2_zFYJDH4_edit">编辑父领域</a></span></span>
+                                    <span class="" id="__w2_P47vozg_inline_editor_link"><span id="ld_CNbgUu_8962"><a class="edit" href="#" id="__w2_zFYJDH4_edit" style="display:inline-block">编辑父领域</a></span></span>
                                   </div>
                                 </div>
 
@@ -179,7 +181,7 @@ im(function () {
         loadingID: "imloading",
 
         callBack: function () {
-            var showContent = "他/她还没有发布课件";
+        var showContent = "这个领域下还没有课件，<a href=\"/coursewares/new\">发布一个</a>吧：）";
 
             $("#contentMain").prepend('<div style="text-align: center; margin-right: 233px; padding-top: 100px; left: 0px; top: 0px;" class="f14" columns="0">' + showContent + '</div>');
         }

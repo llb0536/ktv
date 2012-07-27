@@ -28,6 +28,15 @@ class Topic
   def self.others
     self.find_or_create_by(name:'其他')
   end
+  before_save :check_and_fill_ancestors,:if=>'fathers_changed?'
+  def check_and_fill_ancestors
+    self.ancestors = [self.name] 
+    self.fathers.each do |father|
+      item = Topic.find_by_name(father)
+      self.ancestors += item.ancestors 
+    end
+    self.ancestors.uniq!
+  end
   before_save :counter_work
   def counter_work
     self.asks_count=self.asks.nondeleted.count
@@ -96,8 +105,10 @@ class Topic
 
   index :created_at
   def add_father(topic)
+    return if Setting.root_topic_id==self.id.to_s
     self.fathers << topic.name
     self.fathers.uniq!
+    self.out_degree = self.fathers.size
     self.save!
   end
 
@@ -112,6 +123,36 @@ class Topic
   field :quora
   field :wikipedia
   field :fathers,:type => Array,:default => []
+  field :children,:type => Array,:default => []
+  field :ancestors,:type => Array,:default => []
+  field :offspring,:type => Array,:default => []
+  field :fathers_count,:type=>Integer,:defaut=>0
+  field :children_count,:type=>Integer,:defaut=>0
+  field :ancestors_count,:type=>Integer,:defaut=>0
+  field :offspring_count,:type=>Integer,:defaut=>0
+  def self.fix_root!
+    root = Topic.find Setting.root_topic_id
+    Topic.where(:fathers=>[]).each do |item|
+      item.add_father(root)
+    end
+  end
+  def self.fix_ancestors!
+    Topic.all.each do |item|
+      item.ancestors = [ item.name ]
+      item.save(:validate=>false)
+    end
+    Topic.where(:fathers=>[]).each do |item|
+      self.fix_ancestors(item)
+    end
+  end
+  def self.fix_ancestors(fitem)
+    Topic.where(:fathers=>fitem.name).each do |item|
+      item.ancestors += fitem.ancestors
+      item.ancestors.uniq!
+      item.save(:validate=>false)
+      self.fix_ancestors(item)
+    end
+  end
   field :tags
   index :tags
   field :hot_rank,:type=>Integer,:default=>9999

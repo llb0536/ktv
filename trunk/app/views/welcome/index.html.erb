@@ -36,7 +36,7 @@
 <div class="category-nav bg vsplit cf">
 <ul class="femail">
 <li class="bg fmailicon"></li>
-<% %w{数学 物理 化学 生物}.each do |name| %>
+<% %w{数学 物理 化学 生物学}.each do |name| %>
 <li><a href="/topics/<%= Topic.get_id(name) %>"><%= name %></a></li>
 <% end %>
 </ul>
@@ -48,13 +48,13 @@
 </ul>
 <ul class="life">
 <li class="bg humanityicon"></li>
-<% %w{经济学 历史 外语}.each do |name| %>
+<% %w{经济学 历史 语言学}.each do |name| %>
 <li><a href="/topics/<%= Topic.get_id(name) %>"><%= name %></a></li>
 <% end %>
 </ul>
 </div>
 <div class="filter-nav bg vsplit">
-<a href="http://www.zhimei.com/hot/?frm=newIndex">最热</a><a href="http://www.zhimei.com/all/?frm=newIndex">最新</a>
+  <a href="<%=hot_coursewares_path%>" style="padding-left:18px">最热</a><a href="<%=latest_coursewares_path%>">最新</a>
 </div>
 </div>
 <!--banner begins-->
@@ -201,7 +201,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
 </span>
 <a href="<%= new_courseware_path %>" class="icon addme png">轻松分享上传课件</a>
 <a href="<%= coursewares_path %>" class="icon shareme png" >下载大家分享的学习资料</a>
-<a href="<%= asks_path %>" class="icon likeme png" >解题互助，结交朋友</a>
+<a href="<%= newbie_path %>" class="icon likeme png" >解题互助，结交朋友</a>
 </div>
 </div>
 <!--banner ends-->

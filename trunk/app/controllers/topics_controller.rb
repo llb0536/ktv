@@ -79,6 +79,7 @@ class TopicsController < ApplicationController
     if @topic.blank? or @topic.deleted==1
       return render_404
     end
+    cookies[:presentation_topic] = @topic.name
     father = @topic.fathers.first
     @fathers = []
     while father

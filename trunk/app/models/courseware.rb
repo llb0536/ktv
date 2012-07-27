@@ -75,6 +75,7 @@ class Courseware
   field :user_name
   field :user_id
   field :topic
+  field :topics
   field :topic_id
   
   field :title
@@ -124,7 +125,7 @@ class Courseware
     
   end
   def titleize
-    if self.title.present? and self.title_changed?
+    if self.title.present? and (self.new_record? or self.title_changed?)
       self.title.strip!
       if self.title =~ /^\[([^\[\]]+)\](.*)$/
         self.school_name = $1.strip
@@ -134,6 +135,7 @@ class Courseware
         self.analyse2($2)
       elsif self.title =~ /^@([^:：]*)[:：](.*)$/
         u=User.where(:slug=>$1).first
+        u||=User.where(:name=>$1).first
         if !u
           u = User.new
           u.name = $1
@@ -144,7 +146,8 @@ class Courseware
               u.name_unknown = true
             end
           end
-          u.slug = $1
+          u.slug = nil
+          u.auto_slug
           u.email_unknown = true
           u.save(:validate => false)
         end
@@ -194,6 +197,7 @@ class Courseware
   def create_topic!
     topic = Topic.find_or_create_by(:name => self.topic)
     self.topic_id = topic.id
+    self.topics = topic.ancestors
   end
   before_save :counter_work
   def counter_work

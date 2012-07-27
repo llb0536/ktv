@@ -44,37 +44,40 @@ class TranscoderJob
           pinpic_final = ''
           pdf.each_with_index do |page,i|
             next unless i+1 >= @courseware.pdf_slide_processed
-            puts pic = "#{working_dir}/#{@courseware.revision}slide_#{i}.jpg"
-            page.save(pic,:width=>@courseware.slide_width)        
             done = false
+            tried_times = 0
             while !done
               begin
+                tried_times += 1
+                break if tried_times > 10
+                puts pic = "#{working_dir}/#{@courseware.revision}slide_#{i}.jpg"
+                page.save(pic,:width=>@courseware.slide_width)        
                 new_object = $snda_ktv_eb.objects.build("#{@courseware.id}/#{@courseware.revision}slide_#{i}.jpg")
                 new_object.content = open(pic)
                 new_object.save
+                if 0==i
+                  inf = `identify "#{pic}"`
+                  if inf=~/JPEG (\d+)x(\d+)/
+                    @courseware.update_attribute(:real_width, $1.to_i)
+                    @courseware.update_attribute(:real_height, $2.to_i)
+                  end
+                  # ---pinpic---
+                  pinpic = "#{working_dir}/pin.jpg"
+                  puts `convert "#{pic}" -resize 222x +repage -gravity North "#{pinpic}"`
+                  inf = `identify "#{pinpic}"`
+                  if inf=~/JPEG (\d+)x(\d+)/
+                    pinpic_final = "#{working_dir}/#{@courseware.revision}pin.1.#{$1}.#{$2}.jpg"
+                    puts `mv "#{pinpic}" "#{pinpic_final}"`
+                    @courseware.update_attribute(:pinpicname,File.basename(pinpic_final))
+                  end
+                end
+                puts pic2 = "#{working_dir}/#{@courseware.revision}thumb_slide_#{i}.jpg"
+                puts `convert "#{pic}" -thumbnail '210x>' -crop 210x158+0+0 +repage -gravity North "#{pic2}"`
                 done = true
               rescue => e
                 puts e
               end
             end
-            if 0==i
-              inf = `identify "#{pic}"`
-              if inf=~/JPEG (\d+)x(\d+)/
-                @courseware.update_attribute(:real_width, $1.to_i)
-                @courseware.update_attribute(:real_height, $2.to_i)
-              end
-              # ---pinpic---
-              pinpic = "#{working_dir}/pin.jpg"
-              puts `convert "#{pic}" -resize 222x +repage -gravity North "#{pinpic}"`
-              inf = `identify "#{pinpic}"`
-              if inf=~/JPEG (\d+)x(\d+)/
-                pinpic_final = "#{working_dir}/#{@courseware.revision}pin.1.#{$1}.#{$2}.jpg"
-                puts `mv "#{pinpic}" "#{pinpic_final}"`
-                @courseware.update_attribute(:pinpicname,File.basename(pinpic_final))
-              end
-            end
-            puts pic2 = "#{working_dir}/#{@courseware.revision}thumb_slide_#{i}.jpg"
-            puts `convert "#{pic}" -thumbnail '210x>' -crop 210x158+0+0 +repage -gravity North "#{pic2}"`
             @courseware.update_attribute(:pdf_slide_processed,i+2) unless i+2>@courseware.slides_count
           end
         elsif '.djvu'==ext
