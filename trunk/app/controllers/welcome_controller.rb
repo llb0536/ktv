@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     @courseware = Courseware.find(Setting.ktv_courseware_id)
     @latest_user = User.already_confirmed.recent.first
     @hottest_user = UserCache.where(:hot_rank => 1).first.user
-    @hottest_cw = Courseware.desc(:views_count).limit(9)
+    @latest_cw = Courseware.desc(:created_at).limit(6)
   end
   def inactive_sign_up
     render "inactive_sign_up#{@subsite}",layout:'application_for_devise'

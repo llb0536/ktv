@@ -39,11 +39,11 @@ def redis_connect!(index=0)
   Resque.redis = $redis_resque
   
   
-  $snda_service = Sndacs::Service.new(:access_key_id => Setting.snda_id, :secret_access_key => Setting.snda_key)
-  $snda_buckets = $snda_service.buckets
-  $snda_ktv_eb = $snda_buckets.find("ktv-eb")
-  $snda_ktv_down = $snda_buckets.find("ktv-down")
-  $snda_ktv_up = $snda_buckets.find("ktv-up")
+  # $snda_service = Sndacs::Service.new(:access_key_id => Setting.snda_id, :secret_access_key => Setting.snda_key)
+  # $snda_buckets = $snda_service.buckets
+  # $snda_ktv_eb = $snda_buckets.find("ktv-eb")
+  # $snda_ktv_down = $snda_buckets.find("ktv-down")
+  # $snda_ktv_up = $snda_buckets.find("ktv-up")
 end
 
 
