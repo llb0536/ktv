@@ -4028,7 +4028,7 @@ var swfobject = function () {function A() {
         }, 2e3)
     })
 }), $(document).bind("ready pjax:end", function () {
-    $("a.scrub").mousemove(function (a) {
+    $("a.scrub",'.__sdk').mousemove(function (a) {
         var b = $(this),
             c = b.closest(".presentation"),
             d = b.find(".scrubbed"),
