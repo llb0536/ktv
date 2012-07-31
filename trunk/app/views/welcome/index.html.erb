@@ -219,6 +219,7 @@ $('#categories_table > div').height($('#categories_table').height());
           },
           "name": "近世代数领域电子书",
           "link": "<%= courseware_path('5010fc7ce138231d43000054') %>",
+          "link2": "<%= topic_path('501108b8e138231d50000076') %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342660139979.950.300.jpg') %>",
           "s": "20120720",
@@ -231,6 +232,7 @@ $('#categories_table > div').height($('#categories_table').height());
           },
           "name": "Ruby领域课件",
           "link": "<%= courseware_path('5010ca51e138231d43000047') %>",
+          "link2": "<%= topic_path('5010c618e138231d5000005f') %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342751468132.950.300.jpg') %>",
           "s": "20120719",
@@ -243,6 +245,7 @@ $('#categories_table > div').height($('#categories_table').height());
           },
           "name": "数学分析领域课件",
           "link": "<%= courseware_path('50045086e138230180000001') %>",
+          "link2": "<%= topic_path('5005f34ee1382341d9000020') %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342577163666.950.300.jpg') %>",
           "s": "20120718",
@@ -255,6 +258,7 @@ $('#categories_table > div').height($('#categories_table').height());
           },
           "name": "邀请好友注册",
           "link": "<%= invite_users_path %>",
+          "link2": "<%= invite_users_path %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342060797757.950.300.jpg') %>",
           "s": "20120717",
@@ -272,7 +276,7 @@ $('#categories_table > div').height($('#categories_table').height());
           html.push(json.link);
           html.push('"  data-id="' + json._id.$oid);
           html.push('"><img src="' + aduri + json.url + '" border="0" style="cursor:pointer" /></a>');
-          slidebutton.push('<li><a>' + json.name + '</a></li>');
+          slidebutton.push('<li><a href="'+json.link2+'">' + json.name + '</a></li>');
       }
       html.push('<ul class="tag">' + slidebutton.join("") + '</ul>');
       html.push('</div>');

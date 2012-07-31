@@ -170,13 +170,16 @@ class ApplicationController < ActionController::Base
   
   def require_admin
     if current_user.blank?
-      @simple_cpanel_layout=true
-      render "cpanel/users/login"
+      #@simple_cpanel_layout=true
+      #render "cpanel/users/login"
+      render file:"#{Rails.root}/public/999.html",layout:false
       return
     end
     if ![User::SUP_ADMIN,User::SUB_ADMIN].include?current_user.admin_type
-      @simple_cpanel_layout=true
-      render "cpanel/users/login"
+      #@simple_cpanel_layout=true
+      #render "cpanel/users/login"
+      render file:"#{Rails.root}/public/999.html",layout:false
+      return
     end
   end
   

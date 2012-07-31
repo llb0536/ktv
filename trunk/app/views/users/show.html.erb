@@ -96,7 +96,7 @@
 							</li>
 							<!-- <li><span>9</span> <span>积分</span></li> -->
 							<li>
-							<a href="/bds/<%= @user.slug %>" class="gray block usernumber"><%= @user.coursewares_count %><br/>
+							<a href="/users/<%= @user.slug %>" class="gray block usernumber"><%= @user.coursewares_count %><br/>
 							<span>课件</span></a></li>
 						</ul>
             <% unless current_user and @user.id==current_user.id%>
@@ -133,7 +133,7 @@
 						</h3>
 						<ul class="bp cf">
 
-              <% for follower in @followers %>
+              <% for follower in @followers.reverse %>
 							<li><%= user_avatar_tag2(follower,:small30,{:size2 => 30}) %></li>
 							<% end %>
 						</ul>
@@ -147,8 +147,7 @@
 						<span class="label"><a href="/fans/<%= @user.slug %>/1">关注<%= user_sex_title(@user,current_user)%>的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.follower_ids.size %></a></em>) </span>
 						</h3>
 						<ul class="bp cf">
-
-              <% for follower in @followers %>
+              <% for follower in @followers.reverse %>
 							<li><%= user_avatar_tag2(follower,:small30,{:size2 => 30}) %></li>
 							<% end %>
 						</ul>
