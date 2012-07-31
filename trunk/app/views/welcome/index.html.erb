@@ -12,7 +12,7 @@
         <p>
           <%= image_tag 'p.png',:alt => '通过课件交流系统，您可以迅速定位最感兴趣的课程，轻松获取大家共同维护的最优质的一份学习资料。然而，课件系统不仅是一个出色的学习资源交流平台，她更是一个开放的在线学习社区。在这里，您可以把遇到的难题发出来，大家共同切磋，也可以让大家为您的学习目标出谋划策。在这里，我们共同进步！' %>
         </p>
-        <p><a href="<%=topics_path%>" id="loginhuge" class="button primary">新手入门与功能简介</a></p>
+        <p><a href="<%=new_courseware_path%>" id="loginhuge" class="button primary">立即开始上传分享课件</a></p>
       </div>
       <div class="secondary_info">
         <div class="slide_frame">
@@ -396,23 +396,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   <div class="site-rec">
   <h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>专家</span></span></h2>
   <ul id="zhimei_star_ul">
-  <% @topics_users.each do |arr| %>
-  <% t = arr[0]; u = arr[1] %>
-  <li class=" cf">
-  <div class="uhead"><a href="<%= user_path u %>" havecard="1" usercard="<%= u.id %>" ><img src="<%= avatar_url(u,:mid60) %>" width="60" height="60" /></a></div>
-  <div class="usay">
-  <p class="desc" style="height:36px;overflow:hidden;"><a class="username" havecard="1" usercard="<%= u.id %>" href="<%= user_path u %>"><%= u.name %></a>：<a href="<%= user_path u %>" class="gray" ><%= link_to t.name,topic_path(t) %>领域专家. <%= u.bio_plain%></a></p>
-  <p>
-  <% if (current_user and current_user.followed?(u)) %>
-  <a follow="true" followed="<%= u.id %>" id="<%= u.id %>" class="hotbutton unfollow-btn">已关注</a>
-  <% else %>
-  <a class="hotbutton follow-btn" id="<%= u.id %>" followed="<%= u.id %>" follow="false">关注</a>
-  <% end %>
-
-  </p>
-  </div>
-  </li>				
-  <% end %>
+    <%= render 'star_ul_lis' %>
   </ul>
   </div>
   </div>
@@ -552,7 +536,7 @@ $("a[name='shopping_refresh']").live("click", function () {
             $('#' + ulObj).html("");
             var content = '';
             for (var i = 0, len = lists.length; i < len; i++) {
-                content = '<li class="cf">' + '<a class="avatar" href="/share/' + lists[i].id + '"  ><img src="' + lists[i].picTiny + '"></a>' + '<div class="profile gray">' + '<p class="desc"><a href="/share' + lists[i].id + '"   class="linksgray">' + lists[i].titleHtmlEscape + '</a></p>' + '<p>';
+                content = '<li class="cf">' + '<a class="avatar" href="/share/' + lists[i].id + '"  ><img src="' + lists[i].picTiny + '"></a>' + '<div class="profile gray">' + '<p class="desc" style="height:36px;overflow:hidden;"><a href="/share' + lists[i].id + '"   class="linksgray">' + lists[i].titleHtmlEscape + '</a></p>' + '<p>';
                 var price = lists[i].price;
                 if (price > 0) {
                     content += '<span class="orange">' + price + '&nbsp;人想买</span>';
@@ -570,12 +554,9 @@ $('#exchange_refresh').live("click", function () {
     $.get(uri("URI_INDEX_EXCHANGE_REFRESH"), function (data) {
         if (data.length) {
             $('#imJsExchange').html("");
-            var content = '';
-            var imgPrefix = 'http://b.imimg.cn';
-            var areCoinName = '美币';
             for (var i = 0, len = data.length; i < len; i++) {
-                content = '<li class="hotImg">' + '<a class="minilogo" href="javascript:;"></a>' + '<a href="/saving/' + data[i].savingGoods.subareaId + '/goods/' + data[i].savingGoods.id + '" >' + '<p class="showtips">' + data[i].savingGoods.goodsName + '<br>市场价：¥' + data[i].savingGoods.exchangePrice + '<span class="orange b">' + data[i].savingGoods.referPrice + '</span>' + areCoinName + ' &nbsp;可免费兑换' + '</p>' + '<img src="' + imgPrefix + data[i].savingGoods.picMainUrl + '" width="160px" height="160px" />' + '</a>' + '</li>';
-                $('#imJsExchange').append(content);
+              content='';
+              $('#imJsExchange').append(content);
             }
         }
     });
@@ -584,27 +565,9 @@ $('#exchange_refresh').live("click", function () {
     } catch (e) {}
 });
 $('#zhimei_star_refresh').live("click", function () {
-    $.get(uri("URI_INDEX_ZHIMEI_STAR_REFRESH"), function (data) {
-        if (data.length) {
-            $('#zhimei_star_ul').html("");
-            var content = '';
-            for (var i = 0, len = data.length; i < len; i++) {
-                if (i == 3) {
-                    content = '<li class="none cf">';
-                } else {
-                    content = ' <li class="cf">';
-                }
-                content += '<div class="uhead">' + ' 			<a href="/profile/' + data[i].userId + '" havecard="1" usercard="' + data[i].userId + '" >' + ' 				<img src="' + data[i].picUrl + '" />' + ' 			</a>' + ' 		</div>  ' + ' 		<div class="usay">' + ' 			<p><a class="username" havecard="1" usercard="' + data[i].userId + '" href="/profile/' + data[i].userId + '">' + data[i].title + '</a>：<a href="/profile/' + data[i].userId + '" class="gray" >' + data[i].description + '</a></p>' + ' 			<p>';
-                if (eval(data[i].follow) == true) {
-                    content += '<a class="hotbutton unfollow-btn" id="' + data[i].userId + '" followed="' + data[i].userId + '" follow="true">已关注</a>';
-                } else {
-                    content += '<a class="hotbutton follow-btn" id="' + data[i].userId + '" followed="' + data[i].userId + '" follow="false">关注</a>';
-                }
-                content += ' 			</p>'; + ' 		</div>' + '</li>';
-                $('#zhimei_star_ul').append(content);
-            }
-        }
-    }, "json");
+    $.get(uri("URI_INDEX_ZHIMEI_STAR_REFRESH"), {except_id:'<%= @hottest_user.id %>'}, function (data) {
+      $('#zhimei_star_ul').html(data);
+    }, 'html');
     try {
         _gaq.push(['_trackPageview', "/i_zhimei_star/"]);
     } catch (e) {}

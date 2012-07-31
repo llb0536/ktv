@@ -2,10 +2,6 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:auth_callback]
   before_filter :init_user, :except => [:auth_callback,:index,:hot,:invite,:invite_submit]
-  before_filter :we_are_inside_qa
-  def we_are_inside_qa
-    @we_are_inside_qa = true
-  end
   def update
     unless view_context.owner?(@user)
       render_401
@@ -158,6 +154,32 @@ class UsersController < ApplicationController
   def following
     @per_page = 20
     @followers = @user.following_ids.reverse
+    .paginate(:page => params[:page], :per_page => @per_page)
+    
+    set_seo_meta("#{@user.name}关注的人")
+    if params[:format] == "js"
+      render "followers.js"
+    else
+      render "followers"
+    end
+  end
+  
+  def double_follow
+    @per_page = 20
+    @followers = (@user.following_ids & @user.follower_ids).reverse
+    .paginate(:page => params[:page], :per_page => @per_page)
+    
+    set_seo_meta("#{@user.name}关注的人")
+    if params[:format] == "js"
+      render "followers.js"
+    else
+      render "followers"
+    end
+  end
+  
+  def invites
+    @per_page = 20
+    @followers = User.where(:inviter_ids=>@user.id,:confirmed_at=>nil).desc('created_at')
     .paginate(:page => params[:page], :per_page => @per_page)
     
     set_seo_meta("#{@user.name}关注的人")

@@ -85,11 +85,11 @@
 						</div>
 						<ul class="useratten ctf-bg cf">
 							<li>
-							<a href="/follow/<%= @user.slug %>/1" class="gray block usernumber"><%= @user.following_count %><br/>
+							<a href="/users/<%= @user.slug %>/following" class="gray block usernumber"><%= @user.following_count %><br/>
 							<span>关注</span></a>
 							</li>
 							<li>
-							<a id="user_profile_fans_count" href="/fans/<%= @user.slug %>/1" class="block gray usernumber">
+							<a id="user_profile_fans_count" href="/users/<%= @user.slug %>/followers" class="block gray usernumber">
 							<em><%= @user.follower_ids.size %></em><br/>
 							<span>粉丝</span>
 							</a>
@@ -129,7 +129,7 @@
 				  <% if !@followers.blank? %>
 					<div class="labelbox">
 						<h3 class="title">
-						<span class="label"><a href="<%= following_topics_user_path(@user.slug) %>"><%= user_sex_title(@user,current_user) %>关注的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.following_ids.size %></a></em>) </span>
+						<span class="label"><a href="/users/<%= @user.slug %>/following %>"><%= user_sex_title(@user,current_user) %>关注的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.following_ids.size %></a></em>) </span>
 						</h3>
 						<ul class="bp cf">
 
@@ -144,7 +144,7 @@
 				  <% if !@followers.blank? %>
 					<div class="labelbox">
 						<h3 class="title">
-						<span class="label"><a href="/fans/<%= @user.slug %>/1">关注<%= user_sex_title(@user,current_user)%>的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.follower_ids.size %></a></em>) </span>
+						<span class="label"><a href="/users/<%= @user.slug %>/followers">关注<%= user_sex_title(@user,current_user)%>的人</a></span><span class="number">(<em class="blue"><a href="/fans/<%= @user.slug %>/1"><%= @user.follower_ids.size %></a></em>) </span>
 						</h3>
 						<ul class="bp cf">
               <% for follower in @followers.reverse %>

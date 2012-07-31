@@ -10,6 +10,17 @@ class User
   has_many :coursewares
   before_validation :fill_in_unknown_email
   before_validation :fill_in_unknown_name
+  def self.expert_with_topic(opts={})
+    opts[:without]||=[Setting.zuozheqingqiu_id]
+    ret = []
+    users = User.where(:expert_topic.ne=>nil,:_id.nin=>opts[:without]) #todo: .where(:confirmed_at.ne=>nil)
+    (0..users.count-1).sort_by{rand}.slice(0, 4).each do |i|
+      u = users.skip(i).first
+      t = Topic.locate u.expert_topic
+      ret << [t,u]
+    end
+    ret
+  end
   def self.shoudongtianjia!(name,email,password)
     u=self.new
     u.name=name

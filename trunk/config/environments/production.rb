@@ -54,6 +54,8 @@ Quora::Application.configure do
     ktv/__zm_ban.css
     ktv/__zm_dar.css
     ktv/__zm_user.css
+    ktv/__zm_friend.css
+    ktv/__zm_dialog.css
     ktv/__kug.css
 
     cpanel.js

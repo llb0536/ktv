@@ -210,4 +210,8 @@ HEREDOC
     json = {"message" => 0,"app" => 0,"system" => 0,"fans" => 0,"at" => 0,"comment" => 0}
     render json:json
   end
+  def star_refresh
+    @topics_users = User.expert_with_topic(:without => [Setting.zuozheqingqiu_id,params[:except_id]] + (current_user ? [current_user.id] : []))
+    render file:'welcome/_star_ul_lis',layout:false
+  end
 end

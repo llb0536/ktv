@@ -30,6 +30,7 @@ Quora::Application.routes.draw do
   get '/ajax/checkEmailAjax'
   get '/ajax/xl_req_get_method_vod'
   post '/ajax/logincheck'
+  get '/ajax/star_refresh'
   # ---=small=----
   get 'hack/htc'
   get '/welcome/inactive_sign_up'
@@ -127,6 +128,8 @@ Quora::Application.routes.draw do
       get "unfollow"
       get "followers"
       get "following"
+      get "invites"
+      get "double_follow"
       get "following_topics"
       # get "following_asks"
     end
