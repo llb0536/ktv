@@ -56,6 +56,9 @@ class User
          :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
+  field :topic #calculated by suggest_items.rake
+  field :expert_topic #calculated by TopicSuggestExpert
+  field :expert_topic_score, :type => Integer, :default => 0 #calculated by TopicSuggestExpert
   field :inviter_ids,:type=>Array,:default => []
   field :inviter_invited_at,:type=>Hash,:default => {}
   def invite_by(user,immediately=true)

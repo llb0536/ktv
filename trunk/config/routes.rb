@@ -41,6 +41,8 @@ Quora::Application.routes.draw do
   resources :maps
   get '/coursewares_with_page' => 'coursewares#index'
   get '/coursewares_with_page/:page' => 'coursewares#index'
+  get '/coursewares_mine' => 'coursewares#mine'
+  get '/coursewares_mine/:page' => 'coursewares#mine'
   resources :coursewares do
     collection do
       get 'mine'

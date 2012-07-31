@@ -3094,7 +3094,8 @@ im.zm.categoryNav = function (t) {
         upClass: "",
         downClass: "",
         top: "",
-        left: ""
+        left: "",
+        top_up: "-1px"
     };
     b = $.extend({}, d, t);
     q = !0, s = !1, r = !1;
@@ -3118,7 +3119,7 @@ im.zm.categoryNav = function (t) {
                         })
                     } else {
                         $("#nav").css({
-                            top: "-44px"
+                            top: b.top_up
                         })
                     }
                 })

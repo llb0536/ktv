@@ -262,6 +262,13 @@
   header ul li.browse:hover {
       background: url("<%=asset_path('browse.png')%>") left bottom no-repeat;
   }
+  header ul li.raise_ask {
+      text-indent: 30px;
+      background: url("<%=asset_path('raise_ask.png')%>") left top no-repeat;
+  }
+  header ul li.raise_ask:hover {
+      background: url("<%=asset_path('raise_ask.png')%>") left bottom no-repeat;
+  }
   header ul li.upload {
       text-indent: 30px;
       background: url("<%=asset_path('upload.png')%>") left top no-repeat;
@@ -1035,11 +1042,14 @@
       opacity: 1;
       visibility: visible;
   }
-  .supplimental div.presentation:nth-child(3n+1) {
-      clear: left;
-  }
-  .supplimental div.presentation:nth-child(3n) {
-      margin-right: 0;
+//  .supplimental div.presentation:nth-child(3n+1) {
+//      clear:left
+//  }
+//  .supplimental div.presentation:nth-child(3n) {
+//      margin-right: 0;
+//  }
+  .supplimental div.presentation:nth-child(4n) {
+    margin-right:0
   }
   .supplimental div.even {
       margin-right: 0;
@@ -1744,7 +1754,7 @@
   #core_img_cs{
     margin-right:4px;
   }
-  #core_browsetext_wrap, #core_addtext_wrap{
+  .core_wraps{
     font-size:16px;
   }
   input.publish-date {

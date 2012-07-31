@@ -67,7 +67,7 @@ class Courseware
   field :md5
   field :status
   field :uploader_id
-  
+  field :is_thin,:type => Boolean,:default => true
   field :title_short
   
   field :school_name
@@ -180,6 +180,7 @@ class Courseware
   end
   before_save :create_stuff!,:if=>'self.title_changed?'
   def create_stuff!
+    self.is_thin = self.thin?
     if self.school_name.present?
       school = School.find_or_create_by(:name => self.school_name)
       user = User.find_or_initialize_by(:school_id => school.id, :name => self.user_name)

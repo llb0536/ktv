@@ -130,6 +130,9 @@ class Topic
   field :children_count,:type=>Integer,:defaut=>0
   field :ancestors_count,:type=>Integer,:defaut=>0
   field :offspring_count,:type=>Integer,:defaut=>0
+  def self.locate(arg)
+    self.find_or_create_by(name:arg)
+  end
   def self.fix_root!
     root = Topic.find Setting.root_topic_id
     Topic.where(:fathers=>[]).each do |item|

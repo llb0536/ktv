@@ -130,10 +130,6 @@ $('#categories_table > div').height($('#categories_table').height());
 </div>
 </div>
 <input id="removeIds" type="hidden" value="" />
-<div class="keyword" id="div_tags">
-<span class="labeltitle"><em class="iconbg label-ico"></em>您的位置：</span>
-<span><a href="javascript:;">全部领域</a></span>
-</div>
 </div><!--categories ends-->
 <div class="sheetshadow"></div><!--薄片阴影-->
 </div>
@@ -143,44 +139,28 @@ $('#categories_table > div').height($('#categories_table').height());
 </div><!--categorybody end 分类结束-->
 <div class="filterbar" style="margin-top:44px;">
 <input id="queryScope" name="queryScope" type="hidden" value="0" />
-<input id="isProduct" type="hidden" value="0" />
-<input id="queryOrder" type="hidden" value="1" />
-<input id="priceScope" type="hidden" value="" />
+<% params[:isProduct] ||= '0' %>
+<input id="isProduct" type="hidden" value="<%= params[:isProduct] %>" />
+<% params[:queryOrder] ||= '1' %>
+<input id="queryOrder" type="hidden" value="<%= params[:queryOrder] %>" />
+<% params[:priceScope] ||= '0' %>
+<input id="priceScope" type="hidden" value="<%= params[:priceScope] %>" />
 <div class="hotword floatleft cf">
 <h4>只查看：</h4>
 <ul id="ulQueryScope">
 
-<li ><a class="queryScopeCss" rel="2"  href="javascript:;" ><span>达人推荐</span></a></li>
-<li  class='current'><a class="queryScopeCss" rel="0"  href="javascript:;" ><span>全部</span></a></li>
-</ul>
-</div>
-<div class="hotword hwprice floatleft cf">
-<span class="split">|</span>
-<h4>价格 ：</h4>
-<ul>
-<li class="allprice">
-<a href="javascript:;">全部<em class="iconbg arrow"></em></a>
-<div id="priceContent" class="dropdown w100" style='display:none'>
-<span class="iconbg uparrow"></span>
-<a href="javascript:;">全部</a>
-<a href="javascript:;">0~50</a>
-<a href="javascript:;">51~100</a>
-<a href="javascript:;">101~200</a>
-<a href="javascript:;">201~500</a>
-<a href="javascript:;">500以上</a>
-</div>
-</li>
+<li <%= 'class="current"' if '2'==params[:priceScope] %>><a class="queryScopeCss" rel="2"  href="javascript:;" ><span>篇幅长的</span></a></li>
+<li <%= 'class="current"' if '0'==params[:priceScope] %>><a class="queryScopeCss" rel="0"  href="javascript:;" ><span>全部</span></a></li>
 </ul>
 </div>
 <div class="hotword floatright cf">
-<span><input id="isProductCheckBox" type="checkbox"></span>
-<span class="onlycom">只看视频</span>
+<span><input id="isProductCheckBox" type="checkbox" <%= 'checked' if '1'==params[:isProduct] %>></span>
+<span class="onlycom"><label for="isProductCheckBox">只看幻灯片</label></span>
 <span class="split">|</span>
 <h4>排序：</h4>
 <ul id="ulQueryOrder">
-<li  class='current'><a class="queryOrderCss" rel="1" href="javascript:;"><span>一天最热</span></a></li>
-<li ><a class="queryOrderCss" rel="2" href="javascript:;"><span>一周最热</span></a></li>
-<li ><a class="queryOrderCss" rel="0" href="javascript:;"><span>最新</span></a></li>
+<li  class='current'><a class="queryOrderCss" rel="1" href="javascript:;"><span>最新</span></a></li>
+<li ><a class="queryOrderCss" rel="2" href="javascript:;"><span>最热</span></a></li>
 </ul>
 </div>
 </div>
@@ -310,7 +290,8 @@ im(function () {
         upClass: "arrowup",
         downClass: "arrow",
         top: "49px",
-        left: "-465px"
+        left: "-465px",
+        top_up: "-44px"
     });
     var delTagIds = 0;
     var linkUrl = "/coursewares",

@@ -44,7 +44,7 @@ default: &defaults
   ktv_courseware_id: '500f9970e13823796a000002'
   ktv_domain: kejian.tv
   root_topic_id: '501137a1e138236528000016'
-  
+  zuozheqingqiu_id: '5010da4ce138231d4300004f'
   google_analytics_key: UA-28971136-1
   # Length of time to wait until a connection is opened in seconds
   open_timeout: 1
@@ -69,11 +69,12 @@ development:
   <<: *defaults
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
-  open_timeout: 1
-  timeout: 1
-
-development_mongohq:
-  <<: *defaults
+  # open_timeout: 1
+  # timeout: 1
+  read_timeout: 30
+  idle_timeout: 30
+  open_timeout: 30
+  timeout: 30
 
 test:
   <<: *defaults

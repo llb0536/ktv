@@ -3,7 +3,7 @@ json.selectedBoardIds []
 json.boardId Topic.get_id(courseware.topic)
 json.isSurprise false
 json.sharePicId 159510
-json.shareTitle courseware.title
+json.shareTitle "#{courseware.title}#{'2'==params['queryOrder'] ? ' ('+courseware.views_count.to_s+'点击)' : ''}"
 json.commentCount 0
 json.reshareCount 0
 json.id courseware.id

@@ -8,8 +8,11 @@ class TopicSuggestExpert
   field :sizze, :type => Integer, :default => 0
   def self.calculate_expert_topics
     ret = {}
-    User.where(:is_expert=>true).each do |expert|
-      ret[expert.id] = expert.answers.collect{|ans| ans.ask ? ans.ask.topics : nil}.compact.flatten
+    # User.where(:is_expert=>true).each do |expert|
+    #   ret[expert.id] = expert.answers.collect{|ans| ans.ask ? ans.ask.topics : nil}.compact.flatten
+    # end
+    User.all.each do |expert|
+      ret[expert.id] = expert.coursewares.collect{|cw| cw.topics ? cw.topics : nil}.compact.flatten
     end
     ret
   end
@@ -33,7 +36,7 @@ class TopicSuggestExpert
       how = Hash.new("")
       # item.expert_ids += User.where(tags:name).collect(&:_id)
       opts[:expert_topics].each do |key,value|
-        if value.count(name) > 4
+        if value.count(name) > 0 #threshold: 4
           item.expert_ids << key
           ptn[key] = value.count(name)
           how[key] += "#{value.count(name)}"
@@ -47,12 +50,20 @@ class TopicSuggestExpert
         dazhe = ((dazhe-MIN)*1.0 ) / (MAX-MIN)
         dazhe = 0 if dazhe < 0 
         dazhe = 1 if dazhe > 1
+        dazhe = 1 # todo
         ptn[id] *= dazhe
         how[id] += " * #{dazhe}"
       end
       item.expert_ids.sort! do |x,y|
-        ptn[x]<=>ptn[y]
-      end.reverse!
+        ptn[y]<=>ptn[x]
+      end
+      if uid = item.expert_ids.first
+        u = User.find uid
+        if ptn[uid]>u.expert_topic_score
+          u.update_attribute(:expert_topic,item.topic.name)
+          u.update_attribute(:expert_topic_score,ptn[uid])
+        end
+      end
       if opts[:debug]
         puts "#{item.topic.name}: #{item.expert_ids.collect{|id| u=User.find(id);u.name+'('+how[id].to_s+')'}.join(',')}"
         puts "------------------------------------------"

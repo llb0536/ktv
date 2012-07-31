@@ -64,7 +64,7 @@
         "avatarMedium"=> "#{avatar_url(current_user,:mid60)}",
         "avatarTiny"=> "#{avatar_url(current_user,:small30)}",
         "avatarLarge"=> "#{avatar_url(current_user,:normal180)}",
-      ].to_json.to_json%>;
+      ].to_json%>;
   <% else %>
     window.loginUser = "";
   <% end %>
@@ -86,8 +86,11 @@
       </form>
       <div class="navigation">
         <ul>
-          <li class="browse"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap">我要提问</a></li>
-          <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0" id="core_addcw_wrap">我要上传</a></li>
+<!--
+          <li class="raise_ask"><a href="<%= new_ask_path %>" class="lh39 pa0" id="core_addtext_wrap">我要提问</a></li>
+-->
+          <li class="browse"><a href="<%= topics_path %>" class="lh39 pa0 core_wraps" id="core_all_wrap">全部课件</a></li>
+          <li class="upload"><a href="<%= new_courseware_path %>" class="lh39 pa0 core_wraps" id="core_addcw_wrap">我要上传</a></li>
         </ul>
         <div id="amazing-shadow"></div>
         <% if user_signed_in? %>
@@ -279,6 +282,7 @@
     <%= yield :butt2 %>
     $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
     $('#core_addcw_wrap').click(function(){return KTV.addCW()});
+    $("abbr.timeago").timeago();
   });
   </script>
   <%= yield :bottom %>

@@ -13,7 +13,9 @@
       latest_coursewares_path,
       hot_topics_path,
       all_logs_path,
-      ].include? request.path %>"><a class="navmark" href="/">首页<span class="iconbg arrow"></span></a>
+      ].include? request.path %>"><a class="navmark" href="/">首页</a>
+<!--
+<span class="iconbg arrow"></span>
       <div class="dropdown w200" style="display: none;">
       <span class="iconbg uparrow"></span>
         <a href="<%= hot_users_path %>">达人</a>
@@ -22,17 +24,17 @@
       <a href="<%= latest_coursewares_path %>">最新</a>
       <a href="<%= all_logs_path %>">动态</a>
       </div>
+-->
       </li>
       <li class="dot"></li>
       <li class="<%= 'current' if mine_coursewares_path==request.path %>"><a href="<%= mine_coursewares_path %>">我关注的</a></li>
       <li class="dot"></li>
-      <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">全部领域</a></li>
-      <li class="dot"></li>
-      <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校/老师</a></li>
+      <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">全部课件</a></li>
       <!--
       <li class="dot"></li>
+      <li class="<%= 'current' if schools_path==request.path %>"><a href="<%= schools_path %>">全部学校/老师</a></li>
+      <li class="dot"></li>
       <li class="<%= 'current' if maps_path==request.path %>"><a href="<%= maps_path %>">学习路线图</a></li>
-      -->
       <li class="dot"></li>
       <li class="<%= 'current' if [surprise_path,
       videos_coursewares_path,
@@ -46,6 +48,7 @@
       </li>
       <li class="dot"></li>
       <li class="new<%= ' current ' if @we_are_inside_qa %>"><a href="/home/index">解题风云榜</a><b></b></li>
+      -->
       </ul>
     </div>
     </div>

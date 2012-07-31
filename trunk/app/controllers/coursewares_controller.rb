@@ -4,10 +4,6 @@ class CoursewaresController < ApplicationController
   before_filter :find_item,:only => [:show,:embed,:download,:edit,:update,:destroy,:thank]
   before_filter :authenticate_user_ownership!, :only => [:update,:destroy]
 
-  def mine
-    @seo[:title] = '我关注的'
-    render "mine#{@subsite}"
-  end
   def latest
     @seo[:title] = '最新课件'
     render "latest#{@subsite}"
@@ -27,13 +23,44 @@ class CoursewaresController < ApplicationController
     respond_to do |format|
       format.json{
         pagination_get_ready
-        @coursewares = Courseware.nondeleted.normal.desc('updated_at')
-        @coursewares = @coursewares.where(:user_id=>params[:user_id]) if params[:user_id]
-        @coursewares = @coursewares.where(:topics=>params[:topic]) if params[:topic]
+        @coursewares = Courseware.nondeleted.normal
+        deal_with_params!
         pagination_over(@coursewares.count)
         @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+        render "index#{@subsite}"
+      }
+      format.html{
+        render "index#{@subsite}"
       }
     end
+  end
+  def mine
+    @seo[:title] = '我关注的'
+    respond_to do |format|
+      format.json{
+        pagination_get_ready
+        @coursewares = Courseware.any_of({:user_id.in => current_user.following_ids},
+                        {:topic.in => current_user.followed_topic_ids}).nondeleted.normal
+        deal_with_params!
+        pagination_over(@coursewares.count)
+        @coursewares = @coursewares.paginate(:page => @page, :per_page => @per_page)
+        render "index#{@subsite}"
+      }
+      format.html{
+        render "mine#{@subsite}"
+      }
+    end
+  end
+  def deal_with_params!
+    @coursewares = @coursewares.where(:is_thin=>false) if '1'==params['onlyForCommodity']
+    @coursewares = @coursewares.where(:slides_count.gt=>50) if '2'==params['queryScope']
+    if '1'==params['queryOrder']
+      @coursewares = @coursewares.desc('created_at')
+    elsif '2'==params['queryOrder']
+      @coursewares = @coursewares.desc('views_count')
+    end
+    @coursewares = @coursewares.where(:user_id=>params[:user_id]) if params[:user_id]
+    @coursewares = @coursewares.where(:topics=>params[:topic]) if params[:topic]
   end
   def thank
     current_user.inc(:thank_coursewares_count,1)
