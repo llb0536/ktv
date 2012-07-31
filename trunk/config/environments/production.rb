@@ -9,7 +9,6 @@ Quora::Application.configure do
   config.cache_classes = true
   config.cache_store = :dalli_store, 'localhost'
       { :namespace => 'ktv', :expires_in => 1.day, :compress => true }
- # config.cache_store = :memory_store, :size => 128.megabytes
   
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
@@ -75,9 +74,9 @@ Quora::Application.configure do
   config.assets.prefix = ''
   # assets-----------
   config.action_mailer.raise_delivery_errors = false
-  config.whiny_nils = false
 
-# THIS ｉＳ only TMP!!!!!!  =begin
+# THIS ｉＳ only TMP!!!!!!  
+=begin
   config.cache_classes = false
   config.consider_all_requests_local       = true
   config.action_mailer.raise_delivery_errors = true
@@ -92,5 +91,6 @@ Quora::Application.configure do
   config.serve_static_assets = true
   config.consider_all_requests_local = true
   config.cache_store = :file_store, "#{Rails.root}/tmp/cache/"
-# THIS ｉＳ only TMP!!!!!!  =end
+=end
+# THIS ｉＳ only TMP!!!!!!
 end

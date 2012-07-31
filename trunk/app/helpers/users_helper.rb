@@ -106,14 +106,10 @@ module UsersHelper
     
     return "" if user.blank?
     return "" if ca[:slug].blank?
-    if User.get_avatar_filename(user).blank?
-      url = "/assets/avatar/#{size}.jpg"
-    else
-      url = "#{Setting.upload_url}/user/avatar/#{user}/#{size}_#{User.get_avatar_filename(user)}"
-    end
+    url = avatar_url_quick(user)
     hash = {class:size.to_s,alt:ca[:name]}
       hash.merge!({width:ca[:size2],height:ca[:size2],class:'imgHead'}) if ca[:size2]
-        mid = image_tag(url,hash)
+        mid = image_tag(mk_url(url),hash)
         if nolink
           raw mid
         else

@@ -232,6 +232,8 @@ $(document).ready ->
       })
     )
   ).blur(->
+    if ($('#core_search_ul li.selected').length > 0)
+      return false
     $('#search_form input').removeClass('focused')
     $('#results_tray_div').css('padding-bottom','0')
     $('#results_tray_content').fadeOut('fast')  
