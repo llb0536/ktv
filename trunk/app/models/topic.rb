@@ -108,7 +108,6 @@ class Topic
     return if Setting.root_topic_id==self.id.to_s
     self.fathers << topic.name
     self.fathers.uniq!
-    self.out_degree = self.fathers.size
     self.save!
   end
 
@@ -199,12 +198,14 @@ class Topic
   def cover_small
     self.cover.small.url
   end
+  def cover_small_changed?
+    self.cover_changed?
+  end
   def cover_small38
     self.cover.small38.url
   end
-
-  def cover_small_changed?
-    self.cover_changed?
+  def cover_small38_was
+    self.cover_was.small38.url
   end
   def cover_small38_changed?
     self.cover_changed?
@@ -212,8 +213,8 @@ class Topic
   
   redis_search_index(:title_field => :name,
     :prefix_index_enable => true,
-    :ext_fields => [:followers_count,:cover_small38, :asks_count],
-    :score_field => :followers_count)
+    :ext_fields => [:followers_count,:cover_small38, :coursewares_count],
+    :score_field => :coursewares_count)
   # 敏感词验证
   before_validation :check_spam_words
   def check_spam_words

@@ -8,7 +8,7 @@
 //= require facebox
 //= require jquery.jdialog
 //= require jquery.qeditor
-//= require jquery.autocomplete
+// require jquery.autocomplete
 //= require jquery.cookie
 //= require jquery.tipsy
 //= require jcaches

@@ -87,63 +87,94 @@ KTV.search_li_hover = ->
     $('#core_search_ul li').first().addClass('selected')
 KTV.search_cater = (data,term) ->
   $('#core_search_ul').html('')  
-  keyword = 'unknown-keyword'
+  keyword = term
   last_one = new_one = ''
   failed = false
-  if data is null
+  if data is null or data.length is 0
     last_one = "<li class=\"lightlink\">未找到与“#{term}”相关的内容，请尝试其他关键词</li>"
   else
-    $.each(data,(index,itemRaw)->
-      item = JSON.parse(itemRaw)
-      if 'Course' == item['type']
-        title = KTV.Utilities.wrap_with_matches(item['title'],keyword)
-        title = item['title'] if false==title
-        slice1 = false # KTV.Utilities.slice_with_matches(item['name_en'],keyword,38)
-        slice2 = false #KTV.Utilities.slice_with_matches(item['name_pinyin'],keyword,6)
-        if false==slice1
-          if false==slice2
-            # do nothing
-          else
-            title += " <span class=\"en_match\">(#{slice2})</span>"
-        else
-          title += " <span class=\"en_match\">(#{slice1})</span>"
-        $('#core_search_ul').append("<li class=\"topic with_img\"><a class=\"result_item\" href=\"#\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"><img src=\"http://qph.cf.quoracdn.net/main-thumb-t-12709-100-Chrp3pWVUjUuilUt0sp1dNoloqxjiTSd.jpeg\" height=\"22\" width=\"22\"></div><div style=\"margin-top: 7px\">#{item['field_name']}</div></span></div></a></li>")
-      else if 'User' == item['type']
-        title = KTV.Utilities.wrap_with_matches(item['title'],keyword)
-        title = item['title'] if false==title
-        slice1 = KTV.Utilities.slice_with_matches(item['name_en'],keyword,18)
-        slice2 = KTV.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
-        if false==slice1
-          if false==slice2
-            # do nothing
-          else
-            title += " <span class=\"en_match\">(#{slice2})</span>"
-        else
-          title += " <span class=\"en_match\">(#{slice1})</span>"
-        $('#core_search_ul').append( "<li class=\"user\"><a href=\"#\" class=\"result_item\"><div class=\"text\"><div class=\"pic\"><img width=\"40\" height=\"40\" alt=\"#{item['text']}\" class=\"[]\" src=\"http://qph.cf.quoracdn.net/main-thumb-20806-25-lWRBrYp5S76HESRmO19OYorGun7B2QjQ.jpeg\"></div>#{title} <span class=\"faded\">#{item['real_tagline']}</span></div></a></li>" )
-      else if 'Courseware' == item['type']
-        title = KTV.Utilities.wrap_with_matches(item['title'],keyword)
-        title = item['title'] if false==title
-        slice1 = KTV.Utilities.slice_with_matches(item['title_en'],keyword,12)
-        slice2 = KTV.Utilities.slice_with_matches(item['title_pinyin'],keyword,6)
-        if false==slice1
-          if false==slice2
-            # do nothing
-          else
-            title += " <span class=\"en_match\">(#{slice2})</span>"
-        else
-          title += " <span class=\"en_match\">(#{slice1})</span>"
-        $('#core_search_ul').append( "<li class=\"topic with_img\"><a class=\"result_item\" href=\"/#{item['course_slug']}/#{item['slug']}\"><div class=\"row main_col\"><span class=\"col w5 match-info\"><div style=\"margin-top: 5px\"><div class=\"text\">#{title}</div></div></span><span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\"><div class=\"pic\"></div><div style=\"margin-top: 7px\">#{item['course_name']}</div></span></div></a></li>")
-      else if 'more' == item['type']
-        keyword = item['what']
-        last_one = "<li class=\"lightlink\"><a href=\"#\" class=\"result_item result_item_more\">全部搜索结果: #{item['what']}</a></li>"
-        new_one = "<li class=\"addquestionitem\" style=\"padding-top:10px\"><strong class=\"inline_label col\">#{item['what']}</strong><span class=\"lil_action_button submit_button col\" style=\"font-weight:normal\">开设新领域</span></li>"
-      else
-        failed = true
-        keyword = item['what']
-        last_one = "<li class=\"lightlink\">未找到与“#{item['what']}”相关的内容，请尝试其他关键词</li>"
-    )  
+    datas = data.split("\n")
+    $.each(datas,(index,itemRaw)->
+      item = itemRaw.split("#!#")
+      if 'Topic' == item[item.length-1]
+        title = KTV.Utilities.wrap_with_matches(item[0],keyword)
+        title = item[0] if false==title
+        # slice1 = KTV.Utilities.slice_with_matches(item['name_en'],keyword,18)
+        # slice2 = KTV.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
+        # if false==slice1
+        #   if false==slice2
+        #     # do nothing
+        #   else
+        #     title += " <span class=\"en_match\">(#{slice2})</span>"
+        # else
+        #   title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append("<li class=\"user\">\
+          <a href=\"/topics/#{item[1]}\" class=\"result_item\">\
+            <div class=\"text\">\
+              <div class=\"pic\">\
+                <img width=\"38\" height=\"38\" alt=\"#{item[0]}\" class=\"\" src=\"#{item[item.length-2]}\">\
+                  </div>\
+                 领域: #{title}\
+                   <span class=\"faded\">#{item[2]}个课件</span>\
+              </div>\
+              </a>\
+            </li>" )
+      else if 'User' == item[item.length-1]
+        title = KTV.Utilities.wrap_with_matches(item[0],keyword)
+        title = item[0] if false==title
+        # slice1 = KTV.Utilities.slice_with_matches(item['name_en'],keyword,18)
+        # slice2 = KTV.Utilities.slice_with_matches(item['name_pinyin'],keyword,18)
+        # if false==slice1
+        #   if false==slice2
+        #     # do nothing
+        #   else
+        #     title += " <span class=\"en_match\">(#{slice2})</span>"
+        # else
+        #   title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append("<li class=\"user\">\
+          <a href=\"/users/#{item[item.length-2]}\" class=\"result_item\">\
+            <div class=\"text\">\
+              <div class=\"pic\">\
+                <img width=\"38\" height=\"38\" alt=\"#{item[0]}\" class=\"\" src=\"#{item[3]}\">\
+                  </div>\
+                   #{title}\
+                   <span class=\"faded\">#{item[2]} #{item[item.length-4]}关注 #{item[item.length-3]}课件</span>\
+              </div>\
+              </a>\
+            </li>" )
+      else if 'Courseware' == item[item.length-1]
+        title = KTV.Utilities.wrap_with_matches(item[0],keyword)
+        title = item[0] if false==title
+        # slice1 = false # KTV.Utilities.slice_with_matches(item['name_en'],keyword,38)
+        # slice2 = false #KTV.Utilities.slice_with_matches(item['name_pinyin'],keyword,6)
+        # if false==slice1
+        #   if false==slice2
+        #     # do nothing
+        #   else
+        #     title += " <span class=\"en_match\">(#{slice2})</span>"
+        # else
+        #   title += " <span class=\"en_match\">(#{slice1})</span>"
+        $('#core_search_ul').append("<li class=\"topic with_img\">\
+          <a class=\"result_item\" href=\"/coursewares/#{item[1]}\">\
+            <div class=\"row main_col\">\
+              <span class=\"col w5 match-info\">\
+                <div style=\"margin-top: 5px\">\
+                <div class=\"text\">#{title}</div></div></span>\
+                  <span class=\"col w2_5 faded desc\" style=\"white-space: nowrap; overflow: hidden;\">\
+                    <div class=\"pic\">\
+                      <img src=\"#{item[item.length-2]}\" height=\"23\" width=\"23\">\
+                      </div><div style=\"margin-top: 7px\">#{item[item.length-3]}</div></span></div></a></li>")
+      # else if 'more' == item['type']
+      #   keyword = item['what']
+      #   last_one = "<li class=\"lightlink\"><a href=\"#\" class=\"result_item result_item_more\">全部搜索结果: #{item['what']}</a></li>"
+      #   new_one = "<li class=\"addquestionitem\" style=\"padding-top:10px\"><strong class=\"inline_label col\">#{item['what']}</strong><span class=\"lil_action_button submit_button col\" style=\"font-weight:normal\">开设新领域</span></li>"
+      # else
+      #   failed = true
+      #   keyword = item['what']
+      #   last_one = "<li class=\"lightlink\">未找到与“#{item['what']}”相关的内容，请尝试其他关键词</li>"
+    )
   $('#core_search_ul').append(last_one)
+  $('#results_tray').height("#{$('#core_search_ul').height()+28}px")
   $('.results_frame li').removeClass('selected')
   KTV.search_li_hover()
 KTV.login = ->
@@ -172,19 +203,22 @@ $(document).ready ->
       term = request.term
       if false and KTV.search_cache[term] # todo: turn it on
         console.log 'cache hit'
-        KTV.search_cater( KTV.search_cache[ term ] )
+        KTV.search_cater( KTV.search_cache[ term ], term )
       else
         $('#search_form').addClass("searching")
         request.q = request.term
         request.term = null
         $.get("/search/all", request, ( data, status, xhr ) ->
           $('#search_form').removeClass("searching")
-        )
+          KTV.search_cater( data, term )
+        , 'html')
   })
   $('#q').bind( "input.autocomplete", ->
     $(this).trigger('keydown.autocomplete')
   )
+  
 
+  
   $('#q').focus(->
     $('div.navigation').fadeOut('fast')
     $('#search_form').animate({
@@ -193,7 +227,7 @@ $(document).ready ->
       $('#search_form input').addClass('focused')
       $('#results_tray_content').fadeIn('fast')
       $('#results_tray_div').css('padding-bottom','2px')
-      $('#results_tray').animate({height:$('#results_tray').data('data-height')}, {duration: 200, easing: 'swing', complete: -> 
+      $('#results_tray').animate({height: $('#core_search_ul').height()+28}, {duration: 200, easing: 'swing', complete: -> 
         KTV.search_li_hover()
       })
     )
@@ -249,41 +283,4 @@ $(document).ready ->
       $('#weizuozhefasongganxie').addClass('unlike')
       $('#weizuozhefasongganxie').html('已感谢')
       $('#weizuozhefasongganxie2').html(num+1)
-  )
-  $('#__w2_P47vozg_inline_editor_link').click(->
-    $(this).hide()
-    $('#the_question_topic_selector').show()
-    $('.topic_remove').show()
-  )
-  $('#the_question_topic_selector .submit_button').click(->
-    $.post("/topics/#{KTV.data.topic_id}/update_fathers",{add:1,name:$('#__w2_M152MfC_input').val()},(data)->
-      if $("##{data.id}_already_father").length is 0
-        $('#ld_C4qa3A_415667').append("<span id=\"#{data.id}_already_father\"><div id=\"__w2_Jh9rGl8_topic_list_item\" class=\"topic_list_item\"><span id=\"ld_C4qa3A_415683\"><a href=\"/topics/#{data.id}\" class=\"topic_name\"><span class=\"name_text\"><span>#{data.name}</span></span></a></span><a id=\"#{data.id}_topic_remove\" href=\"#\" class=\"topic_remove\"></a></div></span>")
-        $('.topic_remove').click(KTV.topic_remove)
-    )
-  )
-  $('.topic_remove').click(KTV.topic_remove)
-  $('#the_done_editing_topics').click(->
-    $('#__w2_P47vozg_inline_editor_link').show()
-    $('#the_question_topic_selector').hide()
-    $('.topic_remove').hide()
-  )
-  $('#__w2_P47vozg_inline_editor_link_text').click(->
-    $('#topic_name_here').hide()
-    $('#the_topic_name_editor').show()
-  )
-  $('#__w2_qT1rmRt_inline_editor_cancel').click(->
-    $('#topic_name_here').show()
-    $('#the_topic_name_editor').hide()
-  )
-  $('#__w2_qT1rmRt_inline_editor_submit').click(->
-    $.post("/topics/#{KTV.data.topic_id}/update_title",{name:$('#__w2_qT1rmRt_topic_name_edit').val()},(data)->
-      if data.suc         
-        $('#here_topic_name').html(data.name)
-        $('#here_topic_name2').html(data.name)
-        document.title = "#{document.title.split(' - ')[0]} - #{data.name}"
-        $('#__w2_qT1rmRt_inline_editor_cancel').trigger('click')
-      else
-        alert(data.why)
-    )
   )

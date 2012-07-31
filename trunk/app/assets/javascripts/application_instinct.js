@@ -215,6 +215,7 @@ var App = {
             });
             return false;
         });
+        App.pin_resize_psvr_handler();
     },
 
     hideNotice : function(id){
@@ -380,6 +381,8 @@ var App = {
                 limitwords.html('您还可以输入' + (n - elLen) + '个汉字');
             }
         }
+        
+        App.pin_resize_psvr_handler();
     },
     // 输入框默认提示 edit 2012-1-31 by lesanc.li
     placeHolder : function(el, tips, supportLowBrowser){

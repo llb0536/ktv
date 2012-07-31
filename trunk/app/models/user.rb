@@ -569,7 +569,7 @@ class User
   
   redis_search_index(:title_field => :name2,
     :prefix_index_enable => false,
-    :ext_fields => [:id, :slug,:avatar_small38,:tagline, :score, :followers_count, :answers_count, :search_score, :coursewares_count],
+    :ext_fields => [:id, :slug,:avatar_small38,:tagline, :score, :followers_count, :coursewares_count, :search_score, :coursewares_count],
     :score_field => :search_score)
   def name2
     "#{self.name}@@#{self.tagline}"
@@ -601,7 +601,7 @@ class User
     else
       ret = 0
     end
-    ret += [80, answers_count].min * zancheng_piaoshu
+    ret += [80, coursewares_count].min * zancheng_piaoshu
     ret
   end
   before_validation :check_spam_words

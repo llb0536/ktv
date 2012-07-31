@@ -85,7 +85,7 @@ class CoursewaresController < ApplicationController
     prepare_s3
   end
   def embed
-    @courseware.view!
+    @courseware.view! unless @courseware.id.to_s==Setting.ktv_courseware_id
     respond_to do |format|
       format.html
       format.js

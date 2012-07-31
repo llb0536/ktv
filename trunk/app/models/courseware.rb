@@ -172,8 +172,21 @@ class Courseware
     User.find(self.uploader_id)
   end
   def topic_inst
-    return nil if self.topic_id.blank?
-    Topic.where(:_id => self.topic_id).first
+    ret = nil
+    ret = Topic.where(:_id => self.topic_id).first unless self.topic_id.blank?
+    if ret.nil?
+      ret = Topic.locate('领域请求')
+      self.update_attribute(:topic_id,ret.id)
+    end
+    ret
+  end
+  def topic_inst_was
+    ret = nil
+    ret = Topic.where(:_id => self.topic_id_was).first unless self.topic_id_was.blank?
+    if ret.nil?
+      ret = Topic.locate('领域请求')
+    end
+    ret
   end
   def school
     return nil if self.school_id.blank?
@@ -253,8 +266,14 @@ class Courseware
   end
   validates_inclusion_of :sort,:in=>SORTSTR.keys
   
-  redis_search_index(:title_field => :title,
-                     :score_field => :views_count,
-                     :condition_fields => [:user_id,:sort],
-                     :ext_fields => [:topic,:thanked_count,:comments_count,:created_at])
+  def cover_small
+    self.topic_inst.cover.small.url
+  end
+  def cover_small_was
+    self.topic_inst_was.cover.small.url
+  end
+  def cover_small_changed?
+    self.topic_id_changed?
+  end
+  redis_search_index(:title_field => :title,:ext_fields => [:cover_small,:views_count,:created_at,:topic], :score_field => :views_count)
 end

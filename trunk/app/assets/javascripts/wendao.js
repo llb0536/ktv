@@ -289,7 +289,8 @@ $("#login_link").click(Users.userLogin);
     // 所有题、个人页题补充描述截断
     Asks.shortDetail();
     // 题页代码迁移至此 2011-10-14 by lesanc.li
-    Asks.completeInviteToAnswer(); 
+    // todo
+    // Asks.completeInviteToAnswer(); 
 
     // 分享 Email和转发地址
     $(".shareEmail").facebox();

@@ -8,17 +8,22 @@
 <% end %>
 <% content_for :body_style do %>background: none repeat scroll 0 0 #F0EEEE<% end %>
 
+
+
+
 <div class="__zm">
+<% params[:queryOrder] ||= '1' %>
+<input id="queryOrder" type="hidden" value="<%= params[:queryOrder] %>" />
 <div id="pagewrap">
 	<div id="content" style="box-shadow:none;background:none;overflow:visible !important;margin-top:18px">
 		<div class="sheet cf" id="zhimeisheetbar">
 			<div class="hotword floatright">
 				<span class="split">|</span>
 				<h4>排序:</h4>
-				<ul>
-					<li class="current"><a href="/topics/<%= @topic.id %>"><span>最新</span></a></li>
-					<li><a href="/topic/<%= @topic.id %>?order=1"><span>最热</span></a></li>
-				</ul>
+<ul id="ulQueryOrder">
+<li  class='current'><a class="queryOrderCss" rel="1" href="javascript:;"><span>最新</span></a></li>
+<li ><a class="queryOrderCss" rel="2" href="javascript:;"><span>最热</span></a></li>
+</ul>
 			</div>
 			<div class="floatright">
 				<span>
@@ -58,7 +63,6 @@
 		</div>
 		<div id="contentMain" class="content" style="position: relative;">
 			<div id="rightLabel1" class="rightbox" style="display:none;right:350px; margin-top: -60px">
-				<script src="http://a.imimg.cn/r12496/scripts/send-message-dialog.js"></script>
 				<div class="userbox topline">
 					<div class="userinfo">
 						<div class="uheadbig">
@@ -74,14 +78,14 @@
 
               <div id="ld_9fR3Ac_815">
                 <div class=" main wrapper">
-                  <div class="topic_page contents content main_content">
+                  <div class="topic_page content main_content">
                     <div id="__w2_ouDTjXV_content">
                       <div id="ld_llfWRv_13708">
                         <div id="ld_llfWRv_13709">
                         </div>
                         <div class="row section">
 
-                          <div class="e_col w7">
+                          <div class="e_col">
 
                             <div class="row">
                               <div class="e_col w5_5" style="width:186px">
@@ -157,6 +161,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<div id="imloading" class="imfootloading" style="visibility:hidden;">
@@ -168,14 +173,31 @@
 
 <script type="text/javascript">
 <% content_for :butt2 do %>
-im(function () {
+var old_content = $("#contentMain").html();
+$('.queryOrderCss').live('click', function () {
+    var queryOrder = $(this).attr("rel");
+    $('#queryOrder').val(queryOrder);
+    $('#ulQueryOrder > li').removeClass();
+    $(this).parent().addClass('current');
+    queryExec();
+});
+function queryExec(){
+    var queryOrder = $('#queryOrder').val();
+    $("#contentMain").html(old_content);
     autoLayout.pageAuto = true;
+    autoLayout.pageNums = 0;
+    autoLayout.loading = true;
+    autoLayout.isHasNextPage = true;
+    autoLayout.pageNum = 2;
     var linkUrl = "/coursewares?topic=<%=@topic.name%>",
         jsonUrl = "/coursewares_with_page?topic=<%=@topic.name%>";
     autoLayout.init({
         contentID: "contentMain",
         rightLoad: true,
         leftID: "",
+        dataContent: {
+            'queryOrder': queryOrder
+        },
         rightID: ["rightLabel1"],
         linkUrl: linkUrl,
         loadingID: "imloading",
@@ -187,6 +209,61 @@ im(function () {
         }
     });
     autoLayout.eachAction(jsonUrl);
+    
+    $('#__w2_P47vozg_inline_editor_link').click(function() {
+      $(this).hide();
+      $('#the_question_topic_selector').show();
+      return $('.topic_remove').show();
+    });
+
+    $('#the_question_topic_selector .submit_button').click(function() {
+      return $.post("/topics/" + KTV.data.topic_id + "/update_fathers", {
+        add: 1,
+        name: $('#__w2_M152MfC_input').val()
+      }, function(data) {
+        if ($("#" + data.id + "_already_father").length === 0) {
+          $('#ld_C4qa3A_415667').append("<span id=\"" + data.id + "_already_father\"><div id=\"__w2_Jh9rGl8_topic_list_item\" class=\"topic_list_item\"><span id=\"ld_C4qa3A_415683\"><a href=\"/topics/" + data.id + "\" class=\"topic_name\"><span class=\"name_text\"><span>" + data.name + "</span></span></a></span><a id=\"" + data.id + "_topic_remove\" href=\"#\" class=\"topic_remove\"></a></div></span>");
+          return $('.topic_remove').click(KTV.topic_remove);
+        }
+      });
+    });
+
+    $('.topic_remove').click(KTV.topic_remove);
+
+    $('#the_done_editing_topics').click(function() {
+      $('#__w2_P47vozg_inline_editor_link').show();
+      $('#the_question_topic_selector').hide();
+      return $('.topic_remove').hide();
+    });
+
+    $('#__w2_P47vozg_inline_editor_link_text').click(function() {
+      $('#topic_name_here').hide();
+      return $('#the_topic_name_editor').show();
+    });
+
+    $('#__w2_qT1rmRt_inline_editor_cancel').click(function() {
+      $('#topic_name_here').show();
+      return $('#the_topic_name_editor').hide();
+    });
+
+    $('#__w2_qT1rmRt_inline_editor_submit').click(function() {
+      return $.post("/topics/" + KTV.data.topic_id + "/update_title", {
+        name: $('#__w2_qT1rmRt_topic_name_edit').val()
+      }, function(data) {
+        if (data.suc) {
+          $('#here_topic_name').html(data.name);
+          $('#here_topic_name2').html(data.name);
+          document.title = "" + (document.title.split(' - ')[0]) + " - " + data.name;
+          return $('#__w2_qT1rmRt_inline_editor_cancel').trigger('click');
+        } else {
+          return alert(data.why);
+        }
+      });
+    });
+    
+}
+im(function () {
+    queryExec();
 });
 $("#zmaddfans").hover(
 
@@ -534,6 +611,7 @@ $("#fans_submit").live("click", function () {
 </div>
 
 
+
 <div class="__qa">
 
   <div id="edit_topic_cover" class="hide">
@@ -565,8 +643,5 @@ $("#fans_submit").live("click", function () {
 </div>
 
 
+
 <%= render file:'/application/footers/_flo_footer' %>
-
-
-
-

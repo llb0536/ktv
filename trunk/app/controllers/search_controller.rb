@@ -31,24 +31,41 @@ class SearchController < ApplicationController
       end
       result += result_ren
       if result.length <= the_limit
-        result0 = Redis::Search.query("Ask",params[:q].strip,:limit => the_limit - result.length + 1,:sort_field=>'answers_count')
+        result0 = Redis::Search.query("Courseware",params[:q].strip,:limit => the_limit - result.length + 1,:sort_field=>'views_count')
         tmp1=[]
 
         result0.each do |item|
           tmp1 << item if Time.parse(item['created_at'].split('T').first) >= 1.month.ago
-          tmp1.sort!{|x,y| x['answers_count']<=>y['answers_count']}
+          tmp1.sort!{|x,y| x['views_count']<=>y['views_count']}
         end
         result += tmp1.reverse
         tmp1=[]
         result0.each do |item|
           tmp1 << item if Time.parse(item['created_at'].split('T').first) < 1.month.ago
-          tmp1.sort!{|x,y| x['answers_count']<=>y['answers_count']}
+          tmp1.sort!{|x,y| x['views_count']<=>y['views_count']}
         end
         result += tmp1.reverse
       end
+      # if result.length <= the_limit
+      #   result0 = Redis::Search.query("Ask",params[:q].strip,:limit => the_limit - result.length + 1,:sort_field=>'answers_count')
+      #   tmp1=[]
+      # 
+      #   result0.each do |item|
+      #     tmp1 << item if Time.parse(item['created_at'].split('T').first) >= 1.month.ago
+      #     tmp1.sort!{|x,y| x['answers_count']<=>y['answers_count']}
+      #   end
+      #   result += tmp1.reverse
+      #   tmp1=[]
+      #   result0.each do |item|
+      #     tmp1 << item if Time.parse(item['created_at'].split('T').first) < 1.month.ago
+      #     tmp1.sort!{|x,y| x['answers_count']<=>y['answers_count']}
+      #   end
+      #   result += tmp1.reverse
+      # end
     end
 
 #render text:result ;return
+
     lines = []
     result.each do |item|
 if item['title'].length>55
@@ -58,11 +75,13 @@ end
       case item['type']
       when "Ask"
         lines << complete_line_ask(item)
+      when "Courseware"
+        lines << complete_line_cw(item)
       when "User"
-        item['avatar_small38']='/assets/avatar/small38.jpg' if item['avatar_small38'].blank?
+        item['avatar_small38']='/defaults/avatar/small38.jpg' if item['avatar_small38'].blank?
         lines << complete_line_user(item)
       when "Topic"
-        item['cover_small38']='/assets/cover/small38.jpg' if item['cover_small38'].blank?
+        item['cover_small38']='/defaults/cover/small38.gif' if item['cover_small38'].blank?
         lines << complete_line_topic(item)
       end
     end
@@ -146,20 +165,30 @@ end
     def complete_line_ask(item,hash = true)
       if hash
         item['title'] = item['title'].strip
-        "#{item['title'].escape_javascript}#!##{item['id']}#!##{item['answers_count']}#!##{item['topics'].join(',')}#!#Ask"
+        "#{item['title']}#!##{item['id']}#!##{item['answers_count']}#!##{item['topics'].join(',')}#!#Ask"
       else
         item.title = item.title.strip
         "#{item.title.gsub("\n",'')}#!##{item.id}#!##{item.answers_count}#!##{item.topics.join(',')}#!#Ask"
       end
     end
 
+    def complete_line_cw(item,hash = true)
+      if hash
+        item['title'] = item['title'].strip
+        "#{item['title']}#!##{item['id']}#!##{item['views_count']}#!##{item['topic']}#!##{item['cover_small']}#!#Courseware"
+      else
+        item.title = item.title.strip
+        "#{item.title.gsub("\n",'')}#!##{item.id}#!##{item.views_count}#!##{item.topic}#!##{item['cover_small']}#!#Courseware"
+      end
+    end
+    
     def complete_line_topic(item,hash = true)
       if hash
         item['title'] = item['title'].strip
-        "#{item['title'].escape_javascript}#!##{item['followers_count']}#!##{item['asks_count']}#!##{item['cover_small38']}#!#Topic"
+        "#{item['title']}#!##{item['id']}#!##{item['followers_count']}#!##{item['coursewares_count']}#!##{item['cover_small38']}#!#Topic"
       else
         item.name = item.name.strip
-        "#{item.name}#!##{item.followers_count}#!##{item.asks_count}#!##{item.cover_small38}#!#Topic"
+        "#{item.name}#!##{item.id}#!##{item.followers_count}#!##{item.coursewares_count}#!##{item.cover_small38}#!#Topic"
       end
     end
 
@@ -167,11 +196,11 @@ end
       if hash
         item['title'] = item['title'].strip
         item['title'] = item['title'].split('@@')[0]
-        "#{item['title'].escape_javascript}#!##{item['id']}#!##{item['tagline']}#!##{item['avatar_small38']}#!##{item['followers_count']}#!##{item['answers_count']}#!##{item['slug']}#!#User"
+        "#{item['title']}#!##{item['id']}#!##{item['tagline']}#!##{item['avatar_small38']}#!##{item['followers_count']}#!##{item['coursewares_count']}#!##{item['slug']}#!#User"
       else
         item.name = item.name.strip
         item.name = item.name.split('@@')[0]
-        "#{item.name}#!##{item.id}#!##{item.tagline}#!##{item.avatar_small38}#!##{item.followers_count}#!##{item.answers_count}#!##{item.slug}#!#User"
+        "#{item.name}#!##{item.id}#!##{item.tagline}#!##{item.avatar_small38}#!##{item.followers_count}#!##{item.coursewares_count}#!##{item.slug}#!#User"
       end
     end
 

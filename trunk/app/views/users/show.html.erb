@@ -55,7 +55,6 @@
 		</div>
 		<div id="contentMain" class="content" style="position: relative;">
 			<div id="rightLabel1" class="rightbox" style="display:none;right:350px; margin-top: -60px">
-				<script src="http://a.imimg.cn/r12496/scripts/send-message-dialog.js"></script>
 				<div class="userbox topline">
 					<div class="userinfo">
 						<div class="uheadbig">
@@ -154,16 +153,6 @@
 					</div>
 					<% end %>
 				</div>
-				<script type="text/javascript">
-				<% content_for :butt2 do %>
-          $(function(){
-          sendMessageDialog.init("#send_message",1141902);
-          $("#send_message").die().live("click",function(){
-          sendMessageDialog.otherOpenMessage("#send_message",1141902,"<%= @user.slug %>","<%= @user.name %>");
-          })
-          })
-        <% end %>
-				</script>
 			</div>
 		</div>
 	</div>
@@ -212,6 +201,7 @@ function queryExec(){
         }
     });
     autoLayout.eachAction(jsonUrl);
+    
 }
 im(function () {
     queryExec();
