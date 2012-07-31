@@ -118,6 +118,7 @@ class TranscoderJob
         #------done
         puts `rm -rf "#{working_dir}"`
         @courseware.go_to_normal
+        @courseware.update_attribute(:created_at,Time.now)
       end
     rescue => e
       @courseware.status = -1

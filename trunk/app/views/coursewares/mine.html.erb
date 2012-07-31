@@ -52,19 +52,19 @@
 <ul class="useratten cf">
 <li>
 <a id="user_profile_medium_follow_count" class="gray block usernumber" href="/follow/1141902/1">
-<em>13</em><br />
+  <em><%=current_user.following_ids.size%></em><br />
 <span>关注</span>
 </a>
 </li>
 <li>
 <a id="user_profile_medium_fans_count" class="gray block usernumber" href="/fans/1141902/1">
-<em>14</em><br />
+  <em><%=current_user.follower_ids.size%></em><br />
 <span>粉丝</span>
 </a>
 </li>
 <li>
-<a class="gray block usernumber" href="/bds/1141902">6<br />
-<span>图格</span></a>
+<a class="gray block usernumber" href="/bds/1141902"><%=current_user.coursewares_count%><br />
+<span>课件</span></a>
 </li>
 </ul>
 </div>

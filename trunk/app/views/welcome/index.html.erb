@@ -34,11 +34,11 @@
 	<div class="wrapper">
 		<div class="main" style="width:988px;margin-left:2px">
 	  <% @latest_cw.each do |item| %>
-
-    <div data-slide-count="<%= item.slides_count %>" data-id="<%= item.id %>" class="presentation">
+    <% sz = [item.slides_count-1,50].min %>
+    <div data-slide-count="<%= sz %>" data-id="<%= item.id %>" class="presentation">
         <a href="<%= courseware_path item %>" class="slide_preview scrub setup">
-      	  <% (item.slides_count-1).downto(1).each do |i| %>
-      		  <img style="display: none;" data-slide="<%= i %>" class="timeline" alt="Slide <%= i %>" src="<%= asset_url("cw/#{item.id}/#{item.revision}thumb_slide_#{i}.jpg") %>">
+      	  <% (sz).downto(1).each do |i| %>
+      		  <img style="display: none;" data-slide="<%= i %>" class="timeline" alt="第<%= i %>页" src="<%= asset_url("cw/#{item.id}/#{item.revision}thumb_slide_#{i}.jpg") %>">
       		<% end %>
       		<img src="<%= asset_url("cw/#{item.id}/#{item.revision}thumb_slide_0.jpg") %>" alt="Thumb_slide_0" width="210" height="158">
       		<div class="scrubber">
@@ -229,8 +229,8 @@ $('#categories_table > div').height($('#categories_table').height());
           "_id": {
               "$oid": "501152f0e13823651e0000bc"
           },
-          "name": "Web开发领域课件",
-          "link": "<%= courseware_path('501152f0e13823651e0000bc') %>",
+          "name": "Ruby领域课件",
+          "link": "<%= courseware_path('5010ca51e138231d43000047') %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342751468132.950.300.jpg') %>",
           "s": "20120719",
@@ -241,7 +241,7 @@ $('#categories_table > div').height($('#categories_table').height());
           "_id": {
               "$oid": "50045086e138230180000001"
           },
-          "name": "微积分与数学分析",
+          "name": "数学分析领域课件",
           "link": "<%= courseware_path('50045086e138230180000001') %>",
           "l": 1,
           "url": "<%= asset_path('ad/1342577163666.950.300.jpg') %>",
@@ -330,7 +330,7 @@ $('#categories_table > div').height($('#categories_table').height());
 
 <li class="png">				
 <h3 class="ttname aligncenter"><span class="yahe"><a href="/topics" >文档资料</a></span></h3>		
-<p class="aligncenter"><a href="/topics" class="gray" >与大家交流感兴趣的学术资料</a></p>
+<p class="aligncenter"><a href="/topics" class="gray" >看大家分享了哪些学术资料</a></p>
 </li>
 
 <li class="png">				
@@ -358,7 +358,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   <div id="content" style="margin-top:18px">
   <div class="boxnoun cf" style="padding-bottom:26px;">
   <div class="foreign-rec">
-  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最受欢迎的</b>课件作者</span></span></h2>
+  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热</b>课件作者</span></span></h2>
   <div class="bigshow">
   <a href="<%= user_path(@hottest_user) %>" ><img src="<%= avatar_url(@hottest_user,:huge) %>" /></a>
   </div>
@@ -390,7 +390,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   </div>
   </div>
   <div class="site-rec">
-  <h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a>&nbsp;&nbsp;<a href="<%=  %>">更多&#8250;&#8250;</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>专家</span></span></h2>
+  <h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>专家</span></span></h2>
   <ul id="zhimei_star_ul">
   <% @topics_users.each do |arr| %>
   <% t = arr[0]; u = arr[1] %>

@@ -117,7 +117,7 @@ end
         }
         $('.previews img').hide();
         $('.previews [data-slide=' + s + ']').show();
-        $('.previews p').text('Slide ' + (s+1) + ' of ' + Slide.urls.length);
+        $('.previews p').text('第' + (s+1) + '页, 共' + Slide.urls.length + '页');
       },
 
       updateShares: function(source) {

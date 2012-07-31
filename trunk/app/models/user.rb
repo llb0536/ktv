@@ -795,6 +795,7 @@ class User
         self.follow(u,nolog)
       end
     else
+      return if self.id==user.id
       return if self.following_ids.include? user.id
       self.following_ids << user.id
       self.following_count = self.following_ids.count

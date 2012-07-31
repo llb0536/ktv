@@ -42,6 +42,11 @@ class Courseware
     :finalizing => '正在完成最后的处理',
   }
   
+  scope :normal, where(:status => 0)
+  scope :waiting4downloading, where(:status => 1)
+  scope :waiting4transcoding, where(:status => 2)
+  scope :finalizing, where(:status => 3)
+  
   SORTSTR = {
     'xunlei' => '迅雷播放特权',
     'ppt' => '幻灯片',
@@ -217,23 +222,6 @@ class Courseware
       self.uploader.inc(:upload_count,1)
     end
   end  
-  
-  scope :normal, where(:status => 0)
-  scope :waiting4downloading, where(:status => 1)
-  scope :waiting4transcoding, where(:status => 2)
-  
-  def state
-    if 0==self.status
-      {:name => STATE_TEXT[:normal],:css => :ok}
-    elsif 1==self.status
-      {:name => STATE_TEXT[:waiting4downloading],:css => :error}
-    elsif 2==self.status
-      {:name => STATE_TEXT[:waiting4transcoding],:css => :orange}
-    else
-      {:name => '奇异状态',:css => :error}
-    end
-  end
-  
   def wh_ratio
     self.width*1.0/self.height
   end

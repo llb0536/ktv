@@ -4,20 +4,22 @@
 <% content_for :body_style do %>background: none repeat scroll 0 0 #F0EEEE<% end %>
 
 <div class="__zm">
+<% params[:queryOrder] ||= '1' %>
+<input id="queryOrder" type="hidden" value="<%= params[:queryOrder] %>" />
 <div id="pagewrap">
 	<div id="content" style="box-shadow:none;background:none;overflow:visible !important;margin-top:18px">
 		<div class="sheet cf" id="zhimeisheetbar">
 			<div class="hotword floatright">
 				<span class="split">|</span>
 				<h4>排序:</h4>
-				<ul>
-					<li class="current"><a href="/users/<%= @user.slug %>"><span>最新</span></a></li>
-					<li><a href="/users/<%= @user.slug %>?order=1"><span>最热</span></a></li>
-				</ul>
+<ul id="ulQueryOrder">
+<li  class='current'><a class="queryOrderCss" rel="1" href="javascript:;"><span>最新</span></a></li>
+<li ><a class="queryOrderCss" rel="2" href="javascript:;"><span>最热</span></a></li>
+</ul>
 			</div>
 			<div class="floatright">
 				<span>
-				<a href="/bds/<%= @user.slug %>" class="blue"><%= @user.coursewares_count %>个课件</a>
+				<a href="/users/<%= @user.slug %>" class="blue"><%= @user.coursewares_count %>个课件</a>
 				</span>
 			</div>
 			<span class="sheetname marginleft"><%= @user.name %></span>
@@ -97,12 +99,14 @@
 							<a href="/bds/<%= @user.slug %>" class="gray block usernumber"><%= @user.coursewares_count %><br/>
 							<span>课件</span></a></li>
 						</ul>
+            <% unless current_user and @user.id==current_user.id%>
 						<div class="concernbox cf">
 						  <% followed = (current_user and current_user.followed?(@user)) %>
 							<a href="javascript:;" class="<%= followed ? 'concerned-ico' : 'concern-ico' %>" id="followBtn" follow="<%= followed ? 'true' : 'false' %>">
 							  <em><%= followed ? '已关注' : '关注' %></em></a>
-							<a class="d-letter" href="javascript:void(0)"></a>
+							<a class="d-letter" style="display:none" href="javascript:void(0)"></a>
 						</div>
+          <% end %>
 					</div>
 					<p class="charm">
 						<span class="colonleft"></span>
@@ -173,25 +177,45 @@
 
 <script type="text/javascript">
 <% content_for :butt2 do %>
-im(function () {
+var old_content = $("#contentMain").html();
+$('.queryOrderCss').live('click', function () {
+    var queryOrder = $(this).attr("rel");
+    $('#queryOrder').val(queryOrder);
+    $('#ulQueryOrder > li').removeClass();
+    $(this).parent().addClass('current');
+    queryExec();
+});
+function queryExec(){
+    var queryOrder = $('#queryOrder').val();
+    $("#contentMain").html(old_content);
     autoLayout.pageAuto = true;
+    autoLayout.pageNums = 0;
+    autoLayout.loading = true;
+    autoLayout.isHasNextPage = true;
+    autoLayout.pageNum = 2;
     var linkUrl = "/coursewares?user_id=<%=@user.id%>",
         jsonUrl = "/coursewares_with_page?user_id=<%=@user.id%>";
     autoLayout.init({
         contentID: "contentMain",
         rightLoad: true,
         leftID: "",
+        dataContent: {
+            'queryOrder': queryOrder
+        },
         rightID: ["rightLabel1"],
         linkUrl: linkUrl,
         loadingID: "imloading",
 
         callBack: function () {
-            var showContent = "他/她还没有发布课件";
+        var showContent = "<%=@user.name%>还没有发布课件";
 
             $("#contentMain").prepend('<div style="text-align: center; margin-right: 233px; padding-top: 100px; left: 0px; top: 0px;" class="f14" columns="0">' + showContent + '</div>');
         }
     });
     autoLayout.eachAction(jsonUrl);
+}
+im(function () {
+    queryExec();
 });
 $("#followBtn").live("click", function () {
     var boardUserId = '<%= @user.slug %>';

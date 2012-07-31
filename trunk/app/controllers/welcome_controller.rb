@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     @hottest_user = UserCache.where(:hot_rank => 1).first.user
     @latest_cw = Courseware.normal.desc(:created_at).limit(4)
     @topics_users = []
-    users = User.where(:expert_topic.ne=>nil,:_id.nin=>[Setting.zuozheqingqiu_id,@hottest_user.id]) #todo: .where(:confirmed_at.ne=>nil)
+    users = User.where(:expert_topic.ne=>nil,:_id.nin=>[current_user.id,Setting.zuozheqingqiu_id,@hottest_user.id]) #todo: .where(:confirmed_at.ne=>nil)
     (0..users.count-1).sort_by{rand}.slice(0, 4).each do |i|
       u = users.skip(i).first
       t = Topic.locate u.expert_topic

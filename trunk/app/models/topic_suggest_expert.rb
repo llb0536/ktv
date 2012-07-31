@@ -12,7 +12,7 @@ class TopicSuggestExpert
     #   ret[expert.id] = expert.answers.collect{|ans| ans.ask ? ans.ask.topics : nil}.compact.flatten
     # end
     User.all.each do |expert|
-      ret[expert.id] = expert.coursewares.collect{|cw| cw.topics ? cw.topics : nil}.compact.flatten
+      ret[expert.id] = expert.coursewares.nondeleted.normal.collect{|cw| cw.topics ? cw.topics : nil}.compact.flatten
     end
     ret
   end

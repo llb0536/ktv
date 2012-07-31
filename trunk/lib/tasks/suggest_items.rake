@@ -28,6 +28,7 @@ namespace :suggest do
   task :topic_experts => :environment do
     TopicSuggestExpert.delete_all
     expert_topics = TopicSuggestExpert.calculate_expert_topics
+    User.where(:expert_topic_score.gt=>0).update_all(:expert_topic_score=>-1)
     expert_topics.each do |key,value|
       user = User.find(key)
       vv = value.uniq.sort{|x,y| expert_topics.count(y)<=>expert_topics.count(x)}
@@ -38,6 +39,7 @@ namespace :suggest do
     Topic.nondeleted.each do |topic|
       TopicSuggestExpert.find_by_topic(topic,:force => true, :expert_topics=>expert_topics, :debug => true)
     end
+    User.where(:expert_topic_score=>-1).update_all(:expert_topic_score=>0,:expert_topic=>nil)
   end
   
   # task :user => :environment do

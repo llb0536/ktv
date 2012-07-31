@@ -149,8 +149,8 @@ $('#categories_table > div').height($('#categories_table').height());
 <h4>只查看：</h4>
 <ul id="ulQueryScope">
 
-<li <%= 'class="current"' if '2'==params[:priceScope] %>><a class="queryScopeCss" rel="2"  href="javascript:;" ><span>篇幅长的</span></a></li>
-<li <%= 'class="current"' if '0'==params[:priceScope] %>><a class="queryScopeCss" rel="0"  href="javascript:;" ><span>全部</span></a></li>
+<li <%=raw 'class="current"' if '2'==params[:priceScope] %>><a class="queryScopeCss" rel="2"  href="javascript:;" ><span>篇幅长的</span></a></li>
+<li <%=raw 'class="current"' if '0'==params[:priceScope] %>><a class="queryScopeCss" rel="0"  href="javascript:;" ><span>全部</span></a></li>
 </ul>
 </div>
 <div class="hotword floatright cf">
