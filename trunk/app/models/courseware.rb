@@ -132,13 +132,16 @@ class Courseware
   def titleize
     if self.title.present? and (self.new_record? or self.title_changed?)
       self.title.strip!
-      if self.title =~ /^\[([^\[\]]+)\](.*)$/
+      reg1 = /^\[([^\[\]]+)\](.*)$/
+      reg2 = /^【([^【】]+)】(.*)$/
+      reg3 = /^@([^:：]*)[:：](.*)$/
+      if self.title =~ reg1
         self.school_name = $1.strip
         self.analyse2($2)
-      elsif self.title =~ /^【([^【】]+)】(.*)$/
+      elsif self.title =~ reg2
         self.school_name = $1.strip
         self.analyse2($2)
-      elsif self.title =~ /^@([^:：]*)[:：](.*)$/
+      elsif self.title =~ reg3
         u=User.where(:slug=>$1).first
         u||=User.where(:name=>$1).first
         if !u
@@ -208,7 +211,7 @@ class Courseware
       end
       self.school_id = school.id
       self.user_id = user.id
-    else
+    elsif self.user_id.blank?
       self.user_id = self.uploader_id
     end
   end

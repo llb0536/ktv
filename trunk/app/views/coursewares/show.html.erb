@@ -40,7 +40,7 @@ KTV.data = {
 
     <div class="extras" style="float:right;margin-right:0px">
       <ul class="delimited share" style="margin-bottom:0;border-top:none">
-        <li class="download" style="border-top:none"><%=Courseware::SORTSTR[@courseware.sort]%>(<%=number_to_human_size(@courseware.down_pdf_size*1000,:precision=>1) %>)<a target="_blank" href="<%= download_courseware_path(@courseware)%>">立即下载</a></li>
+        <li class="download" style="border-top:none"><%=Courseware::SORTSTR[@courseware.sort]%>(<%=@courseware.down_pdf_size ? number_to_human_size(@courseware.down_pdf_size*1000,:precision=>1) : '大小未知' %>)<a target="_blank" href="<%= download_courseware_path(@courseware)%>">立即下载</a></li>
       </ul>
     </div>
     
@@ -127,7 +127,7 @@ KTV.data = {
 
       <h1><%=image_tag('share.png',alt:'下载此课件')%></h1>
       <ul class="delimited share">
-        <li class="download" style="border-top:none"><%=Courseware::SORTSTR[@courseware.sort]%>(<%=number_to_human_size(@courseware.down_pdf_size*1000,:precision=>1) %>)<a target="_blank" href="<%= download_courseware_path(@courseware)%>">立即下载</a></li>
+        <li class="download" style="border-top:none"><%=Courseware::SORTSTR[@courseware.sort]%>(<%=@courseware.down_pdf_size ? number_to_human_size(@courseware.down_pdf_size*1000,:precision=>1) : '大小未知' %>)<a target="_blank" href="<%= download_courseware_path(@courseware)%>">立即下载</a></li>
       </ul>
     </div>
   </div>
