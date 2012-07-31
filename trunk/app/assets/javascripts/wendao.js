@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+App.psvr_wendao_init = function(){
     // 个人设置弹层，离开隐藏
     $('.userInfoName').mouseover(function(){
         $('#userInfoPop').show();
@@ -122,8 +123,8 @@ $(document).ready(function(){
 
     }
 
-// 登录和注册、退出按钮的点击事件
-$("#login_link").click(Users.userLogin);
+    // 登录和注册、退出按钮的点击事件
+    $("#login_link").click(Users.userLogin);
     $("#reg_link").click(Users.userReg);
     $("#logout_link").click(Users.userLogout);
     // 风云榜 欢迎页热门领域关注 2012-2-5 by lesanc.li
@@ -311,4 +312,8 @@ $("#login_link").click(Users.userLogin);
     $('#mainNav li, #userInfoPop li:gt(0)').click(function(){
         window.location.href = $(this).find("a").attr("href");
     }); 
+};
+
+App.psvr_wendao_init();
+
 });
