@@ -97,27 +97,27 @@ end
 
 <div  class="topline userbox userbox-home">
 <div style="overflow:hidden;">
-  <div class="uhead" style="height:60px;"><a href="<%= user_path current_user%>"><img src="<%=avatar_url(current_user,:mid60)%>" /></a></div>
+  <div class="uhead" style="height:60px;"><a href="<%= user_path @user%>"><img src="<%=avatar_url(@user,:mid60)%>" /></a></div>
   <div class="uinfo">
-    <p><a href="/profile/1141902" class="blue arial b"><%=current_user.name%></a></p>
-    <p><%= current_user.tagline %></p>
+    <p><a href="/users/<%=@user.slug%>" class="blue arial b"><%=@user.name%></a></p>
+    <p><%= @user.tagline %></p>
   </div>
 </div>
 <ul class="useratten cf">
   <li>
   <a id="user_profile_medium_follow_count" class="gray block usernumber" href="/follow/1141902/1">
-    <em><%=current_user.following_ids.size%></em><br />
+    <em><%=@user.following_ids.size%></em><br />
   <span>关注</span>
   </a>
   </li>
   <li>
   <a id="user_profile_medium_fans_count" class="gray block usernumber" href="/fans/1141902/1">
-    <em><%=current_user.follower_ids.size%></em><br />
+    <em><%=@user.follower_ids.size%></em><br />
   <span>粉丝</span>
   </a>
   </li>
   <li>
-  <a class="gray block usernumber" href="/users/<%= current_user.slug %>"><%=current_user.coursewares_count%><br />
+  <a class="gray block usernumber" href="/users/<%= @user.slug %>"><%=@user.coursewares_count%><br />
   <span>课件</span></a>
   </li>
 </ul>
