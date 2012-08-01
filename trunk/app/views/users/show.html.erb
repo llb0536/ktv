@@ -80,7 +80,7 @@
                   <div class="clearfix" style="margin:12px 0"><%= md_body @user.bio,:with_tfmt => false %></div>
                 <% end %>
   						</div>						  
-	            <% if owner?@user %><div class="__qa clearfix"><%= in_place_edit_tag(@user,:bio,:type => :textarea, :length=>2000, :text_id => "user_bio", :label => "<img class=\"modifyLogo\" src=\"/assets/transparent.png\">#{@user.bio.blank? ? '添加个人经历' : '修改个人经历'}".html_safe) %></div><% end %>
+	            <% if owner?@user %><div class="__qa clearfix"><%= in_place_edit_tag(@user,:bio,:type => :textarea, :length=>2000, :text_id => "user_bio", :label => "<img class=\"modifyLogo\" src=\"/transparent.png\">#{@user.bio.blank? ? '添加个人经历' : '修改个人经历'}".html_safe) %></div><% end %>
 						</div>
 						<ul class="useratten ctf-bg cf">
 							<li>
@@ -118,9 +118,9 @@
 						</span>
 						<span class="colonright"></span>
 						<% if owner?@user %>
-              <img class="modifyLogo" src="/assets/transparent.png">
+              <img class="modifyLogo" src="/transparent.png">
               <div class="__qa clearfix">
-              <%= in_place_edit_tag(@user,:tagline,:rich => false, :text_id => "user_tagline", :label => "<img class=\"modifyLogo\" src=\"/assets/transparent.png\">#{@user.tagline.blank? ? '添加一句话介绍' : '修改一句话介绍'}".html_safe) %>
+              <%= in_place_edit_tag(@user,:tagline,:rich => false, :text_id => "user_tagline", :label => "<img class=\"modifyLogo\" src=\"/transparent.png\">#{@user.tagline.blank? ? '添加一句话介绍' : '修改一句话介绍'}".html_safe) %>
               </div>
             <% end %>
 					</p>

@@ -40,13 +40,13 @@
           <li><a title="<%= topic %>" href="<%= topic_path(topic) %>"><%= topic %></a></li>
         <% end %>
         <% if can_edit?(@ask) %>
-          <li class="modify"><a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">修改</a></li>
+          <li class="modify"><a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/transparent.png" class="modifyLogo">修改</a></li>
         <% end %>
 
       <% else %>
 
         <% if current_user and can_edit?(@ask) %>
-          <li class="modify"><span class="no_result fc999">添加领域标签，能让更多人看到你的题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/assets/transparent.png" class="modifyLogo">添加标签</a></span>
+          <li class="modify"><span class="no_result fc999">添加领域标签，能让更多人看到你的题。<a href="#" onclick="return Asks.toggleEditTopics(true);" class="in_place_edit" style="_float:left;"><img src="/transparent.png" class="modifyLogo">添加标签</a></span>
           <% end %>
 
         <% end %>
@@ -81,7 +81,7 @@
   <!-- to 宪科：默认显示下面的H6，题标题【IF二选一】 -->
 
   <div>	<h6><span id="ask_title"><%= @ask.title %></span><% if can_edit?(@ask) %>
-        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__title__<%= @ask.id %>" data-width="598" data-url="/update_in_place" data-type="textarea" data-text-id="ask_title" data-rich="false" data-height="40" class="in_place_edit fc999"><img class="modifyLogo" src="/assets/transparent.png">修改</a>
+        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__title__<%= @ask.id %>" data-width="598" data-url="/update_in_place" data-type="textarea" data-text-id="ask_title" data-rich="false" data-height="40" class="in_place_edit fc999"><img class="modifyLogo" src="/transparent.png">修改</a>
       <% end %></h6>
   </div>
   <!-- to 宪科：点击修改题标题后，隐藏上面的H6，出现下面的DIV（编辑器）【IF二选一】 -->
@@ -89,9 +89,9 @@
     <div class="mt10 tfmt" id="ask_body"><%= md_body(@ask.chomp_body,:with_tfmt => false) %></div>
     <% if can_edit?(@ask) %>
       <% if @ask.chomp_body.blank? %>
-        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__body__<%= @ask.id %>" data-url="/update_in_place" data-type="textarea" data-text-id="ask_body" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/assets/transparent.png">添加补充说明</a>
+        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__body__<%= @ask.id %>" data-url="/update_in_place" data-type="textarea" data-text-id="ask_body" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/transparent.png">添加补充说明</a>
       <% else %>
-        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__body__<%= @ask.id %>" data-url="/update_in_place" data-type="textarea" data-text-id="ask_body" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/assets/transparent.png">修改</a>
+        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="ask__body__<%= @ask.id %>" data-url="/update_in_place" data-type="textarea" data-text-id="ask_body" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/transparent.png">修改</a>
       <% end %>	   
     <% end %> 
   </div>

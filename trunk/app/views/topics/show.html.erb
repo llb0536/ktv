@@ -152,9 +152,9 @@
                 <% end %>
   						</div>
               <% if @topic.summary.blank? %>
-                <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary",:label => "<img class=\"modifyLogo\" src=\"/assets/transparent.png\">添加补充资料".html_safe %>
+                <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary",:label => "<img class=\"modifyLogo\" src=\"/transparent.png\">添加补充资料".html_safe %>
               <% else %>
-                <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary",:label => "<img class=\"modifyLogo\" src=\"/assets/transparent.png\">添加补充资料".html_safe %>
+                <%= in_place_edit_tag @topic, :summary, :type => :textarea, :text_id => "topic_summary",:label => "<img class=\"modifyLogo\" src=\"/transparent.png\">添加补充资料".html_safe %>
               <% end %>
 						</div>
 

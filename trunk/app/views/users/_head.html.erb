@@ -37,7 +37,7 @@
         <div class="details">
           <span id="user_tagline"><%= ((user.tagline==nil || user.tagline == '')&&(!user.tagline_changed_at)) ? (   (user.is_expert) ? 'Kejian.TV专家' : 'Kejian.TV新人'   ) : (user.tagline) %></span>&nbsp;
           <% if owner?user %>
-            <img class="modifyLogo" src="/assets/transparent.png"><%= in_place_edit_tag(user,:tagline,:rich => false, :text_id => "user_tagline") %>
+            <img class="modifyLogo" src="/transparent.png"><%= in_place_edit_tag(user,:tagline,:rich => false, :text_id => "user_tagline") %>
           <% end %>
         </div>
       </h5>
@@ -52,7 +52,7 @@
             <%= md_body @user.bio,:with_tfmt => false %>
           <% end %>
         </div>
-        <% if owner?@user %> <%= in_place_edit_tag(@user,:bio,:type => :textarea, :length=>2000, :text_id => "user_bio", :label => "<img class=\"modifyLogo\" src=\"/assets/transparent.png\">#{@user.bio.blank? ? '添加个人经历' : '修改个人经历'}".html_safe) %> <% end %>
+        <% if owner?@user %> <%= in_place_edit_tag(@user,:bio,:type => :textarea, :length=>2000, :text_id => "user_bio", :label => "<img class=\"modifyLogo\" src=\"/transparent.png\">#{@user.bio.blank? ? '添加个人经历' : '修改个人经历'}".html_safe) %> <% end %>
       </div>
     </section>
     <% unless current_user==@user %>

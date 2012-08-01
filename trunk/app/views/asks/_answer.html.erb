@@ -34,7 +34,7 @@
       <% end %>
 
       <% if owner?(item) %>
-        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="answer__body__<%=item.id%>" data-url="/update_in_place" data-type="textarea" data-text-id="<%="awb_#{item.ask_id}_#{item.id}"%>" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/assets/transparent.png">修改</a>
+        <a onclick="return App.inPlaceEdit(this, {'is_mobile_device': false});" id="answer__body__<%=item.id%>" data-url="/update_in_place" data-type="textarea" data-text-id="<%="awb_#{item.ask_id}_#{item.id}"%>" data-rich="true" class="in_place_edit fc999"><img class="modifyLogo" src="/transparent.png">修改</a>
       <% end %>
 
       <footer>
