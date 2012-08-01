@@ -24,8 +24,11 @@ test:
   database: ktv_test
 
 # set these environment variables on your prod server
-production:
+production: &productions
   <<: *defaults
   host: '0.0.0.0'
   database: ktv
+
+staging:
+  <<: *productions
 

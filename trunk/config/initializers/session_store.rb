@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
-key = (Rails.env.production? ? "_ktv_session" : "_ktv_local_session")
-domain = (Rails.env.production? ? ".kejian.tv" : ".kejian.lvh.me")
+key = (Rails.env.development? ?  "_ktv_local_session" : "_ktv_session")
+domain = (Rails.env.development? ?  ".kejian.lvh.me" : ".kejian.tv")
 
 Quora::Application.config.session_store :cookie_store, 
                                         :key => key,

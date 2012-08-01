@@ -23,13 +23,13 @@ end
 class RedisSetting < Settingslogic  
   source File.expand_path('../redis.yml', __FILE__)
   namespace Rails.env
-  suppress_errors Rails.env.production?
+  suppress_errors (Rails.env.production? or Rails.env.staging?)
 end
 
 class Setting < Settingslogic
   source File.expand_path('../setting.yml', __FILE__)
   namespace Rails.env
-  suppress_errors Rails.env.production?
+  suppress_errors (Rails.env.production? or Rails.env.staging?)
 end
 
 

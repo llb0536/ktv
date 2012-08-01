@@ -28,7 +28,21 @@ class Topic
   def self.others
     self.find_or_create_by(name:'其他')
   end
-  before_save :check_and_fill_ancestors,:if=>'fathers_changed?'
+  before_validation :check_and_fill_ancestors,:if=>'fathers_changed?'
+  def children_visit(node,visited,ancestors)
+    visited << node.name
+    node.ancestors += node.name
+    node.ancestors += ancestors
+    node.ancestors.uniq!
+    node.children.each do |item|
+      if visited.include?(item.name)
+        raise 'cycled'
+      else
+        children_visit(item,visited,node.ancestors)
+      end
+    end
+    node.save(:validate=>false)
+  end
   def check_and_fill_ancestors
     self.ancestors = [self.name] 
     self.fathers.each do |father|
@@ -36,6 +50,14 @@ class Topic
       self.ancestors += item.ancestors 
     end
     self.ancestors.uniq!
+    visited = []
+    begin
+      children_visit(self,self.ancestors)
+    rescue => e
+      self.errors.add(:fathers,'出现了循环父领域，请修改')
+      return false
+    end
+    return true
   end
   before_save :counter_work
   def counter_work
@@ -113,6 +135,9 @@ class Topic
 
   def children
     Topic.where(:fathers=>self.name)
+  end
+  def children_names
+    self.children.collect(&:name)
   end
   def remove_father(topic)
     self.fathers.delete topic.name

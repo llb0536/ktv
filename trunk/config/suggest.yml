@@ -8,3 +8,6 @@ test:
 production:
   <<: *defaults
   cpu_cores: 8
+staging:
+  <<: *defaults
+  cpu_cores: 8
