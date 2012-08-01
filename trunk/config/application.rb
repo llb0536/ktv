@@ -103,6 +103,5 @@ end
 
 require "string_extensions"
 require "array_extensions"
-require "zomet"
 require "mmseg"
 require 'will_paginate/array'

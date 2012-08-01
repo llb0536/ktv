@@ -124,8 +124,6 @@ class ApplicationController < ActionController::Base
   #include ActionController::MobileFu::InstanceMethods
   #helper_method :is_mobile_device?
   
-  # Comet Server
-  use_zomet
   def nb
     @follower=User.last
     @invitors=[User.last]
