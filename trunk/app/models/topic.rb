@@ -28,7 +28,7 @@ class Topic
   def self.others
     self.find_or_create_by(name:'其他')
   end
-  before_validation :check_and_fill_ancestors,:if=>'fathers_changed?'
+  #before_validation :check_and_fill_ancestors,:if=>'fathers_changed?'
   def children_visit(node,visited,ancestors)
     visited << node.name
     node.ancestors += node.name
