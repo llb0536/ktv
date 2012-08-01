@@ -17,6 +17,17 @@
   <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area&["normal_ask","spam_ask","answer","comment","topic"]).count>0)%>
     <div class="side_table">
       <div class="side_th">内容管理</div>
+      
+      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("topic"))%>
+        <div class="side_td">
+          <a href="<%= cpanel_topics_path %>">领域管理</a>
+        </div>
+      <%end%>
+      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("comment"))%>
+        <div class="side_td">
+          <a href="<%= cpanel_comments_path %>">评论管理</a>
+        </div>
+      <%end%>
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and (current_user.admin_area.include?("normal_ask") or current_user.admin_area.include?("spam_ask")))%>
         <div class="side_td">
           <a href="<%= cpanel_asks_path %>">题管理</a>
@@ -25,16 +36,6 @@
       <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("answer"))%>
         <div class="side_td">
           <a href="<%= cpanel_answers_path %>">解答管理</a>
-        </div>
-      <%end%>
-      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("comment"))%>
-        <div class="side_td">
-          <a href="<%= cpanel_comments_path %>">评论管理</a>
-        </div>
-      <%end%>
-      <%if current_user.admin_type==2 or (current_user.admin_type=3 and current_user.admin_area.include?("topic"))%>
-        <div class="side_td">
-          <a href="<%= cpanel_topics_path %>">领域管理</a>
         </div>
       <%end%>
     </div>
