@@ -12,7 +12,6 @@
     <table width="1" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><div style="height:10px;font-size:10px;line-height:10px;">&nbsp;</div></td></tr></tbody></table>
   </td></tr>
   <tr><td align="left">
-    <img width="159" height="35" border="0" src="<%= asset_url('logo_white.png')%>">
   </td></tr>
   <tr><td>
     <table width="1" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><div style="height:10px;font-size:10px;line-height:10px;">&nbsp;</div></td></tr></tbody></table>
@@ -64,7 +63,7 @@
     <tr>
       <td>
         <table width="1" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><div style="height:12px;font-size:12px;line-height:12px;">&nbsp;</div></td></tr></tbody></table>
-          <table cellspacing="1" cellpadding="6" border="0" align=""><tbody><tr><td valign="middle" bgcolor="#FFE86C" background="<%= mk_url(asset_path('yellow_button_back.png')) %>" align="center" style="background:url(<%= mk_url(asset_path('yellow_button_back.png')) %>) repeat-x scroll 100% 0 #FFE86C;background-color:#FFE86C;border:1px solid #E8B463;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;"><div style="padding-right:10px;padding-left:10px;"><a style="text-decoration:none;" href="<%= confirmation_url(@vip, :confirmation_token => @vip.confirmation_token) %>" target="_blank"><span style="font-size:12px;font-family:Arial;font-weight:bold;color:#333333;white-space:nowrap;display:block;">确认您认识<%= @invitor.name %></span></a></div></td></tr></tbody></table>
+          <table cellspacing="1" cellpadding="6" border="0" align=""><tbody><tr><td valign="middle" bgcolor="#FFE86C" background="<%= mk_url(asset_url('yellow_button_back.png')) %>" align="center" style="background:url(<%= mk_url(asset_url('yellow_button_back.png')) %>) repeat-x scroll 100% 0 #FFE86C;background-color:#FFE86C;border:1px solid #E8B463;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;"><div style="padding-right:10px;padding-left:10px;"><a style="text-decoration:none;" href="<%= confirmation_url(@vip, :confirmation_token => @vip.confirmation_token) %>" target="_blank"><span style="font-size:12px;font-family:Arial;font-weight:bold;color:#333333;white-space:nowrap;display:block;">确认您认识<%= @invitor.name %></span></a></div></td></tr></tbody></table>
       </td>
     </tr>
   </tbody></table>

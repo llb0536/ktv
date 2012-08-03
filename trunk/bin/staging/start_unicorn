@@ -1,0 +1,4 @@
+#!/bin/bash -x
+bundle exec resque-pool --daemon --environment staging --pidfile tmp_staging/pids/resque-pool.pid
+bundle exec unicorn_rails -c config/unicorn_ktv_staging.conf.rb -E staging -D
+bin/staging/check

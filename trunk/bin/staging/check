@@ -1,0 +1,4 @@
+#!/bin/bash -x
+
+ps -ef f |grep '[u]nicorn_ktv_staging'
+ps -ef f | grep '[r]esque'

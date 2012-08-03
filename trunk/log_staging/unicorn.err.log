@@ -1,0 +1,58 @@
+I, [2012-08-01T18:48:03.541195 #4639]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-01T18:48:03.541795 #4639]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-01T18:48:20.269182 #4639]  INFO -- : master process ready
+I, [2012-08-01T18:48:21.328844 #4680]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+I, [2012-08-01T18:52:07.996641 #4639]  INFO -- : reaped #<Process::Status: pid 4680 exit 0> worker=0
+I, [2012-08-01T18:52:07.996860 #4639]  INFO -- : master complete
+I, [2012-08-01T18:53:03.400409 #5195]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-01T18:53:03.400794 #5195]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-01T18:53:03.401262 #5195]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-01T18:53:19.786190 #5195]  INFO -- : master process ready
+I, [2012-08-01T18:53:20.830115 #5235]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing

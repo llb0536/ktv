@@ -1,0 +1,5 @@
+mkdir -p tmp/pids/
+mkdir -p log/
+mkdir -p tmp_staging/pids/
+mkdir -p tmp_staging/cache/
+mkdir -p log_staging/
