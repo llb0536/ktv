@@ -2,6 +2,7 @@
 
 # ========================Redis===========================
 sudo /usr/local/bin/redis-server config/redis1.conf
+sudo /usr/local/bin/redis-server config/redis_test.conf
 
 # =======================Memcached==================
 sudo -u pan /usr/local/bin/memcached -d -vvv >>log/memcached.log 2>>log/memcached_error.log

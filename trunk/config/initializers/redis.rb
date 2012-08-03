@@ -10,8 +10,6 @@ def redis_connect!(index=0)
 
   $redis_search = Redis.new(:host => redis_config['host_search'],:port => redis_config['port_search'],:thread_safe => true)
   $redis_search.select(redis_config['select_search'])
-  $redis_search_slave = Redis.new(:host => redis_config['host_search_slave'],:port => redis_config['port_search_slave'],:thread_safe => true)
-  $redis_search_slave.select(redis_config['select_search_slave'])
 
   $redis_resque = Redis.new(:host => redis_config['host_resque'],:port => redis_config['port_resque'],:thread_safe => true) 
   $redis_resque.select(redis_config['select_resque'])

@@ -128,16 +128,35 @@ class Topic
   index :created_at
   def add_father(topic)
     return if Setting.root_topic_id==self.id.to_s
+    anA = topic.ancestors
+    anB = self.ancestors
+    raise Ktv::Shared::UserDataException if anA.include?(self.name)
     self.fathers << topic.name
     self.fathers.uniq!
     self.save!
   end
 
-  def children
+  def fathers_inst
+    Topic.where(:name.in=>self.fathers)
+  end
+  def children_inst
     Topic.where(:fathers=>self.name)
   end
-  def children_names
-    self.children.collect(&:name)
+  def children
+    self.children_inst.collect(&:name)
+  end
+  def self.get_ancestors(inst)
+    [inst].tap do |x|
+      for item in inst.fathers_inst
+        x.concat Topic.get_ancestors(item)
+      end
+    end
+  end
+  def ancestors_inst
+    Topic.get_ancestors(self).uniq
+  end
+  def ancestors
+    self.ancestors_inst.collect(&:name)
   end
   def remove_father(topic)
     self.fathers.delete topic.name
@@ -147,13 +166,10 @@ class Topic
   field :quora
   field :wikipedia
   field :fathers,:type => Array,:default => []
-  field :children,:type => Array,:default => []
-  field :ancestors,:type => Array,:default => []
-  field :offspring,:type => Array,:default => []
-  field :fathers_count,:type=>Integer,:defaut=>0
-  field :children_count,:type=>Integer,:defaut=>0
-  field :ancestors_count,:type=>Integer,:defaut=>0
-  field :offspring_count,:type=>Integer,:defaut=>0
+  # field :fathers_count,:type=>Integer,:defaut=>0
+  # field :children_count,:type=>Integer,:defaut=>0
+  # field :ancestors_count,:type=>Integer,:defaut=>0
+  # field :offspring_count,:type=>Integer,:defaut=>0
   def self.locate(arg)
     self.find_or_create_by(name:arg)
   end

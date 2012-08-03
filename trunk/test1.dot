@@ -1,0 +1,24 @@
+/*
+Summerized by P.S.V.R
+Note. Log related relations are omitted.
+*/
+
+digraph test1 {
+  A->root
+  B->root
+	C->root
+	ab->A
+	ab->B
+	abc->A
+	abc->B
+	abc->C
+	abA->ab
+	abA->A
+	z->abA
+	z->B
+	zz->z
+	abcd->abc
+	dd->d
+	d->c
+	c->C
+}

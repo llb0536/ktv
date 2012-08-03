@@ -1,54 +1,29 @@
-#coding: utf-8
+# coding: utf-8
 require 'spec_helper'
-
 describe Topic do
-  it "when created or saved, inform the consultant" do
-    topic = FactoryGirl.create(:topic)
-    $redis_topics.hget(topic.id,:name).should eq topic.name
-    $redis_topics.hget(topic.name,:id).should eq topic.id
-    topic.name='jjj'
-    topic.save
-    $redis_topics.hget(topic.id,:name).should eq 'jjj'
-    $redis_topics.hget('jjj',:id).should eq topic.id
+  it "能取出A的孩子" do
+    ta = Topic.locate('A')
+    ta.children.sort.should eq ['ab','abA','abc'].sort
   end
-  it "when read on class, read from consultant" do
-    topic = $_topics[0]
-    Topic.get_name(topic.id).should eq topic.name
-    Topic.get_id(topic.name).should eq topic.id
-    # ensure that get_name indeed uses the cache
-    $redis_topics.hset(topic.id,:name,'messed')
-    Topic.get_name(topic.id).should eq 'messed'
-    # ensure that get_id indeed uses the cache
-    $redis_topics.hset('somename',:id,'dfsafdafds')
-    Topic.get_id('somename').should eq 'dfsafdafds'
+  it "能取出A的祖先" do
+    ta = Topic.locate('abcd')
+    ta.ancestors.sort.should eq ['abcd','abc','A','B','C','root'].sort
   end
-  it "when updated, update the consultant" do
-    topic = $_topics[0]
-    topic.update_attribute(:name,'changed_name_sa!')
-    $redis_topics.hget(topic.id,:name).should eq 'changed_name_sa!'
-    $redis_topics.hget('changed_name_sa!',:id).should eq topic.id
+  it "不能创建环" do
+    ta = Topic.locate('C')
+    expect {
+      ta.add_father(Topic.locate('dd'))
+    }.to raise_error(Ktv::Shared::UserDataException)
+    expect {
+      ta.add_father(Topic.locate('c'))
+    }.to raise_error(Ktv::Shared::UserDataException)
+    tb = Topic.locate('B')
+    ta = Topic.locate('A')
+    ta.add_father(tb)
+    true.should be true
   end
-  
-  it "when being followed/unfollowed, transform its `follower_ids` array" do
-    users = $_users[0..2]
-    topic = $_topics[0]
-    users[0].follow_topic(topic,true)
-    topic.follower_ids.should eq([users[0].id])
-    # 重复关注也不应该出现冗余条目
-    users[0].follow_topic(topic,true)
-    topic.follower_ids.should eq([users[0].id])
-    
-    users[0].unfollow_topic(topic,true)
-    topic.follower_ids.should eq([])
-
-    users.each{|user|user.follow_topic(topic,true)}
-    topic.follower_ids.should eq([users[0].id,users[1].id,users[2].id])
-
-    users[1].unfollow_topic(topic,true)
-    topic.follower_ids.should eq([users[0].id,users[2].id])
-
-    # 重复反关注也不应该出现删除过量
-    users[1].unfollow_topic(topic,true)
-    topic.follower_ids.should eq([users[0].id,users[2].id])
-  end
+  # it "当create新的课件时，填写一个topic名字A，应该更新A的课件数，以及所有A的父亲的课件数" do
+  #   cw = Courseware.create!(:title=>'课件标题',:topic=>'A')
+  #   ta = Topic.locate('A')
+  # end
 end
