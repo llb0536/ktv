@@ -163,8 +163,8 @@ class Topic
     self.fathers.uniq!
     self.save!
   end
-  field :quora
-  field :wikipedia
+  field :quora,:type=>Hash,:default=>{}
+  field :wikipedia,:type=>Hash,:default=>{}
   field :fathers,:type => Array,:default => []
   # field :fathers_count,:type=>Integer,:defaut=>0
   # field :children_count,:type=>Integer,:defaut=>0
