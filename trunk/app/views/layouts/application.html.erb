@@ -26,6 +26,17 @@
   <%= csrf_meta_tag %>
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
+    <script src="/DOM-shim/test/resources/es5-shim.js"></script>
+    <!--[if lte IE 8]>
+    <script src="/DOM-shim/lib/DOM-shim-ie8.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <script src="/DOM-shim/lib/DOM-shim.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+    <script src="/DOM-shim/lib/DOM-shim.js"></script>
+    <!-- <![endif]-->
+
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
@@ -74,10 +85,6 @@
 </head>
 
 <body id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
 <div class="__sdk">
   <header>
     <div class="wrapper">
@@ -107,7 +114,7 @@
           </ul>
         <%else%>
           <ul id="account-settings" style="min-width:100px">
-            <li class="psvr"><a class="userloginreg" id="login" href="javascript:void(0)">登录 / 注册新用户</a>
+            <li class="psvr"><a class="userloginreg" id="login" href="/login">登录 / 注册新用户</a>
             </li>
           </ul>
         <%end%>
@@ -275,18 +282,41 @@
     <div id="firstload" class="firstload" style="display:none;">加载中...</div>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
-
-  <%= javascript_include_tag "ktv/application" %>
   <script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    <%= yield :butt2 %>
-    $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
-    $('#core_addcw_wrap').click(function(){return KTV.addCW()});
-    $("abbr.timeago").timeago();
-  });
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.type= 'text/javascript';
+    script.src= <%=raw asset_url("ktv/application").to_json %>;
+    head.appendChild(script);
+    var next_step = function(){
+      var head2= document.getElementsByTagName('head')[0];
+      var script2= document.createElement('script');
+      script2.type= 'text/javascript';
+      script2.src= <%=raw asset_url("application").to_json %>;
+      head2.appendChild(script2);
+
+      var final_step = function(){
+        $(document).ready(function(){
+          <%= yield :butt2 %>
+          $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
+          $('#core_addcw_wrap').click(function(){return KTV.addCW()});
+          $('#login').click(function(){return KTV.login()});
+          $("abbr.timeago").timeago();
+        });
+      }
+      head2.onreadystatechange = final_step;
+      head2.onload = final_step;
+    }
+    head.onreadystatechange = next_step;
+    head.onload = next_step;
+  </script>
+  
+  <script type="text/javascript" charset="utf-8">
   </script>
   <%= yield :bottom %>
-  <%= javascript_include_tag "application" %>
+  <script type="text/javascript" charset="utf-8">
+    document.write(<%=raw javascript_include_tag("application").to_json %>);
+  </script>
   <%= yield :scripts %>
   
   <script type="text/javascript">

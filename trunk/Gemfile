@@ -185,4 +185,4 @@ gem 'thin'
 
 
 gem 'selenium-webdriver'
-gem 'debugger'
+#gem 'debugger'

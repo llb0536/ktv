@@ -56,3 +56,125 @@ X-Accel-Mapping header missing
 X-Accel-Mapping header missing
 X-Accel-Mapping header missing
 X-Accel-Mapping header missing
+I, [2012-08-04T23:33:15.370150 #10962]  INFO -- : executing ["/usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails", "-c", "config/unicorn_ktv_staging.conf.rb", "-E", "staging", "-D", {7=>#<Kgio::UNIXServer:/web/ktv_staging.sock>}] (in /home/main/ktv/trunk)
+I, [2012-08-04T23:33:15.370373 #10962]  INFO -- : forked child re-executing...
+/usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/spec_set.rb:90:in `block in materialize': Could not find debugger-1.2.0 in any of the sources (Bundler::GemNotFound)
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/spec_set.rb:83:in `map!'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/spec_set.rb:83:in `materialize'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/definition.rb:127:in `specs'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/definition.rb:172:in `specs_for'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/definition.rb:161:in `requested_specs'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/environment.rb:23:in `requested_specs'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/runtime.rb:11:in `setup'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler.rb:107:in `setup'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/bundler-1.1.4/lib/bundler/setup.rb:17:in `<top (required)>'
+	from /usr/local/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/ruby/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+E, [2012-08-04T23:33:16.938830 #5195] ERROR -- : reaped #<Process::Status: pid 10962 exit 1> exec()-ed
+I, [2012-08-04T23:36:16.422854 #11332]  INFO -- : executing ["/usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails", "-c", "config/unicorn_ktv_staging.conf.rb", "-E", "staging", "-D", {7=>#<Kgio::UNIXServer:/web/ktv_staging.sock>}] (in /home/main/ktv/trunk)
+I, [2012-08-04T23:36:16.422999 #11332]  INFO -- : forked child re-executing...
+I, [2012-08-04T23:36:18.331731 #11332]  INFO -- : inherited addr=/web/ktv_staging.sock fd=7
+I, [2012-08-04T23:36:18.332005 #11332]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-04T23:36:36.159646 #11332]  INFO -- : master process ready
+I, [2012-08-04T23:36:36.357035 #5195]  INFO -- : reaped #<Process::Status: pid 5235 exit 0> worker=0
+I, [2012-08-04T23:36:36.357137 #5195]  INFO -- : master complete
+I, [2012-08-04T23:36:37.339953 #11416]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+log writing failed. "\xBF" from ASCII-8BIT to UTF-8
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+I, [2012-08-05T11:16:51.835080 #25613]  INFO -- : executing ["/usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails", "-c", "config/unicorn_ktv_staging.conf.rb", "-E", "staging", "-D", {7=>#<Kgio::UNIXServer:fd 7>}] (in /home/main/ktv/trunk)
+I, [2012-08-05T11:16:51.835232 #25613]  INFO -- : forked child re-executing...
+I, [2012-08-05T11:16:53.665165 #25613]  INFO -- : inherited addr=/web/ktv_staging.sock fd=7
+I, [2012-08-05T11:16:53.665444 #25613]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-05T11:17:11.003493 #25613]  INFO -- : master process ready
+I, [2012-08-05T11:17:11.200894 #11332]  INFO -- : reaped #<Process::Status: pid 11416 exit 0> worker=0
+I, [2012-08-05T11:17:11.200991 #11332]  INFO -- : master complete
+I, [2012-08-05T11:17:12.115805 #25700]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing

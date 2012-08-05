@@ -30,7 +30,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-coat">
 <h3><a href="<%= topic_path father %>" class="coat"><span ></span>数学与自然科学</a></h3>
 <ul class="navlist" style="margin-left:22px">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -55,7 +55,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-pants">
 <h3><a href="<%= topic_path father %>" class="pants"><span ></span>工程</a></h3>
 <ul class="navlist">
-  <% father.children.desc('coursewares_count').each do |topic| %>
+  <% father.children_inst.desc('coursewares_count').each do |topic| %>
   <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
   <% end %>
 </ul>
@@ -80,7 +80,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-accessories">
 <h3><a href="<%= topic_path father %>" class="accessories"><span ></span>人文、艺术与社会科学</a></h3>
 <ul class="navlist">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -108,7 +108,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <% father=Topic.interdisciplinaries %>
 <h3 class="sty"><a href="<%= topic_path father %>">交叉学科</a></h3>
 <ul class="sty-list cf">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -120,7 +120,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <% father=Topic.others %>
 <h3 class="ele"><a href="<%= topic_path father %>">其他</a></h3>
 <ul class="ele-list cf">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>

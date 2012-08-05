@@ -26,8 +26,10 @@
       </div>
 -->
       </li>
+    <% if current_user %>
       <li class="dot"></li>
       <li class="<%= 'current' if mine_coursewares_path==request.path %>"><a href="<%= mine_coursewares_path %>">我关注的</a></li>
+    <% end %>
       <li class="dot"></li>
       <li class="<%= 'current' if topics_path==request.path %>"><a href="<%= topics_path %>">全部课件</a></li>
       <!--

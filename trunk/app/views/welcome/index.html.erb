@@ -25,7 +25,7 @@
     <div class="wrapper">
       <div class="main">
         <ul>
-          <li class="current"><a href="#description">最新发布</a></li>
+          <li class="current"><a href="#description">最新上传</a></li>
         </ul>
       </div>
     </div>
@@ -91,7 +91,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-coat">
 <h3><a href="<%= topic_path father %>" class="coat"><span ></span>数学与自然科学</a></h3>
 <ul class="navlist" style="margin-left:22px">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -116,7 +116,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-pants">
 <h3><a href="<%= topic_path father %>" class="pants"><span ></span>工程</a></h3>
 <ul class="navlist">
-  <% father.children.desc('coursewares_count').each do |topic| %>
+  <% father.children_inst.desc('coursewares_count').each do |topic| %>
   <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
   <% end %>
 </ul>
@@ -141,7 +141,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <div class="col-accessories">
 <h3><a href="<%= topic_path father %>" class="accessories"><span ></span>人文、艺术与社会科学</a></h3>
 <ul class="navlist">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -169,7 +169,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <% father=Topic.interdisciplinaries %>
 <h3 class="sty"><a href="<%= topic_path father %>">交叉学科</a></h3>
 <ul class="sty-list cf">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -181,7 +181,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <% father=Topic.others %>
 <h3 class="ele"><a href="<%= topic_path father %>">其他</a></h3>
 <ul class="ele-list cf">
-<% father.children.desc('coursewares_count').each do |topic| %>
+<% father.children_inst.desc('coursewares_count').each do |topic| %>
 <li  ><a class="<%= 'orange' if topic.coursewares_count > 100 %>" href="<%= topic_path(topic) %>"><span><%= topic.name %></span></a></li>
 <% end %>
 </ul>
@@ -362,7 +362,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   <div id="content" style="margin-top:18px">
   <div class="boxnoun cf" style="padding-bottom:26px;">
   <div class="foreign-rec">
-  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热</b>课件作者</span></span></h2>
+  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热门</b>老师</span></span></h2>
   <div class="bigshow">
   <a href="<%= user_path(@hottest_user) %>" ><img src="<%= avatar_url(@hottest_user,:huge) %>" /></a>
   </div>

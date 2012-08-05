@@ -81,7 +81,7 @@ Quora::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.whiny_nils = true
   config.assets.compress = false
-  config.assets.debug = true
+  config.assets.debug = false
   config.action_controller.asset_host = nil
   config.assets.prefix = '/assets'
   config.assets.manifest =nil
