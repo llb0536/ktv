@@ -92,3 +92,4 @@ Quora::Application.configure do
   config.cache_store = :file_store, "#{Rails.root}/tmp_staging/cache/"
 # THIS ｉＳ only TMP!!!!!!
 end
+

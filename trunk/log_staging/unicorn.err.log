@@ -178,3 +178,21 @@ X-Accel-Mapping header missing
 X-Accel-Mapping header missing
 X-Accel-Mapping header missing
 X-Accel-Mapping header missing
+I, [2012-08-05T21:12:59.046818 #25613]  INFO -- : reaped #<Process::Status: pid 25700 exit 0> worker=0
+I, [2012-08-05T21:12:59.047033 #25613]  INFO -- : master complete
+I, [2012-08-05T21:13:34.713966 #2984]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-05T21:13:34.714314 #2984]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-05T21:13:34.714773 #2984]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-05T21:13:51.573353 #2984]  INFO -- : master process ready
+I, [2012-08-05T21:13:52.635160 #3084]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+I, [2012-08-05T21:32:01.262117 #2984]  INFO -- : reaped #<Process::Status: pid 3084 exit 0> worker=0
+I, [2012-08-05T21:32:01.262263 #2984]  INFO -- : master complete
+I, [2012-08-05T21:32:37.274086 #3769]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-05T21:32:37.274442 #3769]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-05T21:32:37.274870 #3769]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-05T21:32:54.009855 #3769]  INFO -- : master process ready
+I, [2012-08-05T21:32:54.970404 #3806]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'

@@ -88,3 +88,6 @@ production:
 
 staging:
   <<: *defaults
+  ktv_domain: ktv-staging.kejian.tv
+  wendao_domain_name: "ktv-staging.kejian.tv"
+

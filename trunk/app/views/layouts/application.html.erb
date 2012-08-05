@@ -26,16 +26,16 @@
   <%= csrf_meta_tag %>
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
-    <script src="/DOM-shim/test/resources/es5-shim.js"></script>
-    <!--[if lte IE 8]>
-    <script src="/DOM-shim/lib/DOM-shim-ie8.js"></script>
-    <![endif]-->
-    <!--[if gte IE 9]>
-    <script src="/DOM-shim/lib/DOM-shim.js"></script>
-    <![endif]-->
-    <!--[if !IE]> -->
-    <script src="/DOM-shim/lib/DOM-shim.js"></script>
-    <!-- <![endif]-->
+  <script src="/DOM-shim/test/resources/es5-shim.js"></script>
+  <!--[if lte IE 8]>
+  <script src="/DOM-shim/lib/DOM-shim-ie8.js"></script>
+  <![endif]-->
+  <!--[if gte IE 9]>
+  <script src="/DOM-shim/lib/DOM-shim.js"></script>
+  <![endif]-->
+  <!--[if !IE]> -->
+  <script src="/DOM-shim/lib/DOM-shim.js"></script>
+  <!-- <![endif]-->
 
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
@@ -123,7 +123,7 @@
   </header>
 </div>
 
-<div style="background:none repeat scroll 0 0 #F5F5F5;" id="results_tray_div">
+<div style="background:none repeat scroll 0 0 #F5F5F5" id="results_tray_div">
 <div class="wrapper">
 <div class="__qua" id="results_tray" data-data-height="32" style="height:0px">
 <div id="__w2_bOT1DHU_results_frame" class="results_frame new_results_frame" style="">
@@ -282,41 +282,20 @@
     <div id="firstload" class="firstload" style="display:none;">加载中...</div>
   </div>
   <!-- JavaScript at the bottom for fast page loading -->
-  <script type="text/javascript" charset="utf-8">
-    var head= document.getElementsByTagName('head')[0];
-    var script= document.createElement('script');
-    script.type= 'text/javascript';
-    script.src= <%=raw asset_url("ktv/application").to_json %>;
-    head.appendChild(script);
-    var next_step = function(){
-      var head2= document.getElementsByTagName('head')[0];
-      var script2= document.createElement('script');
-      script2.type= 'text/javascript';
-      script2.src= <%=raw asset_url("application").to_json %>;
-      head2.appendChild(script2);
 
-      var final_step = function(){
-        $(document).ready(function(){
-          <%= yield :butt2 %>
-          $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
-          $('#core_addcw_wrap').click(function(){return KTV.addCW()});
-          $('#login').click(function(){return KTV.login()});
-          $("abbr.timeago").timeago();
-        });
-      }
-      head2.onreadystatechange = final_step;
-      head2.onload = final_step;
-    }
-    head.onreadystatechange = next_step;
-    head.onload = next_step;
+  <%= javascript_include_tag "ktv/application" %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      <%= yield :butt2 %>
+      $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
+      $('#core_addcw_wrap').click(function(){return KTV.addCW()});
+      $('#login').click(function(){return KTV.login()});
+      $("abbr.timeago").timeago();
+    });
   </script>
+  <%= javascript_include_tag "application" %>
   
-  <script type="text/javascript" charset="utf-8">
-  </script>
   <%= yield :bottom %>
-  <script type="text/javascript" charset="utf-8">
-    document.write(<%=raw javascript_include_tag("application").to_json %>);
-  </script>
   <%= yield :scripts %>
   
   <script type="text/javascript">
