@@ -67,6 +67,8 @@ Quora::Application.configure do
     keditor/*
     about.css
     css_ie.css
+    jquery.autocomplete.js
+    jquery.ui.autocomplete.js
   }
   # 别忘了同时修改:
   # config/initializers/z_ktv.rb
