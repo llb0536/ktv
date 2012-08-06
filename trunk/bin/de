@@ -5,4 +5,4 @@ rm -rf /home/main/ktv/_assets/
 bundle
 rake assets:precompile:all
 bin/ftpupyun_intrinsic
-echo bin/restart_unicorn
+bin/restart_unicorn

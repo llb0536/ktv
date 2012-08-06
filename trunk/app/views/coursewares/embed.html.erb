@@ -131,7 +131,23 @@ end
           embed = embed.replace(/class="speakerdeck-embed"/, 'class="speakerdeck-embed" data-slide="' + (Slide.current + 1) + '"');
         }
       },
-
+      fix_cw_title: function() {
+        console.log(Slide.psvr_already);
+        if(!Slide.psvr_already)
+          Slide.psvr_already = $('.header h5 a').html();
+        else
+          $('.header h5 a').html(Slide.psvr_already);
+        var did_it = false;
+        while($('.header h5').offset().top!=$('.header p').offset().top){
+          already = $('.header h5 a').html();
+          $('.header h5 a').html(already.substring(0,already.length-2));
+          did_it = true;
+        }
+        if(did_it){
+          already = $('.header h5 a').html();
+          $('.header h5 a').html(already.substring(0,already.length-4)+'...');
+        }
+      },
       openFullScreen: function() {
         var elem = document.body;
 
@@ -223,6 +239,7 @@ end
         $img.height(height);
 <% end %>
         $img.css({top: top, left: left});
+        Slide.fix_cw_title();
       }
     };
 
@@ -309,6 +326,7 @@ end
             Slide.show();
             return false;
           } else if (!$('html').hasClass('touch')) {
+            $('.previews').show();
             $('.previews').css('opacity', 1);
             Slide.showPreview(scrubSlide(e));
           }
@@ -361,6 +379,7 @@ end
           }
         }
       };
+      Slide.fix_cw_title();
     });
   </script>
 <% end %>
@@ -391,7 +410,7 @@ end
       <div class="scrubbed" style="width:0;"></div>
     </div>
   </div>
-  <div class="previews"><p>Slide 1 of 6</p></div>
+  <div class="previews" style="display:none"><p>第1页, 共6页</p></div>
   <div class="standard_buttons">
     <a href="#" id="share_button">全屏</a>
   </div>

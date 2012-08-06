@@ -451,7 +451,7 @@ $.Autocompleter.defaults = {
 	inputFocus: true,
 	clickFire: false,
 	hideOnNoResult : false,
-  defaultHTML : "先搜下题是否已存在，如果没有可以去提问哦",
+  defaultHTML : "请输入汉字或拼音作为关键词，这里将立即显示搜索结果",
   noResultHTML : "没有找到相关内容.",
   addSearch: true,
 	highlight: function(value, term) {
@@ -630,6 +630,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
     .attr("id", "popSearchTip")  //modify 2012-2-6 by lesanc.li
 		.css("position", "absolute")
 		.appendTo(document.body)
+    .wrap('<div class="__qa" />')
 		.hover(function(event) {
 		  // Browsers except FF do not fire mouseup event on scrollbars, resulting in mouseDownOnSelect remaining true, and results list not always hiding.
 		  if($(this).is(":visible")) {

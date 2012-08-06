@@ -3,7 +3,7 @@
 <li class=" cf">
 <div class="uhead"><a href="<%= user_path u %>" havecard="1" usercard="<%= u.id %>" ><img src="<%= avatar_url(u,:mid60) %>" width="60" height="60" /></a></div>
 <div class="usay">
-<p class="desc" style="height:36px;overflow:hidden;"><a class="username" havecard="1" usercard="<%= u.id %>" href="<%= user_path u %>"><%= u.name %></a>：<a href="<%= user_path u %>" class="gray" ><%= link_to t.name,topic_path(t) %>领域专家. <%= u.bio_plain%></a></p>
+<p class="desc" style="height:36px;overflow:hidden;"><a class="username" havecard="1" usercard="<%= u.id %>" href="<%= user_path u %>"><%= u.name %></a>：<a href="<%= user_path u %>" class="gray" ><%= link_to t.name,topic_path(t) %>领域最热作者. <%= u.bio_plain%></a></p>
 <p>
 <% if (current_user and current_user.followed?(u)) %>
 <a follow="true" followed="<%= u.id %>" id="<%= u.id %>" class="hotbutton unfollow-btn">已关注</a>

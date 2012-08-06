@@ -161,8 +161,8 @@ var Asks = {
             formatItem : function(data, i, total){
                 klass = data[data.length - 1];
                 switch(klass){
-                    case "Ask":
-                        return Asks.completeLineAsk(data, true);
+                    case "Courseware":
+                        return Asks.completeLineCourseware(data, true);
                         break;
                     case "Topic":
                         return Asks.completeLineTopic(data, true);
@@ -171,8 +171,10 @@ var Asks = {
                         return Asks.completeLineUser(data, true);
                         break;
                     case "Total":
-                        return Asks.completeLineTotal(data, true);
+                        //todo
+                        return false
                         break;
+                        return Asks.completeLineTotal(data, true);
                     default:
                         return "";
                         break;
@@ -182,14 +184,14 @@ var Asks = {
             url = "/";
             klass = data[data.length - 1];
             switch(klass){
-                case "Ask":
-                    url = "/asks/" + data[1];
+                case "Courseware":
+                    url = "/coursewares/" + data[1];
                     break;
                 case "Topic":
-                    url = "/topics/" + data[0];
+                    url = "/topics/" + data[1];
                     break;
                 case "User":
-                    url = "/users/" + data[6];
+                    url = "/users/" + data[data.length-2];
                     break;
                 case "Total":
                     url = "/traverse/index?q=" + (encodeURIComponent?encodeURIComponent(data[0]):escape(data[0]));
@@ -293,25 +295,36 @@ var Asks = {
 
     completeLineTopic : function(data,allow_link){
         var html = "";
-        var cover = data[3];
-        var count1 = data[1];
-        var count2 = data[2];
+        var cover = data[4];
+        var count1 = data[2];
+        var count2 = data[3];
         if(cover.length > 0){
             html += '<img class="imgHead" width="38" height="38" src="'+ cover +'" alt="'+data[0]+'" title="'+data[0]+'" />';
         }
         if(allow_link == true){
-            html += '<a href="/topics/'+data[0]+'">'+ data[0] +'</a>';
+            html += '<a href="/topics/'+data[1]+'">'+ data[0] +'</a>';
         }
         else{
             html += data[0];
         }
         html += ' <span class="fc999">领域</span>';
         html += '<br>';
-        html += count1+'个关注者·'+count2+'个题';
+        html += count1+'个关注者·'+count2+'个课件';
         return html;
     },
 
 
+    completeLineCourseware : function(data, allow_link){
+        var html = "";
+        var count = data[2];
+        if(allow_link == false){
+            html += data[0];
+        } else {
+            html += '<a href="/coursewares/'+data[1]+'">'+data[0].replace("/","")+'</a>';
+        }
+        html += '('+count+'点击)';
+        return html;
+    },
     completeLineAsk : function(data, allow_link){
         var html = "";
         var count = data[2];
@@ -347,13 +360,13 @@ var Asks = {
         }
         html += '<img class="imgHead" width="38" height="38" src="'+ avatar +'" alt="'+data[0]+'" title="'+data[0]+'" />';
         if(allow_link == true){
-            html += '<a href="/users/'+data[7]+'">'+username+'</a>';
+            html += '<a href="/users/'+data[data.length-2]+'">'+username+'</a>';
         }else{
             html += username;
         }     
         html += ' <span class="fc999">'+tagline+'</span>';
         html += '<br>';
-        html += count1+'个关注者·答过'+count2+'个题';
+        html += count1+'个关注者·'+count2+'个课件';
         return html;
     },
 
@@ -756,7 +769,7 @@ var Asks = {
         }
         //var txtTitle = $("#hidden_new_ask textarea:nth-of-type(1)");
         var txtTitle = $("#hidden_new_ask textarea").eq(0);
-        ask_search_text = $("#searchInput").val() != "搜索解题、搜索解题、领域疑问" ? $("#searchInput").val() : "";
+        ask_search_text = $("#searchInput").val() != "搜索领域、用户及资源" ? $("#searchInput").val() : "";
         txtTitle.text(ask_search_text);
         txtTitle.focus();
     $.facebox({ div : "#hidden_new_ask", overlay : false });  

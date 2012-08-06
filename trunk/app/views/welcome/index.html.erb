@@ -31,11 +31,11 @@
     </div>
   </section>
 	<section class="supplimental" id="featured">
-  <div class="wrapper"<% if @is_ie%> style="width:1100px;padding-left:136px"<% end %>>
+  <div class="wrapper">
 		<div class="main" style="width:100%;margin-left:2px">
-	  <% @latest_cw.each do |item| %>
+	  <% @latest_cw.each_with_index do |item,index| %>
     <% sz = [item.slides_count-1,50].min %>
-    <div data-slide-count="<%= sz %>" data-id="<%= item.id %>" class="presentation">
+    <div data-slide-count="<%= sz %>" data-id="<%= item.id %>" class="presentation" style="<%='margin-right:0' if 0==(index+1)%4%>">
         <a href="<%= courseware_path item %>" class="slide_preview scrub setup">
       	  <% (sz).downto(1).each do |i| %>
       		  <img style="display: none;" data-slide="<%= i %>" class="timeline" alt="第<%= i %>页" src="<%= asset_url("cw/#{item.id}/#{item.revision}thumb_slide_#{i}.jpg") %>">
@@ -361,7 +361,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   <div id="content" style="margin-top:18px">
   <div class="boxnoun cf" style="padding-bottom:26px;">
   <div class="foreign-rec">
-  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">最热门</b>老师</span></span></h2>
+  <h2 class="itemhead"><span class="greenline size_1"><span class="item-title"><b class="blue">全站</b>最热作者</span></span></h2>
   <div class="bigshow">
   <a href="<%= user_path(@hottest_user) %>" ><img src="<%= avatar_url(@hottest_user,:huge) %>" /></a>
   </div>
@@ -393,7 +393,7 @@ $('#core_addcw2').click(function(){return KTV.addCW()});
   </div>
   </div>
   <div class="site-rec">
-  <h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>专家</span></span></h2>
+  <h2 class="itemhead"><span class="more"><a id="zhimei_star_refresh" class="rotationbody" href="javascript:void(0)"><span class="iconbg refresh-ico rotation"></span>&nbsp;换一换</a></span><span class="greenline size_2"><span class="item-title"><b class="blue">领域</b>最热作者</span></span></h2>
   <ul id="zhimei_star_ul">
     <%= render 'star_ul_lis' %>
   </ul>
