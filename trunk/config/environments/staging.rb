@@ -70,9 +70,6 @@ Quora::Application.configure do
   }
   # 别忘了同时修改:
   # config/initializers/z_ktv.rb
-  config.action_controller.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
-  config.assets.prefix = ''
-  # assets-----------
   config.action_mailer.raise_delivery_errors = false
 
 # THIS ｉＳ only TMP!!!!!!  

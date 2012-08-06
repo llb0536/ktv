@@ -197,56 +197,55 @@ KTV.preload([
   KTV.browsetext_css_src1,
   '<%= Ktv.config.asset_host %><%=asset_path('edit_hover.png')%>'
 ])
-$(document).ready ->
-  $('#q').autocomplete({
-    minLength: 1,
-    source: ( request, response ) ->
-      term = request.term
-      if false and KTV.search_cache[term]
-        console.log 'cache hit'
-        KTV.search_cater( KTV.search_cache[ term ], term )
-      else
-        $('#search_form').addClass("searching")
-        request.q = request.term
-        request.term = null
-        $.get("/search/all", request, ( data, status, xhr ) ->
-          $('#search_form').removeClass("searching")
-          KTV.search_cater( data, term )
-        , 'html')
-  })
-  $('#q').bind( "input.autocomplete", ->
-    $(this).trigger('keydown.autocomplete')
-  )
-  
-
-  
-  $('#q').focus(->
-    $('div.navigation').fadeOut('fast')
-    $('#search_form').animate({
-      width: $('#search_form').data('width-tobe')
-    }, 200, ->
-      $('#search_form input').addClass('focused')
-      $('#results_tray_content').fadeIn('fast')
-      $('#results_tray_div').css('padding-bottom','2px')
-      $('#results_tray').animate({height: $('#core_search_ul').height()+28}, {duration: 200, easing: 'swing', complete: -> 
-        KTV.search_li_hover()
+jQuery ->
+  if window.psvr_is_ie
+  else
+    $('#q').autocomplete({
+      minLength: 1,
+      source: ( request, response ) ->
+        term = request.term
+        if false and KTV.search_cache[term]
+          console.log 'cache hit'
+          KTV.search_cater( KTV.search_cache[ term ], term )
+        else
+          $('#search_form').addClass("searching")
+          request.q = request.term
+          request.term = null
+          $.get("/search/all", request, ( data, status, xhr ) ->
+            $('#search_form').removeClass("searching")
+            KTV.search_cater( data, term )
+          , 'html')
+    })
+    $('#q').bind( "input.autocomplete", ->
+      $(this).trigger('keydown.autocomplete')
+    )
+    $('#q').focus(->
+      $('div.navigation').fadeOut('fast')
+      $('#search_form').animate({
+        width: $('#search_form').data('width-tobe')
+      }, 200, ->
+        $('#search_form input').addClass('focused')
+        $('#results_tray_content').fadeIn('fast')
+        $('#results_tray_div').css('padding-bottom','2px')
+        $('#results_tray').animate({height: $('#core_search_ul').height()+28}, {duration: 200, easing: 'swing', complete: -> 
+          KTV.search_li_hover()
+        })
+      )
+    ).blur(->
+      $('#search_form input').removeClass('focused')
+      $('#results_tray_div').css('padding-bottom','0')
+      $('#results_tray_content').fadeOut('fast')  
+      $('#results_tray').animate({height:0}, {duration: 200, easing: 'swing', complete: ->
+        $('#search_form').animate({
+          width: 200
+        }, 200)
+        $('div.navigation').fadeIn('fast')
       })
     )
-  ).blur(->
-    $('#search_form input').removeClass('focused')
-    $('#results_tray_div').css('padding-bottom','0')
-    $('#results_tray_content').fadeOut('fast')  
-    $('#results_tray').animate({height:0}, {duration: 200, easing: 'swing', complete: ->
-      $('#search_form').animate({
-        width: 200
-      }, 200)
-      $('div.navigation').fadeIn('fast')
-    })
-  )
-  $('#search_form').submit(->
-    $('#q').blur()
-    false
-  )
+    $('#search_form').submit(->
+      $('#q').blur()
+      false
+    )
   $("#core_logotext_wrap").hover(->
     $("#core_logotext").attr "src", KTV.logo_css_src1
   , ->

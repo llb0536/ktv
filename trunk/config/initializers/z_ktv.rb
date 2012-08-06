@@ -14,10 +14,10 @@ end
 
 
 Ktv.configure do |config|
-  if Rails.configuration.assets.debug
-    config.asset_host = ''
-  else
+  if Rails.env.production?
     config.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
+  else
+    config.asset_host = ''
   end
   config.redis = Redis::Search.config.redis
   config.consultants = [Ktv::Baidu,Ktv::Google]
@@ -56,3 +56,7 @@ module Sprockets
   end
 end
 
+p Ktv.config.asset_host
+p Ktv.config.asset_host
+p Ktv.config.asset_host
+p Ktv.config.asset_host

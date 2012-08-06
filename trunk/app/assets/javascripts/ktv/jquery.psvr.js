@@ -1,3 +1,6 @@
+jQuery(function(){
+  window.psvr_ie_already_ready=true;
+});
 
 jQuery.fn.editable = function () {
     this.each(function () {

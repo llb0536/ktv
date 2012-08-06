@@ -75,22 +75,4 @@ Quora::Application.configure do
   # assets-----------
   config.action_mailer.raise_delivery_errors = false
 
-# THIS ｉＳ only TMP!!!!!!  
-=begin
-  config.cache_classes = false
-  config.consider_all_requests_local       = true
-  config.action_mailer.raise_delivery_errors = true
-  config.whiny_nils = true
-  config.assets.compress = false
-  config.assets.debug = true
-  config.action_controller.asset_host = nil
-  config.assets.prefix = '/assets'
-  config.assets.manifest =nil
-  config.assets.digest = false
-  config.assets.compile = true
-  config.serve_static_assets = true
-  config.consider_all_requests_local = true
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache/"
-=end
-# THIS ｉＳ only TMP!!!!!!
 end

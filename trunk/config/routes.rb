@@ -36,6 +36,7 @@ Quora::Application.routes.draw do
   get '/welcome/inactive_sign_up'
   get '/welcome/shuffle'
   get '/welcome/about'
+  get '/welcome/blank'
   get '/welcome/surprise' => 'welcome#surprise',:as => 'surprise'
   # ________________________________ktv__________________________________________
   resources :schools

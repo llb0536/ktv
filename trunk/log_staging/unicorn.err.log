@@ -196,3 +196,182 @@ I, [2012-08-05T21:32:37.274870 #3769]  INFO -- : Refreshing Gem list
 I, [2012-08-05T21:32:54.009855 #3769]  INFO -- : master process ready
 I, [2012-08-05T21:32:54.970404 #3806]  INFO -- : worker=0 ready
 /usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+I, [2012-08-06T10:45:03.986985 #20329]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-06T10:45:03.987344 #20329]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T10:45:03.987770 #20329]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+/home/main/ktv/trunk/config/initializers/z_ktv.rb:17:in `block in <top (required)>': undefined method `production?' for Rails:Module (NoMethodError)
+	from /home/main/ktv/trunk/config/initializers/z_ktv.rb:11:in `configure'
+	from /home/main/ktv/trunk/config/initializers/z_ktv.rb:16:in `<top (required)>'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:245:in `load'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:245:in `block in load'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:236:in `load_dependency'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:245:in `load'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/engine.rb:588:in `block (2 levels) in <class:Engine>'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/engine.rb:587:in `each'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/engine.rb:587:in `block in <class:Engine>'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/initializable.rb:30:in `instance_exec'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/initializable.rb:30:in `run'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/initializable.rb:55:in `block in run_initializers'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/initializable.rb:54:in `each'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/initializable.rb:54:in `run_initializers'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/application.rb:136:in `initialize!'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/railties-3.2.6/lib/rails/railtie/configurable.rb:30:in `method_missing'
+	from /home/main/ktv/trunk/config/environment.rb:12:in `<top (required)>'
+	from config.ru:4:in `require'
+	from config.ru:4:in `block in <main>'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/builder.rb:51:in `instance_eval'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/builder.rb:51:in `initialize'
+	from config.ru:1:in `new'
+	from config.ru:1:in `<main>'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/lib/unicorn.rb:44:in `eval'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/lib/unicorn.rb:44:in `block in builder'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/bin/unicorn_rails:139:in `call'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/bin/unicorn_rails:139:in `block in rails_builder'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:688:in `call'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:688:in `build_app!'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/lib/unicorn/http_server.rb:134:in `start'
+	from /usr/local/lib/ruby/gems/1.9.1/gems/unicorn-4.1.1/bin/unicorn_rails:209:in `<top (required)>'
+	from /usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails:19:in `load'
+	from /usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails:19:in `<main>'
+I, [2012-08-06T10:50:58.159456 #20579]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-06T10:50:58.159816 #20579]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T10:50:58.160334 #20579]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-06T10:51:15.144843 #20579]  INFO -- : master process ready
+I, [2012-08-06T10:51:16.462408 #20617]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+I, [2012-08-06T10:53:11.745909 #20762]  INFO -- : executing ["/usr/local/lib/ruby/gems/1.9.1/bin/unicorn_rails", "-c", "config/unicorn_ktv_staging.conf.rb", "-E", "staging", "-D", {7=>#<Kgio::UNIXServer:/web/ktv_staging.sock>}] (in /home/main/ktv/trunk)
+I, [2012-08-06T10:53:11.746095 #20762]  INFO -- : forked child re-executing...
+I, [2012-08-06T10:53:13.559600 #20762]  INFO -- : inherited addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T10:53:13.559918 #20762]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-06T10:53:31.058294 #20762]  INFO -- : master process ready
+I, [2012-08-06T10:53:31.255917 #20579]  INFO -- : reaped #<Process::Status: pid 20617 exit 0> worker=0
+I, [2012-08-06T10:53:31.256052 #20579]  INFO -- : master complete
+I, [2012-08-06T10:53:32.284604 #20849]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+I, [2012-08-06T10:54:12.685914 #20762]  INFO -- : reaped #<Process::Status: pid 20849 exit 0> worker=0
+I, [2012-08-06T10:54:12.686138 #20762]  INFO -- : master complete
+I, [2012-08-06T11:01:38.196844 #21373]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-06T11:01:38.197203 #21373]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T11:01:38.197592 #21373]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-06T11:01:55.285923 #21373]  INFO -- : master process ready
+I, [2012-08-06T11:01:56.404164 #21410]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+I, [2012-08-06T11:03:25.287507 #21373]  INFO -- : reaped #<Process::Status: pid 21410 exit 0> worker=0
+I, [2012-08-06T11:03:25.287739 #21373]  INFO -- : master complete
+I, [2012-08-06T11:03:55.178948 #21653]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-06T11:03:55.179307 #21653]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T11:03:55.179689 #21653]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-06T11:04:12.418839 #21653]  INFO -- : master process ready
+I, [2012-08-06T11:04:13.920466 #21690]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+I, [2012-08-06T11:06:28.577541 #21653]  INFO -- : reaped #<Process::Status: pid 21690 exit 0> worker=0
+I, [2012-08-06T11:06:28.577766 #21653]  INFO -- : master complete
+I, [2012-08-06T11:07:31.427645 #22353]  INFO -- : unlinking existing socket=/web/ktv_staging.sock
+I, [2012-08-06T11:07:31.428011 #22353]  INFO -- : listening on addr=/web/ktv_staging.sock fd=7
+I, [2012-08-06T11:07:31.428387 #22353]  INFO -- : Refreshing Gem list
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:251:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+I, [2012-08-06T11:07:49.431777 #22353]  INFO -- : master process ready
+I, [2012-08-06T11:07:50.727176 #22385]  INFO -- : worker=0 ready
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+/usr/local/lib/ruby/gems/1.9.1/gems/activesupport-3.2.6/lib/active_support/dependencies.rb:469: warning: nested repeat operator + and ? was replaced with '*'
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing
+X-Accel-Mapping header missing

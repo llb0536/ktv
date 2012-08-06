@@ -65,6 +65,13 @@
   <script src="/js/libs/modernizr-2.5.3.min.js"></script>
   <script type="text/javascript" charset="utf-8">
     window.psvr_subject = 'all';  
+    window.psvr_is_ie = <%= @is_ie.to_json %>;
+    window.psvr_ie_readyfix = function(){
+      if(!window.psvr_ie_already_ready){
+        jQuery.ready();
+      }
+    }
+    window.psvr_ie_already_ready=false;
   <% if user_signed_in? %>
     window.loginUser = <%=raw Hash[
         "id"=> "#{current_user.id}",
@@ -84,9 +91,9 @@
   <%= yield :armpit %>
 </head>
 
-<body id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
+<body <%if @is_ie%>onload="window.psvr_ie_readyfix()"<%end%> id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
 <div class="__sdk">
-  <header>
+  <header style="background-image:url(<%= asset_path('dark.png') %>)">
     <div class="wrapper">
       <h1><a href="/" id="core_logotext_wrap"><%= image_tag "logotext-all.png",:alt => "课件交流系统",:id=>'core_logotext' %></a></h1>
       <form accept-charset="UTF-8" action="/search" id="search_form" method="get" data-width-tobe="730">
@@ -123,18 +130,20 @@
   </header>
 </div>
 
+<% if @is_ie %>
+
+<% else %>
 <div style="background:none repeat scroll 0 0 #F5F5F5" id="results_tray_div">
 <div class="wrapper">
 <div class="__qua" id="results_tray" data-data-height="32" style="height:0px">
-<div id="__w2_bOT1DHU_results_frame" class="results_frame new_results_frame" style="">
+<div id="__w2_bOT1DHU_results_frame" class="results_frame new_results_frame">
   <ul id="core_search_ul">
 <li class="instruction" id="__w2_eqidaIV_list_item_0"><a class="result_item" href="#">请输入汉字或拼音作为关键词，这里将立即显示搜索结果</a></li>
   </ul></div>
-                  
-                  
 </div>
 </div>
 </div>
+<% end %>
 
 <div class="__sdk">
 <div id="sdk_flashes">
@@ -285,7 +294,7 @@
 
   <%= javascript_include_tag "ktv/application" %>
   <script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
+    jQuery(function(){
       <%= yield :butt2 %>
       $('#core_addtext_wrap').click(function(){return Asks.addAsk()});
       $('#core_addcw_wrap').click(function(){return KTV.addCW()});
@@ -310,5 +319,6 @@
 
   <%= render 'analytics' if Rails.env.production? %>
   <%= render 'intercom' if Rails.env.production? %>
+
 </body>
 </html>
