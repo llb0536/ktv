@@ -38,19 +38,19 @@
 <% end %>
 <% content_for :butt2 do %>
 $('#user_name').blur(function(){
-  KTV.checkUsername(this);
+  App.checkUsername(this);
   return true;
 });
 $('#user_email').blur(function(){
-  KTV.checkEmail(this);
+  App.checkEmail(this);
   return true;
 });
 $('#user_password').blur(function(){
-  KTV.checkPassword(this);
+  App.checkPassword(this);
   return true;
 });
 $('#user_password_confirmation').blur(function(){
-  KTV.checkPasswordConfirmation();
+  App.checkPasswordConfirmation();
   return true;
 });
 $('#user_password_confirmation').keydown(function( e ) {

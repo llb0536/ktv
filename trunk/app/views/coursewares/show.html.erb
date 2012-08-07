@@ -57,14 +57,14 @@ KTV.data = {
         <li class="like" style="border-top:none">
         <% unless current_user and @courseware.user_id==current_user.id%>
           <% if thank_courseware_ed?(@courseware) %>
-            <a href="javascript:void(0)" class="unlike purple" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">已感谢</a>
+            <a href="javascript:void(0)" class="unlike purple" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">已喜欢</a>
           <% else %>
-            <a href="javascript:void(0)" class="like grey" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">向作者发送感谢</a>
+            <a href="javascript:void(0)" class="like grey" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">我喜欢</a>
           <% end %>
         <% else %>
-            <a href="javascript:void(0)" class="like grey">收到的感谢</a>
+            <a href="javascript:void(0)" class="like grey">收到的喜欢</a>
         <% end %>
-          <a href="#fans" class="likes"><span id="weizuozhefasongganxie2"><%= @courseware.thanked_count %></span> 感谢</a>
+          <a href="#fans" class="likes"><span id="weizuozhefasongganxie2"><%= @courseware.thanked_count %></span> 喜欢</a>
         </li>
 
       </ul>
@@ -112,14 +112,14 @@ KTV.data = {
           <li class="like">
         <% unless current_user and @courseware.user_id==current_user.id%>
           <% if thank_courseware_ed?(@courseware) %>
-            <a href="javascript:void(0)" class="unlike purple" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">已感谢</a>
+            <a href="javascript:void(0)" class="unlike purple" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">已喜欢</a>
           <% else %>
-            <a href="javascript:void(0)" class="like grey" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">向作者发送感谢</a>
+            <a href="javascript:void(0)" class="like grey" data-method="post" data-remote="true" rel="nofollow" id="weizuozhefasongganxie">我喜欢</a>
           <% end %>
         <% else %>
-            <a href="javascript:void(0)" class="like grey">收到的感谢</a>
+            <a href="javascript:void(0)" class="like grey">收到的喜欢</a>
         <% end %>
-            <a href="#fans" class="likes"><span id="weizuozhefasongganxie2"><%= @courseware.thanked_count %></span> 感谢</a>
+            <a href="#fans" class="likes"><span id="weizuozhefasongganxie2"><%= @courseware.thanked_count %></span> 喜欢</a>
           </li>
         <li class="category">领域 <a href="/topics/<%= @courseware.topic_id %>"><%= @courseware.topic %></a></li>
         <li class="dianjiliang">点击量 <a href="#watch-view-count"><%= number_with_delimiter @courseware.views_count %> 次</a></li>
