@@ -69,6 +69,7 @@
     window.psvr_is_ie = <%= @is_ie.to_json %>;
     window.psvr_ie_readyfix = function(){
       if(!window.psvr_ie_already_ready){
+        console.log('manual trigger');
         jQuery.ready();
       }
     }

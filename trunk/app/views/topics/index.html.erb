@@ -183,8 +183,9 @@ $('#categories_table > div').height($('#categories_table').height());
 <!--内容容器开始-->
 <div id="imloading" class="imfootloading" style="visibility:hidden;"><div class="loading">正在加载，请稍候......</div></div>
 </div>
+<%content_for :butt do %>
 <script type="text/javascript">
-<% content_for :butt2 do %>
+im(function(){
 
 $('.queryScopeCss').live('click', function () {
     var queryScope = $(this).attr("rel");
@@ -195,6 +196,7 @@ $('.queryScopeCss').live('click', function () {
 });
 
 $('#isProductCheckBox').live('click', function () {
+  alert('T_T');
     var selected = $('#isProductCheckBox').attr("checked");
     if (typeof (selected) == "undefined") {
         $('#isProduct').val(0);
@@ -382,9 +384,10 @@ $("#div_tags .close").die().live("click", function () {
         }
     });
 });
+});
 
-<% end %>
 </script>
+<% end %>
 
 
 </div>

@@ -1,4 +1,4 @@
-json.avatarTiny avatar_url_quick(courseware.user_id,:small30)
+json.avatarTiny avatar_url_quick(courseware.uploader_id,:small30)
 json.selectedBoardIds []
 json.boardId Topic.get_id(courseware.topic)
 json.isSurprise false
@@ -12,8 +12,8 @@ json.title courseware.title
 json.boardPicId 825398
 json.price courseware.topic
 json.isOriginal true
-json.nickName User.get_name(courseware.user_id)
-json.userId User.get_slug(courseware.user_id)
+json.nickName User.get_name(courseware.uploader_id)
+json.userId User.get_slug(courseware.uploader_id)
 json.avatars Hash[]
 json.certifyType 2
 json.boardName courseware.topic
