@@ -187,7 +187,7 @@ $('#categories_table > div').height($('#categories_table').height());
 <script type="text/javascript">
 im(function(){
 
-$('.queryScopeCss').live('click', function () {
+$('.queryScopeCss').on('click', function () {
     var queryScope = $(this).attr("rel");
     $('#queryScope').val(queryScope);
     $('#ulQueryScope > li').removeClass();
@@ -195,8 +195,7 @@ $('.queryScopeCss').live('click', function () {
     queryExec();
 });
 
-$('#isProductCheckBox').live('click', function () {
-  alert('T_T');
+$('#isProductCheckBox').on('click', function () {
     var selected = $('#isProductCheckBox').attr("checked");
     if (typeof (selected) == "undefined") {
         $('#isProduct').val(0);
@@ -205,7 +204,7 @@ $('#isProductCheckBox').live('click', function () {
     }
     queryExec();
 });
-$('#priceContent a').live('click', function () {
+$('#priceContent a').on('click', function () {
     var price = $(this).text();
     if (price == '全部') {
         $('#priceScope').val("");
@@ -218,7 +217,7 @@ $('#priceContent a').live('click', function () {
     $('#priceContent').hide();
     queryExec();
 });
-$('.queryOrderCss').live('click', function () {
+$('.queryOrderCss').on('click', function () {
     var queryOrder = $(this).attr("rel");
     $('#queryOrder').val(queryOrder);
     $('#ulQueryOrder > li').removeClass();
@@ -326,7 +325,7 @@ var secondLevelCatalogId = 0;
 
 var thirdLevelCatalogId = 0;
 
-$("#div_tags .close").die().live("click", function () {
+$("#div_tags .close").off().on("click", function () {
     var tagCount = $("#div_tags .btn-customlabel").size();
     if (tagCount == 1) {
         return;

@@ -999,7 +999,7 @@ jQuery.zm = {};
             };
             var options = opt;
             var opts = $.extend({}, defaults, options);
-            obj.die().live("keyup", function () {
+            obj.off().on("keyup", function () {
                 var nums;
                 if ($.trim(obj.val()).length > 0) {
                     nums = $.fn.getbytelength(obj.val())
@@ -1156,7 +1156,7 @@ jQuery.zm = {};
                 $("#jquery-search").parent().append(defaulTtitle)
             }
             $("#jquery-search").parent().append(newDiv);
-            $("#search-description").live("click", function () {
+            $("#search-description").on("click", function () {
                 var defaultDesc = $(obj).val();
                 if (defaultDesc == "") {
                     $("#jquery-search").addClass("focus").focus().parent().children("#search-description").remove()
@@ -1900,7 +1900,7 @@ jQuery.cookie = function (b, k, n) {
                         }, 200)
                     }, 1000)
                 }
-                $(".tipsbutton em").die().live("click", function () {
+                $(".tipsbutton em").off().on("click", function () {
                     func();
                     $(this).parents(".newposTips").remove()
                 })
@@ -2024,7 +2024,7 @@ jQuery.cookie = function (b, k, n) {
                 textObj: $("#shoujiTips .numsText"),
                 check: totalSt
             });
-            tipDiv.find(".btn-green36").die().live("click", function () {
+            tipDiv.find(".btn-green36").off().on("click", function () {
                 if ($(this).hasClass("btn-disabled36")) {
                     return
                 }
@@ -2045,7 +2045,7 @@ jQuery.cookie = function (b, k, n) {
                     tipDiv.find(".close").click()
                 })
             });
-            tipDiv.find(".close").live("click", function () {
+            tipDiv.find(".close").on("click", function () {
                 tipDiv.remove()
             })
         }
@@ -2521,7 +2521,7 @@ jQuery.cookie = function (b, k, n) {
                     })
                 })
             }
-            var _hover = $("#jqury-handlist ul li").live("mouseover", function () {
+            var _hover = $("#jqury-handlist ul li").on("mouseover", function () {
                 $("#jqury-handlist ul li").removeClass("hover");
                 $(this).addClass("hover")
             })
@@ -3107,7 +3107,7 @@ im.zm.categoryNav = function (t) {
     if ($.browser.msie && Math.floor($.browser.version) < 7) {
         l = b.ele.height()
     }
-    b.obj.live("click", function () {
+    b.obj.on("click", function () {
         var u = $(this);
         if (b.subEle.css("display") == "block") {
             if ($.browser.msie && Math.floor($.browser.version) < 7) {
@@ -3127,7 +3127,6 @@ im.zm.categoryNav = function (t) {
             }
             q = !1;
             s = !1;
-            k(b.obj);
             if ($.browser.msie && Math.floor($.browser.version) < 8) {
                 $("#nav").css({
                     height: 0
@@ -3140,6 +3139,8 @@ im.zm.categoryNav = function (t) {
                     })
                 }
             }
+            $('.callout span').removeClass('arrow');
+            $('.callout span').addClass('arrowup');
         } else {
             if (r) {
                 $("#nav").css({
@@ -3154,7 +3155,7 @@ im.zm.categoryNav = function (t) {
             q = !0;
             s = !0;
             a = b.ele.offset().top;
-            e(b.obj);
+            //e(b.obj);
             if ($.browser.msie && Math.floor($.browser.version) < 8) {
                 var h = $("#nav .sortnav-mod>div").first().height() + 85 + "px";
                 $("#nav").css({
@@ -3166,6 +3167,8 @@ im.zm.categoryNav = function (t) {
                     top: ""
                 })
             }
+            $('.callout span').removeClass('arrowup');
+            $('.callout span').addClass('arrow');
         }
     });
     // $(window).scroll(function () {
@@ -3329,13 +3332,13 @@ im.zm.detailPic = function (f, d) {
             }, f, uri("URI_BOARD_PIC", f))
         }
         if ($("#previousReshareId").val()) {
-            $("#zoomDetail .preimg").show().attr("href", "/share/" + $("#previousReshareId").val()).die().live("click", function () {
+            $("#zoomDetail .preimg").show().attr("href", "/share/" + $("#previousReshareId").val()).off().on("click", function () {
                 im.zm.detailPic($("#previousReshareId").val(), d);
                 return false
             })
         }
         if ($("#nextReshareId").val()) {
-            $("#zoomDetail .nextimg").show().attr("href", "/share/" + $("#nextReshareId").val()).die().live("click", function () {
+            $("#zoomDetail .nextimg").show().attr("href", "/share/" + $("#nextReshareId").val()).off().on("click", function () {
                 im.zm.detailPic($("#nextReshareId").val(), d);
                 return false
             })
@@ -3514,7 +3517,7 @@ im.zm.detailPic = function (f, d) {
                 $("#commentta").val("");
                 $("#replyCommentId").val(0)
             };
-        $("#zoomDetail .confirm-btn").die().live("click", function () {
+        $("#zoomDetail .confirm-btn").off().on("click", function () {
             if ($(this).hasClass("unconfirm-btn")) {
                 return
             }
@@ -3592,7 +3595,7 @@ im.zm.detailPic = function (f, d) {
     if ($.browser.msie && parseInt($.browser.version) == 7) {
         $("html").addClass("unscroll")
     }
-    $("#zoomButt").die().live("click", function () {
+    $("#zoomButt").off().on("click", function () {
         e()
     });
     $(document).keyup(function (g) {
@@ -3600,7 +3603,7 @@ im.zm.detailPic = function (f, d) {
             e()
         }
     });
-    $("body").live("click", function (g) {
+    $("body").on("click", function (g) {
         if (g.target.className == "zoomlayer") {
             e()
         }
@@ -3616,7 +3619,7 @@ im.zm.detailPic = function (f, d) {
             window.history.replaceState({}, 0, c)
         }
     }
-    $("#zoomDetail .btn-xcollect").die().live("click", function () {
+    $("#zoomDetail .btn-xcollect").off().on("click", function () {
         if (typeof loginUser.id == "undefined" || loginUser.id == "") {
             var h = window.location.pathname;
             window.location.href = "/login?flag=4&p=" + h;
@@ -3642,7 +3645,7 @@ im.zm.detailPic = function (f, d) {
                 $("#tag_val").parent().removeClass("intexterror")
             }, 2000)
         };
-    $("#tag_val").die().live("keyup focus", function (g) {
+    $("#tag_val").off().on("keyup focus", function (g) {
         if ($(this).val() == "+标签") {
             $(this).val("")
         }
@@ -3653,12 +3656,12 @@ im.zm.detailPic = function (f, d) {
             $("#but_add_tag").click();
             $("#tag_val").focus()
         }
-    }).live("blur", function () {
+    }).on("blur", function () {
         if ($(this).val().Trim() == "") {
             $(this).val("+标签")
         }
     });
-    $("#but_add_tag").die().live("click", function () {
+    $("#but_add_tag").off().on("click", function () {
         var g = $("#tag_val").val();
         if ($.fn.getbytelength($.trim(g)) < 1 || $("#tag_val").val() == "+标签") {
             a("标签不能为空!");
@@ -3705,7 +3708,7 @@ im.zm.detailPic = function (f, d) {
             }
         })
     });
-    $("#detailLabel .close").die().live("click", function () {
+    $("#detailLabel .close").off().on("click", function () {
         var g = $(this).attr("tag_id");
         var h = $(this).attr("board_pic_id");
         var k = $(this).parent();
@@ -4151,7 +4154,7 @@ im.zm.autoLayout.prototype = {
         if (picBoard[j].boardName == "我的收集") {
             q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" usercard="' + picBoard[j].userId + '" class="username changecolor">' + picBoard[j].nickName + "</a> " + F + "收集</p><p>" + v + "</p></div></li>"].join("")
         } else {
-            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '上传到了领域 <a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
+            q = ['<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img src="' + picBoard[j].avatarTiny + '"  usercard="' + picBoard[j].userId + '" havecard="1"/></a>', '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + F + '上传了此课件到领域 <a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a></p><p>" + v + "</p></div></li>"].join("")
         }
         var b;
         if (picBoard[j].userId == loginUser.id) {
@@ -4169,7 +4172,7 @@ im.zm.autoLayout.prototype = {
                     H += '<a boardId = "' + _jsonMain.boards[w].id + '" title="' + _jsonMain.boards[w].boardName + '"><span class="' + I + '"></span>' + $.fn.fixStr(_jsonMain.boards[w].boardName, 14, "...") + "</a>"
                 }
             }
-            b = ['<div class="sharebutton" style="display:none;"><a class="btn-collect png" href="###"></a><a class="btn-select png" href="###"></a></div>', '<div class="boardlist" style="display:none;">', "<h3>上传到了领域</h3>" + H, "</div>"].join("")
+            b = ['<div class="sharebutton" style="display:none;"><a class="btn-collect png" href="###"></a><a class="btn-select png" href="###"></a></div>', '<div class="boardlist" style="display:none;">', "<h3>上传了此课件到领域</h3> " + H, "</div>"].join("")
         }
         var l, D;
         if (picBoard[j].isSurprise) {
@@ -4455,12 +4458,12 @@ im.zm.login = function () {
             height: "320px"
         })
     }
-    $("#hasMZ").die().live("click", function () {
+    $("#hasMZ").off().on("click", function () {
       $('#loginLayout').find(".js-close").trigger("click");
       im.zm.login();
       $("#loginLayout").definedDialog("open");
     });
-    $("#hasZM").die().live("click", function () {
+    $("#hasZM").off().on("click", function () {
         var m, p, n, k, h, o;
         m = $("#js-log .sina").attr("href");
         p = $("#js-log .qq").attr("href");
@@ -4517,14 +4520,14 @@ im.zm.login = function () {
                 })
             }
         }
-        $("#userEmail").live("blur", email_check_psvr);
+        $("#userEmail").on("blur", email_check_psvr);
         $('#userEmail').bind("input.autocomplete", email_check_psvr);
         $('#userPassword').keydown(function (q) {
             if (q.which == 13) {
                 $("#js-login").click()
             }
         });
-        $("#js-login").die().live("click", function () {
+        $("#js-login").off().on("click", function () {
           console.log('js-login clicked');
           $(this).parents('form')[0].submit();
           return false;//todo captcha
@@ -4918,7 +4921,7 @@ im.zm.getAutoUser = function (e) {
                 q.cursorSelect(l.list);
                 p.onkeydown = q.KeyDown;
                 b.$(f.wrap).style.display = "block";
-                $("#autoTipsUserList li").die().live("click", function () {
+                $("#autoTipsUserList li").off().on("click", function () {
                     c.del(p, o.length, o);
                     c.add(p, $(this).find("a").attr("title") + " ");
                     setTimeout(q.hide, 100)
@@ -5238,7 +5241,7 @@ window.autoLayout = {
                 } else {
                     shareContent = [
                     '<li class="share-owner cf"><a href="/users/' + picBoard[j].userId + '" class="avatar"><img width="30" height="30" src="' + picBoard[j].avatarTiny + '" /></a>',
-                    '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + picBoard[j].timeAgo+'上传到了领域<a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a>.</p><p>" + isO + "</p></div></li>"
+                    '<div class="cmt-content"><p class="userinfo"><a havecard="1" href="/users/' + picBoard[j].userId + '" class="username changecolor" usercard="' + picBoard[j].userId + '">' + picBoard[j].nickName + "</a> " + cel + picBoard[j].timeAgo+'上传了此课件到领域 <a href="/topics/' + picBoard[j].boardId + '" class="boardname changecolor">' + picBoard[j].boardName + "</a>.</p><p>" + isO + "</p></div></li>"
                     ].join("")
                 }
                 var _action;
@@ -5257,7 +5260,7 @@ window.autoLayout = {
                             _boards += '<a boardId = "' + _jsonMain.boards[p].id + '" title="' + _jsonMain.boards[p].boardName + '"><span class="' + _className + '"></span>' + $.fn.fixStr(_jsonMain.boards[p].boardName, 14, "...") + "</a>"
                         }
                     }
-                    _action = ['<div class="sharebutton" style="display:none;"><a class="btn-collect png" href="###"></a><a class="btn-select png" href="###"></a></div>', '<div class="boardlist" style="display:none;">', "<h3>上传到了领域</h3>" + _boards, "</div>"].join("")
+                    _action = ['<div class="sharebutton" style="display:none;"><a class="btn-collect png" href="###"></a><a class="btn-select png" href="###"></a></div>', '<div class="boardlist" style="display:none;">', "<h3>上传了此课件到领域</h3> " + _boards, "</div>"].join("")
                 }
                 var surpriseArea, mess;
                 if (picBoard[j].isSurprise) {
@@ -5571,7 +5574,7 @@ window.autoLayout = {
         var d = $("#" + autoLayout.defaults.contentID + " .share-mod");
         var c = null,
             b = null;
-        d.live("mouseenter", function () {
+        d.on("mouseenter", function () {
           //todo
             var l = $(this);
             clearTimeout(c);
@@ -5579,7 +5582,7 @@ window.autoLayout = {
                 l.addClass("onshare-mod").find(".sharebutton").hide()//.show();
                 l.find(".lk-comment").show()
             }, 50)
-        }).live("mouseleave", function () {
+        }).on("mouseleave", function () {
           //todo
             var l = $(this);
             clearTimeout(c);
@@ -5587,7 +5590,7 @@ window.autoLayout = {
             l.find("div.boardlist").hide();
             l.find(".btn-select").removeClass("btn-selecting");
             l.find(".lk-comment").hide()
-        }).find(".btn-select").die().live("click", function () {
+        }).find(".btn-select").off().on("click", function () {
             if (typeof loginUser.id == "undefined" || loginUser.id == "") {
                 im.zm.login($(this).parent().parent().next(".sharecontainer").find(".share-img>a").eq(0).attr("href"));
                 $("#loginLayout").definedDialog("open");
@@ -5611,11 +5614,11 @@ window.autoLayout = {
                 "overflow-x": "hidden"
             })
         });
-        d.find(".btn-selecting").die().live("click", function () {
+        d.find(".btn-selecting").off().on("click", function () {
             var l = $(this);
             l.removeClass("btn-selecting").parent().next().slideUp(100)
         });
-        d.find(".boardlist a").die().live("click", function () {
+        d.find(".boardlist a").off().on("click", function () {
             var l = $(this).parent().parent().offsetParent(),
                 m = $(this);
             l.find(".btn-selecting").removeClass().addClass("btn-select png");
@@ -5626,7 +5629,7 @@ window.autoLayout = {
                 boardPicId: l.attr("dataid")
             }, l, m)
         });
-        d.find(".btn-collect").die().live("click", function () {
+        d.find(".btn-collect").off().on("click", function () {
             if (typeof loginUser.id == "undefined" || loginUser.id == "") {
                 im.zm.login($(this).parent().parent().next(".sharecontainer").find(".share-img>a").eq(0).attr("href"));
                 $("#loginLayout").definedDialog("open");
@@ -5673,7 +5676,7 @@ window.autoLayout = {
                 }
             })
         }
-        d.find("a.forward-btn").die().live("click", function () {
+        d.find("a.forward-btn").off().on("click", function () {
             if (typeof loginUser.id == "undefined" || loginUser.id == "") {
                 var o = window.location.pathname;
                 window.location.href = "/login?flag=4&p=" + o;
@@ -5690,19 +5693,19 @@ window.autoLayout = {
                 mediumZoom: l
             })
         });
-        d.find(".btn-editshare").die().live("click", function () {
+        d.find(".btn-editshare").off().on("click", function () {
             editShare.edit($(this).attr("to"), $(this).attr("isOrigin"))
         });
-        d.find(".lk-comment").die().live("click", function () {
+        d.find(".lk-comment").off().on("click", function () {
             a($(this), 0)
         });
-        d.find(".cmt-content .gray").die().live("click", function () {
+        d.find(".cmt-content .gray").off().on("click", function () {
             a($(this).parent().parent().parent(), $(this).parent().attr("commentid"), $(this).parent().prev().find("a").text())
         });
-        d.find(".commentSubmit").die().live("click", function () {
+        d.find(".commentSubmit").off().on("click", function () {
             f($(this))
         });
-        d.find(".commentClose").die().live("click", function () {
+        d.find(".commentClose").off().on("click", function () {
             k($(this))
         });
         window.App.pin_resize_psvr_handler = function () {
@@ -6025,7 +6028,7 @@ var boardLoad = {
                     if (!h) {
                         return false
                     }
-                    $(m).find("img").live("click", function () {
+                    $(m).find("img").on("click", function () {
                         return
                     });
                     if (w.target.nodeName == "IMG") {
@@ -8189,7 +8192,7 @@ editBoardDialog.loadFollowedList = function (b, d, e, a) {
             $("#editFriendListSize").html("(" + o.length + ")");
             editBoardDialog._userId = editBoardDialog.managers.slice(0);
             var k = editBoardDialog._userId;
-            $("#editFriendList>li").die().live("click", function () {
+            $("#editFriendList>li").off().on("click", function () {
                 if ($(this).attr("class").indexOf("current") > -1) {
                     $(this).removeClass("current").find("span:nth-child(1)").removeClass("true");
                     for (var p = 0; p < k.length; p++) {
@@ -8402,7 +8405,7 @@ editBoardDialog.init = function () {
         editBoardDialog.deleteFormPost(d, e);
         im("#editBoard").dialog("close")
     });
-    im("#saveBoardBtn .big-btn").die().live("click", function () {
+    im("#saveBoardBtn .big-btn").off().on("click", function () {
         if ($(this).hasClass("calloff")) {
             return false
         }
@@ -8415,7 +8418,7 @@ editBoardDialog.init = function () {
             im.window.alert("请填写完整!", "error")
         }
     });
-    im("#editBackPerson").die().live("click", function () {
+    im("#editBackPerson").off().on("click", function () {
         im.fn.userOperation.back("editpocket");
         $("#saveBoardBtn a").eq(1).hide().prev().show();
         if (editBoardDialog._userId.length > 0) {
@@ -8470,7 +8473,7 @@ addBoardDialog.init = function (d, b) {
         });
         ShareDialog.hasBoard = !0
     }
-    im(d).die().live("click", function () {
+    im(d).off().on("click", function () {
         $("#addBoard-tips").stop(true, true).hide();
         $("#createBoardBtn").removeClass("bigbutton big-btn").addClass("bigbutton calloff");
         var e = uri("URI_BOARD_CATEGORY_LIST");
@@ -8510,7 +8513,7 @@ addBoardDialog.init = function (d, b) {
     im("#jqruey-goback").click(function () {
         im("#backPerson").click()
     });
-    im("#editBackPerson").die().live("click", function () {
+    im("#editBackPerson").off().on("click", function () {
         im.fn.userOperation.back("editpocket");
         $("#saveBoardBtn a").eq(1).hide().prev().show();
         if (editBoardDialog._userId.length > 0) {
@@ -8537,7 +8540,7 @@ addBoardDialog.init = function (d, b) {
         $("#selectedUser").hide();
         editBoardDialog._userId.length = 0
     });
-    im("#createBoardBtnDiv .big-btn").die().live("click", function () {
+    im("#createBoardBtnDiv .big-btn").off().on("click", function () {
         if ($("#createBoardBtn").hasClass("colloff")) {
             return
         }
@@ -8728,7 +8731,7 @@ var ShareDialog = {
             ShareDialog.initOpenPlatformSync();
             ShareDialog.add.initDialogHtml();
             ShareDialog.add.initUrlWebUpload();
-            $("#shareDialogTabs .active").live("click", function () {
+            $("#shareDialogTabs .active").on("click", function () {
                 ShareDialog.destroy();
                 if ($(this).hasClass("current")) {
                     return false
@@ -8771,7 +8774,7 @@ var ShareDialog = {
         },
         bindSaveButton: function () {
             $("#shareDialogSaveButton").text("保存");
-            $("#shareDialogSaveButton").die().live("click", function () {
+            $("#shareDialogSaveButton").off().on("click", function () {
                 if ($(this).hasClass("calloff")) {
                     return false
                 }
@@ -8798,12 +8801,12 @@ var ShareDialog = {
             if (ShareDialog.imageList.length > 1) {
                 $("#shareDialogPrevImg").show();
                 $("#shareDialogNextImg").show();
-                $("#shareDialogPrevImg").die().live("click", function () {
+                $("#shareDialogPrevImg").off().on("click", function () {
                     $("#shareDialogLoadingImg").show();
                     $("#shareDialogLoadingDiv").show();
                     $("#shareDialogThumb").attr("src", ShareDialog.imageList[ShareDialog.getPrevImageIndex()].src)
                 });
-                $("#shareDialogNextImg").die().live("click", function () {
+                $("#shareDialogNextImg").off().on("click", function () {
                     $("#shareDialogLoadingImg").show();
                     $("#shareDialogThumb").attr("src", ShareDialog.imageList[ShareDialog.getNextImageIndex()].src)
                 })
@@ -9181,7 +9184,7 @@ editShare.edit = function (a, b) {
         $("#delBoardPicConfirm").hide()
     }, "json");
     im(editShare.dialogId).dialog("open");
-    $("#submitDiv .big-btn").die().live("click", function () {
+    $("#submitDiv .big-btn").off().on("click", function () {
         if (!im.user.validate.checkTextarea([$("#editTitle")])) {
             return
         }
@@ -9564,7 +9567,7 @@ reshareDialog.init = function () {
             reshareDialog.clearForm()
         }
     });
-    im("#reshareCommitButtonDiv .big-btn").die().live("click", function () {
+    im("#reshareCommitButtonDiv .big-btn").off().on("click", function () {
         if (!im.user.validate.checkTextarea([$("#reshare-ta")])) {
             return
         }
@@ -9655,7 +9658,7 @@ sendMessageDialog.init = function (b, a, c) {
             numberid: 300,
             effactOn: false
         });
-        im("#send_div .big-btn").live("click", function () {
+        im("#send_div .big-btn").on("click", function () {
             if ($(this).hasClass("calloff")) {
                 return false
             }
@@ -9857,7 +9860,7 @@ addressDialog.init = function (b, a, c) {
                 $("#js-error-address").html("")
             }
         });
-        im(".neednot-btn").die().live("click", function () {
+        im(".neednot-btn").off().on("click", function () {
             im("#address_dialog").dialog("close")
         })
     }
@@ -10038,7 +10041,7 @@ addressDialog.openAddressDialog = function (f, k, b, m, d, h, e, g, a, l, c) {
                 }
             }
         }, 500);
-        im("#save_address").die().live("click", function () {
+        im("#save_address").off().on("click", function () {
             saveAddress($(this), h, c)
         })
     }
@@ -10255,7 +10258,7 @@ $(function () {
                         left: "260px"
                     })
                 }
-                $("#cardTip .card-mail").live("click", function () {
+                $("#cardTip .card-mail").on("click", function () {
                     var loginUserId = loginUser.id;
                     if (!loginUserId) {
                         var _path = window.location.pathname;
@@ -10267,7 +10270,7 @@ $(function () {
                     var toUserName = $(this).attr("receiver_name");
                     sendMessageDialog.otherOpenMessage("#message_" + toUserId, loginUserId, "" + toUserId, "" + toUserName)
                 });
-                $("#cardTip .fllowMe").die().live("click", function () {
+                $("#cardTip .fllowMe").off().on("click", function () {
                     var that = this;
                     var loginUserId = loginUser.id;
                     if (!loginUserId) {
@@ -10310,13 +10313,13 @@ $(function () {
     });
     var hoverTimer = null,
         outTimer = null;
-    $("a[havecard|=1]").live("mouseenter", function () {
+    $("a[havecard|=1]").on("mouseenter", function () {
         clearTimeout(outTimer);
         var that = $(this);
         hoverTimer = setTimeout(function () {
             that.personCard()
         }, 300)
-    }).live("mouseleave", function () {
+    }).on("mouseleave", function () {
         var that = $(this);
         clearTimeout(hoverTimer);
         outTimer = setTimeout(function () {
@@ -10325,13 +10328,13 @@ $(function () {
             }
         }, 300)
     });
-    $("img[havecard|=1]").live("mouseenter", function () {
+    $("img[havecard|=1]").on("mouseenter", function () {
         clearTimeout(outTimer);
         var that = $(this);
         hoverTimer = setTimeout(function () {
             that.personCard()
         }, 300)
-    }).live("mouseleave", function () {
+    }).on("mouseleave", function () {
         var that = $(this);
         clearTimeout(hoverTimer);
         outTimer = setTimeout(function () {
@@ -10340,17 +10343,17 @@ $(function () {
             }
         }, 300)
     });
-    $("#cardTip").live("mouseenter", function () {
+    $("#cardTip").on("mouseenter", function () {
         clearTimeout(outTimer);
         $("#cardTip").show()
-    }).live("mouseleave", function () {
+    }).on("mouseleave", function () {
         $("#cardTip").hide()
     });
     if (typeof loginUser != "undefined" && loginUser.id) {
         setTimeout(function () {
             $.fn.imTipRun()
         }, 2000);
-        $("#js-mesg .close").live("click", function () {
+        $("#js-mesg .close").on("click", function () {
             $.ajax({
                 type: "GET",
                 url: im20uri("URI_NOTIFICATION_CLEAR_ALL_UNREAD"),
@@ -10367,7 +10370,7 @@ $(function () {
     }
     //todo
     /*
-    $(".picUrl").die().live("click", function () {
+    $(".picUrl").off().on("click", function () {
       
         if ((navigator.userAgent.indexOf("MSIE") > 0 && parseInt($.browser.version) < 7) || navigator.userAgent.toLowerCase().match(/iPad/i) == "ipad") {
             return true
@@ -10477,7 +10480,7 @@ $(function () {
         }
     };
     var pos;
-    $("#insertTheme1").live("click", function () {
+    $("#insertTheme1").on("click", function () {
         var _t = this;
         if ($(_t).hasClass("off")) {
             return
@@ -10498,7 +10501,7 @@ $(function () {
             }
         })
     });
-    $("#insertprice1").live("click", function () {
+    $("#insertprice1").on("click", function () {
         var obj = document.getElementById("shareDialogTitle");
         var pos = cursorPosition.get(obj);
         cursorPosition.add(obj, pos, input = "￥插入价格");
@@ -10510,13 +10513,13 @@ $(function () {
             effactOn: false
         })
     });
-    $("#insertprice3").live("click", function () {
+    $("#insertprice3").on("click", function () {
         var obj = document.getElementById("editTitle");
         var pos = cursorPosition.get(obj);
         cursorPosition.add(obj, pos, input = "￥插入价格");
         cursorPosition.insertPrice(obj, pos, "￥插入价格")
     });
-    $("#insertprice4").live("click", function () {
+    $("#insertprice4").on("click", function () {
         var obj = document.getElementById("reshare-ta");
         var pos = cursorPosition.get(obj);
         cursorPosition.add(obj, pos, input = "￥插入价格");
@@ -10532,7 +10535,7 @@ $(function () {
             im.zm.delayImg.init(document)
         }
         fnfooter();
-        $(document).scrollTop() > 1000 ? $("#backtotop").show().die().live("click", function () {
+        $(document).scrollTop() > 1000 ? $("#backtotop").show().off().on("click", function () {
             $("body,html").animate({
                 scrollTop: 0
             }, 500)

@@ -182,6 +182,7 @@ class ApplicationController < ActionController::Base
   end
   
   def require_user(options = {})
+    return true if user_signed_in?
     format = options[:format] || :html
     format = format.to_s
     if params[:redirect_path] and params[:redirect_path]!=''

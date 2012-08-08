@@ -9,7 +9,7 @@ KTV.data = {
 
     <% if @courseware.thin? %>
     <div class="extras" style="float:right;margin-left:12px">
-      <%= render :partial => 'presenter', :locals => {user:@courseware.user} %>
+      <%= render :partial => 'presenter', :locals => {user:@courseware.uploader} %>
     </div>
     <% end  %>
     
@@ -106,7 +106,7 @@ KTV.data = {
     </div>
 
     <div class="extras">
-      <%= render :partial => 'presenter', :locals => {user:@courseware.user} %>
+      <%= render :partial => 'presenter', :locals => {user:@courseware.uploader} %>
 
       <ul class="delimited">
           <li class="like">

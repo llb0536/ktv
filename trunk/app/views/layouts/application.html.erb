@@ -93,7 +93,7 @@
   <%= yield :armpit %>
 </head>
 
-<body <%if @is_ie%>onload="window.psvr_ie_readyfix()"<%end%> id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
+<body <%if false and @is_ie%>onload="window.psvr_ie_readyfix()"<%end%> id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
 <div class="__sdk">
   <header style="background-image:url(<%= asset_path('dark.png') %>)">
     <div class="wrapper">

@@ -85,7 +85,6 @@ test:
   
 production:
   <<: *defaults
-  allow_register: false
 
 staging:
   <<: *defaults
