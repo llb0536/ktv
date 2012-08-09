@@ -42,6 +42,7 @@ after_fork do |server, worker|
   ActionController::Base.logger = Rails.logger
   ActionMailer::Base.logger = Rails.logger
   ActiveResource::Base.logger = Rails.logger
+  Rails.application.assets.logger = Rails.logger
 
   Ktv.config.logger = Logger.new("#{Rails.root}/log_staging/#{Rails.env}.ktv.#{worker.nr}.log",File::WRONLY|File::APPEND)
   $debug_logger = Logger.new("#{Rails.root}/log_staging/#{Rails.env}.debug.#{worker.nr}.log", File::WRONLY | File::APPEND)

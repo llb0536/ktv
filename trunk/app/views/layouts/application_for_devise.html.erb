@@ -26,22 +26,31 @@
     </div>
   </header>
   <% if !cookies[:spetial].blank? %>
-    <p class="flash_alert"><%=raw  cookies[:spetial] %></p>
+    <p class="flash_alert"><%=raw  cookies[:spetial] %> [<a class="close_me" href="#"> 隐藏 </a>]</p>
     <%= content_for :butt2 do %>
         $(".flash_alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
+        $(".flash_alert .close_me").click(function(){
+          $(this).parent().hide();
+        });
     <% end %>
     <% cookies[:spetial] = nil %>
   <% else %>  
     <% if !notice.blank? %>
-      <p class="flash_notice"><%=raw notice %></p>
+      <p class="flash_notice"><%=raw notice %> [<a class="close_me" href="#"> 隐藏 </a>]</p>
       <%= content_for :butt2 do %>
           $(".flash_notice").fadeOut().fadeIn();
+          $(".flash_notice .close_me").click(function(){
+            $(this).parent().hide();
+          });
       <% end %>
     <% end %>
     <% if !alert.blank? %>
-      <p class="flash_alert"><%=raw alert %></p>
+      <p class="flash_alert"><%=raw alert %> [<a class="close_me" href="#"> 隐藏 </a>]</p>
       <%= content_for :butt2 do %>
           $(".flash_alert").fadeOut('fast').fadeIn('fast').fadeOut('fast').fadeIn('fast');
+          $(".flash_alert .close_me").click(function(){
+            $(this).parent().hide();
+          });
       <% end %>
     <% end %>
   <% end %>

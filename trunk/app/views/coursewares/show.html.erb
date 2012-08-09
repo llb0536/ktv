@@ -75,6 +75,33 @@ KTV.data = {
         <li class="category" style="border-top:none">领域 <a href="/topics/<%= @courseware.topic_id %>"><%= @courseware.topic %></a></li>
       </ul>
     </div>
+    <div style="width:51%;float:left" class="extras">
+      <h1><%=image_tag('zuozhe.png',alt:'课件原作者',style:'margin-top:16px;margin-bottom:4px')%></h1>
+      <% style='width:50%;float:left' %>
+      <%= render :partial => 'presenter', :locals => {user:@courseware.user, :style=>style} %>
+    </div>
+    <div style="width:49%;float:right;margin-top:-8px">
+      <h6><%=image_tag('peixun2.png',alt:'相关线下培训')%></h6>
+      <div class="ad" id="doc_ad0" style="height:100px">
+        <p>
+          <a id="doc_ad" target="_blank" href="http://vip.kuakao.com/mg/" style="background-image:url(<%= asset_path 'ad2.png' %>)"></a>
+          <% content_for :butt2 do %>
+            $('#doc_ad').mouseenter(function(){
+              $('#doc_ad0').animate({height:$('#doc_ad0').height()+(187-80)},200);
+              $(this).animate({height:187},200);
+            }).mouseleave(function(){
+              $('#doc_ad0').animate({height:100},200);
+              $(this).animate({height:80},200);
+            });
+          <% end %>
+        </p>
+        <p>
+          <a href="http://vip.kuakao.com/mg/" target="_blank">
+跨考教育提供全日制住宿式2013年考研魔鬼训练营(国内首家).
+          </a>
+        </p>
+      </div>
+    </div>
     
     <% else %>
     <div class="main">
@@ -124,20 +151,24 @@ KTV.data = {
         <li class="category">领域 <a href="/topics/<%= @courseware.topic_id %>"><%= @courseware.topic %></a></li>
         <li class="dianjiliang">点击量 <a href="#watch-view-count"><%= number_with_delimiter @courseware.views_count %> 次</a></li>
               </ul>
-
       <h1><%=image_tag('share.png',alt:'下载此课件')%></h1>
       <ul class="delimited share">
         <li class="download"><%=Courseware::SORTSTR[@courseware.sort]%>(<%=@courseware.down_pdf_size ? number_to_human_size(@courseware.down_pdf_size*1000,:precision=>1) : '大小未知' %>)<a target="_blank" href="<%= download_courseware_path(@courseware)%>">立即下载</a></li>
       </ul>
+  <% unless @courseware.user_id==@courseware.uploader_id %>
+      <h1><%=image_tag('zuozhe.png',alt:'课件原作者',style:'margin-top:26px;margin-bottom:4px')%></h1>
+      <% style='margin-top:10px' %>
+      <%= render :partial => 'presenter', :locals => {user:@courseware.user, :style=>style} %>
+  <% end %>
       <h6><%=image_tag('peixun2.png',alt:'相关线下培训',style:'margin-top:28px')%></h6>
 <div class="ad">
   <p>
-    <a href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html">
+    <a href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html" target="_blank">
       <img alt="Ruby认证程序员课程（Ruby Association Certified Ruby Programmer Silver）" src="<%=asset_path 'ad1.png'%>">
     </a>
   </p>
   <p>
-    <a href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html">
+    <a target="_blank" href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html">
 环球培训(UniversalTraining)提供Ruby认证程序员课程.
     </a>
   </p>

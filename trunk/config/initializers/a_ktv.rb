@@ -10,5 +10,9 @@ module Ktv
   ]
 end
 
-$debug_logger = Logger.new("#{Rails.root}/log/#{Rails.env}.debug.log", File::WRONLY | File::APPEND)
+if Rails.env.staging?
+  $debug_logger = Logger.new("#{Rails.root}/log_staging/#{Rails.env}.debug.log", File::WRONLY | File::APPEND)
+else
+  $debug_logger = Logger.new("#{Rails.root}/log/#{Rails.env}.debug.log", File::WRONLY | File::APPEND)
+end
 
