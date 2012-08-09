@@ -24,15 +24,6 @@ GIT
       omniauth (~> 1.0.0.rc2)
       omniauth-oauth2 (~> 1.0.0.rc2)
 
-GIT
-  remote: git://github.com/pmq20/omniauth-weibo.git
-  revision: 40a38f3297e04a28373bef661669f55b3de57220
-  specs:
-    omniauth-weibo (1.0.1)
-      multi_json
-      omniauth (~> 1.0.0.rc2)
-      omniauth-oauth (~> 1.0.0.rc2)
-
 PATH
   remote: vendor/redis-search
   specs:
@@ -202,9 +193,6 @@ GEM
     mini_magick (3.4)
       subexec (~> 0.2.1)
     minitest (2.11.3)
-    mobile-fu (1.0.0)
-      rack-mobile-detect
-      rails
     mongo (1.5.2)
       bson (= 1.5.2)
     mongo-rails-instrumentation (0.2.4)
@@ -247,6 +235,9 @@ GEM
       omniauth (~> 1.0)
     omniauth-twitter (0.0.9)
       omniauth-oauth (~> 1.0)
+    omniauth-weibo-oauth2 (0.2.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omnicontacts (0.2.2)
       json
       rack
@@ -265,8 +256,6 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-mobile-detect (0.3.0)
-      rack
     rack-protection (1.2.0)
       rack
     rack-ssl (1.3.2)
@@ -439,7 +428,6 @@ DEPENDENCIES
   mechanize (>= 2.5.1)
   mini_magick
   minitest
-  mobile-fu
   mongo-rails-instrumentation
   mongoid (< 3)
   nokogiri
@@ -451,7 +439,7 @@ DEPENDENCIES
   omniauth-qq!
   omniauth-renren!
   omniauth-twitter
-  omniauth-weibo!
+  omniauth-weibo-oauth2
   omnicontacts
   progressbar
   pry

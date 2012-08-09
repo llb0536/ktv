@@ -49,7 +49,6 @@ class Log
   # asynchronously generate its body content for cache use
   after_create proc{
     Resque.enqueue(LogbodyJob,log_id:self.id)
-    self.update_attribute(:from_mobile, $zhaopin_is_mobile_device ? 1 : 0)
   }
 end
 

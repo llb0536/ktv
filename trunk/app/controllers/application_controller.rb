@@ -3,7 +3,6 @@ require 'digest/md5'
 require 'net/http'
 require 'uri'
 class ApplicationController < ActionController::Base
-  has_mobile_fu
   protect_from_forgery
   before_filter proc{
     # thing = request.domain
@@ -42,6 +41,8 @@ class ApplicationController < ActionController::Base
     end
   end
   before_filter :set_vars
+  before_filter :unknown_user_check
+
   def set_vars
     @subsite = Ktv::Subdomain.match(request)
     @seo = Hash.new('')
@@ -75,16 +76,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  before_filter proc{
-    if params[:force_mobile] or is_mobile_device?
-      $zhaopin_is_mobile_device = true
-    else
-      $zhaopin_is_mobile_device = false
-    end
-  }
-  before_filter proc{
-  }
-
 
   helper :all
   before_filter :load_notice
@@ -165,6 +156,20 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+  def unknown_user_check
+    if current_user
+      unknowns = []
+      unknowns << '真实姓名' if current_user.name_unknown
+      unknowns << '邮箱地址' if current_user.email_unknown
+      unknowns << '密码' if current_user.encrypted_password.blank?
+      unless unknowns.blank?
+        flash[:insuf_info] = "请<a href=\"#{edit_user_registration_path}\">点击这里</a>补充您的#{unknowns.join '和'}".html_safe 
+      else
+        flash[:insuf_info] = nil
+      end
+    end
+  end
+
   
   def require_admin
     if current_user.blank?

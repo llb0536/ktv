@@ -68,6 +68,11 @@ class User
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
   field :topic #calculated by suggest_items.rake
+  field :nickname
+  field :weibo
+  field :renren
+  field :douban
+  field :github
   field :expert_topic #calculated by TopicSuggestExpert
   field :expert_topic_score, :type => Integer, :default => 0 #calculated by TopicSuggestExpert
   field :inviter_ids,:type=>Array,:default => []
@@ -338,7 +343,8 @@ class User
   }
   # 是否允许登录
   def active_for_authentication?
-    self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?
+    self.authorizations.count>0 or (self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?)
+    # todo securties
   end
   scope :already_confirmed,where(:confirmed_at.ne => nil)
   scope :name_unknown, where(:name_unknown => true)

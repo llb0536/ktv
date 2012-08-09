@@ -56,7 +56,3 @@ module Sprockets
   end
 end
 
-p Ktv.config.asset_host
-p Ktv.config.asset_host
-p Ktv.config.asset_host
-p Ktv.config.asset_host

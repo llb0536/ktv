@@ -22,9 +22,9 @@ module ApplicationHelper
   def pos_signature
     "#{params[:controller].parameterize}_#{params[:action].parameterize}"
   end
-  # def is_mobile_device?
-  #   false
-  # end
+  def is_mobile_device?
+    false
+  end
   
   def truncate2(thing,opts={})
     return '' if thing.blank?

@@ -369,17 +369,20 @@ http://kejian.tv/account/auth/qq_connect/callback?code=E0D6944EBFE444F7CE00EA8D7
 private
   def prepare_auth
     redirect_to(root_path,:alert => '认证失败') and return if env["omniauth.auth"].blank?
-    @auth = Authorization.find_or_create_by_provider_and_uid(env["omniauth.auth"]['provider'].to_s, env["omniauth.auth"]['uid'].to_s)
-    @user = @auth.user
+    provider = env["omniauth.auth"]['provider'].to_s
+    uid = env["omniauth.auth"]['uid'].to_s
+    @user = User.where("authorizations.provider" => provider , "authorizations.uid" => uid).first
     @user ||= User.new
+    @auth = @user.authorizations.find_or_create_by(:provider=> provider,:uid=>uid)
     @info = env["omniauth.auth"]['info']
+    p env["omniauth.auth"].inspect
     return true
   end
   def make_it_done!
     unless @user.valid?
       @user.name_unknown = true if @user.errors[:name].present?
       @user.email_unknown = true if @user.errors[:email].present?
-      raise @user.errors unless @user.valid?
+      raise @user.errors.full_messages.join(',') unless @user.valid?
     end
 
     if @user.save
