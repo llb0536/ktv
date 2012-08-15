@@ -3,20 +3,21 @@ module Ktv
   class Quora
     def self.zhankai!(div,index,li)
       old_count = li.all(:xpath,"./ul/li/div/ul").count
-      puts old_count
+      puts old_count;STDOUT.flush
       if old_count>0
         begin
           li.all(:xpath,"./ul/ul/li/a").each do |show_more_anchor|
             show_more_anchor.click
-            wait = Selenium::WebDriver::Wait.new(:timeout => 60) # seconds
+            wait = Selenium::WebDriver::Wait.new(:timeout => 180) # seconds
             wait.until{
               li.all(:xpath,"./ul/li/div/ul").count>old_count
             }
           end
         rescue Selenium::WebDriver::Error::StaleElementReferenceError => e
+          p e
           li = div.first(:xpath,'./ul').all(:xpath,"./li")[index]
         end
-        puts li.all(:xpath,"./ul/li/div/ul").count
+        puts li.all(:xpath,"./ul/li/div/ul").count;STDOUT.flush
       end
       li
     end
@@ -28,27 +29,30 @@ module Ktv
         anchor = li.first(:xpath,'./span/span/a')
         href = anchor.attribute('href')
         father_name = anchor.first(:xpath,'./span/span').text
-        # father_inst = Topic.locate(father_name)
-        # father_inst.quora = {href:href}
-        # father_inst.fathers<<up_name
-        puts "[#{father_name},#{up_name}]"
+        father_inst = Topic.locate(father_name)
+        father_inst.quora = {href:href}
+        father_inst.fathers<<up_name
+        puts "[#{father_name},#{up_name}]";STDOUT.flush
         li = zhankai!(div,index,li)
         li.all(:xpath,"./ul/li/div").each do |next_div|
           handle_ul(next_div,father_name)
           begin
             li.first(:xpath,"./ul/ul/li/a")
-            puts "哎呀！！！"
+            puts "哎呀！！！";STDOUT.flush
             li = zhankai!(div,index,li)
           rescue => e
+            p e
           end
         end
-        # father_inst.quora['more'] = true if li.all(:xpath,'./ul/ul/li/small').count>0
-        # father_inst.save(:validate=>false)
+        father_inst.quora['more'] = true if li.all(:xpath,'./ul/ul/li/small').count>0
+        father_inst.save(:validate=>false)
         index += 1
       end
     end
     def self.start!
-      driver = Selenium::WebDriver.for :chrome
+      http_client = Selenium::WebDriver::Remote::Http::Default.new
+      http_client.timeout = 10000
+      driver = Selenium::WebDriver.for(:chrome,:http_client=> http_client)
       driver.navigate.to "http://www.quora.com/"
       element = driver.find_element(:name,'email')
       element.send_keys('pmq2001@gmail.com')
