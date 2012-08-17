@@ -4,21 +4,39 @@ require 'net/http'
 require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter proc{
+  }
+  before_filter :decide_sub_main
   Browser = Struct.new(:browser, :version)
   SupportedBrowsers = [
-    Browser.new("Safari", "3.1.1"),
-    Browser.new("Firefox", "2.0.0.14"),
+    Browser.new("Safari", "3.0"),
+    Browser.new("Firefox", "2.0"),
+    Browser.new("Chrome", "0.1"),
+    Browser.new("Opera", "0.1"),
     Browser.new("Internet Explorer", "9.0")
   ]
-
-  before_filter proc{
-    user_agent = UserAgent.parse(request.user_agent)
-    supported_browser = SupportedBrowsers.detect { |browser| user_agent >= browser }
-    if supported_browser.nil?
-      redirect_to '/simple'
-      return
+  def decide_sub_main
+    if '1'==params['force_main']
+      return go_main!
+    elsif '1'==params['force_sub']
+      return go_sub! 
+    else
+      return true
+      #user_agent = UserAgent.parse(request.user_agent)
+      #supported_browser = SupportedBrowsers.detect { |browser| user_agent >= browser }
+      #if supported_browser.nil?
+      #  go_sub!
+      #  return
+      #end
     end
-  }
+  end
+  def go_sub!
+    redirect_to '/simple'
+    return false
+  end
+  def go_main!
+    return true
+  end
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from AbstractController::ActionNotFound, with: :render_404
