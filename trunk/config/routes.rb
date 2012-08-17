@@ -35,7 +35,6 @@ Quora::Application.routes.draw do
   get 'hack/htc'
   get '/welcome/inactive_sign_up'
   get '/welcome/shuffle'
-  get '/welcome/about'
   get '/welcome/blank'
   get '/welcome/surprise' => 'welcome#surprise',:as => 'surprise'
   # ________________________________ktv__________________________________________

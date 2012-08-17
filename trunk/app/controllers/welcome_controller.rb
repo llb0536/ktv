@@ -14,9 +14,6 @@ class WelcomeController < ApplicationController
   def inactive_sign_up
     render "inactive_sign_up#{@subsite}",layout:'application_for_devise'
   end
-  def about
-    @seo[:title] = '关于我们'
-  end
   def shuffle
     cw = nil
     i = 0
