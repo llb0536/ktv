@@ -4,9 +4,20 @@ require 'net/http'
 require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  Browser = Struct.new(:browser, :version)
+  SupportedBrowsers = [
+    Browser.new("Safari", "3.1.1"),
+    Browser.new("Firefox", "2.0.0.14"),
+    Browser.new("Internet Explorer", "9.0")
+  ]
+
   before_filter proc{
-    # thing = request.domain
-    # render text:thing and return
+    user_agent = UserAgent.parse(request.user_agent)
+    supported_browser = SupportedBrowsers.detect { |browser| user_agent >= browser }
+    if supported_browser.nil?
+      redirect_to '/simple'
+      return
+    end
   }
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500

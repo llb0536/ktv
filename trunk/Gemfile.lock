@@ -55,7 +55,7 @@ PATH
       will_paginate (~> 3.0.2)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.2.6)
       actionpack (= 3.2.6)
@@ -386,6 +386,7 @@ GEM
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
+    useragent (0.4.10)
     validate_url (0.1.6)
       activemodel (>= 3.0.0)
     vegas (0.1.11)
@@ -472,6 +473,7 @@ DEPENDENCIES
   turn
   uglifier (>= 1.0.3)
   unicorn
+  useragent
   validate_url (= 0.1.6)
   voteable_mongo!
   whenever
