@@ -25,6 +25,12 @@ GIT
       omniauth-oauth2 (~> 1.0.0.rc2)
 
 PATH
+  remote: /Users/math/pmq20_github/uc_client
+  specs:
+    uc_client (1.6.0)
+      mysql
+
+PATH
   remote: vendor/redis-search
   specs:
     redis-search (0.9.0)
@@ -202,6 +208,7 @@ GEM
       tzinfo (~> 0.3.22)
     multi_json (1.0.4)
     multipart-post (1.1.5)
+    mysql (2.8.1)
     net-http-digest_auth (1.2.1)
     net-http-persistent (2.7)
     nokogiri (1.5.0)
@@ -431,6 +438,7 @@ DEPENDENCIES
   minitest
   mongo-rails-instrumentation
   mongoid (< 3)
+  mysql
   nokogiri
   oauth-plugin (>= 0.4.0.pre1)
   omniauth-douban!
@@ -471,6 +479,7 @@ DEPENDENCIES
   thin
   to_xls (~> 1.0.0)
   turn
+  uc_client!
   uglifier (>= 1.0.3)
   unicorn
   useragent

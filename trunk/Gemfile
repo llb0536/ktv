@@ -1,7 +1,7 @@
 source 'http://ruby.taobao.org/'
 #source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -187,3 +187,5 @@ gem 'thin'
 gem 'selenium-webdriver'
 #gem 'debugger'
 gem 'useragent'
+gem 'uc_client',:path => '/Users/math/pmq20_github/uc_client'
+gem 'mysql'
