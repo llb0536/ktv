@@ -5,22 +5,8 @@ require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
-    UcClient.define('UC_DATADIR', "#{Rails.root}/tmp/uc_client/data");
-    UcClient.define('UC_CONNECT', 'mysql');
-    UcClient.define('UC_DBHOST', 'localhost');
-    UcClient.define('UC_DBUSER', 'root');
-    UcClient.define('UC_DBPW', 'jknlff8-pro-17m7755');
-    UcClient.define('UC_DBNAME', 'ucenter');
-    UcClient.define('UC_DBCHARSET', 'utf8');
-    UcClient.define('UC_DBTABLEPRE', '`ucenter`.uc_');
-    UcClient.define('UC_DBCONNECT', '0');
-    UcClient.define('UC_KEY', 'qwwii2');
-    UcClient.define('UC_API', 'http://uc.kejian.tv');
-    UcClient.define('UC_CHARSET', 'utf-8');
-    UcClient.define('UC_IP', '');
-    UcClient.define('UC_APPID', '3');
-    UcClient.define('UC_PPP', '20');
-    render text:"#{text}" and return
+    # text = UCenter::Php.authcode(params[:code],'DECODE',UC_KEY)
+    # render text:"#{text}" and return
   }
   before_filter :decide_sub_main
   Browser = Struct.new(:browser, :version)

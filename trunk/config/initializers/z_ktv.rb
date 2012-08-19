@@ -13,6 +13,32 @@ module Ktv
 end
 
 
+module UCenter
+  class << self
+    attr_reader :config
+  end
+  @config = {}
+  def self.define(k,v)
+    @config[k]=v
+  end
+  def self.getdef(k)
+    @config[k]
+  end
+end
+
+module Discuz
+end
+
+
+if Rails.env.production?
+  UCenter.define('UC_API', 'http://uc.kejian.tv');
+  UCenter.define('UC_KEY', '0477gkXtDxSfWaAG2iSjBHrIjSZR4AlTCnkqBfo');
+else
+  UCenter.define('UC_API', 'http://uc.kejian.lvh.me');
+  UCenter.define('UC_KEY', 'a332MrfSAdOyVNFBIHjEEoY0FsJ7SbXxzS6cszg');
+end
+
+
 Ktv.configure do |config|
   if Rails.env.production?
     config.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
@@ -38,6 +64,10 @@ Ktv.configure do |config|
   config.upyun_api_host = 'http://v0.api.upyun.com'
   config.upyun_bucket_domain = "http://ktv-pic.b0.upaiyun.com"
 end
+
+
+
+
 
 # c.f. /usr/local/lib/ruby/gems/1.9.1/gems/actionpack-3.2.6/lib/sprockets/helpers/rails_helper.rb  Line: 53/173:0                                                                    
 module Sprockets

@@ -1,6 +1,7 @@
 # -*- coding: utf-8-*-
 Quora::Application.routes.draw do
   root :to => 'welcome#index'
+  get '/api/uc' => 'ucenter#uc'
   # ________________________________user__________________________________________
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,

@@ -26,11 +26,14 @@ module Ktv
         config.logger.debug "#{response}"
         if :json==settings[:accept]
           return JSON.parse(response)
+        elsif :xml==settings[:accept]
+          return Nokogiri::XML(response)
         else
           return response
         end
       rescue => e
         config.logger.error "#{e}"
+        config.logger.error "#{e.backtrace}"
         if settings[:psvr_response_anyway]
           return response
         else

@@ -105,3 +105,5 @@ require "string_extensions"
 require "array_extensions"
 require "mmseg"
 require 'will_paginate/array'
+require "digest"
+require "digest/md5"
