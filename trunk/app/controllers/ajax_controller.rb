@@ -55,8 +55,8 @@ utf8	✓
     cw = Courseware.where(:_id => presentation[:id]).first
     cw = Courseware.new if cw.nil?
     cw.uploader_id = current_user.id
-    cw.sort = 'pdf'
     cw.pdf_filename = presentation[:pdf_filename]
+    cw.sort = File.extname(cw.pdf_filename).split('.')[-1]
     cw.topic = presentation[:topic]
     if cw.topic.blank?
       cw.topic = '领域请求' 
@@ -136,7 +136,7 @@ HEREDOC
       cw = @courseware
       cw.uploader_id = current_user.id
       cw.pdf_filename = presentation[:pdf_filename]
-      cw.sort = File.extname(cw.pdf_filename)
+      cw.sort = File.extname(cw.pdf_filename).split('.')[-1]
 
       cw.topic = presentation[:topic]
       if cw.topic.blank?

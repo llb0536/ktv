@@ -1,0 +1,408 @@
+header {
+  background: #1e1e1e url(assets/dark.png) repeat;
+}
+
+/*Sky.1  #header ------------------------------------------------*/
+/* line 120, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 {
+  background: #424242 url(assets/header0.png) repeat-x;
+  width: 100%;
+  height: 40px;
+  font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+/* line 125, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 div div {
+  cursor: pointer;
+}
+/* line 128, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 a {
+  line-height: 40px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  font-weight: bold;
+  color: #C2C2C2;
+  margin-left: 40px;
+}
+/* line 135, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 a:hover {
+  text-decoration: none;
+}
+/* line 139, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 img {
+  position: absolute;
+  margin-left: 12px;
+  margin-top: 9px;
+}
+/* line 145, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 .active img {
+  display: none;
+}
+/* line 148, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 .active a {
+  color: white;
+}
+/* line 152, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 .profile {
+  width: 54px;
+  height: 40px;
+  float: right;
+}
+/* line 157, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 .spliter {
+  background: transparent url(assets/header0spliter.png) no-repeat;
+  width: 2px;
+  height: 40px;
+  float: right;
+}
+/* line 163, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #header0btn {
+  float: right;
+  background: #4a9cd6 url(assets/header0btn.png) no-repeat;
+  width: 40px;
+  height: 30px;
+  margin: 4px 0 0 11px;
+}
+/* line 170, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab1 {
+  width: 129px;
+  height: 40px;
+  float: left;
+}
+/* line 175, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab1.active {
+  background: #222222 url(assets/header0_1active.png) no-repeat;
+}
+/* line 178, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab2 {
+  width: 111px;
+  height: 40px;
+  float: left;
+}
+/* line 183, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab2.active {
+  background: #222222 url(assets/header0_2active.png) no-repeat;
+}
+/* line 186, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab3 {
+  width: 83px;
+  height: 40px;
+  float: left;
+}
+/* line 190, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab3 img {
+  margin-top: 10px;
+}
+/* line 193, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab3 a {
+  margin-left: 37px;
+}
+/* line 197, ../../app/assets/stylesheets/main.css.scss.erb */
+#header0 #slab3.active {
+  background: #222222 url(assets/header0_3active.png) no-repeat;
+}
+
+
+/* line 202, ../../app/assets/stylesheets/main.css.scss.erb */
+#headerpsvr {
+  background: #1e1e1e url(assets/dark.png) repeat-x;
+  height: 54px;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+/*Sky.1.1 #headnav ------------------------------------------*/
+/* line 208, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav {
+  height: 50px;
+  color: #C6C6C6;
+  width: 100%;
+  background: #424242;
+  border-bottom: 1px solid #222;
+}
+
+/* line 215, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav a {
+  background: url(assets/sprites2.png) 0 0 no-repeat;
+  display: block;
+  padding: 8px 0 3px 45px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  opacity: 0.7;
+  text-shadow: 0 1px 2px #000;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+}
+
+/* line 227, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav a:hover {
+  opacity: 1;
+}
+
+/* line 230, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav em {
+  font-style: normal;
+  font-weight: bold;
+  display: block;
+  font-size: 14px;
+}
+
+/* line 236, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav_content div {
+  position: absolute;
+  text-align: center;
+}
+
+/* line 240, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.first {
+  width: 140px;
+  margin-left: 0;
+}
+
+/* line 241, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.second {
+  width: 143px;
+  margin-left: 260px;
+}
+
+/* line 242, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.third {
+  width: 129px;
+  margin-left: 546px;
+}
+
+/* line 243, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.fourth {
+  width: 144px;
+  margin-left: 816px;
+}
+
+/* line 245, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.first a {
+  background-position: -520px 0;
+}
+
+/* line 246, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.second a {
+  background-position: -1040px 0;
+}
+
+/* line 247, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.third a {
+  background-position: -1298px 0;
+}
+
+/* line 248, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.fourth a {
+  background-position: -780px 0;
+}
+
+/* line 249, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.first_selected a {
+  background-position: -520px -44px;
+}
+
+/* line 250, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.second_selected a {
+  background-position: -1040px -44px;
+}
+
+/* line 251, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.third_selected a {
+  background-position: -1298px -44px;
+}
+
+/* line 252, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav div.fourth_selected a {
+  background-position: -780px -44px;
+}
+
+/* line 254, ../../app/assets/stylesheets/main.css.scss.erb */
+#headnav_content div.selected a {
+  color: #FFDD33;
+  opacity: 1;
+}
+
+/*Sky.1.2 #logodiv ------------------------------------------*/
+/*logoabsdiv*/
+/* line 261, ../../app/assets/stylesheets/main.css.scss.erb */
+#logoabsdiv {
+  margin-top: 18px;
+}
+
+/* line 264, ../../app/assets/stylesheets/main.css.scss.erb */
+#logolink {
+  position: absolute;
+  color: white;
+  margin-top: 1px;
+  z-index:2;
+}
+
+/* line 269, ../../app/assets/stylesheets/main.css.scss.erb */
+#logotext {
+  padding: 8px 6px;
+}
+
+/* line 272, ../../app/assets/stylesheets/main.css.scss.erb */
+#searchbox {
+  position: absolute;
+  background: url(assets/searchbox.png) no-repeat;
+  width: 250px;
+  height: 47px;
+  margin: -4px 0 0 188px;
+  z-index:2;
+}
+
+/* line 278, ../../app/assets/stylesheets/main.css.scss.erb */
+#searchbox.focused input {
+  color: #FFF;
+}
+
+/* line 279, ../../app/assets/stylesheets/main.css.scss.erb */
+#searchbox.focused {
+  background-position: 0 -47px;
+}
+
+/* line 282, ../../app/assets/stylesheets/main.css.scss.erb */
+#searchbox.focused input {
+  color: #333333;
+}
+
+/* line 283, ../../app/assets/stylesheets/main.css.scss.erb */
+#searchinput {
+  position: absolute;
+  border: 0;
+  color: #999999;
+  background: transparent;
+  font-size: 13px;
+  height: 20px;
+  left: 38px;
+  top: 13px;
+  width: 194px;
+  -webkit-transition: background, color 0.2s linear;
+  -moz-transition: background, color 0.2s linear;
+  transition: background, color 0.2s linear;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 297, ../../app/assets/stylesheets/main.css.scss.erb */
+#loginbox {
+  position: absolute;
+  margin-bottom: -6px;
+  margin: 8px 0 0 832px;
+}
+
+/* line 302, ../../app/assets/stylesheets/main.css.scss.erb */
+#loginbox a {
+  color: #E1E1E1;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+/* line 307, ../../app/assets/stylesheets/main.css.scss.erb */
+#loginbox a:hover {
+  color: #FFF;
+}
+
+/* line 311, ../../app/assets/stylesheets/main.css.scss.erb */
+#register {
+  margin-left: 10px;
+}
+/*
+
+#um{
+  position:absolute;
+  top:38px;
+  width:900px;
+  color:#EEE;
+  z-index:1;
+}
+#um a{
+  color:#FFF;
+}
+.hdc{
+  min-height:0;
+}
+body{
+  background-image:none;
+  background:#FFF;
+}
+*/
+
+#sslct_menu{
+  margin-top:3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------- ie therapy --------------------------------*/
+
+
+/* line 3, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie6 #header0 img {
+  margin-top: -4px;
+}
+/* line 6, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie6 #header0 .profile img {
+  margin-top: 9px;
+}
+/* line 10, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie6 #header0 #slab3 img {
+  margin-top: -2px;
+}
+
+/* line 15, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie7 .btn:active, .ie7 .btn:focus {
+  ie-dummy: expression(this.hideFocus=true);
+}
+/* line 18, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie7 #headnav a {
+  padding-top: 9px;
+}
+
+/* line 23, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie_all #headnav em {
+  margin-bottom: 4px;
+}
+/* line 26, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie_all #headnav a {
+  padding-bottom: 4px;
+}
+/* line 29, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie_all .btn {
+  font-weight: bold;
+}
+/* line 32, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie_all #ktv_slogan {
+  padding-bottom: 33px;
+}
+/* line 35, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie_all .ui-dialog-content p {
+  margin-top: 9px;
+}
+
+/* line 41, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie8 #searchinput {
+  top: 15px;
+}
+/* line 44, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie8 #loginbox {
+  margin: 7px 0 0 834px;
+}
+/* line 47, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie8 #loginbox a {
+  font-size: 15px;
+}
+/* line 50, ../../app/assets/stylesheets/ie.css.scss.erb */
+.ie8 .ui-dialog-content input {
+  padding-top: 5px;
+}
