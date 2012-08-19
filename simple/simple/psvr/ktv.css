@@ -3,18 +3,17 @@ header {
 }
 
 /*Sky.1  #header ------------------------------------------------*/
-/* line 120, ../../app/assets/stylesheets/main.css.scss.erb */
 #header0 {
   background: #424242 url(assets/header0.png) repeat-x;
   width: 100%;
   height: 40px;
   font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-/* line 125, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 128, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 div div {
   cursor: pointer;
 }
-/* line 128, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 131, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 a {
   line-height: 40px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
@@ -23,38 +22,39 @@ header {
   color: #C2C2C2;
   margin-left: 40px;
 }
-/* line 135, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 138, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 a:hover {
   text-decoration: none;
 }
-/* line 139, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 142, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 img {
+  opacity: 0.7;
   position: absolute;
   margin-left: 12px;
   margin-top: 9px;
 }
-/* line 145, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 149, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 .active img {
   display: none;
 }
-/* line 148, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 152, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 .active a {
   color: white;
 }
-/* line 152, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 156, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 .profile {
   width: 54px;
   height: 40px;
   float: right;
 }
-/* line 157, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 161, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 .spliter {
   background: transparent url(assets/header0spliter.png) no-repeat;
   width: 2px;
   height: 40px;
   float: right;
 }
-/* line 163, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 167, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #header0btn {
   float: right;
   background: #4a9cd6 url(assets/header0btn.png) no-repeat;
@@ -62,41 +62,57 @@ header {
   height: 30px;
   margin: 4px 0 0 11px;
 }
-/* line 170, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 173, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
+#header0 #header0btn:hover {
+  background-position: 0 -30px;
+}
+/* line 176, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
+#header0 #header0btn:active {
+  background-position: 0 -60px;
+}
+/* line 180, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab1 {
   width: 129px;
   height: 40px;
   float: left;
 }
-/* line 175, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 185, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
+#header0 #slab1:hover img, #header0 #slab2:hover img, #header0 #slab3:hover img, #header0 #slab_profile:hover img {
+  opacity: 1;
+}
+/* line 188, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
+#header0 #slab1:hover a, #header0 #slab2:hover a, #header0 #slab3:hover a, #header0 #slab_profile:hover a {
+  color: #FFF;
+}
+/* line 191, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab1.active {
   background: #222222 url(assets/header0_1active.png) no-repeat;
 }
-/* line 178, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 194, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab2 {
   width: 111px;
   height: 40px;
   float: left;
 }
-/* line 183, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 199, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab2.active {
   background: #222222 url(assets/header0_2active.png) no-repeat;
 }
-/* line 186, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 202, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3 {
   width: 83px;
   height: 40px;
   float: left;
 }
-/* line 190, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 206, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3 img {
   margin-top: 10px;
 }
-/* line 193, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 209, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3 a {
   margin-left: 37px;
 }
-/* line 197, ../../app/assets/stylesheets/main.css.scss.erb */
+/* line 213, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3.active {
   background: #222222 url(assets/header0_3active.png) no-repeat;
 }

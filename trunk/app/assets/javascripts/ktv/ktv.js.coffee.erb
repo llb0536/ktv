@@ -15,6 +15,23 @@ KTV.browsetext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("browsetex
 KTV.addtext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("addtext_hover.png") %>'
 KTV.addtext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("addtext.png") %>'
 
+KTV.headnav_css = ->
+  header0 = $('#header0 div div:not(.active)')
+  $('img',header0).fadeTo(0,'0.7')
+  header0.mouseenter(->
+    $('img',this).fadeTo(0,'1')
+    $('a',this).css('color','white');
+  ).mouseleave(->
+    $('img',this).fadeTo(0,'0.7')
+    $('a',this).css('color','#C2C2C2');
+  )
+  $('#slab1,#slab2,#slab3').click((e)->
+    window.location.href = $('a',this).attr('href');
+    return false;
+  );
+  
+
+
 KTV.Utilities.wrap_with_matches = (str,keyword)->
   objRegExp = /// (
     #{keyword}
