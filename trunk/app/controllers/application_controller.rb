@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
   before_filter :decide_sub_main
   Browser = Struct.new(:browser, :version)
   SupportedBrowsers = [
-    Browser.new("Safari", "3.0"),
-    Browser.new("Firefox", "2.0"),
+    Browser.new("Safari", "0.1"),
+    Browser.new("Firefox", "0.1"),
     Browser.new("Chrome", "0.1"),
     Browser.new("Opera", "0.1"),
     Browser.new("Internet Explorer", "9.0")
