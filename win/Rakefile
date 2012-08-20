@@ -1,0 +1,32 @@
+require 'resque'
+require 'resque/tasks'
+ENV['QUEUE']='win_transcoding'
+USERNAME="pmq20/ktv-up"
+PASSWORD="jknlff8-pro-17m7755"
+SERVER="v0.ftp.upyun.com"
+task :environment do
+  $redis_resque = Redis.new(
+      :host => '221.174.24.96',
+      :port => 6380,
+      :thread_safe => true,
+      :password=>'87dsFDLKJ7^*$@#_Dn1..d0983DKOI892617jKLKLKDFJ;;dskojifdsouitreo09w'
+  )
+  $redis_resque.select 2
+  Resque.redis = $redis_resque
+  class TranscoderJob
+    @queue = :transcoding
+    def self.perform(id)
+    end
+  end
+  class WinTransJob
+    @queue = :win_transcoding
+    def self.perform(remote_url,cw_id)
+      target="c:\\win_transcoding\\tmp\\#{File.basename(remote_url)}"
+      `curl "#{remote_url}" > #{target}`
+      `c:\\win_transcoding\\ConvertPowerPoint2PDF.exe #{target} c:\\win_transcoding\\output #{cw_id}.pdf`
+      `c:\\win_transcoding\\putty\\pscp.exe -pw jknlff8-pro-17m7755 c:\\win_transcoding\\output\\#{cw_id}.pdf data@kejian.tv:/media/hd2/win_transcoding`
+      Resque.enqueue(TranscoderJob,cw_id)
+    end
+  end
+end
+task "resque:setup" => :environment
