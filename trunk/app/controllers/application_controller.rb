@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     # text = UCenter::Php.authcode(params[:code],'DECODE',UC_KEY)
     # render text:"#{text}" and return
   }
-  unless Rails.application.config.consider_all_requests_local
+  if Rails.env.production?
     rescue_from Exception, with: :render_500
     rescue_from AbstractController::ActionNotFound, with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     @not_found_path = exception ? exception.message : ''
     if e = exception
       str = "#{Time.now.getlocal}\n"
-      str += "#{request.request_method} #{request.path}\n"
+      str += "#{request.request_method} #{request.path} #{request.ip}\n"
       str += "#{request.user_agent}\n"
       str += e.message+"\n"+e.backtrace.join("\n")
       str += "\n---------------------------------------------\n"
