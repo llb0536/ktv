@@ -8,6 +8,20 @@
 <body id="nv_search" onkeydown="if(event.keyCode==27) return false;">
   <div id="header0">
     <div class="">
+      <!--{if (substr($_SERVER['SERVER_NAME'],-6) === 'lvh.me') }-->
+      <div class="" id="slab1">
+        <img src="psvr/assets/header0_1.png" alt="">
+        <a href="http://kejian.lvh.me/?force_main=1">Kejian.TV主站</a>
+      </div>
+      <div id="slab2">
+        <img src="psvr/assets/header0_2.png" alt="">
+        <a href="http://kejian.lvh.me/simple">目录检索区</a>
+      </div>
+      <div class="active" id="slab3">
+        <img src="psvr/assets/header0_3.png" alt="">
+        <a href="http://search.kejian.lvh.me/">搜索区</a>
+      </div>
+      <!-- {else} -->
       <div class="" id="slab1">
         <img src="psvr/assets/header0_1.png" alt="">
         <a href="http://kejian.tv/?force_main=1">Kejian.TV主站</a>
@@ -20,7 +34,7 @@
         <img src="psvr/assets/header0_3.png" alt="">
         <a href="http://search.kejian.tv/">搜索区</a>
       </div>
-      
+      <!-- {/if} -->
       <div id="header0btn" style="margin-right:4px">
 
       </div>

@@ -5,9 +5,9 @@ sudo /usr/local/bin/redis-server config/redis1.conf
 sudo /usr/local/bin/redis-server config/redis_test.conf
 
 # =======================Memcached==================
-sudo -u pan /usr/local/bin/memcached -d -vvv >>log/memcached.log 2>>log/memcached_error.log
-tail log/memcached.log
-tail log/memcached_error.log
+#sudo -u pan /usr/local/bin/memcached -d -vvv >>log/memcached.log 2>>log/memcached_error.log
+#tail log/memcached.log
+#tail log/memcached_error.log
 
 
 # ================MONGO==========================

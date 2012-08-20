@@ -145,6 +145,7 @@ class User
     Util.del_propogate_to(Answer,:user_id,bad_ids)
     Util.del_propogate_to(Ask,:to_user_id,bad_ids)
     Util.del_propogate_to(Ask,:user_id,bad_ids)
+    Util.del_propogate_to(Courseware,:user_id,bad_ids)
     # vote_up_count
     Answer.where("votes.up"=>self.id).each do |ans|
       ans.votes['up'].delete self.id
@@ -877,6 +878,8 @@ class User
     self.thanked_courseware_ids ||= []
     return true if self.thanked_courseware_ids.index(courseware.id)
     self.thanked_courseware_ids << courseware.id
+    courseware.thanked_user_ids << self.id
+    courseware.save(:validate=>false)
     self.save(:validate => false)
     insert_follow_log("THANK_COURSEWARE", courseware, courseware.topic)
   end

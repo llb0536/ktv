@@ -93,6 +93,7 @@ class CoursewaresController < ApplicationController
   end
   def show
     @seo[:title] = @courseware.title
+    @comment = @courseware.comments.build
     render "show"
   end
   def edit

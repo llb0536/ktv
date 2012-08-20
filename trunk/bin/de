@@ -3,6 +3,7 @@
 export RAILS_ENV=production
 rm -rf /home/main/ktv/_assets/
 bundle
+rake db:migrate
 rake assets:precompile:all
 bin/ftpupyun_intrinsic
 bin/restart_unicorn

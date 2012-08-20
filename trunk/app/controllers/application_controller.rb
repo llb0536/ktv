@@ -5,8 +5,8 @@ require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
-    # text = UCenter::Php.authcode(params[:code],'DECODE',UC_KEY)
-    # render text:"#{text}" and return
+    text = request.ip
+    render text:"#{text}" and return
   }
   if Rails.env.production?
     rescue_from Exception, with: :render_500
@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     end
   end
   def go_nowhere?
-    return @is_ie
+    return (@is_ie and !@is_ie10)
   end
   def go_sub!
     redirect_to '/simple'
@@ -91,6 +91,7 @@ class ApplicationController < ActionController::Base
       modern_required
       return false
     end
+    @application_ie_modern_required = false
     return true
   end
   before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
@@ -355,11 +356,13 @@ class ApplicationController < ActionController::Base
   def user_logged_in_required
     @seo[:title] = '请获取邀请以注册'
     @application_ie_noheader = true
+    @application_ie_user_logged_in_required = true
     render 'user_logged_in_required',:layout => 'application_ie'
   end
   def modern_required
     @seo[:title] = '请使用更高版本的浏览器'
     @application_ie_noheader = true
+    @application_ie_modern_required = true
     render 'modern_required',:layout => 'application_ie'
   end
   

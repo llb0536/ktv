@@ -5,8 +5,10 @@ class Comment
   
   include BaseModel
   def self.real_create(params,current_user)
-    comment = Comment.new(params[:comment])
-    comment.commentable_type = comment.commentable_type.titleize
+    comment = Comment.new
+    comment.body = params[:comment]['body']
+    comment.commentable_id = params[:comment]['commentable_id']
+    comment.commentable_type = params[:comment]['commentable_type'].titleize
     comment.user_id = current_user.id
     return [comment.save,comment]
   end
@@ -37,6 +39,7 @@ class Comment
   belongs_to :commentable, :polymorphic => true
   belongs_to :ask, :foreign_key => "commentable_id"
   belongs_to :answer, :foreign_key => "commentable_id"
+  belongs_to :courseware, :foreign_key => "commentable_id"
   
   belongs_to :user
   has_many :logs, :class_name => "Log", :foreign_key => "target_id"
@@ -48,21 +51,6 @@ class Comment
 
   validates_presence_of :body
   validates_length_of :body,:maximum=>4000
-  def msg_center_action
-    if 'Answer'==self.commentable_type
-      send_to_msg_center({
-        "SourceId"=>"",
-        "MsgType"=>30,
-        "MsgSubType"=>3010,
-        "Receiver"=>self.commentable.user.zhaopin_ud,
-        "Sender"=>"#{self.user.name}",
-        "SenderUrl"=>"http://kejian.tv/users/#{self.user.slug}",
-        "SendContent"=>"<P><a href=\"http://kejian.tv/users/#{self.user.id}\">#{self.user.name}</a>评论了你的解答“<a href=\"http://kejian.tv/asks/#{self.commentable.ask.id}\">#{self.commentable.ask.title}</a>”。</P>",
-        "SendContentUrl"=>"",
-        "OperateUrl"=>""
-    	})
-    end
-  end
 
   # 敏感词验证
   before_validation :check_spam_words
@@ -97,8 +85,12 @@ class Comment
       log.target_parent_id = (self.answer and self.answer.ask) ? self.answer.ask.id : ""
       log.target_parent_title = (self.answer and self.answer.ask) ? self.answer.ask.title : ""
       log.title = self.commentable_id
-    else
+    elsif self.commentable_type == "Ask"
       log.target_parent_title = self.ask ? self.ask.title : ""
+      log.target_parent_id = self.commentable_id
+      log.title = log.target_parent_title
+    elsif self.commentable_type == "Courseware"
+      log.target_parent_title = self.courseware ? self.courseware.title : ""
       log.target_parent_id = self.commentable_id
       log.title = log.target_parent_title
     end

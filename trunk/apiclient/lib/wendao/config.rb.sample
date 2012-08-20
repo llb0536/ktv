@@ -1,3 +1,0 @@
-SERVER_endpoint = "http://api.kejian.tv"
-CLIENT_client_id = "YOURCLIENTID"
-CLIENT_client_secred = "YOURCLIENTSECRET"

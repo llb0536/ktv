@@ -61,6 +61,7 @@ class Courseware
     self.user.inc(:coursewares_count,-1) if self.user
     self.uploader.inc(:upload_count,-1) if self.uploader
     Util.bad_id_out_of!(User,:thanked_courseware_ids,bad_ids)
+    Util.del_propogate_to(Comment,:_id,self.comments.collect(&:id))
     thanked = false
     User.where(:thanked_courseware_ids=>self.id).each do |u|
       u.inc(:thank_coursewares_count,-1)
@@ -105,6 +106,8 @@ class Courseware
   field :views_count, :type => Integer, :default => 0
   field :downloads_count, :type => Integer, :default => 0
   field :version, :type => Integer, :default => 0
+  field :thanked_user_ids,:type=>Array,:default => []
+  has_many :comments, as: :commentable
   #-=xunlei=-
   field :xunlei_url
   belongs_to :user

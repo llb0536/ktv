@@ -48,7 +48,7 @@ module BaseModel
     return true if current_user and self.respond_to?(:user_id) and current_user.id==self.user_id
     self.deleted.nil? or 0==self.deleted
   end
-  
+
   module ClassMethods
     def cache_consultant(child,opts={})
       selfname=self.name.to_s.downcase.pluralize

@@ -1,3 +1,6 @@
+<% content_for :armpit do %>
+<%= stylesheet_link_tag 'ktv/__ytb' %>
+<% end %>
 <% content_for :butt2 do %>
 KTV.data = {
   courseware_id: '<%=@courseware.id%>'
@@ -47,7 +50,7 @@ KTV.data = {
 
     <div class="extras" style="float:right;margin-right:40px">
       <ul class="delimited share" style="margin-bottom:0;border-top:none">
-        <li class="dianjiliang" style="border-top:none">点击量 <a href="#watch-view-count"><%= number_with_delimiter @courseware.views_count %> 次</a></li>
+        <li class="dianjiliang" style="border-top:none">下载量 <a href="#watch-view-count"><%= number_with_delimiter @courseware.views_count %> 次</a></li>
       </ul>
     </div>
     
@@ -181,626 +184,573 @@ KTV.data = {
   <div class="wrapper">
     <div class="main">
       <ul>
-        <li class="current"><a href="#description">Explore</a></li>
-        <li><a class="likes" href="#fans">79 Fans</a></li>
+        <li class="current"><a href="#">课件评论</a></li>
+      </ul>
+      <!-- <ul>
+        <li class="current"><a href="#description">课件评论</a></li>
+        <li><a class="likes" href="#fans">79 喜欢</a></li>
+      </ul> -->
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="__ytb">
+  <div id="watch-main-container" style="padding-top:20px">
+      <div id="watch-main">
+        <div id="watch-panel">
+              <div id="flash10-promo-div" class="yt-alert yt-alert-default yt-alert-warn hid ">  <div class="yt-alert-icon">
+      <img alt="Alert icon" class="icon master-sprite" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+    </div>
+  <div class="yt-alert-buttons">  <button role="button" data-close-parent-class="yt-alert" onclick=";return false;" class="close yt-uix-close yt-uix-button yt-uix-button-close" type="button"><span class="yt-uix-button-content">Close </span></button>
+  </div><div role="alert" class="yt-alert-content">    <span class="yt-alert-vertical-trick"></span>
+      <div class="yt-alert-message">
+              Upgrade to the latest Flash Player for improved playback performance. <a onmousedown="urchinTracker('/Events/VideoWatch/GetFlashUpgrade');" href="http://www.adobe.com/go/getflashplayer/">Upgrade now</a> or <a href="//support.google.com/youtube/bin/answer.py?answer=95402">more info</a>.
+      </div>
+  </div></div>
+
+    <div id="watch-actions">
+            <div id="watch-actions-right">
+      <span class="watch-view-count">
+        <strong><%= @courseware.views_count %></strong>
+  点击
+      </span>
+      <button role="button" data-button-action="yt.www.watch.actions.stats" class="yt-uix-tooltip yt-uix-tooltip-reverse yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" id="watch-insight-button" type="button" title="Show video statistics" onclick=";return false;"><span class="yt-uix-button-icon-wrapper"><img alt="Show video statistics" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-insight"><span class="yt-valign-trick"></span></span></button>
+    </div>
+
+          <span data-button-toggle-group="optional" class="yt-uix-button-group " id="watch-like-unlike"><button role="button" data-button-action="yt.www.watch.actions.like" data-button-toggle="true" id="watch-like" class="start yt-uix-tooltip-reverse  yt-uix-button yt-uix-button-default yt-uix-tooltip" type="button" title="I like this" onclick=";return false;"><span class="yt-uix-button-icon-wrapper"><img alt="I like this" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-like"><span class="yt-valign-trick"></span></span><span class="yt-uix-button-content">Like </span></button><button role="button" data-button-action="yt.www.watch.actions.unlike" data-button-toggle="true" id="watch-unlike" class="end yt-uix-tooltip-reverse  yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button" title="I dislike this" onclick=";return false;"><span class="yt-uix-button-icon-wrapper"><img alt="I dislike this" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-unlike"><span class="yt-valign-trick"></span></span></button></span>
+
+
+    <button role="button" data-button-action="yt.www.watch.actions.addto" title="Add to favorites or playlist" onclick=";return false;" class="yt-uix-tooltip-reverse  yt-uix-button yt-uix-button-default yt-uix-tooltip" type="button" data-tooltip-text="Add to favorites or playlist"><span class="yt-uix-button-content"><span class="addto-label">Add to</span> </span></button>
+
+
+      <button role="button" data-button-action="yt.www.watch.actions.share" id="watch-share" class="yt-uix-tooltip-reverse yt-uix-button yt-uix-button-default yt-uix-tooltip" type="button" title="Share or embed this video" onclick=";return false;"><span class="yt-uix-button-content">Share </span></button>
+
+      <button role="button" data-button-action="yt.www.watch.actions.flag" id="watch-flag" class="yt-uix-tooltip-reverse  yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button" title="Flag as inappropriate" onclick=";return false;" data-tooltip-text="Flag as inappropriate"><span class="yt-uix-button-icon-wrapper"><img alt="Flag as inappropriate" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-flag"><span class="yt-valign-trick"></span></span></button>
+
+
+
+
+    </div>
+
+    <div class="hid" id="watch-actions-area-container">
+      <div class="yt-rounded" id="watch-actions-area">
+          <div class="watch-actions-panel hid" id="watch-actions-loading">
+  Loading...
+    </div>
+
+      <div class="watch-actions-panel hid" id="watch-actions-error">
+      <div class="yt-alert yt-alert-naked yt-alert-error  ">  <div class="yt-alert-icon">
+      <img alt="Alert icon" class="icon master-sprite" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+    </div>
+  <div id="watch-error-string" role="alert" class="yt-alert-content"></div></div>
+    </div>
+
+
+    <div class="watch-actions-panel hid" id="watch-actions-addto"></div>
+
+      <div class="watch-actions-panel hid" id="watch-actions-share">
+      <div id="watch-actions-share-loading">
+  Loading...
+      </div>
+      <div class="hid" id="watch-actions-share-panel"></div>
+    </div>
+
+
+
+
+
+    <div class="watch-actions-panel hid" id="watch-actions-ajax"></div>
+
+    <div class="close">
+      <img onclick="yt.www.watch.actions.hide();" class="close-button" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+    </div>
+
+      </div>
+    </div>
+
+    <div id="watch-info">
+        <div data-expander-action="yt.www.watch.watch5.handleToggleDescription" class="yt-uix-expander  yt-uix-expander-collapsed" id="watch-description">
+      <div id="watch-description-clip">
+        <p id="watch-uploader-info">
+
+  <a dir="ltr" rel="author" class="yt-uix-sessionlink yt-user-name author" href="/users/<%= @courseware.user_id %>"><%= User.get_name @courseware.user_id %></a> 发布于 <span class="watch-video-date" id="eow-date"><%= timeago @courseware.created_at  %></span>
+
+
+        </p>
+        <div id="watch-description-text">
+          <p id="eow-description"><%= @courseware.desc %></p>
+        </div>
+          <div id="watch-description-extras">
+      <h4>
+  领域:
+      </h4>
+          <p id="eow-category"><a href="/music"><%= link_to "/topics/#{Topic.get_name @courseware.topic_id}", @courseware.topic %></a></p>
+
+
+
+        <h4>License:</h4>
+          <p id="eow-reuse">
+  Standard YouTube License
+    </p>
+
+
+    </div>
+
+      </div>
+
+        <ul id="watch-description-extra-info">
+        <li>
+              <div class="video-extras-sparkbars">
+      <div style="width: 98.0%" class="video-extras-sparkbar-likes"></div>
+      <div style="width: 2.0%" class="video-extras-sparkbar-dislikes"></div>
+    </div>
+    <span class="video-extras-likes-dislikes">
+      <span class="likes">98</span> likes, <span class="dislikes">2</span> dislikes
+    </span>
+
+
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ul>
+
+
+          <div class="yt-horizontal-rule "><span class="first"></span><span class="second"></span><span class="third"></span></div>
+
+    <div class="yt-uix-expander-head" id="watch-description-toggle">
+      <div class="expand" id="watch-description-expand">
+        <button role="button" onclick=";return false;" class="metadata-inline yt-uix-button yt-uix-button-text" type="button"><span class="yt-uix-button-content">Show more <img alt="Show more" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+      </div>
+      <div class="collapse" id="watch-description-collapse">
+        <button role="button" onclick=";return false;" class="metadata-inline yt-uix-button yt-uix-button-text" type="button"><span class="yt-uix-button-content">Show less <img alt="Show less" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+      </div>
+    </div>
+
+
+
+    </div> 
+
+
+    </div>
+
+    <div id="watch-discussion">
+
+
+
+          <div class="" data-type="highlights" id="comments-view">
+          <div class="comment-share-area yt-rounded hid" id="comment-share-area">
+      <div class="comment-share-content">
+        <h4>Link to this comment:</h4>
+        <div>
+          <input type="text" class="comment-share-url yt-uix-form-input-text">
+        </div>
+        <div>
+          <span>Share to:</span>
+            <img action="yt.window.popup('http:\/\/www.facebook.com\/sharer.php?u=http%3A%2F%2Fwww.youtube.com%2Fcomment%3Flc%3D_COMMENT_ID_&amp;t=_COMMENT_TEXT_', {height:440, width:620, scrollbars:true});" class="icon-comment-share icon-comment-share-facebook" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" title="Facebook" alt="">
+            <img action="yt.window.popup('http:\/\/twitter.com\/share?url=http%3A%2F%2Fwww.youtube.com%2Fcomment%3Flc%3D_COMMENT_ID_&amp;text=_COMMENT_TEXT_%3A&amp;via=youtube', {height:650, width:1024, scrollbars:true});" class="icon-comment-share icon-comment-share-twitter" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" title="Twitter" alt="">
+            <img action="yt.window.popup('https:\/\/plus.google.com\/share?url=http%3A%2F%2Fwww.youtube.com%2Fcomment%3Flc%3D_COMMENT_ID_&amp;authuser=0&amp;source=yt', {height:620, width:620, scrollbars:true});" class="icon-comment-share icon-comment-share-googleplus" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" title="Google+" alt="">
+        </div>
+      </div>
+      <div data-action="close-share" class="close comment-action">
+        <img class="close-button" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+      </div>
+    </div>
+
+
+                  <div class="comments-section">
+      <h4>热门评论</h4>
+      <ul class="comment-list">
+
+
+
+    <li data-score="3" data-id="G-DCl1ThRwAITNaeGThpv220N_3QrxKPFQG6HCknGsA" data-author-id="lUyJVrZyZs0A0e2jJhrh5Q" data-author-viewing="False" data-tag="top" class="comment yt-tile-default ">
+
+      <div class="comment-body">
+
+
+    <div class="content-container">
+      <div class="content">
+
+          <div dir="ltr" class="comment-text">
+            <p>god&#65279; i've missed these! more please :D :D :D </p>
+
+          </div>
+
+          <p class="metadata">
+            <span class="author ">
+                  <a dir="ltr" data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" class="yt-uix-sessionlink yt-user-name " href="/user/sinhaxx">sinhaxx</a>
+
+            </span>
+            <span class="time">
+              6 hours ago
+            </span>
+              <span title="3 up, 0 down" class="comments-rating-positive">
+                3
+                <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="comments-rating-thumbs-up">
+              </span>
+          </p>
+      </div>
+
+
+          <div class="comment-actions">
+  <span class="yt-uix-button-group"><button role="button" data-tooltip-show-delay="300" data-action="vote-up" title="Vote Up" onclick=";return false;" class="start comment-action-vote-up comment-action yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button"><span class="yt-uix-button-icon-wrapper"><img alt="Vote Up" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up"><span class="yt-valign-trick"></span></span></button><button role="button" data-tooltip-show-delay="300" data-action="vote-down" title="Vote Down" onclick=";return false;" class="end comment-action-vote-down comment-action yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button"><span class="yt-uix-button-icon-wrapper"><img alt="Vote Down" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down"><span class="yt-valign-trick"></span></span></button></span><span class="yt-uix-button-group"><button role="button" data-upsell="comment" data-action="reply" onclick=";return false;" class="start comment-action link-gplus-lightbox yt-uix-button yt-uix-button-default" type="button"><span class="yt-uix-button-content">Reply </span></button><button aria-activedescendant="" aria-haspopup="true" aria-expanded="false" aria-pressed="false" role="button" data-button-has-sibling-menu="true" onclick=";return false;" class="end flip yt-uix-button yt-uix-button-default yt-uix-button-empty" type="button"><img alt="" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-arrow"><div style="display: none;" class=" yt-uix-button-menu yt-uix-button-menu-default"><ul><li data-action="share" class="comment-action"><span class="yt-uix-button-menu-item">Share</span></li><li data-action="remove" class="comment-action-remove comment-action"><span class="yt-uix-button-menu-item">Remove</span></li><li data-action="flag" class="comment-action"><span class="yt-uix-button-menu-item">Flag for spam</span></li><li data-action="block" class="comment-action-block comment-action"><span class="yt-uix-button-menu-item">Block User</span></li><li data-action="unblock" class="comment-action-unblock comment-action"><span class="yt-uix-button-menu-item">Unblock User</span></li></ul></div></button></span>  </div>
+
+    </div>
+
+
+
+      </div>
+    </li>
+
+
+
+
+    <li data-score="3" data-id="G-DCl1ThRwCYybigW1O2z8fNBRizcTO8M5PGGb8UumQ" data-author-id="4xsFbOJ2qhaJuGoaVCM7nw" data-author-viewing="False" data-tag="top" class="comment yt-tile-default  last">
+
+      <div class="comment-body">
+
+
+    <div class="content-container">
+      <div class="content">
+
+          <div dir="ltr" class="comment-text">
+            <p>dammit I&#65279; love alice</p>
+
+          </div>
+
+          <p class="metadata">
+            <span class="author ">
+                  <a dir="ltr" data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" class="yt-uix-sessionlink yt-user-name " href="/user/markitox91">markitox91</a>
+
+            </span>
+            <span class="time">
+              8 hours ago
+            </span>
+              <span title="3 up, 0 down" class="comments-rating-positive">
+                3
+                <img src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="comments-rating-thumbs-up">
+              </span>
+          </p>
+      </div>
+
+
+          <div class="comment-actions">
+  <span class="yt-uix-button-group"><button role="button" data-tooltip-show-delay="300" data-action="vote-up" title="Vote Up" onclick=";return false;" class="start comment-action-vote-up comment-action yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button"><span class="yt-uix-button-icon-wrapper"><img alt="Vote Up" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-up"><span class="yt-valign-trick"></span></span></button><button role="button" data-tooltip-show-delay="300" data-action="vote-down" title="Vote Down" onclick=";return false;" class="end comment-action-vote-down comment-action yt-uix-button yt-uix-button-default yt-uix-tooltip yt-uix-button-empty" type="button"><span class="yt-uix-button-icon-wrapper"><img alt="Vote Down" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-icon yt-uix-button-icon-watch-comment-vote-down"><span class="yt-valign-trick"></span></span></button></span><span class="yt-uix-button-group"><button role="button" data-upsell="comment" data-action="reply" onclick=";return false;" class="start comment-action link-gplus-lightbox yt-uix-button yt-uix-button-default" type="button"><span class="yt-uix-button-content">Reply </span></button><button aria-activedescendant="" aria-haspopup="true" aria-expanded="false" aria-pressed="false" role="button" data-button-has-sibling-menu="true" onclick=";return false;" class="end flip yt-uix-button yt-uix-button-default yt-uix-button-empty" type="button"><img alt="" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="yt-uix-button-arrow"><div style="display: none;" class=" yt-uix-button-menu yt-uix-button-menu-default"><ul><li data-action="share" class="comment-action"><span class="yt-uix-button-menu-item">Share</span></li><li data-action="remove" class="comment-action-remove comment-action"><span class="yt-uix-button-menu-item">Remove</span></li><li data-action="flag" class="comment-action"><span class="yt-uix-button-menu-item">Flag for spam</span></li><li data-action="block" class="comment-action-block comment-action"><span class="yt-uix-button-menu-item">Block User</span></li><li data-action="unblock" class="comment-action-unblock comment-action"><span class="yt-uix-button-menu-item">Unblock User</span></li></ul></div></button></span>  </div>
+
+    </div>
+
+
+
+      </div>
+    </li>
+
+
       </ul>
     </div>
-  </div>
-</section>
 
-<section class="supplimental">
-  <div class="wrapper">
-    <div class="main">
-      <div class="tab-content" id="description" style="display: block;">
 
-          <div class="group">
-            <h1>Other Presentations by this Speaker</h1>
-            <div class="presentations">
-                  <div data-slide-count="32" data-id="4fc8aa4002ee4b002200a98d" class="presentation">
-    <a href="/u/tanoku/p/ruby-is-unlike-a-banana" class="slide_preview scrub setup"><img style="display:none;" data-slide="31" class="timeline" alt="Slide 32" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_31.jpg"><img style="display:none;" data-slide="30" class="timeline" alt="Slide 31" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_30.jpg"><img style="display:none;" data-slide="29" class="timeline" alt="Slide 30" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_29.jpg"><img style="display:none;" data-slide="28" class="timeline" alt="Slide 29" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_28.jpg"><img style="display:none;" data-slide="27" class="timeline" alt="Slide 28" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_27.jpg"><img style="display: none;" data-slide="26" class="timeline" alt="Slide 27" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_26.jpg"><img style="display: none;" data-slide="25" class="timeline" alt="Slide 26" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_25.jpg"><img style="display: none;" data-slide="24" class="timeline" alt="Slide 25" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_24.jpg"><img style="display: none;" data-slide="23" class="timeline" alt="Slide 24" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_23.jpg"><img style="display:none;" data-slide="22" class="timeline" alt="Slide 23" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_22.jpg"><img style="display: none;" data-slide="21" class="timeline" alt="Slide 22" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_21.jpg"><img style="display: none;" data-slide="20" class="timeline" alt="Slide 21" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_20.jpg"><img style="display: none;" data-slide="19" class="timeline" alt="Slide 20" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_19.jpg"><img style="display:none;" data-slide="18" class="timeline" alt="Slide 19" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_18.jpg"><img style="display: none;" data-slide="17" class="timeline" alt="Slide 18" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_17.jpg"><img style="display:none;" data-slide="16" class="timeline" alt="Slide 17" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_16.jpg"><img style="display:none;" data-slide="15" class="timeline" alt="Slide 16" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_15.jpg"><img style="display: none;" data-slide="14" class="timeline" alt="Slide 15" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_14.jpg"><img style="display: none;" data-slide="13" class="timeline" alt="Slide 14" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_13.jpg"><img style="display: none;" data-slide="12" class="timeline" alt="Slide 13" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_12.jpg"><img style="display: none;" data-slide="11" class="timeline" alt="Slide 12" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_11.jpg"><img style="display:none;" data-slide="10" class="timeline" alt="Slide 11" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_10.jpg"><img style="display:none;" data-slide="9" class="timeline" alt="Slide 10" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_9.jpg"><img style="display:none;" data-slide="8" class="timeline" alt="Slide 9" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_8.jpg"><img style="display: none;" data-slide="7" class="timeline" alt="Slide 8" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_7.jpg"><img style="display:none;" data-slide="6" class="timeline" alt="Slide 7" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_6.jpg"><img style="display:none;" data-slide="5" class="timeline" alt="Slide 6" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_5.jpg"><img style="display:none;" data-slide="4" class="timeline" alt="Slide 5" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_4.jpg"><img style="display:none;" data-slide="3" class="timeline" alt="Slide 4" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_3.jpg"><img style="display:none;" data-slide="2" class="timeline" alt="Slide 3" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_2.jpg"><img style="display: none;" data-slide="1" class="timeline" alt="Slide 2" src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_1.jpg">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4fc8aa4002ee4b002200a98d/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width: 3%;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/tanoku/p/ruby-is-unlike-a-banana">Ruby is Unlike a Banana</a></h3>
-      <p class="date">Jun  1, 2012 by <a href="/u/tanoku">Vicent Martí</a></p>
-    </div>
-  </div>
 
-                  <div data-slide-count="77" data-id="4f6f311a933f08001f02161a" class="presentation">
-    <a href="/u/tanoku/p/oh-youre-so-random" class="slide_preview scrub setup"><img style="display:none;" data-slide="76" class="timeline" alt="Slide 77" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_76.jpg"><img style="display:none;" data-slide="75" class="timeline" alt="Slide 76" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_75.jpg"><img style="display:none;" data-slide="74" class="timeline" alt="Slide 75" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_74.jpg"><img style="display:none;" data-slide="73" class="timeline" alt="Slide 74" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_73.jpg"><img style="display:none;" data-slide="72" class="timeline" alt="Slide 73" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_72.jpg"><img style="display:none;" data-slide="71" class="timeline" alt="Slide 72" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_71.jpg"><img style="display:none;" data-slide="70" class="timeline" alt="Slide 71" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_70.jpg"><img style="display:none;" data-slide="69" class="timeline" alt="Slide 70" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_69.jpg"><img style="display:none;" data-slide="68" class="timeline" alt="Slide 69" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_68.jpg"><img style="display:none;" data-slide="67" class="timeline" alt="Slide 68" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_67.jpg"><img style="display:none;" data-slide="66" class="timeline" alt="Slide 67" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_66.jpg"><img style="display:none;" data-slide="65" class="timeline" alt="Slide 66" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_65.jpg"><img style="display:none;" data-slide="64" class="timeline" alt="Slide 65" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_64.jpg"><img style="display:none;" data-slide="63" class="timeline" alt="Slide 64" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_63.jpg"><img style="display:none;" data-slide="62" class="timeline" alt="Slide 63" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_62.jpg"><img style="display: none;" data-slide="61" class="timeline" alt="Slide 62" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_61.jpg"><img style="display:none;" data-slide="60" class="timeline" alt="Slide 61" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_60.jpg"><img style="display:none;" data-slide="59" class="timeline" alt="Slide 60" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_59.jpg"><img style="display:none;" data-slide="58" class="timeline" alt="Slide 59" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_58.jpg"><img style="display:none;" data-slide="57" class="timeline" alt="Slide 58" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_57.jpg"><img style="display:none;" data-slide="56" class="timeline" alt="Slide 57" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_56.jpg"><img style="display:none;" data-slide="55" class="timeline" alt="Slide 56" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_55.jpg"><img style="display:none;" data-slide="54" class="timeline" alt="Slide 55" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_54.jpg"><img style="display:none;" data-slide="53" class="timeline" alt="Slide 54" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_53.jpg"><img style="display:none;" data-slide="52" class="timeline" alt="Slide 53" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_52.jpg"><img style="display:none;" data-slide="51" class="timeline" alt="Slide 52" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_51.jpg"><img style="display:none;" data-slide="50" class="timeline" alt="Slide 51" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_50.jpg"><img style="display:none;" data-slide="49" class="timeline" alt="Slide 50" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_49.jpg"><img style="display:none;" data-slide="48" class="timeline" alt="Slide 49" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_48.jpg"><img style="display:none;" data-slide="47" class="timeline" alt="Slide 48" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_47.jpg"><img style="display:none;" data-slide="46" class="timeline" alt="Slide 47" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_46.jpg"><img style="display:none;" data-slide="45" class="timeline" alt="Slide 46" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_45.jpg"><img style="display:none;" data-slide="44" class="timeline" alt="Slide 45" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_44.jpg"><img style="display:none;" data-slide="43" class="timeline" alt="Slide 44" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_43.jpg"><img style="display:none;" data-slide="42" class="timeline" alt="Slide 43" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_42.jpg"><img style="display:none;" data-slide="41" class="timeline" alt="Slide 42" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_41.jpg"><img style="display:none;" data-slide="40" class="timeline" alt="Slide 41" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_40.jpg"><img style="display:none;" data-slide="39" class="timeline" alt="Slide 40" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_39.jpg"><img style="display:none;" data-slide="38" class="timeline" alt="Slide 39" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_38.jpg"><img style="display:none;" data-slide="37" class="timeline" alt="Slide 38" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_37.jpg"><img style="display:none;" data-slide="36" class="timeline" alt="Slide 37" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_36.jpg"><img style="display:none;" data-slide="35" class="timeline" alt="Slide 36" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_35.jpg"><img style="display:none;" data-slide="34" class="timeline" alt="Slide 35" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_34.jpg"><img style="display:none;" data-slide="33" class="timeline" alt="Slide 34" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_33.jpg"><img style="display:none;" data-slide="32" class="timeline" alt="Slide 33" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_32.jpg"><img style="display:none;" data-slide="31" class="timeline" alt="Slide 32" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_31.jpg"><img style="display:none;" data-slide="30" class="timeline" alt="Slide 31" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_30.jpg"><img style="display:none;" data-slide="29" class="timeline" alt="Slide 30" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_29.jpg"><img style="display:none;" data-slide="28" class="timeline" alt="Slide 29" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_28.jpg"><img style="display:none;" data-slide="27" class="timeline" alt="Slide 28" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_27.jpg"><img style="display:none;" data-slide="26" class="timeline" alt="Slide 27" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_26.jpg"><img style="display:none;" data-slide="25" class="timeline" alt="Slide 26" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_25.jpg"><img style="display:none;" data-slide="24" class="timeline" alt="Slide 25" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_24.jpg"><img style="display:none;" data-slide="23" class="timeline" alt="Slide 24" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_23.jpg"><img style="display:none;" data-slide="22" class="timeline" alt="Slide 23" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_22.jpg"><img style="display:none;" data-slide="21" class="timeline" alt="Slide 22" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_21.jpg"><img style="display:none;" data-slide="20" class="timeline" alt="Slide 21" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_20.jpg"><img style="display:none;" data-slide="19" class="timeline" alt="Slide 20" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_19.jpg"><img style="display:none;" data-slide="18" class="timeline" alt="Slide 19" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_18.jpg"><img style="display:none;" data-slide="17" class="timeline" alt="Slide 18" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_17.jpg"><img style="display:none;" data-slide="16" class="timeline" alt="Slide 17" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_16.jpg"><img style="display:none;" data-slide="15" class="timeline" alt="Slide 16" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_15.jpg"><img style="display:none;" data-slide="14" class="timeline" alt="Slide 15" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_14.jpg"><img style="display:none;" data-slide="13" class="timeline" alt="Slide 14" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_13.jpg"><img style="display:none;" data-slide="12" class="timeline" alt="Slide 13" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_12.jpg"><img style="display:none;" data-slide="11" class="timeline" alt="Slide 12" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_11.jpg"><img style="display:none;" data-slide="10" class="timeline" alt="Slide 11" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_10.jpg"><img style="display:none;" data-slide="9" class="timeline" alt="Slide 10" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_9.jpg"><img style="display: none;" data-slide="8" class="timeline" alt="Slide 9" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_8.jpg"><img style="display:none;" data-slide="7" class="timeline" alt="Slide 8" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_7.jpg"><img style="display:none;" data-slide="6" class="timeline" alt="Slide 7" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_6.jpg"><img style="display:none;" data-slide="5" class="timeline" alt="Slide 6" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_5.jpg"><img style="display:none;" data-slide="4" class="timeline" alt="Slide 5" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_4.jpg"><img style="display:none;" data-slide="3" class="timeline" alt="Slide 4" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_3.jpg"><img style="display:none;" data-slide="2" class="timeline" alt="Slide 3" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_2.jpg"><img style="display:none;" data-slide="1" class="timeline" alt="Slide 2" src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_1.jpg">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4f6f311a933f08001f02161a/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width: 12%;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/tanoku/p/oh-youre-so-random">Oh, you're so random</a></h3>
-      <p class="date">Mar 25, 2012 by <a href="/u/tanoku">Vicent Martí</a></p>
-    </div>
-  </div>
-
-                  <div data-slide-count="27" data-id="4ec44ce646c8f400d20001ba" class="presentation">
-    <a href="/u/tanoku/p/a-talk-about-libgit2" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4ec44ce646c8f400d20001ba/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/tanoku/p/a-talk-about-libgit2">A talk about libgit2</a></h3>
-      <p class="date">Nov 16, 2011 by <a href="/u/tanoku">Vicent Martí</a></p>
-    </div>
-  </div>
-
-            </div>
-          </div>
-
-          <div class="group">
-            <h1>Other Presentations in Programming</h1>
-            <div class="presentations">
-                  <div data-slide-count="69" data-id="4f24d3a79a6510001f008836" class="presentation">
-    <a href="/u/kennethreitz/p/python-for-humans" class="slide_preview scrub setup"><img style="display:none;" data-slide="68" class="timeline" alt="Slide 69" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_68.jpg"><img style="display:none;" data-slide="67" class="timeline" alt="Slide 68" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_67.jpg"><img style="display:none;" data-slide="66" class="timeline" alt="Slide 67" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_66.jpg"><img style="display:none;" data-slide="65" class="timeline" alt="Slide 66" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_65.jpg"><img style="display:none;" data-slide="64" class="timeline" alt="Slide 65" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_64.jpg"><img style="display:none;" data-slide="63" class="timeline" alt="Slide 64" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_63.jpg"><img style="display:none;" data-slide="62" class="timeline" alt="Slide 63" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_62.jpg"><img style="display:none;" data-slide="61" class="timeline" alt="Slide 62" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_61.jpg"><img style="display:none;" data-slide="60" class="timeline" alt="Slide 61" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_60.jpg"><img style="display:none;" data-slide="59" class="timeline" alt="Slide 60" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_59.jpg"><img style="display:none;" data-slide="58" class="timeline" alt="Slide 59" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_58.jpg"><img style="display:none;" data-slide="57" class="timeline" alt="Slide 58" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_57.jpg"><img style="display:none;" data-slide="56" class="timeline" alt="Slide 57" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_56.jpg"><img style="display:none;" data-slide="55" class="timeline" alt="Slide 56" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_55.jpg"><img style="display:none;" data-slide="54" class="timeline" alt="Slide 55" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_54.jpg"><img style="display:none;" data-slide="53" class="timeline" alt="Slide 54" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_53.jpg"><img style="display:none;" data-slide="52" class="timeline" alt="Slide 53" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_52.jpg"><img style="display:none;" data-slide="51" class="timeline" alt="Slide 52" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_51.jpg"><img style="display:none;" data-slide="50" class="timeline" alt="Slide 51" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_50.jpg"><img style="display:none;" data-slide="49" class="timeline" alt="Slide 50" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_49.jpg"><img style="display:none;" data-slide="48" class="timeline" alt="Slide 49" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_48.jpg"><img style="display:none;" data-slide="47" class="timeline" alt="Slide 48" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_47.jpg"><img style="display:none;" data-slide="46" class="timeline" alt="Slide 47" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_46.jpg"><img style="display: none;" data-slide="45" class="timeline" alt="Slide 46" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_45.jpg"><img style="display: none;" data-slide="44" class="timeline" alt="Slide 45" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_44.jpg"><img style="display: none;" data-slide="43" class="timeline" alt="Slide 44" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_43.jpg"><img style="display: none;" data-slide="42" class="timeline" alt="Slide 43" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_42.jpg"><img style="display:none;" data-slide="41" class="timeline" alt="Slide 42" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_41.jpg"><img style="display:none;" data-slide="40" class="timeline" alt="Slide 41" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_40.jpg"><img style="display:none;" data-slide="39" class="timeline" alt="Slide 40" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_39.jpg"><img style="display:none;" data-slide="38" class="timeline" alt="Slide 39" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_38.jpg"><img style="display:none;" data-slide="37" class="timeline" alt="Slide 38" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_37.jpg"><img style="display:none;" data-slide="36" class="timeline" alt="Slide 37" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_36.jpg"><img style="display:none;" data-slide="35" class="timeline" alt="Slide 36" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_35.jpg"><img style="display:none;" data-slide="34" class="timeline" alt="Slide 35" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_34.jpg"><img style="display:none;" data-slide="33" class="timeline" alt="Slide 34" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_33.jpg"><img style="display:none;" data-slide="32" class="timeline" alt="Slide 33" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_32.jpg"><img style="display:none;" data-slide="31" class="timeline" alt="Slide 32" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_31.jpg"><img style="display:none;" data-slide="30" class="timeline" alt="Slide 31" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_30.jpg"><img style="display:none;" data-slide="29" class="timeline" alt="Slide 30" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_29.jpg"><img style="display:none;" data-slide="28" class="timeline" alt="Slide 29" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_28.jpg"><img style="display: none;" data-slide="27" class="timeline" alt="Slide 28" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_27.jpg"><img style="display:none;" data-slide="26" class="timeline" alt="Slide 27" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_26.jpg"><img style="display:none;" data-slide="25" class="timeline" alt="Slide 26" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_25.jpg"><img style="display:none;" data-slide="24" class="timeline" alt="Slide 25" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_24.jpg"><img style="display:none;" data-slide="23" class="timeline" alt="Slide 24" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_23.jpg"><img style="display:none;" data-slide="22" class="timeline" alt="Slide 23" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_22.jpg"><img style="display:none;" data-slide="21" class="timeline" alt="Slide 22" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_21.jpg"><img style="display:none;" data-slide="20" class="timeline" alt="Slide 21" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_20.jpg"><img style="display:none;" data-slide="19" class="timeline" alt="Slide 20" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_19.jpg"><img style="display:none;" data-slide="18" class="timeline" alt="Slide 19" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_18.jpg"><img style="display:none;" data-slide="17" class="timeline" alt="Slide 18" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_17.jpg"><img style="display:none;" data-slide="16" class="timeline" alt="Slide 17" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_16.jpg"><img style="display:none;" data-slide="15" class="timeline" alt="Slide 16" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_15.jpg"><img style="display:none;" data-slide="14" class="timeline" alt="Slide 15" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_14.jpg"><img style="display:none;" data-slide="13" class="timeline" alt="Slide 14" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_13.jpg"><img style="display:none;" data-slide="12" class="timeline" alt="Slide 13" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_12.jpg"><img style="display:none;" data-slide="11" class="timeline" alt="Slide 12" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_11.jpg"><img style="display:none;" data-slide="10" class="timeline" alt="Slide 11" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_10.jpg"><img style="display: none;" data-slide="9" class="timeline" alt="Slide 10" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_9.jpg"><img style="display:none;" data-slide="8" class="timeline" alt="Slide 9" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_8.jpg"><img style="display:none;" data-slide="7" class="timeline" alt="Slide 8" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_7.jpg"><img style="display:none;" data-slide="6" class="timeline" alt="Slide 7" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_6.jpg"><img style="display:none;" data-slide="5" class="timeline" alt="Slide 6" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_5.jpg"><img style="display:none;" data-slide="4" class="timeline" alt="Slide 5" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_4.jpg"><img style="display: none;" data-slide="3" class="timeline" alt="Slide 4" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_3.jpg"><img style="display:none;" data-slide="2" class="timeline" alt="Slide 3" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_2.jpg"><img style="display:none;" data-slide="1" class="timeline" alt="Slide 2" src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_1.jpg">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4f24d3a79a6510001f008836/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width: 1%;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/kennethreitz/p/python-for-humans">Python for Humans</a></h3>
-      <p class="date">Aug 19, 2012 by <a href="/u/kennethreitz">Kenneth Reitz</a></p>
-    </div>
-  </div>
-
-                  <div data-slide-count="65" data-id="5030a6d7edfca800020280a7" class="presentation">
-    <a href="/u/clkao/p/livescript-tax-free-javascript" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/5030a6d7edfca800020280a7/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/clkao/p/livescript-tax-free-javascript">LiveScript - tax-free JavaScript</a></h3>
-      <p class="date">Aug 19, 2012 by <a href="/u/clkao">clkao</a></p>
-    </div>
-  </div>
-
-                  <div data-slide-count="12" data-id="50317c178bc57e00020076f5" class="presentation">
-    <a href="/u/nathan_claburn/p/linux-loves-ruby-with-speaker-notes" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/50317c178bc57e00020076f5/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/nathan_claburn/p/linux-loves-ruby-with-speaker-notes">Linux Loves Ruby with Speaker Notes</a></h3>
-      <p class="date">Aug 19, 2012 by <a href="/u/nathan_claburn">Nathan Claburn</a></p>
-    </div>
-  </div>
-
-            </div>
-          </div>
-
-          <div class="group">
-            <h1>Featured Presentations</h1>
-            <div class="presentations">
-                  <div data-slide-count="55" data-id="4ff713abb5c1770021049c4b" class="presentation">
-    <a href="/u/tanoku/p/intergalactic-javascript-robots-from-outer-space" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4ff713abb5c1770021049c4b/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/tanoku/p/intergalactic-javascript-robots-from-outer-space">Intergalactic Javascript Robots from Outer Space</a></h3>
-      <p class="date">Jul  6, 2012 by <a href="/u/tanoku">Vicent Martí</a></p>
-    </div>
-  </div>
-
-                  <div data-slide-count="53" data-id="4fd222bc469d200187028ae4" class="presentation">
-    <a href="/u/frogandcode/p/in-the-pink-a-labor-of-love" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4fd222bc469d200187028ae4/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/frogandcode/p/in-the-pink-a-labor-of-love">In The Pink: A Labor of Love</a></h3>
-      <p class="date">Jun  8, 2012 by <a href="/u/frogandcode">Rich Thornett</a></p>
-    </div>
-  </div>
-
-                  <div data-slide-count="17" data-id="4fd1c5665d50290183010ab1" class="presentation">
-    <a href="/u/edds/p/what-the-flash-photography-introduction" class="slide_preview scrub">
-        <img src="https://speakerd.s3.amazonaws.com/presentations/4fd1c5665d50290183010ab1/thumb_slide_0.jpg" alt="Thumb_slide_0">
-        <div class="scrubber"><div style="width:0;" class="scrubbed"></div></div>
-    </a>
-    <div class="preview_info">
-      <h3><a href="/u/edds/p/what-the-flash-photography-introduction">What the flash - Photography Introduction</a></h3>
-      <p class="date">Jun  8, 2012 by <a href="/u/edds">Edd S</a></p>
-    </div>
-  </div>
-
-            </div>
-          </div>
+    <div class="comments-section ">
+      <div id="comments-header-container">
+        <div id="comments-header">
+            <a href="/all_comments?v=j6AwkGZYbds" class="comments-section-see-all">
+  see all
+            </a>
+          <h4>
+  所有评论
+            <span class="comments-section-stat">(<%= @courseware.comments_count %>)</span>
+          </h4>
+        </div>
       </div>
 
-      <div class="tab-content" id="fans" style="display: none;">
-        <h1>Fans of this Presentation
-        </h1>
-        <table>  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/eforme02"><img src="//secure.gravatar.com/avatar/ed3dfb55ce881156711f93ad7336a107?s=47" alt="Ed3dfb55ce881156711f93ad7336a107?s=47"></a></td>
-    <td class="user"><a href="/u/eforme02">eforme02</a></td>
-    <td class="data"><a href="/u/eforme02">0 Presentations</a></td>
-    <td class="data"><a href="/u/eforme02/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/pcolombo"><img src="//secure.gravatar.com/avatar/b121fd34d5ffef12fd8e1a7057ab940a?s=47" alt="B121fd34d5ffef12fd8e1a7057ab940a?s=47"></a></td>
-    <td class="user"><a href="/u/pcolombo">pcolombo</a></td>
-    <td class="data"><a href="/u/pcolombo">0 Presentations</a></td>
-    <td class="data"><a href="/u/pcolombo/l">7 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/matthewmccullough"><img src="//secure.gravatar.com/avatar/bededa744012c87721d68f69342f81b0?s=47" alt="Bededa744012c87721d68f69342f81b0?s=47"></a></td>
-    <td class="user"><a href="/u/matthewmccullough">Matthew McCullough</a></td>
-    <td class="data"><a href="/u/matthewmccullough">18 Presentations</a></td>
-    <td class="data"><a href="/u/matthewmccullough/l">28 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/shawndavenport"><img src="//secure.gravatar.com/avatar/da871a1ac933724a6678bd89949b19c7?s=47" alt="Da871a1ac933724a6678bd89949b19c7?s=47"></a></td>
-    <td class="user"><a href="/u/shawndavenport">Shawn Davenport</a></td>
-    <td class="data"><a href="/u/shawndavenport">0 Presentations</a></td>
-    <td class="data"><a href="/u/shawndavenport/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/tomb"><img src="//secure.gravatar.com/avatar/effcce515ba7489dae020fa1661a4639?s=47" alt="Effcce515ba7489dae020fa1661a4639?s=47"></a></td>
-    <td class="user"><a href="/u/tomb">tomb</a></td>
-    <td class="data"><a href="/u/tomb">0 Presentations</a></td>
-    <td class="data"><a href="/u/tomb/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/randylien"><img src="//secure.gravatar.com/avatar/130a1cfc16ea7b4c12537e1bc0e32ff4?s=47" alt="130a1cfc16ea7b4c12537e1bc0e32ff4?s=47"></a></td>
-    <td class="user"><a href="/u/randylien">randylien</a></td>
-    <td class="data"><a href="/u/randylien">0 Presentations</a></td>
-    <td class="data"><a href="/u/randylien/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/btbytes"><img src="//secure.gravatar.com/avatar/84c3eab99b7425d6b614ba6d11402d6b?s=47" alt="84c3eab99b7425d6b614ba6d11402d6b?s=47"></a></td>
-    <td class="user"><a href="/u/btbytes">btbytes</a></td>
-    <td class="data"><a href="/u/btbytes">0 Presentations</a></td>
-    <td class="data"><a href="/u/btbytes/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/nrrrdcore"><img src="//secure.gravatar.com/avatar/cbfa54275010d81ff786ef9b2a711d38?s=47" alt="Cbfa54275010d81ff786ef9b2a711d38?s=47"></a></td>
-    <td class="user"><a href="/u/nrrrdcore">nrrrdcore</a></td>
-    <td class="data"><a href="/u/nrrrdcore">1 Presentation</a></td>
-    <td class="data"><a href="/u/nrrrdcore/l">11 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/jonmagic"><img src="//secure.gravatar.com/avatar/7064ad438246a02809c85bcd92cb5f3f?s=47" alt="7064ad438246a02809c85bcd92cb5f3f?s=47"></a></td>
-    <td class="user"><a href="/u/jonmagic">Jon Hoyt</a></td>
-    <td class="data"><a href="/u/jonmagic">3 Presentations</a></td>
-    <td class="data"><a href="/u/jonmagic/l">31 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/ultrayoshi"><img src="//secure.gravatar.com/avatar/36fc3b3220704ea4f1c2df9fd37cb25c?s=47" alt="36fc3b3220704ea4f1c2df9fd37cb25c?s=47"></a></td>
-    <td class="user"><a href="/u/ultrayoshi">ultrayoshi</a></td>
-    <td class="data"><a href="/u/ultrayoshi">0 Presentations</a></td>
-    <td class="data"><a href="/u/ultrayoshi/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mmozuras"><img src="//secure.gravatar.com/avatar/b5009f255a6f0c386d40d6143948df8e?s=47" alt="B5009f255a6f0c386d40d6143948df8e?s=47"></a></td>
-    <td class="user"><a href="/u/mmozuras">Mindaugas Mozūras</a></td>
-    <td class="data"><a href="/u/mmozuras">3 Presentations</a></td>
-    <td class="data"><a href="/u/mmozuras/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/boton"><img src="//secure.gravatar.com/avatar/ce4a4da9ea6365c0e07d8264eeba1b7d?s=47" alt="Ce4a4da9ea6365c0e07d8264eeba1b7d?s=47"></a></td>
-    <td class="user"><a href="/u/boton">boton</a></td>
-    <td class="data"><a href="/u/boton">0 Presentations</a></td>
-    <td class="data"><a href="/u/boton/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/eshiota"><img src="//secure.gravatar.com/avatar/fa59eb5159c978e2577e65f45fa9171f?s=47" alt="Fa59eb5159c978e2577e65f45fa9171f?s=47"></a></td>
-    <td class="user"><a href="/u/eshiota">eshiota</a></td>
-    <td class="data"><a href="/u/eshiota">1 Presentation</a></td>
-    <td class="data"><a href="/u/eshiota/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/aobyrne"><img src="//secure.gravatar.com/avatar/7a97872ebe1eb6e4e40c9cd05004efaf?s=47" alt="7a97872ebe1eb6e4e40c9cd05004efaf?s=47"></a></td>
-    <td class="user"><a href="/u/aobyrne">aobyrne</a></td>
-    <td class="data"><a href="/u/aobyrne">0 Presentations</a></td>
-    <td class="data"><a href="/u/aobyrne/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mox"><img src="//secure.gravatar.com/avatar/0e9023072f4668405f20f922ea224ba2?s=47" alt="0e9023072f4668405f20f922ea224ba2?s=47"></a></td>
-    <td class="user"><a href="/u/mox">mox</a></td>
-    <td class="data"><a href="/u/mox">0 Presentations</a></td>
-    <td class="data"><a href="/u/mox/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/zhuochun"><img src="//secure.gravatar.com/avatar/df02868b2a3ef9c280f0ac9b51326fdf?s=47" alt="Df02868b2a3ef9c280f0ac9b51326fdf?s=47"></a></td>
-    <td class="user"><a href="/u/zhuochun">zhuochun</a></td>
-    <td class="data"><a href="/u/zhuochun">0 Presentations</a></td>
-    <td class="data"><a href="/u/zhuochun/l">46 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/krsiakdaniel"><img src="//secure.gravatar.com/avatar/1aa42c355cb22837577531ad1e758174?s=47" alt="1aa42c355cb22837577531ad1e758174?s=47"></a></td>
-    <td class="user"><a href="/u/krsiakdaniel">Daniel Krsiak</a></td>
-    <td class="data"><a href="/u/krsiakdaniel">0 Presentations</a></td>
-    <td class="data"><a href="/u/krsiakdaniel/l">44 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/deone"><img src="//secure.gravatar.com/avatar/eaa46ec84466e02192324b80394e61c4?s=47" alt="Eaa46ec84466e02192324b80394e61c4?s=47"></a></td>
-    <td class="user"><a href="/u/deone">deone</a></td>
-    <td class="data"><a href="/u/deone">0 Presentations</a></td>
-    <td class="data"><a href="/u/deone/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/romainhuet"><img src="//secure.gravatar.com/avatar/fba7af5f6f3068ec21c80f9ea45d7870?s=47" alt="Fba7af5f6f3068ec21c80f9ea45d7870?s=47"></a></td>
-    <td class="user"><a href="/u/romainhuet">Romain Huet</a></td>
-    <td class="data"><a href="/u/romainhuet">0 Presentations</a></td>
-    <td class="data"><a href="/u/romainhuet/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/peterdesmet"><img src="//secure.gravatar.com/avatar/3b2ece5140ea5701584ebd02570c1066?s=47" alt="3b2ece5140ea5701584ebd02570c1066?s=47"></a></td>
-    <td class="user"><a href="/u/peterdesmet">Peter Desmet</a></td>
-    <td class="data"><a href="/u/peterdesmet">5 Presentations</a></td>
-    <td class="data"><a href="/u/peterdesmet/l">7 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/apierre_cardoso"><img src="//secure.gravatar.com/avatar/7a32fbf680e3f7c0d5b6a0cf58cefd77?s=47" alt="7a32fbf680e3f7c0d5b6a0cf58cefd77?s=47"></a></td>
-    <td class="user"><a href="/u/apierre_cardoso">apierre_cardoso</a></td>
-    <td class="data"><a href="/u/apierre_cardoso">0 Presentations</a></td>
-    <td class="data"><a href="/u/apierre_cardoso/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mattgraham"><img src="//secure.gravatar.com/avatar/25d643886852ad60d0efe0b3190a53dd?s=47" alt="25d643886852ad60d0efe0b3190a53dd?s=47"></a></td>
-    <td class="user"><a href="/u/mattgraham">Matt Graham</a></td>
-    <td class="data"><a href="/u/mattgraham">1 Presentation</a></td>
-    <td class="data"><a href="/u/mattgraham/l">23 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/foca"><img src="//secure.gravatar.com/avatar/e2eac01661fd490189a527b41c81a91c?s=47" alt="E2eac01661fd490189a527b41c81a91c?s=47"></a></td>
-    <td class="user"><a href="/u/foca">foca</a></td>
-    <td class="data"><a href="/u/foca">2 Presentations</a></td>
-    <td class="data"><a href="/u/foca/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/garu"><img src="//secure.gravatar.com/avatar/61b5b85f52e192cbf2af402728756479?s=47" alt="61b5b85f52e192cbf2af402728756479?s=47"></a></td>
-    <td class="user"><a href="/u/garu">Bruno Henrique</a></td>
-    <td class="data"><a href="/u/garu">1 Presentation</a></td>
-    <td class="data"><a href="/u/garu/l">24 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/pixelwhip"><img src="//secure.gravatar.com/avatar/aa0c71ca5d4c3e9bab9eba7fa24f9bfd?s=47" alt="Aa0c71ca5d4c3e9bab9eba7fa24f9bfd?s=47"></a></td>
-    <td class="user"><a href="/u/pixelwhip">pixelwhip</a></td>
-    <td class="data"><a href="/u/pixelwhip">1 Presentation</a></td>
-    <td class="data"><a href="/u/pixelwhip/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/sha92"><img src="//secure.gravatar.com/avatar/be58cde47eecdf076b7503d4e7212a8d?s=47" alt="Be58cde47eecdf076b7503d4e7212a8d?s=47"></a></td>
-    <td class="user"><a href="/u/sha92">sha92</a></td>
-    <td class="data"><a href="/u/sha92">0 Presentations</a></td>
-    <td class="data"><a href="/u/sha92/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/legomaster"><img src="//secure.gravatar.com/avatar/c8ecc5ee47da7f1879099f603767ead4?s=47" alt="C8ecc5ee47da7f1879099f603767ead4?s=47"></a></td>
-    <td class="user"><a href="/u/legomaster">Travis Smith</a></td>
-    <td class="data"><a href="/u/legomaster">2 Presentations</a></td>
-    <td class="data"><a href="/u/legomaster/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mihaipaun"><img src="//secure.gravatar.com/avatar/f653bba43bf9990d0547bbdac6e97bb2?s=47" alt="F653bba43bf9990d0547bbdac6e97bb2?s=47"></a></td>
-    <td class="user"><a href="/u/mihaipaun">mihaipaun</a></td>
-    <td class="data"><a href="/u/mihaipaun">0 Presentations</a></td>
-    <td class="data"><a href="/u/mihaipaun/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/hiteca"><img src="//secure.gravatar.com/avatar/f54bf20a6ff4b4ecc285be230e37874e?s=47" alt="F54bf20a6ff4b4ecc285be230e37874e?s=47"></a></td>
-    <td class="user"><a href="/u/hiteca">Eido NABESHIMA</a></td>
-    <td class="data"><a href="/u/hiteca">0 Presentations</a></td>
-    <td class="data"><a href="/u/hiteca/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/wufeng"><img src="//secure.gravatar.com/avatar/ea88f309cabccbfc0c7b9259334425dc?s=47" alt="Ea88f309cabccbfc0c7b9259334425dc?s=47"></a></td>
-    <td class="user"><a href="/u/wufeng">wu feng</a></td>
-    <td class="data"><a href="/u/wufeng">0 Presentations</a></td>
-    <td class="data"><a href="/u/wufeng/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/rickschmoo"><img src="//secure.gravatar.com/avatar/6f2a386699caf9ca94866962d133744c?s=47" alt="6f2a386699caf9ca94866962d133744c?s=47"></a></td>
-    <td class="user"><a href="/u/rickschmoo">rickschmoo</a></td>
-    <td class="data"><a href="/u/rickschmoo">0 Presentations</a></td>
-    <td class="data"><a href="/u/rickschmoo/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/siemieniec"><img src="//secure.gravatar.com/avatar/c1be9b9290f95f19caee0279ab650094?s=47" alt="C1be9b9290f95f19caee0279ab650094?s=47"></a></td>
-    <td class="user"><a href="/u/siemieniec">siemieniec</a></td>
-    <td class="data"><a href="/u/siemieniec">0 Presentations</a></td>
-    <td class="data"><a href="/u/siemieniec/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/olivierlacan"><img src="//secure.gravatar.com/avatar/6e77509d7891c1d2230f3240a5652b6e?s=47" alt="6e77509d7891c1d2230f3240a5652b6e?s=47"></a></td>
-    <td class="user"><a href="/u/olivierlacan">Olivier Lacan</a></td>
-    <td class="data"><a href="/u/olivierlacan">1 Presentation</a></td>
-    <td class="data"><a href="/u/olivierlacan/l">11 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/omissis"><img src="//secure.gravatar.com/avatar/067a588103adbbdccb2aa47a8e9a428b?s=47" alt="067a588103adbbdccb2aa47a8e9a428b?s=47"></a></td>
-    <td class="user"><a href="/u/omissis">omissis</a></td>
-    <td class="data"><a href="/u/omissis">3 Presentations</a></td>
-    <td class="data"><a href="/u/omissis/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/todkarpinski"><img src="//secure.gravatar.com/avatar/87ba19e6d3b3a6969538042663f4208b?s=47" alt="87ba19e6d3b3a6969538042663f4208b?s=47"></a></td>
-    <td class="user"><a href="/u/todkarpinski">todkarpinski</a></td>
-    <td class="data"><a href="/u/todkarpinski">1 Presentation</a></td>
-    <td class="data"><a href="/u/todkarpinski/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/xachmoreno"><img src="//secure.gravatar.com/avatar/f0fc36b46754d1efa20a70a088cf007d?s=47" alt="F0fc36b46754d1efa20a70a088cf007d?s=47"></a></td>
-    <td class="user"><a href="/u/xachmoreno">xachmoreno</a></td>
-    <td class="data"><a href="/u/xachmoreno">0 Presentations</a></td>
-    <td class="data"><a href="/u/xachmoreno/l">6 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/nyalab"><img src="//secure.gravatar.com/avatar/0024021f51ce1fdc50564298e72fbf7c?s=47" alt="0024021f51ce1fdc50564298e72fbf7c?s=47"></a></td>
-    <td class="user"><a href="/u/nyalab">nyalab</a></td>
-    <td class="data"><a href="/u/nyalab">0 Presentations</a></td>
-    <td class="data"><a href="/u/nyalab/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/keiththomps"><img src="//secure.gravatar.com/avatar/b9d12499813d6ccf8a1d1610f9a5bfe8?s=47" alt="B9d12499813d6ccf8a1d1610f9a5bfe8?s=47"></a></td>
-    <td class="user"><a href="/u/keiththomps">keiththomps</a></td>
-    <td class="data"><a href="/u/keiththomps">1 Presentation</a></td>
-    <td class="data"><a href="/u/keiththomps/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mkftr"><img src="//secure.gravatar.com/avatar/ddcba6252b013a916c55e73a600f4270?s=47" alt="Ddcba6252b013a916c55e73a600f4270?s=47"></a></td>
-    <td class="user"><a href="/u/mkftr">Ken Matsui</a></td>
-    <td class="data"><a href="/u/mkftr">0 Presentations</a></td>
-    <td class="data"><a href="/u/mkftr/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/lorn"><img src="//secure.gravatar.com/avatar/362b77d943afe986bc6ead2bf11d0e3f?s=47" alt="362b77d943afe986bc6ead2bf11d0e3f?s=47"></a></td>
-    <td class="user"><a href="/u/lorn">lorn</a></td>
-    <td class="data"><a href="/u/lorn">4 Presentations</a></td>
-    <td class="data"><a href="/u/lorn/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/michealclarke531"><img src="//secure.gravatar.com/avatar/57eb2195358193ad4d0c96dc6bfa4ede?s=47" alt="57eb2195358193ad4d0c96dc6bfa4ede?s=47"></a></td>
-    <td class="user"><a href="/u/michealclarke531">micheal clarke</a></td>
-    <td class="data"><a href="/u/michealclarke531">0 Presentations</a></td>
-    <td class="data"><a href="/u/michealclarke531/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/rmcafee"><img src="//secure.gravatar.com/avatar/ffcab69b3a975ac559df86cd24c0b454?s=47" alt="Ffcab69b3a975ac559df86cd24c0b454?s=47"></a></td>
-    <td class="user"><a href="/u/rmcafee">rmcafee</a></td>
-    <td class="data"><a href="/u/rmcafee">0 Presentations</a></td>
-    <td class="data"><a href="/u/rmcafee/l">6 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/doctyper"><img src="//secure.gravatar.com/avatar/361f49c8a3b5cc512d81bf8bcbd7fc2e?s=47" alt="361f49c8a3b5cc512d81bf8bcbd7fc2e?s=47"></a></td>
-    <td class="user"><a href="/u/doctyper">Aleks Dorohovich</a></td>
-    <td class="data"><a href="/u/doctyper">0 Presentations</a></td>
-    <td class="data"><a href="/u/doctyper/l">9 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/micaleel"><img src="//secure.gravatar.com/avatar/26ec13b41765fc4b9d1c41d8089782c3?s=47" alt="26ec13b41765fc4b9d1c41d8089782c3?s=47"></a></td>
-    <td class="user"><a href="/u/micaleel">Khalil Muhammad</a></td>
-    <td class="data"><a href="/u/micaleel">0 Presentations</a></td>
-    <td class="data"><a href="/u/micaleel/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/asselinpaul"><img src="//secure.gravatar.com/avatar/b8348f372e3658f770a42743f73dc5ad?s=47" alt="B8348f372e3658f770a42743f73dc5ad?s=47"></a></td>
-    <td class="user"><a href="/u/asselinpaul">Paul Asselin</a></td>
-    <td class="data"><a href="/u/asselinpaul">0 Presentations</a></td>
-    <td class="data"><a href="/u/asselinpaul/l">7 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/wazery"><img src="//secure.gravatar.com/avatar/58278233d7c0462014b63d2538c811b4?s=47" alt="58278233d7c0462014b63d2538c811b4?s=47"></a></td>
-    <td class="user"><a href="/u/wazery">wazery</a></td>
-    <td class="data"><a href="/u/wazery">0 Presentations</a></td>
-    <td class="data"><a href="/u/wazery/l">14 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/krofdrakula"><img src="//secure.gravatar.com/avatar/a9b044960d076e43d18e07f09f7a15c6?s=47" alt="A9b044960d076e43d18e07f09f7a15c6?s=47"></a></td>
-    <td class="user"><a href="/u/krofdrakula">Klemen Slavič</a></td>
-    <td class="data"><a href="/u/krofdrakula">4 Presentations</a></td>
-    <td class="data"><a href="/u/krofdrakula/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mgrassotti"><img src="//secure.gravatar.com/avatar/9b9536f792ccd2b3641d8e3f9a157167?s=47" alt="9b9536f792ccd2b3641d8e3f9a157167?s=47"></a></td>
-    <td class="user"><a href="/u/mgrassotti">mgrassotti</a></td>
-    <td class="data"><a href="/u/mgrassotti">0 Presentations</a></td>
-    <td class="data"><a href="/u/mgrassotti/l">10 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/tomohiro"><img src="//secure.gravatar.com/avatar/b26ba8ab9e0d6e3f92cbc7f8e320fc11?s=47" alt="B26ba8ab9e0d6e3f92cbc7f8e320fc11?s=47"></a></td>
-    <td class="user"><a href="/u/tomohiro">tomohiro</a></td>
-    <td class="data"><a href="/u/tomohiro">0 Presentations</a></td>
-    <td class="data"><a href="/u/tomohiro/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/stephanvs"><img src="//secure.gravatar.com/avatar/1f063986891404eba90c199707e3580e?s=47" alt="1f063986891404eba90c199707e3580e?s=47"></a></td>
-    <td class="user"><a href="/u/stephanvs">stephanvs</a></td>
-    <td class="data"><a href="/u/stephanvs">0 Presentations</a></td>
-    <td class="data"><a href="/u/stephanvs/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/pminnieur"><img src="//secure.gravatar.com/avatar/85d165e6b5ce978a90cfdc0409571dd9?s=47" alt="85d165e6b5ce978a90cfdc0409571dd9?s=47"></a></td>
-    <td class="user"><a href="/u/pminnieur">Pierre Minnieur</a></td>
-    <td class="data"><a href="/u/pminnieur">0 Presentations</a></td>
-    <td class="data"><a href="/u/pminnieur/l">233 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/barodeur"><img src="//secure.gravatar.com/avatar/ee28d310bc28e785ac41d9b5b673c7e0?s=47" alt="Ee28d310bc28e785ac41d9b5b673c7e0?s=47"></a></td>
-    <td class="user"><a href="/u/barodeur">Paul Chobert</a></td>
-    <td class="data"><a href="/u/barodeur">2 Presentations</a></td>
-    <td class="data"><a href="/u/barodeur/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/emabolo"><img src="//secure.gravatar.com/avatar/e9a1b6f988c3f5c157cfca672f0185ee?s=47" alt="E9a1b6f988c3f5c157cfca672f0185ee?s=47"></a></td>
-    <td class="user"><a href="/u/emabolo">Emanuele Bolognesi</a></td>
-    <td class="data"><a href="/u/emabolo">4 Presentations</a></td>
-    <td class="data"><a href="/u/emabolo/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/jmikola"><img src="//secure.gravatar.com/avatar/f23700b51dc0c196c1dc02f84aeeecdf?s=47" alt="F23700b51dc0c196c1dc02f84aeeecdf?s=47"></a></td>
-    <td class="user"><a href="/u/jmikola">Jeremy Mikola</a></td>
-    <td class="data"><a href="/u/jmikola">5 Presentations</a></td>
-    <td class="data"><a href="/u/jmikola/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/marsam"><img src="//secure.gravatar.com/avatar/f641f504b31c0020276ba40dd6e7e780?s=47" alt="F641f504b31c0020276ba40dd6e7e780?s=47"></a></td>
-    <td class="user"><a href="/u/marsam">marsam</a></td>
-    <td class="data"><a href="/u/marsam">0 Presentations</a></td>
-    <td class="data"><a href="/u/marsam/l">11 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/lshimokawa"><img src="//secure.gravatar.com/avatar/e753eeeab7e49cec4631ed6254ed6bbf?s=47" alt="E753eeeab7e49cec4631ed6254ed6bbf?s=47"></a></td>
-    <td class="user"><a href="/u/lshimokawa">lshimokawa</a></td>
-    <td class="data"><a href="/u/lshimokawa">0 Presentations</a></td>
-    <td class="data"><a href="/u/lshimokawa/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/nickers"><img src="//secure.gravatar.com/avatar/4acfa73ae51a8ed00714ff0be1f453ca?s=47" alt="4acfa73ae51a8ed00714ff0be1f453ca?s=47"></a></td>
-    <td class="user"><a href="/u/nickers">nickers</a></td>
-    <td class="data"><a href="/u/nickers">0 Presentations</a></td>
-    <td class="data"><a href="/u/nickers/l">19 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/dannluciano"><img src="//secure.gravatar.com/avatar/9486298aceeee0f05f029c760d89a248?s=47" alt="9486298aceeee0f05f029c760d89a248?s=47"></a></td>
-    <td class="user"><a href="/u/dannluciano">Dann Luciano</a></td>
-    <td class="data"><a href="/u/dannluciano">0 Presentations</a></td>
-    <td class="data"><a href="/u/dannluciano/l">17 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/mrblue"><img src="//secure.gravatar.com/avatar/d438676da41a3ad982536060c89b8ebb?s=47" alt="D438676da41a3ad982536060c89b8ebb?s=47"></a></td>
-    <td class="user"><a href="/u/mrblue">mrblue</a></td>
-    <td class="data"><a href="/u/mrblue">0 Presentations</a></td>
-    <td class="data"><a href="/u/mrblue/l">47 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/yitsushi"><img src="//secure.gravatar.com/avatar/ce277359083b3fca822f1a1a0fbfe66c?s=47" alt="Ce277359083b3fca822f1a1a0fbfe66c?s=47"></a></td>
-    <td class="user"><a href="/u/yitsushi">yitsushi</a></td>
-    <td class="data"><a href="/u/yitsushi">0 Presentations</a></td>
-    <td class="data"><a href="/u/yitsushi/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/zenstealth"><img src="//secure.gravatar.com/avatar/0c0344f24f72c8b0874e0e6a80e8a974?s=47" alt="0c0344f24f72c8b0874e0e6a80e8a974?s=47"></a></td>
-    <td class="user"><a href="/u/zenstealth">zenstealth</a></td>
-    <td class="data"><a href="/u/zenstealth">0 Presentations</a></td>
-    <td class="data"><a href="/u/zenstealth/l">4 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/guilffer"><img src="//secure.gravatar.com/avatar/c01fa1884adb98ac38b0e982b032ee3f?s=47" alt="C01fa1884adb98ac38b0e982b032ee3f?s=47"></a></td>
-    <td class="user"><a href="/u/guilffer">Guilherme Ferreira</a></td>
-    <td class="data"><a href="/u/guilffer">0 Presentations</a></td>
-    <td class="data"><a href="/u/guilffer/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/samking"><img src="//secure.gravatar.com/avatar/61ac73624e2972f8eaa4aac9311af7c5?s=47" alt="61ac73624e2972f8eaa4aac9311af7c5?s=47"></a></td>
-    <td class="user"><a href="/u/samking">samking</a></td>
-    <td class="data"><a href="/u/samking">0 Presentations</a></td>
-    <td class="data"><a href="/u/samking/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/philipe"><img src="//secure.gravatar.com/avatar/e29f04f339715955060858e0e65e1311?s=47" alt="E29f04f339715955060858e0e65e1311?s=47"></a></td>
-    <td class="user"><a href="/u/philipe">philipe</a></td>
-    <td class="data"><a href="/u/philipe">0 Presentations</a></td>
-    <td class="data"><a href="/u/philipe/l">5 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/andion"><img src="//secure.gravatar.com/avatar/e442cbd2bedf0d3cf25650b8eadf7d49?s=47" alt="E442cbd2bedf0d3cf25650b8eadf7d49?s=47"></a></td>
-    <td class="user"><a href="/u/andion">andion</a></td>
-    <td class="data"><a href="/u/andion">0 Presentations</a></td>
-    <td class="data"><a href="/u/andion/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/dstroii"><img src="//secure.gravatar.com/avatar/f18bf1157e905ffa6346e42c79e15953?s=47" alt="F18bf1157e905ffa6346e42c79e15953?s=47"></a></td>
-    <td class="user"><a href="/u/dstroii">Hervé Mischler</a></td>
-    <td class="data"><a href="/u/dstroii">1 Presentation</a></td>
-    <td class="data"><a href="/u/dstroii/l">10 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/j2deme"><img src="//secure.gravatar.com/avatar/d91ba8f5d99a7769be255489416feaf1?s=47" alt="D91ba8f5d99a7769be255489416feaf1?s=47"></a></td>
-    <td class="user"><a href="/u/j2deme">j2deme</a></td>
-    <td class="data"><a href="/u/j2deme">0 Presentations</a></td>
-    <td class="data"><a href="/u/j2deme/l">6 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/betahost"><img src="//secure.gravatar.com/avatar/9e169c93f0e80af6ba9ff23ceb7ee7da?s=47" alt="9e169c93f0e80af6ba9ff23ceb7ee7da?s=47"></a></td>
-    <td class="user"><a href="/u/betahost">betahost</a></td>
-    <td class="data"><a href="/u/betahost">1 Presentation</a></td>
-    <td class="data"><a href="/u/betahost/l">8 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/xmlblog"><img src="//secure.gravatar.com/avatar/a12fb781b58e74d9fc3ea3c879f4a15b?s=47" alt="A12fb781b58e74d9fc3ea3c879f4a15b?s=47"></a></td>
-    <td class="user"><a href="/u/xmlblog">Christian Romney</a></td>
-    <td class="data"><a href="/u/xmlblog">0 Presentations</a></td>
-    <td class="data"><a href="/u/xmlblog/l">11 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/yakatz"><img src="//secure.gravatar.com/avatar/5177f03f29b85ead87046dd5ce770bde?s=47" alt="5177f03f29b85ead87046dd5ce770bde?s=47"></a></td>
-    <td class="user"><a href="/u/yakatz">yakatz</a></td>
-    <td class="data"><a href="/u/yakatz">0 Presentations</a></td>
-    <td class="data"><a href="/u/yakatz/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/bessarabov"><img src="//secure.gravatar.com/avatar/d0f3ba56744ffc3654bbcf8f96f34626?s=47" alt="D0f3ba56744ffc3654bbcf8f96f34626?s=47"></a></td>
-    <td class="user"><a href="/u/bessarabov">bessarabov</a></td>
-    <td class="data"><a href="/u/bessarabov">0 Presentations</a></td>
-    <td class="data"><a href="/u/bessarabov/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/phearnot"><img src="//secure.gravatar.com/avatar/62b93f3e9650f14bda03fcf7c6d4092b?s=47" alt="62b93f3e9650f14bda03fcf7c6d4092b?s=47"></a></td>
-    <td class="user"><a href="/u/phearnot">Sergey Nazarov</a></td>
-    <td class="data"><a href="/u/phearnot">0 Presentations</a></td>
-    <td class="data"><a href="/u/phearnot/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/fegabe"><img src="//secure.gravatar.com/avatar/314396ecefac97d7cafba790b73d3d7f?s=47" alt="314396ecefac97d7cafba790b73d3d7f?s=47"></a></td>
-    <td class="user"><a href="/u/fegabe">fegabe</a></td>
-    <td class="data"><a href="/u/fegabe">0 Presentations</a></td>
-    <td class="data"><a href="/u/fegabe/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/loige"><img src="//secure.gravatar.com/avatar/31386a2cb727d54ee9388649b439b311?s=47" alt="31386a2cb727d54ee9388649b439b311?s=47"></a></td>
-    <td class="user"><a href="/u/loige">loige</a></td>
-    <td class="data"><a href="/u/loige">0 Presentations</a></td>
-    <td class="data"><a href="/u/loige/l">2 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/softprops"><img src="//secure.gravatar.com/avatar/355a2b203154bf8a9423fcdecf9e44cc?s=47" alt="355a2b203154bf8a9423fcdecf9e44cc?s=47"></a></td>
-    <td class="user"><a href="/u/softprops">softprops</a></td>
-    <td class="data"><a href="/u/softprops">0 Presentations</a></td>
-    <td class="data"><a href="/u/softprops/l">17 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/flrnz"><img src="//secure.gravatar.com/avatar/bd18dc88c9d89677b8d1f6399cc7abd9?s=47" alt="Bd18dc88c9d89677b8d1f6399cc7abd9?s=47"></a></td>
-    <td class="user"><a href="/u/flrnz">flrnz</a></td>
-    <td class="data"><a href="/u/flrnz">0 Presentations</a></td>
-    <td class="data"><a href="/u/flrnz/l">3 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/broccolini"><img src="//secure.gravatar.com/avatar/2d84f9cec8c91449388bfb2b8078ef28?s=47" alt="2d84f9cec8c91449388bfb2b8078ef28?s=47"></a></td>
-    <td class="user"><a href="/u/broccolini">broccolini</a></td>
-    <td class="data"><a href="/u/broccolini">2 Presentations</a></td>
-    <td class="data"><a href="/u/broccolini/l">7 Likes</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/ivanvanderbyl"><img src="//secure.gravatar.com/avatar/9db8544717ba3d5a90afb1b5b9bd50bf?s=47" alt="9db8544717ba3d5a90afb1b5b9bd50bf?s=47"></a></td>
-    <td class="user"><a href="/u/ivanvanderbyl">ivanvanderbyl</a></td>
-    <td class="data"><a href="/u/ivanvanderbyl">1 Presentation</a></td>
-    <td class="data"><a href="/u/ivanvanderbyl/l">1 Like</a></td>
-  </tr>
-  <tr>
-    <td class="avatar"><a class="bio_mugshot" href="/u/v1nc3ntlaw"><img src="//secure.gravatar.com/avatar/4593b4af3a1b42ccb873bc59276c48b8?s=47" alt="4593b4af3a1b42ccb873bc59276c48b8?s=47"></a></td>
-    <td class="user"><a href="/u/v1nc3ntlaw">v1nc3ntlaw</a></td>
-    <td class="data"><a href="/u/v1nc3ntlaw">0 Presentations</a></td>
-    <td class="data"><a href="/u/v1nc3ntlaw/l">4 Likes</a></td>
-  </tr>
-</table>
+            <div class="comments-post-container clearfix">
+  <%= form_for @comment,:remote => true do |f| %>
+      <%= f.hidden_field :commentable_type %>
+      <%= f.hidden_field :commentable_id %>
+      <div class="yt-alert yt-alert-default yt-alert-error hid comments-post-message">  <div class="yt-alert-icon">
+      <img alt="Alert icon" class="icon master-sprite" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+    </div>
+  <div class="yt-alert-buttons"></div><div role="alert" class="yt-alert-content"></div></div>
+
+      <a class="yt-user-photo comments-post-profile" href="/user/pmq20">
+          <span class="video-thumb ux-thumb yt-thumb-square-46 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="46" alt="pmq20" src="<%= avatar_url current_user %>"><span class="vertical-align"></span></span></span></span>
+
+      </a>
+  <div class="comments-textarea-container"><img class="comments-textarea-tip" alt="" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif"><label data-upsell="comment" onclick="yt.www.comments.initForm(this, true, false, false);" class="comments-textarea-label link-gplus-lightbox" id="comment_placeholder">评论一下这个课件吧...</label>
+    <%= f.text_area :body,id:"comment_placeholder_now",class:"yt-uix-form-textarea comments-textarea link-gplus-lightbox" %>
+</div>
+
+      <p class="comments-remaining">
+        还可以输入<span data-max-count="500" class="comments-remaining-count"></span>字
+      </p>
+      <p class="comments-post-buttons">
+        <button role="button" class="comments-post yt-uix-button yt-uix-button-default" type="submit"><span class="yt-uix-button-content">发表评论 </span></button>
+      </p>
+    <% end %>
+
+    </div>
+    <script type="text/javascript" charset="utf-8">
+    <% content_for :butt2 do %>
+      $('#comment_placeholder_now').focus(function(){
+        $('#comment_placeholder').html('');
+        $('.comments-textarea-container img').css('z-index','2');
+        $('.comments-textarea-container textarea').height('78');
+        $('.comments-post-buttons').show();
+      });
+      $('#new_comment').bind('ajax:success',function(event, responseText, ajaxOptions){
+        $('#the_comment-list').prepend(responseText);
+      })
+    <% end %>
+
+    </script>
+
+
+      <ul class="comment-list" id="the_comment-list">
+
+<% @courseware.comments.each do |comment| %>
+
+  <%= render :partial=>'cw_comment',:locals=>{comment:comment} %>
+<% end %>
+
+
+      </ul>
+    </div>
+
+
+
+
+            <div class="comments-section">
+        <div data-ajax-enabled="true" class="comments-pagination">
+
+
+      <div role="navigation" class="yt-uix-pager">
+
+
+
+
+  <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" aria-label="Go to page 1" data-page="1" class="yt-uix-button yt-uix-sessionlink yt-uix-pager-page-num yt-uix-pager-button yt-uix-button-toggled yt-uix-button-default" href="/all_comments?v=j6AwkGZYbds&amp;page=1"><span class="yt-uix-button-content">1</span></a>&nbsp;
+
+
+
+  <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" aria-label="Go to page 2" data-page="2" class="yt-uix-button yt-uix-sessionlink yt-uix-pager-page-num yt-uix-pager-button yt-uix-button-default" href="/all_comments?v=j6AwkGZYbds&amp;page=2"><span class="yt-uix-button-content">2</span></a>&nbsp;
+
+
+
+  <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" aria-label="Go to page 3" data-page="3" class="yt-uix-button yt-uix-sessionlink yt-uix-pager-page-num yt-uix-pager-button yt-uix-button-default" href="/all_comments?v=j6AwkGZYbds&amp;page=3"><span class="yt-uix-button-content">3</span></a>&nbsp;
+
+
+
+  <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" aria-label="Go to page 4" data-page="4" class="yt-uix-button yt-uix-sessionlink yt-uix-pager-page-num yt-uix-pager-button yt-uix-button-default" href="/all_comments?v=j6AwkGZYbds&amp;page=4"><span class="yt-uix-button-content">4</span></a>&nbsp;
+
+
+
+
+  <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D" data-page="2" class="yt-uix-button yt-uix-sessionlink yt-uix-pager-next yt-uix-pager-button yt-uix-button-default" href="/all_comments?v=j6AwkGZYbds&amp;page=2"><span class="yt-uix-button-content">Next »</span></a>&nbsp;
+      </div>
+
+        </div>
+    </div>
+
+
+
+        <ul>
+      <li id="parent-comment-loading" class="hid"> Loading comment...</li>
+    </ul>
+
+      <div class="hid" id="comments-loading">Loading...</div>
+    </div>
+
+
+
+    </div>
+
+        </div>
+        <div id="watch-sidebar">
+
+
+     <div class="watch-sidebar-section" id="watch-context-container">
+        <div class="watch-sidebar-body">
+          <div id="watch-context">
+            <h4 class="context-head">
+              <a href="/?feature=context-gfa" class="context-link">
+                  <img alt="" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif" class="context-icon context-icon-guide-feed">
+                <strong dir="ltr" class="context-title">More from subscriptions</strong>
+              </a>
+              <img alt="" class="context-seeall-icon" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+            </h4>
+              <div class="yt-horizontal-rule "><span class="first"></span><span class="second"></span><span class="third"></span></div>
+
+            <div class="context-body" id="watch-context-body">
+              <ul class="video-list" id="watch-context-item-list">
+                  <li class="video-list-item">
+                      <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=context-gfa&amp;context=G2c0af5cFAAAAAAAAAAA" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=WTKajOEkscY&amp;feature=context-gfa"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/WTKajOEkscY/default.jpg" alt="Voice Of Kibera Community Forum" src="//i4.ytimg.com/vi/WTKajOEkscY/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">8:09</span>
+
+
+    <button role="button" data-video-ids="WTKajOEkscY" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="Voice Of Kibera Community Forum" class="title" dir="ltr">Voice Of Kibera Community Forum</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">KiberaNewsNetwork</span></span><span class="stat view-count">3 views</span></a>
+                  </li>
+                  <li class="video-list-item">
+                      <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=context-gfa&amp;context=G2c0af5cFAAAAAAAAAAA" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=WbcX1o24fug&amp;feature=context-gfa"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/WbcX1o24fug/default.jpg" alt="FRINGE - &quot;Etta&quot; Season Premiere Promo" src="//i4.ytimg.com/vi/WbcX1o24fug/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">0:33</span>
+
+
+    <button role="button" data-video-ids="WbcX1o24fug" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="FRINGE - &quot;Etta&quot; Season Premiere Promo" class="title" dir="ltr">FRINGE - "Etta" Season Premiere Promo</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">FoxBroadcasting</span></span><span class="stat view-count">86,540 views</span></a>
+                  </li>
+                  <li class="video-list-item">
+                      <a data-sessionlink="ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=context-gfa&amp;context=G2c0af5cFAAAAAAAAAAA" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=yO1Pj089po4&amp;feature=context-gfa"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i2.ytimg.com/vi/yO1Pj089po4/default.jpg" alt="HOTEL HELL - Preview #6 from &quot;Cambridge Hotel&quot; airing MON 8/20" src="//i2.ytimg.com/vi/yO1Pj089po4/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">1:40</span>
+
+
+    <button role="button" data-video-ids="yO1Pj089po4" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="HOTEL HELL - Preview #6 from &quot;Cambridge Hotel&quot; airing MON 8/20" class="title" dir="ltr">HOTEL HELL - Preview #6 from "Cambridge Hotel" airing MON 8/20</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">FoxBroadcasting</span></span><span class="stat view-count">1,248 views</span></a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+  <div class="watch-sidebar-section"><h4 class="watch-sidebar-head">Suggestions</h4>  <div class="yt-horizontal-rule "><span class="first"></span><span class="second"></span><span class="third"></span></div>
+  <div class="watch-sidebar-body" id="watch-related-container"><ul class="video-list" id="watch-related"><div class="" id="ppv-container"></div><li class="video-list-item"><a data-sessionlink="ved=CAIQzRooAA%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=iaqFULQMH0E&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i2.ytimg.com/vi/iaqFULQMH0E/default.jpg" alt="Hadouken! - Bad Signal (The Prototypes Remix)" src="//i2.ytimg.com/vi/iaqFULQMH0E/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">4:31</span>
+
+
+    <button role="button" data-video-ids="iaqFULQMH0E" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="Hadouken! - Bad Signal (The Prototypes Remix)" class="title" dir="ltr">Hadouken! - Bad Signal (The Prototypes Remix)</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">3,537 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAMQzRooAQ%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=D9Md6bUNQhI&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i1.ytimg.com/vi/D9Md6bUNQhI/default.jpg" alt="Hadouken! - Bad Signal (Wideboys Radio Edit)" src="//i1.ytimg.com/vi/D9Md6bUNQhI/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">3:36</span>
+
+
+    <button role="button" data-video-ids="D9Md6bUNQhI" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="Hadouken! - Bad Signal (Wideboys Radio Edit)" class="title" dir="ltr">Hadouken! - Bad Signal (Wideboys Radio Edit)</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">3,250 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAQQzRooAg%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=PRAEUhOxbzE&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i1.ytimg.com/vi/PRAEUhOxbzE/default.jpg" alt="HADOUKEN! - BAD SIGNAL (LYRICS)" src="//i1.ytimg.com/vi/PRAEUhOxbzE/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">3:56</span>
+
+
+    <button role="button" data-video-ids="PRAEUhOxbzE" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="HADOUKEN! - BAD SIGNAL (LYRICS)" class="title" dir="ltr">HADOUKEN! - BAD SIGNAL (LYRICS)</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">12,503 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAUQzRooAw%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=K1-QW20ge98&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/K1-QW20ge98/default.jpg" alt="Hadouken! - Bad Signal (Official Video)" src="//i4.ytimg.com/vi/K1-QW20ge98/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">4:00</span>
+
+
+    <button role="button" data-video-ids="K1-QW20ge98" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;" data-tooltip-text="Watch Later"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="Hadouken! - Bad Signal (Official Video)" class="title" dir="ltr">Hadouken! - Bad Signal (Official Video)</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">166,429 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAYQzRooBA%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=rgKaEkxGJWw&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/rgKaEkxGJWw/default.jpg" alt="BLOGDOUKEN 10" src="//i3.ytimg.com/vi/rgKaEkxGJWw/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">6:45</span>
+
+
+    <button role="button" data-video-ids="rgKaEkxGJWw" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 10" class="title" dir="ltr">BLOGDOUKEN 10</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">6,403 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAcQzRooBQ%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=c8I-CYre-bM&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/c8I-CYre-bM/default.jpg" alt="BLOGDOUKEN 14 - PART 1" src="//i4.ytimg.com/vi/c8I-CYre-bM/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">5:39</span>
+
+
+    <button role="button" data-video-ids="c8I-CYre-bM" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 14 - PART 1" class="title" dir="ltr">BLOGDOUKEN 14 - PART 1</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">8,651 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAgQzRooBg%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=zokOOrPmgjg&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/zokOOrPmgjg/default.jpg" alt="BLOGDOUKEN 14 - PART 2" src="//i3.ytimg.com/vi/zokOOrPmgjg/default.jpg" data-group-key="thumb-group-0"><span class="vertical-align"></span></span></span></span><span class="video-time">7:05</span>
+
+
+    <button role="button" data-video-ids="zokOOrPmgjg" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 14 - PART 2" class="title" dir="ltr">BLOGDOUKEN 14 - PART 2</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">10,171 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAkQzRooBw%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=TzM4XHlqPrA&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i1.ytimg.com/vi/TzM4XHlqPrA/default.jpg" alt="BLOGDOUKEN 2" src="//i1.ytimg.com/vi/TzM4XHlqPrA/default.jpg" data-group-key="thumb-group-1"><span class="vertical-align"></span></span></span></span><span class="video-time">5:10</span>
+
+
+    <button role="button" data-video-ids="TzM4XHlqPrA" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 2" class="title" dir="ltr">BLOGDOUKEN 2</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">5,100 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAoQzRooCA%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=GUy7GPyXjkQ&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/GUy7GPyXjkQ/default.jpg" alt="BLOGDOUKEN 4" src="//i4.ytimg.com/vi/GUy7GPyXjkQ/default.jpg" data-group-key="thumb-group-1"><span class="vertical-align"></span></span></span></span><span class="video-time">5:18</span>
+
+
+    <button role="button" data-video-ids="GUy7GPyXjkQ" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 4" class="title" dir="ltr">BLOGDOUKEN 4</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">4,594 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAsQzRooCQ%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=MhyrB4c4odM&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i2.ytimg.com/vi/MhyrB4c4odM/default.jpg" alt="BLOGDOUKEN 7" src="//i2.ytimg.com/vi/MhyrB4c4odM/default.jpg" data-group-key="thumb-group-1"><span class="vertical-align"></span></span></span></span><span class="video-time">4:29</span>
+
+
+    <button role="button" data-video-ids="MhyrB4c4odM" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 7" class="title" dir="ltr">BLOGDOUKEN 7</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">6,450 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CAwQzRooCg%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=FoinmOzoFQs&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/FoinmOzoFQs/default.jpg" alt="BLOGDOUKEN 6" src="//i3.ytimg.com/vi/FoinmOzoFQs/default.jpg" data-group-key="thumb-group-1"><span class="vertical-align"></span></span></span></span><span class="video-time">4:14</span>
+
+
+    <button role="button" data-video-ids="FoinmOzoFQs" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 6" class="title" dir="ltr">BLOGDOUKEN 6</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">6,347 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CA0QzRooCw%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=75kOrFqy-gU&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/75kOrFqy-gU/default.jpg" alt="BLOGDOUKEN 15" src="//i4.ytimg.com/vi/75kOrFqy-gU/default.jpg" data-group-key="thumb-group-1"><span class="vertical-align"></span></span></span></span><span class="video-time">6:08</span>
+
+
+    <button role="button" data-video-ids="75kOrFqy-gU" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 15" class="title" dir="ltr">BLOGDOUKEN 15</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">8,904 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CA4QzRooDA%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=_c4G5NqlGEE&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i4.ytimg.com/vi/_c4G5NqlGEE/default.jpg" alt="BLOGDOUKEN 8" src="//i4.ytimg.com/vi/_c4G5NqlGEE/default.jpg" data-group-key="thumb-group-2"><span class="vertical-align"></span></span></span></span><span class="video-time">3:37</span>
+
+
+    <button role="button" data-video-ids="_c4G5NqlGEE" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 8" class="title" dir="ltr">BLOGDOUKEN 8</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">3,197 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CA8QzRooDQ%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=BPQ2eqpSOzo&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/BPQ2eqpSOzo/default.jpg" alt="BLOGDOUKEN 9" src="//i3.ytimg.com/vi/BPQ2eqpSOzo/default.jpg" data-group-key="thumb-group-2"><span class="vertical-align"></span></span></span></span><span class="video-time">4:38</span>
+
+
+    <button role="button" data-video-ids="BPQ2eqpSOzo" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 9" class="title" dir="ltr">BLOGDOUKEN 9</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">3,396 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBAQzRooDg%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=fKwyqUrojn4&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/fKwyqUrojn4/default.jpg" alt="BLOGDOUKEN 17" src="//i3.ytimg.com/vi/fKwyqUrojn4/default.jpg" data-group-key="thumb-group-2"><span class="vertical-align"></span></span></span></span><span class="video-time">8:49</span>
+
+
+    <button role="button" data-video-ids="fKwyqUrojn4" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 17" class="title" dir="ltr">BLOGDOUKEN 17</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">19,941 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBEQzRooDw%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=jZP18Hjk67Q&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/jZP18Hjk67Q/default.jpg" alt="BLOGDOUKEN 13" src="//i3.ytimg.com/vi/jZP18Hjk67Q/default.jpg" data-group-key="thumb-group-2"><span class="vertical-align"></span></span></span></span><span class="video-time">5:34</span>
+
+
+    <button role="button" data-video-ids="jZP18Hjk67Q" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 13" class="title" dir="ltr">BLOGDOUKEN 13</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">19,738 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBIQzRooEA%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=vmxoiKo3if8&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/vmxoiKo3if8/default.jpg" alt="BLOGDOUKEN 1" src="//i3.ytimg.com/vi/vmxoiKo3if8/default.jpg" data-group-key="thumb-group-2"><span class="vertical-align"></span></span></span></span><span class="video-time">2:49</span>
+
+
+    <button role="button" data-video-ids="vmxoiKo3if8" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 1" class="title" dir="ltr">BLOGDOUKEN 1</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">11,394 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBMQzRooEQ%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=Uh9NKJ-7B_M&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i2.ytimg.com/vi/Uh9NKJ-7B_M/default.jpg" alt="BLOGDOUKEN 3" src="//i2.ytimg.com/vi/Uh9NKJ-7B_M/default.jpg" data-group-key="thumb-group-3"><span class="vertical-align"></span></span></span></span><span class="video-time">5:01</span>
+
+
+    <button role="button" data-video-ids="Uh9NKJ-7B_M" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 3" class="title" dir="ltr">BLOGDOUKEN 3</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">11,492 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBQQzRooEg%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=IrZpDLIll5o&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i2.ytimg.com/vi/IrZpDLIll5o/default.jpg" alt="BLOGDOUKEN 16" src="//i2.ytimg.com/vi/IrZpDLIll5o/default.jpg" data-group-key="thumb-group-3"><span class="vertical-align"></span></span></span></span><span class="video-time">8:34</span>
+
+
+    <button role="button" data-video-ids="IrZpDLIll5o" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 16" class="title" dir="ltr">BLOGDOUKEN 16</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">27,905 views</span></a></li><li class="video-list-item"><a data-sessionlink="ved=CBUQzRooEw%3D%3D&amp;ei=CODC8-HI9bECFYEzpAod5GP2xw%3D%3D&amp;feature=relmfu" class="related-video yt-uix-contextlink  yt-uix-sessionlink" href="/watch?v=RhYjh_9NTGk&amp;feature=relmfu"><span class="ux-thumb-wrap contains-addto "><span class="video-thumb ux-thumb yt-thumb-default-120 "><span class="yt-thumb-clip"><span class="yt-thumb-clip-inner"><img width="120" data-thumb="//i3.ytimg.com/vi/RhYjh_9NTGk/default.jpg" alt="BLOGDOUKEN 11" src="//i3.ytimg.com/vi/RhYjh_9NTGk/default.jpg" data-group-key="thumb-group-3"><span class="vertical-align"></span></span></span></span><span class="video-time">3:31</span>
+
+
+    <button role="button" data-video-ids="RhYjh_9NTGk" class="addto-button video-actions addto-watch-later-button yt-uix-button yt-uix-button-default yt-uix-button-short yt-uix-tooltip" type="button" title="Watch Later" onclick=";return false;"><span class="yt-uix-button-content">  <img alt="Watch Later" src="//s.ytimg.com/yt/img/pixel-vfl3z5WfW.gif">
+   </span></button>
+  </span><span title="BLOGDOUKEN 11" class="title" dir="ltr">BLOGDOUKEN 11</span><span class="stat attribution">by <span dir="ltr" class="yt-user-name ">Hadoukentheband</span></span><span class="stat view-count">3,962 views</span></a></li></ul><ul class="video-list hid" id="watch-more-related"><li id="watch-more-related-loading">Loading more suggestions...</li></ul></div>     <div class="watch-sidebar-foot"><p class="content"><button role="button" data-button-action="yt.www.watch.watch5.handleLoadMoreRelated" class=" yt-uix-button yt-uix-button-default" onclick=";return false;" id="watch-more-related-button" type="button"><span class="yt-uix-button-content">Load more suggestions </span></button></p></div></div> 
+            <span class="yt-vertical-rule-main"></span>
+    <span class="yt-vertical-rule-corner-top"></span>
+    <span class="yt-vertical-rule-corner-bottom"></span>
+
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div style="visibility: hidden; height: 0px; padding: 0px; overflow: hidden;">
+
+
+    <div id="baseDiv"></div>
+
       </div>
     </div>
-    <div class="extras">
-      <h1>Speaker Bio</h1>
-      <p></p>
-      <br>
-      <p><a href="/u/tanoku">View Speaker Details</a></p>
-      <br>
-    </div>
-  </div>
-</section>
-
 </div>
 
 

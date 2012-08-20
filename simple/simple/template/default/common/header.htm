@@ -60,9 +60,23 @@
 
     <div id="header0">
       <div class="wp">
+        <!--{if (substr($_SERVER['SERVER_NAME'],-6) === 'lvh.me') }-->
         <div class="" id="slab1">
           <img src="psvr/assets/header0_1.png" alt="">
-          <a href="http://kejian.tv/?force_main=1">Kejian.TV主站</a>
+          <a href="http://kejian.lvh.me/?force_main=1">Kejian.TV主站</a>
+        </div>
+        <div class="active" id="slab2">
+          <img src="psvr/assets/header0_2.png" alt="">
+          <a href="http://kejian.lvh.me/simple">目录检索区</a>
+        </div>
+        <div id="slab3">
+          <img src="psvr/assets/header0_3.png" alt="">
+          <a href="http://search.kejian.lvh.me/">搜索区</a>
+        </div>
+        <!-- {else} -->
+        <div class="" id="slab1">
+          <img src="psvr/assets/header0_1.png" alt="">
+          <a href="http://kejian./?force_main=1">Kejian.TV主站</a>
         </div>
         <div class="active" id="slab2">
           <img src="psvr/assets/header0_2.png" alt="">
@@ -72,6 +86,7 @@
           <img src="psvr/assets/header0_3.png" alt="">
           <a href="http://search.kejian.tv/">搜索区</a>
         </div>
+        <!-- {/if} -->
         
         <div id="header0btn">
 
