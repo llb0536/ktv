@@ -8,37 +8,6 @@ class ApplicationController < ActionController::Base
     # text = UCenter::Php.authcode(params[:code],'DECODE',UC_KEY)
     # render text:"#{text}" and return
   }
-  before_filter :decide_sub_main
-  Browser = Struct.new(:browser, :version)
-  SupportedBrowsers = [
-    Browser.new("Safari", "0.1"),
-    Browser.new("Firefox", "0.1"),
-    Browser.new("Chrome", "0.1"),
-    Browser.new("Opera", "0.1"),
-    Browser.new("Internet Explorer", "9.0")
-  ]
-  def decide_sub_main
-    if '1'==params['force_main']
-      return go_main!
-    elsif '1'==params['force_sub']
-      return go_sub! 
-    else
-      return true
-      #user_agent = UserAgent.parse(request.user_agent)
-      #supported_browser = SupportedBrowsers.detect { |browser| user_agent >= browser }
-      #if supported_browser.nil?
-      #  go_sub!
-      #  return
-      #end
-    end
-  end
-  def go_sub!
-    redirect_to '/simple'
-    return false
-  end
-  def go_main!
-    return true
-  end
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from AbstractController::ActionNotFound, with: :render_404
@@ -96,14 +65,44 @@ class ApplicationController < ActionController::Base
       "application#{@subsite}"
     end
   end
-  before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?} unless Setting.allow_register
-  def check_user_logged_in
-    if !user_signed_in?
-      @seo[:title]='请登录或获取注册邀请'
-      render 'welcome/user_logged_in_required',:layout => 'application_ie'
-      return false
+  before_filter :decide_sub_main
+  def decide_sub_main
+    if '1'==params['force_main']
+      return go_main!
+    elsif '1'==params['force_sub']
+      return go_sub! 
     else
-      return true
+      if go_nowhere?
+        return go_sub!
+      else
+        return go_main!
+      end
+    end
+  end
+  def go_nowhere?
+    return @is_ie
+  end
+  def go_sub!
+    redirect_to '/simple'
+    return false
+  end
+  def go_main!
+    if go_nowhere?
+      modern_required
+      return false
+    end
+    return true
+  end
+  before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
+  def check_user_logged_in
+    unless Setting.allow_register
+      if !user_signed_in?
+        @seo[:title]='请登录或获取注册邀请'
+        user_logged_in_required
+        return false
+      else
+        return true
+      end
     end
   end
   
@@ -353,5 +352,15 @@ class ApplicationController < ActionController::Base
     @page_count = (sumcount*1.0 / @per_page).ceil
   end
   
+  def user_logged_in_required
+    @seo[:title] = '请获取邀请以注册'
+    @application_ie_noheader = true
+    render 'user_logged_in_required',:layout => 'application_ie'
+  end
+  def modern_required
+    @seo[:title] = '请使用更高版本的浏览器'
+    @application_ie_noheader = true
+    render 'modern_required',:layout => 'application_ie'
+  end
   
 end

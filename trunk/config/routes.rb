@@ -2,6 +2,8 @@
 Quora::Application.routes.draw do
   root :to => 'welcome#index'
   get '/api/uc' => 'ucenter#uc'
+  get '/user_logged_in_required'=>'application#user_logged_in_required'
+  get '/modern_required'=>'application#modern_required'
   # ________________________________user__________________________________________
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,

@@ -1,17 +1,17 @@
 <div class="__old">
   <div id="header0">
-    <div class="wrapper">
+    <div class="wrapper" style="<%= defined?(style) ? style : '' %>">
       <div id="slab1" class="active">
-        <img src="<%= asset_path('header0_1.png') %>" />
-        <a href="http://www.kejian.tv/?force_main=1">Kejian.TV主站</a>
+        <img src="<%= asset_path('ie/header0_1.png') %>" />
+        <a href="http://<%= Setting.ktv_domain %>/?force_main=1">Kejian.TV主站</a>
       </div>
       <div id="slab2" class="">
-        <img src="<%= asset_path('header0_2.png') %>" />
-        <a href="http://www.kejian.tv/simple">目录检索区</a>
+        <img src="<%= asset_path('ie/header0_2.png') %>" />
+        <a href="http://<%= Setting.ktv_domain %>/simple">目录检索区</a>
       </div>
       <div id="slab3" class="">
-        <img src="<%= asset_path('header0_3.png') %>"/>
-        <a href="http://search.kejian.tv">搜索区</a>
+        <img src="<%= asset_path('ie/header0_3.png') %>"/>
+        <a href="http://<%= Setting.ktv_search_domain %>/">搜索区</a>
       </div>
 
       <div id="header0btn">
@@ -20,7 +20,7 @@
       <div class="spliter">
       </div>
       <div class="profile" id="slab_profile">
-        <%= image_tag 'header0profile.png' %>
+        <%= image_tag 'ie/header0profile.png' %>
       </div>
       <div class="spliter">
       </div>

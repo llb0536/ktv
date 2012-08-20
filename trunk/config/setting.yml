@@ -20,7 +20,7 @@ default: &defaults
   # aws_access_key_id: 'your aws access_key_id'
   # aws_secret_access_key: 'your aws secret_access_key'
   # 是否开放注册
-  allow_register: true
+  allow_register: false
   # 题被多少次 spam 隐藏
   ask_spam_max: 8
   # 解答被多少次 spam 会删除线
@@ -43,6 +43,7 @@ default: &defaults
   topic_qingqiu: '领域请求'
   ktv_courseware_id: '500f9970e13823796a000002'
   ktv_domain: kejian.tv
+  ktv_search_domain: "search.kejian.tv"
   root_topic_id: '501137a1e138236528000016'
   zuozheqingqiu_id: '5010da4ce138231d4300004f'
   google_analytics_key: UA-28971136-1
@@ -69,6 +70,7 @@ development:
   <<: *defaults
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
+  ktv_search_domain: "search.kejian.lvh.me"
   # open_timeout: 1
   # timeout: 1
   read_timeout: 30

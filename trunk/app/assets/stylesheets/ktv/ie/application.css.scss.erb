@@ -16,13 +16,14 @@
  *= require ./ie
  *= require ../__sdk
  *= require ../__qua
+ *= require_self
 */
 
 
 #chrome_required{
   .chrome{
-    margin-top:8px;
-    margin-bottom:64px;
+    margin-top:10px;
+    margin-bottom:53px;
     margin-left:28px;
   }
   #chrome_required_url_input{
@@ -46,7 +47,7 @@
   .intro{
     color:#333333;
     position:absolute;
-    top:158px;
+    top:136px;
     width:388px;
     p{
       font-size: 15px;
@@ -90,4 +91,8 @@ footer {
 }
 body{
   -webkit-font-smoothing: subpixel-antialiased;
+}
+.wrapper{
+  margin: 0 auto;
+  width: 960px;
 }

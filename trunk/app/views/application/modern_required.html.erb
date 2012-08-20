@@ -1,11 +1,11 @@
 <div id="chrome_required"><div class="w960">
-<%= image_tag('unsupported_browsers.png',:alt => '对不起，课件交流系统目前仅支持使用Chrome浏览器访问', :class =>"chrome") %><br>
+<%= image_tag('unsupported_browsers00.png',:alt => '请登陆，或获取邀请以继续访问课件交流系统主站', :class =>"chrome") %><br>
 <div class="intro">
-  <p>　　Kejian.TV 专注于构建内容丰富与质量上乘的在线学习社区。在真实的学术交流氛围中，原创作品将被标记、保护与传递，您可以与课件等相关资源的作者交流，您也可以在任意领域自由开课或出题。</p>
-  <p>　　为保证资源的纯净与真实，我们在一段时间内将采用邀请注册方式。作为受邀者，您可以邀请您的朋友加入社区，同我们一起构建属于我们自己的社区。</p>
-  <p><a href="/login" id="ktv_chromebtn">用户登录入口</a></p>
+  <p>　　互联网技术的发展已经使得我们可以在网页上实现更酷更炫的功能，然而限于低版本浏览器在中国的普及程度，大量中文网站还是为向下兼容至IE6而设计，我们认为这阻碍了中文互联网的进一步发展。</p>
+  <p>　　我们决定从Kejian.TV做起改变现状，我们决定让主站反映互联网技术的最新进展，为用户提供独一无二的中文网站体验。请使用现代浏览器访问主站。</p>
+  <p><a href="http://firefox.com.cn/" id="ktv_chromebtn" target="_blank">点击进入浏览器下载页</a></p>
   <p class="get-code">
-    登录后您可以访问以下地址继续浏览本页：
+    切换浏览器后后您可以访问以下地址继续浏览本页：
     <input type="text" name="chrome_required_url" value="http://<%=Setting.ktv_domain%><%= request.path %>" id="chrome_required_url_input" style="background:url(/favicon.png) no-repeat scroll 4px center #FFFFFF" readonly onclick="javascript:this.select();">
     <input type="submit" value="复制" id="submit-button">
     <% content_for :butt2 do %>
