@@ -25,10 +25,15 @@ class TranscoderJob
       pdf_path = "#{working_dir}/#{@courseware.pdf_filename}"
       `mkdir -p "#{working_dir}"`
       if @courseware.remote_filepath
-        `curl "#{@courseware.remote_filepath}" > "#{pdf_path}"`
+        case @courseware.sort.to_sym
+        when :pdf,:djvu
+          `curl "#{@courseware.remote_filepath}" > "#{pdf_path}"`
+        when :ppt
+          `mv /media/hd2/win_transcoding/#{@courseware.id}.pdf "#{pdf_path}"`
+        end
         @courseware.md5 = Digest::MD5.hexdigest(File.read(pdf_path))
         ext = File.extname(pdf_path).downcase
-        if '.pdf'==ext
+        if '.pdf'==ext || '.ppt'==ext
           info = `pdfinfo "#{pdf_path}"`.split("\n")
           if info = info2page_size(info)
             @courseware.pdf_size_note = info

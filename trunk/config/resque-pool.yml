@@ -1,4 +1,8 @@
-"*": 4
+"hooker": 2
+"redundancy": 1
+"transcoding": 1
 
 staging:
-  "*": 1
+  "hooker": 1
+  "redundancy": 1
+  "transcoding": 1

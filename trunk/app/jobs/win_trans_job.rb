@@ -1,6 +1,5 @@
 class WinTransJob
-  @queue = :transcoding
-  def self.perform(remote_url)
-    puts "Hello World"
+  @queue = :win_transcoding
+  def self.perform(remote_url,cw_id)
   end
 end

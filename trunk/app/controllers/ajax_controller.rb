@@ -72,7 +72,12 @@ utf8	✓
     cw.save!
     current_user.inc(:coursewares_upload_count,1)
 
-    Resque.enqueue(TranscoderJob,cw.id)
+    case cw.sort.to_sym
+    when :pdf,:djvu
+      Resque.enqueue(TranscoderJob,cw.id)
+    when :ppt
+      Resque.enqueue(WinTransJob,cw.remote_filepath,cw.id)
+    end
     json = {
       category_ids: [ nil ],
       created_at: '2012-07-13T09:53:10-04:00',

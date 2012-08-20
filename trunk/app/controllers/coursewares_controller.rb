@@ -133,7 +133,7 @@ protected
       'save-key' =>  "/#{current_user.id}/#{@uptime}.pdf",
       expiration: "#{1.hour.since.to_i}",
       bucket: 'ktv-up',
-      'allow-file-type' =>  'pdf',
+      'allow-file-type' =>  'pdf,djvu,ppt',
       'content-length-range' =>  '0,199000000',
     }.to_json
     policy = Base64.encode64(policy).split("\n").join('')

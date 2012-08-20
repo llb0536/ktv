@@ -5,8 +5,8 @@ require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
-    text = request.ip
-    render text:"#{text}" and return
+    #text = request.ip
+    #render text:"#{text}" and return
   }
   if Rails.env.production?
     rescue_from Exception, with: :render_500
