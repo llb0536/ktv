@@ -77,11 +77,11 @@ header {
   float: left;
 }
 /* line 185, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
-#header0 #slab1:hover img, #header0 #slab2:hover img, #header0 #slab3:hover img, #header0 #slab_profile:hover img {
+#header0 #slab1:hover img, #header0 #slab2:hover img, #header0 #slab3:hover img,#header0 #slab4:hover img, #header0 #slab_profile:hover img {
   opacity: 1;
 }
 /* line 188, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
-#header0 #slab1:hover a, #header0 #slab2:hover a, #header0 #slab3:hover a, #header0 #slab_profile:hover a {
+#header0 #slab1:hover a, #header0 #slab2:hover a, #header0 #slab3:hover a,#header0 #slab4:hover a, #header0 #slab_profile:hover a {
   color: #FFF;
 }
 /* line 191, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
@@ -98,6 +98,7 @@ header {
 #header0 #slab2.active {
   background: #222222 url(assets/header0_2active.png) no-repeat;
 }
+
 /* line 202, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3 {
   width: 83px;
@@ -115,6 +116,17 @@ header {
 /* line 213, ../../../app/assets/stylesheets/ktv/__old.css.scss.erb */
 #header0 #slab3.active {
   background: #222222 url(assets/header0_3active.png) no-repeat;
+}
+
+#header0 #slab4 {
+  height: 40px;
+  float: left;
+}
+#header0 #slab4.active {
+  background: #222222 url(assets/header0_1active.png) no-repeat;
+}
+#header0 .slab06 {
+  width:122px !important;
 }
 
 

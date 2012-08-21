@@ -1,0 +1,432 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag 'cnu/menu.css' %>
+<%= javascript_include_tag 'cnu/menu.js' %>
+<%= csrf_meta_tag %>
+</head>
+<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" class="leftBody">
+<form target="mainFrame" action="" name="searchForm">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="leftpadding" style="width:100%">
+        <tbody><tr>
+          <td>
+
+<div style="" name="menudivs" id="div1">
+
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="width:100%">
+  <tbody><tr>
+	<td>
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+  <tbody><tr>
+    <td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+      <tbody><tr>
+        
+        <td width="98%">纵览</td>
+        <td width="2%"><img onmouseout="mouseOutFun(this)" onmouseover="mouseOverFun(this)" onclick="openMenu(this)" src="<%=asset_path('cnu/up.gif')%>" style="cursor:pointer" name="upimg"></td>
+        
+      </tr>
+    </tbody></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+	<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2" style="">
+	  <tbody><tr>
+        <td class="selected">
+       <a onclick="select(this)" class="default" id="div1_first" target="mainFrame" href="/welcome/main">首页</a>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="default">
+       <a onclick="select(this)" class="default" id="wsxk" target="mainFrame" href="/welcome/user_rank">排行榜</a>
+
+        </td>
+      </tr>
+	  <tr>
+        <td class="default">
+       <a onclick="select(this)" class="default" id="kejianchaoren" target="mainFrame" href="/welcome/res_rank">人气课件</a>
+
+        </td>
+      </tr>
+	   <tr>
+        <td class="default">
+       <a onclick="select(this)" class="default" id="pmo" target="mainFrame" href="/welcome/replies_rank">最新评论</a>
+
+        </td>
+      </tr>
+	   <tr>
+        <td class="default">
+       <a onclick="select(this)" class="default" id="pmo" target="mainFrame" href="/welcome/selfdefined">自定义页面</a>
+
+        </td>
+      </tr>
+      
+    </tbody></table>
+	</td>
+  </tr>
+  
+</tbody></table>
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">控制面板</td>
+    <td width="2%"><img onmouseout="mouseOutFun(this)" onmouseover="mouseOverFun(this)" onclick="openMenu(this)" src="<%=asset_path('cnu/up.gif')%>" style="cursor:pointer" name="upimg"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+  <tbody>
+  <tr>
+    <td class="default">
+      <a onclick="select(this)" class="default" id="da_setting" target="mainFrame" href="/cpan/profile">我的资料</a>
+    </td>
+  </tr>
+  <tr>
+    <td class="default">
+      <a onclick="select(this)" class="default" id="bxqkb" target="mainFrame" href="/cpan/my_res">课件管理</a>
+    </td>
+  </tr>
+  <tr>
+      <td class="default">
+            <a onclick="select(this)" class="default" id="da_history" target="mainFrame" href="/cpan/history">积分管理</a>
+	        </td>
+  </tr>
+    <tr>
+          <td class="default">
+	              <a onclick="select(this)" class="default" id="da_pages" target="mainFrame" href="/cpan/pages">页面管理</a>
+		                      </td>
+  </tr>
+
+
+
+</tbody></table>
+</td>
+</tr>
+
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--- start -->
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+
+      <td width="98%">关于</td>
+          <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+
+	    </tr>
+	    </tbody></table></td>
+	    </tr>
+	    <tr>
+	    <td>
+	    <table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+	      <tbody>
+
+
+  <tr>
+      <td class="default">
+            <a onclick="select(this)" class="default" id="bxqkb" target="mainFrame" href="/faq">FAQ</a>
+	        </td>
+		  </tr>
+  <tr>
+        <td class="default">
+	            <a onclick="select(this)" class="default" id="bxqkb" target="mainFrame" href="/team">开发团队</a>
+		                    </td>
+				                      </tr>
+
+  <tr>
+        <td class="default">
+	            <a onclick="select(this)" class="default" id="bxqkb" target="mainFrame" href="/contact">联系我们</a>
+		                    </td>
+				                      </tr>
+
+						      
+  <tr>
+        <td class="default">
+	            <a onclick="select(this)" class="default" id="bxqkb" target="mainFrame" href="/traffic">流量统计</a>
+		                    </td>
+				                      </tr>
+
+
+
+
+																			    </tbody></table>
+																			    </td>
+																			    </tr>
+
+																			    </tbody></table>
+																			    </td>
+																			    </tr>
+											
+<!-- end -->											
+</tbody></table>
+</div>
+<div style="display:none" name="menudivs" id="div2">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody>
+
+<!--- start -->
+<tr>
+<td>
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">下载</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+  <tbody>
+  
+  <tr>
+    <td class="default">
+      <a href="/welcome/download_go" target="mainFrame" id="div2_first" class="default" onclick="select(this)">下载区首页</a>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+<!--- start -->
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">我的课程</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+  <tbody>
+  <tr>
+    <td class="default">
+      <a onclick="turn_to_settings()" class="default" id="bxqkb" target="mainFrame" href="/cpan/profile">[ 通过身份认证后可自动置入我的课程 ]</a>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+
+
+
+<!--- start -->
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">历史浏览</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+<tbody id="history_body">
+
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+
+
+</tbody></table>
+</div>
+<div style="display:none" name="menudivs" id="div3">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+  <tbody>
+
+<!--- start -->
+<tr>
+<td>
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">上传</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+  <tbody>
+  <tr>
+    <td class="default">
+      <a href="/welcome/upload_go" target="mainFrame" id="div3_first" class="default" onclick="select(this)">上传区首页</a>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+<!--- start -->
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">我的课程 - 上传</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+  <tbody>
+  <tr>
+    <td class="default">
+      <a onclick="turn_to_settings()" class="default" id="bxqkb" target="mainFrame" href="/cpan/profile">[ 设置 ]</a>
+    </td>
+  </tr>
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+
+
+
+<!--- start -->
+<tr>
+<td class="space01">
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="border01">
+<tbody><tr>
+<td><table cellspacing="0" cellpadding="0" border="0" width="100%" class="title01">
+  <tbody><tr>
+    
+    <td width="98%">历史浏览 - 上传</td>
+    <td width="2%"><img name="upimg" style="cursor:pointer" src="<%=asset_path('cnu/up.gif')%>" onclick="openMenu(this)" onmouseover="mouseOverFun(this)" onmouseout="mouseOutFun(this)"></td>
+    
+  </tr>
+</tbody></table></td>
+</tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="content2">
+<tbody id="huptory_body">
+
+</tbody></table>
+</td>
+</tr>
+
+</tbody></table>
+</td>
+</tr>
+
+
+<!--   end -->
+
+
+</tbody></table>
+</div>
+
+
+
+</td>
+</tr>
+
+
+</tbody></table>
+</form>
+</body>
+</html>

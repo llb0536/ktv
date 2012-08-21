@@ -40,6 +40,10 @@ Quora::Application.routes.draw do
   get '/welcome/shuffle'
   get '/welcome/blank'
   get '/welcome/surprise' => 'welcome#surprise',:as => 'surprise'
+  get '/welcome/top'
+  get '/welcome/menu'
+  get '/welcome/xi'
+  get '/welcome/main'
   # ________________________________ktv__________________________________________
   resources :schools
   resources :maps

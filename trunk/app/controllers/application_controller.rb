@@ -71,6 +71,8 @@ class ApplicationController < ActionController::Base
       return go_main!
     elsif '1'==params['force_sub']
       return go_sub! 
+    elsif @subsite.present?
+      return true
     else
       if go_nowhere?
         return go_sub!

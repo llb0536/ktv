@@ -1,0 +1,137 @@
+<!--[if lt IE 7]> <html class="no-js ie_all lt-ie9 lt-ie8 lt-ie7 ie6"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie_all lt-ie9 lt-ie8 ie7"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie_all lt-ie9 ie8"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie_all ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag 'cnu/top.css' %>
+<%= javascript_include_tag 'cnu/top.js' %>
+<%= csrf_meta_tag %>
+<!-- psvr -->
+<script src="http://<%= Setting.ktv_domain %>/simple/psvr/modernizr.js" type="text/javascript" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="http://<%= Setting.ktv_domain %>/simple/psvr/ktv.css" />
+<!-- psvr -->
+</head>
+<body>
+<div id="header0">
+  <div class="">
+    <div id="slab4" class="active slab06" style="margin-left:5px">
+      <img src="<%= asset_path('ie/header0_2.png') %>"/>
+      <a href="http://<%= Setting.cnu_domain %>/">首都师范大学</a>
+    </div>
+    <div id="slab1" class="">
+      <img src="<%= asset_path('ie/header0_1.png') %>" />
+      <a href="http://<%= Setting.ktv_domain %>/?force_main=1" target="_parent">Kejian.TV主站</a>
+    </div>
+    <div id="slab2" class="">
+      <img src="<%= asset_path('ie/header0_2.png') %>" />
+      <a href="http://<%= Setting.ktv_domain %>/simple" target="_parent">目录检索区</a>
+    </div>
+    <div id="slab3" class="">
+      <img src="<%= asset_path('ie/header0_3.png') %>"/>
+      <a href="http://<%= Setting.ktv_search_domain %>/" target="_parent">搜索区</a>
+    </div>
+    <div id="header0btn" style="margin-right:4px">
+    </div>
+
+    <div class="spliter">
+    </div>
+    <div class="profile" id="slab_profile">
+      <%= image_tag 'ie/header0profile.png' %>
+    </div>
+
+    <div class="spliter">
+    </div>
+
+  </div>
+</div>  
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="topbg">
+<form name="mainForm" method="post">
+  <tr>
+    <td width="11%"><a href="/" target="_parent"><img src="<%= asset_path 'cnu/logo.jpg' %>" style="margin:0 25px 0 15px" /></a></td>
+    <td width="89%" valign="bottom" >
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr align="right">
+        <td>
+
+		</td>
+      </tr>
+      <tr>
+        <td>
+		
+		<!--button bgein -->
+
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td>
+		<table border="0" cellspacing="0" cellpadding="0" id="moduleTab">
+          <tr >
+            <td class="bg1" id="td_1">
+            <A id="tab1" title="纵览最新课件最热资源！" href="#"  onclick="changeModule(1);">
+							  纵览
+							  </A>
+
+            </td>
+            <td class="btn2" id="td_2">
+            <A id="tab2" title="下载各专业各科各老师最全课件！" href="#"  onclick="changeModule(2)">
+							  下载
+							  </A>
+            </td>
+            <td class="btn3" id="td_3">
+            <A id="tab3" title="上传分享我的课件赢取积分！" href="#"  onclick="changeModule(3)">
+							  上传
+							  </A>
+
+            </td>
+          </tr>
+        </table>
+        
+        	</td>
+
+        </tr>
+       </table>
+		<!--button end -->
+		</td>
+
+      </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+
+<!-- line begin -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="bg-line1" id="topMenu3" >
+  <tr>
+    <td></td>
+  </tr>
+
+</table>
+<!-- line end -->
+
+<!-- psvr -->
+<script src="http://<%= Setting.ktv_domain %>/simple/psvr/jquery-1.8.0.min.js" type="text/javascript" type="text/javascript"></script>
+<script type="text/javascript">
+  $.noConflict();
+</script>
+<script src="http://<%= Setting.ktv_domain %>/simple/psvr/ktv.js" type="text/javascript" type="text/javascript"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    // Code that uses jQuery's $ can follow here.
+    $('#slab1,#slab2,#slab3,#slab4').click(function(e){
+      window.parent.location.href = $('a',this).attr('href');
+      return false;
+    });
+    $('#slab1 a,#slab2 a,#slab3 a,#slab4 a').click(function(e){
+      window.parent.location.href = $(this).attr('href');
+      return false;
+    });
+    KTV.headnav_css();
+  });
+  // Code that uses other library's $ can follow here.
+</script>
+<!-- psvr -->
+</body>
+</html>

@@ -59,6 +59,7 @@ default: &defaults
   # 每页读取多少条记录？这个影响到打开这个页面的速度，
   # 时间太长会超时。所以控制一下。
   mechanize_per_page: 88
+  cnu_domain: 'cnu.kejian.tv'
   proxy:
   # 不使用代理的时候把下面四行注释掉，但是上面这行保留。
      # addr: 192.168.20.6
@@ -71,6 +72,7 @@ development:
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
   ktv_search_domain: "search.kejian.lvh.me"
+  cnu_domain: 'cnu.kejian.lvh.me'
   # open_timeout: 1
   # timeout: 1
   read_timeout: 30
