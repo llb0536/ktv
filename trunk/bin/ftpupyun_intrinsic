@@ -8,7 +8,7 @@
 
 USERNAME="pmq20/ktv-intrinsic"
 PASSWORD="jknlff8-pro-17m7755"
-SERVER="v0.ftp.upyun.com"
+SERVER="v3.ftp.upyun.com"
 
 ORIGIN="/home/main/ktv/_assets/*"
 TARGET="/"
