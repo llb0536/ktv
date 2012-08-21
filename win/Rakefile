@@ -20,10 +20,15 @@ task :environment do
   end
   class WinTransJob
     @queue = :win_transcoding
-    def self.perform(remote_url,cw_id)
+    def self.perform(remote_url,extname,cw_id)
       target="c:\\win_transcoding\\tmp\\#{File.basename(remote_url)}"
       `curl "#{remote_url}" > #{target}`
-      `c:\\win_transcoding\\ConvertPowerPoint2PDF.exe #{target} c:\\win_transcoding\\output #{cw_id}.pdf`
+      case extname.to_s
+      when 'ppt','pptx'
+        `c:\\win_transcoding\\ConvertPowerPoint2PDF.exe #{target} c:\\win_transcoding\\output #{cw_id}.pdf`
+      when 'doc','docx'
+        `c:\\win_transcoding\\ConvertWord2PDF.exe #{target} c:\\win_transcoding\\output #{cw_id}.pdf`
+      end
       `c:\\win_transcoding\\putty\\pscp.exe -pw jknlff8-pro-17m7755 c:\\win_transcoding\\output\\#{cw_id}.pdf data@kejian.tv:/media/hd2/win_transcoding`
       Resque.enqueue(TranscoderJob,cw_id)
     end
