@@ -50,10 +50,12 @@ class Courseware
   SORTSTR = {
     'xunlei' => '迅雷播放特权',
     'ppt' => '幻灯片',
+    'pptx' => '幻灯片',
+    'doc' => '文档资料',
+    'docx' => '文档资料',
     'pdf' => 'PDF',
     'djvu' => 'DJVU',
     'webm'=> '原创视频',
-    'doc' => 'Word文档',
     'books' => '课本封皮'
   }
   def asynchronously_clean_me

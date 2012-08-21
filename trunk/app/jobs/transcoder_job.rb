@@ -28,12 +28,12 @@ class TranscoderJob
         case @courseware.sort.to_sym
         when :pdf,:djvu
           `curl "#{@courseware.remote_filepath}" > "#{pdf_path}"`
-        when :ppt
+        when :ppt,:pptx,:doc,:docx
           `mv /media/hd2/win_transcoding/#{@courseware.id}.pdf "#{pdf_path}"`
         end
         @courseware.md5 = Digest::MD5.hexdigest(File.read(pdf_path))
         ext = File.extname(pdf_path).downcase
-        if '.pdf'==ext || '.ppt'==ext
+        if '.pdf'==ext || '.ppt'==ext || '.pptx'==ext || '.doc'==ext || '.docx'==ext
           info = `pdfinfo "#{pdf_path}"`.split("\n")
           if info = info2page_size(info)
             @courseware.pdf_size_note = info
