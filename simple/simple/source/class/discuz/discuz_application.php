@@ -44,7 +44,6 @@ class discuz_application extends discuz_base{
 		'_ENV' => 1,
 		'_FILES' => 1,
 	);
-
 	static function &instance() {
 		static $object;
 		if(empty($object)) {
@@ -54,10 +53,10 @@ class discuz_application extends discuz_base{
 	}
 
 	public function __construct() {
-		$this->_init_env();
-		$this->_init_config();
-		$this->_init_input();
-		$this->_init_output();
+    $this->_init_env();
+    $this->_init_config();
+    $this->_init_input();
+    $this->_init_output();
 	}
 
 	public function init() {
@@ -84,109 +83,112 @@ class discuz_application extends discuz_base{
 		define('ICONV_ENABLE', function_exists('iconv'));
 		define('MB_ENABLE', function_exists('mb_convert_encoding'));
 		define('EXT_OBGZIP', function_exists('ob_gzhandler'));
+    
+    define('TIMESTAMP', time());
+    $this->timezone_set();
+    
+    if(!defined('DISCUZ_CORE_FUNCTION') && !@include(DISCUZ_ROOT.'./source/function/function_core.php')) {
+     exit('function_core.php is missing');
+    }
+    
+    if(function_exists('ini_get')) {
+     $memorylimit = @ini_get('memory_limit');
+     if($memorylimit && return_bytes($memorylimit) < 33554432 && function_exists('ini_set')) {
+       ini_set('memory_limit', '128m');
+     }
+    }
+    
+    define('IS_ROBOT', checkrobot());
 
-		define('TIMESTAMP', time());
-		$this->timezone_set();
+    if(!isset($GLOBALS['psvr_in_phpsh'])){
+  		foreach ($GLOBALS as $key => $value) {
+  			if (!isset($this->superglobal[$key])) {
+  				$GLOBALS[$key] = null; unset($GLOBALS[$key]);
+  			}
+  		}      
+    }
 
-		if(!defined('DISCUZ_CORE_FUNCTION') && !@include(DISCUZ_ROOT.'./source/function/function_core.php')) {
-			exit('function_core.php is missing');
-		}
-
-		if(function_exists('ini_get')) {
-			$memorylimit = @ini_get('memory_limit');
-			if($memorylimit && return_bytes($memorylimit) < 33554432 && function_exists('ini_set')) {
-				ini_set('memory_limit', '128m');
-			}
-		}
-
-		define('IS_ROBOT', checkrobot());
-
-		foreach ($GLOBALS as $key => $value) {
-			if (!isset($this->superglobal[$key])) {
-				$GLOBALS[$key] = null; unset($GLOBALS[$key]);
-			}
-		}
-
-		global $_G;
-		$_G = array(
-			'uid' => 0,
-			'username' => '',
-			'adminid' => 0,
-			'groupid' => 1,
-			'sid' => '',
-			'formhash' => '',
-			'connectguest' => 0,
-			'timestamp' => TIMESTAMP,
-			'starttime' => microtime(true),
-			'clientip' => $this->_get_client_ip(),
-			'referer' => '',
-			'charset' => '',
-			'gzipcompress' => '',
-			'authkey' => '',
-			'timenow' => array(),
-			'widthauto' => 0,
-			'disabledwidthauto' => 0,
-
-			'PHP_SELF' => '',
-			'siteurl' => '',
-			'siteroot' => '',
-			'siteport' => '',
-
-			'config' => array(),
-			'setting' => array(),
-			'member' => array(),
-			'group' => array(),
-			'cookie' => array(),
-			'style' => array(),
-			'cache' => array(),
-			'session' => array(),
-			'lang' => array(),
-			'my_app' => array(),
-			'my_userapp' => array(),
-
-			'fid' => 0,
-			'tid' => 0,
-			'forum' => array(),
-			'thread' => array(),
-			'rssauth' => '',
-
-			'home' => array(),
-			'space' => array(),
-
-			'block' => array(),
-			'article' => array(),
-
-			'action' => array(
-				'action' => APPTYPEID,
-				'fid' => 0,
-				'tid' => 0,
-			),
-
-			'mobile' => '',
-
-		);
-
-		$_G['PHP_SELF'] = dhtmlspecialchars($this->_get_script_url());
-		$_G['basescript'] = CURSCRIPT;
-		$_G['basefilename'] = basename($_G['PHP_SELF']);
-		$sitepath = substr($_G['PHP_SELF'], 0, strrpos($_G['PHP_SELF'], '/'));
-		if(defined('IN_API')) {
-			$sitepath = preg_replace("/\/api\/?.*?$/i", '', $sitepath);
-		} elseif(defined('IN_ARCHIVER')) {
-			$sitepath = preg_replace("/\/archiver/i", '', $sitepath);
-		}
-		$_G['siteurl'] = dhtmlspecialchars('http://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
-
-		$url = parse_url($_G['siteurl']);
-		$_G['siteroot'] = isset($url['path']) ? $url['path'] : '';
-		$_G['siteport'] = empty($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == '80' ? '' : ':'.$_SERVER['SERVER_PORT'];
-
-		if(defined('SUB_DIR')) {
-			$_G['siteurl'] = str_replace(SUB_DIR, '/', $_G['siteurl']);
-			$_G['siteroot'] = str_replace(SUB_DIR, '/', $_G['siteroot']);
-		}
-
-		$this->var = & $_G;
+    
+    global $_G;
+    $_G = array(
+     'uid' => 0,
+     'username' => '',
+     'adminid' => 0,
+     'groupid' => 1,
+     'sid' => '',
+     'formhash' => '',
+     'connectguest' => 0,
+     'timestamp' => TIMESTAMP,
+     'starttime' => microtime(true),
+     'clientip' => $this->_get_client_ip(),
+     'referer' => '',
+     'charset' => '',
+     'gzipcompress' => '',
+     'authkey' => '',
+     'timenow' => array(),
+     'widthauto' => 0,
+     'disabledwidthauto' => 0,
+    
+     'PHP_SELF' => '',
+     'siteurl' => '',
+     'siteroot' => '',
+     'siteport' => '',
+    
+     'config' => array(),
+     'setting' => array(),
+     'member' => array(),
+     'group' => array(),
+     'cookie' => array(),
+     'style' => array(),
+     'cache' => array(),
+     'session' => array(),
+     'lang' => array(),
+     'my_app' => array(),
+     'my_userapp' => array(),
+    
+     'fid' => 0,
+     'tid' => 0,
+     'forum' => array(),
+     'thread' => array(),
+     'rssauth' => '',
+    
+     'home' => array(),
+     'space' => array(),
+    
+     'block' => array(),
+     'article' => array(),
+    
+     'action' => array(
+       'action' => APPTYPEID,
+       'fid' => 0,
+       'tid' => 0,
+     ),
+    
+     'mobile' => '',
+    
+    );
+    
+    $_G['PHP_SELF'] = dhtmlspecialchars($this->_get_script_url());
+    $_G['basescript'] = CURSCRIPT;
+    $_G['basefilename'] = basename($_G['PHP_SELF']);
+    $sitepath = substr($_G['PHP_SELF'], 0, strrpos($_G['PHP_SELF'], '/'));
+    if(defined('IN_API')) {
+     $sitepath = preg_replace("/\/api\/?.*?$/i", '', $sitepath);
+    } elseif(defined('IN_ARCHIVER')) {
+     $sitepath = preg_replace("/\/archiver/i", '', $sitepath);
+    }
+    $_G['siteurl'] = dhtmlspecialchars('http://'.$_SERVER['HTTP_HOST'].$sitepath.'/');
+    
+    $url = parse_url($_G['siteurl']);
+    $_G['siteroot'] = isset($url['path']) ? $url['path'] : '';
+    $_G['siteport'] = empty($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == '80' ? '' : ':'.$_SERVER['SERVER_PORT'];
+    
+    if(defined('SUB_DIR')) {
+     $_G['siteurl'] = str_replace(SUB_DIR, '/', $_G['siteurl']);
+     $_G['siteroot'] = str_replace(SUB_DIR, '/', $_G['siteroot']);
+    }
+    
+    $this->var = & $_G;
 
 	}
 
@@ -321,14 +323,14 @@ class discuz_application extends discuz_base{
 		}
 
 		$allowgzip = $this->config['output']['gzip'] && empty($this->var['inajax']) && $this->var['mod'] != 'attachment' && EXT_OBGZIP;
-		setglobal('gzipcompress', $allowgzip);
-		ob_start($allowgzip ? 'ob_gzhandler' : null);
-
-		setglobal('charset', $this->config['output']['charset']);
-		define('CHARSET', $this->config['output']['charset']);
-		if($this->config['output']['forceheader']) {
-			@header('Content-Type: text/html; charset='.CHARSET);
-		}
+    setglobal('gzipcompress', $allowgzip);
+    ob_start($allowgzip ? 'ob_gzhandler' : null);
+    
+    setglobal('charset', $this->config['output']['charset']);
+    define('CHARSET', $this->config['output']['charset']);
+    if($this->config['output']['forceheader']) {
+     @header('Content-Type: text/html; charset='.CHARSET);
+    }
 
 	}
 
