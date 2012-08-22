@@ -1,7 +1,12 @@
 #!/bin/bash -x
 
 rm -rf /home/data/ktvmongodump
-rm -f  /home/data/ktvmongodump.tar.gz
+rm -f  /home/data/*.tar.gz
 /usr/local/bin/mongodump --db ktv -o /home/data/ktvmongodump
 tar czf /home/data/ktvmongodump.tar.gz /home/data/ktvmongodump
-chmod 777 /home/data/ktvmongodump.tar.gz
+mysqldump -u root -pjknlff8-pro-17m7755 simple > /home/data/simple.backup.sql
+mysqldump -u root -pjknlff8-pro-17m7755 ucenter > /home/data/ucenter.backup.sql
+tar czf /home/data/simple_dump.tar.gz ../simple/simple/data ../simple/simple/uc_client/data /home/data/simple.backup.sql
+tar czf /home/data/ucenter_dump.tar.gz ../uc/data /home/data/ucenter.backup.sql
+chmod 777 /home/data/*.tar.gz
+

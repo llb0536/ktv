@@ -484,6 +484,7 @@ KTV.data = {
       </div>
 
             <div class="comments-post-container clearfix">
+              <% if current_user %>
   <%= form_for @comment,:remote => true do |f| %>
       <%= f.hidden_field :commentable_type %>
       <%= f.hidden_field :commentable_id %>
@@ -507,6 +508,8 @@ KTV.data = {
         <button role="button" class="comments-post yt-uix-button yt-uix-button-default" type="submit"><span class="yt-uix-button-content">发表评论 </span></button>
       </p>
     <% end %>
+    <% end %>
+
 
     </div>
     <script type="text/javascript" charset="utf-8">

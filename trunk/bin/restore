@@ -8,7 +8,20 @@ case $response in
         rm -rf home/data/ktvmongodump/
         tar xzf ktvmongodump.tar.gz
         mongorestore --drop home/data/ktvmongodump/
+        scp data@kejian.tv:/home/data/simple_dump.tar.gz ~
+        scp data@kejian.tv:/home/data/ucenter_dump.tar.gz ~
+        tar xzf simple_dump.tar.gz
+        mysql -u root -pjknlff8-pro-17m7755 simple < ~/simple.backup.sql
+        rm -rf ~/ktv/simple/simple/data
+        rm -rf ~/ktv/simple/simple/uc_client/data
+        rm -rf ~/ktv/uc/data
+        mv simple/simple/data ~/ktv/simple/simple/data
+        mv simple/simple/uc_client/data ~/ktv/simple/simple/uc_client/data
+        mv uc/data ~/ktv/uc/data
+        tar xzf ucenter_dump.tar.gz
+        mysql -u root -pjknlff8-pro-17m7755 ucenter < ~/ucenter.backup.sql
         echo bundle exec rake consultant:index  
+        echo bundle exec rake redis_search:index
         ;;
     *)
         ;;
