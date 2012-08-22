@@ -20,6 +20,7 @@ showsubmenu('setting_domain', array(
 	array('setting_domain_root', 'domain&operation=root', $current['root']),
 ));
 $navs = $_G['setting']['navs'];
+
 if($operation == 'app') {
 
 	if(!submitcheck('submit')) {
@@ -31,7 +32,8 @@ if($operation == 'app') {
 			'mobile' => $lang['mobile'],
 			'default' => $lang['default']
 		);
-		showtips('setting_domain_app_tips');
+		
+    showtips('setting_domain_app_tips');
 
 		showformheader('domain&operation=app');
 		showtableheader();
