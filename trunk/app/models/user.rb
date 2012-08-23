@@ -27,7 +27,6 @@ class User
     u.email=email
     u.password=password
     u.password_confirmation=password
-    u.during_registration=true
     u.save!
   end
   def fill_in_unknown_email
@@ -67,6 +66,7 @@ class User
          :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
+  field :uid #UCenter
   field :topic #calculated by suggest_items.rake
   field :nickname
   field :weibo
@@ -204,7 +204,7 @@ class User
     when :tagline
       '一句话介绍'
     when :slug
-      '用户名'
+      '个性域名'
     when :inviting;'立即发送邀请'
     when :website;'个人网站'
     when :location;'地理位置'
@@ -214,7 +214,7 @@ class User
     when :department;'用户所属院系'
     when :school;'用户所属学校'
     when :email_human;'电子邮箱'
-    when :slug;'用户的用户名'
+    when :slug;'用户的个性域名'
     when :password;'密码'
     when :password_confirmation;'密码确认'
     when :remember_me;'记住我的登录状态'
@@ -384,7 +384,7 @@ class User
   end
   validates_length_of :tagline,:maximum=>40
   validates_presence_of :name, :slug
-  validates_uniqueness_of :slug,:message=>'与已有用户名重复，请尝试其他域名'
+  validates_uniqueness_of :slug,:message=>'与已有个性域名重复，请尝试其他域名'
   validates_format_of :slug, :with => /[a-z0-9\-\_]{1,20}/i
   validate :name_change_not_too_often
   # 用户修改昵称，一个月只能修改一次
@@ -1067,7 +1067,28 @@ class User
     end
     return false
   end
-  
+  def self.authenticate_through_ucenter!(incoming_opts)
+    # {
+    #      "action"=>"synlogin",
+    #      "email"=>"pmq2001@gmail.com",
+    #      "username"=>"psvr",
+    #      "uid"=>"1",
+    #      "password"=>"ce2c04447f84995b2537edfc87e56d71",
+    #      "time"=>"1345702127"
+    # }
+    u  = nil
+    u||= User.where(:email=>incoming_opts['email']).first
+    u||= User.where(:slug=>incoming_opts['username']).first
+    u||= User.where(:uid=>incoming_opts['uid']).first
+    u||= User.new
+    u.email = incoming_opts['email']
+    u.slug = incoming_opts['username']
+    u.password = incoming_opts['password']
+    u.password_confirmation = incoming_opts['password']
+    u.uid = incoming_opts['uid']
+    u.save(:validate=>false)
+    return u
+  end
   protected
   
   def insert_follow_log(action, item, parent_item = nil)

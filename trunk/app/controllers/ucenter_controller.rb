@@ -39,49 +39,92 @@ class UcenterController < ApplicationController
   	pp(Hash.from_xml(post_str)) if @post.present?
     send(@get['action'])
   end
-  def updateapps
-=begin
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<root>
-    <item id="1">
-        <item id="appid"><![CDATA[1]]></item>
-        <item id="type"><![CDATA[DISCUZX]]></item>
-        <item id="name"><![CDATA[Kejian.TV 目录检索]]></item>
-        <item id="url"><![CDATA[http://kejian.lvh.me/simple]]></item>
-        <item id="ip"><![CDATA[]]></item>
-        <item id="viewprourl"><![CDATA[]]></item>
-        <item id="apifilename"><![CDATA[uc.php]]></item>
-        <item id="charset"><![CDATA[utf-8]]></item>
-        <item id="synlogin"><![CDATA[1]]></item>
-        <item id="extra">
-            <item id="apppath"><![CDATA[]]></item>
-            <item id="extraurl"></item>
-        </item>
-        <item id="recvnote"><![CDATA[1]]></item>
-    </item>
-    <item id="3">
-        <item id="appid"><![CDATA[3]]></item>
-        <item id="type"><![CDATA[KTV]]></item>
-        <item id="name"><![CDATA[ktv]]></item>
-        <item id="url"><![CDATA[http://kejian.lvh.me]]></item>
-        <item id="ip"><![CDATA[]]></item>
-        <item id="viewprourl"><![CDATA[]]></item>
-        <item id="apifilename"><![CDATA[uc]]></item>
-        <item id="charset"><![CDATA[]]></item>
-        <item id="synlogin"><![CDATA[1]]></item>
-        <item id="extra">
-            <item id="apppath"><![CDATA[]]></item>
-            <item id="extraurl"></item>
-        </item>
-        <item id="recvnote"><![CDATA[1]]></item>
-    </item>
-    <item id="UC_API"><![CDATA[http://uc.kejian.lvh.me]]></item>
-</root>
-=end
-    render text:API_RETURN_SUCCEED
-  end
+  
   def test
     render text:API_RETURN_SUCCEED
   end
-  
+  def deleteuser
+    binding.pry
+  end
+  def renameuser
+    binding.pry
+  end
+  def deletefriend
+    binding.pry
+  end
+  def gettag
+    binding.pry
+  end
+  def getcreditsettings
+    binding.pry
+  end
+  def getcredit
+    binding.pry
+  end
+  def updatecreditsettings
+    binding.pry
+  end
+  def updateclient
+    binding.pry
+  end
+  def updatepw
+    binding.pry
+  end
+  def updatebadwords
+    binding.pry
+  end
+  def updatehosts
+    binding.pry
+  end
+  def updateapps
+    render text:API_RETURN_SUCCEED
+=begin
+{"root"=>
+  {"item"=>
+    [{"id"=>"1",
+      "item"=>
+       ["1",
+        "DISCUZX",
+        "Kejian.TV ç\u009B®å½\u0095æ£\u0080ç´¢",
+        "http://kejian.lvh.me/simple",
+        {"id"=>"ip", "__content__"=>""},
+        {"id"=>"viewprourl", "__content__"=>""},
+        "uc.php",
+        "utf-8",
+        "1",
+        {"id"=>"extra",
+         "item"=>
+          [{"id"=>"apppath", "__content__"=>""},
+           {"id"=>"extraurl", "__content__"=>"\t\t\t"}]},
+        "1"]},
+     {"id"=>"3",
+      "item"=>
+       ["3",
+        "KTV",
+        "ktv",
+        "http://kejian.lvh.me",
+        {"id"=>"ip", "__content__"=>""},
+        {"id"=>"viewprourl", "__content__"=>""},
+        "uc",
+        {"id"=>"charset", "__content__"=>""},
+        "1",
+        {"id"=>"extra",
+         "item"=>
+          [{"id"=>"apppath", "__content__"=>""},
+           {"id"=>"extraurl", "__content__"=>"\t\t\t"}]},
+        "1"]},
+     "http://uc.kejian.lvh.me"]}}
+=end
+  end
+  def updatecredit
+    binding.pry
+  end
+  def synlogin
+    sign_in User.authenticate_through_ucenter!(@get)
+    render text:API_RETURN_SUCCEED
+  end
+  def synlogout
+    sign_out
+    render text:API_RETURN_SUCCEED
+  end
 end

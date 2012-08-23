@@ -9,6 +9,20 @@ $Id: base.php 1059 2011-03-01 07:25:09Z monkey $
 
 !defined('IN_UC') && exit('Access Denied');
 
+// psvr add
+function puts($str){
+  $psvr_fp = fopen("/tmp/psvr_uc_log.log", "a");
+  fprintf($psvr_fp,"> ");
+  if (true===$str) {
+    fputs($psvr_fp,"true");
+  }else if(false===$str){
+    fputs($psvr_fp,"false");
+  }else{
+    fputs($psvr_fp,var_export($str, TRUE));
+    fprintf($psvr_fp,"\n\n");
+  }
+  fclose($psvr_fp);
+}
 class base {
 
 	var $time;

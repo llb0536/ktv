@@ -69,6 +69,8 @@ function uc_api_post($module, $action, $arg = array()) {
 		$sep = '&';
 	}
 	$postdata = uc_api_requestdata($module, $action, $s);
+  // puts(UC_API.'/index.php');
+  // puts($postdata);
 	return uc_fopen2(UC_API.'/index.php', 500000, $postdata, '', TRUE, UC_IP, 20);
 }
 
@@ -317,6 +319,8 @@ function uc_user_synlogin($uid) {
 		} else {
 			$return = '';
 		}
+    // puts($return);
+    // exit($return);
 	}
 	return $return;
 }
