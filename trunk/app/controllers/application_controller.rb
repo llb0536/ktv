@@ -380,5 +380,8 @@ class ApplicationController < ActionController::Base
     @application_ie_modern_required = true
     render 'modern_required',:layout => 'application_ie'
   end
-  
+  def harsh_sign_out
+    # todo: dz sign out
+    sign_out
+  end
 end

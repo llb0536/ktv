@@ -124,7 +124,7 @@ class UcenterController < ApplicationController
     render text:API_RETURN_SUCCEED
   end
   def synlogout
-    sign_out
+    harsh_sign_out
     render text:API_RETURN_SUCCEED
   end
 end
