@@ -493,7 +493,7 @@ var Util = {
 		},
 		getPositionStr : function (){
 			this.initPosition();
-			var start = '<?xml version="1.0" encoding="ISO-8859-1"?><root>';
+			var start = '<?xml version="1.0" encoding="UTF-8"?><root>';
 			var end ="</root>";
 			var str = "";
 			for (var i in this.data) {

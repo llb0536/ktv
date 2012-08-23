@@ -13,7 +13,11 @@ define('UC_DBCONNECT', 0);
 
 define('UC_CHARSET', 'utf-8');
 define('UC_KEY', 'WdD0p7LeJ2E7R1tbH3O951L544b7E4a5C7s3p69dtdc6U8daM0A1R5W889j3z2gf');
-define('UC_API', 'http://uc.kejian.tv');
+if(PSVR_IN_DEV){
+  define('UC_API', 'http://uc.kejian.lvh.me');
+}else{
+  define('UC_API', 'http://uc.kejian.tv');
+}
 define('UC_APPID', '1');
 define('UC_IP', '0.0.0.0');
 define('UC_PPP', 20);

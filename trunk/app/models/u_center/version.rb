@@ -2,11 +2,12 @@ module UCenter
   module Version
     def check
       res = Ktv::JQuery.ajax({
-        :url => "#{UCenter.getdef('UC_API')}/?m=version&a=check",
+        :url => "#{UCenter.getdef('UC_API')}/index.php",
         :type => 'POST',
-        :accept => :xml,
+        :accept => '*/*',
         :data => {
-          
+          m:'version',
+          a:'check'
         },
         :psvr_response_anyway => true
       })

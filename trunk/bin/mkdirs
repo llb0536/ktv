@@ -3,3 +3,9 @@ mkdir -p log/
 mkdir -p tmp_staging/pids/
 mkdir -p tmp_staging/cache/
 mkdir -p log_staging/
+mkdir -p ../log/
+mkdir -p ../tmp/
+chmod 777 ../log
+chmod 777 ../tmp
+chmod 777 ./log
+chmod 777 ./tmp

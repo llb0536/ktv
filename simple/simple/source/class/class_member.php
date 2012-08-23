@@ -119,7 +119,10 @@ class logging_ctl {
 				checkfollowfeed();
 
 				C::t('common_member_status')->update($_G['uid'], array('lastip' => $_G['clientip'], 'lastvisit' =>TIMESTAMP, 'lastactivity' => TIMESTAMP));
+
 				$ucsynlogin = $this->setting['allowsynlogin'] ? uc_user_synlogin($_G['uid']) : '';
+
+// puts($ucsynlogin);
 
 				if($invite['id']) {
 					$result = C::t('common_invite')->count_by_uid_fuid($invite['uid'], $uid);

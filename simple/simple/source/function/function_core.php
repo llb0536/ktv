@@ -173,7 +173,9 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 			return '';
 		}
 	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
+		// psvr fix
+    // return $keyc.str_replace('=', '', base64_encode($result));
+    return $keyc.base64_encode($result);
 	}
 
 }
@@ -213,7 +215,7 @@ function dhtmlspecialchars($string, $flags = null) {
 				if(strtolower(CHARSET) == 'utf-8') {
 					$charset = 'UTF-8';
 				} else {
-					$charset = 'ISO-8859-1';
+					$charset = 'UTF-8';
 				}
 				$string = htmlspecialchars($string, $flags, $charset);
 			}

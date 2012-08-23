@@ -10,6 +10,19 @@ class AccountSessionsController < Devise::SessionsController
     super
   end
   def destroy
-    super
+    sign_out_others
+    redirect_path = after_sign_out_path_for(resource_name)
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    set_flash_message :notice, :signed_out if signed_out
+    flash[:extra_ucenter_operations] = UCenter::User.synlogout(request).html_safe
+    
+    # We actually need to hardcode this as Rails default responder doesn't
+    # support returning empty response on GET request
+    respond_to do |format|
+      format.any(*navigational_formats) { redirect_to redirect_path }
+      format.all do
+        head :no_content
+      end
+    end
   end
 end

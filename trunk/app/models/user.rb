@@ -27,7 +27,6 @@ class User
     u.email=email
     u.password=password
     u.password_confirmation=password
-    u.during_registration=true
     u.save!
   end
   def fill_in_unknown_email
@@ -67,6 +66,7 @@ class User
          :lockable, :timeoutable, :omniauthable#, :invitable
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
+  field :uid #UCenter
   field :topic #calculated by suggest_items.rake
   field :nickname
   field :weibo
@@ -1067,7 +1067,28 @@ class User
     end
     return false
   end
-  
+  def self.authenticate_through_ucenter!(incoming_opts)
+    # {
+    #      "action"=>"synlogin",
+    #      "email"=>"pmq2001@gmail.com",
+    #      "username"=>"psvr",
+    #      "uid"=>"1",
+    #      "password"=>"ce2c04447f84995b2537edfc87e56d71",
+    #      "time"=>"1345702127"
+    # }
+    u  = nil
+    u||= User.where(:email=>incoming_opts['email']).first
+    u||= User.where(:slug=>incoming_opts['username']).first
+    u||= User.where(:uid=>incoming_opts['uid']).first
+    u||= User.new
+    u.email = incoming_opts['email']
+    u.slug = incoming_opts['username']
+    u.password = incoming_opts['password']
+    u.password_confirmation = incoming_opts['password']
+    u.uid = incoming_opts['uid']
+    u.save(:validate=>false)
+    return u
+  end
   protected
   
   def insert_follow_log(action, item, parent_item = nil)

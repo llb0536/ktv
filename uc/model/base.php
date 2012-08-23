@@ -9,6 +9,20 @@ $Id: base.php 1059 2011-03-01 07:25:09Z monkey $
 
 !defined('IN_UC') && exit('Access Denied');
 
+// psvr add
+function puts($str){
+  $psvr_fp = fopen("/tmp/psvr_uc_log.log", "a");
+  fprintf($psvr_fp,"> ");
+  if (true===$str) {
+    fputs($psvr_fp,"true");
+  }else if(false===$str){
+    fputs($psvr_fp,"false");
+  }else{
+    fputs($psvr_fp,var_export($str, TRUE));
+    fprintf($psvr_fp,"\n\n");
+  }
+  fclose($psvr_fp);
+}
 class base {
 
 	var $time;
@@ -75,11 +89,15 @@ class base {
 	function init_input($getagent = '') {
 		$input = getgpc('input', 'R');
 		if($input) {
+puts( $input);
 			$input = $this->authcode($input, 'DECODE', $this->app['authkey']);
+puts( $input);
 			parse_str($input, $this->input);
 			$this->input = daddslashes($this->input, 1, TRUE);
 			$agent = $getagent ? $getagent : $this->input['agent'];
-
+puts( $_SERVER['HTTP_USER_AGENT']);
+puts(md5($_SERVER['HTTP_USER_AGENT']));
+puts($agent);
 			if(($getagent && $getagent != $this->input['agent']) || (!$getagent && md5($_SERVER['HTTP_USER_AGENT']) != $agent)) {
 				exit('Access denied for agent changed');
 			} elseif($this->time - $this->input('time') > 3600) {
@@ -187,7 +205,9 @@ class base {
 				return '';
 			}
 		} else {
-			return $keyc.str_replace('=', '', base64_encode($result));
+      // psvr fix
+      // return $keyc.str_replace('=', '', base64_encode($result));
+      return $keyc.base64_encode($result);
 		}
 
 	}

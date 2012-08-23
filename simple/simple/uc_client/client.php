@@ -68,7 +68,12 @@ function uc_api_post($module, $action, $arg = array()) {
 		}
 		$sep = '&';
 	}
+	puts('$module:'.$module);
+	puts('$action:'.$action);
+	puts('$s:'.$s);
 	$postdata = uc_api_requestdata($module, $action, $s);
+  // puts(UC_API.'/index.php');
+  // puts($postdata);
 	return uc_fopen2(UC_API.'/index.php', 500000, $postdata, '', TRUE, UC_IP, 20);
 }
 
@@ -162,7 +167,9 @@ function uc_authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 			return '';
 		}
 	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
+		// psvr fix
+    // return $keyc.str_replace('=', '', base64_encode($result));
+		return $keyc.base64_encode($result);
 	}
 }
 
@@ -315,6 +322,8 @@ function uc_user_synlogin($uid) {
 		} else {
 			$return = '';
 		}
+    // puts($return);
+    // exit($return);
 	}
 	return $return;
 }

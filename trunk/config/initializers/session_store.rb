@@ -1,5 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
+# 下面两句慎改！！要同时修改DZ的function clearcookies()等！！
 key = (Rails.env.development? ?  "_ktv_local_session" : "_ktv_session")
 domain = (Rails.env.development? ?  ".kejian.lvh.me" : ".kejian.tv")
 

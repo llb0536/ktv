@@ -6,7 +6,7 @@
 <p>特殊受信应用可以获取、更新任何用户的任何资源。</p>
 
 <h2>输入</h2>
-<p>向<code>/users/:user/user_update_info</code>发送<code>POST</code>请求，内容为{ 'user' => {'字段1' => '内容','字段2' => '内容',... } }，可以修改的字段只有email(email), 密码(password), 名称(name), 个性域名(slug), 一句话介绍(tagline), 个人简历(bio), 网站(website), 性别(girl), 
+<p>向<code>/users/:user/user_update_info</code>发送<code>POST</code>请求，内容为{ 'user' => {'字段1' => '内容','字段2' => '内容',... } }，可以修改的字段只有email(email), 密码(password), 名称(name), 用户名(slug), 一句话介绍(tagline), 个人简历(bio), 网站(website), 性别(girl), 
   邮件接受选项（mail_new_answer, mail_be_followed, mail_invite_to_ask, mail_ask_me）</p>
 <p>例如(ruby)：</p>
 <pre>
@@ -34,5 +34,5 @@ response = RestClient.post "http://api.kejian.tv/users/angelacai/user_update_inf
 <p>例如：</p>
 <pre>
 response
-=> { success: false, reason: '修改失败，个性域名重复！' }
+=> { success: false, reason: '修改失败，用户名重复！' }
 </pre>
