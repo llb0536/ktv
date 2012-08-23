@@ -162,7 +162,9 @@ function uc_authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 			return '';
 		}
 	} else {
-		return $keyc.str_replace('=', '', base64_encode($result));
+		// psvr fix
+    // return $keyc.str_replace('=', '', base64_encode($result));
+		return $keyc.base64_encode($result);
 	}
 }
 
