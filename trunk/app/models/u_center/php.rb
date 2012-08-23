@@ -1083,7 +1083,7 @@ module UCenter
     	end
 
     end
-    def uc_api_input2(request,data)
+    def uc_api_input2(agent,data)
     	s = sep = ''
     	for k,v in data
     		k = urlencode(k)
@@ -1101,7 +1101,7 @@ module UCenter
     		sep = '&';
     	end
       # binding.pry
-      authcode(s+'&agent='+md5(request.env['HTTP_USER_AGENT'])+"&time="+time().to_s, 'ENCODE', UCenter.getdef('UC_KEY'))
+      authcode(s+'&agent='+md5(agent)+"&time="+time().to_s, 'ENCODE', UCenter.getdef('UC_KEY'))
     end
     # ------------------------------------------------------------------------------------------------
     private

@@ -5,6 +5,7 @@ require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
+    # binding.pry
     # text =request.env['HTTP_USER_AGENT']
     # render text:"#{text}" and return
   }
@@ -96,7 +97,7 @@ class ApplicationController < ActionController::Base
     end
   end
   def go_nowhere?
-    return (@is_ie6 or @is_ie7 or @is_ie8)
+    return (@is_ie and !@is_ie10)
   end
   def go_sub!
     redirect_to '/simple'
@@ -314,23 +315,6 @@ class ApplicationController < ActionController::Base
   #
   #
   
-  def login_via_zhaopin
-    src='http://my.kejian.tv/loginmgr/loginproc.asp'
-    canshu = {loginname:params[:loginname],password:params[:password],'Validate'=>params[:Validate],int_count:params[:int_count],bkurl:params[:bkurl]}
-    proxy_addr = '192.168.20.6'
-    proxy_port = 3128
-    url = URI.parse(src)
-    req = Net::HTTP::Post.new(url.path)
-    req.set_form_data(canshu)
-    res = Net::HTTP::Proxy(proxy_addr,proxy_port).start(url.host, url.port) {|http| http.request(req) }
-    case res
-    when Net::HTTPSuccess, Net::HTTPRedirection
-      redirect_to params[:bkurl]
-    else
-      redirect_to 'http://my.kejian.tv/loginmgr/login.asp'
-    end
-  end
-
   
   def suggest
     if current_user and !(current_user.followed_topic_ids.blank? and current_user.following_ids.blank?)
@@ -380,6 +364,13 @@ class ApplicationController < ActionController::Base
     @application_ie_noheader = true
     @application_ie_modern_required = true
     render 'modern_required',:layout => 'application_ie'
+  end
+  def after_sign_in_path_for(resource_or_scope)
+    if params[:redirect_to].blank?
+      super(resource_or_scope)
+    else
+      params[:redirect_to]
+    end
   end
   def sign_out_others
     cookies.each do |k,v|

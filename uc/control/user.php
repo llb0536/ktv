@@ -75,11 +75,12 @@ class usercontrol extends base {
 		$questionid = $this->input('questionid');
 		$answer = $this->input('answer');
 		$regip = $this->input('regip');
-
-		if(($status = $this->_check_username($username)) < 0) {
+    $psvr_force = $this->input('psvr_force');
+    
+		if(!$psvr_force && ($status = $this->_check_username($username)) < 0) {
 			return $status;
 		}
-		if(($status = $this->_check_email($email)) < 0) {
+		if(!$psvr_force && ($status = $this->_check_email($email)) < 0) {
 			return $status;
 		}
 
@@ -98,6 +99,31 @@ class usercontrol extends base {
 		$answer = $this->input('answer');
 
 		if(!$ignoreoldpw && $email && ($status = $this->_check_email($email, $username)) < 0) {
+			return $status;
+		}
+		$status = $_ENV['user']->edit_user($username, $oldpw, $newpw, $email, $ignoreoldpw, $questionid, $answer);
+
+		if($newpw && $status > 0) {
+			$this->load('note');
+			$_ENV['note']->add('updatepw', 'username='.urlencode($username).'&password=');
+			$_ENV['note']->send();
+		}
+		return $status;
+	}
+	function onupdate() {
+		$this->init_input();
+		$username = $this->input('username');
+		$oldpw = $this->input('oldpw');
+		$newpw = $this->input('newpw');
+		$email = $this->input('email');
+		$ignoreoldpw = $this->input('ignoreoldpw');
+		$questionid = $this->input('questionid');
+		$answer = $this->input('answer');
+
+		if(!$ignoreoldpw && $email && ($status = $this->_check_email($email, $username)) < 0) {
+			return $status;
+		}
+		if(!$ignoreoldpw && $username && ($status = $this->_check_username($username)) < 0) {
 			return $status;
 		}
 		$status = $_ENV['user']->edit_user($username, $oldpw, $newpw, $email, $ignoreoldpw, $questionid, $answer);
@@ -159,10 +185,12 @@ class usercontrol extends base {
 	function onget_user() {
 		$this->init_input();
 		$username = $this->input('username');
-		if(!$this->input('isuid')) {
-			$status = $_ENV['user']->get_user_by_username($username);
-		} else {
+		if($this->input('isuid')) {
 			$status = $_ENV['user']->get_user_by_uid($username);
+		} else if($this->input('isemail')) {
+		  $status = $_ENV['user']->get_user_by_email($username);
+		} else {
+			$status = $_ENV['user']->get_user_by_username($username);
 		}
 		if($status) {
 			return array($status['uid'],$status['username'],$status['email']);

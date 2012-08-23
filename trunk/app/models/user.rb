@@ -68,6 +68,7 @@ class User
   ## Database authenticatable
   field :uid #UCenter
   field :discuz_pw #DZ
+  field :regip
   field :topic #calculated by suggest_items.rake
   field :nickname
   field :weibo
@@ -1076,8 +1077,8 @@ class User
       discuz_pw = auth[0]
       discuz_uid = auth[1]
       info0 = UCenter::User.get_user(request,{username:discuz_uid,isuid:1})
+      return nil if '0'==info0
       info = info0['root']['item']
-      # ["1", "psvr", "pmq2001@gmail.com"]
       incoming_opts = {'email' => info[2], 'username' => info[1], 'uid' => info[0], 'password' => discuz_pw}
       u  = nil
       u||= User.where(:email=>incoming_opts['email']).first
@@ -1093,6 +1094,18 @@ class User
       u.save(:validate=>false)
       return u
     end
+  end
+  def sync_to_uc!
+    info0 = UCenter::User.get_user(nil,{username:self.email,isemail:1})
+    if '0'==info0
+      ret = UCenter::User.register(nil,{psvr_force:1,username:self.slug,password:self.encrypted_password,email:self.email,regip:self.regip})
+      binding.pry unless Integer(ret) > 0
+    else
+      ret = UCenter::User.update(nil,{ignoreoldpw:1,username:self.slug,newpw:self.encrypted_password,email:self.email})
+      return 'protected users, okay to ignore' if '-8'==ret
+      binding.pry unless Integer(ret) >= 0
+    end
+    return nil
   end
   protected
   
