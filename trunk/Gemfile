@@ -20,7 +20,7 @@ gem "bson_ext"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 #end
-gem 'jquery-rails'
+gem 'jquery-rails',  '~> 2.1.1'
 gem "jquery-atwho-rails", ">=0.1.6" #[!]
 # 禁用 assets 日志
 gem 'quiet_assets', ">=1.0.1"

@@ -4,22 +4,25 @@ read -r -p "Are you sure? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
         cd ~
-        scp data@kejian.tv:/home/data/ktvmongodump.tar.gz ~
-        rm -rf home/data/ktvmongodump/
-        tar xzf ktvmongodump.tar.gz
-        mongorestore --drop home/data/ktvmongodump/
+#        scp data@kejian.tv:/home/data/ktvmongodump.tar.gz ~
+#        rm -rf home/data/ktvmongodump/
+#        tar xzf ktvmongodump.tar.gz
+#        mongorestore --drop ~/home/data/ktvmongodump/
         scp data@kejian.tv:/home/data/simple_dump.tar.gz ~
         scp data@kejian.tv:/home/data/ucenter_dump.tar.gz ~
         tar xzf simple_dump.tar.gz
-        mysql -u root -pjknlff8-pro-17m7755 simple < ~/simple.backup.sql
+        tar xzf ucenter_dump.tar.gz
+        /usr/local/mysql/bin/mysql -u root -pjknlff8-pro-17m7755 simple < ~/home/data/simple.backup.sql
+        /usr/local/mysql/bin/mysql -u root -pjknlff8-pro-17m7755 ucenter < ~/home/data/ucenter.backup.sql
         rm -rf ~/ktv/simple/simple/data
         rm -rf ~/ktv/simple/simple/uc_client/data
         rm -rf ~/ktv/uc/data
         mv simple/simple/data ~/ktv/simple/simple/data
         mv simple/simple/uc_client/data ~/ktv/simple/simple/uc_client/data
         mv uc/data ~/ktv/uc/data
-        tar xzf ucenter_dump.tar.gz
-        mysql -u root -pjknlff8-pro-17m7755 ucenter < ~/ucenter.backup.sql
+	chmod -R 777  ~/ktv/simple/simple/data
+	chmod -R 777  ~/ktv/simple/simple/uc_client/data
+	chmod -R 777 ~/ktv/uc/data 
         echo bundle exec rake consultant:index  
         echo bundle exec rake redis_search:index
         ;;
