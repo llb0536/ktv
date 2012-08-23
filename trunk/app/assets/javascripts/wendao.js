@@ -234,7 +234,7 @@ App.psvr_wendao_init = function(){
             }
         });
     }
-    // 个人设置页 个性域名输入限制
+    // 个人设置页 用户名输入限制
     if ($("#user_slug").length){
         $("#user_slug").val($("#user_slug").val().replace(/[\. ]/g,"_"));
         $("#user_slug").bind("keydown", function(e){

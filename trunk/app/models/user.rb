@@ -204,7 +204,7 @@ class User
     when :tagline
       '一句话介绍'
     when :slug
-      '个性域名'
+      '用户名'
     when :inviting;'立即发送邀请'
     when :website;'个人网站'
     when :location;'地理位置'
@@ -214,7 +214,7 @@ class User
     when :department;'用户所属院系'
     when :school;'用户所属学校'
     when :email_human;'电子邮箱'
-    when :slug;'用户的个性域名'
+    when :slug;'用户的用户名'
     when :password;'密码'
     when :password_confirmation;'密码确认'
     when :remember_me;'记住我的登录状态'
@@ -384,7 +384,7 @@ class User
   end
   validates_length_of :tagline,:maximum=>40
   validates_presence_of :name, :slug
-  validates_uniqueness_of :slug,:message=>'与已有个性域名重复，请尝试其他域名'
+  validates_uniqueness_of :slug,:message=>'与已有用户名重复，请尝试其他域名'
   validates_format_of :slug, :with => /[a-z0-9\-\_]{1,20}/i
   validate :name_change_not_too_often
   # 用户修改昵称，一个月只能修改一次

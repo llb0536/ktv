@@ -57,7 +57,7 @@ class control extends adminbase {
 
 			$a = getgpc('a');
 			$this->view->assign('a', $a);
-			$typelist = array('DISCUZX'=>'DiscuzX','UCHOME'=>'UCenter Home','XSPACE'=>'X-Space','DISCUZ'=>'Kejian.TV','SUPESITE'=>'SupeSite','SUPEV'=>'SupeV','ECSHOP'=>'ECShop','ECMALL'=>'ECMall','OTHER'=>$this->lang['other']);
+			$typelist = array('DISCUZX'=>'DiscuzX','UCHOME'=>'UCenter Home','XSPACE'=>'X-Space','DISCUZ'=>'DISCUZ!','SUPESITE'=>'SupeSite','SUPEV'=>'SupeV','ECSHOP'=>'ECShop','ECMALL'=>'ECMall','KTV'=>'Kejian.TV','OTHER'=>$this->lang['other']);
 			$this->view->assign('typelist', $typelist);
 			$this->view->display('admin_app');
 		} else {
@@ -236,7 +236,7 @@ class control extends adminbase {
 		$this->view->assign('dbcharset', $app['dbcharset']);
 		$this->view->assign('type', $app['type']);
 		$this->view->assign('recvnotechecked', $recvnotechecked);
-		$typelist = array('DISCUZX'=>'DiscuzX','UCHOME'=>'UCenter Home','XSPACE'=>'X-Space','DISCUZ'=>'Kejian.TV','SUPESITE'=>'SupeSite','SUPEV'=>'SupeV','ECSHOP'=>'ECShop','ECMALL'=>'ECMall','OTHER'=>$this->lang['other']);
+		$typelist = array('DISCUZX'=>'DiscuzX','UCHOME'=>'UCenter Home','XSPACE'=>'X-Space','DISCUZ'=>'DISCUZ!','SUPESITE'=>'SupeSite','SUPEV'=>'SupeV','ECSHOP'=>'ECShop','ECMALL'=>'ECMall','KTV'=>'Kejian.TV','OTHER'=>$this->lang['other']);
 		$this->view->assign('typelist', $typelist);
 		$this->view->assign('updated', $updated);
 		$addapp = getgpc('addapp');

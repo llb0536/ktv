@@ -213,7 +213,7 @@ class Cpanel::UsersController < CpanelController
     @user = User.find(params[:id])
     old_user = User.find_by_slug(params[:user]["slug"])
     if !old_user.blank? and old_user.id != @user.id
-      flash[:notice]="修改失败，个性域名重复！"
+      flash[:notice]="修改失败，用户名重复！"
       @no_form_search=true
       render :action => "edit"
       return

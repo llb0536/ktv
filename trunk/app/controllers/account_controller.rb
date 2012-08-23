@@ -63,7 +63,7 @@ class AccountController < Devise::RegistrationsController
       resource.mail_ask_me = ('on'==params[resource_name]["mail_ask_me"] ? '1' : '0')
       old_user = User.find_by_slug(params[resource_name]["slug"])
       if !old_user.blank? and old_user.id != resource.id and !params[resource_name]["slug"].blank?
-        flash[:notice]="修改失败，个性域名重复！"
+        flash[:notice]="修改失败，用户名重复！"
         redirect_to request.referer
         return
       end

@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
     end
   end
   def go_nowhere?
-    return (@is_ie and !@is_ie10)
+    return (@is_ie6 or @is_ie7 or @is_ie8)
   end
   def go_sub!
     redirect_to '/simple'

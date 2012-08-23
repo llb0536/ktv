@@ -141,7 +141,7 @@ class Api::UsersController < ApiController
       params['user']["mail_ask_me"] = ('on'==params['user']["mail_ask_me"] ? '1' : '0')
       old_user = User.find_by_slug(params['user']["slug"])
       if !old_user.blank? and old_user.id != resource.id and !params['user']["slug"].blank?
-        render json:{ success:false,reason:"修改失败，个性域名重复！"}
+        render json:{ success:false,reason:"修改失败，用户名重复！"}
         return
       end
       if !params['user']["avatar"].blank?

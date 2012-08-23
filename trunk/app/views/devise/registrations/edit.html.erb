@@ -57,7 +57,7 @@ $('#change_password_link').click(function(){
       </p>
     </div>  
     <div class="form_sections" style="margin-bottom:18px">
-      <p><label for="user_slug">个性域名</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:slug) %></div><br class="clear">
+      <p><label for="user_slug">用户名</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:slug) %></div><br class="clear">
         http://kejian.tv/users/<input class="text" name="user[slug]" id="user_slug" type="text" style="height:33px;padding-left:0;width:268px" size="10" value="<%= resource.slug %>"/></p>
     </div>
 
