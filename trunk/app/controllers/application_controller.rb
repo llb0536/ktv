@@ -5,8 +5,8 @@ require 'uri'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
-    #text = request.ip
-    #render text:"#{text}" and return
+    # text =request.env['HTTP_USER_AGENT']
+    # render text:"#{text}" and return
   }
   if Rails.env.production?
     rescue_from Exception, with: :render_500
@@ -380,8 +380,11 @@ class ApplicationController < ActionController::Base
     @application_ie_modern_required = true
     render 'modern_required',:layout => 'application_ie'
   end
-  def harsh_sign_out
-    # todo: dz sign out
-    sign_out
+  def sign_out_others
+    cookies.each do |k,v|
+      if k.starts_with?('WkpF_')
+        cookies.delete(k, 'domain' => (Rails.env.development? ?  ".kejian.lvh.me" : ".kejian.tv"))
+      end
+    end
   end
 end

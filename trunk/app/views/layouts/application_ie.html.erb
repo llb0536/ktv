@@ -13,6 +13,7 @@
   <%= stylesheet_link_tag    "ktv/ie/application", :media => "all" %>
 
   <%= csrf_meta_tags %>
+  <%= flash[:extra_ucenter_operations] %>
 </head>
 <body class="<%= @simple_layout ? 'simple_layout' : '' %> <%= @is_ie ? 'is_ie' : ''%>" id="<%= pos_signature %>">
 <%= render 'header0' %>

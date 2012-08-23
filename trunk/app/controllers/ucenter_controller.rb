@@ -34,9 +34,9 @@ class UcenterController < ApplicationController
   		return
   	end
   	post_str = request.body.read
-  	@post = Nokogiri::XML(post_str) if post_str.present?
+  	@post = Hash.from_xml(post_str) if post_str.present?
   	puts "[[[#{@get['action']}]]]"
-  	pp(Hash.from_xml(post_str)) if @post.present?
+  	pp(@post) if @post.present?
     send(@get['action'])
   end
   
@@ -77,44 +77,11 @@ class UcenterController < ApplicationController
     binding.pry
   end
   def updateapps
+    @post['root']['item'].each do |app|
+      inst = UcApp.find_or_create_by(mysql_id:app['id'])
+      inst.update_attribute(:item,app['item'])
+    end
     render text:API_RETURN_SUCCEED
-=begin
-{"root"=>
-  {"item"=>
-    [{"id"=>"1",
-      "item"=>
-       ["1",
-        "DISCUZX",
-        "Kejian.TV ç\u009B®å½\u0095æ£\u0080ç´¢",
-        "http://kejian.lvh.me/simple",
-        {"id"=>"ip", "__content__"=>""},
-        {"id"=>"viewprourl", "__content__"=>""},
-        "uc.php",
-        "utf-8",
-        "1",
-        {"id"=>"extra",
-         "item"=>
-          [{"id"=>"apppath", "__content__"=>""},
-           {"id"=>"extraurl", "__content__"=>"\t\t\t"}]},
-        "1"]},
-     {"id"=>"3",
-      "item"=>
-       ["3",
-        "KTV",
-        "ktv",
-        "http://kejian.lvh.me",
-        {"id"=>"ip", "__content__"=>""},
-        {"id"=>"viewprourl", "__content__"=>""},
-        "uc",
-        {"id"=>"charset", "__content__"=>""},
-        "1",
-        {"id"=>"extra",
-         "item"=>
-          [{"id"=>"apppath", "__content__"=>""},
-           {"id"=>"extraurl", "__content__"=>"\t\t\t"}]},
-        "1"]},
-     "http://uc.kejian.lvh.me"]}}
-=end
   end
   def updatecredit
     binding.pry
@@ -124,7 +91,8 @@ class UcenterController < ApplicationController
     render text:API_RETURN_SUCCEED
   end
   def synlogout
-    harsh_sign_out
+    sign_out_others
+    sign_out
     render text:API_RETURN_SUCCEED
   end
 end

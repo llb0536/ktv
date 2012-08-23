@@ -1,10 +1,44 @@
 module UCenter
   module User
-    def synlogin
-
+    # array('uid'=>$uid)
+    def synlogin(request,opts={})
+      res = Ktv::JQuery.ajax({
+        :url => "#{UCenter.getdef('UC_API')}/index.php",
+        :type => 'POST',
+        :accept => '*/*',
+        'User-Agent' => request.env['HTTP_USER_AGENT'], 
+        :data => {
+          m: 'user',
+          a: 'synlogin',
+          inajax: '2',
+          release: UCenter.getdef('UC_CLIENT_RELEASE'),
+          input: UCenter::Php.uc_api_input2(request,opts),
+          appid: UCenter.getdef('UC_APPID'),
+        },
+        :psvr_response_anyway => true
+      })
+      puts res
+      return res
     end
-    def synlogout
-
+    # array()
+    def synlogout(request,opts={})
+      res = Ktv::JQuery.ajax({
+        :url => "#{UCenter.getdef('UC_API')}/index.php",
+        :type => 'POST',
+        :accept => '*/*',
+        'User-Agent' => request.env['HTTP_USER_AGENT'], 
+        :data => {
+          m: 'user',
+          a: 'synlogout',
+          inajax: '2',
+          release: UCenter.getdef('UC_CLIENT_RELEASE'),
+          input: UCenter::Php.uc_api_input2(request,opts),
+          appid: UCenter.getdef('UC_APPID'),
+        },
+        :psvr_response_anyway => true
+      })
+      puts res
+      return res
     end
     def register
 

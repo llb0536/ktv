@@ -89,11 +89,15 @@ class base {
 	function init_input($getagent = '') {
 		$input = getgpc('input', 'R');
 		if($input) {
+puts( $input);
 			$input = $this->authcode($input, 'DECODE', $this->app['authkey']);
+puts( $input);
 			parse_str($input, $this->input);
 			$this->input = daddslashes($this->input, 1, TRUE);
 			$agent = $getagent ? $getagent : $this->input['agent'];
-
+puts( $_SERVER['HTTP_USER_AGENT']);
+puts(md5($_SERVER['HTTP_USER_AGENT']));
+puts($agent);
 			if(($getagent && $getagent != $this->input['agent']) || (!$getagent && md5($_SERVER['HTTP_USER_AGENT']) != $agent)) {
 				exit('Access denied for agent changed');
 			} elseif($this->time - $this->input('time') > 3600) {

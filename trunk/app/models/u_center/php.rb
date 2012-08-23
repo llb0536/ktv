@@ -1060,12 +1060,31 @@ module UCenter
     			return '';
         end
     	else
-    		return keyc+str_replace('=', '', base64_encode(result));
+    		return keyc+base64_encode(result);
     	end
 
     end
-    
-    
+    def uc_api_input2(request,data)
+    	s = sep = ''
+    	for k,v in data
+    		k = urlencode(k)
+    		if(is_array(v))
+    			s2 = sep2 = '';
+    			for k2,v2 in v
+    				k2 = urlencode(k2);
+    				s2 += "#{sep2}#{k}[#{k2}]="+urlencode(stripslashes(v2));
+    				sep2 = '&';
+    			end
+    			s += sep+s2;
+    		else
+    			s += "#{sep}#{k}="+urlencode(stripslashes(v));
+    		end
+    		sep = '&';
+    	end
+      # binding.pry
+      authcode(s+'&agent='+md5(request.env['HTTP_USER_AGENT'])+"&time="+time().to_s, 'ENCODE', UCenter.getdef('UC_KEY'))
+    end
+    # ------------------------------------------------------------------------------------------------
     private
 
     def Php.parse_str_name(seton, varname, value)

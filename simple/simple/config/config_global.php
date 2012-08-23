@@ -50,8 +50,13 @@ $_config['output']['ajaxvalidate'] = '0';
 $_config['output']['iecompatible'] = '0';
 
 // --------------------------  CONFIG COOKIE  --------------------------- //
+// 下面两句慎改！！要同时修改KTV的application#sign_out_others等
 $_config['cookie']['cookiepre'] = 'WkpF_';
-$_config['cookie']['cookiedomain'] = '';
+if (PSVR_IN_DEV) {
+  $_config['cookie']['cookiedomain'] = '.kejian.lvh.me';
+}else{
+  $_config['cookie']['cookiedomain'] = '.kejian.tv';
+}
 $_config['cookie']['cookiepath'] = '/';
 
 // -------------------------  CONFIG SECURITY  -------------------------- //
