@@ -955,7 +955,7 @@ module UCenter
       var.kind_of?(Array) or var.kind_of?(Hash)
     end
     def addslashes(str)
-      str.gsub(/['"\\\x0]/,'\\\\\0');
+      str.to_s.gsub(/['"\\\x0]/,'\\\\\0');
     end
     def stripslashes(str)
       eval("\"#{str}\"")
@@ -1001,7 +1001,26 @@ module UCenter
     def chr(num)
       num.chr
     end
-    
+    def daddslashes(string, force = 1)
+    	if(is_array(string))
+    	  if string.respond_to? :keys
+    		  keys = string.keys;
+      		for key in keys
+      			val = string[key];
+      			string[key] = nil;
+      			string[addslashes(key)] = daddslashes(val, force);
+      		end    		  
+    		else
+    		  0.upto(string.length-1) do |key|
+      			val = string[key];
+      			string[key] = daddslashes(val, force);
+      		end
+    		end
+    	else
+    		string = addslashes(string)
+    	end
+    	return string;
+    end
     # -----------------------------------------------------------------------------------------
     
     def authcode(string, operation = 'DECODE', key = '', expiry = 0) 
@@ -1012,7 +1031,7 @@ module UCenter
     	# 取值越大，密文变动规律越大，密文变化 = 16 的 ckey_length 次方
     	# 当此值为 0 时，则不产生随机密钥
 
-    	key = md5(key.present? ? key : UCenter.getdef('UC_KEY'));
+    	key = md5(key);
     	keya = md5(substr(key, 0, 16));
     	keyb = md5(substr(key, 16, 16));
     	keyc = ckey_length!=0 ? (operation == 'DECODE' ? substr(string, 0, ckey_length): substr(md5(microtime()), -ckey_length)) : '';

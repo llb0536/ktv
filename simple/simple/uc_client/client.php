@@ -68,9 +68,9 @@ function uc_api_post($module, $action, $arg = array()) {
 		}
 		$sep = '&';
 	}
-	puts('$module:'.$module);
-	puts('$action:'.$action);
-	puts('$s:'.$s);
+  // puts('$module:'.$module);
+  // puts('$action:'.$action);
+  // puts('$s:'.$s);
 	$postdata = uc_api_requestdata($module, $action, $s);
   // puts(UC_API.'/index.php');
   // puts($postdata);

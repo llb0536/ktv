@@ -17,7 +17,6 @@ module UCenter
         },
         :psvr_response_anyway => true
       })
-      puts res
       return res
     end
     # array()
@@ -37,7 +36,6 @@ module UCenter
         },
         :psvr_response_anyway => true
       })
-      puts res
       return res
     end
     def register
@@ -55,8 +53,26 @@ module UCenter
     def check_username
 
     end
-    def get_user
-
+    # username, isuid
+    # ->
+    # $status['uid'],$status['username'],$status['email']
+    def get_user(request,opts={})
+      res = Ktv::JQuery.ajax({
+        :url => "#{UCenter.getdef('UC_API')}/index.php",
+        :type => 'POST',
+        :accept => :xml,
+        'User-Agent' => request.env['HTTP_USER_AGENT'], 
+        :data => {
+          m: 'user',
+          a: 'get_user',
+          inajax: '2',
+          release: UCenter.getdef('UC_CLIENT_RELEASE'),
+          input: UCenter::Php.uc_api_input2(request,opts),
+          appid: UCenter.getdef('UC_APPID'),
+        },
+        :psvr_response_anyway => true
+      })
+      return res
     end
     def getprotected
 

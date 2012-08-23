@@ -27,7 +27,7 @@ module Ktv
         if :json==settings[:accept]
           return JSON.parse(response)
         elsif :xml==settings[:accept]
-          return Nokogiri::XML(response)
+          return Hash.from_xml(response)
         else
           return response
         end
