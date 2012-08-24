@@ -131,7 +131,9 @@ function daddslashes($string, $force = 1) {
 
 function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 	$ckey_length = 4;
+puts(getglobal('authkey'));
 	$key = md5($key != '' ? $key : getglobal('authkey'));
+puts($key);
 	$keya = md5(substr($key, 0, 16));
 	$keyb = md5(substr($key, 16, 16));
 	$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : '';

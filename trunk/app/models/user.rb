@@ -67,6 +67,8 @@ class User
   # P.S.V.R性能改善点，去掉validatable，防止['users'].find({:email=>"efafwfdlkjfdlsjl@qq.com"}).limit(-1).sort([[:_id, :asc]])查询
   ## Database authenticatable
   field :uid #UCenter
+  field :discuz_pw #DZ
+  field :regip
   field :topic #calculated by suggest_items.rake
   field :nickname
   field :weibo
@@ -1067,27 +1069,43 @@ class User
     end
     return false
   end
-  def self.authenticate_through_ucenter!(incoming_opts)
-    # {
-    #      "action"=>"synlogin",
-    #      "email"=>"pmq2001@gmail.com",
-    #      "username"=>"psvr",
-    #      "uid"=>"1",
-    #      "password"=>"ce2c04447f84995b2537edfc87e56d71",
-    #      "time"=>"1345702127"
-    # }
-    u  = nil
-    u||= User.where(:email=>incoming_opts['email']).first
-    u||= User.where(:slug=>incoming_opts['username']).first
-    u||= User.where(:uid=>incoming_opts['uid']).first
-    u||= User.new
-    u.email = incoming_opts['email']
-    u.slug = incoming_opts['username']
-    u.password = incoming_opts['password']
-    u.password_confirmation = incoming_opts['password']
-    u.uid = incoming_opts['uid']
-    u.save(:validate=>false)
-    return u
+  def self.authenticate_through_dz_auth!(request,dz_auth,dz_saltkey)
+    auth = UCenter::Php.daddslashes(UCenter::Php.authcode(dz_auth,'DECODE',Digest::MD5.hexdigest(Setting.dz_authkey+dz_saltkey)).split("\t"))
+    if(auth.blank? || auth.size < 2)
+      return nil
+    else
+      discuz_pw = auth[0]
+      discuz_uid = auth[1]
+      info0 = UCenter::User.get_user(request,{username:discuz_uid,isuid:1})
+      return nil if '0'==info0
+      info = info0['root']['item']
+      incoming_opts = {'email' => info[2], 'username' => info[1], 'uid' => info[0], 'password' => discuz_pw}
+      u  = nil
+      u||= User.where(:email=>incoming_opts['email']).first
+      u||= User.where(:slug=>incoming_opts['username']).first
+      u||= User.where(:uid=>incoming_opts['uid']).first
+      u||= User.new
+      u.uid = incoming_opts['uid']
+      u.email = incoming_opts['email']
+      u.slug = incoming_opts['username']
+      u.discuz_pw = incoming_opts['password']
+      u.password = incoming_opts['password']
+      u.password_confirmation = incoming_opts['password']
+      u.save(:validate=>false)
+      return u
+    end
+  end
+  def sync_to_uc!
+    info0 = UCenter::User.get_user(nil,{username:self.email,isemail:1})
+    if '0'==info0
+      ret = UCenter::User.register(nil,{psvr_force:1,username:self.slug,password:self.encrypted_password,email:self.email,regip:self.regip})
+      binding.pry unless Integer(ret) > 0
+    else
+      ret = UCenter::User.update(nil,{ignoreoldpw:1,username:self.slug,newpw:self.encrypted_password,email:self.email})
+      return 'protected users, okay to ignore' if '-8'==ret
+      binding.pry unless Integer(ret) >= 0
+    end
+    return nil
   end
   protected
   

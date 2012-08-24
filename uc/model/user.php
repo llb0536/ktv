@@ -168,6 +168,37 @@ class usermodel {
 			return -7;
 		}
 	}
+	function update_user($username, $oldpw, $newpw, $email, $ignoreoldpw = 0, $questionid = '', $answer = '') {
+		$data = $this->db->fetch_first("SELECT username, uid, password, salt, email FROM ".UC_DBTABLEPRE."members WHERE email='$email'");
+
+		if($ignoreoldpw) {
+			$isprotected = $this->db->result_first("SELECT COUNT(*) FROM ".UC_DBTABLEPRE."protectedmembers WHERE uid = '$data[uid]'");
+			if($isprotected) {
+				return -8;
+			}
+		}
+
+		if(!$ignoreoldpw && $data['password'] != md5(md5($oldpw).$data['salt'])) {
+			return -1;
+		}
+
+		$sqladd = $newpw ? "password='".md5(md5($newpw).$data['salt'])."'" : '';
+		$sqladd .= $email ? ($sqladd ? ',' : '')." email='$email'" : '';
+		$sqladd .= $username ? ($sqladd ? ',' : '')." username='$username'" : '';
+		if($questionid !== '') {
+			if($questionid > 0) {
+				$sqladd .= ($sqladd ? ',' : '')." secques='".$this->quescrypt($questionid, $answer)."'";
+			} else {
+				$sqladd .= ($sqladd ? ',' : '')." secques=''";
+			}
+		}
+		if($sqladd || $emailadd) {
+			$this->db->query("UPDATE ".UC_DBTABLEPRE."members SET $sqladd WHERE email='$email'");
+			return $this->db->affected_rows();
+		} else {
+			return -7;
+		}
+	}
 
 	function delete_user($uidsarr) {
 		$uidsarr = (array)$uidsarr;

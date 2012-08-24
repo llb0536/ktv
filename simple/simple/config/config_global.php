@@ -50,7 +50,7 @@ $_config['output']['ajaxvalidate'] = '0';
 $_config['output']['iecompatible'] = '0';
 
 // --------------------------  CONFIG COOKIE  --------------------------- //
-// 下面两句慎改！！要同时修改KTV的application#sign_out_others等
+// 下面慎改！！要同时修改KTV的application#sign_out_others, KTV::Php.authcode, cookie前缀等等等等
 $_config['cookie']['cookiepre'] = 'WkpF_';
 if (PSVR_IN_DEV) {
   $_config['cookie']['cookiedomain'] = '.kejian.lvh.me';
@@ -60,6 +60,7 @@ if (PSVR_IN_DEV) {
 $_config['cookie']['cookiepath'] = '/';
 
 // -------------------------  CONFIG SECURITY  -------------------------- //
+// 下面1句慎改！！要同时修改KTV的Setting.dz_authcode等
 $_config['security']['authkey'] = 'c6a6aasakLbbc0i1';
 $_config['security']['urlxssdefend'] = 1;
 $_config['security']['attackevasive'] = '0';

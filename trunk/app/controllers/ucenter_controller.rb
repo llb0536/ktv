@@ -87,7 +87,7 @@ class UcenterController < ApplicationController
     binding.pry
   end
   def synlogin
-    sign_in User.authenticate_through_ucenter!(@get)
+    # the job is done by xookie
     render text:API_RETURN_SUCCEED
   end
   def synlogout

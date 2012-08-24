@@ -25,13 +25,14 @@ class AccountController < Devise::RegistrationsController
       render_404
       return false
     end
-    
+    # todo:安全问题？？    
     build_resource
-    # 安全覆写™
+
     resource.during_registration = true
     resource.name_unknown = false
     resource.email_unknown = false
-
+    resource.regip = request.ip
+    
     if resource.save
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?

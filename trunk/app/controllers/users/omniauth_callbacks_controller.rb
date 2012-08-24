@@ -384,7 +384,7 @@ private
       @user.email_unknown = true if @user.errors[:email].present?
       raise @user.errors.full_messages.join(',') unless @user.valid?
     end
-
+    @user.regip = request.ip
     if @user.save
       UserInfo.user_id_find_or_create(@user.id,@backinfo)
       @auth.update_attribute(:user_id, @user.id)
