@@ -57,6 +57,7 @@ Quora::Application.configure do
     ktv/__zm_dialog.css
     ktv/__kug.css
     ktv/__ytb.css
+    ktv/__yk.css
 
     cpanel.js
     cpanel.css
