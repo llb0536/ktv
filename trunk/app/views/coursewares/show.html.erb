@@ -83,28 +83,6 @@ KTV.data = {
       <% style='width:50%;float:left' %>
       <%= render :partial => 'presenter', :locals => {user:@courseware.user, :style=>style} %>
     </div>
-    <div style="width:49%;float:right;margin-top:-8px">
-      <h6><%=image_tag('peixun2.png',alt:'相关线下培训')%></h6>
-      <div class="ad" id="doc_ad0" style="height:100px">
-        <p>
-          <a id="doc_ad" target="_blank" href="http://vip.kuakao.com/mg/" style="background-image:url(<%= asset_path 'ad2.png' %>)"></a>
-          <% content_for :butt2 do %>
-            $('#doc_ad').mouseenter(function(){
-              $('#doc_ad0').animate({height:$('#doc_ad0').height()+(187-80)},200);
-              $(this).animate({height:187},200);
-            }).mouseleave(function(){
-              $('#doc_ad0').animate({height:100},200);
-              $(this).animate({height:80},200);
-            });
-          <% end %>
-        </p>
-        <p>
-          <a href="http://vip.kuakao.com/mg/" target="_blank">
-跨考教育提供全日制住宿式2013年考研魔鬼训练营.
-          </a>
-        </p>
-      </div>
-    </div>
     
     <% else %>
     <div class="main">
@@ -163,35 +141,9 @@ KTV.data = {
       <% style='margin-top:10px' %>
       <%= render :partial => 'presenter', :locals => {user:@courseware.user, :style=>style} %>
   <% end %>
-      <h6><%=image_tag('peixun2.png',alt:'相关线下培训',style:'margin-top:28px')%></h6>
-<div class="ad">
-  <p>
-    <a href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html" target="_blank">
-      <img alt="Ruby认证程序员课程（Ruby Association Certified Ruby Programmer Silver）" src="<%=asset_path 'ad1.png'%>">
-    </a>
-  </p>
-  <p>
-    <a target="_blank" href="http://www.universaltraining.cn/peixun/programming/2010-01/3.html">
-环球培训(UniversalTraining)提供Ruby认证程序员课程.
-    </a>
-  </p>
-</div>
     </div>
   </div>
   <% end %>
-</section>
-<section id="tabs">
-  <div class="wrapper">
-    <div class="main">
-      <ul>
-        <li class="current"><a href="#">课件评论</a></li>
-      </ul>
-      <!-- <ul>
-        <li class="current"><a href="#description">课件评论</a></li>
-        <li><a class="likes" href="#fans">79 喜欢</a></li>
-      </ul> -->
-    </div>
-  </div>
 </section>
 
 </div>
