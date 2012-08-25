@@ -325,7 +325,7 @@
   <%= yield :butt %>
   <!-- end scripts -->
 
-  <%= render 'analytics' if Rails.env.production? %>
+  <%= render 'analytics' unless Rails.env.development? %>
 
 </body>
 </html>

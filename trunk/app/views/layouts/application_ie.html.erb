@@ -58,6 +58,6 @@
     App.headnav_css();
   });
 </script>
-<%= render 'analytics' if Rails.env.production? %>
+<%= render 'analytics' unless Rails.env.development? %>
 </body>
 </html>

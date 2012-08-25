@@ -17,13 +17,13 @@ end
 class RedisSetting < Settingslogic  
   source File.expand_path('../redis.yml', __FILE__)
   namespace Rails.env
-  suppress_errors (Rails.env.production? or Rails.env.staging?)
+  suppress_errors (!Rails.env.development?)
 end
 
 class Setting < Settingslogic
   source File.expand_path('../setting.yml', __FILE__)
   namespace Rails.env
-  suppress_errors (Rails.env.production? or Rails.env.staging?)
+  suppress_errors (!Rails.env.development?)
 end
 
 
@@ -90,7 +90,7 @@ module Quora
 
     # parameters by using an attr_accessible or attr_protected declaration.
 
-    # config.active_record.whitelist_attributes = false #todo: security concerns
+    config.active_record.whitelist_attributes = false #todo: security concerns
     config.active_support.escape_html_entities_in_json = true
   end
 end

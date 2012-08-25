@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     # text =request.env['HTTP_USER_AGENT']
     # render text:"#{text}" and return
   }
-  if Rails.env.production?
+  unless Rails.env.development?
     rescue_from Exception, with: :render_500
     rescue_from AbstractController::ActionNotFound, with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
