@@ -1,2 +1,3 @@
-class PreForumThreaddisablepo < ActiveRecord::Base
+class PreForumThreaddisablepos < ActiveRecord::Base
+  set_table_name 'pre_forum_threaddisablepos'
 end

@@ -1,3 +1,4 @@
-class UcPmMember < ActiveRecord::Base
+class UcPmMembers < ActiveRecord::Base
+  set_table_name 'uc_pm_members'
   establish_connection :psvr_ucenter
 end

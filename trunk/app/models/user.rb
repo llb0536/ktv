@@ -29,6 +29,14 @@ class User
     u.password_confirmation=password
     u.save!
   end
+  def fill_in_unknown_password
+    if self.encrypted_password.blank?
+      password = "#{Time.now.to_i}_#{rand}"
+      self.password = password
+      self.password_confirmation = password
+    end
+    true
+  end
   def fill_in_unknown_email
     if self.email_unknown
       self.email_unknown = true
@@ -69,6 +77,8 @@ class User
   field :uid #UCenter
   field :discuz_pw #DZ
   field :regip
+  field :email_unknown,:type=>Boolean,:default=>false
+  field :name_unknown,:type=>Boolean,:default=>false
   field :topic #calculated by suggest_items.rake
   field :nickname
   field :weibo
