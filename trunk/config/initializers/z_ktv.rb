@@ -31,14 +31,12 @@ end
 
 
 UCenter.define('UC_CLIENT_RELEASE', '20110501')
+UCenter.define('UC_APPID', '2');
+UCenter.define('UC_KEY', '0477gkXtDxSfWaAG2iSjBHrIjSZR4AlTCnkqBfo');
 if Rails.env.production?
-  UCenter.define('UC_APPID', '2');
   UCenter.define('UC_API', 'http://uc.kejian.tv');
-  UCenter.define('UC_KEY', '0477gkXtDxSfWaAG2iSjBHrIjSZR4AlTCnkqBfo');
 else
-  UCenter.define('UC_APPID', '3');
   UCenter.define('UC_API', 'http://uc.kejian.lvh.me');
-  UCenter.define('UC_KEY', 'a332MrfSAdOyVNFBIHjEEoY0FsJ7SbXxzS6cszg');
 end
 
 

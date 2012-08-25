@@ -1,4 +1,53 @@
+-8
+<% if current_user %>
+<% if current_user.confirmed_at  %>
+  <% time = current_user.confirmed_at.to_i %>
+<% else %>
+  <% time = current_user.created_at.to_i %>
+<% end %>
+<script id="IntercomSettingsScriptTag">
+  var intercomSettings = {
+    app_id: '7xwrz9zn',
+    email: '<%= current_user.email %>', // TODO: User's e-mail address
+    created_at: <%= time %>, // TODO: User's sign-up date, Unix timestamp
+    user_hash: '<%= Digest::SHA1.hexdigest('923pqmn2' + current_user.email) %>',
+    custom_data: {
+      'courseware count': <%= current_user.coursewares_count %>,
+      'profile link': 'http://kejian.tv/users/<%= current_user.slug %>'
+    },
+    widget: {
+        activator: '#Intercom',
+        label: '意见反馈',
+        use_counter: true,
+        activator_html: function ( obj ) {
+          return obj.activator_html_functions.brackets();
+        }
+    }
+  };
+</script>
+<script>
+  (function() {
+    function async_load() {
+      var s = document.createElement('script');
+      s.type = 'text/javascript'; s.async = true;
+      s.src = 'https://api.intercom.io/api/js/library.js';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if (window.attachEvent) {
+      window.attachEvent('onload', async_load);
+    } else {
+      window.addEventListener('load', async_load, false);
+    }
+  })();
+</script>
+<% end %>
+
+
+
+
 -7
+
 
   <div class="wrapper">
     <div class="main">
