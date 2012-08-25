@@ -203,6 +203,7 @@ GEM
       railties (>= 3.0.0)
     multi_json (1.0.4)
     multipart-post (1.1.5)
+    mysql2 (0.3.11)
     net-http-digest_auth (1.2.1)
     net-http-persistent (2.7)
     nokogiri (1.5.0)
@@ -429,6 +430,7 @@ DEPENDENCIES
   mongo-rails-instrumentation
   mongoid (< 3)
   mongoid_rails_migrations
+  mysql2
   nokogiri
   oauth-plugin (>= 0.4.0.pre1)
   omniauth-douban!
