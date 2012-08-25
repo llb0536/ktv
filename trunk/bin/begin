@@ -6,13 +6,13 @@ sudo /usr/local/bin/redis-server config/redis2.conf
 sudo /usr/local/bin/redis-server config/redis3.conf
 
 # =======================Memcached==================
-sudo -u pan /usr/local/bin/memcached -d -vvv >>tmp/memcached.log 2>>tmp/memcached_error.log
+sudo -u Liber /usr/local/bin/memcached -d -vvv >>tmp/memcached.log 2>>tmp/memcached_error.log
 tail tmp/memcached.log
 tail tmp/memcached_error.log
 
 
 # ================MONGO==========================
-sudo /usr/local/bin/mongod --config /home/main/ktv/trunk/config/mongod.conf
+sudo /usr/local/bin/mongod --config ~/ktv/trunk/config/mongod.conf
 
 
 # =======================Postgresql DB==================
