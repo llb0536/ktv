@@ -33,7 +33,7 @@ end
 UCenter.define('UC_CLIENT_RELEASE', '20110501')
 UCenter.define('UC_APPID', '2');
 UCenter.define('UC_KEY', '0477gkXtDxSfWaAG2iSjBHrIjSZR4AlTCnkqBfo');
-if Rails.env.production?
+unless Rails.env.development?
   UCenter.define('UC_API', 'http://uc.kejian.tv');
 else
   UCenter.define('UC_API', 'http://uc.kejian.lvh.me');
@@ -41,7 +41,7 @@ end
 
 
 Ktv.configure do |config|
-  if Rails.env.production?
+  unless Rails.env.development?
     config.asset_host = 'http://ktv-intrinsic.b0.upaiyun.com'
   else
     config.asset_host = ''

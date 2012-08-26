@@ -31,6 +31,16 @@ production:
   password: "jknlff8-pro-17m7755"
   socket: /tmp/mysql.sock
 
+staging:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: simple
+  pool: 5
+  username: root
+  password: "jknlff8-pro-17m7755"
+  socket: /tmp/mysql.sock
+
 psvr_ucenter:
   adapter: mysql2
   encoding: utf8

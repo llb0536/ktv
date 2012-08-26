@@ -1,0 +1,254 @@
+<% content_for :armpit do %>
+  <%= stylesheet_link_tag "ktv/__yk", :media => "all" %>
+<% end %>
+<% content_for :body_style do %>background: none repeat scroll 0 0 #D3EAF4<% end %>
+
+<div class="__yk">
+  <div class="window">
+    <div class="screen">
+      
+
+
+
+      <div class="YK_miniheader" style="background:white;top:67px">
+      	<div class="YK_masthead">
+      		<div class="YK_mainnav" id="">
+      			<ul>
+      				<li id=""><a _hz="h_index" href="/u/home">我的首页</a></li>
+      				<li id="" class="">
+      					<div class="handle"><a _hz="h_myspace" href="/u/UMjQ2Nzg3MzIw">我的空间</a></div>
+      					<div class="panel">
+      						<ul class="panellist">
+      							<li id=""><a href="/u/setting" _hz="h_myspace_setting">帐号设置</a></li>
+      							<li id=""><a href="/u/profile/#setskin" _hz="h_myspace_skin">装扮空间</a></li>
+      						</ul>
+      					</div>
+      				</li>				
+      				<li class="current" id="">
+      					<div class="handle"><a _hz="h_myvideo" href="/u/videos">我的视频</a></div>
+      					<div class="panel">
+      						<ul class="panellist">
+      							<li id=""><a href="/u/videos" _hz="h_myvideo_upload">我上传的</a></li>
+      							<li id=""><a href="/u/favorite" _hz="h_myvideo_favo">我收藏的</a></li>
+      							<!-- <li><a href="#">我看过的</a></li>
+      							<li><a href="#">我顶过的</a></li> -->
+      						</ul>
+      						<div class="paneltitle"><a target="_blank" href="http://u.youku.com/my_video/type_playlist.html" _hz="h_myvideo_playlist">我的专辑</a></div>
+      					</div>
+      				</li>
+      				<li id=""><a href="http://pay.youku.com/" target="_blank" _hz="h_mypay">我的消费</a></li>
+      			</ul>
+      		</div>
+      		<div class="YK_operate">
+      			<a href="/u/setting" _hz="h_setting">帐号设置</a>
+      			<a href="/u/profile/#setskin" _hz="h_skin">装扮空间</a>
+      		</div>
+      		<div class="clear"></div>
+      	</div>
+      </div>
+      
+
+<div class="s_body" style="margin-top:44px">
+<div _ucpage="listvideo" _uc="mg" class="YK">
+  <div class="YK_layout_12">
+	<div style="padding-bottom:0;height:auto;" class="YK_body">
+	<div class="YK_dashboard">
+<!--视频管理-->
+<div class="YK_button">
+	<div class="form_btn form_btn_m form_btnsub_m"><a _hz="l_upload" target="_blank" href="http://www.youku.com/v/upload" class="form_btn_text">上传视频</a></div>
+</div>
+<div class="YK_text"><span>我的视频</span></div>
+<ul class="YK_menu">
+	<li class="current"><a _hz="l_videos" href="/u/videos">我上传的</a></li>
+	<li><a onclick="hz.handler_object(1,'l_fav')" href="/u/favorite">我收藏的</a></li>
+	<!-- <li><a href="#">我顶过的</a></li>
+	<li><a href="#">我看过的</a></li> -->
+</ul>
+<div class="YK_text"><span>我的专辑</span></div>
+<ul class="YK_menu">
+	<li><a target="_blank" _hz="l_playlist" href="http://u.youku.com/my_video/type_playlist.html">我制作的</a></li>
+</ul>
+<ul class="YK_submenu">
+	<li><a target="_blank" href="http://www.youku.com/service/feed/subtype/1">报告视频问题</a></li>
+</ul>
+</div><!-- .YK_dashboard -->
+<div class="YK_main">
+  <div style="padding-bottom:0;" class="YK_section">
+	<div class="YK_box">
+	  <div class="bd">
+	  
+		<div class="YK_tab">
+		  <ul>
+		              <li class="current"><a href="javascript:;">已上传(1)</a></li>
+            <li><a onclick="hz.handler_object(1,'lost')" href="/u/videos/lost">发布失败(0)</a></li>
+		  		  </ul>
+
+	<form name="searchvideoform" id="searchvideoform" method="get" action="/u/videos/search">
+	<div class="YK_search">
+		<div class="searchinput"><input type="text" class="form_input form_input_s form_input_defaultvalue" value="" id="searchvideoinput" name="q" _init_v=""></div>
+		<div class="form_btn form_btn_s form_btnsub_s" id="searchvideobtn"><span class="form_btn_text">搜 索</span></div>
+	</div>
+	</form>	
+		</div><!--YK_tab end-->
+		
+		<div class="YK_manager">
+		
+		  <div class="manager_tool">
+		  
+			<div class="manager_action">
+				<div id="adddel" class="adddel">
+									<div class="fn2nd">
+						<a _p="0" href="javascript:;" onclick="mg.getPlaylit(this);">添加到专辑</a>
+					</div>
+					<div class="fn2nd">
+						<a href="javascript:;" _hz="delete" _click="deletevideo">删除</a>
+					</div>				
+								</div>
+			
+			
+		
+				<div _cancel="click" class="recentup">
+					<div _click="dropmenu" id="handle" class="handle"><span>最近上传</span><label></label></div>
+					
+					<div id="panel" class="panel" style="display: none;">
+											<ul class="actionlist">
+							<li><a href="/u/videos/success/order" _hz="list_up">最近上传</a></li>
+							<li><a href="/u/videos/success/order/2" _hz="list_morevv">最多播放</a></li>
+							<li><a href="/u/videos/success/order/3" _hz="list_morecom">最多评论</a></li>
+						</ul>
+						<ul class="intimitylist">
+							<li><a title="所有人都可以看" href="/u/videos/success/filter/0" _hz="list_open">公开</a></li>
+							<li><a title="我关注的人可以看" href="/u/videos/success/filter/1" _hz="list_friends">关注可见</a></li>
+							<li><a title="输入密码后可以看" href="/u/videos/success/filter/4" _hz="list_pwd">密码保护</a></li>
+						</ul>
+						<ul class="noopcity">
+							<li><a title="我未添加到专辑的视频" href="/u/videos/success/unsort" _hz="list_unsort">未加专辑</a></li>
+						</ul>
+					  					</div>
+				</div>
+			</div><!--manager_action end-->
+
+					<div class="clear"></div>
+		</div><!--manager_tool end-->
+
+<div class="manager_con">
+							<div class="databox">
+	  <table cellspacing="0" cellpadding="0" border="0">
+		<thead>
+			<tr class="">
+				<th class="m_check"><div class="check"><input type="checkbox" id="check_all" onclick="mg.check_all(1);"><label for="check_all">视频</label></div></th>
+				<th class="m_video">&nbsp;</th>
+				<th class="m_stat">状态</th>
+				<th class="m_heat">热度</th>
+				<th class="m_opt">操作</th>
+			</tr>
+		</thead>	  
+		<tbody id="videolist">
+				  <tr class="" id="">
+			<td class="m_check"><div class="check"><input type="checkbox" name="videos[]" value="91390291" id="input91390291"><label for="input91390291"></label></div></td>
+			<td class="m_video">
+						<ul class="v vsh">
+						<li class="v_link"><a title="复变函数1" target="_blank" href="http://v.youku.com/v_show/id_XMzY1NTYxMTY0.html"></a></li>
+						<li class="v_thumb"><img title="复变函数1" alt="复变函数1" src="http://g2.ykimg.com/0100641F464C601ED5C14A00F094FB0A6904E9-9770-6F26-F91B-23F17B470479"></li>
+						<li class="v_ishd"></li>	
+												<li id="PlayListFlag_XMzY1NTYxMTY0" style="display: none;" class="v_menu"><span title="添加到点播单" class="ico__listadd"></span></li>
+												<li class="v_time"><span class="num">44:37</span><span class="bg"></span></li>
+						<li class="v_ishd"></li>	
+						<li class="v_title">
+															<a title="复变函数1" target="_blank" href="http://v.youku.com/v_show/id_XMzY1NTYxMTY0.html">
+																	复变函数1																</a>
+													</li>
+						<li class="v_info">
+															<span title="所有人都可以看" class="icon unlock">
+									<em>公开访问</em>
+								</span>								
+														
+							<span class="num">2012-03-14 10:28</span>
+													</li>
+						</ul>		
+				</td>
+				<td class="m_stat">
+					<div class="stat">
+
+																	
+															<div data="%22type%22%3A0%2C%22hd%22%3A0%2C%22hd2%22%3A0%2C%22vid%22%3A91390291" class="stat_cont">
+									<div class="complete"><span>已发布</span></div>
+								</div>
+																														</div>				
+				</td>
+				
+				<td class="m_heat">
+						<ul class="heat">
+						<li>
+												<a href="/u/videos/info/id_XMzY1NTYxMTY0.html" target="_blank" _hz="v_pv"><span title="播放" class="ico__statplay"></span>44</a>
+												</li>
+						<li>
+													<a href="http://v.youku.com/v_show/id_XMzY1NTYxMTY0.html" target=" _blank" _hz="v_comment"><span class="ico__statcomment" title="评论"></span>0</a>
+												</li>
+						<li>
+													<a href="/u/videos/info/id_XMzY1NTYxMTY0.html" target="_blank" _hz="v_reference"><span title="引用" class="ico__refer"><em>引用</em></span>0</a>
+												</li>
+						</ul>
+				</td>
+
+				<td class="m_opt">
+					<div class="action" id="">
+																										<span><a _hz="edit" href="/u/videos/edit/id_XMzY1NTYxMTY0.html" target="_blank">编辑</a></span>
+								<span style="display: none;" class="share"><a _click="vshare" href="javascript:;">分享</a></span>
+								<span style="display: none;" class="del"><a _click="svdel" href="javascript:;">删除</a></span>
+																							<div class="post-tips" id=""><div class="con"><div class="arrow"></div><div onclick="this.parentNode.parentNode.style.display='none'" class="cl"></div><p>新增自选封面功能，快来试试吧！</p><a href="javascript:;">知道了!</a></div></div></div>
+				</td>
+		</tr>	
+	</tbody>
+	<tfoot>  
+				<tr>
+					<td class="m_check"><div class="check"><input type="checkbox" onclick="mg.check_all(2);" id="check_all_foot"><label for="check_all_foot">视频</label></div></td>
+					<td class="m_video">&nbsp;</td>
+					<td class="m_stat">&nbsp;</td>
+					<td class="m_heat">&nbsp;</td>
+					<td class="m_opt">&nbsp;</td>
+				</tr>
+	</tfoot>
+	</table>
+	</div>
+   </div><!--manager_con end-->	
+   
+		  <div class="manager_tool">
+			<div class="manager_action">
+				<div id="adddel" class="adddel">
+									<div class="fn2nd">
+						<a _p="0" href="javascript:;" onclick="mg.getPlaylit(this);">添加到专辑</a>
+					</div>
+					<div class="fn2nd">
+						<a href="javascript:;" _hz="delete" _click="deletevideo">删除</a>
+					</div>				
+								</div>
+			</div><!--manager_action end-->
+
+					<div class="clear"></div>
+		</div><!--manager_tool end-->
+ 
+</div><!--YK_manager end-->		
+	
+</div><!--bd end-->
+</div>
+</div>
+</div><!--main end-->
+
+
+	<div class="clear"></div>
+    </div><!--YKbody end-->
+  </div><!--layout end-->
+</div>
+
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>

@@ -6,7 +6,7 @@ module Ktv
     include Shared::MechanizeParty
     def login!(username,password)
       # 依赖于forum.php显示登陆框框
-      @login_page = @agent.get("http://#{Setting.ktv_domain}/simple/forum.php")
+      @login_page = @agent.get("http://#{Setting.ktv_simple_domain}/forum.php")
       form = @login_page.form_with(:id=>'lsform')
       form.username = username
       form.password = password
@@ -14,8 +14,13 @@ module Ktv
     end
     def activate_user!
       # 必须在login!后立即调用我
-      form = @page.form_with(:id=>'registerform')
-      @page = form.submit
+      if form = @page.form_with(:id=>'registerform')
+        @page = form.submit
+        return true
+      else
+        puts "#{@page.parser.css('#um .vwmy').to_s} -- nothing to do"
+        return nil
+      end
     end
   end
 end

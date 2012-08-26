@@ -676,12 +676,15 @@ class User
         self.slug = self.email.split('@')[0]
         self.slug = self.slug.split('.').join('-')
         self.slug += Time.now.to_i.to_s if self.slug.length<1
-        self.slug = self.slug[0..7] if self.slug.size>8
-
+        self.slug = self.slug[0..27] if self.slug.size>28
         self.slug = self.slug.safe_slug
       end
       if self.name_en.present?
         self.slug = self.name_en.parameterize
+        self.slug = self.slug.split('.').join('-')
+        self.slug += Time.now.to_i.to_s if self.slug.length<1
+        self.slug = self.slug[0..27] if self.slug.size>28
+        self.slug = self.slug.safe_slug
       end
       # 如果 slug 被 safe_slug 后是空的,就用 id 代替
       if self.slug.blank?
@@ -691,6 +694,7 @@ class User
       self.slug = self.slug.safe_slug
     end
 
+    self.slug = self.slug[0..27] if self.slug.size>28
     # 防止重复 slug
     old_user = User.find_by_slug(self.slug)
     if !old_user.blank? and old_user.id != self.id
@@ -1115,6 +1119,9 @@ class User
       return 'protected users, okay to ignore' if '-8'==ret
       binding.pry unless Integer(ret) >= 0
     end
+    d = Ktv::Discuz.new
+    d.login!(self.slug,self.encrypted_password)
+    d.activate_user!
     return nil
   end
   protected

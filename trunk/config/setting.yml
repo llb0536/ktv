@@ -43,6 +43,7 @@ default: &defaults
   topic_qingqiu: '领域请求'
   ktv_courseware_id: '500f9970e13823796a000002'
   ktv_domain: kejian.tv
+  ktv_simple_domain: "kejian.tv/simple"
   ktv_search_domain: "search.kejian.tv"
   root_topic_id: '501137a1e138236528000016'
   zuozheqingqiu_id: '5010da4ce138231d4300004f'
@@ -73,6 +74,7 @@ development:
   <<: *defaults
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
+  ktv_simple_domain: "kejian.lvh.me/simple"
   ktv_search_domain: "search.kejian.lvh.me"
   cnu_domain: 'cnu.kejian.lvh.me'
   # open_timeout: 1

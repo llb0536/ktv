@@ -10,8 +10,8 @@
 <%= javascript_include_tag 'cnu/top.js' %>
 <%= csrf_meta_tag %>
 <!-- psvr -->
-<script src="http://<%= Setting.ktv_domain %>/simple/psvr/modernizr.js" type="text/javascript" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="http://<%= Setting.ktv_domain %>/simple/psvr/ktv.css" />
+<script src="http://<%= Setting.ktv_simple_domain %>/psvr/modernizr.js" type="text/javascript" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="http://<%= Setting.ktv_simple_domain %>/psvr/ktv.css" />
 <!-- psvr -->
 </head>
 <body>
@@ -27,7 +27,7 @@
     </div>
     <div id="slab2" class="">
       <img src="<%= asset_path('ie/header0_2.png') %>" />
-      <a href="http://<%= Setting.ktv_domain %>/simple" target="_parent">目录检索区</a>
+      <a href="http://<%= Setting.ktv_simple_domain %>" target="_parent">目录检索区</a>
     </div>
     <div id="slab3" class="">
       <img src="<%= asset_path('ie/header0_3.png') %>"/>
@@ -112,11 +112,11 @@
 <!-- line end -->
 
 <!-- psvr -->
-<script src="http://<%= Setting.ktv_domain %>/simple/psvr/jquery-1.8.0.min.js" type="text/javascript" type="text/javascript"></script>
+<script src="http://<%= Setting.ktv_simple_domain %>/psvr/jquery-1.8.0.min.js" type="text/javascript" type="text/javascript"></script>
 <script type="text/javascript">
   $.noConflict();
 </script>
-<script src="http://<%= Setting.ktv_domain %>/simple/psvr/ktv.js" type="text/javascript" type="text/javascript"></script>
+<script src="http://<%= Setting.ktv_simple_domain %>/psvr/ktv.js" type="text/javascript" type="text/javascript"></script>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     // Code that uses jQuery's $ can follow here.
