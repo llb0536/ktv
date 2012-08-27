@@ -52,6 +52,9 @@ class PreForumForum < ActiveRecord::Base
     end
     forum
   end
+  scope :type1,where(:type=>:group)
+  scope :type2,where(:type=>:forum)
+  scope :type3,where(:type=>:sub)
   def self.inheritance_column
     'inheritance_type'
   end

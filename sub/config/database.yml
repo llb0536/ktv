@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ktv_sub
+  database: ktv_sub_cnu
   pool: 5
   username: root
   password: "jknlff8-pro-17m7755"
@@ -25,7 +25,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ktv_sub_test
+  database: ktv_sub_cnu_test
   pool: 5
   username: root
   password: "jknlff8-pro-17m7755"
@@ -35,7 +35,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: ktv_sub
+  database: ktv_sub_cnu
   pool: 5
   username: root
   password: "jknlff8-pro-17m7755"
