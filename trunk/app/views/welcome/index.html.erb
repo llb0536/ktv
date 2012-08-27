@@ -13,7 +13,7 @@
           <%= image_tag 'p.png',:alt => '通过课件交流系统，您可以迅速定位最感兴趣的课程，轻松获取大家共同维护的最优质的一份学习资料。然而，课件系统不仅是一个出色的学习资源交流平台，她更是一个开放的在线学习社区。在这里，您可以把遇到的难题发出来，大家共同切磋，也可以让大家为您的学习目标出谋划策。在这里，我们共同进步！' %>
         </p>
       <% if user_signed_in? %>
-        <p><a href="<%=new_courseware_path%>" id="cw_newhuge" class="button primary">立即前往上传课件</a></p>
+        <p><a href="<%=new_courseware_path%>" id="cw_newhuge" class="button primary">立即上传分享课件</a></p>
       <% else %>
         <p><a href="/login" id="loginhuge" class="button primary">用微博 / 人人 / QQ账号瞬间登录</a></p>
       <% end %>
