@@ -7,9 +7,11 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # MongoDB
-gem "mongoid", '<3'
+gem "mongoid", "< 3.0.0"
 gem "bson_ext"
 gem 'mysql2'
+gem 'pry-rails'
+gem 'pry'
 
 
 
@@ -45,7 +47,7 @@ gem 'mongo-rails-instrumentation'
 gem "redis"
 
 # Vote 插件 for Mongoid
-gem 'voteable_mongo', path:'vendor/voteable_mongo'
+gem 'voteable_mongo', path:'../vendor/voteable_mongo'
 
 # 分词
 gem 'chinese_pinyin'
@@ -74,7 +76,7 @@ gem 'mini_magick'
 
 # 分页
 gem 'will_paginate'#,:require=>'will_paginate/array'
-gem "will_paginate_mongoid",:path=>'vendor/will_paginate_mongoid'
+gem "will_paginate_mongoid",:path=>'../vendor/will_paginate_mongoid'
 # gem 'memcache-client', '1.8.5'
 
 # OAuth
@@ -109,7 +111,7 @@ gem 'whenever' #[!]
 # gem "aws-ses", "0.4.2", :require => 'aws/ses'
 
 # Background Jobs
-gem "resque", :require => "resque/server", :path => 'vendor/resque'
+gem "resque", :require => "resque/server", :path => '../vendor/resque'
 gem 'resque-pool'
 # gem "resque_mailer"
 
@@ -119,11 +121,10 @@ gem 'resque-pool'
 # Diff 内容并输出 HTML 格式
 # gem "htmldiff", :git => "git://github.com/huacnlee/htmldiff.git"
 
-gem "redis-search",:path=>'vendor/redis-search'
+gem "redis-search",:path=>'../vendor/redis-search'
 gem 'redis-namespace'
 
 group :development do
-  gem 'pry'
   gem 'guard-spork'
   gem "rspec-rails"
   # gem 'railroady'
@@ -136,7 +137,6 @@ gem "letter_opener"
 group :test do
   gem 'minitest'
   gem 'turn'
-  gem 'pry'
   gem "factory_girl_rails", "~> 1.2"
   gem 'capybara'
   gem 'guard-rspec'
@@ -159,8 +159,6 @@ gem 'rest-client'
 gem 'rails_autolink'
 
 
-gem 'pry-rails'
-gem 'pry'
 
 gem "oauth-plugin", ">= 0.4.0.pre1"
 
