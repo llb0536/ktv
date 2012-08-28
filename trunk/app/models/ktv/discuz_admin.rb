@@ -8,7 +8,7 @@ module Ktv
     ADMIN_PASS = 'jknlff8-pro-17m7755'
     def start_mode(mode=nil)
       @mode = mode
-      if @mod.present?
+      if @mode.present?
         @base_url = "http://#{@mode}.kejian.#{Rails.env.development? ? 'lvh.me' : 'tv' }/simple"
       else
         @base_url = "http://kejian.#{Rails.env.development? ? 'lvh.me' : 'tv' }/simple"
@@ -27,17 +27,30 @@ module Ktv
         form.admin_password = ADMIN_PASS
         @page = form.submit
       end
-      binding.pry
     end
 
-    def self.orthodoxize_course_forums!
+    def orthodoxize_course_forums!
       Course.all.each do |item|
-        @page = @agent.get("#{@base_url}/admin.php?action=forums&operation=edit&fid=#{item.fid}")
+        puts url = "#{@base_url}/admin.php?action=forums&operation=edit&fid=#{item.fid}"
+        @page = @agent.get(url)
         form = @page.forms.last
+        im_in = false
+        @page.body.scan(/name="threadtypesnew\[options\]\[delete\]\[\]" value="(\d+)"/).each{|x| form.add_field!('threadtypesnew[options][delete][]',x.first);im_in=true}
+        if im_in
+          form.submit
+          sleep 1
+          @page = @agent.get(url)
+          form = @page.forms.last
+        end
         form['threadtypesnew[status]']='1'
         form['threadtypesnew[required]']='1'
         form['threadtypesnew[listable]']='1'
         form['detailsubmit']='提交'
+        item.teachings.each_with_index do |tch,index|
+          form.add_field!('newdisplayorder[]',"#{index+1}");form.add_field!('newname[]',tch.teacher);form.add_field!('newicon[]','');form.add_field!('newenable[]','1');form.add_field!('newmoderators[]','')
+        end
+        form.submit
+        sleep 1
       end
     end
   end
