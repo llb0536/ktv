@@ -35,11 +35,11 @@ module Discuz
   end
   @cookiepre = 'WkpF_';
   if Rails.env.development?
-    @cookiepath = '.kejian.lvh.me';
+    @cookiedomain = '.kejian.lvh.me';
   else
-    @cookiepath = '.kejian.tv';
+    @cookiedomain = '.kejian.tv';
   end
-  @cookiedomain = '/';
+  @cookiepath = '/';
   @cookiepre_real = @cookiepre+Digest::MD5.hexdigest(@cookiepath+'|'+@cookiedomain)[0...4]+'_'
 end
 

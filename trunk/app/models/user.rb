@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'net/http'
-require 'cryptor'
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
