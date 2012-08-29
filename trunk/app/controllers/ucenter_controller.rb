@@ -1,5 +1,6 @@
 # coding: utf-8
 class UcenterController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   API_RETURN_SUCCEED = '1'
   # -- psvr sep --
   API_DELETEUSER = 1
@@ -78,7 +79,7 @@ class UcenterController < ApplicationController
   end
   def updateapps
     @post['root']['item'].each do |app|
-      inst = UcApp.find_or_create_by(mysql_id:app['id'])
+      inst = PsvrApp.find_or_create_by(mysql_id:app['id'])
       inst.update_attribute(:item,app['item'])
     end
     render text:API_RETURN_SUCCEED
