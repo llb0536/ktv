@@ -1824,8 +1824,9 @@ function setDoodle(fid, oid, url, tid, from) {
 }
 
 
-function initSearchmenu(searchform, cloudSearchUrl) {
-	var defaultUrl = 'search.php?searchsubmit=yes';
+function initSearchmenu(searchform, cloudSearchUrl, defaultUrl) {
+  if(!defaultUrl)
+    defaultUrl = 'search.php?searchsubmit=yes';
 	if(typeof cloudSearchUrl == "undefined" || cloudSearchUrl == null || cloudSearchUrl == '') {
 		cloudSearchUrl = defaultUrl;
 	}
