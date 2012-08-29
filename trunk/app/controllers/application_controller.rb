@@ -58,8 +58,8 @@ class ApplicationController < ActionController::Base
     @is_ie10 = (agent.index('msie 10')!=nil)
   end
   def xookie
-    dz_auth = cookies['WkpF_d7c1_auth']
-    dz_saltkey = cookies['WkpF_d7c1_saltkey']
+    dz_auth = cookies[Discuz.cookiepre_real+'auth']
+    dz_saltkey = cookies[Discuz.cookiepre_real+'saltkey']
     if current_user.nil? and dz_auth.present?
       u = User.authenticate_through_dz_auth!(request,dz_auth,dz_saltkey)
       if u
