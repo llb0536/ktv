@@ -1,3 +1,3 @@
 class PreHomeFriendlog < ActiveRecord::Base
-  set_table_name 'pre_home_friendlog'
+  self.table_name =  'pre_home_friendlog'
 end
