@@ -496,7 +496,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.ttp a:hover { border-color: {HIGHLIGHTLINK}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 		.ttp .a a { padding-right: 12px;  padding-left: 12px; border-color: {HIGHLIGHTLINK}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
 		.ttp .pipe { float: left; margin-right: 10px; padding: 0; width: 2px; height: 27px; background: {SPECIALBORDER}; text-indent: -9999px; }
-	/* 版块有大量主题分类时的展开收起样式 by Pony */
+	/* 版块有大量课件老师时的展开收起样式 by Pony */
 	.cttp { overflow: hidden; padding-right: 35px; height: 32px; }
 		.cttp .unfold, .cttp .fold { float: right; display: inline; margin: 5px -35px 9px 0; padding: 0 0 0 10px; width: 25px; height: 18px; background-color: transparent; color: {HIGHLIGHTLINK}; font-weight: 400; }
 
@@ -572,7 +572,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type
 	Level:			Function
-	Explain:		论坛群组的帖子主题分类分类信息等的筛选样式
+	Explain:		论坛群组的帖子课件老师分类信息等的筛选样式
 	Author:			lushnis
 	Last Modify:	Pony
 */

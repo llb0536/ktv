@@ -82,11 +82,11 @@ function validate(theform) {
 	}
 	if(in_array($('postsubmit').name, ['topicsubmit', 'editsubmit'])) {
 		if(theform.typeid && (theform.typeid.options && theform.typeid.options[theform.typeid.selectedIndex].value == 0) && typerequired) {
-			showError('请选择主题对应的分类');
+			showError('请选择课件对应的老师');
 			return false;
 		}
 		if(theform.sortid && (theform.sortid.options && theform.sortid.options[theform.sortid.selectedIndex].value == 0) && sortrequired) {
-			showError('请选择主题对应的分类信息');
+			showError('请选择课件对应的老师信息');
 			return false;
 		}
 	}

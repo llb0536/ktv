@@ -53,7 +53,7 @@
 				<item id="orderby"><![CDATA[筛选]]></item>
 				<item id="order_default"><![CDATA[相关度]]></item>
 				<item id="order_posted"><![CDATA[发帖时间]]></item>
-				<item id="thread_class"><![CDATA[主题分类]]></item>
+				<item id="thread_class"><![CDATA[课件老师]]></item>
 				<item id="loading"><![CDATA[正在加载……]]></item>
 				<item id="forumhottopic"><![CDATA[热点]]></item>
 				<item id="current"><![CDATA[本版]]></item>

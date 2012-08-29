@@ -106,7 +106,7 @@ $lang = array (
   'threadtype_infotypes_optionvariable_iskeyword' => '选项变量名不被允许使用',
   'threadtype_infotypes_optionvariable_invalid' => '分类选项变量名重复',
   'threadtype_infotypes_succeed' => '分类选项更新成功 ',
-  'forums_threadtypes_duplicate' => '新增主题分类与现有重复',
+  'forums_threadtypes_duplicate' => '新增课件老师与现有重复',
   'threadtype_import_succeed' => '导入成功',
   'usergroups_nonexistence' => '指定的用户组不存在',
   'usergroups_copy_source_invalid' => '您没有选择要复制的源用户组',
@@ -531,7 +531,7 @@ $lang = array (
   'threadsplit_manage_forum_processing' => '已处理完 {table}，请稍候...',
   'threadsplit_manage_forum_complete' => '已更新所有版块存档区',
 
-  'forums_threadtypes_succeed' => '主题分类更新成功 ',
+  'forums_threadtypes_succeed' => '课件老师更新成功 ',
   'threadtype_infotypes_noexist' => '主题选项分类不存在',
   'typeoption_not_found' => '选项未找到',
   'threadtype_infotypes_option_succeed' => '分类扩展选项更新成功 ',

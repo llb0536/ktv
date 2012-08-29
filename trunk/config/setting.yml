@@ -98,4 +98,8 @@ staging:
   <<: *defaults
   ktv_domain: ktv-staging.kejian.tv
   wendao_domain_name: "ktv-staging.kejian.tv"
+  read_timeout: 30
+  idle_timeout: 30
+  open_timeout: 30
+  timeout: 30
 

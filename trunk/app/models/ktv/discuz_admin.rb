@@ -13,6 +13,7 @@ module Ktv
       else
         @base_url = "http://kejian.#{Rails.env.development? ? 'lvh.me' : 'tv' }/simple"
       end
+      puts @base_url
       # 依赖于forum.php显示登陆框框
       @login_page = @agent.get("#{@base_url}/forum.php")
       form = @login_page.form_with(:id=>'lsform')
@@ -31,27 +32,31 @@ module Ktv
 
     def orthodoxize_course_forums!
       Course.all.each do |item|
-        puts url = "#{@base_url}/admin.php?action=forums&operation=edit&fid=#{item.fid}"
-        @page = @agent.get(url)
-        form = @page.forms.last
-        im_in = false
-        @page.body.scan(/name="threadtypesnew\[options\]\[delete\]\[\]" value="(\d+)"/).each{|x| form.add_field!('threadtypesnew[options][delete][]',x.first);im_in=true}
-        if im_in
-          form.submit
-          sleep 1
-          @page = @agent.get(url)
-          form = @page.forms.last
+        begin
+          self.orthodoxize_course item
+        rescue=>e
+          puts e
         end
-        form['threadtypesnew[status]']='1'
-        form['threadtypesnew[required]']='1'
-        form['threadtypesnew[listable]']='1'
-        form['detailsubmit']='提交'
-        item.teachings.each_with_index do |tch,index|
-          form.add_field!('newdisplayorder[]',"#{index+1}");form.add_field!('newname[]',tch.teacher);form.add_field!('newicon[]','');form.add_field!('newenable[]','1');form.add_field!('newmoderators[]','')
-        end
-        form.submit
-        sleep 1
       end
+    end
+    def orthodoxize_course(item)
+      puts url = "#{@base_url}/admin.php?action=forums&operation=edit&fid=#{item.fid}"
+      @page = @agent.get(url)
+      parser = @page.parser
+      form = @page.forms.last
+      form['threadtypesnew[status]']='1'
+      form['threadtypesnew[required]']='1'
+      form['threadtypesnew[listable]']='1'
+      form['threadtypesnew[prefix]']='1'
+      item.teachings.each_with_index do |tch,index|
+        if parser.css("input[value='#{tch.teacher}']").present?
+          puts "#{tch.teacher} exists."
+          next
+        end
+        form.add_field!('newdisplayorder[]',"#{index+1}");form.add_field!('newname[]',tch.teacher);form.add_field!('newicon[]','');form.add_field!('newenable[]','1');form.add_field!('newmoderators[]','')
+      end
+      form['detailsubmit']='提交'
+      form.submit
     end
   end
 end

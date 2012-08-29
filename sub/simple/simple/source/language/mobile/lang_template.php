@@ -44,7 +44,7 @@ $lang = array (
   'thread_recommend' => '荐',
   'thread_sticky' => '顶',
   'threadsort' => '分类信息',
-  'threadtype' => '主题分类',
+  'threadtype' => '课件老师',
   'viewnewthread' => '新帖排序',
   'admin_threadtopicadmin_error' => '手机版不支持复杂管理操作',
   'expiry' => '期限<span class="xg2">(0为永久/1为1天)</span>',

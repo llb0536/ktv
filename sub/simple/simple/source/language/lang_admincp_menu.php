@@ -65,7 +65,7 @@ $lang = array
 
 	'menu_forums' => '版块管理',
 	'menu_forums_merge' => '版块合并',
-	'menu_forums_threadtypes' => '主题分类',
+	'menu_forums_threadtypes' => '课件老师',
 	'menu_forums_infotypes' => '分类信息',
 	'menu_forums_infooption' => '分类信息选项',
 
