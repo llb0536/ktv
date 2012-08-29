@@ -8,21 +8,30 @@ case $response in
         cd ~/psvr_restore_working_dir
         scp data@kejian.tv:/home/data/ktvmongodump.tar.gz .
         scp data@kejian.tv:/home/data/simple_dump.tar.gz .
+        scp data@kejian.tv:/home/data/ktv_sub_cnu_dump.tar.gz .
         scp data@kejian.tv:/home/data/ucenter_dump.tar.gz .
         tar xzf ktvmongodump.tar.gz
         tar xzf simple_dump.tar.gz
+        tar xzf ktv_sub_cnu_dump.tar.gz
         tar xzf ucenter_dump.tar.gz
         mongorestore --drop home/data/ktvmongodump/
         mysql -u root -pjknlff8-pro-17m7755 simple < home/data/simple.backup.sql
+        mysql -u root -pjknlff8-pro-17m7755 ktv_sub_cnu < home/data/ktv_sub_cnu.backup.sql
         mysql -u root -pjknlff8-pro-17m7755 ucenter < home/data/ucenter.backup.sql
         rm -rf ~/ktv/simple/simple/data
         rm -rf ~/ktv/simple/simple/uc_client/data
+        rm -rf ~/ktv/sub/simple/simple/data
+        rm -rf ~/ktv/sub/simple/simple/uc_client/data
         rm -rf ~/ktv/uc/data
         mv simple/simple/data ~/ktv/simple/simple/data
         mv simple/simple/uc_client/data ~/ktv/simple/simple/uc_client/data
+        mv sub/simple/simple/data ~/ktv/sub/simple/simple/data
+        mv sub/simple/simple/uc_client/data ~/ktv/sub/simple/simple/uc_client/data
         mv uc/data ~/ktv/uc/data
         chmod -R 777 ~/ktv/simple/simple/data
         chmod -R 777 ~/ktv/simple/simple/uc_client/data
+        chmod -R 777 ~/ktv/sub/simple/simple/data
+        chmod -R 777 ~/ktv/sub/simple/simple/uc_client/data
         chmod -R 777 ~/ktv/uc/data
         echo bundle exec rake consultant:index  
         echo bundle exec rake redis_search:index
