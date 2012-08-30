@@ -27,6 +27,20 @@ module UCenter
 end
 
 module Discuz
+  class << self
+    attr_reader :cookiepre
+    attr_reader :cookiepath
+    attr_reader :cookiedomain
+    attr_reader :cookiepre_real
+  end
+  @cookiepre = 'WkpF_';
+  if Rails.env.development?
+    @cookiedomain = '.kejian.lvh.me';
+  else
+    @cookiedomain = '.kejian.tv';
+  end
+  @cookiepath = '/';
+  @cookiepre_real = @cookiepre+Digest::MD5.hexdigest(@cookiepath+'|'+@cookiedomain)[0...4]+'_'
 end
 
 

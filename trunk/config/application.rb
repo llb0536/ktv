@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -35,7 +36,7 @@ module Quora
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += ["#{config.root}/uploaders", "#{Rails.root}/lib/cryptor", "#{Rails.root}/lib/core_ext"]
+    config.autoload_paths += ["#{config.root}/uploaders", "#{Rails.root}/lib/core_ext"]
     config.action_mailer.default_url_options = {:host => Setting.ktv_domain}
     config.action_controller.default_url_options = {:host => Setting.ktv_domain}
     config.action_controller.page_cache_directory= File.expand_path('./html_cache',Rails.root)

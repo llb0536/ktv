@@ -1,3 +1,3 @@
 class PreForumDebatepost < ActiveRecord::Base
-  set_table_name 'pre_forum_debatepost'
+  self.table_name =  'pre_forum_debatepost'
 end

@@ -1,3 +1,3 @@
 class PreCommonTask < ActiveRecord::Base
-  set_table_name 'pre_common_task'
+  self.table_name =  'pre_common_task'
 end

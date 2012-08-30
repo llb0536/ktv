@@ -1,3 +1,3 @@
 class PreCommonCard < ActiveRecord::Base
-  set_table_name 'pre_common_card'
+  self.table_name =  'pre_common_card'
 end

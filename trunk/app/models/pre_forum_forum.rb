@@ -1,5 +1,5 @@
 class PreForumForum < ActiveRecord::Base
-  set_table_name 'pre_forum_forum'
+  self.table_name =  'pre_forum_forum'
   # 这个是用来添加第二级子模块用的
   # up_fid 是父亲板块的fid
   # name 名字
@@ -52,6 +52,9 @@ class PreForumForum < ActiveRecord::Base
     end
     forum
   end
+  scope :type1,where(:type=>:group)
+  scope :type2,where(:type=>:forum)
+  scope :type3,where(:type=>:sub)
   def self.inheritance_column
     'inheritance_type'
   end

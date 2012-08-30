@@ -1,3 +1,3 @@
 class PreForumOnlinelist < ActiveRecord::Base
-  set_table_name 'pre_forum_onlinelist'
+  self.table_name =  'pre_forum_onlinelist'
 end

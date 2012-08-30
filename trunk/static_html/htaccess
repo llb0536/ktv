@@ -1,9 +1,0 @@
-<Files ~ "^.(htaccess|htpasswd)$">
-allow from *
-</Files>
-<FilesMatch ".(gif|jpg|jpeg|png|ico)$">
-Header set Cache-Control "max-age=600"
-</FilesMatch>
-order deny,allow
-allow from *
-deny from all 

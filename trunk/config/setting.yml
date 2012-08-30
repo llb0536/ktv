@@ -62,6 +62,7 @@ default: &defaults
   mechanize_per_page: 88
   cnu_domain: 'cnu.kejian.tv'
   dz_authkey: 'c6a6aasakLbbc0i1'
+  dz_authkey_cnu: '0b7310esiKtBIrpX'
   special_agent: 'PSVR_SPECIAL_AGENT_3787fdjihf328DFShze2dfskm894ebkjGFDY'
   proxy:
   # 不使用代理的时候把下面四行注释掉，但是上面这行保留。
@@ -98,4 +99,8 @@ staging:
   <<: *defaults
   ktv_domain: ktv-staging.kejian.tv
   wendao_domain_name: "ktv-staging.kejian.tv"
+  read_timeout: 30
+  idle_timeout: 30
+  open_timeout: 30
+  timeout: 30
 

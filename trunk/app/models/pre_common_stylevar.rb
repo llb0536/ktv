@@ -1,3 +1,3 @@
 class PreCommonStylevar < ActiveRecord::Base
-  set_table_name 'pre_common_stylevar'
+  self.table_name =  'pre_common_stylevar'
 end

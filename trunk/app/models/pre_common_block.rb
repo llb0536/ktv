@@ -1,3 +1,3 @@
 class PreCommonBlock < ActiveRecord::Base
-  set_table_name 'pre_common_block'
+  self.table_name =  'pre_common_block'
 end

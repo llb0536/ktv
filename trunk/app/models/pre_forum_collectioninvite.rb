@@ -1,3 +1,3 @@
 class PreForumCollectioninvite < ActiveRecord::Base
-  set_table_name 'pre_forum_collectioninvite'
+  self.table_name =  'pre_forum_collectioninvite'
 end

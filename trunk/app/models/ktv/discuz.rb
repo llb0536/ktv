@@ -8,9 +8,11 @@ module Ktv
       # 依赖于forum.php显示登陆框框
       @login_page = @agent.get("http://#{Setting.ktv_simple_domain}/forum.php")
       form = @login_page.form_with(:id=>'lsform')
-      form.username = username
-      form.password = password
-      @page = form.submit
+      if form
+        form.username = username
+        form.password = password
+        @page = form.submit
+      end
     end
     def activate_user!
       # 必须在login!后立即调用我

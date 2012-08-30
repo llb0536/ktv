@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     end
   end
   before_filter :set_vars
-  before_filter :xookie,:unless=>'devise_controller?'
+  # before_filter :xookie,:unless=>'devise_controller?'
   before_filter :unknown_user_check
 
   def set_vars
@@ -58,17 +58,19 @@ class ApplicationController < ActionController::Base
     @is_ie10 = (agent.index('msie 10')!=nil)
   end
   def xookie
-    dz_auth = cookies['WkpF_d7c1_auth']
-    dz_saltkey = cookies['WkpF_d7c1_saltkey']
-    if current_user.nil? and dz_auth.present?
+    dz_auth = cookies[Discuz.cookiepre_real+'auth']
+    dz_saltkey = cookies[Discuz.cookiepre_real+'saltkey']
+    if dz_auth.present?
       u = User.authenticate_through_dz_auth!(request,dz_auth,dz_saltkey)
       if u
-        u.update_attribute("last_login_at",Time.now)
-        u.inc(:login_times,1)
-        LoginLog.create(:user_id=>u.id,:login_at=>Time.now,:range=>(Time.now.to_date-u.created_at.to_date).to_i)
+        #u.update_attribute("last_login_at",Time.now)
+        #u.inc(:login_times,1)
+        #LoginLog.create(:user_id=>u.id,:login_at=>Time.now,:range=>(Time.now.to_date-u.created_at.to_date).to_i)
         sign_in(u)
+        return true
       end
     end
+    sign_out
   end
   layout :layout_by_resource
   def layout_by_resource
@@ -100,6 +102,9 @@ class ApplicationController < ActionController::Base
     return (@is_ie and !@is_ie10)
   end
   def go_sub!
+    @application_ie_modern_required = false
+    return true
+    # todo
     redirect_to '/simple'
     return false
   end
@@ -374,8 +379,8 @@ class ApplicationController < ActionController::Base
   end
   def sign_out_others
     cookies.each do |k,v|
-      if k.starts_with?('WkpF_')
-        cookies.delete(k, 'domain' => (Rails.env.development? ?  ".kejian.lvh.me" : ".kejian.tv"))
+      if k.starts_with?(Discuz.cookiepre)
+        cookies.delete(k, 'domain' => (Discuz.cookiedomain))
       end
     end
   end

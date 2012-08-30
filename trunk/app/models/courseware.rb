@@ -72,6 +72,8 @@ class Courseware
     self.user.inc(:thank_coursewares_count,-1) if thanked
     self.topic_inst.redis_search_index_create
   end
+  field :tid
+
   field :md5
   field :status
   field :uploader_id
@@ -94,6 +96,7 @@ class Courseware
   field :pinpicname
   field :pdf_size_note
   field :pdf_slide_processed
+  field :filesize
   field :down_pdf_size
   field :desc
   field :slug
@@ -273,6 +276,22 @@ class Courseware
     0==self.status
   end
   validates_inclusion_of :sort,:in=>SORTSTR.keys
+  def self.import_all!
+    PreForumThread.all.each do |thread|
+      ins=self.find_or_create_by(tid:thread.tid)
+      attachment = PreForumAttachment.where(tid:thread.tid).first
+      if attachment
+        a = "PreForumAttachment#{thread.tid.to_s[-1]}".constantize.find_by_aid(attachment.aid)
+        ins.title = thread.subject
+        ins.filesize = a.filesize / 1000
+        ins.pdf_filename = a.filename
+        ins.sort = File.extname(a.filename)
+        ins.sort = ins.sort[1..-1] if '.'==ins.sort[0]
+        ins.downloads_count = attachment.downloads
+        ins.save(:validate=>false)
+      end
+    end
+  end
   
   def cover_small
     self.topic_inst.cover.small.url

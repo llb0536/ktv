@@ -7,3 +7,7 @@
 # Mime::Type.register_alias "text/html", :mobile
 
 Mime::Type.register 'application/vnd.ms-excel', :xls
+
+Mime::Type.register "image/x-icon", :ico
+Mime::Type.register "application/x-shockwave-flash", :swf
+
