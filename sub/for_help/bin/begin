@@ -1,5 +1,0 @@
-#!/bin/bash -x
-
-mongod --dbpath /mongodata --logpath /var/log/mongod.log --logappend --fork --verbose
-redis-server config/redis1.conf
-redis-server config/redis2.conf

@@ -1,1 +1,0 @@
- db.logs.update({body:{$exists:"TRUE"}}, {$unset:{body:1}}, false, true)

@@ -1,4 +1,0 @@
-#!/bin/bash
-export PATH=$PATH:/usr/local/ruby/bin
-export RAILS_ENV=production
-RAILS_ENV=production VVERBOSE=1 QUEUE=error,hooker,redundancy,hooker_suspended COUNT=1 bundle exec rake resque:workers >> log/resque.log 2>&1 &

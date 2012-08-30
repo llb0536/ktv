@@ -1,9 +1,0 @@
-<div data-role="content" class="ui-body-c ui-body">	
-    <ul data-role="listview" data-inset="true">
-      <%@topics.each do |arr|%>
-        <% topic=arr.name %>
-        <%= render(file:"topics/_topic",locals:{item:topic},:formats => [:mobile]) %>
-      <% end %>
-    <div class="pagination"></div>
-    </ul>
-</div><!-- /content -->
