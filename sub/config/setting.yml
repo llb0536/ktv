@@ -61,8 +61,7 @@ default: &defaults
   # 时间太长会超时。所以控制一下。
   mechanize_per_page: 88
   cnu_domain: 'cnu.kejian.tv'
-  dz_authkey: 'c6a6aasakLbbc0i1'
-  dz_authkey_cnu: '0b7310esiKtBIrpX'
+  dz_authkey: '0b7310esiKtBIrpX'
   special_agent: 'PSVR_SPECIAL_AGENT_3787fdjihf328DFShze2dfskm894ebkjGFDY'
   proxy:
   # 不使用代理的时候把下面四行注释掉，但是上面这行保留。

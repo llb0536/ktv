@@ -7,6 +7,49 @@
  *      $Id: class_core.php 28824 2012-03-14 06:41:27Z zhangguosheng $
  */
 
+// psvr add
+function psvr_in_dev(){
+  $server_name = @$_SERVER['SERVER_NAME'];
+  if($server_name){
+    return substr($server_name,-6) === 'lvh.me';
+  }else{
+    return false;
+  }
+}
+if(psvr_in_dev()){
+  define('PSVR_IN_DEV',true);
+}else{
+  define('PSVR_IN_DEV',false);
+}
+function puts($str){
+  $psvr_fp = fopen("/tmp/psvr_simple_log.log", "a");
+  fprintf($psvr_fp,"> ");
+  if (true===$str) {
+    fputs($psvr_fp,"true");
+  }else if(false===$str){
+    fputs($psvr_fp,"false");
+  }else{
+    fputs($psvr_fp,var_export($str, TRUE));
+    fprintf($psvr_fp,"\n\n");
+  }
+  fclose($psvr_fp);
+}
+
+function startsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
+}
+
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+}
 error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);

@@ -67,8 +67,10 @@ class ApplicationController < ActionController::Base
         u.inc(:login_times,1)
         LoginLog.create(:user_id=>u.id,:login_at=>Time.now,:range=>(Time.now.to_date-u.created_at.to_date).to_i)
         sign_in(u)
+        return true
       end
     end
+    sign_out
   end
   layout :layout_by_resource
   def layout_by_resource
@@ -374,8 +376,8 @@ class ApplicationController < ActionController::Base
   end
   def sign_out_others
     cookies.each do |k,v|
-      if k.starts_with?('WkpF_')
-        cookies.delete(k, 'domain' => (Rails.env.development? ?  ".kejian.lvh.me" : ".kejian.tv"))
+      if k.starts_with?(Discuz.cookiepre)
+        cookies.delete(k, 'domain' => (Discuz.cookiedomain))
       end
     end
   end

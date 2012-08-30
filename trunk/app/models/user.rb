@@ -355,7 +355,8 @@ class User
   }
   # 是否允许登录
   def active_for_authentication?
-    self.authorizations.count>0 or (self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?)
+    true
+    # self.authorizations.count>0 or (self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?)
     # todo securties
   end
   scope :already_confirmed,where(:confirmed_at.ne => nil)
