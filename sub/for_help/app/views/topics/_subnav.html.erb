@@ -1,0 +1,17 @@
+<nav class="tabNav mt20 clearfix">
+  <ul>
+    <a href="<%=  topic_path(topic.name,filter:'all',q:params[:q]) %>"><li<%= ' class="current"'.html_safe if params[:filter].blank? or params[:filter] == "all"  %>>全部问题</li></a>
+    <a href="<%=  topic_path(topic.name,filter:'new',q:params[:q]) %>"><li<%= ' class="current"'.html_safe if params[:filter] == "new"  %>>零回答的问题(<%= @topic_unanswered_asks_count %>)</li></a>
+    <%if params[:q] or (params[:filter] and params[:filter]=="search")%>
+      <a href="<%=  topic_path(topic.name,filter:'search',q:params[:q]) %>"><li<%= ' class="current"'.html_safe if params[:filter] == "search"  %>>“<%=truncate2(params[:q],:length=>8)%>”相关</li></a>
+    <%end%>
+
+    <div class="peopleSearchBar">
+      <form accept-charset="UTF-8" action="/topics/<%=params[:id]%>" method="get">
+        <input type="text" placeholder="搜索相关问题" name="q" value="<%=params[:q]%>" class="ac_input" autocomplete="off" onchange="checklen(this,20)" maxlength="20">
+        <input type="hidden" name="filter" value="search"/>
+        <button></button>
+      </form>
+    </div>
+  </ul>
+</nav>

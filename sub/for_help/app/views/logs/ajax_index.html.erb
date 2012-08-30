@@ -1,0 +1,33 @@
+<%= content_for :scripts do %>
+  <script type="text/javascript">
+    var current_page = 2;
+    function loadLogs(){
+      App.loading();
+      $.get("<%= request.path %>.js?page="+current_page,function(){
+        App.loading(false);
+      });
+      return false;
+    }
+
+  <%if params[:page].to_i>1%>
+    jQuery(function(){
+      App.ajax_get_info(<%=params[:page].to_i%>);
+    });
+  <%else%>
+    jQuery(function(){
+      App.ajax_get_info(1);
+    });
+  <%end%>
+  
+  </script>
+<% end %>
+
+<%= render :partial => 'logs/notifies' %>
+<section>
+  <h3><%=title_for_this_page%></h3>
+  <div id="ajax_load">
+    正在加载,请稍候...
+  </div>
+  <div id="ajax_info"></div>
+</section>
+<%= render "asks/sidebar" %>

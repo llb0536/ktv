@@ -1,0 +1,74 @@
+<% t=Time.now.getlocal %>
+<div class="green_header">访问统计情况</div>
+<div style="margin:10px 0px;">
+  <span style="margin-right:5px;">查询区间:</span>
+  自 <%= @from_time.blank?? "上线":(@from_time.strftime "%m/%d/%Y %H:%M") %> 至 <%= @to_time.blank?? (t.strftime "%m/%d/%Y %H:%M"):(@to_time.strftime "%m/%d/%Y %H:%M") %>
+</div>
+<div id="stats_index">
+  <table class="stat_table stat_table2" style="width:620px;margin:20px 0px 30px 30px;">
+    <thead>
+      <tr>
+        <th style="width:50%;">统计项</th>
+        <th>数值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>expert页面 uv/pv</td>
+        <td><%=@expert.map{|x|x.user_id}.uniq.count%>/<%=@expert.count%></td>
+      </tr>
+      <tr>
+        <td>elite页面 uv/pv</td>
+        <td><%=@elite.map{|x|x.user_id}.uniq.count%>/<%=@elite.count%></td>
+      </tr>
+      <tr>
+        <td>用户个人主页 uv/pv</td>
+        <td><%=@user_page.map{|x|x.user_id}.uniq.count%>/<%=@user_page.count%></td>
+      </tr>
+      <tr>
+        <td>expert申请点击次数</td>
+        <td><%=@page32.count%></td>
+      </tr>
+      <tr>
+        <td>elite申请点击次数</td>
+        <td><%=@page33.count%></td>
+      </tr>
+      <tr>
+        <td>小广告栏点击次数</td>
+        <td><%=@adv.count%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%= form_tag '/cpanel/visit' do %>
+  <div style="font-size:13px;margin-left:30px;">
+    <h2 style="margin-bottom:20px;font-size:13px;">
+      visit查询
+    </h2>
+    <p style="margin-bottom:10px;">
+      <span style="margin-right:15px;">起始日期/时间:</span>
+      <input style="margin-right:20px;width:120px;" placeholder="输入日期..." class="validate[custom[date]]" id="datepicker_from" name="datepicker_from" type="text">
+      <input style="width:120px;" placeholder="输入时间..." class="validate[custom[time]]" type="text" name="time_from" id="time_from" />
+    </p>
+    <p style="margin-bottom:20px;">
+      <span style="margin-right:15px;">截止日期/时间:</span>
+      <input style="margin-right:20px;width:120px;" class="validate[custom[date]]" id="datepicker_to" name="datepicker_to" value="<%= t.strftime("%Y-%m-%d") %>" type="text">
+      <input style="width:120px;" class="validate[custom[time]]" type="text" name="time_to" id="time_to"  value="<%= t.strftime("%H:%M") %>"/>
+    </p>
+    <!--<p>用户Email限制(为空则不限制): <input id="datepicker_to" name="user" value="" type="text"></p>-->
+    <p><%= submit_tag 'visit查询',:style=>"width:90px;" %></p>
+  </div>
+<%end %>
+
+<% content_for :butt2 do %>
+  $(function() {
+  $("#datepicker_from").datepicker({
+  dateFormat:'yy-mm-dd'
+  });
+  $( "#datepicker_to" ).datepicker({
+  dateFormat:'yy-mm-dd'
+  });
+  $('#time_from').timePicker();
+  $('#time_to').timePicker();
+  });
+<% end %>

@@ -1,0 +1,194 @@
+<div class="green_header">求助热门操作</div>
+<div id="cpanel_edit_adv" class="search_form">
+  <%= form_tag("/cpanel/stats/edit_short_adv",:multipart=>true) do %>
+    <div class="inputs">
+      <div class="search_form_row">
+        <span style="margin-right:10px;"><b>宣传图</b>:</span>
+        <input class="file optional" id="topic_cover" name="adv_img" type="file" style="width:200px;margin-left:23px;" onchange="previewImage(this)">
+      </div>
+      <div class="search_form_row" style="float:left;margin-left:90px;border:1px solid #ccc;">
+        <div style="margin-right:10px;float:left;line-height:30px;">宣传图:</div>
+        <div class="row" id="preview" style="float:left;margin:10px;">
+          <%= image_tag(@adv_img.adv_img.normal.url,:id=>"imghead") %>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="search_form_row">
+        <span style="margin-left:80px;margin-right:10px;">链接:</span>
+        <%=text_field_tag "link",@adv_img.desc,:style=>"width:310px;",:class=>"validate[required,custom[url]]"%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-right:10px;"><b>推荐内容（字数最多不超过15个字或者30个字符）</b></span>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:80px;margin-right:10px;">1 标题:</span>
+        <%if !@adv_1.value.blank?%>  
+          <span id="short_adv_text_1"><%=@adv_1.value%><a href="javascript:void(0);" onclick="$('#short_adv_text_1').hide();$('#short_adv_input_1').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_adv_input_1" style="display:none;"><%=text_field_tag "title1",@adv_1.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%></span>      
+        <%else%>
+          <%=text_field_tag "title1",@adv_1.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:93px;margin-right:10px;">链接:</span>
+        <%if !@adv_1.desc.blank?%>  
+          <span id="short_link_text_1"><%=@adv_1.desc%><a href="javascript:void(0);" onclick="$('#short_link_text_1').hide();$('#short_link_input_1').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_link_input_1" style="display:none;"><%=text_field_tag "link1",@adv_1.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%></span>      
+        <%else%>
+          <%=text_field_tag "link1",@adv_1.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:80px;margin-right:10px;">2 标题:</span>
+        <%if !@adv_2.value.blank?%>  
+          <span id="short_adv_text_2"><%=@adv_2.value%><a href="javascript:void(0);" onclick="$('#short_adv_text_2').hide();$('#short_adv_input_2').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_adv_input_2" style="display:none;"><%=text_field_tag "title2",@adv_2.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%></span>      
+        <%else%>
+          <%=text_field_tag "title2",@adv_2.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:93px;margin-right:10px;">链接:</span>
+        <%if !@adv_2.desc.blank?%>  
+          <span id="short_link_text_2"><%=@adv_2.desc%><a href="javascript:void(0);" onclick="$('#short_link_text_2').hide();$('#short_link_input_2').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_link_input_2" style="display:none;"><%=text_field_tag "link2",@adv_2.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%></span>      
+        <%else%>
+          <%=text_field_tag "link2",@adv_2.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:80px;margin-right:10px;">3 标题:</span>
+        <%if !@adv_3.value.blank?%>  
+          <span id="short_adv_text_3"><%=@adv_3.value%><a href="javascript:void(0);" onclick="$('#short_adv_text_3').hide();$('#short_adv_input_3').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_adv_input_3" style="display:none;"><%=text_field_tag "title3",@adv_3.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%></span>      
+        <%else%>
+          <%=text_field_tag "title3",@adv_3.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:93px;margin-right:10px;">链接:</span>
+        <%if !@adv_3.desc.blank?%>  
+          <span id="short_link_text_3"><%=@adv_3.desc%><a href="javascript:void(0);" onclick="$('#short_link_text_3').hide();$('#short_link_input_3').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_link_input_3" style="display:none;"><%=text_field_tag "link3",@adv_3.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%></span>      
+        <%else%>
+          <%=text_field_tag "link3",@adv_3.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:80px;margin-right:10px;">4 标题:</span>
+        <%if !@adv_4.value.blank?%>  
+          <span id="short_adv_text_4"><%=@adv_4.value%><a href="javascript:void(0);" onclick="$('#short_adv_text_4').hide();$('#short_adv_input_4').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_adv_input_4" style="display:none;"><%=text_field_tag "title4",@adv_4.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%></span>      
+        <%else%>
+          <%=text_field_tag "title4",@adv_4.value,:style=>"width:310px;",:class=>"validate[funcCall[checkSize15]]"%>
+        <%end%>
+      </div>
+      <div class="search_form_row">
+        <span style="margin-left:93px;margin-right:10px;">链接:</span>
+        <%if !@adv_4.desc.blank?%>  
+          <span id="short_link_text_4"><%=@adv_4.desc%><a href="javascript:void(0);" onclick="$('#short_link_text_4').hide();$('#short_link_input_4').fadeIn();" style="margin-left:10px;">修改</a></span>
+          <span id="short_link_input_4" style="display:none;"><%=text_field_tag "link4",@adv_4.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%></span>      
+        <%else%>
+          <%=text_field_tag "link4",@adv_4.desc,:style=>"width:310px;",:class=>"validate[custom[url]]"%>
+        <%end%>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+    <div class="actions">
+      <button type="submit">提交</button>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  function previewImage(file)
+  {
+    if(!checkImg_back(file)){
+      file.value="";
+      return false;
+    }
+    var MAXWIDTH  = 200;
+    var MAXHEIGHT = 70;
+    var div = document.getElementById('preview');
+    if (file.files && file.files[0])
+    {
+      div.innerHTML = '<img id=imghead>';
+      var img = document.getElementById('imghead');
+      img.onload = function(){
+        var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+        img.width = rect.width;
+        img.height = rect.height;
+        img.style.marginLeft = rect.left+'px';
+        img.style.marginTop = rect.top+'px';
+      }
+      var reader = new FileReader();
+      reader.onload = function(evt){img.src = evt.target.result;}
+      reader.readAsDataURL(file.files[0]);
+    }
+    else
+    {
+      var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+      file.select();
+      var src = document.selection.createRange().text;
+      div.innerHTML = '<img id=imghead>';
+      var img = document.getElementById('imghead');
+      img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+      var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+      status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+      div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;margin-left:"+rect.left+"px;"+sFilter+src+"\"'></div>";
+    }
+  }
+  function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+    var param = {top:0, left:0, width:width, height:height};
+    if( width>maxWidth || height>maxHeight )
+    {
+      rateWidth = width / maxWidth;
+      rateHeight = height / maxHeight;
+		
+      if( rateWidth > rateHeight )
+      {
+        param.width =  maxWidth;
+        param.height = Math.round(height / rateWidth);
+      }else
+      {
+        param.width = Math.round(width / rateHeight);
+        param.height = maxHeight;
+      }
+    }
+	
+    param.left = Math.round((maxWidth - param.width) / 2);
+    param.top = Math.round((maxHeight - param.height) / 2);
+    return param;
+  }
+  function checkImg_back(file){
+    var agent=window.navigator.userAgent;
+    if(file.value == ""){
+      return false;
+    }else if(!file.value.match(/.jpeg|.jpg|.gif|.png/i)){
+      alert("只支持jpg, gif, png 格式的图片");
+      return false;
+    }else{
+      if(agent.indexOf("Firefox")!=-1){//firefox
+        var imgSize = (file.files)?file.files.item(0).size:0;
+      }else if(agent.indexOf("MSIE")!=-1){
+        var image = new Image();
+        image.src = file.value;
+        var imgSize = image.fileSize;
+      }else{
+        var imgSize = (file.files)?file.files.item(0).fileSize:0;
+      }
+      if (imgSize > 2048000){
+        alert("不要上传超过2MB的图片");
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
+<script type="text/javascript">
+  function checkSize15(field, rules, i, options){
+    var num=15;
+    if (real_length2(field.val())>num*2) {
+      return "不能超过"+num+"个汉字";
+    }
+  }
+</script>

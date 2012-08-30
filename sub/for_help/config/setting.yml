@@ -1,0 +1,49 @@
+default: &defaults
+  wendaoguangchang_threshold: 30
+  wendaoguangchang_ans_threshold: 1
+  # 网站名称
+  app_name: "求助"
+  # 页脚版权
+  foot_html: "Copyright © kejian.tv All Rights Reserved."
+  # 网站的域名
+  domain: "wendaoqa.kejian.tv"
+  apidomain: "api.kejian.tv"
+  # 配置图片的域名
+  upload_url: "/uploads"
+  # 设置管理员，在下面填写需要设置为管理员的用户 email
+  admin_emails: ['xin.yu@kejian.tv', 'sally.jiang@kejian.tv', 'zhangxi8288@163.com', 'pmq2001@gmail.com', 'yunlong.lee@msn.com', '11123275@qq.com', 'angela.cai@kejian.tv', 'lizi7@vip.qq.com', 'hkongm@163.com', 'jamie.liu@kejian.tv']
+  email_sender: '"求助" <wendao@kejian.tv>'
+
+  smtp_username: 'wendao@kejian.tv'
+  smtp_password: 'user_0104'
+
+  # aws_access_key_id: 'your aws access_key_id'
+  # aws_secret_access_key: 'your aws secret_access_key'
+  # 是否开放注册
+  allow_register: true
+  # 问题被多少次 spam 隐藏
+  ask_spam_max: 8
+  # 回答被多少次 spam 会删除线
+  answer_spam_max: 8
+  google_analytics_id: "UA-22413508-1"
+  spam_words: /敏感词1|敏感词2/
+  zhaopin_login: "http://wendaoqa.kejian.tv/newbie?from="#"http://my.kejian.tv/loginmgr/login.asp?BkUrl="
+  zhaopin_logout: "http://my.kejian.tv/loginmgr/logout.asp"
+  wendao_domain_name: "wendaoqa.kejian.tv"
+  error_tracker_url: 'http://etsrv.dev.kejian.tv/ErrorTrackerRestfulImpl.svc/adderrorlog'
+  error_tracker_enabled: false
+  # 求助开放API的信任客户端，以下客户端可以在用户不知情的情况下随意获得任何用户的授权
+  # 请填写client_id.
+  trusted_client_ips: ['127.0.0.1', '0.0.0.0', '192.168.7.189']
+  
+development:
+  <<: *defaults
+
+development_mongohq:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

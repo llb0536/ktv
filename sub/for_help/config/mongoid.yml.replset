@@ -1,0 +1,38 @@
+defaults: &defaults
+  host: '192.168.2.167'
+  autocreate_indexes: false
+  allow_dynamic_fields: true
+  include_root_in_json: false
+  parameterize_keys: true
+  persist_in_safe_mode: false
+  raise_not_found_error: true
+  reconnect_time: 3
+  hosts:
+    - - 192.168.2.229
+      - 27017
+    - - 192.168.2.162
+      - 27017
+    - - 192.168.2.167
+      - 27017
+  read_secondary: true
+  max_retries_on_connection_failure: 3
+
+development:
+  <<: *defaults
+  database: quora_development
+
+development_mongohq:
+  <<: *defaults
+  #uri: mongodb://<user>:<password>@flame.mongohq.com:27070/quora
+  #use demo mongohq database for fast run
+  uri: mongodb://root:666666@flame.mongohq.com:27070/quora
+
+test:
+  <<: *defaults
+  database: quora_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  database: quora_development
+

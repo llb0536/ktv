@@ -1,0 +1,10 @@
+defaults: &defaults
+  cpu_cores: 2
+  
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults
+  cpu_cores: 8
