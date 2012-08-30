@@ -35,6 +35,10 @@ $modcachelist = array(
 );
 
 $mod = !in_array(C::app()->var['mod'], $modarray) ? 'index' : C::app()->var['mod'];
+if('index'===$mod){
+  header('Location: /');
+  exit(0);
+}
 
 define('CURMODULE', $mod);
 $cachelist = array();

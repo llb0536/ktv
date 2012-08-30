@@ -355,9 +355,9 @@ class User
   }
   # 是否允许登录
   def active_for_authentication?
+    # todo securties
     true
     # self.authorizations.count>0 or (self.encrypted_password.present? && self.banished!='1' && !access_locked? && died_at.blank? && confirmed?)
-    # todo securties
   end
   scope :already_confirmed,where(:confirmed_at.ne => nil)
   scope :name_unknown, where(:name_unknown => true)
@@ -1090,14 +1090,14 @@ class User
     else
       discuz_pw = auth[0]
       discuz_uid = auth[1]
+      u = User.where(:uid=>discuz_uid).first
+      return u if u.present? and u.email.present? and u.slug.present?
       info0 = UCenter::User.get_user(request,{username:discuz_uid,isuid:1})
       return nil if '0'==info0
       info = info0['root']['item']
       incoming_opts = {'email' => info[2], 'username' => info[1], 'uid' => info[0], 'password' => discuz_pw}
-      u  = nil
       u||= User.where(:email=>incoming_opts['email']).first
       u||= User.where(:slug=>incoming_opts['username']).first
-      u||= User.where(:uid=>incoming_opts['uid']).first
       u||= User.new
       u.uid = incoming_opts['uid']
       u.email = incoming_opts['email']
