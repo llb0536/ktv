@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     end
   end
   before_filter :set_vars
-  before_filter :xookie,:unless=>'devise_controller?'
+  # before_filter :xookie,:unless=>'devise_controller?'
   before_filter :unknown_user_check
 
   def set_vars
