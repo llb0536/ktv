@@ -19,7 +19,7 @@ $checklpp[$lpp] = 'selected="selected"';
 $extrainput = '';
 
 $operation = in_array($operation, array('illegal', 'rate', 'credit', 'mods', 'medal', 'ban', 'cp', 'magic', 'error', 'invite', 'payment', 'warn', 'crime', 'sendmail')) ? $operation : 'illegal';
-$logdir = DISCUZ_ROOT.'./data/log/';
+$logdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/log/';
 $logfiles = get_log_files($logdir, $operation.($operation == 'sendmail' ? '' : 'log'));
 $logs = array();
 $lastkey = count($logfiles) - 1;

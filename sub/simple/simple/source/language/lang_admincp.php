@@ -735,7 +735,7 @@ $lang = array
 	'setting_access_register_invite_group' => '邀请注册用户初始用户组',
 	'setting_access_register_invite_group_comment' => '被邀请人的初始用户组',
 	'setting_access_register_invite_areawhite' => '不受邀请码限制的地区列表',
-	'setting_access_register_invite_areawhite_comment' => '当用户处于本列表中的地址时，注册时不受邀请码限制。每个地区一行，例如 "北京"(不含引号)，留空为不设置。<br />注意：如要正确无误的判断您 IP 地址所在的地区，请到网上下载 qqwry.dat IP 地址库文件上传到 "data/ipdata/" 目录下更名为 wry.dat，同时删除 tinyipdata.dat 文件',
+	'setting_access_register_invite_areawhite_comment' => '当用户处于本列表中的地址时，注册时不受邀请码限制。每个地区一行，例如 "北京"(不含引号)，留空为不设置。<br />注意：如要正确无误的判断您 IP 地址所在的地区，请到网上下载 qqwry.dat IP 地址库文件上传到 "data_'.PSVR_KTV_SUB.'/ipdata/" 目录下更名为 wry.dat，同时删除 tinyipdata.dat 文件',
 	'setting_access_register_invite_ipwhite' => '不受邀请码限制的 IP 列表',
 	'setting_access_register_invite_ipwhite_comment' => '当用户处于本列表中的 IP 地址时，注册时不受邀请码限制。每个 IP 一行，既可输入完整地址，也可只输入 IP 开头，例如 "192.168."(不含引号) 可匹配 192.168.0.0～192.168.255.255 范围内的所有地址，留空为不设置',
 	'setting_access_register_connect_birthday' => 'QQ注册时必填生日',
@@ -1357,7 +1357,7 @@ $lang = array
 	'setting_cachethread_life' => '缓存帖子有效期',
 	'setting_cachethread_life_comment' => '设置帖子页面缓存更新的时间，单位为秒，0 为关闭。请根据实际情况进行调整，建议设置为 900。另外，请通过编辑论坛来指定帖子页面缓存系数',
 	'setting_cachethread_dir' => '缓存目录',
-	'setting_cachethread_dir_comment' => '默认为 data/threadcache 目录，如果您需要将其指定为其他目录，请确定您指定的目录有可写权限',
+	'setting_cachethread_dir_comment' => '默认为 data_'.PSVR_KTV_SUB.'/threadcache 目录，如果您需要将其指定为其他目录，请确定您指定的目录有可写权限',
 	'setting_cachethread_coefficient_set' => '缓存系数批量设置',
 	'setting_cachethread_coefficient' => '缓存系数',
 	'setting_cachethread_coefficient_comment' => '页面缓存功能可以将会员经常访问的主题临时缓存起来，缓解大型论坛服务器压力。缓存阀值范围 0 - 100，建议设置为 40 ，0 为关闭。在磁盘空间允许的情况下，适当调高缓存系数，可以提高缓存效果',
@@ -1967,7 +1967,7 @@ $lang = array
 	'setting_datetime_postmodperiods' => '发帖审核时间段',
 	'setting_datetime_postmodperiods_comment' => '每天该时间段内用户发帖不直接显示，需经版主或管理员人工审核才能发表，格式和用法同上',
 	'setting_datetime_postignorearea' => '发帖不受时间限制的地区列表',
-	'setting_datetime_postignorearea_comment' => '当用户处于本列表中的地址时，发帖不受时间段限制。每个地区一行，例如 "北京"(不含引号)，留空为不设置。<br />注意：如要正确无误的判断您 IP 地址所在的地区，请到网上下载 qqwry.dat IP 地址库文件上传到 "data/ipdata/" 目录下更名为 wry.dat，同时删除 tinyipdata.dat 文件',
+	'setting_datetime_postignorearea_comment' => '当用户处于本列表中的地址时，发帖不受时间段限制。每个地区一行，例如 "北京"(不含引号)，留空为不设置。<br />注意：如要正确无误的判断您 IP 地址所在的地区，请到网上下载 qqwry.dat IP 地址库文件上传到 "data_'.PSVR_KTV_SUB.'/ipdata/" 目录下更名为 wry.dat，同时删除 tinyipdata.dat 文件',
 	'setting_datetime_postignoreip' => '发帖不受时间限制的IP列表',
 	'setting_datetime_postignoreip_comment' => '当用户处于本列表中的 IP 地址时，发帖不受时间段限制。每个 IP 一行，既可输入完整地址，也可只输入 IP 开头，例如 "192.168."(不含引号) 可匹配 192.168.0.0～192.168.255.255 范围内的所有地址，留空为不设置',
 	'setting_datetime_searchbanperiods' => '禁止全文搜索时间段',
@@ -5563,7 +5563,7 @@ $lang = array
 	'db_volume' => '卷数',
 	'db_export_tips_nouc' => '<li><font color="blue"><b>您当前的数据备份不包含 UCenter，会影响到您的会员数据，请点击<a href="{uc_backup_url}">这里</a>单独备份 UCenter 数据</b></font></li><li>数据备份功能根据您的选择备份全部Discuz!数据，导出的数据文件可用“数据恢复”功能或 phpMyAdmin 导入。</li>',
 	'db_export_tips_uc' => '<li>数据备份功能根据您的选择备份全部Discuz! 和 UCenter数据，导出的数据文件可用“数据恢复”功能或 phpMyAdmin 导入。</li>',
-	'db_export_tips' => '<li>全部备份均不包含模板文件和附件文件。模板、附件的备份只需通过 FTP 等下载 template/、data/attachment/ 目录即可，Discuz! 不提供单独备份。</li><li>MySQL Dump 的速度比 Discuz! 分卷备份快很多，但需要服务器支持相关的 Shell 权限，同时由于 MySQL 本身的兼容性问题，通常进行备份和恢复的服务器应当具有相同或相近的版本号才能顺利进行。因此 MySQL Dump 是有风险的：一旦进行备份或恢复操作的服务器其中之一禁止了 Shell，或由于版本兼容性问题导致导入失败，您将无法使用 MySQL Dump 备份或由备份数据恢复；Discuz! 分卷备份没有此限制。</li><li>数据备份选项中的设置，仅供高级用户的特殊用途使用，当您尚未对数据库做全面细致的了解之前，请使用默认参数备份，否则将导致备份数据错误等严重问题。</li><li>十六进制方式可以保证备份数据的完整性，但是备份文件会占用更多的空间。</li><li>压缩备份文件可以让您的备份文件占用更小的空间。</li>',
+	'db_export_tips' => '<li>全部备份均不包含模板文件和附件文件。模板、附件的备份只需通过 FTP 等下载 template/、data_'.PSVR_KTV_SUB.'/attachment/ 目录即可，Discuz! 不提供单独备份。</li><li>MySQL Dump 的速度比 Discuz! 分卷备份快很多，但需要服务器支持相关的 Shell 权限，同时由于 MySQL 本身的兼容性问题，通常进行备份和恢复的服务器应当具有相同或相近的版本号才能顺利进行。因此 MySQL Dump 是有风险的：一旦进行备份或恢复操作的服务器其中之一禁止了 Shell，或由于版本兼容性问题导致导入失败，您将无法使用 MySQL Dump 备份或由备份数据恢复；Discuz! 分卷备份没有此限制。</li><li>数据备份选项中的设置，仅供高级用户的特殊用途使用，当您尚未对数据库做全面细致的了解之前，请使用默认参数备份，否则将导致备份数据错误等严重问题。</li><li>十六进制方式可以保证备份数据的完整性，但是备份文件会占用更多的空间。</li><li>压缩备份文件可以让您的备份文件占用更小的空间。</li>',
 	'db_export_type' => '数据备份类型',
 	'db_export_discuz' => 'Discuz! 数据(不含UCenter)',
 	'db_export_discuz_uc' => 'Discuz! 和 UCenter 数据',
@@ -6622,7 +6622,7 @@ RepeatLimit 32
 );
 
 $adminextend = array();
-if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.php')) {
+if(file_exists($adminextendfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sysdata/cache_adminextend.php')) {
 	@include $adminextendfile;
 	foreach($adminextend as $extend) {
 		$extend_lang = array();

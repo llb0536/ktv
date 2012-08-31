@@ -115,7 +115,7 @@ foreach($_GET['types'] as $value) {
 	$types .= '&types[]='.$value;
 	$actives[$value] = ' class="a"';
 }
-$statuspara = "path=&settings_file=data/stat_setting.xml&data_file=".urlencode("misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash");
+$statuspara = "path=&settings_file=data_".PSVR_KTV_SUB."/stat_setting.xml&data_file=".urlencode("misc.php?mod=stat&op=trend&xml=1&type=$type&primarybegin=$primarybegin&primaryend=$primaryend{$types}{$merge}&hash=$stat_hash");
 
 include template('home/misc_stat');
 ?>

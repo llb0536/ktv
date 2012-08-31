@@ -28,7 +28,7 @@ class helper_log {
 	public static function writelog($file, $log) {
 		global $_G;
 		$yearmonth = dgmdate(TIMESTAMP, 'Ym', $_G['setting']['timeoffset']);
-		$logdir = DISCUZ_ROOT.'./data/log/';
+		$logdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/log/';
 		$logfile = $logdir.$yearmonth.'_'.$file.'.php';
 		if(@filesize($logfile) > 2048000) {
 			$dir = opendir($logdir);

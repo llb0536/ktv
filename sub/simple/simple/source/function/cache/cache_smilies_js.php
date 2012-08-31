@@ -51,12 +51,12 @@ function build_cache_smilies_js() {
 			$return_data[$j] = 'smilies_array['.$type['typeid'].']['.$j.'] = ['.$return_data[$j].'];';
 		$return_array .= $return_datakey.implode('', $return_data);
 	}
-	$cachedir = DISCUZ_ROOT.'./data/cache/';
+	$cachedir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/';
 	if(@$fp = fopen($cachedir.'common_smilies_var.js', 'w')) {
 		fwrite($fp, 'var smthumb = \''.$_G['setting']['smthumb'].'\';'.$return_type.$return_array.'var smilies_fast=['.$return_fast.'];');
 		fclose($fp);
 	} else {
-		exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
+		exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/cache/ .');
 	}
 
 }

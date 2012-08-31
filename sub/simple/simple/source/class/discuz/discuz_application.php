@@ -264,7 +264,7 @@ class discuz_application extends discuz_base{
 		$_config = array();
 		@include DISCUZ_ROOT.'./config/config_global.php';
 		if(empty($_config)) {
-			if(!file_exists(DISCUZ_ROOT.'./data/install.lock')) {
+			if(!file_exists(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/install.lock')) {
 				header('location: install');
 				exit;
 			} else {

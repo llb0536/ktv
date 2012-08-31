@@ -118,13 +118,13 @@ if (submitcheck('uploadsubmit')) {
 	}
 
 	if($optype == 'canceldiy') {
-		@unlink(DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'_diy_preview.htm');
-		if($targettplname == $template) @unlink(DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'_'.$clonefile.'_diy_preview.htm');
+		@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'_diy_preview.htm');
+		if($targettplname == $template) @unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'_'.$clonefile.'_diy_preview.htm');
 		showmessage('do_success');
 	}
 
 	if ($recover == '1') {
-		$file = './data/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
+		$file = './data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
 		if (is_file($file.'.bak')) {
 			copy ($file.'.bak', $file);
 		} else {
@@ -156,7 +156,7 @@ if (submitcheck('uploadsubmit')) {
 
 		if ($r && $optype != 'savecache') {
 			if (!$iscategory && !$istopic && empty($savemod) && !empty($clonefile)) {
-				$delfile = DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$template.'_'.$clonefile.'.htm';
+				$delfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$template.'_'.$clonefile.'.htm';
 				if (file_exists($delfile)) {
 					unlink($delfile);
 					@unlink($delfile.'.bak');

@@ -731,8 +731,8 @@ function optionlistxml($input, $pre = '') {
 
 
 function makevaluepic($value) {
-	$basedir = !getglobal('setting/attachdir') ? './data/attachment' : getglobal('setting/attachdir');
-	$url = !getglobal('setting/attachurl') ? './data/attachment/' : getglobal('setting/attachurl');
+	$basedir = !getglobal('setting/attachdir') ? './data_'.PSVR_KTV_SUB.'/attachment' : getglobal('setting/attachdir');
+	$url = !getglobal('setting/attachurl') ? './data_'.PSVR_KTV_SUB.'/attachment/' : getglobal('setting/attachurl');
 	$subdir1 = substr(md5($value), 0, 2);
 	$subdir2 = substr(md5($value), 2, 2);
 	$target = 'temp/'.$subdir1.'/'.$subdir2.'/';

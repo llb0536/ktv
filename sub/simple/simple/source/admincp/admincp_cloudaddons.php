@@ -97,7 +97,7 @@ if(!$operation) {
 		}
 		cpmsg('cloudaddons_installing', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&end=$end&step=2&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
 	} elseif($step == 2) {
-		$tmpdir = DISCUZ_ROOT.'./data/download/'.$_GET['rid'];
+		$tmpdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/download/'.$_GET['rid'];
 		if(!file_exists($tmpdir)) {
 			cloudaddons_faillog($_GET['rid'], 103);
 			cpmsg('cloudaddons_download_error', '', 'error', array('ErrorCode' => 103));
@@ -154,8 +154,8 @@ if(!$operation) {
 		} else {
 			cloudaddons_validator($_GET['key'].'.pack');
 			cloudaddons_installlog($_GET['key'].'.pack');
-			if(file_exists(DISCUZ_ROOT.'./data/addonpack/'.$_GET['key'].'.php')) {
-				dheader('location: '.$_G['siteurl'].'data/addonpack/'.$_GET['key'].'.php');
+			if(file_exists(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonpack/'.$_GET['key'].'.php')) {
+				dheader('location: '.$_G['siteurl'].'data_'.PSVR_KTV_SUB.'/addonpack/'.$_GET['key'].'.php');
 			}
 			cpmsg('cloudaddons_pack_installed', '', 'succeed');
 		}

@@ -370,7 +370,7 @@ EOT;
 
 		$message = discuz_error::clear($message);
 		$time = time();
-		$file =  DISCUZ_ROOT.'./data/log/'.date("Ym").'_errorlog.php';
+		$file =  DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/log/'.date("Ym").'_errorlog.php';
 		$hash = md5($message);
 
 		$uid = getglobal('uid');

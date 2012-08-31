@@ -150,7 +150,7 @@ class template {
 				if(empty($_G['config']['plugindeveloper'])) {
 					loadcache('pluginlanguage_template');
 				} elseif(!isset($_G['cache']['pluginlanguage_template'][$vars[0]]) && preg_match("/^[a-z]+[a-z0-9_]*$/i", $vars[0])) {
-					if(@include(DISCUZ_ROOT.'./data/plugindata/'.$vars[0].'.lang.php')) {
+					if(@include(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/plugindata/'.$vars[0].'.lang.php')) {
 						$_G['cache']['pluginlanguage_template'][$vars[0]] = $templatelang[$vars[0]];
 					} else {
 						loadcache('pluginlanguage_template');
@@ -252,19 +252,19 @@ class template {
 
 	function loadcsstemplate() {
 		global $_G;
-		$scriptcss = '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_common.css?{VERHASH}" />';
+		$scriptcss = '<link rel="stylesheet" type="text/css" href="data_'.PSVR_KTV_SUB.'/cache/style_{STYLEID}_common.css?{VERHASH}" />';
 		$content = $this->csscurmodules = '';
-		$content = @implode('', file(DISCUZ_ROOT.'./data/cache/style_'.STYLEID.'_module.css'));
+		$content = @implode('', file(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/style_'.STYLEID.'_module.css'));
 		$content = preg_replace("/\[(.+?)\](.*?)\[end\]/ies", "\$this->cssvtags('\\1','\\2')", $content);
 		if($this->csscurmodules) {
 			$this->csscurmodules = preg_replace(array('/\s*([,;:\{\}])\s*/', '/[\t\n\r]/', '/\/\*.+?\*\//'), array('\\1', '',''), $this->csscurmodules);
-			if(@$fp = fopen(DISCUZ_ROOT.'./data/cache/style_'.STYLEID.'_'.$_G['basescript'].'_'.CURMODULE.'.css', 'w')) {
+			if(@$fp = fopen(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/style_'.STYLEID.'_'.$_G['basescript'].'_'.CURMODULE.'.css', 'w')) {
 				fwrite($fp, $this->csscurmodules);
 				fclose($fp);
 			} else {
-				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
+				exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/cache/ .');
 			}
-			$scriptcss .= '<link rel="stylesheet" type="text/css" href="data/cache/style_{STYLEID}_'.$_G['basescript'].'_'.CURMODULE.'.css?{VERHASH}" />';
+			$scriptcss .= '<link rel="stylesheet" type="text/css" href="data_'.PSVR_KTV_SUB.'/cache/style_{STYLEID}_'.$_G['basescript'].'_'.CURMODULE.'.css?{VERHASH}" />';
 		}
 		$scriptcss .= '{if $_G[uid] && isset($_G[cookie][extstyle]) && strpos($_G[cookie][extstyle], TPLDIR) !== false}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[cookie][extstyle]/style.css" />{elseif $_G[style][defaultextstyle]}<link rel="stylesheet" id="css_extstyle" type="text/css" href="$_G[style][defaultextstyle]/style.css" />{/if}';
 		return $scriptcss;

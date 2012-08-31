@@ -24,8 +24,8 @@ function convertip($ip) {
 		} elseif($iparray[0] > 255 || $iparray[1] > 255 || $iparray[2] > 255 || $iparray[3] > 255) {
 			$return = '- Invalid IP Address';
 		} else {
-			$tinyipfile = DISCUZ_ROOT.'./data/ipdata/tinyipdata.dat';
-			$fullipfile = DISCUZ_ROOT.'./data/ipdata/wry.dat';
+			$tinyipfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/ipdata/tinyipdata.dat';
+			$fullipfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/ipdata/wry.dat';
 			if(@file_exists($tinyipfile)) {
 				$return = convertip_tiny($ip, $tinyipfile);
 			} elseif(@file_exists($fullipfile)) {

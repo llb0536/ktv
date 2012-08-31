@@ -38,7 +38,7 @@ function updatecache($cachename = '') {
 function writetocache($script, $cachedata, $prefix = 'cache_') {
 	global $_G;
 
-	$dir = DISCUZ_ROOT.'./data/sysdata/';
+	$dir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sysdata/';
 	if(!is_dir($dir)) {
 		dmkdir($dir, 0777);
 	}
@@ -46,7 +46,7 @@ function writetocache($script, $cachedata, $prefix = 'cache_') {
 		fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($prefix.$script.'.php'.$cachedata.$_G['config']['security']['authkey'])."\n\n$cachedata?>");
 		fclose($fp);
 	} else {
-		exit('Can not write to cache files, please check directory ./data/ and ./data/sysdata/ .');
+		exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/sysdata/ .');
 	}
 }
 
@@ -116,7 +116,7 @@ function arrayeval($array, $level = 0) {
 
 function pluginsettingvalue($type) {
 	$pluginsetting = $pluginvalue = array();
-	@include DISCUZ_ROOT.'./data/sysdata/cache_pluginsetting.php';
+	@include DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sysdata/cache_pluginsetting.php';
 	$pluginsetting = isset($pluginsetting[$type]) ? $pluginsetting[$type] : array();
 
 	$varids = $pluginids = array();
@@ -139,10 +139,10 @@ function pluginsettingvalue($type) {
 }
 
 function cleartemplatecache() {
-	$tpl = dir(DISCUZ_ROOT.'./data/template');
+	$tpl = dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template');
 	while($entry = $tpl->read()) {
 		if(preg_match("/\.tpl\.php$/", $entry)) {
-			@unlink(DISCUZ_ROOT.'./data/template/'.$entry);
+			@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template/'.$entry);
 		}
 	}
 	$tpl->close();

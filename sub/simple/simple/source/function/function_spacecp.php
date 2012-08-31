@@ -62,7 +62,7 @@ function album_update_pic($albumid, $picid=0) {
 	}
 	$from = $pic['remote'];
 	$pic['remote'] = $pic['remote'] > 1 ? $pic['remote'] - 2 : $pic['remote'];
-	$basedir = !getglobal('setting/attachdir') ? (DISCUZ_ROOT.'./data/attachment/') : getglobal('setting/attachdir');
+	$basedir = !getglobal('setting/attachdir') ? (DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment/') : getglobal('setting/attachdir');
 	$picdir = 'cover/'.substr(md5($albumid), 0, 2).'/';
 	dmkdir($basedir.'./album/'.$picdir);
 	if($pic['remote']) {
@@ -562,7 +562,7 @@ function ckvideophoto($tospace=array(), $return=0) {
 function getvideophoto($filename) {
 	$dir1 = substr($filename, 0, 1);
 	$dir2 = substr($filename, 1, 1);
-	return 'data/avatar/'.$dir1.'/'.$dir2.'/'.$filename.".jpg";
+	return 'data_'.PSVR_KTV_SUB.'/avatar/'.$dir1.'/'.$dir2.'/'.$filename.".jpg";
 }
 
 function videophoto_upload($FILE, $uid) {
@@ -570,11 +570,11 @@ function videophoto_upload($FILE, $uid) {
 		$newfilename = md5(substr($_G['timestamp'], 0, 7).$uid);
 		$dir1 = substr($newfilename, 0, 1);
 		$dir2 = substr($newfilename, 1, 1);
-		if(!is_dir(DISCUZ_ROOT.'./data/avatar/'.$dir1)) {
-			if(!mkdir(DISCUZ_ROOT.'./data/avatar/'.$dir1)) return '';
+		if(!is_dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/avatar/'.$dir1)) {
+			if(!mkdir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/avatar/'.$dir1)) return '';
 		}
-		if(!is_dir(DISCUZ_ROOT.'./data/avatar/'.$dir1.'/'.$dir2)) {
-			if(!mkdir(DISCUZ_ROOT.'./data/avatar/'.$dir1.'/'.$dir2)) return '';
+		if(!is_dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/avatar/'.$dir1.'/'.$dir2)) {
+			if(!mkdir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/avatar/'.$dir1.'/'.$dir2)) return '';
 		}
 		$new_name = DISCUZ_ROOT.'./'.getvideophoto($newfilename);
 		$tmp_name = $FILE['tmp_name'];

@@ -587,7 +587,7 @@ function setthreadcover($pid, $tid = 0, $aid = 0, $countimg = 0, $imgurl = '') {
 			$picsource = $imgurl;
 		}
 
-		$basedir = !$_G['setting']['attachdir'] ? (DISCUZ_ROOT.'./data/attachment/') : $_G['setting']['attachdir'];
+		$basedir = !$_G['setting']['attachdir'] ? (DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment/') : $_G['setting']['attachdir'];
 		$coverdir = 'threadcover/'.substr(md5($tid), 0, 2).'/'.substr(md5($tid), 2, 2).'/';
 		dmkdir($basedir.'./forum/'.$coverdir);
 

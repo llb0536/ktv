@@ -18,7 +18,7 @@ if(!isset($_G['cache']['forums'])) {
 $language = lang('forum/misc');
 $lpp = empty($_GET['lpp']) ? 20 : intval($_GET['lpp']);
 $lpp = min(200, max(5, $lpp));
-$logdir = DISCUZ_ROOT.'./data/log/';
+$logdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/log/';
 $logfiles = get_log_files($logdir, 'modcp');
 
 $logs = array();

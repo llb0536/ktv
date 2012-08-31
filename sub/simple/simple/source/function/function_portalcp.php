@@ -188,10 +188,10 @@ function save_diy_data($tpldirectory, $primaltplname, $targettplname, $data, $da
 	if($flag) {
 		$targettplname = $targettplname.'_diy_preview';
 	} else {
-		@unlink('./data/diy/'.$tpldirectory.'/'.$targettplname.'_diy_preview.htm');
+		@unlink('./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'_diy_preview.htm');
 	}
 
-	$tplfile =DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
+	$tplfile =DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
 	$tplpath = dirname($tplfile);
 	if (!is_dir($tplpath)) {
 		dmkdir($tplpath);
@@ -890,7 +890,7 @@ function updatetopic($topic = ''){
 	if($primaltplname && empty($topic['primaltplname'])) {
 		$tpldirectory = ($tpldirectory ? $tpldirectory : $_G['cache']['style_default']['tpldir']);
 		$content = file_get_contents(DISCUZ_ROOT.$tpldirectory.'/'.$primaltplname.'.htm');
-		$tplfile = DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/portal/portal_topic_content_'.$topicid.'.htm';
+		$tplfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/portal/portal_topic_content_'.$topicid.'.htm';
 		$tplpath = dirname($tplfile);
 		if (!is_dir($tplpath)) {
 			dmkdir($tplpath);

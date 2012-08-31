@@ -126,11 +126,11 @@ function writetocsscache($data) {
 				$cssdata = preg_replace('/\/\*\*\s*(.+?)\s*\*\*\//', '[\\1]', $cssdata);
 			}
 			$cssdata = preg_replace(array('/\s*([,;:\{\}])\s*/', '/[\t\n\r]/', '/\/\*.+?\*\//'), array('\\1', '',''), $cssdata);
-			if(@$fp = fopen(DISCUZ_ROOT.'./data/cache/style_'.$data['styleid'].'_'.$entry, 'w')) {
+			if(@$fp = fopen(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/style_'.$data['styleid'].'_'.$entry, 'w')) {
 				fwrite($fp, $cssdata);
 				fclose($fp);
 			} else {
-				exit('Can not write to cache files, please check directory ./data/ and ./data/cache/ .');
+				exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/cache/ .');
 			}
 		}
 	}

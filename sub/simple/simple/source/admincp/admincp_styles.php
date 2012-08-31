@@ -235,10 +235,10 @@ if($operation == 'admin') {
 			updatecache(array('setting', 'styles'));
 			loadcache('style_default', true);
 			updatecache('updatediytemplate');
-			$tpl = dir(DISCUZ_ROOT.'./data/template');
+			$tpl = dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template');
 			while($entry = $tpl->read()) {
 				if(preg_match("/\.tpl\.php$/", $entry)) {
-					@unlink(DISCUZ_ROOT.'./data/template/'.$entry);
+					@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template/'.$entry);
 				}
 			}
 			$tpl->close();
@@ -576,10 +576,10 @@ function imgpre_switch(id) {
 
 		updatecache(array('setting', 'styles'));
 
-		$tpl = dir(DISCUZ_ROOT.'./data/template');
+		$tpl = dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template');
 		while($entry = $tpl->read()) {
 			if(preg_match("/\.tpl\.php$/", $entry)) {
-				@unlink(DISCUZ_ROOT.'./data/template/'.$entry);
+				@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/template/'.$entry);
 			}
 		}
 		$tpl->close();

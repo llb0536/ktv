@@ -523,7 +523,7 @@ function getstatvars_forumstat($fid) {
 		}
 		$statvars['monthposts'] = $monthposts;
 	}
-	$statvars['statuspara'] = "path=&settings_file=data/stat_setting.xml&data_file=".urlencode("misc.php?mod=stat&op=forumstat&fid=$fid&month={$_GET['month']}&xml=1");
+	$statvars['statuspara'] = "path=&settings_file=data_".PSVR_KTV_SUB."/stat_setting.xml&data_file=".urlencode("misc.php?mod=stat&op=forumstat&fid=$fid&month={$_GET['month']}&xml=1");
 	return $statvars;
 }
 

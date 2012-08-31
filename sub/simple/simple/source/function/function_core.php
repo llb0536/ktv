@@ -401,7 +401,7 @@ function avatar($uid, $size = 'middle', $returnsrc = FALSE, $real = FALSE, $stat
 		$dir1 = substr($uid, 0, 3);
 		$dir2 = substr($uid, 3, 2);
 		$dir3 = substr($uid, 5, 2);
-		$file = $ucenterurl.'/data/avatar/'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).($real ? '_real' : '').'_avatar_'.$size.'.jpg';
+		$file = $ucenterurl.'/data_'.PSVR_KTV_SUB.'/avatar/'.$dir1.'/'.$dir2.'/'.$dir3.'/'.substr($uid, -2).($real ? '_real' : '').'_avatar_'.$size.'.jpg';
 		return $returnsrc ? $file : '<img src="'.$file.'" onerror="this.onerror=null;this.src=\''.$ucenterurl.'/images/noavatar_'.$size.'.gif\'" />';
 	}
 }
@@ -429,7 +429,7 @@ function lang($file, $langvar = null, $vars = array(), $default = null) {
 		if(empty($_G['config']['plugindeveloper'])) {
 			loadcache('pluginlanguage_script');
 		} elseif(!isset($_G['cache']['pluginlanguage_script'][$file]) && preg_match("/^[a-z]+[a-z0-9_]*$/i", $file)) {
-			if(@include(DISCUZ_ROOT.'./data/plugindata/'.$file.'.lang.php')) {
+			if(@include(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/plugindata/'.$file.'.lang.php')) {
 				$_G['cache']['pluginlanguage_script'][$file] = $scriptlang[$file];
 			} else {
 				loadcache('pluginlanguage_script');
@@ -503,7 +503,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 			$indiy = false;
 			$_G['style']['tpldirectory'] = $tpldir ? $tpldir : (defined('TPLDIR') ? TPLDIR : '');
 			$_G['style']['prefile'] = '';
-			$diypath = DISCUZ_ROOT.'./data/diy/'.$_G['style']['tpldirectory'].'/'; //DIY模板文件目录
+			$diypath = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$_G['style']['tpldirectory'].'/'; //DIY模板文件目录
 			$preend = '_diy_preview';
 			$_GET['preview'] = !empty($_GET['preview']) ? $_GET['preview'] : '';
 			$curtplname = $oldfile;
@@ -518,7 +518,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 			}
 			$tplsavemod = 0;
 			if(isset($diytemplatename[$file]) && file_exists($diypath.$file.'.htm') && ($tplsavemod = 1) || empty($_G['forum']['styleid']) && ($file = $primaltpl ? $primaltpl : $oldfile) && isset($diytemplatename[$file]) && file_exists($diypath.$file.'.htm')) {
-				$tpldir = 'data/diy/'.$_G['style']['tpldirectory'].'/';
+				$tpldir = 'data_'.PSVR_KTV_SUB.'/diy/'.$_G['style']['tpldirectory'].'/';
 				!$gettplfile && $_G['style']['tplsavemod'] = $tplsavemod;
 				$curtplname = $file;
 				if(isset($_GET['diy']) && $_GET['diy'] == 'yes' || isset($_GET['diy']) && $_GET['preview'] == 'yes') { //DIY模式或预览模式下做以下判断
@@ -593,7 +593,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 		}
 	}
 
-	$cachefile = './data/template/'.(defined('STYLEID') ? STYLEID.'_' : '_').$templateid.'_'.str_replace('/', '_', $file).'.tpl.php';
+	$cachefile = './data_'.PSVR_KTV_SUB.'/template/'.(defined('STYLEID') ? STYLEID.'_' : '_').$templateid.'_'.str_replace('/', '_', $file).'.tpl.php';
 	if($templateid != 1 && !file_exists(DISCUZ_ROOT.$tplfile) && !file_exists(substr(DISCUZ_ROOT.$tplfile, 0, -4).'.php')
 			&& !file_exists(DISCUZ_ROOT.($tplfile = $tpldir.$filebak.'.htm'))) {
 		$tplfile = './template/default/'.$filebak.'.htm';

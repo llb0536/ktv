@@ -277,7 +277,7 @@ if(!$operation) {
 		$pluginarray['var'][] = $var;
 	}
 	$modules = dunserialize($pluginarray['plugin']['modules']);
-	if($modules['extra']['langexists'] && file_exists($file = DISCUZ_ROOT.'./data/plugindata/'.$pluginarray['plugin']['identifier'].'.lang.php')) {
+	if($modules['extra']['langexists'] && file_exists($file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/plugindata/'.$pluginarray['plugin']['identifier'].'.lang.php')) {
 		include $file;
 		if(!empty($scriptlang[$pluginarray['plugin']['identifier']])) {
 			$pluginarray['language']['scriptlang'] = $scriptlang[$pluginarray['plugin']['identifier']];
@@ -1113,7 +1113,7 @@ if(!$operation) {
 					cpmsg('plugins_edit_identifier_invalid', '', 'error');
 				}
 			}
-			if($_GET['langexists'] && !file_exists($langfile = DISCUZ_ROOT.'./data/plugindata/'.$identifiernew.'.lang.php')) {
+			if($_GET['langexists'] && !file_exists($langfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/plugindata/'.$identifiernew.'.lang.php')) {
 				cpmsg('plugins_edit_language_invalid', '', 'error', array('langfile' => $langfile));
 			}
 			$plugin['modules']['extra']['langexists'] = $_GET['langexists'];

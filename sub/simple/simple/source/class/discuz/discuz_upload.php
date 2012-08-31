@@ -169,7 +169,7 @@ Class discuz_upload{
 
 		$type = discuz_upload::check_dir_type($type);
 
-		$basedir = !getglobal('setting/attachdir') ? (DISCUZ_ROOT.'./data/attachment') : getglobal('setting/attachdir');
+		$basedir = !getglobal('setting/attachdir') ? (DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment') : getglobal('setting/attachdir');
 
 		$typedir = $type ? ($basedir.'/'.$type) : '';
 		$subdir1  = $type && $sub1 !== '' ?  ($typedir.'/'.$sub1) : '';

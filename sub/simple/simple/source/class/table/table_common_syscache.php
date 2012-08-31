@@ -47,7 +47,7 @@ class table_common_syscache extends discuz_table
 		if($this->_isfilecache) {
 			$lostcaches = array();
 			foreach($cachenames as $cachename) {
-				if(!@include_once(DISCUZ_ROOT.'./data/cache/cache_'.$cachename.'.php')) {
+				if(!@include_once(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_'.$cachename.'.php')) {
 					$lostcaches[] = $cachename;
 				}
 			}
@@ -64,7 +64,7 @@ class table_common_syscache extends discuz_table
 			$this->_allowmem && (memory('set', $syscache['cname'], $data[$syscache['cname']]));
 			if($this->_isfilecache) {
 				$cachedata = '$data[\''.$syscache['cname'].'\'] = '.var_export($data[$syscache['cname']], true).";\n\n";
-				if(($fp = @fopen(DISCUZ_ROOT.'./data/cache/cache_'.$syscache['cname'].'.php', 'wb'))) {
+				if(($fp = @fopen(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_'.$syscache['cname'].'.php', 'wb'))) {
 					fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($syscache['cname'].$cachedata.getglobal('config/security/authkey'))."\n\n$cachedata?>");
 					fclose($fp);
 				}
@@ -93,7 +93,7 @@ class table_common_syscache extends discuz_table
 		if($this->_allowmem && memory('get', $cachename) !== false) {
 			memory('set', $cachename, $data);
 		}
-		$this->_isfilecache && @unlink(DISCUZ_ROOT.'./data/cache/cache_'.$cachename.'.php');
+		$this->_isfilecache && @unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_'.$cachename.'.php');
 	}
 
 	public function update($cachename, $data) {
@@ -105,7 +105,7 @@ class table_common_syscache extends discuz_table
 		if($this->_allowmem || $this->_isfilecache) {
 			foreach((array)$cachenames as $cachename) {
 				$this->_allowmem && memory('rm', $cachename);
-				$this->_isfilecache && @unlink(DISCUZ_ROOT.'./data/cache/cache_'.$cachename.'.php');
+				$this->_isfilecache && @unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_'.$cachename.'.php');
 			}
 		}
 	}
