@@ -13,6 +13,7 @@
 cp /usr/local/nginx/conf/nginx.conf config/nginx.conf
 cp /etc/httpd/conf/httpd.conf config/httpd.conf
 cp /usr/local/php/lib/php.ini config/php.ini
+cp /usr/local/php/etc/php-fpm.conf config/php-fpm.conf
 cp -R ~/.vim config/vim
 cp ~/.gitconfig config/gitconfig
 crontab -l > config/crontab
