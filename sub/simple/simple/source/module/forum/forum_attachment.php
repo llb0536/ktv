@@ -29,7 +29,6 @@ if($_GET['uid'] != $_G['uid'] && $_GET['uid']) {
 $requestmode = !empty($_GET['request']) && empty($_GET['uid']);
 
 $tableid = 'aid:'.$aid;
-
 if($_G['setting']['attachexpire']) {
 	$k = $_GET['k'];
 	$t = $_GET['t'];
