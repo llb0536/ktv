@@ -44,11 +44,11 @@ if($apptype == 'discuz') {
 } elseif($apptype == 'uchome' || $apptype == 'supesite' || $apptype == 'supev') {
 	require ROOT_PATH.'./config.php';
 } elseif($apptype == 'ucenter') {
-	require ROOT_PATH.'./data'.PSVR_KTV_SUB.'/config.inc.php';
+	require ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/config.inc.php';
 } elseif($apptype == 'ecmall') {
-	require ROOT_PATH.'./data'.PSVR_KTV_SUB.'/inc.config.php';
+	require ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/inc.config.php';
 } elseif($apptype == 'ecshop') {
-	require ROOT_PATH.'./data'.PSVR_KTV_SUB.'/config.php';
+	require ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/config.php';
 } elseif($apptype == 'discuzx') {
 	require ROOT_PATH.'./config/config_global.php';
 	require ROOT_PATH.'./config/config_ucenter.php';
@@ -216,21 +216,21 @@ if($apptype == 'discuz') {
 
 } elseif($apptype == 'uchome' || $apptype == 'supesite') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data'.PSVR_KTV_SUB.'/');
+	define('BACKUP_DIR', ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/');
 	$tablepre = $_SC['tablepre'];
 	$dbcharset = $_SC['dbcharset'];
 	$db->connect($_SC['dbhost'], $_SC['dbuser'], $_SC['dbpw'], $_SC['dbname'], $dbcharset, $_SC['pconnect'], $tablepre);
 
 } elseif($apptype == 'ucenter') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data'.PSVR_KTV_SUB.'/backup/');
+	define('BACKUP_DIR', ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/backup/');
 	$tablepre = UC_DBTABLEPRE;
 	$dbcharset = UC_DBCHARSET;
 	$db->connect(UC_DBHOST, UC_DBUSER, UC_DBPW, UC_DBNAME, $dbcharset, UC_DBCONNECT, $tablepre);
 
 } elseif($apptype == 'ecmall') {
 
-	define('BACKUP_DIR', ROOT_PATH.'./data'.PSVR_KTV_SUB.'/backup/');
+	define('BACKUP_DIR', ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/backup/');
 	$tablepre = DB_PREFIX;
 	$dbcharset = strtolower(str_replace('-', '', strstr(LANG, '-')));
 	$cfg = parse_url(DB_CONFIG);
@@ -246,7 +246,7 @@ if($apptype == 'discuz') {
 
 } elseif($apptype == 'supev') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data'.PSVR_KTV_SUB.'/backup/');
+	define('BACKUP_DIR', ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup/');
 	$tablepre = $tablepre;
 	if(empty($dbcharset)) {
 		$dbcharset = in_array(strtolower($_config['output']['charset']), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', CHARSET) : '';
@@ -255,14 +255,14 @@ if($apptype == 'discuz') {
 
 } elseif($apptype == 'ecshop') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data'.PSVR_KTV_SUB.'/backup/');
+	define('BACKUP_DIR', ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup/');
 	$tablepre = $prefix;
 	$dbcharset = 'utf8';
 	$db->connect($db_host, $db_user, $db_pass, $db_name, $dbcharset, 0, $tablepre);
 
 } elseif($apptype == 'discuzx') {
 
-	define('BACKUP_DIR', ROOT_PATH.'data'.PSVR_KTV_SUB.'/');
+	define('BACKUP_DIR', ROOT_PATH.'data_'.PSVR_KTV_SUB.'/');
 	extract($_config['db']['1']);
 	if(empty($dbcharset)) {
 		$dbcharset = in_array(strtolower(CHARSET), array('gbk', 'big5', 'utf-8')) ? str_replace('-', '', $_config['output']['charset']) : '';

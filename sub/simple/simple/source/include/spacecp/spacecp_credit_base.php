@@ -202,8 +202,8 @@ if($_GET['op'] == 'base') {
 		showmessage('action_closed', NULL);
 	}
 	$_CACHE['creditsettings'] = array();
-	if(file_exists(DISCUZ_ROOT.'/uc_client/data'.PSVR_KTV_SUB.'/cache/creditsettings.php')) {
-		include_once(DISCUZ_ROOT.'/uc_client/data'.PSVR_KTV_SUB.'/cache/creditsettings.php');
+	if(file_exists(DISCUZ_ROOT.'/uc_client/data_'.PSVR_KTV_SUB.'/cache/creditsettings.php')) {
+		include_once(DISCUZ_ROOT.'/uc_client/data_'.PSVR_KTV_SUB.'/cache/creditsettings.php');
 	}
 
 	if(submitcheck('exchangesubmit')) {

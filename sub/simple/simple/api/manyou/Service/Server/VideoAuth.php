@@ -62,7 +62,7 @@ class Cloud_Service_Server_VideoAuth extends Cloud_Service_Server_Restful {
 			}
 
 			$secret = md5($_G['timestamp']."\t".$_G['uid']);
-			$picDir = DISCUZ_ROOT . './data'.PSVR_KTV_SUB.'/avatar/' . substr($secret, 0, 1);
+			$picDir = DISCUZ_ROOT . './data_'.PSVR_KTV_SUB.'/avatar/' . substr($secret, 0, 1);
 			if (!is_dir($picDir)) {
 				if (!mkdir($picDir, 0777)) {
 					$errCode = '300';

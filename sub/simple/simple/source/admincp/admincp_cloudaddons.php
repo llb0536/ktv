@@ -42,7 +42,7 @@ if(!$operation) {
 		cpmsg('cloudaddons_downloading', "action=cloudaddons&operation=download&addonids=$_GET[addonids]&i=$addoni&step=1&md5hash=".$_GET['md5hash'].'&timestamp='.$_GET['timestamp'], 'loading', array('addonid' => $_GET['key'].'.'.$_GET['type']), FALSE);
 	} elseif($step == 1) {
 		$packnum = 0;
-		$tmpdir = DISCUZ_ROOT.'./data/download/'.$_GET['rid'];
+		$tmpdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/download/'.$_GET['rid'];
 		dir_clear($tmpdir);
 		dmkdir($tmpdir, 0777, false);
 		$end = '';
