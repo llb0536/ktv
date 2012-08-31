@@ -1,0 +1,62 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="rkj-repos"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/usr/local/nginx/sbin:/usr/local/pgsql/bin:/usr/local/bin:/usr/lib64/qt-3.3/bin:/usr/lib64/ccache:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+export WWW='/home/wwwroot'
+export EDITOR=vim
+export MIZFILES=/usr/local/share/mizar
+export GEMS=/usr/local/lib/ruby/gems/1.9.1/gems
+alias ll="ls -l"
+alias la="ls -a"
+alias r="bundle exec rails"
+alias rake="bundle exec rake"
+alias sss="ssh -D 9999 psvr@zrapton.com"
+alias kj="cd /home/main/ktv/trunk"
+export kj="/home/main/ktv/trunk"
+alias sub="cd /home/main/ktv/sub"
+export sub="/home/main/ktv/sub"
+alias zconf="vim /usr/local/nginx/conf/nginx.conf"
+export RAILS_ENV=production
+
+alias gup="git smart-pull"
+alias gm="git smart-merge"
+alias gl="git smart-log"
+alias www="cd $WWW"
+alias psvr="cd /media/hd2/KTV_PSVR"
+alias redis-cli="redis-cli -a 87dsFDLKJ7^\*\$@#_Dn1..d0983DKOI892617jKLKLKDFJ\;\;dskojifdsouitreo09w"
+alias rcrc="RAILS_ENV=staging bundle exec rails c"
+export PATH=/usr/local/php/bin:$PATH
+export PATH=/usr/local/php/sbin:$PATH

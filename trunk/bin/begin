@@ -14,6 +14,9 @@ tail tmp/memcached_error.log
 # ================MONGO==========================
 sudo /usr/local/bin/mongod --config /home/main/ktv/trunk/config/mongod.conf
 
+# ================PHP==========================
+/usr/local/php/sbin/php-fpm
+
 
 # =======================Postgresql DB==================
 # sudo -u pg echo I\'m user pg

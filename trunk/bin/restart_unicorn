@@ -1,5 +1,6 @@
 #!/bin/bash -x
 
+kill -USR2 `cat /web/php-fpm.pid`
 kill -USR2 `cat tmp/pids/unicorn.pid`
 kill -QUIT `cat tmp/pids/resque-pool.pid`
 

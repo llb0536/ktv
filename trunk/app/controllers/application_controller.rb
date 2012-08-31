@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter proc{
     # binding.pry
-    # text =request.env['HTTP_USER_AGENT']
+    # text =request.url
     # render text:"#{text}" and return
   }
   unless Rails.env.development?
