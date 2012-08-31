@@ -25,3 +25,11 @@ production: &productions
 staging:
   <<: *productions
 
+sub_cnu:
+  <<: *productions
+  database: ktv_sub_cnu
+  
+sub_ustb:
+  <<: *productions
+  database: ktv_sub_ustb
+  

@@ -4,7 +4,7 @@ module Ktv
     extend Ktv::Helpers::Config
     include Ktv::Helpers::Config
     include Shared::MechanizeParty
-    def self.test!
+    def self.testcnu!
       cnu = Ktv::Urp.new
       cnu.start_mode(:cnu,'1090500165','pmqpmq55')
       cnu.touch_courses_teachings_departments_teachers
