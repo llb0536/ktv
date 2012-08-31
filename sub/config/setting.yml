@@ -93,18 +93,10 @@ test:
 production: &production
   <<: *defaults
 
-staging:
-  <<: *defaults
-  ktv_domain: ktv-staging.kejian.tv
-  wendao_domain_name: "ktv-staging.kejian.tv"
-  read_timeout: 30
-  idle_timeout: 30
-  open_timeout: 30
-  timeout: 30
-
 sub_cnu:
-  <<: *productions
+  <<: *production
   official_website: 'http://www.cnu.edu.cn/'
+  uc_key: 'af64HZPlY/1RdaOe4UftTp3XO+kQwB9f5SBojhc='
   ktv_sub: 'cnu'
   ktv_subname: '首都师范大学'
   ktv_subname_short: '首师大'
@@ -140,7 +132,7 @@ sub_cnu:
     - 19
     
 sub_ibeike:
-  <<: *productions
+  <<: *production
   official_website: 'http://www.ustb.edu.cn/'
   ktv_sub: 'ustb'
   ktv_subname: '北京科技大学'

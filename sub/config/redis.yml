@@ -37,14 +37,11 @@ development:
   port_asks: 6379
   port_experts: 6379
   
-production:
+production: &production
   <<: *defaults
   
-staging:
-  <<: *defaults
-
 sub_cnu:
-  <<: *productions
+  <<: *production
   port: 6380
   port_search: 6380
   port_resque: 6380
@@ -54,7 +51,7 @@ sub_cnu:
   port_experts: 6380
 
 sub_ustb:
-  <<: *productions
+  <<: *production
   port: 6381
   port_search: 6381
   port_resque: 6381

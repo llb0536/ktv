@@ -41,9 +41,6 @@ production: &production
   password: "jknlff8-pro-17m7755"
   socket: /tmp/mysql.sock
 
-staging:
-  <<: *production
-
 psvr_ucenter:
   adapter: mysql2
   encoding: utf8
@@ -59,5 +56,6 @@ sub_cnu:
   database: ktv_sub_cnu
   
 sub_ustb:
-  <<: *productions
+  <<: *production
   database: ktv_sub_ustb
+  

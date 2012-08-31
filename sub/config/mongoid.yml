@@ -17,19 +17,16 @@ test:
   database: ktv_test
 
 # set these environment variables on your prod server
-production: &productions
+production: &production
   <<: *defaults
   host: '0.0.0.0'
   database: ktv_sub
 
-staging:
-  <<: *productions
-
 sub_cnu:
-  <<: *productions
+  <<: *production
   database: ktv_sub_cnu
   
 sub_ustb:
-  <<: *productions
+  <<: *production
   database: ktv_sub_ustb
   
