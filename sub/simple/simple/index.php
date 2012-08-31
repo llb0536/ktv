@@ -15,7 +15,7 @@ if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 	$url = '';
 	$domain = $_ENV = array();
 	$jump = false;
-	@include_once './data/sysdata/cache_domain.php';
+	@include_once './data'.PSVR_KTV_SUB.'/sysdata/cache_domain.php';
 	$_ENV['domain'] = $domain;
 	if(empty($_ENV['domain'])) {
 		$_ENV['curapp'] = 'forum';

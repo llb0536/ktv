@@ -134,7 +134,7 @@ sub_cnu:
 sub_ibeike:
   <<: *production
   official_website: 'http://www.ustb.edu.cn/'
-  ktv_sub: 'ustb'
+  ktv_sub: 'ibeike'
   ktv_subname: '北京科技大学'
   ktv_subname_short: '北科大'
   ktv_subdomain: 'ibeike.kejian.tv'

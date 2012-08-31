@@ -55,7 +55,7 @@ sub_cnu:
   <<: *production
   database: ktv_sub_cnu
   
-sub_ustb:
+sub_ibeike:
   <<: *production
-  database: ktv_sub_ustb
+  database: ktv_sub_ibeike
   

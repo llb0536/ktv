@@ -50,7 +50,7 @@ sub_cnu:
   port_asks: 6380
   port_experts: 6380
 
-sub_ustb:
+sub_ibeike:
   <<: *production
   port: 6381
   port_search: 6381

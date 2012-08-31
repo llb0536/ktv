@@ -241,7 +241,7 @@ class uc_note {
 				$data['replace'][$k] = $v['replacement'];
 			}
 		}
-		$cachefile = DISCUZ_ROOT.'./uc_client/data/cache/badwords.php';
+		$cachefile = DISCUZ_ROOT.'./uc_client/data'.PSVR_KTV_SUB.'/cache/badwords.php';
 		$fp = fopen($cachefile, 'w');
 		$s = "<?php\r\n";
 		$s .= '$_CACHE[\'badwords\'] = '.var_export($data, TRUE).";\r\n";
@@ -258,7 +258,7 @@ class uc_note {
 			return API_RETURN_FORBIDDEN;
 		}
 
-		$cachefile = DISCUZ_ROOT.'./uc_client/data/cache/hosts.php';
+		$cachefile = DISCUZ_ROOT.'./uc_client/data'.PSVR_KTV_SUB.'/cache/hosts.php';
 		$fp = fopen($cachefile, 'w');
 		$s = "<?php\r\n";
 		$s .= '$_CACHE[\'hosts\'] = '.var_export($post, TRUE).";\r\n";
@@ -281,7 +281,7 @@ class uc_note {
 			unset($post['UC_API']);
 		}
 
-		$cachefile = DISCUZ_ROOT.'./uc_client/data/cache/apps.php';
+		$cachefile = DISCUZ_ROOT.'./uc_client/data'.PSVR_KTV_SUB.'/cache/apps.php';
 		$fp = fopen($cachefile, 'w');
 		$s = "<?php\r\n";
 		$s .= '$_CACHE[\'apps\'] = '.var_export($post, TRUE).";\r\n";
@@ -309,7 +309,7 @@ class uc_note {
 			return API_RETURN_FORBIDDEN;
 		}
 
-		$cachefile = DISCUZ_ROOT.'./uc_client/data/cache/settings.php';
+		$cachefile = DISCUZ_ROOT.'./uc_client/data'.PSVR_KTV_SUB.'/cache/settings.php';
 		$fp = fopen($cachefile, 'w');
 		$s = "<?php\r\n";
 		$s .= '$_CACHE[\'settings\'] = '.var_export($post, TRUE).";\r\n";
@@ -402,7 +402,7 @@ class uc_note {
 		}
 		$outextcredits = $tmp;
 
-		$cachefile = DISCUZ_ROOT.'./uc_client/data/cache/creditsettings.php';
+		$cachefile = DISCUZ_ROOT.'./uc_client/data'.PSVR_KTV_SUB.'/cache/creditsettings.php';
 		$fp = fopen($cachefile, 'w');
 		$s = "<?php\r\n";
 		$s .= '$_CACHE[\'creditsettings\'] = '.var_export($outextcredits, TRUE).";\r\n";
