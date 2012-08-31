@@ -155,7 +155,7 @@ class discuz_patch {
 			$bakfile = basename($rule['filename']);
 			$bakfile = '_'.$serial.'_'.substr($bakfile, 0, strrpos($bakfile, '.')).'_'.substr(md5($_G['config']['security']['authkey']), -6).'.bak.'.substr($bakfile, strrpos($bakfile, '.') +1);
 			$bakfile = $siteftp ? dirname($rule['filename']).'/'.$bakfile : dirname($filename).'/'.$bakfile;
-			$tmpfile = tempnam(DISCUZ_ROOT.'./data', 'patch');
+			$tmpfile = tempnam(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB, 'patch');
 
 			$strarr = explode($search, $str);
 			$replacestr = '';
