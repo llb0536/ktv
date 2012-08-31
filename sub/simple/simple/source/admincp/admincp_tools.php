@@ -76,21 +76,21 @@ if($operation == 'updatecache') {
 
 		$entryarray = array(
 			'data',
-			'data/attachment',
-			'data/attachment/album',
-			'data/attachment/category',
-			'data/attachment/common',
-			'data/attachment/forum',
-			'data/attachment/group',
-			'data/attachment/portal',
-			'data/attachment/profile',
-			'data/attachment/swfupload',
-			'data/attachment/temp',
-			'data/cache',
-			'data/log',
-			'data/template',
-			'data/threadcache',
-			'data/diy'
+			'data_'.PSVR_KTV_SUB.'/attachment',
+			'data_'.PSVR_KTV_SUB.'/attachment/album',
+			'data_'.PSVR_KTV_SUB.'/attachment/category',
+			'data_'.PSVR_KTV_SUB.'/attachment/common',
+			'data_'.PSVR_KTV_SUB.'/attachment/forum',
+			'data_'.PSVR_KTV_SUB.'/attachment/group',
+			'data_'.PSVR_KTV_SUB.'/attachment/portal',
+			'data_'.PSVR_KTV_SUB.'/attachment/profile',
+			'data_'.PSVR_KTV_SUB.'/attachment/swfupload',
+			'data_'.PSVR_KTV_SUB.'/attachment/temp',
+			'data_'.PSVR_KTV_SUB.'/cache',
+			'data_'.PSVR_KTV_SUB.'/log',
+			'data_'.PSVR_KTV_SUB.'/template',
+			'data_'.PSVR_KTV_SUB.'/threadcache',
+			'data_'.PSVR_KTV_SUB.'/diy'
 		);
 
 		$result = '';

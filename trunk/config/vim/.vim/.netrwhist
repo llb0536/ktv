@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/main/ktv/sub/app/assets/stylesheets/for_help/cpanel_oauth'
+let g:netrw_dirhist_2='/home/main/ktv/sub/config/initializers'

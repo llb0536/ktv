@@ -29,12 +29,12 @@ $backupdir = C::t('common_setting')->fetch('backupdir');
 
 if(!$backupdir) {
 	$backupdir = random(6);
-	@mkdir('./data/backup_'.$backupdir, 0777);
+	@mkdir('./data_'.PSVR_KTV_SUB.'/backup_'.$backupdir, 0777);
 	C::t('common_setting')->update('backupdir',$backupdir);
 }
 $backupdir = 'backup_'.$backupdir;
-if(!is_dir('./data/'.$backupdir)) {
-	mkdir('./data/'.$backupdir, 0777);
+if(!is_dir('./data_'.PSVR_KTV_SUB.'/'.$backupdir)) {
+	mkdir('./data_'.PSVR_KTV_SUB.'/'.$backupdir, 0777);
 }
 
 if($operation == 'export') {
@@ -169,7 +169,7 @@ if($operation == 'export') {
 			}
 		}
 
-		$backupfilename = './data/'.$backupdir.'/'.str_replace(array('/', '\\', '.', "'"), '', $_GET['filename']);
+		$backupfilename = './data_'.PSVR_KTV_SUB.'/'.$backupdir.'/'.str_replace(array('/', '\\', '.', "'"), '', $_GET['filename']);
 
 		if($_GET['usezip']) {
 			require_once './source/class/class_zip.php';
@@ -262,11 +262,11 @@ if($operation == 'export') {
 					}
 					unset($sqldump, $zip, $content);
 					fclose($fp);
-					@touch('./data/'.$backupdir.'/index.htm');
+					@touch('./data_'.PSVR_KTV_SUB.'/'.$backupdir.'/index.htm');
 					$filename = $zipfilename;
 					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename));
 				} else {
-					@touch('./data/'.$backupdir.'/index.htm');
+					@touch('./data_'.PSVR_KTV_SUB.'/'.$backupdir.'/index.htm');
 					for($i = 1; $i <= $volume; $i++) {
 						$filename = sprintf($_GET['usezip'] == 2 ? $backupfilename."-%s".'.zip' : $dumpfile, $i);
 						$filelist .= "<li><a href=\"$filename\">$filename</a></li>\n";
@@ -308,7 +308,7 @@ if($operation == 'export') {
 					@fwrite($fp, $zip->file());
 					fclose($fp);
 					@unlink($dumpfile);
-					@touch('./data/'.$backupdir.'/index.htm');
+					@touch('./data_'.PSVR_KTV_SUB.'/'.$backupdir.'/index.htm');
 					$filename = $backupfilename.'.zip';
 					unset($sqldump, $zip, $content);
 					cpmsg('database_export_zip_succeed', '', 'succeed', array('filename' => $filename));
@@ -318,7 +318,7 @@ if($operation == 'export') {
 						@fwrite($fp, $idstring."# <?php exit();?>\n ".$setnames."\n #");
 						fclose($fp);
 					}
-					@touch('./data/'.$backupdir.'/index.htm');
+					@touch('./data_'.PSVR_KTV_SUB.'/'.$backupdir.'/index.htm');
 					$filename = $backupfilename.'.sql';
 					cpmsg('database_export_succeed', '', 'succeed', array('filename' => $filename));
 				}
@@ -339,10 +339,10 @@ if($operation == 'export') {
 	if(!submitcheck('deletesubmit')) {
 
 		$exportlog = $exportsize = $exportziplog = array();
-		if(is_dir(DISCUZ_ROOT.'./data/'.$backupdir)) {
-			$dir = dir(DISCUZ_ROOT.'./data/'.$backupdir);
+		if(is_dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/'.$backupdir)) {
+			$dir = dir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/'.$backupdir);
 			while($entry = $dir->read()) {
-				$entry = './data/'.$backupdir.'/'.$entry;
+				$entry = './data_'.PSVR_KTV_SUB.'/'.$backupdir.'/'.$entry;
 				if(is_file($entry)) {
 					if(preg_match("/\.sql$/i", $entry)) {
 						$filesize = filesize($entry);
@@ -376,7 +376,7 @@ if($operation == 'export') {
 			cpmsg('database_export_dest_invalid', '', 'error');
 		}
 
-		$restore_url = $_G['siteurl'].'data/restore.php';
+		$restore_url = $_G['siteurl'].'data_'.PSVR_KTV_SUB.'/restore.php';
 
 		shownav('founder', 'nav_db', 'nav_db_import');
 		showsubmenu('nav_db', array(
@@ -394,7 +394,7 @@ if($operation == 'export') {
 		showtitle('db_export_file');
 		showsubtitle(array('', 'filename', 'version', 'time', 'type', 'size', 'db_method', 'db_volume', ''));
 
-		$datasiteurl = $_G['siteurl'].'data/';
+		$datasiteurl = $_G['siteurl'].'data_'.PSVR_KTV_SUB.'/';
 
 		foreach($exportlog as $key => $val) {
 			$info = $val[1];
@@ -459,13 +459,13 @@ if($operation == 'export') {
 	} else {
 		if(is_array($_GET['delete'])) {
 			foreach($_GET['delete'] as $filename) {
-				$file_path = './data/'.$backupdir.'/'.str_replace(array('/', '\\'), '', $filename);
+				$file_path = './data_'.PSVR_KTV_SUB.'/'.$backupdir.'/'.str_replace(array('/', '\\'), '', $filename);
 				if(is_file($file_path)) {
 					@unlink($file_path);
 				} else {
 					$i = 1;
 					while(1) {
-						$file_path = './data/'.$backupdir.'/'.str_replace(array('/', '\\'), '', $filename.'-'.$i.'.sql');
+						$file_path = './data_'.PSVR_KTV_SUB.'/'.$backupdir.'/'.str_replace(array('/', '\\'), '', $filename.'-'.$i.'.sql');
 						if(is_file($file_path)) {
 							@unlink($file_path);
 							$i++;

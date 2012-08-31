@@ -19,7 +19,7 @@ class discuz_upgrade {
 
 	public function fetch_updatefile_list($upgradeinfo) {
 
-		$file = DISCUZ_ROOT.'./data/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
+		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
 		$upgradedataflag = true;
 		$upgradedata = @file_get_contents($file);
 		if(!$upgradedata) {
@@ -81,7 +81,7 @@ class discuz_upgrade {
 			}
 		}
 		if($searchlist) {
-			$file = DISCUZ_ROOT.'./data/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
+			$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
 			$upgradedata = file_get_contents($file);
 			$upgradedata = str_replace($searchlist, '', $upgradedata);
 			$fp = fopen($file, 'w');
@@ -157,7 +157,7 @@ class discuz_upgrade {
 	}
 
 	public function download_file($upgradeinfo, $file, $folder = 'upload', $md5 = '', $position = 0, $offset = 0) {
-		$dir = DISCUZ_ROOT.'./data/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/';
+		$dir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/';
 		$this->mkdirs(dirname($dir.$file));
 		$downloadfileflag = true;
 

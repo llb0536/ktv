@@ -35,32 +35,32 @@ if($operation == 'filecheck') {
 		}
 
 		$md5data = array();
-		$cachelist = checkcachefiles('data/sysdata/');
+		$cachelist = checkcachefiles('data_'.PSVR_KTV_SUB.'/sysdata/');
 		checkfiles('./', '', 0);
 		checkfiles('config/', '', 1, 'config_global.php,config_ucenter.php');
-		checkfiles('data/', '\.xml', 0);
-		checkfiles('data/', '\.htm', 0);
-		checkfiles('data/log/', '\.htm', 0);
-		checkfiles('data/plugindata/', '\.htm', 0);
-		checkfiles('data/download/', '\.htm', 0);
-		checkfiles('data/addonmd5/', '\.htm', 0);
-		checkfiles('data/avatar/', '\.htm', 0);
-		checkfiles('data/cache/', '\.htm', 0);
-		checkfiles('data/ipdata/', '\.htm|\.dat', 0);
-		checkfiles('data/template/', '\.htm', 0);
-		checkfiles('data/threadcache/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/', '\.xml', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/log/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/plugindata/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/download/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/addonmd5/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/avatar/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/cache/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/ipdata/', '\.htm|\.dat', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/template/', '\.htm', 0);
+		checkfiles('data_'.PSVR_KTV_SUB.'/threadcache/', '\.htm', 0);
 		checkfiles('template/', '');
 		checkfiles('api/', '');
 		checkfiles('source/', '', 1, 'discuzfiles.md5,plugin');
 		checkfiles('static/', '');
 		checkfiles('archiver/', '');
 		checkfiles('uc_client/', '\.php|\.htm', 0);
-		checkfiles('uc_client/data/', '\.htm');
+		checkfiles('uc_client/data_'.PSVR_KTV_SUB.'/', '\.htm');
 		checkfiles('uc_client/control/', '\.php|\.htm');
 		checkfiles('uc_client/model/', '\.php|\.htm');
 		checkfiles('uc_client/lib/', '\.php|\.htm');
 		checkfiles('uc_server/', '\.php|\.htm|\.txt|\.xml', 0);
-		checkfiles('uc_server/data/', '\.htm');
+		checkfiles('uc_server/data_'.PSVR_KTV_SUB.'/', '\.htm');
 		checkfiles('uc_server/api/', '\.php|\.htm');
 		checkfiles('uc_server/control/', '\.php|\.htm|\.md5');
 		checkfiles('uc_server/model/', '\.php|\.htm');
@@ -362,8 +362,8 @@ if($operation == 'filecheck') {
 		$_G['setting']['thumbquality'] = $settingnew['thumbquality'];
 
 		require_once libfile('class/image');
-		@unlink(DISCUZ_ROOT.'./data/attachment/temp/watermark_temp1.jpg');
-		@unlink(DISCUZ_ROOT.'./data/attachment/temp/watermark_temp2.jpg');
+		@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp1.jpg');
+		@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp2.jpg');
 		$image = new image;
 		$r = 0;
 		if(!($r = $image->Thumb(DISCUZ_ROOT.'./static/image/admincp/watermarkpreview.jpg', 'temp/watermark_temp1.jpg', $_G['setting']['thumbwidth'], $_G['setting']['thumbheight'], 1))) {
@@ -375,11 +375,11 @@ if($operation == 'filecheck') {
 		if($r > 0) {
 			showsubmenu('imagepreview_thumb');
 			$sizesource = filesize(DISCUZ_ROOT.'./static/image/admincp/watermarkpreview.jpg');
-			echo '<img src="data/attachment/temp/watermark_temp1.jpg?'.random(5).'"><br /><br />'.
+			echo '<img src="data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp1.jpg?'.random(5).'"><br /><br />'.
 				$lang['imagepreview_imagesize_source'].' '.number_format($sizesource).' Bytes &nbsp;&nbsp;'.
 				$lang['imagepreview_imagesize_target'].' '.number_format($sizetarget1).' Bytes ('.
 				(sprintf("%2.1f", $sizetarget1 / $sizesource * 100)).'%)<br /><br />';
-			echo '<img src="data/attachment/temp/watermark_temp2.jpg?'.random(5).'"><br /><br />'.
+			echo '<img src="data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp2.jpg?'.random(5).'"><br /><br />'.
 				$lang['imagepreview_imagesize_source'].' '.number_format($sizesource).' Bytes &nbsp;&nbsp;'.
 				$lang['imagepreview_imagesize_target'].' '.number_format($sizetarget2).' Bytes ('.
 				(sprintf("%2.1f", $sizetarget2 / $sizesource * 100)).'%)';
@@ -392,7 +392,7 @@ if($operation == 'filecheck') {
 			cpmsg('watermarkpreview_error', '', 'error');
 		}
 		require_once libfile('class/image');
-		@unlink(DISCUZ_ROOT.'./data/attachment/temp/watermark_temp3.jpg');
+		@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp3.jpg');
 		$image = new image;
 		if(!($r = $image->Watermark(DISCUZ_ROOT.'./static/image/admincp/watermarkpreview.jpg', 'temp/watermark_temp3.jpg', $type))) {
 			$r = $image->error();
@@ -401,7 +401,7 @@ if($operation == 'filecheck') {
 			showsubmenu('imagepreview_watermark');
 			$sizesource = filesize('static/image/admincp/watermarkpreview.jpg');
 			$sizetarget = $image->imginfo['size'];
-			echo '<img src="data/attachment/temp/watermark_temp3.jpg?'.random(5).'"><br /><br />'.
+			echo '<img src="data_'.PSVR_KTV_SUB.'/attachment/temp/watermark_temp3.jpg?'.random(5).'"><br /><br />'.
 				$lang['imagepreview_imagesize_source'].' '.number_format($sizesource).' Bytes &nbsp;&nbsp;'.
 				$lang['imagepreview_imagesize_target'].' '.number_format($sizetarget).' Bytes ('.
 				(sprintf("%2.1f", $sizetarget / $sizesource * 100)).'%)';

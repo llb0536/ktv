@@ -177,7 +177,7 @@ $menu['extended'] = array(
 
 if(file_exists($menudir = DISCUZ_ROOT.'./source/admincp/menu')) {
 	$adminextend = $adminextendnew = array();
-	if(file_exists($adminextendfile = DISCUZ_ROOT.'./data/sysdata/cache_adminextend.php')) {
+	if(file_exists($adminextendfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sysdata/cache_adminextend.php')) {
 		@include $adminextendfile;
 	}
 	$menudirhandle = dir($menudir);

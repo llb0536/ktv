@@ -38,7 +38,7 @@ class ultrax_cache {
 				"\n//Identify: ".md5($cache_file.$cachedata.$_G['config']['security']['authkey'])."\n\nif(!defined('IN_DISCUZ')) {\n\texit('Access Denied');\n}\n\n$cachedata?>");
 			fclose($fp);
 		} else {
-			exit('Can not write to cache files, please check directory ./data/ and ./data/ultraxcache/ .');
+			exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/ultraxcache/ .');
 		}
 		return true;
 	}

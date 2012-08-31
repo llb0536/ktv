@@ -37,8 +37,26 @@ development:
   port_asks: 6379
   port_experts: 6379
   
-production:
+production: &production
   <<: *defaults
   
-staging:
-  <<: *defaults
+sub_cnu:
+  <<: *production
+  port: 6380
+  port_search: 6380
+  port_resque: 6380
+  port_users: 6380
+  port_topics: 6380
+  port_asks: 6380
+  port_experts: 6380
+
+sub_ibeike:
+  <<: *production
+  port: 6381
+  port_search: 6381
+  port_resque: 6381
+  port_users: 6381
+  port_topics: 6381
+  port_asks: 6381
+  port_experts: 6381
+

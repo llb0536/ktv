@@ -1,6 +1,5 @@
 <?php
 
-
 $_config = array();
 
 // ----------------------------  CONFIG DB  ----------------------------- //
@@ -9,7 +8,7 @@ $_config['db']['1']['dbuser'] = 'root';
 $_config['db']['1']['dbpw'] = 'jknlff8-pro-17m7755';
 $_config['db']['1']['dbcharset'] = 'utf8';
 $_config['db']['1']['pconnect'] = '0';
-$_config['db']['1']['dbname'] = 'ktv_sub_cnu';
+$_config['db']['1']['dbname'] = 'ktv_sub_'.PSVR_KTV_SUB;
 $_config['db']['1']['tablepre'] = 'pre_';
 $_config['db']['common']['slave_except_table'] = '';
 

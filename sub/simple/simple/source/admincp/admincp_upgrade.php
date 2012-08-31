@@ -110,7 +110,7 @@ if($operation == 'patch' || $operation == 'cross') {
 			showtablerow('', '', array($file));
 		}
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=2';
-		showtablerow('', '', array($lang['founder_upgrade_store_directory'].'./data/update/Discuz! X'.$version.' Release['.$release.']'));
+		showtablerow('', '', array($lang['founder_upgrade_store_directory'].'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']'));
 		showtablerow('', '', array('<input type="button" class="btn" onclick="window.location.href=\''.$linkurl.'\'" value="'.$lang['founder_upgrade_download'].'">'));
 		echo upgradeinformation(0);
 	} elseif($step == 2) {
@@ -121,8 +121,8 @@ if($operation == 'patch' || $operation == 'cross') {
 		$offset = 100 * 1024;
 		if($fileseq > count($updatefilelist)) {
 			if($upgradeinfo['isupdatedb']) {
-				$discuz_upgrade->download_file($upgradeinfo, 'install/data/install.sql');
-				$discuz_upgrade->download_file($upgradeinfo, 'install/data/install_data.sql');
+				$discuz_upgrade->download_file($upgradeinfo, 'install/data_'.PSVR_KTV_SUB.'/install.sql');
+				$discuz_upgrade->download_file($upgradeinfo, 'install/data_'.PSVR_KTV_SUB.'/install_data.sql');
 				$discuz_upgrade->download_file($upgradeinfo, 'update.php', 'utility');
 			}
 			$linkurl = 'action='.$theurl.'&step=3';
@@ -158,8 +158,8 @@ if($operation == 'patch' || $operation == 'cross') {
 		}
 
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4';
-		showtablerow('', 'colspan="2"', $lang['founder_upgrade_download_file'].' ./data/update/Discuz! X'.$version.' Release['.$release.']'.'');
-		showtablerow('', 'colspan="2"', $lang['founder_upgrade_backup_file'].' ./data/back/Discuz! '.DISCUZ_VERSION.' Release['.DISCUZ_RELEASE.']'.$lang['founder_upgrade_backup_file2']);
+		showtablerow('', 'colspan="2"', $lang['founder_upgrade_download_file'].' ./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']'.'');
+		showtablerow('', 'colspan="2"', $lang['founder_upgrade_backup_file'].' ./data_'.PSVR_KTV_SUB.'/back/Discuz! '.DISCUZ_VERSION.' Release['.DISCUZ_RELEASE.']'.$lang['founder_upgrade_backup_file2']);
 		showtablerow('', 'colspan="2"', '<input type="button" class="btn" onclick="window.location.href=\''.$linkurl.'\'" value="'.(!empty($modifylist) ? $lang['founder_upgrade_force'] : $lang['founder_upgrade_regular']).'" />');
 		echo upgradeinformation(0);
 	} elseif($step == 4) {
@@ -205,7 +205,7 @@ if($operation == 'patch' || $operation == 'cross') {
 			}
 			foreach($updatefilelist as $updatefile) {
 				$destfile = DISCUZ_ROOT.$updatefile;
-				$backfile = DISCUZ_ROOT.'./data/back/Discuz! X'.substr(DISCUZ_VERSION, 1).' Release['.DISCUZ_RELEASE.']/'.$updatefile;
+				$backfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/back/Discuz! X'.substr(DISCUZ_VERSION, 1).' Release['.DISCUZ_RELEASE.']/'.$updatefile;
 				if(is_file($destfile)) {
 					if(!$discuz_upgrade->copy_file($destfile, $backfile, 'file')) {
 						cpmsg('upgrade_backup_error', '', 'error', array('upgradeurl' => upgradeinformation(-5)));
@@ -218,7 +218,7 @@ if($operation == 'patch' || $operation == 'cross') {
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4&startupgrade=1&confirm='.$confirm.$paraftp;
 		$ftplinkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4&startupgrade=1&siteftpsetting=1';
 		foreach($updatefilelist as $updatefile) {
-			$srcfile = DISCUZ_ROOT.'./data/update/Discuz! X'.$version.' Release['.$release.']/'.$updatefile;
+			$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/'.$updatefile;
 			if($confirm == 'ftp') {
 				$destfile = $updatefile;
 			} else {
@@ -247,7 +247,7 @@ if($operation == 'patch' || $operation == 'cross') {
 		if($upgradeinfo['isupdatedb']) {
 			$dbupdatefilearr = array('update.php', 'install/data/install.sql','install/data/install_data.sql');
 			foreach($dbupdatefilearr as $dbupdatefile) {
-				$srcfile = DISCUZ_ROOT.'./data/update/Discuz! X'.$version.' Release['.$release.']/'.$dbupdatefile;
+				$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/'.$dbupdatefile;
 				$dbupdatefile = $dbupdatefile == 'update.php' ? 'install/update.php' : $dbupdatefile;
 				if($confirm == 'ftp') {
 					$destfile = $dbupdatefile;
@@ -286,17 +286,17 @@ if($operation == 'patch' || $operation == 'cross') {
 		dheader('Location: '.ADMINSCRIPT.'?action=upgrade&operation='.$operation.'&version='.$version.'&release='.$release.'&step=5');
 
 	} elseif($step == 5) {
-		$file = DISCUZ_ROOT.'./data/update/Discuz! X'.$version.' Release['.$release.']/updatelist.tmp';
+		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/updatelist.tmp';
 		@unlink($file);
 		@unlink(DISCUZ_ROOT.'./install/update.php');
 		C::t('common_cache')->delete('upgrade_step');
 		C::t('common_cache')->delete('upgrade_run');
 		C::t('common_setting')->update('upgrade', '');
 		updatecache('setting');
-		$old_update_dir = './data/update/';
-		$new_update_dir = './data/update'.md5('update'.$_G['config']['security']['authkey']).'/';
-		$old_back_dir = './data/back/';
-		$new_back_dir = './data/back'.md5('back'.$_G['config']['security']['authkey']).'/';
+		$old_update_dir = './data_'.PSVR_KTV_SUB.'/update/';
+		$new_update_dir = './data_'.PSVR_KTV_SUB.'/update'.md5('update'.$_G['config']['security']['authkey']).'/';
+		$old_back_dir = './data_'.PSVR_KTV_SUB.'/back/';
+		$new_back_dir = './data_'.PSVR_KTV_SUB.'/back'.md5('back'.$_G['config']['security']['authkey']).'/';
 		$discuz_upgrade->copy_dir(DISCUZ_ROOT.$old_update_dir, DISCUZ_ROOT.$new_update_dir);
 		$discuz_upgrade->copy_dir(DISCUZ_ROOT.$old_back_dir, DISCUZ_ROOT.$new_back_dir);
 		$discuz_upgrade->rmdirs(DISCUZ_ROOT.$old_update_dir);

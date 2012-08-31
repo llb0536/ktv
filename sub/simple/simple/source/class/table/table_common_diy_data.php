@@ -28,9 +28,9 @@ class table_common_diy_data extends discuz_table
 	public function delete($targettplname, $tpldirectory = null) {
 		foreach($this->fetch_all($targettplname, $tpldirectory) as $value) {
 			$file = ($value['tpldirectory'] ? $value['tpldirectory'].'/' : '').$value['targettplname'];
-			@unlink(DISCUZ_ROOT.'./data/diy/'.$file.'.htm');
-			@unlink(DISCUZ_ROOT.'./data/diy/'.$file.'.htm.bak');
-			@unlink(DISCUZ_ROOT.'./data/diy/'.$file.'_diy_preview.htm');
+			@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$file.'.htm');
+			@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$file.'.htm.bak');
+			@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$file.'_diy_preview.htm');
 		}
 		return DB::delete($this->_table, DB::field('targettplname', $targettplname).($tpldirectory !== null ? ' AND '.DB::field('tpldirectory', $tpldirectory) : ''));
 	}

@@ -136,7 +136,7 @@ SEARCH;
 			$diytitle = cplang($diyurl['flag'] ? 'diytemplate_share' : 'diytemplate_alone');
 			showtablerow('', array('class=""', 'class=""', 'class="td28"'), array(
 					"<a href=\"$diyurl[url]\" title=\"$diytitle\" target=\"_blank\">$value[name]</a>",
-					'<span title="'.cplang('diytemplate_path').'./data/diy/'.$value['targettplname'].'.htm">'.$value['targettplname'].'</span>',
+					'<span title="'.cplang('diytemplate_path').'./data_'.PSVR_KTV_SUB.'/diy/'.$value['targettplname'].'.htm">'.$value['targettplname'].'</span>',
 					'<span title="'.cplang('diytemplate_path').$_G['style']['tpldir'].'/'.$value['primaltplname'].'.htm">'.$value['primaltplname'].'</span>',
 					"<a href=\"home.php?mod=space&uid=$value[uid]&do=profile\" target=\"_blank\">$value[username]</a>",
 					$value[dateline],
@@ -169,7 +169,7 @@ SEARCH;
 		showtitle('edit');
 
 		showsetting('diytemplate_name', 'name', $diydata['name'],'text');
-		showsetting('diytemplate_targettplname', '', '',cplang('diytemplate_path').'./data/diy/'.$diydata['targettplname'].'.htm');
+		showsetting('diytemplate_targettplname', '', '',cplang('diytemplate_path').'./data_'.PSVR_KTV_SUB.'/diy/'.$diydata['targettplname'].'.htm');
 		showsetting('diytemplate_primaltplname', '', '',cplang('diytemplate_path').$_G['style']['tpldir'].'/'.$diydata['primaltplname'].'.htm');
 		showsetting('diytemplate_username', '', '',$diydata['username']);
 		showsetting('diytemplate_dateline', '', '',$diydata['dateline'] ? dgmdate($diydata['dateline']) : '');

@@ -44,7 +44,7 @@ function cloudaddons_check() {
 		cpmsg('cloudaddons_check_url_fopen_error', '', 'error');
 	}
 	foreach(array('download', 'addonmd5') as $path) {
-		$tmpdir = DISCUZ_ROOT.'./data/'.$path.'/'.random(5);
+		$tmpdir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/'.$path.'/'.random(5);
 		$tmpfile = $tmpdir.'/index.html';
 		dmkdir($tmpdir, 0777);
 		if(!is_dir($tmpdir) || !file_exists($tmpfile)) {
@@ -111,9 +111,9 @@ function cloudaddons_upgradecheck($addonids) {
 
 function cloudaddons_getmd5($md5file) {
 	$array = array();
-	if(preg_match('/^[a-z0-9_\.]+$/i', $md5file) && file_exists(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml')) {
+	if(preg_match('/^[a-z0-9_\.]+$/i', $md5file) && file_exists(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml')) {
 		require_once libfile('class/xml');
-		$xml = implode('', @file(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml'));
+		$xml = implode('', @file(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml'));
 		$array = xml2array($xml);
 	} else {
 		return false;
@@ -129,7 +129,7 @@ function cloudaddons_uninstall($md5file, $dir) {
 	if(!empty($array['RevisionID'])) {
 		cloudaddons_removelog($array['RevisionID']);
 	}
-	@unlink(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml');
+	@unlink(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml');
 	cloudaddons_cleardir($dir);
 }
 
@@ -146,26 +146,26 @@ function cloudaddons_savemd5($md5file, $end, $md5) {
 	);
 	require_once libfile('class/xml');
 	if(!isset($_G['siteftp'])) {
-		dmkdir(DISCUZ_ROOT.'./data/addonmd5/', 0777, false);
-		$fp = fopen(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml', 'w');
+		dmkdir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/', 0777, false);
+		$fp = fopen(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml', 'w');
 		fwrite($fp, array2xml($array));
 		fclose($fp);
 	} else {
-		$localfile = DISCUZ_ROOT.'./data/'.random(5);
+		$localfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/'.random(5);
 		$fp = fopen($localfile, 'w');
 		fwrite($fp, array2xml($array));
 		fclose($fp);
-		dmkdir(DISCUZ_ROOT.'./data/addonmd5/', 0777, false);
-		siteftp_upload($localfile, 'data/addonmd5/'.$md5file.'.xml');
+		dmkdir(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/', 0777, false);
+		siteftp_upload($localfile, 'data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml');
 		@unlink($localfile);
 	}
 }
 
 function cloudaddons_comparetree($new, $old, $basedir, $md5file, $first = 0) {
 	global $_G;
-	if($first && file_exists(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml')) {
+	if($first && file_exists(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml')) {
 		require_once libfile('class/xml');
-		$xml = implode('', @file(DISCUZ_ROOT.'./data/addonmd5/'.$md5file.'.xml'));
+		$xml = implode('', @file(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/addonmd5/'.$md5file.'.xml'));
 		$array = xml2array($xml);
 		$_G['treeop']['md5old'] = $array['Data'];
 	}

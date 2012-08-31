@@ -200,7 +200,7 @@ if($readmod == 4 && !empty($_SERVER['HTTP_RANGE'])) {
 
 if(!$requestmode && !$range && empty($_GET['noupdate'])) {
 	if($_G['setting']['delayviewcount']) {
-		$_G['forum_logfile'] = './data/cache/forum_attachviews_'.intval(getglobal('config/server/id')).'.log';
+		$_G['forum_logfile'] = './data_'.PSVR_KTV_SUB.'/cache/forum_attachviews_'.intval(getglobal('config/server/id')).'.log';
 		if(substr(TIMESTAMP, -1) == '0') {
 			attachment_updateviews($_G['forum_logfile']);
 		}

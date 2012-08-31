@@ -28,7 +28,7 @@ if(!empty($_GET['preview'])) {
 <head>
 <script type="text/javascript">var IMGDIR = '<?php echo $_G['style']['imgdir']; ?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>';</script>
 <script type="text/javascript" src="static/js/common.js"></script>
-<link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo $_G['setting']['styleid'];?>_common.css" />
+<link rel="stylesheet" type="text/css" href="data_<?php echo PSVR_KTV_SUB; ?>/cache/style_<?php echo $_G['setting']['styleid'];?>_common.css" />
 </head>
 <body>
 <div id="append_parent"></div><div id="ajaxwaitid"></div>

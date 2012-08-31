@@ -11,7 +11,7 @@ class Teaching
       item.teachings.find_or_create_by(teacher:tea)
     end
     admin = Ktv::DiscuzAdmin.new
-    admin.start_mode :cnu
+    admin.start_mode Setting.ktv_sub.to_sym
     admin.orthodoxize_course item
   end
 end

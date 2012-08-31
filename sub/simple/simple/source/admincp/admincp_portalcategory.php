@@ -399,7 +399,7 @@ SCRIPT;
 		$cate['displayorder'] = 0;
 		$cate['closed'] = 1;
 	}
-	@include_once DISCUZ_ROOT.'./data/cache/cache_domain.php';
+	@include_once DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_domain.php';
 	$channeldomain = isset($rootdomain['channel']) && $rootdomain['channel'] ? $rootdomain['channel'] : array();
 
 	if(!submitcheck('detailsubmit')) {
@@ -1043,7 +1043,7 @@ function remakediytemplate($primaltplname, $targettplname, $diytplname, $olddire
 		$content = @file_get_contents(DISCUZ_ROOT.$file);
 		if(!$content) $content = '';
 		$content = preg_replace("/\<\!\-\-\[name\](.+?)\[\/name\]\-\-\>/i", '', $content);
-		file_put_contents(DISCUZ_ROOT.'./data/diy/'.$tpldirectory.'/'.$targettplname.'.htm', $content);
+		file_put_contents(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'.htm', $content);
 	} else {
 		updatediytemplate($targettplname, $tpldirectory);
 	}

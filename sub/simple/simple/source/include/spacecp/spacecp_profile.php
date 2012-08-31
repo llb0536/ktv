@@ -26,7 +26,7 @@ space_merge($space, 'profile');
 $seccodecheck = $_G['setting']['seccodestatus'] & 8;
 $secqaacheck = $_G['setting']['secqaa']['status'] & 4;
 $_G['group']['seccode'] = 1;
-@include_once DISCUZ_ROOT.'./data/cache/cache_domain.php';
+@include_once DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_domain.php';
 $spacedomain = isset($rootdomain['home']) && $rootdomain['home'] ? $rootdomain['home'] : array();
 if($operation != 'password') {
 

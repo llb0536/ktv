@@ -114,7 +114,7 @@ $lang = array (
   'members_verify_update_succeed' => '认证设置更新成功 ',
   'action_noaccess' => '抱歉，您无权使用此功能',
   'members_delete_confirm' => '本操作不可恢复，您确定要删除符合条件的 {membernum} 个用户吗？',
-  'cloudaddons_check_write_error' => '"data/download/" 或 "data/addonmd5/" 目录无法创建或写入，这将会导致应用无法安装，请检查服务器环境',
+  'cloudaddons_check_write_error' => '"data_'.PSVR_KTV_SUB.'/download/" 或 "data_'.PSVR_KTV_SUB.'/addonmd5/" 目录无法创建或写入，这将会导致应用无法安装，请检查服务器环境',
   'cloudaddons_file_read_error' => '文件读取错误，请重试',
   'cloudaddons_file_write_error' => '文件写入错误，请重试',
 
@@ -181,7 +181,7 @@ $lang = array (
   'robots_output' => '请下载此文件，并上传至您站点的根目录下 <a href="{siteurl}robots.txt" target="_blank">{siteurl}robots.txt</a> 位置处',
 
   'cloudaddons_validator_error' => '校验失败，您无法下载此应用',
-  'cloudaddons_download_write_error' => '文件无法下载，请确认 "data/download/" 目录是否可写',
+  'cloudaddons_download_write_error' => '文件无法下载，请确认 "data_'.PSVR_KTV_SUB.'/download/" 目录是否可写',
   'cloudaddons_install_error' => '您不能安装此应用({ErrorCode})',
   'cloudaddons_installing' => '应用 {addonid} 安装中，请稍候......',
   'cloudaddons_install_files_changed' => '以下文件丢失或者被修改过，是否继续覆盖？<br /><br />{files}',
@@ -209,7 +209,7 @@ $lang = array (
   'database_export_multivol_redirect' => '分卷备份：数据文件 #{volume} 创建成功，程序将自动继续',
   'database_export_succeed' => '数据成功备份至服务器 <a href="{filename}">{filename}</a> 中',
   'database_shell_fail' => 'Shell 权限被禁止或服务器不支持，无法使用 MySQL Dump 方式备份或恢复数据',
-  'database_export_dest_invalid' => '目录不存在或无法访问，请检查 ./data/ 目录',
+  'database_export_dest_invalid' => '目录不存在或无法访问，请检查 ./data_'.PSVR_KTV_SUB.'/ 目录',
   'database_file_delete_succeed' => '指定备份文件删除成功 ',
   'database_file_delete_invalid' => '您没有选择要删除的备份文件',
   'database_run_query_invalid' => '升级错误，MySQL 提示: {sqlerror} ',

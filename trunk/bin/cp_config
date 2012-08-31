@@ -12,9 +12,11 @@
 
 cp /usr/local/nginx/conf/nginx.conf config/nginx.conf
 cp /etc/httpd/conf/httpd.conf config/httpd.conf
-cp /etc/php.ini config/php.ini
+cp /usr/local/php/lib/php.ini config/php.ini
+cp /usr/local/php/etc/php-fpm.conf config/php-fpm.conf
 cp -R ~/.vim config/vim
 cp ~/.gitconfig config/gitconfig
 crontab -l > config/crontab
 cp /usr/local/nginx/conf/ssl-bundle.crt config/ssl
 cp /usr/local/nginx/conf/myserver.key config/ssl
+cp /root/.zshrc config/zshrc

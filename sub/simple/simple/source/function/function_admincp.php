@@ -80,9 +80,9 @@ function siteinformation() {
 				'my_sitekey' => $_G['setting']['my_sitekey'],
 			);
 
-	$updatetime = @filemtime(DISCUZ_ROOT.'./data/updatetime.lock');
+	$updatetime = @filemtime(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/updatetime.lock');
 	if(empty($updatetime) || (TIMESTAMP - $updatetime > 3600 * 4)) {
-		@touch(DISCUZ_ROOT.'./data/updatetime.lock');
+		@touch(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/updatetime.lock');
 		$tableprelen = strlen($db->tablepre);
 		$table = array(
 			'forum_thread' => 'threads',
@@ -1259,7 +1259,7 @@ function get_custommenu() {
 
 function get_pluginsetting($type) {
 	$pluginsetting = $pluginvalue = array();
-	@include_once DISCUZ_ROOT.'./data/sysdata/cache_pluginsetting.php';
+	@include_once DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sysdata/cache_pluginsetting.php';
 	$pluginsetting = isset($pluginsetting[$type]) ? $pluginsetting[$type] : array();
 
 	$varids = array();

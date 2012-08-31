@@ -16,7 +16,7 @@ header('Content-Type: text/javascript');
 $pernum = 1;
 
 dsetcookie('sendmail', '1', 300);
-$lockfile = DISCUZ_ROOT.'./data/sendmail.lock';
+$lockfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/sendmail.lock';
 @$filemtime = filemtime($lockfile);
 
 if($_G['timestamp'] - $filemtime < 5) exit();

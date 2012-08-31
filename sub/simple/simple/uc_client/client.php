@@ -17,7 +17,7 @@ define('IN_UC', TRUE);
 define('UC_CLIENT_VERSION', '1.6.0');
 define('UC_CLIENT_RELEASE', '20110501');
 define('UC_ROOT', substr(__FILE__, 0, -10));
-define('UC_DATADIR', UC_ROOT.'./data/');
+define('UC_DATADIR', UC_ROOT.'./data_'.PSVR_KTV_SUB.'/');
 define('UC_DATAURL', UC_API.'/data');
 define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
 $GLOBALS['uc_controls'] = array();
@@ -311,7 +311,7 @@ function uc_user_login($username, $password, $isuid = 0, $checkques = 0, $questi
 
 function uc_user_synlogin($uid) {
 	$uid = intval($uid);
-	if(@include UC_ROOT.'./data/cache/apps.php') {
+	if(@include UC_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/apps.php') {
 		if(count($_CACHE['apps']) > 1) {
 			$return = uc_api_post('user', 'synlogin', array('uid'=>$uid));
 		} else {
@@ -322,7 +322,7 @@ function uc_user_synlogin($uid) {
 }
 
 function uc_user_synlogout() {
-	if(@include UC_ROOT.'./data/cache/apps.php') {
+	if(@include UC_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/apps.php') {
 		if(count($_CACHE['apps']) > 1) {
 			$return = uc_api_post('user', 'synlogout', array());
 		} else {

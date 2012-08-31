@@ -171,7 +171,7 @@ class base_plugin_mobile_misc extends base_plugin_mobile {
 		global $_G;
 		if(empty($_GET['view']) && !defined('MOBILE_API_OUTPUT')) {
 			$_G['setting']['pluginhooks'] = array();
-			$qrfile = DISCUZ_ROOT.'./data/cache/mobile_siteqrcode.png';
+			$qrfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/mobile_siteqrcode.png';
 			if(!file_exists($qrfile) || $_G['adminid'] == 1) {
 				require_once DISCUZ_ROOT.'source/plugin/mobile/qrcode.class.php';
 				QRcode::png($_G['siteurl'], $qrfile);
