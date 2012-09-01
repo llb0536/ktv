@@ -163,11 +163,8 @@ GEM
     journey (1.0.4)
     jquery-atwho-rails (0.1.6)
     jquery-rails (2.1.1)
-<<<<<<< HEAD
       railties (< 5.0, >= 3.1.0)
-=======
       railties (>= 3.1.0, < 5.0)
->>>>>>> upstream/master
       thor (~> 0.14)
     json (1.7.5)
     jwt (0.1.5)
@@ -447,7 +444,7 @@ DEPENDENCIES
   mongo-rails-instrumentation
   mongoid (< 3.0.0)
   mongoid_rails_migrations
-  mysql2 (~> 0.3.1)
+  mysql2
   nokogiri
   oauth-plugin (>= 0.4.0.pre1)
   omniauth-douban!

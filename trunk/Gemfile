@@ -9,13 +9,10 @@ gem 'rails', '3.2.8'
 # MongoDB
 gem "mongoid", "< 3.0.0"
 gem "bson_ext"
-<<<<<<< HEAD
-gem 'mysql2','~> 0.3.1'
-=======
+
 gem 'mysql2'
 #gem 'pry-rails'
 gem 'pry'
->>>>>>> upstream/master
 
 
 

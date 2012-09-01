@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   before_filter :unknown_user_check
 
   def set_vars
-    @subsite = Ktv::Subdomain.match(request)
+    @subsite = ''
     @seo = Hash.new('')
     agent = request.env['HTTP_USER_AGENT'].downcase
     @is_bot = (agent.match(/\(.*https?:\/\/.*\)/)!=nil)
