@@ -114,6 +114,7 @@ class Courseware
   field :thanked_user_ids,:type=>Array,:default => []
   has_many :comments, as: :commentable
   #-=xunlei=-
+  embeds_many :notes
   field :xunlei_url
   belongs_to :user
   index :user_id

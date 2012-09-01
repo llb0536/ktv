@@ -1,5 +1,6 @@
 # -*- coding: utf-8-*-
 Quora::Application.routes.draw do
+
   root :to => 'welcome#index'
   get '/api/uc' => 'ucenter#ktv_uc_client'
   post '/api/uc' => 'ucenter#ktv_uc_client'
@@ -53,7 +54,10 @@ Quora::Application.routes.draw do
   get '/coursewares_with_page/:page' => 'coursewares#index'
   get '/coursewares_mine' => 'coursewares#mine'
   get '/coursewares_mine/:page' => 'coursewares#mine'
+  
+  # resources :notes, :path_prefix => "/coursewares/:id/",
   resources :coursewares do
+    resources :notes
     collection do
       get 'mine'
       get 'latest'

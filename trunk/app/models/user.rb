@@ -539,7 +539,7 @@ class User
   
   embeds_many :authorizations
   has_many :logs, :class_name => "Log", :foreign_key => "target_id",dependent: :destroy
-
+  
   attr_accessor  :password_confirmation
   # attr_accessor :tags_array
   def tags_array=(str)
