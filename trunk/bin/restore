@@ -19,21 +19,21 @@ case $response in
         mysql -u root -pjknlff8-pro-17m7755 ucenter < home/data/ucenter.backup.sql
         rm -rf ~/ktv/simple/simple/data
         rm -rf ~/ktv/simple/simple/uc_client/data
-        rm -rf ~/ktv/sub/simple/simple/data
-        rm -rf ~/ktv/sub/simple/simple/uc_client/data
+        rm -rf ~/ktv/sub/simple/simple/data_cnu
+        rm -rf ~/ktv/sub/simple/simple/uc_client/data_cnu
         rm -rf ~/ktv/uc/data
         mv simple/simple/data ~/ktv/simple/simple/data
         mv simple/simple/uc_client/data ~/ktv/simple/simple/uc_client/data
-        mv sub/simple/simple/data ~/ktv/sub/simple/simple/data
-        mv sub/simple/simple/uc_client/data ~/ktv/sub/simple/simple/uc_client/data
+        mv sub/simple/simple/data_cnu ~/ktv/sub/simple/simple/data_cnu
+        mv sub/simple/simple/uc_client/data_cnu ~/ktv/sub/simple/simple/uc_client/data_cnu
         mv uc/data ~/ktv/uc/data
 	chmod -R 777  ~/ktv/simple/simple/data
 	chmod -R 777  ~/ktv/simple/simple/uc_client/data
 	chmod -R 777 ~/ktv/uc/data 
         chmod -R 777 ~/ktv/simple/simple/data
         chmod -R 777 ~/ktv/simple/simple/uc_client/data
-        chmod -R 777 ~/ktv/sub/simple/simple/data
-        chmod -R 777 ~/ktv/sub/simple/simple/uc_client/data
+        chmod -R 777 ~/ktv/sub/simple/simple/data_cnu
+        chmod -R 777 ~/ktv/sub/simple/simple/uc_client/data_cnu
         chmod -R 777 ~/ktv/uc/data
         echo bundle exec rake consultant:index  
         echo bundle exec rake redis_search:index
