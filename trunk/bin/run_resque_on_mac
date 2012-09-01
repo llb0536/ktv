@@ -1,0 +1,3 @@
+#!/bin/bash -x
+
+RAILS_ENV=development QUEUE=hooker,redundancy,transcoding COUNT=3 bundle exec rake resque:workers --trace
