@@ -94,6 +94,9 @@ class CoursewaresController < ApplicationController
   def show
     @seo[:title] = @courseware.title
     @comment = @courseware.comments.build
+    @note = Note.new
+    @note.courseware_id = @courseware.id
+    @note.page = 0
     render "show"
   end
   def edit
