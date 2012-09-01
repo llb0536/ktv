@@ -12,7 +12,7 @@ sudo /usr/local/bin/redis-server config/redis_test.conf
 
 # ================MONGO==========================
 sudo /usr/local/bin/mongod --dbpath /mongodata --logpath /var/log/mongod.log --logappend --vv --fork
-
+sudo nginx
 
 # =======================Postgresql DB==================
 # sudo -u pg echo I\'m user pg

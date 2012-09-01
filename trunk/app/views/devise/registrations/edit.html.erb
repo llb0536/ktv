@@ -50,14 +50,21 @@ $('#change_password_link').click(function(){
 
     
     <div class="form_sections" style="margin-bottom:18px">
-      <p><label for="user_email">头像</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:avatar) %></div><br class="clear">
-      <%= avatar_tag(resource,:normal,'padding:1px;border:1px solid #999999') %><br />
-        <input id="file_uploader" name="user[avatar]" type="file" style="height:33px;padding-left:0;text-indent:0" size="30" /><br>
-              支持 jpg, gif, png 格式的图片，不要超过 2MB。建议图片尺寸为大于等于 300×300 的正方形。
+      <p>
+        <label for="user_email">头像</label><div class="field_error" id="regerror_name">
+        <%= resource.errors_for_field(:avatar) %></div><br class="clear">
+        <%= avatar_tag(resource,:normal,'padding:1px;border:1px solid #999999') %>
+        <div class="upload">
+            上 传
+               <input  id="file_uploader" class="file_uploader" name="user[avatar]" type="file">
+        </div>
       </p>
+        <div class="tip">支持 jpg, gif, png 格式的图片，不要超过 2MB。建议图片尺寸为大于等于 300×300 的正方形。</div>
     </div>  
+   
     <div class="form_sections" style="margin-bottom:18px">
-      <p><label for="user_slug">用户名</label><div class="field_error" id="regerror_name"><%= resource.errors_for_field(:slug) %></div><br class="clear">
+      <p><label for="user_slug">用户名</label><div class="field_error" id="regerror_name">
+      <%= resource.errors_for_field(:slug) %></div><br class="clear">
         http://kejian.tv/users/<input class="text" name="user[slug]" id="user_slug" type="text" style="height:33px;padding-left:0;width:268px" size="10" value="<%= resource.slug %>"/></p>
     </div>
 

@@ -1,5 +1,10 @@
 #!/bin/bash -x
 
+<<<<<<< HEAD
+ps -ef  |grep '[r]ails'
+ps -ef  | grep '[r]esque'
+=======
 ps -ef f |grep '[r]ails'
 ps -ef f | grep '[r]esque'
 ps -ef f | grep '[p]hp'
+>>>>>>> upstream/master

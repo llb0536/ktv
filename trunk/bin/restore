@@ -3,7 +3,6 @@
 read -r -p "Are you sure? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
-        rm -rf ~/psvr_restore_working_dir
         mkdir -p ~/psvr_restore_working_dir
         cd ~/psvr_restore_working_dir
         scp data@kejian.tv:/home/data/ktvmongodump.tar.gz .
@@ -28,6 +27,9 @@ case $response in
         mv sub/simple/simple/data ~/ktv/sub/simple/simple/data
         mv sub/simple/simple/uc_client/data ~/ktv/sub/simple/simple/uc_client/data
         mv uc/data ~/ktv/uc/data
+	chmod -R 777  ~/ktv/simple/simple/data
+	chmod -R 777  ~/ktv/simple/simple/uc_client/data
+	chmod -R 777 ~/ktv/uc/data 
         chmod -R 777 ~/ktv/simple/simple/data
         chmod -R 777 ~/ktv/simple/simple/uc_client/data
         chmod -R 777 ~/ktv/sub/simple/simple/data
