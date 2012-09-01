@@ -6,8 +6,45 @@ KTV.data = {
   courseware_id: '<%=@courseware.id%>'
 }
 <% end %>
+<style type="text/css" media="screen">
+  #stickies{
+    position:absolute;
+    top:0;    
+  }
+  .sticky{
+    padding:18px 8px 0;
+    border-left: 1px solid #BCA902;
+    border-right: 1px solid #BCA902;
+    border-bottom: 1px solid #BCA902;
+    background: #FEF49C url(<%= asset_path 'stickies_top.png' %>) repeat-x;
+    min-width:206px;
+    min-height:208px;
+    line-height:20px;
+    margin-left:960px;
+    -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
+    border-top:none;
+  }
+  .new_sticky{
+    padding-bottom:12px;
+  }
+</style>
+<div class="wrapper">
+  <div id="stickies">
+    <%# form_for @note,:remote => true do %>
+    <textarea class="sticky new_sticky" name="sticky_body">
+    </textarea>
+    <div class="__sdk"><div class="wrapper222" style="position:relative">
+    <a class="button reupload" id="reupload" href="javascript:void(0)">提交</a>
+    </div></div>
+    <%# end %>
+  </div>
+</div>
 <div class="__sdk"><%# todo: 710px ..ratio %>
 <section id="presentation" class="feature">
+
+  
   <div class="wrapper">
 
     <% if @courseware.thin? %>
