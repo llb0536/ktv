@@ -98,7 +98,7 @@ class logging_ctl {
 			if($result['status'] == -1) {
 				if(!$this->setting['fastactivation']) {
 					$auth = authcode($result['ucresult']['username']."\t".FORMHASH, 'ENCODE');
-					showmessage('location_activation', 'member.php?mod='.$this->setting['regname'].'&action=activation&auth='.rawurlencode($auth).'&referer='.rawurlencode(dreferer()), array(), array('location' => true));
+					showmessage('location_activation', '/simple/member.php?mod='.$this->setting['regname'].'&action=activation&auth='.rawurlencode($auth).'&referer='.rawurlencode(dreferer()), array(), array('location' => true));
 				} else {
 					$init_arr = explode(',', $this->setting['initcredits']);
 					$groupid = $this->setting['regverify'] ? 8 : $this->setting['newusergroupid'];

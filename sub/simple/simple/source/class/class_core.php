@@ -11,7 +11,8 @@
 function psvr_in_dev(){
   $server_name = @$_SERVER['SERVER_NAME'];
   if($server_name){
-    define('PSVR_KTV_SUB',explode('.',$server_name)[0]);
+    $tmparr=(explode('.',$server_name));
+    define('PSVR_KTV_SUB',$tmparr[0]);
     return substr($server_name,-6) === 'lvh.me';
   }else{
     return false;

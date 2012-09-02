@@ -93,7 +93,7 @@ test:
 production: &production
   <<: *defaults
 
-sub_cnu:
+sub_cnu: &sub_cnu
   <<: *production
   official_website: 'http://www.cnu.edu.cn/'
   uc_key: 'af64HZPlY/1RdaOe4UftTp3XO+kQwB9f5SBojhc='
@@ -130,8 +130,11 @@ sub_cnu:
     - 2013
     - 1
     - 19
+sub_cnu_dev:
+  <<: *sub_cnu
+  ktv_subdomain: 'cnu.kejian.lvh.me'
     
-sub_ibeike:
+sub_ibeike: &sub_ibeike
   <<: *production
   official_website: 'http://www.ustb.edu.cn/'
   ktv_sub: 'ibeike'
@@ -161,3 +164,7 @@ sub_ibeike:
     - 1
     - 21
     
+sub_ibeike_dev:
+  <<: *sub_ibeike
+  ktv_subdomain: 'ibeike.kejian.lvh.me'
+  

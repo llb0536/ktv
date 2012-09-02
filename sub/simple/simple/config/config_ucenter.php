@@ -12,7 +12,13 @@ switch(PSVR_KTV_SUB){
   case 'ibeike':define('UC_KEY', 'cfc0iLO/l4lZbfTRVyij4LbiOi/Pl55xoYUQBmw=');break;
   case 'cas':define('UC_KEY', '4a4dXGotWK6W+2LzudsrmPuvKEDzk7cU7iGu9Xg=');break;
 }
-define('UC_API', 'http://uc.kejian.tv');
+
+if(!PSVR_IN_DEV){
+	define('UC_API', 'http://uc.kejian.tv');
+}else{
+	define('UC_API', 'http://uc.kejian.lvh.me');
+}
+
 define('UC_CHARSET', 'utf-8');
 define('UC_IP', '');
 define('UC_APPID', '4');

@@ -2,6 +2,8 @@
 
 # ========================Redis===========================
 sudo /usr/local/bin/redis-server config/redis1.conf
+sudo /usr/local/bin/redis-server config/redis2.conf
+sudo /usr/local/bin/redis-server config/redis3.conf
 sudo /usr/local/bin/redis-server config/redis_test.conf
 
 # =======================Memcached==================

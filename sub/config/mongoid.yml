@@ -22,11 +22,15 @@ production: &production
   host: '0.0.0.0'
   database: ktv_sub
 
-sub_cnu:
+sub_cnu: &sub_cnu
   <<: *production
   database: ktv_sub_cnu
+sub_cnu_dev:
+  <<: *sub_cnu
   
-sub_ibeike:
+sub_ibeike: &sub_ibeike
   <<: *production
   database: ktv_sub_ibeike
+sub_ibeike_dev:
+  <<: *sub_ibeike
   

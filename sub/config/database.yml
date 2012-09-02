@@ -51,11 +51,14 @@ psvr_ucenter:
   password: "jknlff8-pro-17m7755"
   socket: /tmp/mysql.sock
 
-sub_cnu:
+sub_cnu: &sub_cnu
   <<: *production
   database: ktv_sub_cnu
-  
-sub_ibeike:
+sub_cnu_dev:
+  <<: *sub_cnu
+
+sub_ibeike: &sub_ibeike
   <<: *production
   database: ktv_sub_ibeike
-  
+sub_ibeike_dev:
+  <<: *sub_ibeike

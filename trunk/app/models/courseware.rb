@@ -118,6 +118,7 @@ class Courseware
   field :xunlei_url
   belongs_to :user
   index :user_id
+  index :tid
   before_validation :titleize
   def analyse2(two)
     if two

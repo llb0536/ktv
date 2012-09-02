@@ -53,6 +53,7 @@ module BaseModel
     def cache_consultant(child,opts={})
       selfname=self.name.to_s.downcase.pluralize
       opts[:redis_varname] ||= "$redis_#{selfname}"
+      opts[:from_what] ||= :id
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         def self.set_#{child}(id,val)
           #{opts[:redis_varname]}.hset(id,:#{child},val)
@@ -60,7 +61,7 @@ module BaseModel
         def self.get_#{child}(id)
           ret = #{opts[:redis_varname]}.hget(id,:#{child})
           if ret.nil?
-            item = #{self.name.to_s}.where(:_id=>id).first
+            item = #{self.name.to_s}.where(:#{(opts[:from_what] == :id) ? '_id' : opts[:from_what]}=>id).first
             return nil if item.nil? or 1==item.deleted
             ret = item.#{child}
             self.set_#{child}(id,ret)

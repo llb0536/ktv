@@ -9,7 +9,13 @@ class Course
   field :fid
   field :coursewares_count,:type=>Integer,:default=>0
   field :years,:type=>Array,:default=>[]
+  index :fid
+  
+  cache_consultant :name,:from_what => :fid,:no_callbacks=>true
+  cache_consultant :department,:from_what => :fid,:no_callbacks=>true
+  
   embeds_many :teachings
+  
   def self.reflect_onto_discuz!
     self.asc('number').each_with_index do |item,index|
       PreForumForum.insert2(1,"[#{item.number}] #{item.name}",index+1)

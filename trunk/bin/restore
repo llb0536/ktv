@@ -35,8 +35,11 @@ case $response in
         chmod -R 777 ~/ktv/sub/simple/simple/data_cnu
         chmod -R 777 ~/ktv/sub/simple/simple/uc_client/data_cnu
         chmod -R 777 ~/ktv/uc/data
+	      echo 完成之后请执行：
         echo bundle exec rake consultant:index  
         echo bundle exec rake redis_search:index
+        echo UcApplications.all.each{|x| x.update_attribute(:url,x.url.gsub('.tv','.lvh.me'))}
+        echo 更新缓存 http://uc.kejian.lvh.me/admin.php?m=cache&a=update
         ;;
     *)
         ;;
