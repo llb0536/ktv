@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: cache_file.php 6757 2010-03-25 09:01:29Z cnteacher $
@@ -33,7 +33,7 @@ class ultrax_cache {
 		dmkdir(dirname($cache_file));
 		$cachedata = "\$data = ".arrayeval($data).";\n";
 		if($fp = @fopen($cache_file, 'wb')) {
-			fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!".
+			fwrite($fp, "<?php\n//Kejian.TV cache file, DO NOT modify me!".
 				"\n//Created: ".date("M j, Y, G:i").
 				"\n//Identify: ".md5($cache_file.$cachedata.$_G['config']['security']['authkey'])."\n\nif(!defined('IN_DISCUZ')) {\n\texit('Access Denied');\n}\n\n$cachedata?>");
 			fclose($fp);

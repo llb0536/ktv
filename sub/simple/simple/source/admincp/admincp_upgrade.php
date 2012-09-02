@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_upgrade.php 30700 2012-06-12 10:39:22Z svn_project_zhangjie $
@@ -110,7 +110,7 @@ if($operation == 'patch' || $operation == 'cross') {
 			showtablerow('', '', array($file));
 		}
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=2';
-		showtablerow('', '', array($lang['founder_upgrade_store_directory'].'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']'));
+		showtablerow('', '', array($lang['founder_upgrade_store_directory'].'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$version.' Release['.$release.']'));
 		showtablerow('', '', array('<input type="button" class="btn" onclick="window.location.href=\''.$linkurl.'\'" value="'.$lang['founder_upgrade_download'].'">'));
 		echo upgradeinformation(0);
 	} elseif($step == 2) {
@@ -158,8 +158,8 @@ if($operation == 'patch' || $operation == 'cross') {
 		}
 
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4';
-		showtablerow('', 'colspan="2"', $lang['founder_upgrade_download_file'].' ./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']'.'');
-		showtablerow('', 'colspan="2"', $lang['founder_upgrade_backup_file'].' ./data_'.PSVR_KTV_SUB.'/back/Discuz! '.DISCUZ_VERSION.' Release['.DISCUZ_RELEASE.']'.$lang['founder_upgrade_backup_file2']);
+		showtablerow('', 'colspan="2"', $lang['founder_upgrade_download_file'].' ./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$version.' Release['.$release.']'.'');
+		showtablerow('', 'colspan="2"', $lang['founder_upgrade_backup_file'].' ./data_'.PSVR_KTV_SUB.'/back/Kejian.TV '.DISCUZ_VERSION.' Release['.DISCUZ_RELEASE.']'.$lang['founder_upgrade_backup_file2']);
 		showtablerow('', 'colspan="2"', '<input type="button" class="btn" onclick="window.location.href=\''.$linkurl.'\'" value="'.(!empty($modifylist) ? $lang['founder_upgrade_force'] : $lang['founder_upgrade_regular']).'" />');
 		echo upgradeinformation(0);
 	} elseif($step == 4) {
@@ -205,7 +205,7 @@ if($operation == 'patch' || $operation == 'cross') {
 			}
 			foreach($updatefilelist as $updatefile) {
 				$destfile = DISCUZ_ROOT.$updatefile;
-				$backfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/back/Discuz! X'.substr(DISCUZ_VERSION, 1).' Release['.DISCUZ_RELEASE.']/'.$updatefile;
+				$backfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/back/Kejian.TV'.substr(DISCUZ_VERSION, 1).' Release['.DISCUZ_RELEASE.']/'.$updatefile;
 				if(is_file($destfile)) {
 					if(!$discuz_upgrade->copy_file($destfile, $backfile, 'file')) {
 						cpmsg('upgrade_backup_error', '', 'error', array('upgradeurl' => upgradeinformation(-5)));
@@ -218,7 +218,7 @@ if($operation == 'patch' || $operation == 'cross') {
 		$linkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4&startupgrade=1&confirm='.$confirm.$paraftp;
 		$ftplinkurl = ADMINSCRIPT.'?action='.$theurl.'&step=4&startupgrade=1&siteftpsetting=1';
 		foreach($updatefilelist as $updatefile) {
-			$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/'.$updatefile;
+			$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$version.' Release['.$release.']/'.$updatefile;
 			if($confirm == 'ftp') {
 				$destfile = $updatefile;
 			} else {
@@ -247,7 +247,7 @@ if($operation == 'patch' || $operation == 'cross') {
 		if($upgradeinfo['isupdatedb']) {
 			$dbupdatefilearr = array('update.php', 'install/data/install.sql','install/data/install_data.sql');
 			foreach($dbupdatefilearr as $dbupdatefile) {
-				$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/'.$dbupdatefile;
+				$srcfile = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$version.' Release['.$release.']/'.$dbupdatefile;
 				$dbupdatefile = $dbupdatefile == 'update.php' ? 'install/update.php' : $dbupdatefile;
 				if($confirm == 'ftp') {
 					$destfile = $dbupdatefile;
@@ -286,7 +286,7 @@ if($operation == 'patch' || $operation == 'cross') {
 		dheader('Location: '.ADMINSCRIPT.'?action=upgrade&operation='.$operation.'&version='.$version.'&release='.$release.'&step=5');
 
 	} elseif($step == 5) {
-		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$version.' Release['.$release.']/updatelist.tmp';
+		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$version.' Release['.$release.']/updatelist.tmp';
 		@unlink($file);
 		@unlink(DISCUZ_ROOT.'./install/update.php');
 		C::t('common_cache')->delete('upgrade_step');
@@ -379,9 +379,9 @@ if($operation == 'patch' || $operation == 'cross') {
 
 			$linkurl = ADMINSCRIPT.'?action=upgrade&operation='.$type.'&version='.$upgrade['latestversion'].'&locale='.$locale.'&charset='.$charset.'&release='.$upgrade['latestrelease'];
 			if($unupgrade) {
-				$upgraderow[] = showtablerow('', '', array('Discuz! X'.$upgrade['latestversion'].'_'.$locale.'_'.$charset.$lang['version'].' [Release '.$upgrade['latestrelease'].']'.($type == 'patch' ? '('.$lang['founder_upgrade_newword'].'release)' : '').'', $lang['founder_upgrade_require_config'].' php v'.PHP_VERSION.'MYSQL v'.$dbversion, ''), TRUE);
+				$upgraderow[] = showtablerow('', '', array('Kejian.TV'.$upgrade['latestversion'].'_'.$locale.'_'.$charset.$lang['version'].' [Release '.$upgrade['latestrelease'].']'.($type == 'patch' ? '('.$lang['founder_upgrade_newword'].'release)' : '').'', $lang['founder_upgrade_require_config'].' php v'.PHP_VERSION.'MYSQL v'.$dbversion, ''), TRUE);
 			} else {
-				$upgraderow[] = showtablerow('', '', array('Discuz! X'.$upgrade['latestversion'].'_'.$locale.'_'.$charset.$lang['version'].' [Release '.$upgrade['latestrelease'].']'.($type == 'patch' ? '('.$lang['founder_upgrade_newword'].'release)' : '').'', '<input type="button" class="btn" onclick="confirm(\''.$lang['founder_upgrade_backup_remind'].'\') ? window.location.href=\''.$linkurl.'\' : \'\';" value="'.$lang['founder_upgrade_automatically'].'">', '<a href="'.$upgrade['official'].'" target="_blank">'.$lang['founder_upgrade_manually'].'</a>'), TRUE);
+				$upgraderow[] = showtablerow('', '', array('Kejian.TV'.$upgrade['latestversion'].'_'.$locale.'_'.$charset.$lang['version'].' [Release '.$upgrade['latestrelease'].']'.($type == 'patch' ? '('.$lang['founder_upgrade_newword'].'release)' : '').'', '<input type="button" class="btn" onclick="confirm(\''.$lang['founder_upgrade_backup_remind'].'\') ? window.location.href=\''.$linkurl.'\' : \'\';" value="'.$lang['founder_upgrade_automatically'].'">', '<a href="'.$upgrade['official'].'" target="_blank">'.$lang['founder_upgrade_manually'].'</a>'), TRUE);
 			}
 		}
 		showtablerow('class="header"','', array($lang['founder_upgrade_select_version'], '', ''));

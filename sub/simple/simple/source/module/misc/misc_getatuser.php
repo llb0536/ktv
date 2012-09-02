@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: misc_getatuser.php 25782 2011-11-22 05:29:19Z zhangguosheng $

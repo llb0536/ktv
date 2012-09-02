@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: table_security_failedlog.php 28862 2012-03-15 08:30:54Z songlixin $

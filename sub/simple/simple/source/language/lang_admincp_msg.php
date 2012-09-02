@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp_msg.php 30741 2012-06-15 08:53:29Z monkey $
@@ -61,7 +61,7 @@ $lang = array (
   'members_reward_succeed' => '用户积分奖惩执行成功 ',
   'membersplit_split_must_be_closed' => '请在站点关闭的状态下进行用户优化操作',
   'dzcode_edit_tag_invalid' => '代码标签为空或包含非法字符',
-  'dzcode_edit_succeed' => 'Discuz! 代码更新成功 ',
+  'dzcode_edit_succeed' => 'Kejian.TV 代码更新成功 ',
   'censor_keywords_tooshort' => '添加关键词长度过短(少于 3 个字节)',
   'attachtypes_duplicate' => '新增扩展名与现有重复',
   'crons_succeed' => '计划任务更新成功 ',
@@ -69,10 +69,10 @@ $lang = array (
   'nav_not_found' => '导航未找到或类型不符',
   'patch_successful' => '操作成功',
   'plugin_not_found' => '插件未找到',
-  'plugins_install_succeed' => '插件成功安装！<br />为了正常使用此插件，您可能还需要上传或修改相应的文件或模板，详情请查看本插件的安装说明<br /><br /><a href="http://addon.discuz.com?view=plugins">点击这里返回应用中心</a><br />',
+  'plugins_install_succeed' => '插件成功安装！<br />为了正常使用此插件，您可能还需要上传或修改相应的文件或模板，详情请查看本插件的安装说明<br /><br /><a href="http://addon.kejian.tv?view=plugins">点击这里返回应用中心</a><br />',
   'plugin_file_error' => '插件文件缺失',
   'plugins_edit_identifier_invalid' => '您输入的唯一标识符不合法或与现有插件重复',
-  'plugins_upgrade_succeed' => '插件成功更新到 {toversion}<br /><br /><a href="http://addon.discuz.com?view=plugins">点击这里返回应用中心</a><br />',
+  'plugins_upgrade_succeed' => '插件成功更新到 {toversion}<br /><br /><a href="http://addon.kejian.tv?view=plugins">点击这里返回应用中心</a><br />',
   'plugins_edit_name_invalid' => '您没有输入插件名称',
   'plugins_edit_succeed' => '插件配置更新成功 ',
   'plugins_delete_succeed' => '插件成功卸载！<br />为了正常卸载此插件，您可能还需要删除或修改相应的文件或模板，详情请查看本插件的安装说明',
@@ -213,7 +213,7 @@ $lang = array (
   'database_file_delete_succeed' => '指定备份文件删除成功 ',
   'database_file_delete_invalid' => '您没有选择要删除的备份文件',
   'database_run_query_invalid' => '升级错误，MySQL 提示: {sqlerror} ',
-  'database_run_query_succeed' => 'Discuz! 数据结构升级成功，影响的记录行数 {affected_rows}',
+  'database_run_query_succeed' => 'Kejian.TV 数据结构升级成功，影响的记录行数 {affected_rows}',
   'dbcheck_permissions_invalid' => '您的服务器环境不允许执行数据库校验，无法进行此操作',
   'dbcheck_nofound_md5file' => '不存在校验文件，无法进行此操作',
   'dbcheck_repair_error' => '数据库修复成功，但仍有 {errorcount} 个数据字段修复失败<br /><br />{error}',
@@ -392,11 +392,11 @@ $lang = array (
   'plugins_disable_succeed' => '插件已关闭',
   'plugins_import_var_invalid' => '插件的嵌入点名称不合法，无法导入',
   'plugins_import_identifier_duplicated' => '您要导入的插件({plugin_name})已经安装',
-  'plugins_import_version_invalid_confirm' => '本插件适用于 Discuz! {cur_version} 与当前版本({set_version})不一致，您确定要安装吗？<br />如果本插件的安装说明中不包含修改文件的内容则说明此插件为绿色插件，您可放心安装',
-  'plugins_import_version_invalid' => '本插件适用于 Discuz! {cur_version} 与当前版本({set_version})不一致',
+  'plugins_import_version_invalid_confirm' => '本插件适用于 Kejian.TV {cur_version} 与当前版本({set_version})不一致，您确定要安装吗？<br />如果本插件的安装说明中不包含修改文件的内容则说明此插件为绿色插件，您可放心安装',
+  'plugins_import_version_invalid' => '本插件适用于 Kejian.TV {cur_version} 与当前版本({set_version})不一致',
   'plugins_import_succeed' => '插件数据导入成功！<br />为了正常使用此插件，您可能还需要上传或修改相应的文件或模板，详情请查看本插件的安装说明',
   'plugins_config_upgrade_confirm' => '您确定要把 {pluginname} {version} 插件更新到 {toversion} 吗？',
-  'plugins_config_upgrade_missed' => '此插件已更新到最新版本<br /><br /><a href="http://addon.discuz.com?view=plugins">点击这里返回应用中心</a><br />',
+  'plugins_config_upgrade_missed' => '此插件已更新到最新版本<br /><br /><a href="http://addon.kejian.tv?view=plugins">点击这里返回应用中心</a><br />',
   'plugins_upgrade_var_invalid' => '插件的嵌入点名称不合法，无法更新',
   'plugins_setting_succeed' => '插件参数设置更新成功 ',
   'plugins_setting_module_nonexistence' => '指定的插件管理模块文件({modfile})不存在或存在语法错误，请检查是否已将插件完整上传',
@@ -481,7 +481,7 @@ $lang = array (
   'styles_export_invalid' => '指定的风格不存在，无法导出',
   'csscache_update' => 'CSS 缓存文件已更新',
   'styles_delete_invalid' => '您不能直接删除系统默认的风格选择其他风格为默认后再进行删除',
-  'styles_install_succeed' => '界面方案安装完成<br /><br /><a href="http://addon.discuz.com?view=templates">点击这里返回应用中心</a><br />',
+  'styles_install_succeed' => '界面方案安装完成<br /><br /><a href="http://addon.kejian.tv?view=templates">点击这里返回应用中心</a><br />',
   'styles_restore_succeed' => '界面方案已恢复成初始设置',
   'styles_import_succeed_renamed' => '界面方案导入完成。导入的风格或模板名称与现有重复，已被自动重命名',
   'styles_import_succeed' => '界面方案导入完成',
@@ -562,7 +562,7 @@ $lang = array (
   'upgrade_ftp_upload_error' => 'ftp上传文件 {file} 出错， 请修改文件权限后重新上传 或 重新设置ftp账号 {upgradeurl}',
   'upgrade_copy_error' => '复制文件 {file} 出错，请检测原始文件是否存在，重新复制 或 通过ftp上传复制文件 {upgradeurl}',
   'upgrade_file_successful' => '文件升级成功，即将进入更新数据库 {upgradeurl}',
-  'upgrade_successful' => '恭喜您，升级成功! <br />您当前的版本为：[Discuz! X{version} Release[{release}] <br /><br />为安全起见，升级文件已保存至{save_update_dir}目录，<br />备份文件已保存至{save_back_dir}目录 {upgradeurl}',
+  'upgrade_successful' => '恭喜您，升级成功! <br />您当前的版本为：[Kejian.TV{version} Release[{release}] <br /><br />为安全起见，升级文件已保存至{save_update_dir}目录，<br />备份文件已保存至{save_back_dir}目录 {upgradeurl}',
   'upgrade_checking' => '正在检测新的升级版本',
   'upgrade_latest_version' => '您目前使用的已经是最新版本，不需要升级',
   'upgrade_param_error' => '请求的参数不正确',
@@ -621,7 +621,7 @@ $lang = array (
 
   'cloudaddons_ftp_path_error' => '站点 FTP 路径错误，请重新填写',
 
-  'cloudaddons_check_url_fopen_error' => '您的服务器无法访问应用中心，这将会导致应用无法安装。请联系您的服务商或者网站技术人员，确保您的服务器能够正常访问 addon.discuz.com 或 addon1.discuz.com',
+  'cloudaddons_check_url_fopen_error' => '您的服务器无法访问应用中心，这将会导致应用无法安装。请联系您的服务商或者网站技术人员，确保您的服务器能够正常访问 addon.kejian.tv 或 addon1.kejian.tv',
   'cloudaddons_check_gzuncompress_error' => '您的服务器不支持 Zlib，这将会导致应用无法安装。请联系您的服务商或者网站技术人员。',
   'cloudaddons_genuine_message' => '对不起，您安装的不是正版应用，安装程序无法继续执行<br /><br /><a href="admin.php?action=cloudaddons&id={addonid}">点击这里安装正版应用</a>',);
 

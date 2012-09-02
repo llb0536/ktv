@@ -1,5 +1,5 @@
 /*
-	[Discuz!] (C)2001-2099 Comsenz Inc.
+	[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: common.js 30758 2012-06-18 06:48:59Z chenmengshu $

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_main.php 29260 2012-03-31 04:22:59Z svn_project_zhangjie $
@@ -64,7 +64,7 @@ echo <<<EOT
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <title>$title</title>
 <meta http-equiv="Content-Type" content="text/html; charset=$charset">
-<meta content="Comsenz Inc." name="Copyright" />
+<meta content="Kejian.TV Inc." name="Copyright" />
 <link rel="stylesheet" href="static/image/admincp/admincp.css?{$_G[style][verhash]}" type="text/css" media="all" />
 <script src="{$_G[setting][jspath]}common.js?{$_G[style][verhash]}" type="text/javascript"></script>
 </head>
@@ -75,7 +75,7 @@ $shownotice
 <tr>
 <td colspan="2" height="90">
 <div class="mainhd">
-<a href="$basescript?frames=yes&action=index" class="logo">Discuz! Administrator's Control Panel</a>
+<a href="$basescript?frames=yes&action=index" class="logo">Kejian.TV Administrator's Control Panel</a>
 <div class="uinfo" id="frameuinfo">
 <p>$header_welcome, $cpadmingroup <em>{$_G['member']['username']}</em> [<a href="$basescript?action=logout" target="_top">$header_logout</a>]</p>
 <p class="btnlink"><a href="index.php" target="_blank">$header_bbs</a></p>
@@ -145,8 +145,8 @@ echo <<<EOT
 	<span onclick="menuScroll(1)"><img src="static/image/admincp/scrollu.gif" /></span><span onclick="menuScroll(2)"><img src="static/image/admincp/scrolld.gif" /></span>
 </div>
 <div class="copyright">
-	<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> {$_G['setting']['version']}</p>
-	<p>&copy; 2001-2012, <a href="http://www.comsenz.com/" target="_blank">Comsenz Inc.</a></p>
+	<p>Powered by <a href="http://www.kejian.tv/" target="_blank">Kejian.TV</a> {$_G['setting']['version']}</p>
+	<p>&copy; 2001-2012, <a href="http://www.kejian.tv/" target="_blank">Kejian.TV Inc.</a></p>
 </div>
 
 <div id="cpmap_menu" class="custom" style="display: none">

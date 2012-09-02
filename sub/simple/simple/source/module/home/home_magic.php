@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[Discuz!] (C)2001-2009 Comsenz Inc111.
+	[KTV_SUB] (C)2001-2009 Kejian.TV Inc111.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: home_magic.php 30302 2012-05-21 01:38:51Z liulanbo $

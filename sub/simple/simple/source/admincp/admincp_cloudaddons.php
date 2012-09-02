@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_cloudaddons.php 29634 2012-04-23 08:29:45Z monkey $
@@ -51,7 +51,7 @@ if(!$operation) {
 		do {
 			$data = cloudaddons_open('&mod=app&ac=download&rid='.$_GET['rid'].'&packnum='.$packnum);
 			$_GET['importtxt'] = $data;
-			$array = getimportdata('Discuz! File Pack');
+			$array = getimportdata('Kejian.TV File Pack');
 			if(!$array['Status']) {
 				if($array['type'] != $_GET['type'] || $array['key'] != $_GET['key'] || !$array['files']) {
 					dir_clear($tmpdir);

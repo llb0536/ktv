@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_db.php 28648 2012-03-07 02:24:19Z monkey $
@@ -200,14 +200,14 @@ if($operation == 'export') {
 			if(trim($sqldump)) {
 				$sqldump = "$idstring".
 					"# <?php exit();?>\n".
-					"# Discuz! Multi-Volume Data Dump Vol.$volume\n".
-					"# Version: Discuz! {$_G[setting][version]}\n".
+					"# Kejian.TV Multi-Volume Data Dump Vol.$volume\n".
+					"# Version: Kejian.TV {$_G[setting][version]}\n".
 					"# Time: $time\n".
 					"# Type: {$_GET['type']}\n".
 					"# Table Prefix: $tablepre\n".
 					"#\n".
-					"# Discuz! Home: http://www.discuz.com\n".
-					"# Please visit our website for newest infomation about Discuz!\n".
+					"# Kejian.TV Home: http://www.kejian.tv\n".
+					"# Please visit our website for newest infomation about Kejian.TV\n".
 					"# --------------------------------------------------------\n\n\n".
 					"$setnames".
 					$sqldump;

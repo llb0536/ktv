@@ -1,5 +1,5 @@
 /*
-	[Discuz!] (C)2001-2099 Comsenz Inc.
+	[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: threadsort.js 28987 2012-03-21 10:34:02Z monkey $

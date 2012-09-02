@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_cloudaddons.php 30741 2012-06-15 08:53:29Z monkey $
@@ -11,10 +11,10 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-define('CLOUDADDONS_WEBSITE_URL', 'http://addon.discuz.com');
-define('CLOUDADDONS_DOWNLOAD_URL', 'http://addon.discuz.com/index.php');
+define('CLOUDADDONS_WEBSITE_URL', 'http://addon.kejian.tv');
+define('CLOUDADDONS_DOWNLOAD_URL', 'http://addon.kejian.tv/index.php');
 define('CLOUDADDONS_DOWNLOAD_IP', '');
-define('CLOUDADDONS_CHECK_URL', 'http://addon1.discuz.com');
+define('CLOUDADDONS_CHECK_URL', 'http://addon1.kejian.tv');
 define('CLOUDADDONS_CHECK_IP', '');
 
 function cloudaddons_md5($file) {
@@ -137,7 +137,7 @@ function cloudaddons_savemd5($md5file, $end, $md5) {
 	global $_G;
 	parse_str($end, $r);
 	$array = array(
-	    'Title' => 'Discuz! Addon MD5',
+	    'Title' => 'Kejian.TV Addon MD5',
 	    'ID' => $r['ID'],
 	    'SN' => $r['SN'],
 	    'RevisionID' => $r['RevisionID'],

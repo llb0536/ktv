@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_relatekw.php 29236 2012-03-30 05:34:47Z chenmengshu $
@@ -23,7 +23,7 @@ if($tid = @intval($_GET['tid'])) {
 
 $subjectenc = rawurlencode(strip_tags($subject));
 $messageenc = rawurlencode(strip_tags(preg_replace("/\[.+?\]/U", '', $message)));
-$data = @implode('', file("http://keyword.discuz.com/related_kw.html?ics=".CHARSET."&ocs=".CHARSET."&title=$subjectenc&content=$messageenc"));
+$data = @implode('', file("http://keyword.kejian.tv/related_kw.html?ics=".CHARSET."&ocs=".CHARSET."&title=$subjectenc&content=$messageenc"));
 
 if($data) {
 

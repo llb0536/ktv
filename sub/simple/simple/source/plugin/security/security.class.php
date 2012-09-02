@@ -1,7 +1,7 @@
 <?php
 
 /**
- *		[Discuz! X] (C)2001-2099 Comsenz Inc.
+ *		[Kejian.TV] (C)2001-2099 Kejian.TV Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: security.class.php 30568 2012-06-04 08:30:22Z songlixin $

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_space.php 28726 2012-03-09 03:05:19Z yexinhao $
@@ -195,7 +195,7 @@ $lang = array(
 	'feed_view_only' => '只看此类动态',
 
 	'export_pm' => '导出短消息',
-	'pm_export_header' => 'Discuz! X 短消息记录(此消息记录不支持重新导入)',
+	'pm_export_header' => 'Kejian.TV 短消息记录(此消息记录不支持重新导入)',
 	'pm_export_touser' => '消息对象: {touser}',
 	'pm_export_subject' => '群聊话题: {subject}',
 	'all' => '全部',

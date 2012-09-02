@@ -1,7 +1,7 @@
 <?php
 
 /**
- *		[Discuz! X] (C)2001-2099 Comsenz Inc.
+ *		[Kejian.TV] (C)2001-2099 Kejian.TV Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: connect.class.php 30759 2012-06-18 08:36:12Z liudongdong $

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Title"><![CDATA[Kejian.TV Plugin]]></item>
 	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
 		<item id="plugin">
@@ -11,7 +11,7 @@
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[mobile/]]></item>
-			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="copyright"><![CDATA[Kejian.TV Inc.]]></item>
 			<item id="version"><![CDATA[1.03]]></item>
 			<item id="__modules">
 				<item id="0">
@@ -43,9 +43,9 @@
 		<item id="version"><![CDATA[X2.5]]></item>
 		<item id="language">
 			<item id="scriptlang">
-				<item id="mobile_tip_ios"><![CDATA[推荐使用客户端访问本站，<a href="http://www.discuz.net/mobile.php?platform=ios">下载客户端</a>]]></item>
-				<item id="mobile_tip_android"><![CDATA[推荐使用客户端访问本站，<a href="http://www.discuz.net/mobile.php?platform=android">下载客户端</a>]]></item>
-				<item id="mobile_tip_wp7"><![CDATA[推荐使用客户端访问本站，<a href="http://www.discuz.net/mobile.php?platform=windowsphone">下载客户端</a>]]></item>
+				<item id="mobile_tip_ios"><![CDATA[推荐使用客户端访问本站，<a href="http://www.kejian.tv/mobile.php?platform=ios">下载客户端</a>]]></item>
+				<item id="mobile_tip_android"><![CDATA[推荐使用客户端访问本站，<a href="http://www.kejian.tv/mobile.php?platform=android">下载客户端</a>]]></item>
+				<item id="mobile_tip_wp7"><![CDATA[推荐使用客户端访问本站，<a href="http://www.kejian.tv/mobile.php?platform=windowsphone">下载客户端</a>]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="mobile_tips"><![CDATA[推荐使用二维码收藏并访问论坛<br />使用二维码收藏论坛的方法：<br />1，装掌上论坛应用后，点击使用二维码收藏论坛。<br />2，将二维码置于相机焦点中即可收藏成功。]]></item>
@@ -59,7 +59,7 @@
 				<item id="change_seccode"><![CDATA[换一个]]></item>
 				<item id="secqaa"><![CDATA[验证问答]]></item>
 				<item id="close"><![CDATA[关闭]]></item>
-				<item id="admin_tips"><![CDATA[尊敬的站长，您可以在Discuz!程序根目录上传"mobile.png"图片(尺寸178x178)，以确保论坛客户端能成功获得到论坛的logo]]></item>
+				<item id="admin_tips"><![CDATA[尊敬的站长，您可以在Kejian.TV程序根目录上传"mobile.png"图片(尺寸178x178)，以确保论坛客户端能成功获得到论坛的logo]]></item>
 				<item id="iphone_alt"><![CDATA[iphone-适用于苹果手机]]></item>
 				<item id="android_alt"><![CDATA[Android-适用于装有安卓系统的三星/HTC/小米等手机]]></item>
 				<item id="windowsphone_alt"><![CDATA[WinodwsPhone-适用于装有微软WindowsPhone7 系统的手机]]></item>

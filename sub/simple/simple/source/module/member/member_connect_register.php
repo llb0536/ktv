@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	  [Discuz!] (C)2001-2099 Comsenz Inc.
+ *	  [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
  *	  $Id: member_connect_register.php 28644 2012-03-06 13:44:19Z houdelei $

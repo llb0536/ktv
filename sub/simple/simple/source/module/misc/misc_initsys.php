@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: misc_initsys.php 27433 2012-01-31 08:16:01Z monkey $
@@ -37,7 +37,7 @@ foreach($plugins as $pluginid) {
 		continue;
 	}
 	$importtxt = @implode('', file($importfile));
-	$pluginarray = getimportdata('Discuz! Plugin', $importtxt);
+	$pluginarray = getimportdata('Kejian.TV Plugin', $importtxt);
 	$plugin = C::t('common_plugin')->fetch_by_identifier($pluginid);
 	if($plugin) {
 		$modules = unserialize($plugin['modules']);

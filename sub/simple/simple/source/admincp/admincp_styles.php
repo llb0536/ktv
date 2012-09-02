@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_styles.php 30450 2012-05-29 08:17:06Z chenmengshu $
@@ -41,7 +41,7 @@ if($operation == 'export' && $id) {
 	}
 
 	$stylearray['version'] = strip_tags($_G['setting']['version']);
-	exportdata('Discuz! Style', $stylearray['name'], $stylearray);
+	exportdata('Kejian.TV Style', $stylearray['name'], $stylearray);
 }
 
 cpheader();

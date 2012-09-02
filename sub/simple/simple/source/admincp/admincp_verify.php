@@ -1,6 +1,6 @@
 <?php
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_verify.php 29362 2012-04-09 02:44:29Z liulanbo $

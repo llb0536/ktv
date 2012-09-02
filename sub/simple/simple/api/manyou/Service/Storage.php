@@ -1,7 +1,7 @@
 <?php
 
 /**
- *		[Discuz!] (C)2001-2099 Comsenz Inc.
+ *		[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: Storage.php 29263 2012-03-31 05:45:08Z yexinhao $
@@ -89,7 +89,7 @@ class Cloud_Service_Storage {
 	public function makeDownloadurl($sha1, $filesize, $filename) {
 		global $_G;
 
-		$filename = trim($filename,' "'); // Discuz! 默认的filename两侧会加上 双引号
+		$filename = trim($filename,' "'); // Kejian.TV 默认的filename两侧会加上 双引号
 		$filename = diconv($filename,CHARSET,'UTF-8');
 		$filename = $this->str2hex($filename);
 

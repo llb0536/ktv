@@ -1,7 +1,7 @@
 <?php
 
 /**
- *		[Discuz!] (C)2001-2099 Comsenz Inc.
+ *		[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: xf_storage.class.php 29353 2012-04-06 03:00:07Z liudongdong $

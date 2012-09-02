@@ -1,6 +1,6 @@
 <?php
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: Notification.php 30479 2012-05-30 07:28:46Z zhengqingpeng $

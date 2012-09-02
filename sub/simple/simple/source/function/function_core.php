@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_core.php 30700 2012-06-12 10:39:22Z svn_project_zhangjie $
@@ -297,7 +297,7 @@ function fileext($filename) {
 
 function formhash($specialadd = '') {
 	global $_G;
-	$hashadd = defined('IN_ADMINCP') ? 'Only For Discuz! Admin Control Panel' : '';
+	$hashadd = defined('IN_ADMINCP') ? 'Only For Kejian.TV Admin Control Panel' : '';
 	return substr(md5(substr($_G['timestamp'], 0, -7).$_G['username'].$_G['uid'].$_G['authkey'].$hashadd.$specialadd), 8, 8);
 }
 

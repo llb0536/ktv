@@ -1,6 +1,6 @@
 <?php
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: home_follow.php 30281 2012-05-18 03:43:42Z liulanbo $

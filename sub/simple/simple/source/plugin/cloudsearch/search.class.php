@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz! X] (C)2001-2099 Comsenz Inc.
+ *      [Kejian.TV] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: search.class.php 30263 2012-05-17 13:44:07Z zhouxiaobo $

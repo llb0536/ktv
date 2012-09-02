@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms'
  *
  *      $Id: admincp_plugins.php 30036 2012-05-08 02:31:38Z monkey $
@@ -147,7 +147,7 @@ if(!$operation) {
 						$importtxt = @implode('', file($entrydir.'/discuz_plugin_'.$entry.'.xml'));
 					}
 					if($importtxt) {
-						$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
+						$pluginarray = getimportdata('Kejian.TV Plugin', 0, 1);
 						if(!empty($pluginarray['plugin']['name'])) {
 							$entrytitle = dhtmlspecialchars($pluginarray['plugin']['name']);
 							$entryversion = dhtmlspecialchars($pluginarray['plugin']['version']);
@@ -305,7 +305,7 @@ if(!$operation) {
 		$pluginarray['checkfile'] = 'check.php';
 	}
 
-	exportdata('Discuz! Plugin', $plugin['identifier'], $pluginarray);
+	exportdata('Kejian.TV Plugin', $plugin['identifier'], $pluginarray);
 
 } elseif($operation == 'import') {
 
@@ -313,7 +313,7 @@ if(!$operation) {
 		cloudaddons_validator($_GET['dir'].'.plugin');
 
 		if(!isset($_GET['dir'])) {
-			$pluginarray = getimportdata('Discuz! Plugin');
+			$pluginarray = getimportdata('Kejian.TV Plugin');
 		} elseif(!isset($_GET['installtype'])) {
 			$pdir = DISCUZ_ROOT.'./source/plugin/'.$_GET['dir'];
 			$d = dir($pdir);
@@ -349,7 +349,7 @@ if(!$operation) {
 			$extra = $installtype ? '_'.$installtype : '';
 			$importfile = DISCUZ_ROOT.'./source/plugin/'.$dir.'/discuz_plugin_'.$dir.$extra.'.xml';
 			$importtxt = @implode('', file($importfile));
-			$pluginarray = getimportdata('Discuz! Plugin');
+			$pluginarray = getimportdata('Kejian.TV Plugin');
 			if(empty($license) && $pluginarray['license']) {
 				require_once libfile('function/discuzcode');
 				$pluginarray['license'] = discuzcode(strip_tags($pluginarray['license']), 1, 0);
@@ -421,7 +421,7 @@ if(!$operation) {
 		cpmsg('plugin_file_error', '', 'error');
 	}
 	$importtxt = @implode('', file($importfile));
-	$pluginarray = getimportdata('Discuz! Plugin');
+	$pluginarray = getimportdata('Kejian.TV Plugin');
 	if($operation == 'plugininstall') {
 		$filename = $pluginarray['installfile'];
 	} elseif($operation == 'pluginuninstall') {
@@ -474,7 +474,7 @@ if(!$operation) {
 		$upgrade = false;
 		if(file_exists($file)) {
 			$importtxt = @implode('', file($file));
-			$pluginarray = getimportdata('Discuz! Plugin');
+			$pluginarray = getimportdata('Kejian.TV Plugin');
 			$newver = !empty($pluginarray['plugin']['version']) ? $pluginarray['plugin']['version'] : 0;
 			$upgrade = $newver > $plugin['version'] ? true : false;
 		}
@@ -498,7 +498,7 @@ if(!$operation) {
 						continue;
 					}
 					$importtxt = @implode('', file($entrydir.'/'.$f));
-					$pluginarray = getimportdata('Discuz! Plugin');
+					$pluginarray = getimportdata('Kejian.TV Plugin');
 					$newverother = !empty($pluginarray['plugin']['version']) ? $pluginarray['plugin']['version'] : 0;
 					$upgradestr .= $newverother > $plugin['version'] ? '<input class="btn" onclick="location.href=\''.ADMINSCRIPT.'?action=plugins&operation=upgrade&pluginid='.$pluginid.'&confirmed=yes&installtype='.rawurlencode($extra).'\'" type="button" value="'.($extra ? $extratxt : $lang['plugins_import_default']).' '.$newverother.'" />&nbsp;&nbsp;&nbsp;' : '';
 				}
@@ -541,7 +541,7 @@ if(!$operation) {
 		cloudaddons_validator($dir.'.plugin');
 
 		$importtxt = @implode('', file($importfile));
-		$pluginarray = getimportdata('Discuz! Plugin');
+		$pluginarray = getimportdata('Kejian.TV Plugin');
 
 		if(!ispluginkey($pluginarray['plugin']['identifier']) || $pluginarray['plugin']['identifier'] != $plugin['identifier']) {
 			cpmsg('plugins_edit_identifier_invalid', '', 'error');
@@ -1263,7 +1263,7 @@ if(!$operation) {
 		}
 
 		$importtxt = @implode('', file($importfile));
-		$pluginarray = getimportdata('Discuz! Plugin');
+		$pluginarray = getimportdata('Kejian.TV Plugin');
 
 		if(!empty($pluginarray['checkfile']) && preg_match('/^[\w\.]+$/', $pluginarray['checkfile'])) {
 			$filename = DISCUZ_ROOT.'./source/plugin/'.$plugin['identifier'].'/'.$pluginarray['checkfile'];
@@ -1301,7 +1301,7 @@ if(!$operation) {
 			$file = DISCUZ_ROOT.'./source/plugin/'.$dir.'/discuz_plugin_'.$dir.($modules['extra']['installtype'] ? '_'.$modules['extra']['installtype'] : '').'.xml';
 			if(file_exists($file)) {
 				$importtxt = @implode('', file($file));
-				$pluginarray = getimportdata('Discuz! Plugin');
+				$pluginarray = getimportdata('Kejian.TV Plugin');
 				if(!empty($pluginarray['uninstallfile']) && preg_match('/^[\w\.]+$/', $pluginarray['uninstallfile'])) {
 					dheader('location: '.ADMINSCRIPT.'?action=plugins&operation=pluginuninstall&dir='.$dir.'&installtype='.$modules['extra']['installtype']);
 				}
@@ -1420,7 +1420,7 @@ if(!$operation) {
 			$upgrade = false;
 			if(file_exists($file)) {
 				$importtxt = @implode('', file($file));
-				$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
+				$pluginarray = getimportdata('Kejian.TV Plugin', 0, 1);
 				$newver = !empty($pluginarray['plugin']['version']) ? $pluginarray['plugin']['version'] : 0;
 				if($newver > $row['version']) {
 					$upgrade = true;
@@ -1448,7 +1448,7 @@ if(!$operation) {
 								continue;
 							}
 							$importtxt = @implode('', file($entrydir.'/'.$f));
-							$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
+							$pluginarray = getimportdata('Kejian.TV Plugin', 0, 1);
 							$newverother = !empty($pluginarray['plugin']['version']) ? $pluginarray['plugin']['version'] : 0;
 							if($newverother > $row['version']) {
 								$nowarray[] = '<a href="'.ADMINSCRIPT.'?action=plugins&operation=upgrade&pluginid='.$row['pluginid'].'&confirmed=yes&installtype='.rawurlencode($extra).'">'.$plugins[$row['identifier']].' -> '.$newverother.($extra ? ' ('.$extratxt.')' : '').'</a>';

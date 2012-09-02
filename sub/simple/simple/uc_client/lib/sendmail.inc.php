@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[UCenter] (C)2001-2099 Comsenz Inc.
+	[UCenter] (C)2001-2099 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: sendmail.inc.php 1059 2011-03-01 07:25:09Z monkey $
@@ -27,7 +27,7 @@ foreach(explode(',', $mail['email_to']) as $touser) {
 
 $mail['email_to'] = implode(',', $tousers);
 
-$headers = "From: $email_from{$maildelimiter}X-Priority: 3{$maildelimiter}X-Mailer: Discuz! $version{$maildelimiter}MIME-Version: 1.0{$maildelimiter}Content-type: text/".($mail['htmlon'] ? 'html' : 'plain')."; charset=$mail[charset]{$maildelimiter}Content-Transfer-Encoding: base64{$maildelimiter}";
+$headers = "From: $email_from{$maildelimiter}X-Priority: 3{$maildelimiter}X-Mailer: Kejian.TV $version{$maildelimiter}MIME-Version: 1.0{$maildelimiter}Content-type: text/".($mail['htmlon'] ? 'html' : 'plain')."; charset=$mail[charset]{$maildelimiter}Content-Transfer-Encoding: base64{$maildelimiter}";
 
 $mail_setting['mailport'] = $mail_setting['mailport'] ? $mail_setting['mailport'] : 25;
 

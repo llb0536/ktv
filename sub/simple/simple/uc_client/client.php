@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[UCenter] (C)2001-2099 Comsenz Inc.
+	[UCenter] (C)2001-2099 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: client.php 1079 2011-04-02 07:29:36Z zhengqingpeng $

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: adv_articlelist.php 13141 2010-07-22 00:56:42Z monkey $
@@ -16,7 +16,7 @@ class adv_articlelist {
 	var $version = '1.0';
 	var $name = 'articlelist_name';
 	var $description = 'articlelist_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $targets = array('portal');
 	var $imagesizes = array('658x40', '658x60');
 

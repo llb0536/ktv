@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_misc.php 28372 2012-02-28 08:15:06Z monkey $
@@ -1439,7 +1439,7 @@ var rowtypedata = [
 	if($statid && $statkey) {
 		$q = "statid=$statid&statkey=$statkey";
 		$q=rawurlencode(base64_encode($q));
-		$url = 'http://stat.discuz.com/stat_ins.php?action=checkstat&q='.$q;
+		$url = 'http://stat.kejian.tv/stat_ins.php?action=checkstat&q='.$q;
 		$key = dfsockopen($url);
 		$newstatdisable = $key == $statkey ? 0 : 1;
 		if($newstatdisable != $statdisable) {

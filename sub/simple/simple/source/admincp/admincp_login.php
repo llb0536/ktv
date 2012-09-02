@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_login.php 29236 2012-03-30 05:34:47Z chenmengshu $
@@ -52,7 +52,7 @@ function html_login_header($form = true) {
 <title>$title</title>
 <meta http-equiv="Content-Type" content="text/html;charset=$charset" />
 <link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
-<meta content="Comsenz Inc." name="Copyright" />
+<meta content="Kejian.TV Inc." name="Copyright" />
 </head>
 <body>
 EOT;
@@ -67,7 +67,7 @@ EOT;
 <table class="logintb">
 <tr>
 	<td class="login">
-		<h1>Discuz! Administrator's Control Panel</h1>
+		<h1>Kejian.TV Administrator's Control Panel</h1>
 		<p>$tips</p>
 	</td>
 
@@ -87,8 +87,8 @@ function html_login_footer($halt = true) {
 <tr>
 	<td colspan="2" class="footer">
 		<div class="copyright">
-			<p>Powered by <a href="http://www.discuz.net/" target="_blank">Discuz!</a> $version </p>
-			<p>&copy; 2001-2012, <a href="http://www.comsenz.com/" target="_blank">Comsenz</a> Inc.</p>
+			<p>Powered by <a href="http://www.kejian.tv/" target="_blank">Kejian.TV</a> $version </p>
+			<p>&copy; 2001-2012, <a href="http://www.kejian.tv/" target="_blank">Kejian.TV</a> Inc.</p>
 		</div>
 	</td>
 </tr>

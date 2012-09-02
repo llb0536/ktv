@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: magic_repent.php 29373 2012-04-09 07:55:30Z chenmengshu $
@@ -18,7 +18,7 @@ class magic_repent {
 	var $description = 'repent_desc';
 	var $price = '10';
 	var $weight = '10';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $magic = array();
 	var $parameters = array();
 
