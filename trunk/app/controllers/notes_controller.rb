@@ -1,14 +1,14 @@
 # coding: UTF-8
 class NotesController < ApplicationController
-  def index
-    @page = params[:n]
-    @x = params[:x]
-    @y = params[:y]
-    @width = params[:width]
-    @height = params[:height]
-    @body = params[:body]
-    @shared = params[:shared]
-    @courseware_id = params[:courseware_id]
+  def create
+    @page = params[:note][:page]
+    @x = params[:note][:x]
+    @y = params[:note][:y]
+    @width = params[:note][:width]
+    @height = params[:note][:height]
+    @body = params[:note][:body]
+    @shared = params[:note][:shared]
+    @courseware_id = params[:note][:courseware_id]
     
     
     if current_user.user_type==User::FROZEN_USER
@@ -23,13 +23,13 @@ class NotesController < ApplicationController
     @note.width = @width
     @note.height = @height
     @note.body = @body
-    @note.shared = @shared
+    # @note.shared = @shared
     @note.courseware_id = @courseware_id
     @note.user_id = current_user.id
-    if @note.save!
+    if @note.save
       render :text => 'Succeed',:layout => false
     else
-      render :text => 'Failed',:layout => false
+      render :text => @note.errors.full_messages.join('，'),:layout => false
     end
   end
   

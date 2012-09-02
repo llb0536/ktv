@@ -9,38 +9,104 @@ KTV.data = {
 <style type="text/css" media="screen">
   #stickies{
     position:absolute;
-    top:0;    
+    width:228px;
+    top:0;
+    margin-left:957px;
   }
   .sticky{
-    padding:18px 8px 0;
+    padding:18px 8px;
     border-left: 1px solid #BCA902;
     border-right: 1px solid #BCA902;
     border-bottom: 1px solid #BCA902;
     background: #FEF49C url(<%= asset_path 'stickies_top.png' %>) repeat-x;
-    min-width:206px;
-    min-height:208px;
+    width:226px;
+    max-height:1000px;
     line-height:20px;
-    margin-left:960px;
     -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
     -moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
     box-shadow: 0 1px 0px rgba(0, 0, 0, 0), inset 0 0 0 rgba(0, 0, 0, 0.9);
     border-top:none;
   }
   .new_sticky{
-    padding-bottom:12px;
+    height:208px;
+    padding-bottom:37px;
+  }
+  .new_sticky_btn{
+    
   }
 </style>
-<div class="wrapper">
-  <div id="stickies">
-    <%# form_for @note,:remote => true do %>
-    <textarea class="sticky new_sticky" name="sticky_body">
-    </textarea>
-    <div class="__sdk"><div class="wrapper222" style="position:relative">
-    <a class="button reupload" id="reupload" href="javascript:void(0)">提交</a>
-    </div></div>
-    <%# end %>
-  </div>
+<script type="text/javascript" charset="utf-8">
+  <% content_for :butt2 do %>
+  $("textarea.sticky").autosize('autosizejs',10);
+  $('#new_sticky_cancel').off().on('click',function(){
+    $('#new_note').hide();
+    window.frames[0].eval("window.biji_group.setOpacity(0);");
+    window.frames[0].eval("$(window.biji_canvas).css('background','rgba(0,0,0,0)')");
+    window.frames[0].eval("$('.overnav').show()");
+    window.frames[0].eval("for(i=0;i<biji_already.length;++i){window.biji_layer.add(biji_already[i]);}");
+    window.frames[0].eval("window.biji_stage.draw();");
+    return false;
+  });
+  $('#new_note').bind('ajax:complete',function(jqXHR, textStatus){
+    if(200==textStatus.status){
+      if ('Succeed'==textStatus.responseText) {
+        time_now = (new Date).getTime();
+        KTV.sdk_flashes_clear();
+        $('#new_note').after(
+          $('<textarea></textarea>').
+            attr('readonly','readonly').
+            addClass('sticky').
+            attr('id','note_'+time_now.toString()).
+            val($('#note_body').val())
+        );
+        $('#new_sticky_cancel').trigger('click');
+        real_val = $('#note_'+time_now.toString()).position().top + $('#note_'+time_now.toString()).height() / 2;
+        real_x = $('#note_x').val();
+        real_y = $('#note_y').val();
+        real_width = $('#note_width').val();
+        real_height = $('#note_height').val();
+        window.frames[0].eval("biji_addrectangle("+real_x+","+real_y+","+real_width+","+real_height+","+real_val+",-1);");
+        $('#note_body').val('');
+      }else{
+        KTV.sdk_flashes_set('error',textStatus.responseText);
+      }
+    }else{
+      KTV.sdk_flashes_set('error','网络通信失败');
+    }
+  })
+  <% end %>
+</script>
+<div class="__own">
+  <div class="wrapper">
+    <div id="stickies" style="display:none">
+      <%= form_for [@courseware,@note],:remote => true,:html=>{style:'display:none;width:225px'} do |f| %>
+        <%= f.hidden_field :page %>
+        <%= f.hidden_field :x %>
+        <%= f.hidden_field :y %>
+        <%= f.hidden_field :width %>
+        <%= f.hidden_field :height %>
+        <%= f.hidden_field :courseware_id %>
+        <textarea class="sticky new_sticky" name="note[body]" id="note_body" onkeydown=""></textarea>
+        <div class="wrapper222" style="position:relative;top:-38px">
+          <button id="new_sticky_cancel" class="new_sticky_btn" style="float:right;margin-right:8px"><span class="button primary cancel">取消</span></button>
+          <button id="new_sticky_submit" class="new_sticky_btn" style="float:right;margin-right:4px"><span class="primary">保存笔记</span></button>
+        </div>
+      <% end %>
+      <% @courseware.notes.where(:page=>0).each_with_index do |note,index| %>
+        <textarea class="sticky" readonly="readonly" id="note_<%= note.id %>"><%= note.body %></textarea>
+        <% content_for :butt3 do %>
+          real_val = $('#note_<%= note.id %>').position().top + $('#note_<%= note.id %>').height() / 2;
+          window.frames[0].eval("biji_addrectangle(<%= note.x %>,<%= note.y %>,<%= note.width %>,<%= note.height %>,"+real_val+",<%=index%>);");
+        <% end %>
+      <% end %>
+    </div>
+  </div>  
 </div>
+<script type="text/javascript" charset="utf-8">
+  window.wait_till_frame_ready = function(){
+    <%= yield :butt3 %>
+  }
+</script>
 <div class="__sdk"><%# todo: 710px ..ratio %>
 <section id="presentation" class="feature">
 

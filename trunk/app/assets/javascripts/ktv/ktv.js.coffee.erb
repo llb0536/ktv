@@ -14,7 +14,11 @@ KTV.browsetext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("browsetex
 KTV.browsetext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("browsetext.png") %>'
 KTV.addtext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("addtext_hover.png") %>'
 KTV.addtext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("addtext.png") %>'
-
+KTV.sdk_flashes_set = (type,msg)->
+  $('#sdk_flashes').html("<p class=\"flash #{type}\">#{msg}</p>");
+  $("#sdk_flashes .#{type}").fadeOut().fadeIn();
+KTV.sdk_flashes_clear = ->
+  $('#sdk_flashes').html("");
 KTV.headnav_css = ->
   header0 = $('#header0 div div:not(.active)')
   $('img',header0).fadeTo(0,'0.7')
@@ -301,3 +305,4 @@ jQuery ->
       $('#weizuozhefasongganxie').html('已喜欢')
       $('#weizuozhefasongganxie2').html(num+1)
   )
+    

@@ -5,10 +5,6 @@ end
  %>
 <% content_for :armpit do %>
 <style type="text/css" media="screen">
-  canvas{
-    background:rgba(0,0,0,0.4);
-    display:none;
-  }
   #mycanvas{
     background:transparent !important;
     position:absolute;
@@ -83,6 +79,7 @@ end
             Slide.click++;
             Slide.current++;
             if (Slide.click == 2) { $.preLoadImage(0) };
+            $('#note_page').val(Slide.current);
             Slide.show();
           };
         };
@@ -488,6 +485,38 @@ end
         $('#mycanvas').css('margin-left',pos.x + hw.width / 2 - 60 + fix.x);
         $('#mycanvas').css('margin-top',pos.y + hw.height + 8 + fix.y);  
       }
+      
+      window.biji_already = [];
+      window.biji_addrectangle = function(x,y,width,height,dest,index){
+
+        var darthVaderImg = new Kinetic.Rect({
+          x: x,
+          y: y,
+          width: width,
+          fill: "transparent",
+          stroke: "#999",
+          strokeWidth: 2,
+          height: height,
+          name: "image"
+        });
+        
+        var redLine = new Kinetic.Line({
+          points: [x + width, y + height/2, 800+index*30, y + height/2, 800+index*30, dest, 960, dest],
+          stroke: "#999",
+          strokeWidth: 2,
+          lineJoin: "round",
+         /*
+          * line segments with a length of 33px
+          * with a gap of 10px
+          */
+          dashArray: [33, 10]
+        });
+        window.biji_already.push(darthVaderImg);
+        window.biji_already.push(redLine);
+        window.biji_layer.add(darthVaderImg);
+        window.biji_layer.add(redLine);
+        window.biji_stage.draw();
+      }
       function biji_initStage() {
         var stage = new Kinetic.Stage({
           container: "slide",
@@ -522,7 +551,7 @@ end
           name: "image"
         });
         darthVaderImg.setOpacity(0.6);
-
+        darthVaderGroup.setOpacity(0);
         darthVaderGroup.add(darthVaderImg);
         biji_addAnchor(darthVaderGroup, 0, 0, "topLeft");
         biji_addAnchor(darthVaderGroup, 200, 0, "topRight");
@@ -530,18 +559,28 @@ end
         biji_addAnchor(darthVaderGroup, 0, 138, "bottomLeft");
         window.biji_rect= darthVaderImg;
         window.biji_group=darthVaderGroup;
+        window.biji_layer=layer;
+
         darthVaderGroup.on("dragmove", function(event) {
           this.moveToTop();
+          $('#mycanvas').show();
           biji_mycanvas_pos();
         });
         stage.draw();
+        window.biji_stage=stage;
         window.biji_canvas=stage.getDOM().children[0];
       }
       biji_initStage();
       $('#zuobiji_button').click(function(){
-        $('#mycanvas').toggle();
-        $(window.biji_canvas).toggle();
-        $('.overnav').toggle();
+        for(i=0;i<biji_already.length;++i){
+          window.biji_layer.remove(biji_already[i]);
+        }
+        $('#mycanvas').show();
+        window.biji_group.setOpacity(1);
+        window.biji_stage.draw();
+        $(window.biji_canvas).css('background','rgba(0,0,0,0.4)');
+        $(window.biji_canvas).show();
+        $('.overnav').hide();
       })
       
       function makeButton(x, y, w, h, radius)
@@ -599,8 +638,28 @@ end
         $(button).css('margin-top',function(index, value){
           return parseInt(value)-1;
         });
-       // button.style.margin="0";    
-       // real clicked.
+        $('#mycanvas').hide();
+        var context = biji_canvas.getContext("2d");
+
+        pos = biji_group.getPosition();
+        hw = biji_rect.attrs;
+        fix = biji_group.get(".topLeft")[0].attrs;
+                // set line width for all lines
+                context.lineWidth = 3;
+                // bevel line join (right)
+                context.beginPath();
+                context.moveTo(pos.x + hw.width + fix.x, pos.y + hw.height/2 + fix.y);
+                context.lineTo(888, pos.y + hw.height/2 + fix.y);
+                context.lineTo(888, 88);
+                context.lineTo(960, 88);
+                context.lineJoin = "bevel";
+                context.strokeStyle = 'white';
+                context.stroke();
+        window.parent.eval("$('#note_x').val("+(pos.x + fix.x).toString()+")");
+        window.parent.eval("$('#note_y').val("+(pos.y + fix.y).toString()+")");
+        window.parent.eval("$('#note_width').val("+(hw.width).toString()+")");
+        window.parent.eval("$('#note_height').val("+(hw.height).toString()+")");
+        window.parent.eval("$('#new_note').show()");
       };
       window.biji_canvasDown=function (button)
       {
@@ -621,7 +680,7 @@ end
         makeButton(0,0,120,28,8);
       };
       window.biji_canvasOut();
-      window.parent.eval("$('#stickies').css('top',($('.speakerdeck-iframe').position().top + 26))");
+      window.parent.eval("$('#stickies').css('top',($('.speakerdeck-iframe').position().top + 28));$('#stickies').show();window.wait_till_frame_ready()");
     });
   </script>
 
@@ -636,13 +695,13 @@ end
 
   </div>
   <div id="slide">
-    <canvas id="mycanvas" width="128" height="36"
+    <canvas id="mycanvas" style="display:none" width="128" height="36"
      onmousedown="window.biji_canvasDown(this)"  onmouseup="window.biji_canvasUp(this)"
      onmouseover="window.biji_canvasOver()" onmouseout="window.biji_canvasOut()">
     </canvas>
     <img id="slide_image" src="<%= @slides.first %>" class='visible' />
   </div>
-  <div class="overnav">
+  <div class="overnav" id="the_overnav">
     <a href="#" class="prev">上张幻灯片</a>
     <a href="#" class="next">下张幻灯片</a>
   </div>
