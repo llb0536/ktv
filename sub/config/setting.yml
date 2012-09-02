@@ -69,31 +69,8 @@ default: &defaults
      # user:
      # pass:
 
-development:
-  <<: *defaults
-  ktv_domain: kejian.lvh.me
-  wendao_domain_name: "kejian.lvh.me"
-  ktv_simple_domain: "kejian.lvh.me/simple"
-  ktv_search_domain: "search.kejian.lvh.me"
-  # open_timeout: 1
-  # timeout: 1
-  read_timeout: 30
-  idle_timeout: 30
-  open_timeout: 30
-  timeout: 30
-
-test:
-  <<: *defaults
-  read_timeout: 50
-  idle_timeout: 50
-  open_timeout: 50
-  timeout: 50
-  
-production: &production
-  <<: *defaults
-
 sub_cnu: &sub_cnu
-  <<: *production
+  <<: *defaults
   official_website: 'http://www.cnu.edu.cn/'
   uc_appid: '5'
   uc_key: 'af64HZPlY/1RdaOe4UftTp3XO+kQwB9f5SBojhc='
@@ -130,10 +107,12 @@ sub_cnu: &sub_cnu
     - 19
 sub_cnu_dev:
   <<: *sub_cnu
+  ktv_domain: kejian.lvh.me
+  wendao_domain_name: "kejian.lvh.me"
   ktv_subdomain: 'cnu.kejian.lvh.me'
     
 sub_ibeike: &sub_ibeike
-  <<: *production
+  <<: *defaults
   official_website: 'http://www.ustb.edu.cn/'
   uc_appid: '6'
   uc_key: 'ff41g5Xncbw5CF/5Em5V3sTIAPRwxrW7SgzyPsw='
@@ -164,5 +143,7 @@ sub_ibeike: &sub_ibeike
     
 sub_ibeike_dev:
   <<: *sub_ibeike
+  ktv_domain: kejian.lvh.me
+  wendao_domain_name: "kejian.lvh.me"
   ktv_subdomain: 'ibeike.kejian.lvh.me'
   

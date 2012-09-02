@@ -7,29 +7,14 @@ defaults: &defaults
   persist_in_safe_mode: false
   raise_not_found_error: true
 
-development:
-  <<: *defaults
-  host: '0.0.0.0'
-  database: ktv_sub
-
-test:
-  <<: *defaults
-  database: ktv_test
-
-# set these environment variables on your prod server
-production: &production
-  <<: *defaults
-  host: '0.0.0.0'
-  database: ktv_sub
-
 sub_cnu: &sub_cnu
-  <<: *production
+  <<: *defaults
   database: ktv_sub_cnu
 sub_cnu_dev:
   <<: *sub_cnu
   
 sub_ibeike: &sub_ibeike
-  <<: *production
+  <<: *defaults
   database: ktv_sub_ibeike
 sub_ibeike_dev:
   <<: *sub_ibeike

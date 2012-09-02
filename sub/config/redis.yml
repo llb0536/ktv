@@ -31,22 +31,8 @@ defaults: &defaults
   port_courses: 6380
   select_courses: '7'
   
-development:
-  <<: *defaults
-  port: 6379
-  port_search: 6379
-  port_resque: 6379
-  port_users: 6379
-  port_topics: 6379
-  port_asks: 6379
-  port_experts: 6379
-  port_courses: 6379
-  
-production: &production
-  <<: *defaults
-  
 sub_cnu: &sub_cnu
-  <<: *production
+  <<: *defaults
   port: 6380
   port_search: 6380
   port_resque: 6380
@@ -60,7 +46,7 @@ sub_cnu_dev:
 
 
 sub_ibeike: &sub_ibeike
-  <<: *production
+  <<: *defaults
   port: 6381
   port_search: 6381
   port_resque: 6381
