@@ -13,8 +13,8 @@ switch(PSVR_KTV_SUB){
 	define('UC_APPID', '4');
 	break;
   case 'ibeike':
-	define('UC_KEY', 'F0a2ufTaJcAaucv5Hdt9Jah9l4BaKasdx9n2qeJdXaUeP463x2fcdfQaR5f0L339');
-	define('UC_APPID', '10');
+  define('UC_KEY', 'v9A6G4y0b8V0r5d6w7Ne9cH7F5Pfj9icUfdbbcgbf7v1X5R5Kbg1Z0h7F4eaGeK8');
+  define('UC_APPID', '10');
 	break;
 }
 

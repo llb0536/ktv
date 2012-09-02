@@ -114,8 +114,8 @@ sub_cnu_dev:
 sub_ibeike: &sub_ibeike
   <<: *defaults
   official_website: 'http://www.ustb.edu.cn/'
-  uc_appid: '6'
-  uc_key: 'ff41g5Xncbw5CF/5Em5V3sTIAPRwxrW7SgzyPsw='
+  uc_appid: '11'
+  uc_key: '0f4fmuR685V9dnh1d3p/STOCrZ0mElnwrb9S0Q4='
   ktv_sub: 'ibeike'
   ktv_subname: '北京科技大学'
   ktv_subname_short: '北科大'

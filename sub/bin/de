@@ -1,11 +1,11 @@
 #!/bin/bash -x
 
 export RAILS_ENV=production
-rm -rf /home/main/ktv/_assets_old/
-mv /home/main/ktv/_assets/ /home/main/ktv/_assets_old/
+rm -rf /home/main/ktv/_assets_sub_old/
+mv /home/main/ktv/_assets_sub/ /home/main/ktv/_assets_sub_old/
 bundle
 rake db:migrate
 rake assets:precompile:all
 
-# bin/ftpupyun_intrinsic
-# bin/restart_unicorn
+bin/ftpupyun_intrinsic
+bin/restart_unicorn

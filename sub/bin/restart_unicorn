@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-kill -USR2 `cat tmp/pids/unicorn_$RAILS_ENV.pid`
+kill -USR2 `cat tmp_$RAILS_ENV/pids/unicorn_$RAILS_ENV.pid`
 
 bin/check
 sleep 20

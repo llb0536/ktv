@@ -78,6 +78,9 @@ $env_items = array
 
 $dirfile_items = array
 (
+  'psvr_tmp' => array('type' => 'dir', 'path' => '../../tmp_'.PSVR_KTV_SUB),
+  'psvr_tmp' => array('type' => 'dir', 'path' => '../../tmp_'.PSVR_KTV_SUB.'/pids'),
+  'psvr_log' => array('type' => 'dir', 'path' => '../../log_'.PSVR_KTV_SUB),
   'config' => array('type' => 'file', 'path' => CONFIG),
   'ucenter config' => array('type' => 'file', 'path' => CONFIG_UC),
   'config_dir' => array('type' => 'dir', 'path' => './config'),

@@ -168,7 +168,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安装...',
 	'install_succeed' => '安装成功，点击进入',
-	'install_cloud' => '安装成功，欢迎开通Kejian.TV云平台<br>Kejian.TV云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Kejian.TV云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、社区QQ群、漫游应用、SOSO表情服务。Kejian.TV云平台将陆续提供更多优质服务项目。<br>开通Kejian.TV平台之前，请确保您的网站（Kejian.TV、UCHome或SupeSite）已经升级到Kejian.TV。',
+	'install_cloud' => '安装成功，还需要改几个设置<br>（1）修改config_ucenter.php中的UC_KEY和UC_APPID  （2）进入http://uc.kejian.tv/添加子站 （3）修改setting.yml中的uc_appid和uc_key',
 	'to_install_cloud' => '到后台开通',
 	'to_index' => '暂不开通',
 
