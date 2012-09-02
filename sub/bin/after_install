@@ -1,0 +1,5 @@
+puts "UPDATE `ktv_sub_#{Setting.ktv_sub}`.`pre_common_setting` SET `svalue` = './data_#{Setting.ktv_sub}/attachment' WHERE `pre_common_setting`.`skey` = 'attachdir';"
+puts "UPDATE `ktv_sub_#{Setting.ktv_sub}`.`pre_common_setting` SET `svalue` = 'data_#{Setting.ktv_sub}/attachment' WHERE `pre_common_setting`.`skey` = 'attachurl';"
+puts "UPDATE `ktv_sub_#{Setting.ktv_sub}`.`pre_common_setting` SET `svalue` = 'data_#{Setting.ktv_sub}/threadcache' WHERE `pre_common_setting`.`skey` = 'cachethreaddir';"
+puts "ALTER TABLE  `pre_forum_forum` CHANGE  `name`  `name` CHAR( 88 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  ''"
+

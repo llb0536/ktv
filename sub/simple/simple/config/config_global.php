@@ -50,7 +50,7 @@ $_config['output']['iecompatible'] = '0';
 
 // --------------------------  CONFIG COOKIE  --------------------------- //
 $_config['cookie']['cookiepre'] = '6tce_';
-$_config['cookie']['cookiedomain'] = 'cnu.kejian.tv';
+$_config['cookie']['cookiedomain'] = PSVR_KTV_SUB.'.kejian.'.( PSVR_IN_DEV ? 'lvh.me' : 'tv');
 $_config['cookie']['cookiepath'] = '/';
 
 // -------------------------  CONFIG SECURITY  -------------------------- //

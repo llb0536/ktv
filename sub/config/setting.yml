@@ -39,6 +39,9 @@ default: &defaults
   user_qingqiu_id: 72
   course_qingqiu_id: 2116
   topic_qingqiu: '领域请求'
+  dz_authkey: '0b7310esiKtBIrpX'
+  dz_cookiepre: '6tce_'
+  dz_cookiepath: '/'
   ktv_courseware_id: '500f9970e13823796a000002'
   ktv_domain: kejian.tv
   ktv_simple_domain: "kejian.tv/simple"
@@ -58,11 +61,7 @@ default: &defaults
   # 每页读取多少条记录？这个影响到打开这个页面的速度，
   # 时间太长会超时。所以控制一下。
   mechanize_per_page: 88
-  dz_authkey: '0b7310esiKtBIrpX'
   special_agent: 'PSVR_SPECIAL_AGENT_3787fdjihf328DFShze2dfskm894ebkjGFDY'
-  ktv_subdomain: 'cnu.kejian.tv'
-  dz_cookiepre: '6tce_'
-  dz_cookiepath: '/'
   proxy:
   # 不使用代理的时候把下面四行注释掉，但是上面这行保留。
      # addr: 192.168.20.6
@@ -96,13 +95,12 @@ production: &production
 sub_cnu: &sub_cnu
   <<: *production
   official_website: 'http://www.cnu.edu.cn/'
+  uc_appid: '5'
   uc_key: 'af64HZPlY/1RdaOe4UftTp3XO+kQwB9f5SBojhc='
   ktv_sub: 'cnu'
   ktv_subname: '首都师范大学'
   ktv_subname_short: '首师大'
   ktv_subdomain: 'cnu.kejian.tv'
-  dz_cookiepre: '6tce_'
-  dz_cookiepath: '/'
   fotos:
     - 阳光明媚的校本部校门
     - 乌云密布的北一区校门
@@ -137,12 +135,12 @@ sub_cnu_dev:
 sub_ibeike: &sub_ibeike
   <<: *production
   official_website: 'http://www.ustb.edu.cn/'
+  uc_appid: '6'
+  uc_key: 'ff41g5Xncbw5CF/5Em5V3sTIAPRwxrW7SgzyPsw='
   ktv_sub: 'ibeike'
   ktv_subname: '北京科技大学'
   ktv_subname_short: '北科大'
   ktv_subdomain: 'ibeike.kejian.tv'
-  dz_cookiepre: 'fes2_'
-  dz_cookiepath: '/'
   fotos:
     - 阳光明媚的北科西校门
     - 沧桑的雪中北科西校门

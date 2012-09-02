@@ -8,9 +8,14 @@ define('UC_DBCHARSET', 'utf8');
 define('UC_DBTABLEPRE', '`ucenter`.uc_');
 define('UC_DBCONNECT', '0');
 switch(PSVR_KTV_SUB){
-  case 'cnu':define('UC_KEY', '96131WFHBWXGjPBw+Dvo5HkNwMSDu5KmcFK6Q/E=');break;
-  case 'ibeike':define('UC_KEY', 'cfc0iLO/l4lZbfTRVyij4LbiOi/Pl55xoYUQBmw=');break;
-  case 'cas':define('UC_KEY', '4a4dXGotWK6W+2LzudsrmPuvKEDzk7cU7iGu9Xg=');break;
+  case 'cnu':
+	define('UC_KEY', '96131WFHBWXGjPBw+Dvo5HkNwMSDu5KmcFK6Q/E=');
+	define('UC_APPID', '4');
+	break;
+  case 'ibeike':
+	define('UC_KEY', 'F0a2ufTaJcAaucv5Hdt9Jah9l4BaKasdx9n2qeJdXaUeP463x2fcdfQaR5f0L339');
+	define('UC_APPID', '10');
+	break;
 }
 
 if(!PSVR_IN_DEV){
@@ -21,5 +26,4 @@ if(!PSVR_IN_DEV){
 
 define('UC_CHARSET', 'utf-8');
 define('UC_IP', '');
-define('UC_APPID', '4');
 define('UC_PPP', '20');
