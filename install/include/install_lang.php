@@ -139,8 +139,8 @@ $lang = array(
 	'admininfo_password_invalid' => '管理员密码为空，请填写',
 	'admininfo_password2_invalid' => '两次密码不一致，请检查',
 
-	'install_dzfull' => '<br><label><input type="radio"'.(getgpc('install_ucenter') != 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /> 全新安装 Kejian.TV (含 UCenter Server)</label>',
-	'install_dzonly' => '<br><label><input type="radio"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : '').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /> 仅安装 Kejian.TV (手工指定已经安装的 UCenter Server)</label>',
+	'install_dzfull' => '<br><label><input type="radio"'.(getgpc('install_ucenter') != 'no' ? '' : '').' name="install_ucenter" value="yes" onclick="if(this.checked)$(\'form_items_2\').style.display=\'none\';" /> 全新安装 Kejian.TV (含 UCenter Server)</label>',
+	'install_dzonly' => '<br><label><input type="radio"'.(getgpc('install_ucenter') == 'no' ? ' checked="checked"' : ' checked="checked').' name="install_ucenter" value="no" onclick="if(this.checked)$(\'form_items_2\').style.display=\'\';" /> 仅安装 Kejian.TV (手工指定已经安装的 UCenter Server)</label>',
 
 	'username' => '管理员账号',
 	'email' => '管理员 Email',
@@ -168,7 +168,7 @@ $lang = array(
 
 	'install_in_processed' => '正在安装...',
 	'install_succeed' => '安装成功，点击进入',
-	'install_cloud' => '安装成功，欢迎开通Kejian.TV云平台<br>Kejian.TV云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Kejian.TV云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、社区QQ群、漫游应用、SOSO表情服务。Kejian.TV云平台将陆续提供更多优质服务项目。<br>开通Kejian.TV平台之前，请确保您的网站（Kejian.TV、UCHome或SupeSite）已经升级到Kejian.TVX2.5。',
+	'install_cloud' => '安装成功，欢迎开通Kejian.TV云平台<br>Kejian.TV云平台致力于帮助站长提高网站流量，增强网站运营能力，增加网站收入。<br>Kejian.TV云平台目前免费提供了QQ互联、腾讯分析、纵横搜索、社区QQ群、漫游应用、SOSO表情服务。Kejian.TV云平台将陆续提供更多优质服务项目。<br>开通Kejian.TV平台之前，请确保您的网站（Kejian.TV、UCHome或SupeSite）已经升级到Kejian.TV。',
 	'to_install_cloud' => '到后台开通',
 	'to_index' => '暂不开通',
 
@@ -246,7 +246,7 @@ $lang = array(
 
 	'license' => '<div class="license"><h1>中文版授权协议 适用于中文用户</h1>
 
-<p>版权所有 (c) 2001-2012，北京课件交流系统科技有限责任公司保留所有权利。</p>
+<p>版权所有 (c) 2001-2099，北京课件交流系统科技有限责任公司保留所有权利。</p>
 
 <p>感谢您选择课件交流系统产品。希望我们的努力能为您提供一个高效快速、强大的站点解决方案，和强大的社区论坛解决方案。课件交流系统公司网址为 http://www.kejian.tv，产品官方讨论区网址为 http://www.kejian.tv。</p>
 

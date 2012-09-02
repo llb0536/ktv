@@ -7,6 +7,51 @@
  *      $Id: index.php 22348 2011-05-04 01:16:02Z monkey $
  */
 
+// psvr add
+function psvr_in_dev(){
+  $server_name = @$_SERVER['SERVER_NAME'];
+  if($server_name){
+    $tmparr=(explode('.',$server_name));
+    define('PSVR_KTV_SUB',$tmparr[0]);
+    return substr($server_name,-6) === 'lvh.me';
+  }else{
+    return false;
+  }
+}
+if(psvr_in_dev()){
+  define('PSVR_IN_DEV',true);
+}else{
+  define('PSVR_IN_DEV',false);
+}
+function puts($str){
+  $psvr_fp = fopen("/tmp/psvr_simple_log.log", "a");
+  fprintf($psvr_fp,"> ");
+  if (true===$str) {
+    fputs($psvr_fp,"true");
+  }else if(false===$str){
+    fputs($psvr_fp,"false");
+  }else{
+    fputs($psvr_fp,var_export($str, TRUE));
+    fprintf($psvr_fp,"\n\n");
+  }
+  fclose($psvr_fp);
+}
+
+function startsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    return (substr($haystack, 0, $length) === $needle);
+}
+
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+}
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 @set_time_limit(1000);
 @set_magic_quotes_runtime(0);
@@ -51,7 +96,7 @@ $uchidden = getgpc('uchidden');
 if(in_array($method, array('app_reg', 'ext_info'))) {
 	$PHP_SELF = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
 	$bbserver = 'http://'.preg_replace("/\:\d+/", '', $_SERVER['HTTP_HOST']).($_SERVER['SERVER_PORT'] && $_SERVER['SERVER_PORT'] != 80 ? ':'.$_SERVER['SERVER_PORT'] : '');
-	$default_ucapi = $bbserver.'/ucenter';
+	$default_ucapi = 'http://uc.kejian.tv';
 	$default_appurl = $bbserver.substr($PHP_SELF, 0, strrpos($PHP_SELF, '/') - 8);
 }
 
@@ -216,13 +261,13 @@ if($method == 'show_license') {
 		$_config = $default_config;
 	}
 
-	$dbhost = $_config['db'][1]['dbhost'];
-	$dbname = $_config['db'][1]['dbname'];
-	$dbpw = $_config['db'][1]['dbpw'];
-	$dbuser = $_config['db'][1]['dbuser'];
-	$tablepre = $_config['db'][1]['tablepre'];
+	$dbhost = 'localhost';#$_config['db'][1]['dbhost'];
+	$dbname = 'ktv_sub_'.PSVR_KTV_SUB;#$_config['db'][1]['dbname'];
+	$dbpw = 'jknlff8-pro-17m7755';#$_config['db'][1]['dbpw'];
+	$dbuser = 'root';#$_config['db'][1]['dbuser'];
+	$tablepre = 'pre_';#$_config['db'][1]['tablepre'];
 
-	$adminemail = 'admin@admin.com';
+	$adminemail = 'pmq2001@gmail.com';
 
 	$error_msg = array();
 	if(isset($form_db_init_items) && is_array($form_db_init_items)) {
@@ -360,13 +405,13 @@ if($method == 'show_license') {
 		$timestamp = time();
 		$backupdir = substr(md5($_SERVER['SERVER_ADDR'].$_SERVER['HTTP_USER_AGENT'].substr($timestamp, 0, 4)), 8, 6);
 		$ret = false;
-		if(is_dir(ROOT_PATH.'data/backup')) {
-			$ret = @rename(ROOT_PATH.'data/backup', ROOT_PATH.'data/backup_'.$backupdir);
+		if(is_dir(ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup')) {
+			$ret = @rename(ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup', ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup_'.$backupdir);
 		}
 		if(!$ret) {
-			@mkdir(ROOT_PATH.'data/backup_'.$backupdir, 0777);
+			@mkdir(ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup_'.$backupdir, 0777);
 		}
-		if(is_dir(ROOT_PATH.'data/backup_'.$backupdir)) {
+		if(is_dir(ROOT_PATH.'data_'.PSVR_KTV_SUB.'/backup_'.$backupdir)) {
 			$db->query("REPLACE INTO {$tablepre}common_setting (skey, svalue) VALUES ('backupdir', '$backupdir')");
 		}
 		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz';
@@ -414,11 +459,11 @@ if($method == 'show_license') {
 		loginit($yearmonth.'errorlog');
 		loginit($yearmonth.'banlog');
 
-		dir_clear(ROOT_PATH.'./data/template');
-		dir_clear(ROOT_PATH.'./data/cache');
-		dir_clear(ROOT_PATH.'./data/threadcache');
-		dir_clear(ROOT_PATH.'./uc_client/data');
-		dir_clear(ROOT_PATH.'./uc_client/data/cache');
+		dir_clear(ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/template');
+		dir_clear(ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/cache');
+		dir_clear(ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/threadcache');
+		dir_clear(ROOT_PATH.'./uc_client/data_'.PSVR_KTV_SUB);
+		dir_clear(ROOT_PATH.'./uc_client/data_'.PSVR_KTV_SUB.'/cache');
 
 		foreach($serialize_sql_setting as $k => $v) {
 			$v = addslashes(serialize($v));
@@ -431,6 +476,11 @@ if($method == 'show_license') {
 		$ctype = 1;
 		$data = addslashes(serialize($userstats));
 		$db->query("REPLACE INTO {$tablepre}common_syscache (cname, ctype, dateline, data) VALUES ('userstats', '$ctype', '".time()."', '$data')");
+
+    $db->query("UPDATE `{$tablepre}common_setting` SET `svalue` = './data_".PSVR_KTV_SUB."/attachment' WHERE `pre_common_setting`.`skey` = 'attachdir';");
+    $db->query("UPDATE `{$tablepre}common_setting` SET `svalue` = 'data_".PSVR_KTV_SUB."/attachment' WHERE `pre_common_setting`.`skey` = 'attachurl';");
+    $db->query("UPDATE `{$tablepre}common_setting` SET `svalue` = 'data_".PSVR_KTV_SUB."/threadcache' WHERE `pre_common_setting`.`skey` = 'cachethreaddir';");
+    $db->query("ALTER TABLE  `{$tablepre}forum_forum` CHANGE  `name`  `name` CHAR( 88 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT  ''");
 
 		touch($lockfile);
 		VIEW_OFF && show_msg('initdbresult_succ');

@@ -1,5 +1,0 @@
-extra steps:
-UPDATE `ktv_sub_cnu`.`pre_common_setting` SET `svalue` = './data_cnu/attachment' WHERE `pre_common_setting`.`skey` = 'attachdir';
-UPDATE `ktv_sub_cnu`.`pre_common_setting` SET `svalue` = 'data_cnu/attachment' WHERE `pre_common_setting`.`skey` = 'attachurl';
-UPDATE `ktv_sub_cnu`.`pre_common_setting` SET `svalue` = 'data_cnu/threadcache' WHERE `pre_common_setting`.`skey` = 'cachethreaddir';
-

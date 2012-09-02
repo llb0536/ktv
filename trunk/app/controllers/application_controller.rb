@@ -83,7 +83,7 @@ class ApplicationController < ActionController::Base
     end
   end
   before_filter :decide_modern_required
-  def decide_sub_main
+  def decide_modern_required
     if (@is_ie and !@is_ie10)
       modern_required
       return false
@@ -238,7 +238,7 @@ class ApplicationController < ActionController::Base
       end
     elsif format == "js"
       if current_user.blank?
-        render :html => "<script>window.location.href = '#{login_url}';</script>"
+        render :js => "window.location.href = '#{login_url}';"
         return false
       end
     end

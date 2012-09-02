@@ -339,14 +339,13 @@ function show_form(&$form_items, $error_msg) {
 	show_setting('hidden', 'step', $step);
 	show_setting('hidden', 'install_ucenter', getgpc('install_ucenter'));
 	if($step == 2) {
-		show_tips('install_dzfull');
 		show_tips('install_dzonly');
 	}
 	$is_first = 1;
 	if(!empty($uchidden)) {
 		$uc_info_transfer = unserialize(urldecode($uchidden));
 	}
-	echo '<div id="form_items_'.$step.'" '.($step == 2 && !getgpc('install_ucenter') ? 'style="display:none"' : '').'><br />';
+	echo '<div id="form_items_'.$step.'" '.($step == 2 && !getgpc('install_ucenter') ? 'style=""' : '').'><br />';
 	foreach($form_items as $key => $items) {
 		global ${'error_'.$key};
 		if($is_first == 0) {
@@ -533,7 +532,7 @@ EOT;
 function show_footer($quit = true) {
 
 	echo <<<EOT
-		<div class="footer">&copy;2001 - 2012 <a href="http://www.kejian.tv/">Kejian.TV</a> Inc.</div>
+		<div class="footer">&copy;2001 - 2099 <a href="http://www.kejian.tv/">Kejian.TV</a> Inc.</div>
 	</div>
 </div>
 </body>
@@ -961,7 +960,7 @@ function check_env() {
 		'ftemplates' => './forumdata/templates',
 		'threadcache' => './forumdata/threadcaches',
 		'log' => './forumdata/logs',
-		'uccache' => './uc_client/data/cache'
+		'uccache' => './uc_client/data_'.PSVR_KTV_SUB.'/cache'
 	);
 
 	foreach($checkdirarray as $key => $dir) {
@@ -1223,70 +1222,7 @@ function uc_write_config($config, $file, $password) {
 }
 
 function install_uc_server() {
-	global $db, $dbhost, $dbuser, $dbpw, $dbname, $tablepre, $username, $password, $email;
-
-	$ucsql = file_get_contents(ROOT_PATH.'./uc_server/install/uc.sql');
-	$uctablepre = $tablepre.'ucenter_';
-	$ucsql = str_replace(' uc_', ' '.$uctablepre, $ucsql);
-	$ucsql && runucquery($ucsql, $uctablepre);
-	$appauthkey = _generate_key();
-	$ucdbhost = $dbhost;
-	$ucdbname = $dbname;
-	$ucdbuser = $dbuser;
-	$ucdbpw = $dbpw;
-	$ucdbcharset = DBCHARSET;
-
-	$uccharset = CHARSET;
-
-	$pathinfo = pathinfo($_SERVER['PHP_SELF']);
-	$pathinfo['dirname'] = substr($pathinfo['dirname'], 0, -8);
-	$appurl = 'http://'.preg_replace("/\:\d+/", '', $_SERVER['HTTP_HOST']).($_SERVER['SERVER_PORT'] && $_SERVER['SERVER_PORT'] != 80 ? ':'.$_SERVER['SERVER_PORT'] : '').$pathinfo['dirname'];
-	$ucapi = $appurl.'/uc_server';
-	$ucip = '';
-	$app_tagtemplates = 'apptagtemplates[template]='.urlencode('<a href="{url}" target="_blank">{subject}</a>').'&'.
-		'apptagtemplates[fields][subject]='.urlencode($lang['tagtemplates_subject']).'&'.
-		'apptagtemplates[fields][uid]='.urlencode($lang['tagtemplates_uid']).'&'.
-		'apptagtemplates[fields][username]='.urlencode($lang['tagtemplates_username']).'&'.
-		'apptagtemplates[fields][dateline]='.urlencode($lang['tagtemplates_dateline']).'&'.
-		'apptagtemplates[fields][url]='.urlencode($lang['tagtemplates_url']);
-
-	$db->query("INSERT INTO {$uctablepre}applications SET name='Kejian.TV Board', url='$appurl', ip='$ucip', authkey='$appauthkey', synlogin='1', charset='$charset', dbcharset='$dbcharset', type='DISCUZX', recvnote='1', tagtemplates='$apptagtemplates'", $link);
-	$appid = $db->insert_id($link);
-	$db->query("ALTER TABLE {$uctablepre}notelist ADD COLUMN app$appid tinyint NOT NULL");
-
-	$config = array($appauthkey,$appid,$ucdbhost,$ucdbname,$ucdbuser,$ucdbpw,$ucdbcharset,$uctablepre,$uccharset,$ucapi,$ucip);
-	save_uc_config($config, ROOT_PATH.'./config/config_ucenter.php');
-
-	$salt = substr(uniqid(rand()), -6);
-	$passwordmd5 = md5(md5($password).$salt);
-	$db->query("INSERT INTO {$uctablepre}members SET $sqladd username='$username', password='$passwordmd5', email='$email', regip='hidden', regdate='".time()."', salt='$salt'");
-	$uid = $db->insert_id();
-	$db->query("INSERT INTO {$uctablepre}memberfields SET uid='$uid'");
-
-	$db->query("INSERT INTO {$uctablepre}admins SET
-		uid='$uid',
-		username='$username',
-		allowadminsetting='1',
-		allowadminapp='1',
-		allowadminuser='1',
-		allowadminbadword='1',
-		allowadmincredits='1',
-		allowadmintag='1',
-		allowadminpm='1',
-		allowadmindomain='1',
-		allowadmindb='1',
-		allowadminnote='1',
-		allowadmincache='1',
-		allowadminlog='1'");
-
-	uc_write_config($config, ROOT_PATH.'./uc_server/data/config.inc.php', $password);
-
-	@unlink(ROOT_PATH.'./uc_server/install/index.php');
-	@unlink(ROOT_PATH.'./uc_server/data/cache/settings.php');
-	@touch(ROOT_PATH.'./uc_server/data/upgrade.lock');
-	@touch(ROOT_PATH.'./uc_server/data/install.lock');
-	dir_clear(ROOT_PATH.'./uc_server/data/cache');
-	dir_clear(ROOT_PATH.'./uc_server/data/view');
+  exit('no install_uc_server');
 }
 
 function install_data($username, $uid) {
@@ -1296,7 +1232,7 @@ function install_data($username, $uid) {
 	$_G = array('db'=>$db,'tablepre'=>$tablepre, 'uid'=>$uid, 'username'=>$username);
 
 	$arr = array(
-			0=> array('importfile'=>'./data/group_index.xml','primaltplname'=>'group/index', 'targettplname'=>'group/index'),
+			0=> array('importfile'=>'./data_'.PSVR_KTV_SUB.'/group_index.xml','primaltplname'=>'group/index', 'targettplname'=>'group/index'),
 	);
 	foreach ($arr as $v) {
 		import_diy($v['importfile'], $v['primaltplname'], $v['targettplname']);
@@ -1384,7 +1320,7 @@ function save_diy_data($primaltplname, $targettplname, $data, $database = false)
 		$content = preg_replace("/(\<link id\=\"style_css\" rel\=\"stylesheet\" type\=\"text\/css\" href\=\").+?(\"\>)/is", "\\1".$data['style']."\\2", $content);
 	}
 
-	$tplfile =ROOT_PATH.'./data/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
+	$tplfile =ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/diy/'.$tpldirectory.'/'.$targettplname.'.htm';
 
 	$tplpath = dirname($tplfile);
 	if (!is_dir($tplpath)) dmkdir($tplpath);

@@ -1,15 +1,7 @@
 #!/bin/bash -x
 
 kill -USR2 `cat tmp_staging/pids/unicorn.pid`
-kill -QUIT `cat tmp_staging/pids/resque-pool.pid`
 
-while [ -f tmp_staging/pids/resque-pool.pid ]
-do
-  echo Waiting for resque-pool to QUIT ...
-  sleep 1
-done
-
-bundle exec resque-pool --daemon --environment staging --pidfile tmp_staging/pids/resque-pool.pid
 bin/staging/check
 sleep 20
 bin/staging/check

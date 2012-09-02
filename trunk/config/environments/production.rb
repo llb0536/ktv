@@ -58,6 +58,7 @@ Quora::Application.configure do
     ktv/__kug.css
     ktv/__ytb.css
     ktv/__yk.css
+    kinetic-v4.0.0.js
 
     cpanel.js
     cpanel.css

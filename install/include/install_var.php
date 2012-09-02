@@ -11,15 +11,15 @@ if(!defined('IN_COMSENZ')) {
 	exit('Access Denied');
 }
 
-define('SOFT_NAME', 'Kejian.TV');
+define('SOFT_NAME', PSVR_KTV_SUB.'目录检索');
 
 define('INSTALL_LANG', 'SC_UTF8');
 
-define('CONFIG', './config/config_global.php');
-define('CONFIG_UC', './config/config_ucenter.php');
+define('CONFIG', './config/'.PSVR_KTV_SUB.'_config_global.php');
+define('CONFIG_UC', './config/'.PSVR_KTV_SUB.'_config_ucenter.php');
 
 $sqlfile = ROOT_PATH.((file_exists(ROOT_PATH.'./install/data/install_dev.sql')) ? './install/data/install_dev.sql' : './install/data/install.sql');
-$lockfile = ROOT_PATH.'./data/install.lock';
+$lockfile = ROOT_PATH.'./data_'.PSVR_KTV_SUB.'/install.lock';
 
 @include ROOT_PATH.CONFIG;
 
@@ -78,33 +78,24 @@ $env_items = array
 
 $dirfile_items = array
 (
+  'config' => array('type' => 'file', 'path' => CONFIG),
+  'ucenter config' => array('type' => 'file', 'path' => CONFIG_UC),
+  'config_dir' => array('type' => 'dir', 'path' => './config'),
+	'data' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB),
+	'cache' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/cache'),
+	'avatar' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/avatar'),
+	'plugindata' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/plugindata'),
+	'plugindownload' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/download'),
+	'addonmd5' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/addonmd5'),
+	'ftemplates' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/template'),
+	'threadcache' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/threadcache'),
+	'attach' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/attachment'),
+	'attach_album' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/attachment/album'),
+	'attach_forum' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/attachment/forum'),
+	'attach_group' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/attachment/group'),
 
-	'config' => array('type' => 'file', 'path' => CONFIG),
-	'ucenter config' => array('type' => 'file', 'path' => CONFIG_UC),
-	'config_dir' => array('type' => 'dir', 'path' => './config'),
-	'data' => array('type' => 'dir', 'path' => './data'),
-	'cache' => array('type' => 'dir', 'path' => './data/cache'),
-	'avatar' => array('type' => 'dir', 'path' => './data/avatar'),
-	'plugindata' => array('type' => 'dir', 'path' => './data/plugindata'),
-	'plugindownload' => array('type' => 'dir', 'path' => './data/download'),
-	'addonmd5' => array('type' => 'dir', 'path' => './data/addonmd5'),
-	'ftemplates' => array('type' => 'dir', 'path' => './data/template'),
-	'threadcache' => array('type' => 'dir', 'path' => './data/threadcache'),
-	'attach' => array('type' => 'dir', 'path' => './data/attachment'),
-	'attach_album' => array('type' => 'dir', 'path' => './data/attachment/album'),
-	'attach_forum' => array('type' => 'dir', 'path' => './data/attachment/forum'),
-	'attach_group' => array('type' => 'dir', 'path' => './data/attachment/group'),
-
-	'logs' => array('type' => 'dir', 'path' => './data/log'),
-	'uccache' => array('type' => 'dir', 'path' => './uc_client/data/cache'),
-
-	'uc_server_data' => array('type' => 'dir', 'path' => './uc_server/data/'),
-	'uc_server_data_cache' => array('type' => 'dir', 'path' => './uc_server/data/cache'),
-	'uc_server_data_avatar' => array('type' => 'dir', 'path' => './uc_server/data/avatar'),
-	'uc_server_data_backup' => array('type' => 'dir', 'path' => './uc_server/data/backup'),
-	'uc_server_data_logs' => array('type' => 'dir', 'path' => './uc_server/data/logs'),
-	'uc_server_data_tmp' => array('type' => 'dir', 'path' => './uc_server/data/tmp'),
-	'uc_server_data_view' => array('type' => 'dir', 'path' => './uc_server/data/view'),
+	'logs' => array('type' => 'dir', 'path' => './data_'.PSVR_KTV_SUB.'/log'),
+	'uccache' => array('type' => 'dir', 'path' => './uc_client/data_'.PSVR_KTV_SUB.'/cache'),
 );
 
 

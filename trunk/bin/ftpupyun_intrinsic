@@ -1,5 +1,5 @@
 #!/usr/local/bin/ruby
-
+require 'fileutils'
 #FTP 接口地址：v1.ftp.upyun.com (电信)
 #　　　　　　　v2.ftp.upyun.com (联通网通)
 #　　　　　　　v3.ftp.upyun.com (移动铁通)
@@ -8,14 +8,18 @@
 
 USERNAME="pmq20/ktv-intrinsic"
 PASSWORD="jknlff8-pro-17m7755"
-SERVER="v3.ftp.upyun.com"
+SERVER="v0.ftp.upyun.com"
 
 ORIGIN="/home/main/ktv/_assets/*"
 TARGET="/"
+FileUtils.rm_rf "/home/main/ktv/_assets_uploading"
 filepaths=[]
 `diff --old-line-format=$'%l\\n' --new-line-format='' --changed-group-format='%<' --unchanged-group-format='' /home/main/ktv/_assets/manifest.yml /home/main/ktv/_assets_old/manifest.yml `.split("\n").each do |line|
-  filepaths << "/home/main/ktv/_assets/#{line.split(': ')[-1]}"
+  file = "#{line.split(': ')[-1]}"
+  path = File.dirname(file) 
+  FileUtils.mkdir_p("/home/main/ktv/_assets_uploading/#{path}")
+  FileUtils.cp("/home/main/ktv/_assets/#{file}","/home/main/ktv/_assets_uploading/#{file}")
 end
 
-puts cmd="ncftpput -m -S .tmp -u \"#{USERNAME}\" -p \"#{PASSWORD}\" -R #{SERVER} #{TARGET} #{filepaths.join(' ')}"
+puts cmd="ncftpput -m -S .tmp -u \"#{USERNAME}\" -p \"#{PASSWORD}\" -R #{SERVER} #{TARGET} /home/main/ktv/_assets_uploading/*"
 puts `#{cmd}`

@@ -3,12 +3,8 @@ window.KTV.Utilities = {}
 window.KTV.data = {}
 KTV.search_cache = {}
 
-if window.psvr_subject is 'math'
-  KTV.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math_hover.png") %>'
-  KTV.logo_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-math.png") %>'
-else
-  KTV.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-all_hover.png") %>'
-  KTV.logo_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("logotext-all.png") %>'
+KTV.logo_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("logotext_hover.png") %>'
+KTV.logo_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("logotext.png") %>'
   
 KTV.browsetext_css_src1 = '<%= Ktv.config.asset_host %><%= asset_path("browsetext_hover.png") %>'
 KTV.browsetext_css_src0 = '<%= Ktv.config.asset_host %><%= asset_path("browsetext.png") %>'
