@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/local/bin/ruby
 
 #FTP 接口地址：v1.ftp.upyun.com (电信)
 #　　　　　　　v2.ftp.upyun.com (联通网通)
@@ -12,5 +12,10 @@ SERVER="v3.ftp.upyun.com"
 
 ORIGIN="/home/main/ktv/_assets/*"
 TARGET="/"
+filepaths=[]
+`diff --old-line-format=$'%l\\n' --new-line-format='' --changed-group-format='%<' --unchanged-group-format='' /home/main/ktv/_assets/manifest.yml /home/main/ktv/_assets_old/manifest.yml `.split("\n").each do |line|
+  filepaths << "/home/main/ktv/_assets/#{line.split(': ')[-1]}"
+end
 
-ncftpput -m -S .tmp -u "$USERNAME" -p "$PASSWORD" -R $SERVER $TARGET $ORIGIN
+puts cmd="ncftpput -m -S .tmp -u \"#{USERNAME}\" -p \"#{PASSWORD}\" -R #{SERVER} #{TARGET} #{filepaths.join(' ')}"
+puts `#{cmd}`
