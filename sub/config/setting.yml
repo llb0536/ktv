@@ -50,13 +50,13 @@ default: &defaults
   zuozheqingqiu_id: '5010da4ce138231d4300004f'
   google_analytics_key: UA-28971136-1
   # Length of time to wait until a connection is opened in seconds
-  open_timeout: 1
+  open_timeout: 100
   # Connections that have not been used in this many seconds will be reset.
   # Sets the idle timeout to idle_timeout. The default timeout is 5 seconds. If you experience “too many connection resets”, reducing this value may help.
-  idle_timeout: 5
+  idle_timeout: 500
   # Length of time to wait for data from the server
-  read_timeout: 1
-  timeout: 1
+  read_timeout: 100
+  timeout: 100
   user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0"
   # 每页读取多少条记录？这个影响到打开这个页面的速度，
   # 时间太长会超时。所以控制一下。
