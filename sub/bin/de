@@ -1,6 +1,5 @@
 #!/bin/bash -x
 
-export RAILS_ENV=production
 rm -rf /home/main/ktv/_assets_sub_old/
 mv /home/main/ktv/_assets_sub/ /home/main/ktv/_assets_sub_old/
 bundle

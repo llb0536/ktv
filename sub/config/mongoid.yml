@@ -19,3 +19,6 @@ sub_ibeike: &sub_ibeike
 sub_ibeike_dev:
   <<: *sub_ibeike
   
+sub_buaa:
+  <<: *defaults
+  database: ktv_sub_buaa
