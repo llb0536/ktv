@@ -1,5 +1,5 @@
 Quora::Application.configure do
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
   # config.log_tags = [ :subdomain, :uuid ]
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
   # Settings specified here will take precedence over those in config/application.rb

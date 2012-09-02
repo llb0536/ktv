@@ -31,7 +31,8 @@ Quora::Application.configure do
   config.assets.prefix = '/assets'
   # assets-----------
   
-  #config.mongoid.logger = Logger.new(File.join(Rails.root,'log/mongoid.log'),  File::WRONLY | File::APPEND | File::CREAT)
-  # config.active_record.mass_assignment_sanitizer = :strict
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.active_record.mass_assignment_sanitizer = :strict
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.cache_store = :file_store, "#{Rails.root}/tmp_#{Rails.env}/cache/"
 end
