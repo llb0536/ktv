@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	  [Discuz! X] (C)2001-2099 Comsenz Inc.
+ *	  [Kejian.TV] (C)2001-2099 Kejian.TV Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
  *	  $Id: forumdisplay.inc.php 29449 2012-04-12 08:31:54Z chenmengshu $

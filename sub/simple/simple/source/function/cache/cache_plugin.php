@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: cache_plugin.php 25289 2011-11-03 10:06:19Z zhangguosheng $
@@ -22,7 +22,7 @@ function build_cache_plugin() {
 			require_once libfile('function/admincp');
 			$file = DISCUZ_ROOT.'./source/plugin/'.$dir.'/discuz_plugin_'.$dir.($plugin['modules']['extra']['installtype'] ? '_'.$plugin['modules']['extra']['installtype'] : '').'.xml';
 			$importtxt = @implode('', file($file));
-			$pluginarray = getimportdata('Discuz! Plugin', 0, 1);
+			$pluginarray = getimportdata('Kejian.TV Plugin', 0, 1);
 			if($pluginarray) {
 				updatepluginlanguage($pluginarray);
 			}

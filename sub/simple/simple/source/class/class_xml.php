@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: class_xml.php 27449 2012-02-01 05:32:35Z zhangguosheng $
@@ -19,7 +19,7 @@ function xml2array(&$xml, $isnormal = FALSE) {
 }
 
 function array2xml($arr, $htmlon = TRUE, $isnormal = FALSE, $level = 1) {
-	$s = $level == 1 ? "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<root>\r\n" : '';
+	$s = $level == 1 ? "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root>\r\n" : '';
 	$space = str_repeat("\t", $level);
 	foreach($arr as $k => $v) {
 		if(!is_array($v)) {
@@ -49,7 +49,7 @@ class XMLparse {
 
 	function XMLparse($isnormal) {
 		$this->isnormal = $isnormal;
-		$this->parser = xml_parser_create('ISO-8859-1');
+		$this->parser = xml_parser_create('UTF-8');
 		xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
 		xml_set_object($this->parser, $this);
 		xml_set_element_handler($this->parser, 'open','close');

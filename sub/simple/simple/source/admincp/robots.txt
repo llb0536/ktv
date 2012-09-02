@@ -1,5 +1,5 @@
 #
-# robots.txt for Discuz! {ver}
+# robots.txt for Kejian.TV {ver}
 #
 
 User-agent: *

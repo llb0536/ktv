@@ -2,4 +2,3 @@
 
 ps -ef f |grep '[r]ails'
 ps -ef f | grep '[r]esque'
-ps -ef f | grep '[p]hp'

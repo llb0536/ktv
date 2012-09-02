@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_admincp_login.php 27449 2012-02-01 05:32:35Z zhangguosheng $
@@ -30,7 +30,7 @@ $lang = array
 	'security_question_6' => '您最喜欢的餐馆名称',
 	'security_question_7' => '驾驶执照最后四位数字',
 
-	'login_tips' => 'Discuz! 是 <a href="http://www.tencent.com" target="_blank">腾讯</a> 旗下 <a href="http://www.comsenz.com" target="_blank">Comsenz</a> 公司推出的以社区为基础的专业建站平台，帮助网站实现一站式服务。',
+	'login_tips' => 'Kejian.TV 是 <a href="http://www.tencent.com" target="_blank">腾讯</a> 旗下 <a href="http://www.kejian.tv" target="_blank">Kejian.TV</a> 公司推出的以社区为基础的专业建站平台，帮助网站实现一站式服务。',
 	'login_nosecques' => '您还没有使用安全登录，请在个人中心设置您的安全提问后，再访问管理中心。您可以 <a href="forum.php?mod=memcp&action=profile&typeid=1" target="_blank">点击这里</a> 进入安全提问的设置。',
 
 	'login_cplock' => '您的管理面板已经锁定! <br>请在<b> {ltime} </b>秒以后重新访问管理中心',

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_threadtypes.php 29387 2012-04-10 02:21:02Z zhangguosheng $
@@ -1168,7 +1168,7 @@ EOT;
 } elseif($operation == 'import') {
 
 	$sortid = 0;
-	$newthreadtype = getimportdata('Discuz! Threadtypes');
+	$newthreadtype = getimportdata('Kejian.TV Threadtypes');
 
 	if($newthreadtype) {
 		$idcmp = $searcharr = $replacearr = $indexoption = array();
@@ -1333,7 +1333,7 @@ EOT;
 		cpmsg('threadtype_export_error');
 	}
 
-	exportdata('Discuz! Threadtypes', $typevarlist[0]['typeid'], $typevarlist);
+	exportdata('Kejian.TV Threadtypes', $typevarlist[0]['typeid'], $typevarlist);
 }
 
 ?>

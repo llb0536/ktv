@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: adv_custom.php 29605 2012-04-23 02:27:52Z liulanbo $
@@ -16,7 +16,7 @@ class adv_custom {
 	var $version = '1.0';
 	var $name = 'custom_name';
 	var $description = 'custom_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $targets = array('portal', 'home', 'member', 'forum', 'group', 'userapp', 'plugin', 'api');
 	var $imagesizes = array('60x120', '60x250', '60x468', '120x60', '120x240', '120x60', '250x60', '100x100', '468x40', '468x60', '658x60', '728x90', '760x90', '950x90', '950x130');
 	var $customname = '';

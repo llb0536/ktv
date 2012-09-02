@@ -1,7 +1,7 @@
 <?php
 
 /**
- *	  [Discuz!] (C)2001-2099 Comsenz Inc.
+ *	  [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *	  This is NOT a freeware, use is subject to license terms
  *
  *	  $Id: lang_admincp_cloud.php 30537 2012-06-01 07:11:25Z songlixin $
@@ -13,11 +13,11 @@ if(!defined('IN_DISCUZ')) {
 $extend_lang = array
 (
 	'header_cloud' => '云平台',
-	'header_navcloud' => 'Discuz!云平台',
-	'nav_cloud' => 'Discuz!云平台',
+	'header_navcloud' => 'Kejian.TV云平台',
+	'nav_cloud' => 'Kejian.TV云平台',
 
-	'menu_cloud_open' => '开通Discuz!云平台',
-	'menu_cloud_upgrade' => '开通Discuz!云平台',
+	'menu_cloud_open' => '开通Kejian.TV云平台',
+	'menu_cloud_upgrade' => '开通Kejian.TV云平台',
 	'menu_cloud_applist' => '平台首页',
 	'menu_cloud_siteinfo' => '站点信息',
 	'menu_cloud_doctor' => '诊断工具',
@@ -32,25 +32,25 @@ $extend_lang = array
 	'menu_cloud_security' => '防水墙',
 	'menu_cloud_smilies' => 'SOSO表情',
 	'menu_cloud_qqgroup' => '社区QQ群',
-	'menu_cloud_union' => 'Discuz!联盟',
+	'menu_cloud_union' => 'Kejian.TV联盟',
 	'menu_cloud_storage' => '旋风存储',
 	'menu_cloud_mobile' => '手机客户端',
 
 	'close' => '关闭',
 	'continue' => '继续',
 	'message_title' => '提示信息',
-	'jump_to_cloud' => '您即将转向Discuz!云平台（http://cp.discuz.qq.com）完成开通流程',
+	'jump_to_cloud' => '您即将转向Kejian.TV云平台（http://cp.discuz.qq.com）完成开通流程',
 	'cloud_waiting' => '请稍候...',
 
-	'cloud_status_error' => '出了点小错，由于站点ID/通信KEY等关键信息丢失导致Discuz!云平台服务出现异常，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测站点ID和KEY，如有疑问请访问<a href="http://www.discuz.net/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_status_error' => '出了点小错，由于站点ID/通信KEY等关键信息丢失导致Kejian.TV云平台服务出现异常，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测站点ID和KEY，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
 
 	'cloud_timecheck' => '服务器时间检查',
 	'cloud_introduction' => '查看介绍',
 	'cloud_confirm_open' => '确认开通',
 	'cloud_confirm_upgrade' => '确认升级',
 	'cloud_page_loading' => '页面加载中...',
-	'cloud_time_out' => '您无法访问Discuz!云平台，请尝试<a href="javascript:;" onClick="location.reload()">刷新</a>。',
-	'cloud_unknown_dns' => '您的站点目前无法连接Discuz!云平台，请检查您服务器网络设置，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测DNS解析和接口连通性。<a href="http://cp.discuz.qq.com/faq?fId=1305690058&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>，如有疑问请访问<a href="http://www.discuz.net/forum-3926-1.html" target="_blank">官方论坛</a>求助',
+	'cloud_time_out' => '您无法访问Kejian.TV云平台，请尝试<a href="javascript:;" onClick="location.reload()">刷新</a>。',
+	'cloud_unknown_dns' => '您的站点目前无法连接Kejian.TV云平台，请检查您服务器网络设置，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测DNS解析和接口连通性。<a href="http://cp.discuz.qq.com/faq?fId=1305690058&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>求助',
 
 	'cloud_category' => '设置站点分类',
 	'cloud_site_name' => '站点名称',
@@ -58,41 +58,41 @@ $extend_lang = array
 	'cloud_site_category' => '站点分类',
 	'cloud_select' => '请选择',
 	'cloud_agree_protocal' => '我已仔细阅读并同意',
-	'read_protocal' => '《Discuz!云平台服务使用协议》',
+	'read_protocal' => '《Kejian.TV云平台服务使用协议》',
 	'cloud_will_open' => '我要开通',
 	'cloud_will_upgrade' => '我要升级',
-	'cloud_protocal' => 'Discuz!云平台服务协议',
+	'cloud_protocal' => 'Kejian.TV云平台服务协议',
 	'cloud_select_category' => '请选择站点分类',
 	'cloud_select_sub_category' => '请选择二级分类',
 	'cloud_select_return' => '请选择站点分类，返回',
-	'cloud_open_success' => 'Discuz!云平台开通成功 ',
-	'cloud_upgrade_success' => 'Discuz!云平台升级成功 ',
+	'cloud_open_success' => 'Kejian.TV云平台开通成功 ',
+	'cloud_upgrade_success' => 'Kejian.TV云平台升级成功 ',
 	'cloud_network_busy' => '网络繁忙，稍后请重新操作，原因：<br />{errorMessage} (ERRCODE:{errorCode})',
-	'cloud_turnto_applist' => '您的站点已开通Discuz!云平台，现跳转到平台首页',
+	'cloud_turnto_applist' => '您的站点已开通Kejian.TV云平台，现跳转到平台首页',
 	'cloud_site_id' => '站点ID',
 	'cloud_api_ip_btn' => '设置云平台接口IP',
 	'cloud_api_ip' => '云平台接口IP',
 	'cloud_api_ip_comment' => '若站点服务器由于DNS解析问题无法连接到云平台接口，请填写api.discuz.qq.com的IP地址，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测，<a href="http://cp.discuz.qq.com/faq?fId=1304068911&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>',
 	'cloud_manyou_ip' => '漫游接口IP',
-	'cloud_manyou_ip_comment' => '若站点服务器由于DNS解析问题无法连接到漫游接口，请填写api.manyou.com的IP地址，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测，<a href="http://faq.comsenz.com/viewnews-400" target="_blank">查看帮助</a>',
+	'cloud_manyou_ip_comment' => '若站点服务器由于DNS解析问题无法连接到漫游接口，请填写api.manyou.com的IP地址，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测，<a href="http://faq.kejian.tv/viewnews-400" target="_blank">查看帮助</a>',
 	'cloud_connect_api_ip' => 'QQ互联接口IP',
 	'cloud_connect_api_ip_comment' => '若站点服务器由于DNS解析问题无法连接到QQ互联接口，请填写openapi.qzone.qq.com的IP地址，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测，<a href="http://cp.discuz.qq.com/faq?fId=1322796393&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>',
 	'cloud_ipsetting_success' => '云平台接口IP设置成功 ',
-	'cloud_open_first' => '请先开通Discuz!云平台',
+	'cloud_open_first' => '请先开通Kejian.TV云平台',
 	'cloud_sync' => '同步站点信息',
 	'cloud_sync_success' => '站点信息同步成功 ',
-	'cloud_sync_failure' => '站点信息同步失败，原因：<br />{errorMessage} (ERRCODE:{errorCode})<br /><br />如有疑问，请访问<a href="http://www.discuz.net/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_sync_failure' => '站点信息同步失败，原因：<br />{errorMessage} (ERRCODE:{errorCode})<br /><br />如有疑问，请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
 	'cloud_resetkey' => '更换站点KEY',
 	'cloud_reset_success' => '站点KEY更换成功 ',
 
 	'cloud_siteinfo_tips' => '<li>如果站点名称或者站点URL有变动，请点击“同步站点信息”按钮。</li><li>站点KEY是站点与云平台通信的验证密钥，若近期有危险操作泄漏站点KEY等信息，请点击“更换站点KEY”按钮。<span style="color:red;">请谨慎使用此功能。</span></li>',
 
 	'cloud_doctor_normal' => '正常',
-	'cloud_doctor_tips' => '<li>Discuz!云平台诊断工具是帮助您分析站点上的状况，是否能与云平台正常通信等功能。</li><li>站点ID是您的站点在云平台的唯一标识，请勿和其他站点共用一套站点ID和站点通信KEY</li>',
+	'cloud_doctor_tips' => '<li>Kejian.TV云平台诊断工具是帮助您分析站点上的状况，是否能与云平台正常通信等功能。</li><li>站点ID是您的站点在云平台的唯一标识，请勿和其他站点共用一套站点ID和站点通信KEY</li>',
 
-	'cloud_doctor_setidkey' => '修改Discuz!上的站点ID和KEY',
+	'cloud_doctor_setidkey' => '修改Kejian.TV上的站点ID和KEY',
 	'cloud_doctor_connect_fix' => '<a href="./admin.php?action=cloud&operation=doctor&op=fixGuest">点击修复</a>',
-	'cloud_doctor_setidkey_tips' => '<li style="color:red">修改Discuz!上的站点ID和KEY，可能会导致通信错误、签名错误以及其他的故障，请勿在没有官方人员指导的情况下修改。</li><li style="color:red">修改ID、KEY和状态前，请先备份论坛的common_setting表。</li>',
+	'cloud_doctor_setidkey_tips' => '<li style="color:red">修改Kejian.TV上的站点ID和KEY，可能会导致通信错误、签名错误以及其他的故障，请勿在没有官方人员指导的情况下修改。</li><li style="color:red">修改ID、KEY和状态前，请先备份论坛的common_setting表。</li>',
 	'cloud_site_key' => '站点通信KEY',
 	'cloud_site_key_safetips' => '(出于安全考虑，部分隐藏)',
 	'cloud_site_key_comment' => '站点通信KEY请勿对外公布',
@@ -156,8 +156,8 @@ $extend_lang = array
 	'cloud_doctor_connect_app_key' => 'QQ互联appkey',
 	'cloud_doctor_connect_reopen' => '当前站点appid/appkey丢失，请<a href="admin.php?action=cloud&operation=applist">重新开通</a>QQ互联',
 
-	'cloud_application_close' => '您的站点未开启此项云服务，请到Discuz!后台云平台标签下开启',
-	'cloud_application_disable' => '您的站点已被禁止使用此项云服务，如果有疑问请访问<a href="http://www.discuz.net/forum.php?gid=3923" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_application_close' => '您的站点未开启此项云服务，请到Kejian.TV后台云平台标签下开启',
+	'cloud_application_disable' => '您的站点已被禁止使用此项云服务，如果有疑问请访问<a href="http://www.kejian.tv/forum.php?gid=3923" target="_blank">官方论坛</a>寻求帮助',
 
 	'cloud_search_tips' => '<li>开启漫游搜索功能后，用户可以使用基于漫游的搜索功能。</li>',
 
@@ -179,17 +179,17 @@ $extend_lang = array
 	'cloud_storage_tips' => '<li>为网站节省空间带宽，让用户享受超大文件的高速存储，上传下载尽在云端。</li><li>体验高速上传下载，支持单个文件高达2GB的附件上传，附件永久有效，为论坛降低成本。</li>',
 
 	'setting_manyou' => '漫游应用设置',
-	'setting_manyou_tips' => '<li>开启漫游应用功能后，用户可以自由选择各种不同的应用(诸如德克萨斯扑克、弹弹堂、十年一剑......)在站内进行使用。</li><li>漫游应用功能由 <a target="_blank" href="http://www.manyou.com/www/">MYOP开放平台</a> 提供， Manyou Open Platform(Manyou开放平台/MYOP)服务是由 Comsenz 公司为应用开发者提供的开放平台，启用漫游服务前，<a href="http://wiki.developer.manyou.com/wiki/index.php?title=MYOP%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE&printable=yes" target="_blank">请先阅读MYOP网站服务协议</a></li>',
+	'setting_manyou_tips' => '<li>开启漫游应用功能后，用户可以自由选择各种不同的应用(诸如德克萨斯扑克、弹弹堂、十年一剑......)在站内进行使用。</li><li>漫游应用功能由 <a target="_blank" href="http://www.manyou.com/www/">MYOP开放平台</a> 提供， Manyou Open Platform(Manyou开放平台/MYOP)服务是由 Kejian.TV 公司为应用开发者提供的开放平台，启用漫游服务前，<a href="http://wiki.developer.manyou.com/wiki/index.php?title=MYOP%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE&printable=yes" target="_blank">请先阅读MYOP网站服务协议</a></li>',
 	'setting_manyou_base' => '基本设置',
 	'setting_manyou_base_status' => '启用漫游应用',
 	'setting_manyou_base_status_comment' => '选择是否开启漫游应用。如果关闭漫游应用，您的网站用户将不能使用任何基于漫游的应用',
 	'setting_manyou_search_status' => '启用漫游搜索',
-	'setting_manyou_search_status_comment' => '漫游搜索是专为 Discuz! 产品量身定做的高效、全文搜索服务，无须网站的 MySQL 资源',
+	'setting_manyou_search_status_comment' => '漫游搜索是专为 Kejian.TV 产品量身定做的高效、全文搜索服务，无须网站的 MySQL 资源',
 	'setting_manyou_search_invite' => '漫游搜索邀请码',
-	'setting_manyou_search_invite_comment' => '目前处于测试阶段，需要输入邀请码方可开通漫游搜索，<a href="http://www.discuz.net/thread-1669366-1-1.html" target="_blank">点击这里申请邀请码</a>',
+	'setting_manyou_search_invite_comment' => '目前处于测试阶段，需要输入邀请码方可开通漫游搜索，<a href="http://www.kejian.tv/thread-1669366-1-1.html" target="_blank">点击这里申请邀请码</a>',
 	'setting_manyou_base_status_no' => '尚未开启漫游功能，不能进行此管理。',
 	'setting_manyou_base_ip' => '漫游应用的 IP',
-	'setting_manyou_base_ip_comment' => '默认为空。如果您的服务器因 DNS 解析问题无法使用漫游应用服务，请填写漫游应用的 IP 地址。<a href="http://faq.comsenz.com/viewnews-400" target="_blank">查看漫游应用的 IP</a>',
+	'setting_manyou_base_ip_comment' => '默认为空。如果您的服务器因 DNS 解析问题无法使用漫游应用服务，请填写漫游应用的 IP 地址。<a href="http://faq.kejian.tv/viewnews-400" target="_blank">查看漫游应用的 IP</a>',
 	'setting_manyou_base_close_prompt' => '关闭漫游应用的更新提示',
 	'setting_manyou_base_close_prompt_comment' => '您的站点开启了漫游应用多应用服务后，当平台有了新的信息的时候漫游应用会自动提示给管理员。关闭本功能后，您将不再获取更新提示。',
 	'setting_manyou_base_open_app_prompt' => '开启漫游应用公告',
@@ -256,7 +256,7 @@ $extend_lang = array
 	'qqgroup_msg_upload_succeed' => '图片上传成功 ',
 	'qqgroup_msg_upload_failure' => '图片上传失败，请选择长宽为75*75的图片，支持JPG、GIF、PNG格式，文件小于5M，并检查服务器是否开启GD库',
 	'qqgroup_msg_remote_exception' => '抱歉，出了点小错。错误原因：{errmsg} 错误代号：{errno}',
-	'qqgroup_msg_unknown_dns' => '抱歉，出现未知错误，请检查您的服务器与Discuz!云平台连接',
+	'qqgroup_msg_unknown_dns' => '抱歉，出现未知错误，请检查您的服务器与Kejian.TV云平台连接',
 	'qqgroup_msg_remote_error' => '抱歉，服务器出错了。请稍后再试',
 
 	'qqgroup_search_order_views' => '浏览数倒序',

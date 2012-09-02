@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_magic.php 27449 2012-02-01 05:32:35Z zhangguosheng $
@@ -22,7 +22,7 @@ $lang = array
 
 	'CCK_color' => '颜色',
 	'MOK_info' => '获得的钱币数目规则：大于 1 且小于购买价格 150% 的随机数',
-	'CODE_info' => '获得 Discuz! 测试邀请码一个',
+	'CODE_info' => '获得 Kejian.TV 测试邀请码一个',
 	'MVK_target' => '要移动到的版面',
 	'SOFA_message' => '一道闪电划破湛蓝的天空，随着一声巨响，沙发被我抢了！哈哈！',
 );

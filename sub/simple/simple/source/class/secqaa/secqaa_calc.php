@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: secqaa_calc.php 10395 2010-05-11 04:48:31Z monkey $
@@ -16,7 +16,7 @@ class secqaa_calc {
 	var $version = '1.0';
 	var $name = 'calc_name';
 	var $description = 'calc_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $customname = '';
 
 	function make(&$question) {

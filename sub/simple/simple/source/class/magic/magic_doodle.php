@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: magic_doodle.php 23608 2011-07-27 08:10:07Z cnteacher $
@@ -20,7 +20,7 @@ class magic_doodle {
 	var $weight = '20';
 	var $useevent = 0;
 	var $targetgroupperm = false;
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $magic = array();
 	var $parameters = array();
 

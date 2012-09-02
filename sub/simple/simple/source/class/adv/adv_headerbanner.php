@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: adv_headerbanner.php 22514 2011-05-10 11:11:11Z monkey $
@@ -16,7 +16,7 @@ class adv_headerbanner {
 	var $version = '1.0';
 	var $name = 'headerbanner_name';
 	var $description = 'headerbanner_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $targets = array('portal', 'home', 'member', 'forum', 'group', 'userapp', 'plugin', 'custom');
 	var $imagesizes = array('468x40', '468x60', '658x60', '728x90', '760x90', '950x90');
 

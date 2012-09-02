@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_member.php 30409 2012-05-28 02:53:10Z liulanbo $
@@ -213,6 +213,13 @@ function clearcookies() {
 	}
 	$_G['uid'] = $_G['adminid'] = 0;
 	$_G['username'] = $_G['member']['password'] = '';
+	
+	
+	if (PSVR_IN_DEV) {
+	  setcookie ("_ktv_".PSVR_KTV_SUB."_local_session", "", time() - 3600, "/", PSVR_KTV_SUB.".kejian.lvh.me", true);
+	}else{
+	  setcookie ("_ktv_".PSVR_KTV_SUB."_session", "", time() - 3600, "/", PSVR_KTV_SUB.".kejian.tv", true);
+	}
 }
 
 function crime($fun) {

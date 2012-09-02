@@ -1,5 +1,6 @@
 # coding: UTF-8
 class NotesController < ApplicationController
+  before_filter :require_user_js, :only => [:create]
   def create
     @page = params[:note][:page]
     @x = params[:note][:x]

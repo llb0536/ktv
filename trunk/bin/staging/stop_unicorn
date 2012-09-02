@@ -1,11 +1,5 @@
 #!/bin/bash -x
 
 kill -QUIT `cat tmp_staging/pids/unicorn.pid`
-kill -QUIT `cat tmp_staging/pids/resque-pool.pid`
 
-while [ -f tmp_staging/pids/resque-pool.pid ]
-do
-  echo Waiting for resque-pool to QUIT ...
-  sleep 1
-done
 bin/staging/check

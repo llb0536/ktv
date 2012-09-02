@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: dbbak.php 29239 2012-03-30 06:37:30Z chenmengshu $
@@ -357,7 +357,7 @@ if($get['method'] == 'export') {
 			"# Type: $apptype\n".
 			"# Table Prefix: $tablepre\n".
 			"# $dbcharset\n".
-			"# $apptype Home: http://www.comsenz.com\n".
+			"# $apptype Home: http://www.kejian.tv\n".
 			"# Please visit our website for newest infomation about $apptype\n".
 			"# --------------------------------------------------------\n\n\n".
 			$sqldump;

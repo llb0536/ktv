@@ -7,5 +7,5 @@ bundle
 rake db:migrate
 rake assets:precompile:all
 
-# bin/ftpupyun_intrinsic
-# bin/restart_unicorn
+bin/ftpupyun_intrinsic
+bin/restart_unicorn

@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+kill -USR2 `cat tmp/pids/unicorn_$RAILS_ENV.pid`
+
+bin/check
+sleep 20
+bin/check

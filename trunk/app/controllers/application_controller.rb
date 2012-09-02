@@ -82,39 +82,12 @@ class ApplicationController < ActionController::Base
       "application#{@subsite}"
     end
   end
-  before_filter :decide_sub_main
-  def decide_sub_main
-    if '1'==params['force_main']
-      return go_main!
-    elsif '1'==params['force_sub']
-      return go_sub! 
-    elsif @subsite.present?
-      return true
-    else
-      if go_nowhere?
-        return go_sub!
-      else
-        return go_main!
-      end
-    end
-  end
-  def go_nowhere?
-    return (@is_ie and !@is_ie10)
-  end
-  def go_sub!
-    @application_ie_modern_required = false
-    return true
-    # todo
-    redirect_to '/simple'
-    return false
-  end
-  def go_main!
-    if go_nowhere?
+  before_filter :decide_modern_required
+  def decide_modern_required
+    if (@is_ie and !@is_ie10)
       modern_required
       return false
     end
-    @application_ie_modern_required = false
-    return true
   end
   before_filter :check_user_logged_in,:unless=>proc{|controller_instance|devise_controller?}
   def check_user_logged_in
@@ -265,7 +238,7 @@ class ApplicationController < ActionController::Base
       end
     elsif format == "js"
       if current_user.blank?
-        render :html => "<script>window.location.href = '#{login_url}';</script>"
+        render :js => "window.location.href = '#{login_url}';"
         return false
       end
     end
@@ -367,7 +340,6 @@ class ApplicationController < ActionController::Base
   def modern_required
     @seo[:title] = '请使用更高版本的浏览器'
     @application_ie_noheader = true
-    @application_ie_modern_required = true
     render 'modern_required',:layout => 'application_ie'
   end
   def after_sign_in_path_for(resource_or_scope)

@@ -1,5 +1,5 @@
 Quora::Application.configure do
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
   # config.log_tags = [ :subdomain, :uuid ]
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
   # Settings specified here will take precedence over those in config/application.rb
@@ -58,6 +58,7 @@ Quora::Application.configure do
     ktv/__kug.css
     ktv/__ytb.css
     ktv/__yk.css
+    kinetic-v4.0.0.js
 
     cpanel.js
     cpanel.css

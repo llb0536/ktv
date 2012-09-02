@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: admincp_checktools.php 28265 2012-02-27 02:46:37Z monkey $
@@ -249,7 +249,7 @@ if($operation == 'filecheck') {
 } elseif($operation == 'ftpcheck') {
 
 	$alertmsg = '';
-	$testcontent = md5('Discuz!' + $_G['config']['security']['authkey']);
+	$testcontent = md5('Kejian.TV' + $_G['config']['security']['authkey']);
 	$testfile = 'test/discuztest.txt';
 	$attach_dir = $_G['setting']['attachdir'];
 	@mkdir($attach_dir.'test', 0777);
@@ -522,7 +522,7 @@ function checkcachefiles($currentdir) {
 			$cachedata = fread($fp, filesize($file));
 			fclose($fp);
 
-			if(preg_match("/^<\?php\n\/\/Discuz! cache file, DO NOT modify me!\n\/\/Identify: (\w+)\n\n(.+?)\?>$/s", $cachedata, $match)) {
+			if(preg_match("/^<\?php\n\/\/Kejian.TV cache file, DO NOT modify me!\n\/\/Identify: (\w+)\n\n(.+?)\?>$/s", $cachedata, $match)) {
 				$showlist[$file] = $md5 = $match[1];
 				$cachedata = $match[2];
 

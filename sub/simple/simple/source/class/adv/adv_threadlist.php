@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: adv_threadlist.php 29052 2012-03-23 09:07:40Z monkey $
@@ -16,7 +16,7 @@ class adv_threadlist {
 	var $version = '1.0';
 	var $name = 'threadlist_name';
 	var $description = 'threadlist_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $targets = array('forum', 'group');
 	var $imagesizes = array('120x60', '468x40', '468x60');
 

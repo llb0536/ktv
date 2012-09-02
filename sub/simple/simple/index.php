@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: index.php 27617 2012-02-07 08:24:14Z monkey $
@@ -120,7 +120,7 @@ if(!empty($url)) {
 	} elseif(isset($_GET['fromuser']) && $_GET['fromuser']) {
 		$url .= $delimiter.'fromuser='.$_GET['fromuser'];
 	}
-	header("HTTP/1.1 301 Moved Permanently");
+	header("HTTP/1.1 302 Found");
 	header("location: $url");
 } else {
 	require './'.$_ENV['curapp'].'.php';

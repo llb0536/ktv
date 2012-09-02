@@ -1,7 +1,7 @@
 <?php
 
 /**
- *		[Discuz!] (C)2001-2099 Comsenz Inc.
+ *		[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *		This is NOT a freeware, use is subject to license terms
  *
  *		$Id: DiscuzTips.php 29283 2012-03-31 09:35:36Z liudongdong $
@@ -26,6 +26,8 @@ class Cloud_Service_DiscuzTips {
 	}
 
 	public function show() {
+	  //psvr disable
+	  return;
 		global $_G;
 		$clientVersion = '2';
 		$util = Cloud::loadclass('Service_Util');

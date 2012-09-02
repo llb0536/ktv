@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_rss.php 28366 2012-02-28 07:38:23Z chenmengshu $
@@ -78,7 +78,7 @@ echo 	"<?xml version=\"1.0\" encoding=\"".$charset."\"?>\n".
 		"    <description>Latest $num threads of $forumname</description>\n"
 	).
 	"    <copyright>Copyright(C) {$_G[setting][bbname]}</copyright>\n".
-	"    <generator>Discuz! Board by Comsenz Inc.</generator>\n".
+	"    <generator>Kejian.TV Board by Kejian.TV Inc.</generator>\n".
 	"    <lastBuildDate>".gmdate('r', TIMESTAMP)."</lastBuildDate>\n".
 	"    <ttl>$ttl</ttl>\n".
 	"    <image>\n".

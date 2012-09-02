@@ -1,0 +1,4 @@
+#!/bin/bash -x
+
+ps -ef f |grep '$RAILS_ENV'
+ps -ef f | grep '[p]hp-fpm'

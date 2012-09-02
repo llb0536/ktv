@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: adv_interthread.php 24553 2011-09-26 03:21:13Z monkey $
@@ -16,7 +16,7 @@ class adv_interthread {
 	var $version = '1.1';
 	var $name = 'interthread_name';
 	var $description = 'interthread_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $targets = array('forum', 'group');
 	var $imagesizes = array('468x60', '658x60', '728x90', '760x90');
 

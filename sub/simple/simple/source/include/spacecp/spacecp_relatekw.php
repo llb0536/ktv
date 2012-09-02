@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: spacecp_relatekw.php 6752 2010-03-25 08:47:54Z cnteacher $
@@ -18,7 +18,7 @@ $_G['inajax'] = 1;
 
 $subjectenc = rawurlencode(strip_tags($_GET['subjectenc']));
 $messageenc = rawurlencode(strip_tags(preg_replace("/\[.+?\]/U", '', $_GET['messageenc'])));
-$data = @implode('', file("http://keyword.discuz.com/related_kw.html?title=$subjectenc&content=$messageenc&ics={$_G[charset]}&ocs={$_G[charset]}"));
+$data = @implode('', file("http://keyword.kejian.tv/related_kw.html?title=$subjectenc&content=$messageenc&ics={$_G[charset]}&ocs={$_G[charset]}"));
 
 if($data) {
 	$parser = xml_parser_create();

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_cache.php 27617 2012-02-07 08:24:14Z monkey $
@@ -43,7 +43,7 @@ function writetocache($script, $cachedata, $prefix = 'cache_') {
 		dmkdir($dir, 0777);
 	}
 	if($fp = @fopen("$dir$prefix$script.php", 'wb')) {
-		fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($prefix.$script.'.php'.$cachedata.$_G['config']['security']['authkey'])."\n\n$cachedata?>");
+		fwrite($fp, "<?php\n//Kejian.TV cache file, DO NOT modify me!\n//Identify: ".md5($prefix.$script.'.php'.$cachedata.$_G['config']['security']['authkey'])."\n\n$cachedata?>");
 		fclose($fp);
 	} else {
 		exit('Can not write to cache files, please check directory ./data_'.PSVR_KTV_SUB.'/ and ./data_'.PSVR_KTV_SUB.'/sysdata/ .');

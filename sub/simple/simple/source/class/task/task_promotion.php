@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: task_promotion.php 24735 2011-10-10 02:45:39Z svn_project_zhangjie $
@@ -16,7 +16,7 @@ class task_promotion {
 	var $version = '1.0';
 	var $name = 'promotion_name';
 	var $description = 'promotion_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $icon = '';
 	var $period = '';
 	var $periodtype = 0;

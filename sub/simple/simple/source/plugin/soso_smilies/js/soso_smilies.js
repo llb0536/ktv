@@ -1,5 +1,5 @@
 /*
-	[Discuz!] (C)2001-2009 Comsenz Inc.
+	[KTV_SUB] (C)2001-2009 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: soso_smilies.js 28110 2012-02-22 08:54:16Z songlixin $

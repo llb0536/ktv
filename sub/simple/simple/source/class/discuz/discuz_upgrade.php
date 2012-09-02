@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: discuz_upgrade.php 30700 2012-06-12 10:39:22Z svn_project_zhangjie $
@@ -13,13 +13,13 @@ if(!defined('IN_DISCUZ')) {
 
 class discuz_upgrade {
 
-	var $upgradeurl = 'http://upgrade.discuz.com/DiscuzX/';
+	var $upgradeurl = 'http://upgrade.kejian.tv/DiscuzX/';
 	var $locale = 'SC';
 	var $charset = 'GBK';
 
 	public function fetch_updatefile_list($upgradeinfo) {
 
-		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
+		$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
 		$upgradedataflag = true;
 		$upgradedata = @file_get_contents($file);
 		if(!$upgradedata) {
@@ -81,7 +81,7 @@ class discuz_upgrade {
 			}
 		}
 		if($searchlist) {
-			$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
+			$file = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/updatelist.tmp';
 			$upgradedata = file_get_contents($file);
 			$upgradedata = str_replace($searchlist, '', $upgradedata);
 			$fp = fopen($file, 'w');
@@ -157,7 +157,7 @@ class discuz_upgrade {
 	}
 
 	public function download_file($upgradeinfo, $file, $folder = 'upload', $md5 = '', $position = 0, $offset = 0) {
-		$dir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Discuz! X'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/';
+		$dir = DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/update/Kejian.TV'.$upgradeinfo['latestversion'].' Release['.$upgradeinfo['latestrelease'].']/';
 		$this->mkdirs(dirname($dir.$file));
 		$downloadfileflag = true;
 

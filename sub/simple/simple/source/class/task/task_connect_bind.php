@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: task_connect_bind.php 22196 2011-04-26 02:02:52Z monkey $
@@ -16,7 +16,7 @@ class task_connect_bind {
 	var $version = '1.0';
 	var $name = 'connect_bind_name';
 	var $description = 'connect_bind_desc';
-	var $copyright = '<a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a>';
+	var $copyright = '<a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a>';
 	var $icon = '';
 	var $period = '';
 	var $periodtype = 0;

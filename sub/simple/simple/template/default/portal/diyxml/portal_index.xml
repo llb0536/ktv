@@ -1,5 +1,5 @@
 <!--[name]{lang portal_index}[/name]-->
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item id="spacecss"><![CDATA[#portal_block_6 .dxb_bc a {color:#369 !important;}#portal_block_7 .dxb_bc {font-size:14px !important;}#portal_block_15 .dxb_bc {font-size:14px !important;}#portal_block_17 .dxb_bc {font-size:14px !important;}#portal_block_18 .dxb_bc {font-size:14px !important;}#portal_block_19 .dxb_bc {font-size:14px !important;}#portal_block_29 {border:#ccc 1px solid !important;}#portal_block_29 .dxb_bc {margin:5px 5px 5px 15px !important;}#portal_block_30 {border:#ccc 1px solid !important;}#portal_block_30 .dxb_bc {margin:10px !important;}#portal_block_14 .dxb_bc a {font-size:14px !important;}#portal_block_35 .dxb_bc a {color:#369 !important;}#portal_block_36 {border:#cccccc 1px solid !important;}#portal_block_36 .dxb_bc {margin:5px !important;}#portal_block_37 .dxb_bc {font-size:14px !important;}#portal_block_38 .dxb_bc {font-size:14px !important;}#portal_block_47 .dxb_bc a {color:#369 !important;}#portal_block_50 .dxb_bc a {color:#369 !important;}#portal_block_51 {border:#cccccc 1px solid !important;}#portal_block_51 .dxb_bc {margin:0px 10px 10px !important;}#portal_block_54 .dxb_bc {font-size:14px !important;}#portal_block_53 .dxb_bc {font-size:14px !important;}#frame9PwHq3 {background-color:#f5f5f5 !important;margin-bottom:0px !important;border-top:#cccccc 1px solid !important;}#frame1B1XxT {margin:10px !important;border:#cccccc 1px solid !important;}]]></item>
 	<item id="layoutdata">
@@ -1934,8 +1934,8 @@
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl1 cl">
-<li><a href="http://www.discuz.net/">这里是文字广告链接</a></li>
-<li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li>
+<li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li>
+<li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -1949,8 +1949,8 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl1 cl\">
-<li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li>
-<li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li>
+<li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li>
+<li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -3113,8 +3113,8 @@
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl2 cl">
-<li><a href="http://www.discuz.net/">这里是文字广告链接</a></li>
-<li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li>
+<li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li>
+<li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -3128,8 +3128,8 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl2 cl\">
-<li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li>
-<li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li>
+<li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li>
+<li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -3149,7 +3149,7 @@
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
 				<item id="summary"><![CDATA[<ul class="xl xl2 cl">
-<li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li><li><a href="http://www.discuz.net/">这里是文字广告链接</a></li>
+<li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li><li><a href="http://www.kejian.tv/">这里是文字广告链接</a></li>
 </ul>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
@@ -3163,7 +3163,7 @@
 				<item id="script"><![CDATA[blank]]></item>
 				<item id="param">
 					<item id="content"><![CDATA[<ul class=\"xl xl2 cl\">
-<li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li><li><a href=\"http://www.discuz.net/\">这里是文字广告链接</a></li>
+<li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li><li><a href=\"http://www.kejian.tv/\">这里是文字广告链接</a></li>
 </ul>]]></item>
 					<item id="items"><![CDATA[10]]></item>
 				</item>
@@ -3182,7 +3182,7 @@
 				<item id="name"><![CDATA[]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl"><li><a target="_blank" href="http://www.discuz.net">官方论坛</a></li><li><a target="_blank" href="http://www.comsenz.com">Comsenz</a></li><li><a target="_blank" href="http://www.manyou.com/">漫游平台</a></li><li><a target="_blank" href="http://www.yeswan.com">Yeswan</a></li><li><a target="_blank" href="http://www.5d6d.com/">我的领地</a></li><li><a target="_blank" href="http://www.phpchina.com">PHPchina</a></li></ul></div>]]></item>
+				<item id="summary"><![CDATA[<div class="bn lk"><ul class="x cl"><li><a target="_blank" href="http://www.kejian.tv">官方论坛</a></li><li><a target="_blank" href="http://www.kejian.tv">Kejian.TV</a></li><li><a target="_blank" href="http://www.manyou.com/">漫游平台</a></li><li><a target="_blank" href="http://www.yeswan.com">Yeswan</a></li><li><a target="_blank" href="http://www.5d6d.com/">我的领地</a></li><li><a target="_blank" href="http://www.phpchina.com">PHPchina</a></li></ul></div>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: lang_template.php 29150 2012-03-27 09:52:24Z zhaobing $
@@ -130,7 +130,7 @@ $lang = array (
   'preview_lighttext' => '浅色文字',
   'preview_link' => '链接文字',
   'preview_midtext' => '中等文本',
-  'preview_msg' => '<a href="javascript:;" class="xi2">Crossday Discuz! Board</a> 社区系统(简称 <stong class="xw1 xi1">Discuz!</stong>)是一个采用 PHP 和 MySQL 等其他多种数据库构建的高效建站解决方案。',
+  'preview_msg' => '<a href="javascript:;" class="xi2">Crossday Kejian.TV Board</a> 社区系统(简称 <stong class="xw1 xi1">Kejian.TV</stong>)是一个采用 PHP 和 MySQL 等其他多种数据库构建的高效建站解决方案。',
   'preview_smalltext' => 'SMALL FONT',
   'preview_text' => '普通文本',
   'preview_threadtext' => '主题列表字体',

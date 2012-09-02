@@ -12,5 +12,5 @@ done
 
 bundle exec resque-pool --daemon --environment production --pidfile tmp/pids/resque-pool.pid
 bin/check
-sleep 20
+sleep 30
 bin/check

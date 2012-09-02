@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: home_rss.php 25756 2011-11-22 02:47:45Z zhangguosheng $
@@ -45,7 +45,7 @@ echo 	"<?xml version=\"1.0\" encoding=\"".$charset."\"?>\n".
 	"    <link>{$space[space_url]}</link>\n".
 	"    <description>{$_G[setting][bbname]}</description>\n".
 	"    <copyright>Copyright(C) {$_G[setting][bbname]}</copyright>\n".
-	"    <generator>Discuz! Board by Comsenz Inc.</generator>\n".
+	"    <generator>Kejian.TV Board by Kejian.TV Inc.</generator>\n".
 	"    <lastBuildDate>".gmdate('r', TIMESTAMP)."</lastBuildDate>\n".
 	"    <image>\n".
 	"      <url>{$_G[siteurl]}static/image/common/logo_88_31.gif</url>\n".

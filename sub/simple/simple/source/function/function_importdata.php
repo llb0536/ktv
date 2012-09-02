@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_importdata.php 29236 2012-03-30 05:34:47Z chenmengshu $
@@ -12,7 +12,7 @@ if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 }
 
 function import_smilies() {
-	$smileyarray = getimportdata('Discuz! Smilies');
+	$smileyarray = getimportdata('Kejian.TV Smilies');
 
 	$renamed = 0;
 	if(C::t('forum_imagetype')->count_by_name('smiley', $smileyarray['name'])) {
@@ -39,7 +39,7 @@ function import_smilies() {
 function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecache = 1, $validate = 1) {
 	global $_G, $importtxt, $stylearray;
 	if(!isset($dir)) {
-		$stylearrays = array(getimportdata('Discuz! Style'));
+		$stylearrays = array(getimportdata('Kejian.TV Style'));
 	} else {
 		require_once libfile('function/cloudaddons');
 		if(!$restoreid) {
@@ -61,7 +61,7 @@ function import_styles($ignoreversion = 1, $dir = '', $restoreid = 0, $updatecac
 			if(substr($searchentry, 0, 13) == 'discuz_style_' && fileext($searchentry) == 'xml') {
 				$importfile = $templatedir.'/'.$searchentry;
 				$importtxt = implode('', file($importfile));
-				$stylearrays[] = getimportdata('Discuz! Style');
+				$stylearrays[] = getimportdata('Kejian.TV Style');
 			}
 		}
 	}
@@ -148,7 +148,7 @@ function import_block($xmlurl, $clientid, $xmlkey = '', $signtype = '', $ignorev
 	} else {
 		$importtxt = @implode('', file($xmlurl));
 	}
-	$blockarrays = getimportdata('Discuz! Block', 0);
+	$blockarrays = getimportdata('Kejian.TV Block', 0);
 	if(empty($blockarrays['name']) || empty($blockarrays['fields']) || empty($blockarrays['getsetting'])) {
 		cpmsg(cplang('import_data_typeinvalid').cplang($importtxt), '', 'error');
 	}

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz! X] (C)2001-2099 Comsenz Inc.
+ *      [Kejian.TV] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: soso.class.php 29265 2012-03-31 06:03:26Z yexinhao $

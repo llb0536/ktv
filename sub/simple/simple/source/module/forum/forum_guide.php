@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: forum_guide.php 29108 2012-03-27 02:46:40Z chenmengshu $
@@ -35,7 +35,7 @@ if($_GET['rss'] == 1) {
 		"    <link>{$_G[siteurl]}forum.php?mod=guide&amp;view=$view</link>\n".
 		"    <description>".$lang['guide_'.$view]."</description>\n".
 		"    <copyright>Copyright(C) {$_G[setting][bbname]}</copyright>\n".
-		"    <generator>Discuz! Board by Comsenz Inc.</generator>\n".
+		"    <generator>Kejian.TV Board by Kejian.TV Inc.</generator>\n".
 		"    <lastBuildDate>".gmdate('r', TIMESTAMP)."</lastBuildDate>\n".
 		"    <ttl>$ttl</ttl>\n".
 		"    <image>\n".

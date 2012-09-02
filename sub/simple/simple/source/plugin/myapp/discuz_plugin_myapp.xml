@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Title"><![CDATA[Kejian.TV Plugin]]></item>
 	<item id="Version"><![CDATA[X2.5]]></item>
 	<item id="Data">
 		<item id="plugin">
@@ -11,7 +11,7 @@
 			<item id="description"><![CDATA[显示楼主最近安装过的应用。]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[myapp/]]></item>
-			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
+			<item id="copyright"><![CDATA[Kejian.TV Inc.]]></item>
 			<item id="version"><![CDATA[1.0]]></item>
 			<item id="__modules">
 				<item id="0">

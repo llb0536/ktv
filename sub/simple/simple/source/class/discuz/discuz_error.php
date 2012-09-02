@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: discuz_error.php 29236 2012-03-30 05:34:47Z chenmengshu $
@@ -245,7 +245,7 @@ class discuz_error
 </head>
 <body>
 <div id="container">
-<h1>Discuz! $title Error</h1>
+<h1>Kejian.TV $title Error</h1>
 <div class='info'>$errormsg</div>
 
 
@@ -270,7 +270,7 @@ EOT;
 
 		$helplink = '';
 		if($type == 'db') {
-			$helplink = "http://faq.comsenz.com/?type=mysql&dberrno=".rawurlencode(DB::errno())."&dberror=".rawurlencode(str_replace(DB::object()->tablepre, '', DB::error()));
+			$helplink = "http://faq.kejian.tv/?type=mysql&dberrno=".rawurlencode(DB::errno())."&dberror=".rawurlencode(str_replace(DB::object()->tablepre, '', DB::error()));
 			$helplink = "<a href=\"$helplink\" target=\"_blank\"><span class=\"red\">Need Help?</span></a>";
 		}
 
@@ -319,7 +319,7 @@ EOT;
 <body>
 <table cellpadding="1" cellspacing="1" id="container">
 <tr>
-	<td id="bodytitle" width="100%">Discuz! $title Error </td>
+	<td id="bodytitle" width="100%">Kejian.TV $title Error </td>
 </tr>
 EOT;
 

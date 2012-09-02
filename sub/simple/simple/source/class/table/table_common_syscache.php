@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: table_common_syscache.php 27449 2012-02-01 05:32:35Z zhangguosheng $
@@ -65,7 +65,7 @@ class table_common_syscache extends discuz_table
 			if($this->_isfilecache) {
 				$cachedata = '$data[\''.$syscache['cname'].'\'] = '.var_export($data[$syscache['cname']], true).";\n\n";
 				if(($fp = @fopen(DISCUZ_ROOT.'./data_'.PSVR_KTV_SUB.'/cache/cache_'.$syscache['cname'].'.php', 'wb'))) {
-					fwrite($fp, "<?php\n//Discuz! cache file, DO NOT modify me!\n//Identify: ".md5($syscache['cname'].$cachedata.getglobal('config/security/authkey'))."\n\n$cachedata?>");
+					fwrite($fp, "<?php\n//Kejian.TV cache file, DO NOT modify me!\n//Identify: ".md5($syscache['cname'].$cachedata.getglobal('config/security/authkey'))."\n\n$cachedata?>");
 					fclose($fp);
 				}
 			}

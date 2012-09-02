@@ -1,5 +1,5 @@
 /*
-	[Discuz!] (C)2001-2099 Comsenz Inc.
+	[KTV_SUB] (C)2001-2099 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: common_diy.js 24718 2011-10-09 09:40:35Z zhangguosheng $
@@ -493,7 +493,7 @@ var Util = {
 		},
 		getPositionStr : function (){
 			this.initPosition();
-			var start = '<?xml version="1.0" encoding="ISO-8859-1"?><root>';
+			var start = '<?xml version="1.0" encoding="UTF-8"?><root>';
 			var end ="</root>";
 			var str = "";
 			for (var i in this.data) {

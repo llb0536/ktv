@@ -1,7 +1,7 @@
 <?php
 
 /*
-	[Discuz!] (C)2001-2007 Comsenz Inc.
+	[KTV_SUB] (C)2001-2007 Kejian.TV Inc.
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: admincp_recyclebinpost.php 28728 2012-03-09 03:15:48Z songlixin $

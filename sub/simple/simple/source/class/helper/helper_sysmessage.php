@@ -1,7 +1,7 @@
 <?php
 
 /**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      [KTV_SUB] (C)2001-2099 Kejian.TV Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: helper_sysmessage.php 27823 2012-02-15 06:40:26Z zhangguosheng $
@@ -27,10 +27,10 @@ class helper_sysmessage {
 <meta http-equiv="Content-Type" content="text/html; charset=$charset" />
 <title>$title</title>
 <meta name="keywords" content="" />
-<meta name="description" content="System Message - Discuz! Board" />
-<meta name="generator" content="Discuz! " />
-<meta name="author" content="Discuz! Team and Comsenz UI Team" />
-<meta name="copyright" content="2001-2012 Comsenz Inc." />
+<meta name="description" content="System Message - Kejian.TV Board" />
+<meta name="generator" content="Kejian.TV " />
+<meta name="author" content="Kejian.TV Team and Kejian.TV UI Team" />
+<meta name="copyright" content="2001-2012 Kejian.TV Inc." />
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 </head>
