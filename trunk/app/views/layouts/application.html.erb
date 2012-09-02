@@ -95,7 +95,6 @@
 </head>
 
 <body <%if @is_ie8 or @is_ie7 or @is_ie6 %>onload="window.psvr_ie_readyfix()"<%end%> id="psvr_subject_all" style="<%= 'background-position: 0 112px;' if @we_are_inside_qa and !@we_are_no_zm_header %><%=yield :body_style%>" data-subdomain="<%= request.subdomain %>" class="<%= @we_are_inside_qa ? 'we_are_inside_qa' : '' %>">
-<%# render 'header0' %>
 <div class="__sdk">
   <header style="background-image:url(<%= asset_path('dark.png') %>)">
     <div class="wrapper">
@@ -307,7 +306,6 @@
       $('#core_addcw_wrap').click(function(){return KTV.addCW()});
       $('#login').click(function(){return KTV.login()});
       $("abbr.timeago").timeago();
-      KTV.headnav_css();
     });
   </script>
   <%= javascript_include_tag "application" %>

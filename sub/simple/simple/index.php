@@ -120,7 +120,7 @@ if(!empty($url)) {
 	} elseif(isset($_GET['fromuser']) && $_GET['fromuser']) {
 		$url .= $delimiter.'fromuser='.$_GET['fromuser'];
 	}
-	header("HTTP/1.1 301 Moved Permanently");
+	header("HTTP/1.1 302 Found");
 	header("location: $url");
 } else {
 	require './'.$_ENV['curapp'].'.php';

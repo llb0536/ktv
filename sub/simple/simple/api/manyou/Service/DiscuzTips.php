@@ -26,6 +26,8 @@ class Cloud_Service_DiscuzTips {
 	}
 
 	public function show() {
+	  //psvr disable
+	  return;
 		global $_G;
 		$clientVersion = '2';
 		$util = Cloud::loadclass('Service_Util');

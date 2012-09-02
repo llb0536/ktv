@@ -213,6 +213,13 @@ function clearcookies() {
 	}
 	$_G['uid'] = $_G['adminid'] = 0;
 	$_G['username'] = $_G['member']['password'] = '';
+	
+	
+	if (PSVR_IN_DEV) {
+	  setcookie ("_ktv_".PSVR_KTV_SUB."_local_session", "", time() - 3600, "/", PSVR_KTV_SUB.".kejian.lvh.me", true);
+	}else{
+	  setcookie ("_ktv_".PSVR_KTV_SUB."_session", "", time() - 3600, "/", PSVR_KTV_SUB.".kejian.tv", true);
+	}
 }
 
 function crime($fun) {

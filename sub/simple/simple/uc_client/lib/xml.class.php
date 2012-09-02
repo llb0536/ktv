@@ -15,7 +15,7 @@ function xml_unserialize(&$xml, $isnormal = FALSE) {
 }
 
 function xml_serialize($arr, $htmlon = FALSE, $isnormal = FALSE, $level = 1) {
-	$s = $level == 1 ? "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\r\n<root>\r\n" : '';
+	$s = $level == 1 ? "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root>\r\n" : '';
 	$space = str_repeat("\t", $level);
 	foreach($arr as $k => $v) {
 		if(!is_array($v)) {
@@ -45,7 +45,7 @@ class XML {
 
 	function XML($isnormal) {
 		$this->isnormal = $isnormal;
-		$this->parser = xml_parser_create('ISO-8859-1');
+		$this->parser = xml_parser_create('UTF-8');
 		xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, false);
 		xml_set_object($this->parser, $this);
 		xml_set_element_handler($this->parser, 'open','close');
