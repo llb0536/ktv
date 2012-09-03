@@ -847,7 +847,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 	/*
 		Name:			mod_thread_attr
 		Level:			Function
-		Explain:		课件中类似“游客，如果您要查看本帖隐藏内容请”等地方的样式
+		Explain:		课件中类似“游客，如果您要查看本课件隐藏内容请”等地方的样式
 		Last Modify:	Pony 11060209
 	*/
 	.locked { overflow: hidden; margin: 10px 0; padding: 8px 8px 8px 24px; border: 1px dashed #FF9A9A; background: {WRAPBG} url({IMGDIR}/locked.gif) no-repeat 6px 50%; font-size: 12px; zoom: 1; }

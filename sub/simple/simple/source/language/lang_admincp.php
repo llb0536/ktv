@@ -1672,7 +1672,7 @@ $lang = array
 	'setting_permissions_karmaratelimit' => '评分时间限制(小时)',
 	'setting_permissions_karmaratelimit_comment' => '课件发表后超过此时间限制其他用户将不能对此帖评分，版主和管理员不受此限制，0 为不限制',
 	'setting_permissions_editby' => '编辑课件附加编辑记录',
-	'setting_permissions_editby_comment' => '在 60 秒后编辑课件添加“本帖由 xxx 于 xxxx-xx-xx 编辑”字样。管理员编辑不受此限制',
+	'setting_permissions_editby_comment' => '在 60 秒后编辑课件添加“本课件由 xxx 于 xxxx-xx-xx 编辑”字样。管理员编辑不受此限制',
 	'setting_permissions_post_append' => '启用课件补充功能',
 	'setting_permissions_post_append_comment' => '启用后，当用户无法编辑自己的课件时，可以补充内容',
 
