@@ -24,7 +24,7 @@ class appmodel {
 	}
 
 	function get_apps($col = '*', $where = '') {
-		$arr = $this->db->fetch_all("SELECT $col FROM ".UC_DBTABLEPRE."applications".($where ? ' WHERE '.$where : ''), 'appid');
+		$arr = $this->db->fetch_all("SELECT $col FROM ".UC_DBTABLEPRE."applications".($where ? ' WHERE '.$where : '').' ORDER BY appid', 'appid');
 		foreach($arr as $k => $v) {
 			isset($v['extra']) && !empty($v['extra']) && $v['extra'] = unserialize($v['extra']);
 			if($tmp = $this->base->authcode($v['authkey'], 'DECODE', UC_MYKEY)) {

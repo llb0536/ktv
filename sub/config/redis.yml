@@ -57,3 +57,14 @@ sub_ibeike: &sub_ibeike
   port_courses: 6381
 sub_ibeike_dev:
   <<: *sub_ibeike
+
+sub_buaa:
+  <<: *defaults
+  port: 6382
+  port_search: 6382
+  port_resque: 6382
+  port_users: 6382
+  port_topics: 6382
+  port_asks: 6382
+  port_experts: 6382
+  port_courses: 6382

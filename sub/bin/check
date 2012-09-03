@@ -1,4 +1,5 @@
-#!/bin/bash -x
+#!/usr/local/bin/ruby
 
-ps -ef f |grep '$RAILS_ENV'
-ps -ef f | grep '[p]hp-fpm'
+sub = ENV['RAILS_ENV'].split('_')[-1]
+puts `ps -ef f |grep '[#{sub[0]}]#{sub[1..-1]}'`
+puts `ps -ef f | grep '[p]hp-fpm'`

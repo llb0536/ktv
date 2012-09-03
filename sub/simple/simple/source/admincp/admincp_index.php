@@ -10,13 +10,14 @@
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
 	exit('Access Denied');
 }
-
+/*
 if(@file_exists(DISCUZ_ROOT.'./install/index.php') && !DISCUZ_DEBUG) {
 	@unlink(DISCUZ_ROOT.'./install/index.php');
 	if(@file_exists(DISCUZ_ROOT.'./install/index.php')) {
 		dexit('Please delete install/index.php via FTP!');
 	}
 }
+ */
 
 @include_once DISCUZ_ROOT.'./source/discuz_version.php';
 require_once libfile('function/attachment');

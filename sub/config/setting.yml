@@ -50,13 +50,13 @@ default: &defaults
   zuozheqingqiu_id: '5010da4ce138231d4300004f'
   google_analytics_key: UA-28971136-1
   # Length of time to wait until a connection is opened in seconds
-  open_timeout: 1
+  open_timeout: 100
   # Connections that have not been used in this many seconds will be reset.
   # Sets the idle timeout to idle_timeout. The default timeout is 5 seconds. If you experience “too many connection resets”, reducing this value may help.
-  idle_timeout: 5
+  idle_timeout: 500
   # Length of time to wait for data from the server
-  read_timeout: 1
-  timeout: 1
+  read_timeout: 100
+  timeout: 100
   user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0"
   # 每页读取多少条记录？这个影响到打开这个页面的速度，
   # 时间太长会超时。所以控制一下。
@@ -114,11 +114,11 @@ sub_cnu_dev:
 sub_ibeike: &sub_ibeike
   <<: *defaults
   official_website: 'http://www.ustb.edu.cn/'
-  uc_appid: '6'
-  uc_key: 'ff41g5Xncbw5CF/5Em5V3sTIAPRwxrW7SgzyPsw='
+  uc_appid: '11'
+  uc_key: '0f4fmuR685V9dnh1d3p/STOCrZ0mElnwrb9S0Q4='
   ktv_sub: 'ibeike'
   ktv_subname: '北京科技大学'
-  ktv_subname_short: '北科大'
+  ktv_subname_short: '北科'
   ktv_subdomain: 'ibeike.kejian.tv'
   fotos:
     - 阳光明媚的北科西校门
@@ -140,10 +140,32 @@ sub_ibeike: &sub_ibeike
     - 2013
     - 1
     - 21
-    
 sub_ibeike_dev:
   <<: *sub_ibeike
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
   ktv_subdomain: 'ibeike.kejian.lvh.me'
   
+sub_buaa:
+  <<: *defaults
+  official_website: 'http://www.buaa.edu.cn/'
+  uc_appid: '13'
+  uc_key: 'b3c1fXMaji2BCqTHS9v8FC37cLyRnCJyl4pg6wI='
+  ktv_sub: 'buaa'
+  ktv_subname: '北京航空航天大学'
+  ktv_subname_short: '北航'
+  ktv_subdomain: 'buaa.kejian.tv'
+  fotos:
+    - 图书馆与众志成城石头
+  school_new:
+    - 2012
+    - 9
+    - 10
+  school_exam:
+    - 2013
+    - 1
+    - 7
+  school_over:
+    - 2013
+    - 1
+    - 21

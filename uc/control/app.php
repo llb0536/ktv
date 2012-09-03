@@ -47,7 +47,7 @@ class appcontrol extends base {
 			@ob_start();
 			$return  = '';
 
-			$app = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."applications WHERE url='$appurl' AND type='$apptype'");
+			$app = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."applications WHERE url='$appurl' AND type='$apptype' ORDER BY appid");
 
 			if(empty($app)) {
 				$authkey = $this->_generate_key();
@@ -75,7 +75,7 @@ class appcontrol extends base {
 				$_ENV['cache']->updatedata('apps');
 
 				$this->load('note');
-				$notedata = $this->db->fetch_all("SELECT appid, type, name, url, ip, charset, synlogin, extra FROM ".UC_DBTABLEPRE."applications");
+				$notedata = $this->db->fetch_all("SELECT appid, type, name, url, ip, charset, synlogin, extra FROM ".UC_DBTABLEPRE."applications ORDER BY appid");
 				$notedata = $this->_format_notedata($notedata);
 				$notedata['UC_API'] = UC_API;
 				$_ENV['note']->add('updateapps', '', $this->serialize($notedata, 1));
@@ -92,7 +92,7 @@ class appcontrol extends base {
 	}
 
 	function onucinfo() {
-		$arrapptypes = $this->db->fetch_all("SELECT DISTINCT type FROM ".UC_DBTABLEPRE."applications");
+		$arrapptypes = $this->db->fetch_all("SELECT DISTINCT type FROM ".UC_DBTABLEPRE."applications ORDER BY appid");
 		$apptypes = $tab = '';
 		foreach($arrapptypes as $apptype) {
 			$apptypes .= $tab.$apptype['type'];

@@ -42,3 +42,13 @@ sub_ibeike: &sub_ibeike
   socket: /tmp/mysql.sock
 sub_ibeike_dev:
   <<: *sub_ibeike
+
+sub_buaa:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: ktv_sub_buaa
+  pool: 5
+  username: root
+  password: "jknlff8-pro-17m7755"
+  socket: /tmp/mysql.sock
