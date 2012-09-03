@@ -1,3 +1,4 @@
 class PreHomeSpecialuser < ActiveRecord::Base
+  include ActiveBaseModel
   self.table_name =  'pre_home_specialuser'
 end
