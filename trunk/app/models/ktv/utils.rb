@@ -1,6 +1,13 @@
 # -*- encoding : utf-8 -*-
 module Ktv
   class Utils
+    def self.find_in_batch(klass,field,arr)
+      {}.tap do |h|
+        klass.where(field=>arr).each do |inst|
+          h[inst.send(field)]=inst
+        end
+      end
+    end
     # To execute the block code in a exception-free manner
     # all exceptions are sent to the logger on the error level for inspection.
     # returns nil on error
