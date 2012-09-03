@@ -256,6 +256,7 @@ GEM
       json
       rack
     orm_adapter (0.0.7)
+    php_serialize (1.2)
     polyglot (0.3.3)
     progressbar (0.11.0)
     proxies (0.2.1)
@@ -455,6 +456,7 @@ DEPENDENCIES
   omniauth-twitter
   omniauth-weibo-oauth2
   omnicontacts
+  php_serialize
   progressbar
   pry
   quiet_assets (>= 1.0.1)
