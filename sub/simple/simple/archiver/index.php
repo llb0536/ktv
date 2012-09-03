@@ -10,7 +10,7 @@
 define('IN_ARCHIVER', 1);
 
 chdir('../');
-
+$_GET['psvr_force']=true;
 $querystring = $_SERVER['QUERY_STRING'];
 
 if(!empty($_GET['action'])) {
