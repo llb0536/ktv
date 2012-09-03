@@ -19,7 +19,7 @@ module Ktv
     end
     def self.testbuaa!
       buaa = Ktv::Spider.new
-      buaa = start_mode(:buaa,'','')
+      buaa.start_mode(:buaa,'','')
       buaa.buaa_touch_course_departments
 
     end
@@ -46,9 +46,14 @@ module Ktv
     end
     
    def buaa_touch_course_departments
-      for i in 0..42 do
-        @page = @agent.get("#{base_url}#{i}")
-        
+      for i in 1..42 do # => actual [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 42] is not empty
+        @page = @agent.get("#{@base_url}#{i}")  
+        parser=@page.parser
+        college_name = psvr_clean(parser.css('.gray').first.text())
+        puts college_name
+        # xmldoc = Nokogiri::XML("#{@base_url}#{i}")
+        # college_name = xmldoc.xpath('//DataSource')
+        # puts college_name
       end
    end
     # for ustb-ibeike
