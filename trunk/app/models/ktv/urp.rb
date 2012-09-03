@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+require 'open-uri'
 module Ktv
   class Spider
     extend Ktv::Helpers::Config
@@ -20,8 +21,8 @@ module Ktv
     def self.testbuaa!
       buaa = Ktv::Spider.new
       buaa.start_mode(:buaa,'','')
-      buaa.buaa_touch_course_departments
-
+      buaa.touch_course_departments_buaa
+      Course.all.each{|x| x.update_attribute(:years,[20122])}
     end
 
     def start_mode(mode,username,password)
@@ -45,16 +46,27 @@ module Ktv
       str.split(" ").join('').strip
     end
     
-   def buaa_touch_course_departments
-      for i in 1..42 do # => actual [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 42] is not empty
-        @page = @agent.get("#{@base_url}#{i}")  
-        parser=@page.parser
-        college_name = psvr_clean(parser.css('.gray').first.text())
-        puts college_name
-        # xmldoc = Nokogiri::XML("#{@base_url}#{i}")
-        # college_name = xmldoc.xpath('//DataSource')
-        # puts college_name
-      end
+   def touch_course_departments_buaa
+        for i in 1..42 do  
+          data = open("#{@base_url}#{1.to_s}").read
+          # actual [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 42] is not empty
+          xmldoc = Nokogiri::XML(data)
+          c_type = '学院课程'
+          d_name = xmldoc.xpath('//DataSource//CourseBrief//fOrganizationName').text()
+          department = Department.find_or_create_by(name:d_name)
+          xmldoc.xpath('//DataSource//CourseList').each_with_index do |cl,index|
+            c_name = xmldoc.xpath("//DataSource//CourseList[#{index}]//fCourseName").text()
+            c_num = xmldoc.xpath("//DataSource//CourseList[#{index}]//fCourseNo").text()
+            if !c_name.blank?
+                course = Course.find_or_create_by(number:c_num)
+                course.ctype = c_type
+                course.name = c_name
+                course.department = department.name
+                course.save(:validate=>false)
+                puts course.number + ':' + course.name + ':' +  course.ctype
+            end
+          end
+       end
    end
     # for ustb-ibeike
    def touch_courses_departments_ustb_college
