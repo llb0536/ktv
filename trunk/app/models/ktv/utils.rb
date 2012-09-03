@@ -3,8 +3,14 @@ module Ktv
   class Utils
     def self.find_in_batch(klass,field,arr)
       {}.tap do |h|
-        klass.where(field=>arr).each do |inst|
-          h[inst.send(field)]=inst
+        if klass.ancestors.include?(ActiveRecord::Base)
+          klass.where(field=>arr).each do |inst|
+            h[inst.send(field)]=inst
+          end
+        else
+          klass.where(field.in=>arr).each do |inst|
+            h[inst.send(field)]=inst
+          end
         end
       end
     end

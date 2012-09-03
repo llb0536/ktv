@@ -58,7 +58,7 @@ sub_ibeike: &sub_ibeike
 sub_ibeike_dev:
   <<: *sub_ibeike
 
-sub_buaa:
+sub_buaa: &sub_buaa
   <<: *defaults
   port: 6382
   port_search: 6382
@@ -68,3 +68,5 @@ sub_buaa:
   port_asks: 6382
   port_experts: 6382
   port_courses: 6382
+sub_buaa_dev:
+  <<: *sub_buaa

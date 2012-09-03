@@ -35,7 +35,7 @@ $modcachelist = array(
 );
 
 $mod = !in_array(C::app()->var['mod'], $modarray) ? 'index' : C::app()->var['mod'];
-if('index'===$mod){
+if('index'===$mod and !(@$_GET['psvr_force'])){
   header('Location: /');
   exit(0);
 }

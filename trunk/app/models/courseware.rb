@@ -73,6 +73,8 @@ class Courseware
     self.topic_inst.redis_search_index_create
   end
   field :tid
+  field :legacy_ibeike
+  field :legacy_cnu
 
   field :md5
   field :status
