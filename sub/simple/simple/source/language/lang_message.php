@@ -113,7 +113,7 @@ $lang = array (
   'post_thread_closed' => '抱歉，本课件已关闭，不再接受新内容',
   'reply_quotepost_error' => '禁止引用自己和课件帖之外的课件',
   'post_flood_ctrl' => '抱歉，您两次发表间隔少于 {floodctrl} 秒，请稍候再发表',
-  'post_flood_ctrl_posts_per_hour' => '抱歉，您所在的用户组每小时限制发课件评论 {posts_per_hour} 个，请稍候再发表',
+  'post_flood_ctrl_posts_per_hour' => '抱歉，您所在的用户组每小时限制发表课件评论 {posts_per_hour} 个，请稍候再发表',
   'trade_please_name' => '抱歉，商品名称不能为空',
   'trade_price_between' => '抱歉，商品人民币价格必须在 {mintradeprice} 元至 {maxtradeprice} 元之间',
   'trade_credit_between' => '抱歉，商品积分价格必须在 {mintradeprice} 至 {maxtradeprice} 之间',
@@ -141,7 +141,7 @@ $lang = array (
   'post_newthread_succeed' => '非常感谢，您的课件已发布，现在将转入课件页，请稍候……<br /><a id="forward_a" href="forum.php?mod=forumdisplay&fid={fid}">[ 点击这里转入课件列表 ]</a>{coverimg}',
   'submitcheck_error' => '抱歉，您的提交有误',
   'post_forum_newthread_nopermission' => '抱歉，本课程只有特定用户组可以上传新课件',
-  'thread_flood_ctrl_threads_per_hour' => '抱歉，您所在的用户组每小时限制发课件 {threads_per_hour} 个，请稍候再发表',
+  'thread_flood_ctrl_threads_per_hour' => '抱歉，您所在的用户组每小时限制上传课件 {threads_per_hour} 个，请稍候再发表',
   'search_forum_invalid' => '抱歉，您尚未指定搜索课件交流系统的范围',
   'search_invalid' => '抱歉，您尚未指定要搜索的关键字或用户名',
   'search_redirect' => '搜索成功，现在将转入结果页面',
@@ -1037,7 +1037,7 @@ $lang = array (
 
   'not_in_mobile' => '您访问的页面无手机页面，是否进一步访问电脑版？',
 
-  'magics_operation_nopermission' => '抱歉，此道具只能操作自己发课件或评论',
+  'magics_operation_nopermission' => '抱歉，此道具只能操作自己上传课件或评论',
 
   'magics_attachsize_message' => '已增加 {num}M 额外附件容量',
 
