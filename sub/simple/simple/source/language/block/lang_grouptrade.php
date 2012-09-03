@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'grouptrade_fids' => '指定群组',
-	'grouptrade_fids_comment' => '设置允许参与新帖调用的群组，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'grouptrade_fids_comment' => '设置允许参与新课件调用的群组，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'grouptrade_gtids' => '群组分类',
 	'grouptrade_gtids_comment' => '设置群组所在分类，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'grouptrade_uids' => '用户UID',

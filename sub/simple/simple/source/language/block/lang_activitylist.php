@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'activitylist_fids' => '所在课程',
-	'activitylist_fids_comment' => '设置允许参与新帖调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'activitylist_fids_comment' => '设置允许参与新课件调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'activitylist_uids' => '发起者UID',
 	'activitylist_uids_comment' => '设置活动发起者UID，多个UID请用半角逗号“,”隔开。',
 	'activitylist_startrow' => '起始数据行数',

@@ -80,7 +80,7 @@ $lang = array(
 	'blockclass_thread_script_threadhot' => '热门帖',
 	'blockclass_thread_script_threadstick' => '置顶帖',
 	'blockclass_thread_script_threadspecial' => '特殊课件帖',
-	'blockclass_thread_script_threadnew' => '最新帖',
+	'blockclass_thread_script_threadnew' => '最新课件',
 	'blockclass_thread_script_threadspecified' => '指定课件',
 	'blockclass_thread_script_thread' => '高级自定义',
 
@@ -91,7 +91,7 @@ $lang = array(
 	'blockclass_forum_field_icon' => '课程图标',
 	'blockclass_forum_field_posts' => '课程课件数',
 	'blockclass_forum_field_threads' => '课程话题数',
-	'blockclass_forum_field_todayposts' => '课程今日新帖数',
+	'blockclass_forum_field_todayposts' => '课程今日新课件数',
 	'blockclass_forum_script_forum' => '课件交流系统课程',
 
 	'blockclass_sort_sort' => '分类信息',

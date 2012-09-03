@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'threadlist_fids' => '所在课程',
-	'threadlist_fids_comment' => '设置允许参与新帖调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'threadlist_fids_comment' => '设置允许参与新课件调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'threadlist_uids' => '楼主UID',
 	'threadlist_uids_comment' => '设置要楼主UID，多个UID请用半角逗号“,”隔开。',
 	'threadlist_startrow' => '起始数据行数',

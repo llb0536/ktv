@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'sortlist_fids' => '所在课程',
-	'sortlist_fids_comment' => '设置允许参与新帖调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'sortlist_fids_comment' => '设置允许参与新课件调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'sortlist_startrow' => '起始数据行数',
 	'sortlist_startrow_comment' => '如需设定起始的数据行数，请输入具体数值，0 为从第一行开始，以此类推',
 	'sortlist_showitems' => '显示数据条数',
