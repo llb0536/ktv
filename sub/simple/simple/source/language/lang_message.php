@@ -140,7 +140,7 @@ $lang = array (
   'post_newthread_mod_succeed' => '新课件需要审核，您的课件通过审核后才能显示{coverimg}',
   'post_newthread_succeed' => '非常感谢，您的课件已发布，现在将转入课件页，请稍候……<br /><a id="forward_a" href="forum.php?mod=forumdisplay&fid={fid}">[ 点击这里转入课件列表 ]</a>{coverimg}',
   'submitcheck_error' => '抱歉，您的提交有误',
-  'post_forum_newthread_nopermission' => '抱歉，本课程只有特定用户组可以发新课件',
+  'post_forum_newthread_nopermission' => '抱歉，本课程只有特定用户组可以上传新课件',
   'thread_flood_ctrl_threads_per_hour' => '抱歉，您所在的用户组每小时限制发课件 {threads_per_hour} 个，请稍候再发表',
   'search_forum_invalid' => '抱歉，您尚未指定搜索课件交流系统的范围',
   'search_invalid' => '抱歉，您尚未指定要搜索的关键字或用户名',

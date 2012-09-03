@@ -16,9 +16,9 @@ $lang = array
 	'post_name' => '课件交流系统课件类任务',
 	'post_desc' => '通过上传课件课件评论完成任务，活跃课件交流系统的氛围',
 	'post_complete_var_act' => '动作',
-	'post_complete_var_act_newthread' => '发新课件',
+	'post_complete_var_act_newthread' => '上传新课件',
 	'post_complete_var_act_newreply' => '发新评论',
-	'post_complete_var_act_newpost' => '发新课件/评论',
+	'post_complete_var_act_newpost' => '上传新课件/评论',
 	'post_complate_var_forumid' => '课程限制',
 	'post_complate_var_forumid_comment' => '设置会员只能在某个课程完成任务',
 	'post_complate_var_threadid' => '评论指定课件',
@@ -31,8 +31,8 @@ $lang = array
 	'post_complete_var_time_comment' => '设置会员从申请任务到完成任务的时间限制，会员在此时间内未能完成任务则不能领取奖励并标记任务失败，0 或留空为不限制',
 
 	'task_complete_forumid' => '在课程 {value} ',
-	'task_complete_act_newthread' => '发新课件 {num} 次',
-	'task_complete_act_newpost' => '发新课件/评论 {num} 次',
+	'task_complete_act_newthread' => '上传新课件 {num} 次',
+	'task_complete_act_newpost' => '上传新课件/评论 {num} 次',
 	'task_complete_act_newreply_thread' => '在“{value}”评论课件 {num} 次',
 	'task_complete_act_newreply_author' => '评论作者“{value}”的课件 {num} 次',
 );
