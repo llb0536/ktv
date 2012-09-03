@@ -227,7 +227,7 @@ $lang = array(
 	'init_bbcode_7' => '嵌入 Windows media 音频或视频',
 
 	'init_qihoo_searchboxtxt' =>'输入关键词,快速搜索本课件交流系统',
-	'init_threadsticky' =>'全局置顶,分类置顶,本版置顶',
+	'init_threadsticky' =>'全局置顶,分类置顶,本课程置顶',
 
 	'init_default_style' => '默认风格',
 	'init_default_forum' => '默认课程',

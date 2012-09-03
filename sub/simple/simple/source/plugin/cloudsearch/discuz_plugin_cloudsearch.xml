@@ -56,7 +56,7 @@
 				<item id="thread_class"><![CDATA[课件老师]]></item>
 				<item id="loading"><![CDATA[正在加载……]]></item>
 				<item id="forumhottopic"><![CDATA[热点]]></item>
-				<item id="current"><![CDATA[本版]]></item>
+				<item id="current"><![CDATA[本课程]]></item>
 			</item>
 		</item>
 		<item id="installfile"><![CDATA[install.php]]></item>
