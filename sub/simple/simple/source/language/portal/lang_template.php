@@ -10,7 +10,7 @@
  */
 
 $lang = array (
-  'forum' => '版块',
+  'forum' => '课程',
   'homepage' => '首页',
   'no_content' => '抱歉，此模块没有更多内容',
   'portal' => '{$_G[setting][navs][1][navname]}',

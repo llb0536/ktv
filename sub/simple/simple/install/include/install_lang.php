@@ -230,7 +230,7 @@ $lang = array(
 	'init_threadsticky' =>'全局置顶,分类置顶,本版置顶',
 
 	'init_default_style' => '默认风格',
-	'init_default_forum' => '默认版块',
+	'init_default_forum' => '默认课程',
 	'init_default_template' => '默认模板套系',
 	'init_default_template_copyright' => '北京课件交流系统科技有限责任公司',
 

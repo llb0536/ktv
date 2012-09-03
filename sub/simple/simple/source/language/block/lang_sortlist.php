@@ -13,16 +13,16 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'sortlist_fids' => '所在版块',
-	'sortlist_fids_comment' => '设置允许参与新帖调用的版块，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'sortlist_fids' => '所在课程',
+	'sortlist_fids_comment' => '设置允许参与新帖调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'sortlist_startrow' => '起始数据行数',
 	'sortlist_startrow_comment' => '如需设定起始的数据行数，请输入具体数值，0 为从第一行开始，以此类推',
 	'sortlist_showitems' => '显示数据条数',
 	'sortlist_showitems_comment' => '设置一次显示的课件条目数，请设置为大于 0 的整数',
 	'sortlist_titlelength' => '标题最大字节数',
 	'sortlist_titlelength_comment' => '设置当标题长度超过本设定时，是否将标题自动缩减到本设定中的字节数，0 为不自动缩减',
-	'sortlist_fnamelength' => '标题最大字节数包含版块名称',
-	'sortlist_fnamelength_comment' => '设置标题长度是否将所在版块名称的长度一同计算在内',
+	'sortlist_fnamelength' => '标题最大字节数包含课程名称',
+	'sortlist_fnamelength_comment' => '设置标题长度是否将所在课程名称的长度一同计算在内',
 	'sortlist_summarylength' => '课件简短内容文字数',
 	'sortlist_summarylength_comment' => '设置课件简短内容的文字数，0 为使用默认值 255',
 	'sortlist_tids' => '指定课件',

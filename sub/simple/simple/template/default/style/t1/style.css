@@ -64,7 +64,7 @@ body { background: transparent url(bgimg.jpg) no-repeat 50% 0; }
 .flw_replybox td table .pnc { background-image: url(pn_rt.png); }
 #flw_post_extra .sec { border-color: #FFE6E6; background-color: #FFF9F9; }
 
-/* 重定义版块快速跳转和侧边导航 */
+/* 重定义课程快速跳转和侧边导航 */
 #fjump_menu li.a a { background-color: #FFF9F9; }
 .bdl, .bdl dt, .bdl dd.bdl_a a { border-color: #FCC; background-color: #FFF9F9; }
 	.bdl dt { background-image: url(titlebg_sd.png); }

@@ -17,7 +17,7 @@ $lang = array
 	'highlight_desc' => '可以将课件或日志的标题高亮，变更颜色',
 	'highlight_expiration' => '高亮有效期',
 	'highlight_expiration_comment' => '设置标题可以被高亮多长时间，默认 24 小时。作用于日志时无有效期。',
-	'highlight_forum' => '允许使用本道具的版块',
+	'highlight_forum' => '允许使用本道具的课程',
 	'highlight_info_tid' => '高亮课件的标题 {expiration} 小时',
 	'highlight_info_blogid' => '可以将日志或课件的标题高亮，变更颜色',
 	'highlight_color' => '颜色',
@@ -25,7 +25,7 @@ $lang = array
 	'highlight_info_nonexistence_blogid' => '请指定要高亮的日志',
 	'highlight_succeed_tid' => '您操作的课件已高亮',
 	'highlight_succeed_blogid' => '您操作的日志已高亮',
-	'highlight_info_noperm' => '对不起，课件所在版块不允许使用本道具',
+	'highlight_info_noperm' => '对不起，课件所在课程不允许使用本道具',
 	'highlight_info_notype' => '参数错误，没有指定操作类型。',
 
 	'highlight_notification' => '您的课件 {subject} 被 {actor} 使用了{magicname}，<a href="forum.php?mod=viewthread&tid={tid}">快去看看吧！</a>',

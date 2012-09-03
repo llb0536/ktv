@@ -57,10 +57,10 @@ $lang = array(
   'ranklist_title_picture_4' => '图片鲜花排行',
   'ranklist_title_picture_5' => '图片鸡蛋排行',
 
-  'ranklist_title_forum_thread' => '版块上传课件排行',
-  'ranklist_title_forum_post' => '版块评论排行',
-  'ranklist_title_forum_post_30' => '版块 30 天上传课件排行',
-  'ranklist_title_forum_post_24' => '版块最近 24 小时上传课件排行',
+  'ranklist_title_forum_thread' => '课程上传课件排行',
+  'ranklist_title_forum_post' => '课程评论排行',
+  'ranklist_title_forum_post_30' => '课程 30 天上传课件排行',
+  'ranklist_title_forum_post_24' => '课程最近 24 小时上传课件排行',
 
   'ranklist_title_group_credit' => '群组积分排行',
   'ranklist_title_group_member' => '群组成员数排行',

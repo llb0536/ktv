@@ -15,8 +15,8 @@ $lang = array
 (
 	'threadlist_name' => '论坛/群组 课件列表帖位广告',
 	'threadlist_desc' => '展现方式: 帖位广告显示于课件列表页第一页的课件位置，可以模拟出一个具有广告意义的课件地址，吸引访问者的注意力。',
-	'threadlist_fids' => '投放版块',
-	'threadlist_fids_comment' => '设置广告投放的论坛版块，当广告投放范围中包含“论坛”时有效',
+	'threadlist_fids' => '投放课程',
+	'threadlist_fids_comment' => '设置广告投放的论坛课程，当广告投放范围中包含“论坛”时有效',
 	'threadlist_groups' => '投放群组分类',
 	'threadlist_groups_comment' => '设置广告投放的群组分类，当广告投放范围中包含“群组”时有效',
 	'threadlist_pos' => '投放位置',

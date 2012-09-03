@@ -15,8 +15,8 @@ $lang = array
 (
 	'attachmentlist_name' => '论坛附件列表',
 	'attachmentlist_desc' => '论坛附件列表调用',
-	'attachmentlist_fids' => '所在版块',
-	'attachmentlist_fids_comment' => '设置允许参与图片调用的版块，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'attachmentlist_fids' => '所在课程',
+	'attachmentlist_fids_comment' => '设置允许参与图片调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'attachmentlist_tids' => '指定课件',
 	'attachmentlist_tids_comment' => '指定课件ID，多个ID之间用逗号分隔',
 	'attachmentlist_startrow' => '起始数据行数',

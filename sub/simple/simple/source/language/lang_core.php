@@ -177,7 +177,7 @@ $lang = array
 	'title_ranklist_blog' => '日志排行',
 	'title_ranklist_poll' => '投票排行',
 	'title_ranklist_activity' => '活动排行',
-	'title_ranklist_forum' => '版块排行',
+	'title_ranklist_forum' => '课程排行',
 	'title_ranklist_group' => '群组排行',
 	'title_ranklist_app' => '应用排行',
 	'title_ranklist_index' => '全部排行',
@@ -194,7 +194,7 @@ $lang = array
 
 	'title_stats' => '站点统计',
 	'title_stats_basic' => '基本概况',
-	'title_stats_forumstat' => '版块统计',
+	'title_stats_forumstat' => '课程统计',
 	'title_stats_team' => '管理团队',
 	'title_stats_modworks' => '管理统计',
 	'title_stats_memberlist' => '会员列表',

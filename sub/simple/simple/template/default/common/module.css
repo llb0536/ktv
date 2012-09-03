@@ -21,7 +21,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	3. 提交表单
 	4. 发特殊课件帖
 3. 列表样式
-	1. 广场版块、群组分类列表
+	1. 广场课程、群组分类列表
 	2. 房屋列表
 	3. 课件列表
 4. 课件内容区域样式
@@ -169,7 +169,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 /** forum::modcp,misc::stat **/
-	/* 版块管理 */
+	/* 课程管理 */
 		.mdcp {}
 			.stl { float: left; width: 15%; }
 			.str { float: left; overflow: auto; overflow-y: hidden; width: 84%; *padding-bottom: 17px; }
@@ -365,9 +365,9 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 
 
 
-/* ------------------------------------------------------------------------ 广场版块、群组分类等列表样式 */
+/* ------------------------------------------------------------------------ 广场课程、群组分类等列表样式 */
 /** forum::index,forum::forumdisplay,group::index,group::group,search::group **/
-/* 版块列表 */
+/* 课程列表 */
 .fl {}
 	.fl_tb { width: 100%; }
 		.fl_tb td { padding: 10px 0; }
@@ -399,7 +399,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_board_navigation
 	Level:			Function
-	Explain:		看贴页左侧的版块导航。宽度在CSS里没有默认值，宽度在后台设置
+	Explain:		看贴页左侧的课程导航。宽度在CSS里没有默认值，宽度在后台设置
 	Last Modify:	Pony
 */
 .bdl { float: left; overflow: hidden; border: 1px solid #BDD7E3; background-color: #F5F9FB; }
@@ -411,14 +411,14 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 		.bdl dt { overflow: hidden; height: 27px; line-height: 27px; border: solid #CCE0EB; border-width: 1px 0; background: #F5F9FB url({IMGDIR}/titlebg_sd.png) repeat-x 100% 0; }
 			.bdl dt a { display: block; padding: 0 15px 0 10px; }
 				.bdl dt a:hover, .bdl_a a:hover { text-decoration: none; }
-	/* 版块，默认收起 */
+	/* 课程，默认收起 */
 	.bdl dd { display: none; }
 		.bdl dd a { display: block; margin: 0 3px; padding: 0 7px; height: 26px; line-height: 26px; overflow: hidden; }
 	/* 展开的分区 */
 	.bdl dl.a { padding-bottom: 4px; background-color: #FFF; }
 		.bdl dl.a dt { margin-bottom: 3px; background-position: 100% -27px; }
 		.bdl dl.a dd, .bdl_fav dd { display: block; overflow: hidden; zoom: 1; }
-			/* 当前版块 */
+			/* 当前课程 */
 			.bdl dd.bdl_a a { background-color: #F5F9FB; font-weight: 700; color: {HIGHLIGHTLINK}; }
 
 /*
@@ -496,7 +496,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 			.ttp a:hover { border-color: {HIGHLIGHTLINK}; color: {HIGHLIGHTLINK}; text-decoration: none; }
 		.ttp .a a { padding-right: 12px;  padding-left: 12px; border-color: {HIGHLIGHTLINK}; background: {SPECIALBG}; color: {HIGHLIGHTLINK}; }
 		.ttp .pipe { float: left; margin-right: 10px; padding: 0; width: 2px; height: 27px; background: {SPECIALBORDER}; text-indent: -9999px; }
-	/* 版块有大量课件老师时的展开收起样式 by Pony */
+	/* 课程有大量课件老师时的展开收起样式 by Pony */
 	.cttp { overflow: hidden; padding-right: 35px; height: 32px; }
 		.cttp .unfold, .cttp .fold { float: right; display: inline; margin: 5px -35px 9px 0; padding: 0 0 0 10px; width: 25px; height: 18px; background-color: transparent; color: {HIGHLIGHTLINK}; font-weight: 400; }
 
@@ -1008,7 +1008,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /*
 	Name:			mod_visited_t&b
 	Level:			Function
-	Explain:		返回列表中显示的访问过的课件和版块
+	Explain:		返回列表中显示的访问过的课件和课程
 	Last Modify:	Pony
 */
 #visitedforums_menu { width: 150px; }

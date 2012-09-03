@@ -15,10 +15,10 @@ $lang = array
 (
 	'forumstat_name' => '论坛统计',
 	'forumstat_desc' => '论坛统计数据调用',
-	'forumstat_forums_allow' => '显示版块数统计',
-	'forumstat_forums_order' => '版块数统计显示顺序',
-	'forumstat_forums_text' => '版块数统计提示文字',
-	'forumstat_forums_default' => '版块数:',
+	'forumstat_forums_allow' => '显示课程数统计',
+	'forumstat_forums_order' => '课程数统计显示顺序',
+	'forumstat_forums_text' => '课程数统计提示文字',
+	'forumstat_forums_default' => '课程数:',
 
 	'forumstat_threads_allow' => '显示课件数统计',
 	'forumstat_threads_order' => '课件数统计显示顺序',

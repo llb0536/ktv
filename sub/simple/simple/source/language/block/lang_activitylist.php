@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'activitylist_fids' => '所在版块',
-	'activitylist_fids_comment' => '设置允许参与新帖调用的版块，可以按住 CTRL 多选，全选或全不选均为不做限制',
+	'activitylist_fids' => '所在课程',
+	'activitylist_fids_comment' => '设置允许参与新帖调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'activitylist_uids' => '发起者UID',
 	'activitylist_uids_comment' => '设置活动发起者UID，多个UID请用半角逗号“,”隔开。',
 	'activitylist_startrow' => '起始数据行数',
@@ -23,8 +23,8 @@ $lang = array
 	'activitylist_items_comment' => '设置一次显示的课件条目数，请设置为大于 0 的整数',
 	'activitylist_titlelength' => '标题最大字节数',
 	'activitylist_titlelength_comment' => '设置当标题长度超过本设定时，是否将标题自动缩减到本设定中的字节数，0 为不自动缩减',
-	'activitylist_fnamelength' => '标题最大字节数包含版块名称',
-	'activitylist_fnamelength_comment' => '设置标题长度是否将所在版块名称的长度一同计算在内',
+	'activitylist_fnamelength' => '标题最大字节数包含课程名称',
+	'activitylist_fnamelength_comment' => '设置标题长度是否将所在课程名称的长度一同计算在内',
 	'activitylist_summarylength' => '课件简短内容文字数',
 	'activitylist_summarylength_comment' => '设置课件简短内容的文字数，0 为使用默认值 255',
 	'activitylist_tids' => '指定课件',
