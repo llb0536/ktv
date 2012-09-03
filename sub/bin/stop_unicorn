@@ -1,5 +1,5 @@
 #!/bin/bash -x
 
 kill -QUIT `cat tmp_$RAILS_ENV/pids/unicorn_$RAILS_ENV.pid`
-
+sleep 2
 bin/check
