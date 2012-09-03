@@ -145,7 +145,7 @@ group :test do
   # gem 'database_cleaner'
 end
 
-
+gem 'php_serialize'
 gem 'nokogiri'
 gem 'redis-objects' #[!]
 gem 'progressbar'
