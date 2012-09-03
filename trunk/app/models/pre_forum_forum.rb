@@ -1,4 +1,5 @@
 class PreForumForum < ActiveRecord::Base
+  include ActiveBaseModel
   self.table_name =  'pre_forum_forum'
   # 这个是用来添加第二级子模块用的
   # up_fid 是父亲板块的fid
