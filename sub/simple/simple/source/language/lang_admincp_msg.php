@@ -187,7 +187,7 @@ $lang = array (
   'cloudaddons_install_files_changed' => '以下文件丢失或者被修改过，是否继续覆盖？<br /><br />{files}',
   'cloudaddons_pack_installed' => '扩展安装完毕',
 
-  'counter_forum_succeed' => '论坛帖数重建完成',
+  'counter_forum_succeed' => '课件交流系统帖数重建完成',
   'counter_digest_succeed' => '精华帖数重建完成',
   'counter_thread_succeed' => '课件帖数重建完成',
   'counter_moved_thread_succeed' => '移动标记清理完成',

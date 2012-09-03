@@ -14,7 +14,7 @@ if(!defined('IN_DISCUZ')) {
 $lang = array
 (
 	'member_name' => '会员类任务',
-	'member_desc' => '收藏课件、使用道具、添加漫游应用，此类任务用来鼓励和引导会员使用论坛的某个功能，活跃论坛的氛围',
+	'member_desc' => '收藏课件、使用道具、添加漫游应用，此类任务用来鼓励和引导会员使用课件交流系统的某个功能，活跃课件交流系统的氛围',
 	'member_complete_var_act' => '动作',
 	'member_complete_var_act_favorite' => '收藏课件',
 	'member_complete_var_act_magic' => '使用道具',

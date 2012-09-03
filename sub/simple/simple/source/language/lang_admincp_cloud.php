@@ -42,7 +42,7 @@ $extend_lang = array
 	'jump_to_cloud' => '您即将转向Kejian.TV云平台（http://cp.discuz.qq.com）完成开通流程',
 	'cloud_waiting' => '请稍候...',
 
-	'cloud_status_error' => '出了点小错，由于站点ID/通信KEY等关键信息丢失导致Kejian.TV云平台服务出现异常，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测站点ID和KEY，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_status_error' => '出了点小错，由于站点ID/通信KEY等关键信息丢失导致Kejian.TV云平台服务出现异常，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测站点ID和KEY，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方课件交流系统</a>寻求帮助',
 
 	'cloud_timecheck' => '服务器时间检查',
 	'cloud_introduction' => '查看介绍',
@@ -50,7 +50,7 @@ $extend_lang = array
 	'cloud_confirm_upgrade' => '确认升级',
 	'cloud_page_loading' => '页面加载中...',
 	'cloud_time_out' => '您无法访问Kejian.TV云平台，请尝试<a href="javascript:;" onClick="location.reload()">刷新</a>。',
-	'cloud_unknown_dns' => '您的站点目前无法连接Kejian.TV云平台，请检查您服务器网络设置，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测DNS解析和接口连通性。<a href="http://cp.discuz.qq.com/faq?fId=1305690058&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>求助',
+	'cloud_unknown_dns' => '您的站点目前无法连接Kejian.TV云平台，请检查您服务器网络设置，使用<a href="admin.php?action=cloud&operation=doctor">诊断工具</a>检测DNS解析和接口连通性。<a href="http://cp.discuz.qq.com/faq?fId=1305690058&ADTAG=CP.CLOUD.FAQ.FID" target="_blank">查看帮助</a>，如有疑问请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方课件交流系统</a>求助',
 
 	'cloud_category' => '设置站点分类',
 	'cloud_site_name' => '站点名称',
@@ -81,7 +81,7 @@ $extend_lang = array
 	'cloud_open_first' => '请先开通Kejian.TV云平台',
 	'cloud_sync' => '同步站点信息',
 	'cloud_sync_success' => '站点信息同步成功 ',
-	'cloud_sync_failure' => '站点信息同步失败，原因：<br />{errorMessage} (ERRCODE:{errorCode})<br /><br />如有疑问，请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_sync_failure' => '站点信息同步失败，原因：<br />{errorMessage} (ERRCODE:{errorCode})<br /><br />如有疑问，请访问<a href="http://www.kejian.tv/forum-3926-1.html" target="_blank">官方课件交流系统</a>寻求帮助',
 	'cloud_resetkey' => '更换站点KEY',
 	'cloud_reset_success' => '站点KEY更换成功 ',
 
@@ -92,7 +92,7 @@ $extend_lang = array
 
 	'cloud_doctor_setidkey' => '修改Kejian.TV上的站点ID和KEY',
 	'cloud_doctor_connect_fix' => '<a href="./admin.php?action=cloud&operation=doctor&op=fixGuest">点击修复</a>',
-	'cloud_doctor_setidkey_tips' => '<li style="color:red">修改Kejian.TV上的站点ID和KEY，可能会导致通信错误、签名错误以及其他的故障，请勿在没有官方人员指导的情况下修改。</li><li style="color:red">修改ID、KEY和状态前，请先备份论坛的common_setting表。</li>',
+	'cloud_doctor_setidkey_tips' => '<li style="color:red">修改Kejian.TV上的站点ID和KEY，可能会导致通信错误、签名错误以及其他的故障，请勿在没有官方人员指导的情况下修改。</li><li style="color:red">修改ID、KEY和状态前，请先备份课件交流系统的common_setting表。</li>',
 	'cloud_site_key' => '站点通信KEY',
 	'cloud_site_key_safetips' => '(出于安全考虑，部分隐藏)',
 	'cloud_site_key_comment' => '站点通信KEY请勿对外公布',
@@ -157,12 +157,12 @@ $extend_lang = array
 	'cloud_doctor_connect_reopen' => '当前站点appid/appkey丢失，请<a href="admin.php?action=cloud&operation=applist">重新开通</a>QQ互联',
 
 	'cloud_application_close' => '您的站点未开启此项云服务，请到Kejian.TV后台云平台标签下开启',
-	'cloud_application_disable' => '您的站点已被禁止使用此项云服务，如果有疑问请访问<a href="http://www.kejian.tv/forum.php?gid=3923" target="_blank">官方论坛</a>寻求帮助',
+	'cloud_application_disable' => '您的站点已被禁止使用此项云服务，如果有疑问请访问<a href="http://www.kejian.tv/forum.php?gid=3923" target="_blank">官方课件交流系统</a>寻求帮助',
 
 	'cloud_search_tips' => '<li>开启漫游搜索功能后，用户可以使用基于漫游的搜索功能。</li>',
 
 	'cloud_stats' => '腾讯分析',
-	'cloud_stats_tips' => '<li>选择的样式会显示在论坛底部的右下方。</li>',
+	'cloud_stats_tips' => '<li>选择的样式会显示在课件交流系统底部的右下方。</li>',
 	'cloud_stats_status' => '启用腾讯分析',
 	'cloud_stats_icon_set' => '选择样式',
 	'cloud_stats_icon_none' => '不显示图标和文字',
@@ -172,11 +172,11 @@ $extend_lang = array
 	'cloud_stats_summary' => '网站概况',
 
 	'cloud_smilies' => 'SOSO表情',
-	'cloud_smilies_tips' => '<li>搜尽天下表情，为网站带来无穷的乐趣与体验。</li><li>省略繁琐的上传表情流程，无缝“偷渡”QQ表情到您的网站，论坛表情变得不再单调无味。</li>',
+	'cloud_smilies_tips' => '<li>搜尽天下表情，为网站带来无穷的乐趣与体验。</li><li>省略繁琐的上传表情流程，无缝“偷渡”QQ表情到您的网站，课件交流系统表情变得不再单调无味。</li>',
 
 	'cloud_smilies_status' => '启用SOSO 表情',
 	'cloud_storage' => '旋风存储',
-	'cloud_storage_tips' => '<li>为网站节省空间带宽，让用户享受超大文件的高速存储，上传下载尽在云端。</li><li>体验高速上传下载，支持单个文件高达2GB的附件上传，附件永久有效，为论坛降低成本。</li>',
+	'cloud_storage_tips' => '<li>为网站节省空间带宽，让用户享受超大文件的高速存储，上传下载尽在云端。</li><li>体验高速上传下载，支持单个文件高达2GB的附件上传，附件永久有效，为课件交流系统降低成本。</li>',
 
 	'setting_manyou' => '漫游应用设置',
 	'setting_manyou_tips' => '<li>开启漫游应用功能后，用户可以自由选择各种不同的应用(诸如德克萨斯扑克、弹弹堂、十年一剑......)在站内进行使用。</li><li>漫游应用功能由 <a target="_blank" href="http://www.manyou.com/www/">MYOP开放平台</a> 提供， Manyou Open Platform(Manyou开放平台/MYOP)服务是由 Kejian.TV 公司为应用开发者提供的开放平台，启用漫游服务前，<a href="http://wiki.developer.manyou.com/wiki/index.php?title=MYOP%E7%BD%91%E7%AB%99%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE&printable=yes" target="_blank">请先阅读MYOP网站服务协议</a></li>',
@@ -209,12 +209,12 @@ $extend_lang = array
 	'connect_setting_sitekey' => 'QQ绑定站点密钥',
 	'connect_setting_feed_allow' => '开启上传课件同步推送到QQ空间动态',
 	'connect_setting_feed_allow_comment' => '开启后，用户上传课件可以同步推送到QQ空间动态，展现给用户的QQ空间好友',
-	'connect_setting_feed_fids' => '允许推送的论坛课程',
+	'connect_setting_feed_fids' => '允许推送的课件交流系统课程',
 	'connect_setting_feed_group' => '群组是否允许推送',
 	'connect_setting_feed_group_comment' => '设置在群组发表的课件是否可以推送到QQ空间动态',
 	'connect_setting_t_allow' => '开启上传课件同步推送到腾讯微博',
 	'connect_setting_t_allow_comment' => '开启后，用户上传课件可以同步推送到腾讯微博，展现给用户的微博听众',
-	'connect_setting_t_fids' => '允许推送的论坛课程',
+	'connect_setting_t_fids' => '允许推送的课件交流系统课程',
 	'connect_setting_t_group' => '群组是否允许推送',
 	'connect_setting_t_group_comment' => '设置在群组发表的课件是否可以推送到腾讯微博',
 	'connect_setting_t_reply_showauthor' => '显示评论或转播的微博用户链接',

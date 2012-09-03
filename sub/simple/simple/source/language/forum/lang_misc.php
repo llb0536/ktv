@@ -114,7 +114,7 @@ $lang = array
 	'trade_message_13' => '可输入发货公司、发货单号等信息',
 
 	'credit_payment' => '积分充值',
-	'credit_forum_payment' => '论坛积分充值',
+	'credit_forum_payment' => '课件交流系统积分充值',
 	'credit_forum_royalty' => '交易手续费',
 
 	'credit_total' => '总积分',
@@ -183,7 +183,7 @@ $lang = array
 
 	'notice_actor' => '等 $actorcount 人',
 
-	'perms_allowvisit' => '访问论坛',
+	'perms_allowvisit' => '访问课件交流系统',
 	'perms_readaccess' => '阅读权限',
 	'perms_allowviewpro' => '查看用户资料',
 	'perms_allowinvisible' => '隐身',

@@ -735,7 +735,7 @@ CSS 写作注意事项：
 	Name:			mod_userheader
 	Level:			Global
 	Sample:			div id="uhd"
-	Explain:		论坛皮肤下用户页面头部
+	Explain:		课件交流系统皮肤下用户页面头部
 	Last Modify:	lushnis
 */
 #uhd { padding-top: 10px;border: 1px solid #CCC; border-bottom: none; background: {SPECIALBG}; }

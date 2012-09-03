@@ -52,11 +52,11 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /** end **/
 
 /** group::index,forum::index **/
-	/* 群组 index 和 论坛 index 模块使用的CSS */
+	/* 群组 index 和 课件交流系统 index 模块使用的CSS */
 /** end **/
 
 /** forum **/
-	/* 论坛 所有模块使用的CSS */
+	/* 课件交流系统 所有模块使用的CSS */
 /** end **/
 
 
@@ -86,7 +86,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 	.oll li { float: left; overflow: hidden; white-space: nowrap; width: 19.9%; height: 24px; line-height: 24px; }
 		.oll img { vertical-align: middle; }
 
-/* 论坛首页热点 by Pony */
+/* 课件交流系统首页热点 by Pony */
 	.heat { width: 370px; }
 	.heatl { padding-left: 15px; margin-left: 385px; background: url({IMGDIR}/vline.png) repeat-y 0 0; }
 /** end **/
@@ -572,7 +572,7 @@ Created & Modified by Monkey, Lushnis, Pony, Dfox & DragonLee.
 /*
 	Name:			mod_thread_type
 	Level:			Function
-	Explain:		论坛群组的课件课件老师分类信息等的筛选样式
+	Explain:		课件交流系统群组的课件课件老师分类信息等的筛选样式
 	Author:			lushnis
 	Last Modify:	Pony
 */

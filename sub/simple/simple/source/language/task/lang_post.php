@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'post_name' => '论坛课件类任务',
-	'post_desc' => '通过上传课件课件评论完成任务，活跃论坛的氛围',
+	'post_name' => '课件交流系统课件类任务',
+	'post_desc' => '通过上传课件课件评论完成任务，活跃课件交流系统的氛围',
 	'post_complete_var_act' => '动作',
 	'post_complete_var_act_newthread' => '发新课件',
 	'post_complete_var_act_newreply' => '发新评论',

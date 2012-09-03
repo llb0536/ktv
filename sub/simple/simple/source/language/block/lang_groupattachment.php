@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'groupattachment_name' => '论坛附件列表',
-	'groupattachment_desc' => '论坛附件列表调用',
+	'groupattachment_name' => '课件交流系统附件列表',
+	'groupattachment_desc' => '课件交流系统附件列表调用',
 	'groupattachment_fids' => '指定群组',
 	'groupattachment_fids_comment' => '指定群组，多个ID之间请用半角逗号“,”隔开。',
 	'groupattachment_tids' => '指定课件',

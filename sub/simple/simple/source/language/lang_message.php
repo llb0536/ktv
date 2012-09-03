@@ -142,7 +142,7 @@ $lang = array (
   'submitcheck_error' => '抱歉，您的提交有误',
   'post_forum_newthread_nopermission' => '抱歉，本课程只有特定用户组可以发新课件',
   'thread_flood_ctrl_threads_per_hour' => '抱歉，您所在的用户组每小时限制发课件 {threads_per_hour} 个，请稍候再发表',
-  'search_forum_invalid' => '抱歉，您尚未指定搜索论坛的范围',
+  'search_forum_invalid' => '抱歉，您尚未指定搜索课件交流系统的范围',
   'search_invalid' => '抱歉，您尚未指定要搜索的关键字或用户名',
   'search_redirect' => '搜索成功，现在将转入结果页面',
   'search_closed' => '搜索功能已关闭',
@@ -308,7 +308,7 @@ $lang = array (
   'replynotice_success_1' => '接收设置成功 ',
   'replynotice_success_0' => '取消设置成功 ',
   'replynotice_error' => '抱歉，评论通知设置失败，课件正在审核或不存在',
-  'no_privilege_indexheats' => '抱歉，您没有权限删除论坛热点项目',
+  'no_privilege_indexheats' => '抱歉，您没有权限删除课件交流系统热点项目',
   'forum_nopermission' => '本课程只有特定用户组可以访问',
   'thread_poll_invalid' => '抱歉，您没有选择投票选项',
   'poll_not_found' => '投票未找到',
@@ -510,7 +510,7 @@ $lang = array (
 
   'search_blog_closed' => '抱歉，日志搜索已关闭',
 
-  'search_forum_closed' => '抱歉，论坛搜索已关闭',
+  'search_forum_closed' => '抱歉，课件交流系统搜索已关闭',
 
   'search_group_closed' => '抱歉，{_G/setting/navs/3/navname}搜索已关闭',
 
@@ -949,7 +949,7 @@ $lang = array (
   'postattachperm_upgrade_nopermission' => '抱歉，您需要升级您所在的用户组后才能上传附件，详细请 <a href="home.php?mod=spacecp&ac=usergroup&do=forum" target="_blank">点击这里查看</a>。</p></div><div><p><b>有权上传附件的用户组或认证用户为：</b><br />&nbsp;&nbsp;&nbsp; {permgroups}',
   'postattachperm_login_nopermission' => '抱歉，您尚未登录，没有权限上传附件',
   'file_size_overflow' => '抱歉，文件不能大于 {size} 字节',
-  'forum_archiver_disabled' => '抱歉，论坛 Archiver 功能尚未开启',
+  'forum_archiver_disabled' => '抱歉，课件交流系统 Archiver 功能尚未开启',
 
   'post_thread_closed_by_dateline' => '抱歉，管理员设置了本课程发表于 {autoclose} 天以前的课件自动关闭，不再接受新评论',
   'post_thread_closed_by_lastpost' => '抱歉，管理员设置了本课程最后评论于 {autoclose} 天以前的课件自动关闭，不再接受新评论',

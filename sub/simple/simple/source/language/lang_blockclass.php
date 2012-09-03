@@ -44,7 +44,7 @@ $lang = array(
 	'blockclass_myapp_field_icon_abouts' => '应用图标(大图)',
 	'blockclass_myapp_script_myapp' => '漫游应用',
 
-	'blockclass_forum' => '论坛类',
+	'blockclass_forum' => '课件交流系统类',
 
 	'blockclass_forum_thread' => '课件模块',
 	'blockclass_thread_field_url' => '课件URL',
@@ -92,7 +92,7 @@ $lang = array(
 	'blockclass_forum_field_posts' => '课程课件数',
 	'blockclass_forum_field_threads' => '课程话题数',
 	'blockclass_forum_field_todayposts' => '课程今日新帖数',
-	'blockclass_forum_script_forum' => '论坛课程',
+	'blockclass_forum_script_forum' => '课件交流系统课程',
 
 	'blockclass_sort_sort' => '分类信息',
 	'blockclass_sort_field_title' => '课件名称',
@@ -433,8 +433,8 @@ $lang = array(
 	'blockclass_other_stat_groups' => '群组总数',
 	'blockclass_other_stat_members' => '会员总数',
 	'blockclass_other_stat_groupnewposts' => '群组今日上传课件',
-	'blockclass_other_stat_bbsnewposts' => '论坛今日上传课件数',
-	'blockclass_other_stat_bbslastposts' => '论坛昨日上传课件数',
+	'blockclass_other_stat_bbsnewposts' => '课件交流系统今日上传课件数',
+	'blockclass_other_stat_bbslastposts' => '课件交流系统昨日上传课件数',
 	'blockclass_other_stat_onlinemembers' => '当前在线会员数',
 	'blockclass_other_stat_maxmembers' => '历史最高在线会员数',
 	'blockclass_other_stat_doings' => '动态数',

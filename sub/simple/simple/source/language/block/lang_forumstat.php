@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'forumstat_name' => '论坛统计',
-	'forumstat_desc' => '论坛统计数据调用',
+	'forumstat_name' => '课件交流系统统计',
+	'forumstat_desc' => '课件交流系统统计数据调用',
 	'forumstat_forums_allow' => '显示课程数统计',
 	'forumstat_forums_order' => '课程数统计显示顺序',
 	'forumstat_forums_text' => '课程数统计提示文字',

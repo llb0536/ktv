@@ -249,7 +249,7 @@ $serialize_sql_setting = array (
   'seotitle' =>
   array (
     'portal' => '门户',
-    'forum' => '论坛',
+    'forum' => '课件交流系统',
     'group' => '群组',
     'home' => '家园',
     'userapp' => '应用',

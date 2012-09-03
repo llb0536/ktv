@@ -13,8 +13,8 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'attachmentlist_name' => '论坛附件列表',
-	'attachmentlist_desc' => '论坛附件列表调用',
+	'attachmentlist_name' => '课件交流系统附件列表',
+	'attachmentlist_desc' => '课件交流系统附件列表调用',
 	'attachmentlist_fids' => '所在课程',
 	'attachmentlist_fids_comment' => '设置允许参与图片调用的课程，可以按住 CTRL 多选，全选或全不选均为不做限制',
 	'attachmentlist_tids' => '指定课件',
