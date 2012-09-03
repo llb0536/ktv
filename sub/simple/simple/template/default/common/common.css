@@ -361,7 +361,7 @@ CSS 写作注意事项：
 */
 	.cur1 { cursor: pointer; }
 
-/* 如果验证码有错乱，可添加此样式.sec（全局，修改时要小心，会涉及分享、快速回复和 feed日志相册中的评论等地方） by Pony */
+/* 如果验证码有错乱，可添加此样式.sec（全局，修改时要小心，会涉及分享、快速评论和 feed日志相册中的评论等地方） by Pony */
 .ie6 .sec .p_pop { white-space: expression(this.offsetWidth >= 220 ? 'normal' : 'nowrap'); width: expression(this.offsetWidth >= 220 ? 200 : 'auto'); }
 
 
@@ -519,7 +519,7 @@ CSS 写作注意事项：
 /*
 	Name:			mod_postboxtitle
 	Level:			Function
-	Explain:		发帖页面、弹窗等的标题栏
+	Explain:		上传课件页面、弹窗等的标题栏
 	Last Modify:	Pony
 */
 .pbt { margin-bottom: 10px; }
@@ -537,7 +537,7 @@ CSS 写作注意事项：
 		.alert_btn { margin-top: 20px; text-align: center; }
 		.alert_act { margin-top: 20px; padding-left: 58px; }
 
-/* 发帖导航 by lushnis */
+/* 上传课件导航 by lushnis */
 .pbnv { float: left; white-space: nowrap; overflow: hidden; width: 400px; padding: 7px 0; }
 .pbl { overflow: hidden; margin: 9px 0; width: 621px; border-width: 1px 0 1px 1px; border-style: solid; border-color: #CCC; background: {WRAPBG}; }
 	.pbl li { float: left; overflow-x: hidden; overflow-y: auto; padding: 5px; width: 196px; height: 300px; border-right: 1px solid #CCC; }
@@ -661,9 +661,9 @@ CSS 写作注意事项：
 			.ct2_a_r { border: none; background-image: none; }
 			 .ct2_a h1.mt { display: none; }
 			 .ct2_a .tb { margin-top: 3px; }
-		.ct2_a .mn { float: right; width: 810px; }
-			.ct2_a .mn { display: inline; margin-right: 10px; padding-top: 10px; width: 800px; }
-				#nv_userapp .ct2_a .mn, .ct2_a_r .mn { margin-right: 0; width: 810px; }
+		.ct2_a .mn { float: right; width: 782px; }
+			.ct2_a .mn { display: inline; margin-right: 10px; padding-top: 10px; width: 772px; }
+				#nv_userapp .ct2_a .mn, .ct2_a_r .mn { margin-right: 0; width: 782px; }
 
 		.ct3_a .mn { float: left; margin-left: 20px; width: 565px; }
 		.ct3_a .sd { float: right; width: 220px; }
@@ -735,7 +735,7 @@ CSS 写作注意事项：
 	Name:			mod_userheader
 	Level:			Global
 	Sample:			div id="uhd"
-	Explain:		论坛皮肤下用户页面头部
+	Explain:		课件交流系统皮肤下用户页面头部
 	Last Modify:	lushnis
 */
 #uhd { padding-top: 10px;border: 1px solid #CCC; border-bottom: none; background: {SPECIALBG}; }
@@ -1276,7 +1276,7 @@ CSS 写作注意事项：
 	.lum ul { padding: 1em 0 1em 2em; margin-bottom: 1em; border-bottom: 1px dashed {COMMONBORDER}; }
 		.lum ul li { padding: 0.2em 0; }
 
-/* pgs --> pages & postbutton 分页、发帖按钮, pgb -->返回首页, nxt -->下一页 */
+/* pgs --> pages & postbutton 分页、上传课件按钮, pgb -->返回首页, nxt -->下一页 */
 .pgs {}
 	.pgs #newspecial, .pgs #newspecialtmp, .pgs #post_reply, .pgs #post_replytmp { float: left; margin-right: 5px; }
 	.pg { float: right; }

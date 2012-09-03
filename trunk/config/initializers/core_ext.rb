@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'iconv'
 class String
   def force_encoding_zhaopin

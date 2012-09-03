@@ -156,7 +156,7 @@ function announcement() {
 }
 
 function removeindexheats() {
-	return confirm('您确认要把此主题从热点主题中移除么？');
+	return confirm('您确认要把此课件从热点课件中移除么？');
 }
 
 function showTypes(id, mod) {
@@ -214,7 +214,7 @@ function fastpostvalidate(theform, noajaxpost) {
 		theform.subject.focus();
 	}
 	if(!disablepostctrl && ((postminchars != 0 && mb_strlen(theform.message.value) < postminchars) || (postmaxchars != 0 && mb_strlen(theform.message.value) > postmaxchars))) {
-		s = '您的帖子长度不符合要求。\n\n当前长度: ' + mb_strlen(theform.message.value) + ' ' + '字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节';
+		s = '您的课件长度不符合要求。\n\n当前长度: ' + mb_strlen(theform.message.value) + ' ' + '字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节';
 	}
 	if(s) {
 		showError(s);
@@ -279,7 +279,7 @@ function loadData(quiet, formobj) {
 		return;
 	}
 
-	if(!quiet && !confirm('此操作将覆盖当前帖子内容，确定要恢复数据吗？')) {
+	if(!quiet && !confirm('此操作将覆盖当前课件内容，确定要恢复数据吗？')) {
 		return;
 	}
 
@@ -370,7 +370,7 @@ function checkForumnew(fid, lasttime) {
 			}
 			removetbodyrow(table, 'forumnewshow');
 			var colspan = table.getElementsByTagName('tbody')[0].rows[0].children.length;
-			var checknew = {'tid':'', 'thread':{'common':{'className':'', 'val':'<a href="javascript:void(0);" onclick="ajaxget(\'forum.php?mod=ajax&action=forumchecknew&fid=' + fid+ '&time='+lasttime+'&uncheck=1&inajax=yes\', \'forumnew\');">有新回复的主题，点击查看', 'colspan': colspan }}};
+			var checknew = {'tid':'', 'thread':{'common':{'className':'', 'val':'<a href="javascript:void(0);" onclick="ajaxget(\'forum.php?mod=ajax&action=forumchecknew&fid=' + fid+ '&time='+lasttime+'&uncheck=1&inajax=yes\', \'forumnew\');">有新评论的课件，点击查看', 'colspan': colspan }}};
 			addtbodyrow(table, ['tbody'], ['forumnewshow'], 'separatorline', checknew);
 		} else {
 			if(checkForumcount < 50) {

@@ -162,7 +162,7 @@ if($op == 'init') {
 				)
 			);
 
-		} else { // debug 当前登录的论坛账号并没有绑定任何QQ号，则可以绑定当前的这个QQ号
+		} else { // debug 当前登录的课件交流系统账号并没有绑定任何QQ号，则可以绑定当前的这个QQ号
 			if(empty($current_connect_member)) {
 				C::t('#qqconnect#common_member_connect')->insert(
 					array(
@@ -221,7 +221,7 @@ if($op == 'init') {
 
 	} else {
 
-		if($connect_member) { // debug 此分支是用户直接点击QQ登录，并且这个QQ号已经绑好一个论坛账号了，将直接登进论坛了
+		if($connect_member) { // debug 此分支是用户直接点击QQ登录，并且这个QQ号已经绑好一个课件交流系统账号了，将直接登进课件交流系统了
 			C::t('#qqconnect#common_member_connect')->update($connect_member['uid'],
 				array(
 					'conuin' => $conuin,
@@ -248,7 +248,7 @@ if($op == 'init') {
 			dsetcookie('stats_qc_login', 3, 86400);
 			showmessage('login_succeed', $referer, $param, array('extrajs' => $ucsynlogin));
 
-		} else { // debug 此分支是用户直接点击QQ登录，并且这个QQ号还未绑定任何论坛账号，将将跳转到一个新页引导用户注册个新论坛账号或绑一个已有的论坛账号
+		} else { // debug 此分支是用户直接点击QQ登录，并且这个QQ号还未绑定任何课件交流系统账号，将将跳转到一个新页引导用户注册个新课件交流系统账号或绑一个已有的课件交流系统账号
 
 			$auth_hash = authcode($conopenid, 'ENCODE');
 			$insert_arr = array(

@@ -54,38 +54,30 @@
 	<!--{ad/cornerbanner/a_cn}-->
 
 	<!--{hook/global_footer}-->
-	<div id="ft" class="wp cl">
-		<div id="flk" class="y">
-			<p>
-				<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
-						!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile'))}-->$nav[code]<span class="pipe">|</span><!--{/if}--><!--{/loop}-->
-						<strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
-				<!--{if $_G['setting']['icp']}-->( <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> )<!--{/if}-->
-				<!--{hook/global_footerlink}-->
-				<!--{if $_G['setting']['statcode']}-->$_G['setting']['statcode']<!--{/if}-->
-			</p>
-			<p class="xs0">
-				{lang time_now}
-				<span id="debuginfo">
-				<!--{if debuginfo()}-->, Processed in $_G[debuginfo][time] second(s), $_G[debuginfo][queries] queries
-					<!--{if $_G['gzipcompress']}-->, Gzip On<!--{/if}--><!--{if C::memory()->type}-->, <!--{echo ucwords(C::memory()->type)}--> On<!--{/if}-->.
-				<!--{/if}-->
-				</span>
-			</p>
-		</div>
-		<div id="frt">
-			<p>Powered by <strong><a href="http://www.kejian.tv" target="_blank">Kejian.TV</a></strong> <em>$_G['setting']['version']</em><!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.kejian.tv/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--></p>
-			<p class="xs0">&copy; 2001-2012 <a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a></p>
-		</div>
-		<!--{eval updatesession();}-->
-		<!--{if $_G['uid'] && $_G['group']['allowinvisible']}-->
-			<script type="text/javascript">
-			var invisiblestatus = '<!--{if $_G['session']['invisible']}-->{lang login_invisible_mode}<!--{else}-->{lang login_normal_mode}<!--{/if}-->';
-			var loginstatusobj = $('loginstatusid');
-			if(loginstatusobj != undefined && loginstatusobj != null) loginstatusobj.innerHTML = invisiblestatus;
-			</script>
-		<!--{/if}-->
-	</div>
+  <div id="psvr_footer">
+    <div id="psvr_footer_top">
+      <p class="psvr psvr_good_link">
+      <span style="float:left" class="psvr">
+        <a href="/" class="psvr"><!--{echo $PSVR['parsed_setting']['ktv_subname']}-->课件交流系统</a> | 
+        <a onclick="setHomepage('http://<!--{echo PSVR_KTV_SUB}-->.kejian.tv/');" href="javascript:;" class="psvr">设为首页</a> |
+        <a onclick="addFavorite(this.href, '<!--{echo addslashes($PSVR['parsed_setting']['ktv_subname'].'课件交流系统')}-->');return false;" href="http://<!--{echo PSVR_KTV_SUB}-->.kejian.tv/" class="psvr">收藏本站</a> |
+        <a href="misc.php?mod=stat">站点统计</a> |
+        <a onclick="showWindow('miscreport', 'misc.php?mod=report&amp;url='+REPORTURL);return false;" href="javascript:;">举报</a> |
+        <a href="archiver/">简明版</a>
+      </span>
+      <span style="float:right;margin-right:20px" class="psvr"><a href="#" class="psvr">背景图为<!--{echo addslashes($PSVR['foto_desc'])}-->.</a></span>
+      </p>
+    </div>
+    <div class="psvr_copyright">
+      <p id="psvr_copyright" class="psvr">
+      版权所有 <a href="kejian.tv" class="psvr">Kejian.TV</a> &copy; 2012 课件交流系统. 课件著作权为原作者所有
+      </p>
+    </div>
+
+  </div>
+</div>
+</div>
+</div><!--psvrsub-->
 
 	<!--{if $upgradecredit !== false}-->
 		<div id="g_upmine_menu" class="tip tip_3" style="display:none;">
@@ -131,7 +123,7 @@
 <!--{/if}-->
 <!--{if $_G['uid'] && $_G['member']['allowadmincp'] == 1 && empty($_G['cookie']['pluginnotice'])}-->
 	<div class="focus plugin" id="plugin_notice"></div>
-	<script type="text/javascript">pluginNotice();</script>
+  <script type="text/javascript">pluginNotice();</script>
 <!--{/if}-->
 <!--{if $_G['member']['newprompt'] && (empty($_G['cookie']['promptstate_'.$_G[uid]]) || $_G['cookie']['promptstate_'.$_G[uid]] != $_G['member']['newprompt']) && $_GET['do'] != 'notice'}-->
 	<script type="text/javascript">noticeTitle();</script>
@@ -143,5 +135,24 @@
 <script type="text/javascript">_attachEvent(window, 'scroll', function(){showTopLink();});</script>
 <!--{/if}-->
 <!--{eval output();}-->
+<script src="{echo asset_path('/application.js')}" type="text/javascript" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+  window.psvr_bgImg = new Image();
+  window.psvr_bgImg.onload = function() {
+    jQuery.extend(window.psvr_kina, {
+      psvr_height: window.psvr_bgImg.height,
+      psvr_width: window.psvr_bgImg.width
+    });
+    jQuery(window.psvr_bgImg).addClass('psvr_bgimg');
+    jQuery(window.psvr_bgImg).attr('id','ktv_bg');
+    jQuery(window.psvr_bgImg).attr('alt','<!--{echo addslashes($PSVR['foto_desc'])}-->');
+    jQuery('#ktv_bg_container').prepend(window.psvr_bgImg);
+    jQuery.extend(window.psvr_kina, {
+      bg: jQuery('#ktv_bg')[0],
+      timer: setInterval(window.psvr_kina.fix, 200)
+    });
+  };
+  window.psvr_bgImg.src = '<!--{echo addslashes($PSVR['foto_src'])}-->';
+</script>
 </body>
 </html>

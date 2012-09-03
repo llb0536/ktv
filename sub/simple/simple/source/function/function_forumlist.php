@@ -366,6 +366,8 @@ function get_forumimg($imgname) {
 function forumleftside() {
 	global $_G;
 	$leftside = array('favorites' => array(), 'forums' => array());
+  /*
+   * psvr disable
 	$leftside['forums'] = forumselect(FALSE, 1);
 	if($_G['uid']) {
 		foreach(C::t('home_favorite')->fetch_all_by_uid_idtype($_G['uid'], 'fid') as $id => $forum) {
@@ -376,6 +378,7 @@ function forumleftside() {
 		}
 	}
 	$_G['leftsidewidth_mwidth'] = $_G['setting']['leftsidewidth'] + 15;
+   */
 	return $leftside;
 }
 

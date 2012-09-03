@@ -89,7 +89,7 @@ $lang = array
 {bbname} 管理团队.<br />
 {siteurl}</p>',
 
-	'email_register_subject' =>	'论坛注册地址',
+	'email_register_subject' =>	'课件交流系统注册地址',
 	'email_register_message' =>	'<br />
 <p>这封信是由 {bbname} 发送的。</p>
 

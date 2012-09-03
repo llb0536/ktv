@@ -169,7 +169,7 @@ function parsetag(pid) {
 }
 
 function setanswer(pid, from){
-	if(confirm('您确认要把该回复选为“最佳答案”吗？')){
+	if(confirm('您确认要把该评论选为“最佳答案”吗？')){
 		if(BROWSER.ie) {
 			doane(event);
 		}
@@ -242,7 +242,7 @@ function succeedhandle_fastpost(locationhref, message, param) {
 		$('fastpostreturn').className = '';
 	} else {
 		if(!message) {
-			message = '本版回帖需要审核，您的帖子将在通过审核后显示';
+			message = '本课程课件评论需要审核，您的课件将在通过审核后显示';
 		}
 		$('post_new').style.display = $('fastpostmessage').value = $('fastpostreturn').className = '';
 		$('fastpostreturn').innerHTML = message;
@@ -388,7 +388,7 @@ function toggleRatelogCollapse(tarId, ctrlObj) {
 }
 
 function copyThreadUrl(obj) {
-	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n', '帖子地址已经复制到剪贴板');
+	setCopy($('thread_subject').innerHTML.replace(/&amp;/g, '&') + '\n' + obj.href + '\n', '课件地址已经复制到剪贴板');
 	return false;
 }
 
@@ -398,11 +398,11 @@ function replyNotice() {
 	var status = replynotice.getAttribute("status");
 	if(status == 1) {
 		replynotice.href = newurl + 'receive';
-		replynotice.innerHTML = '接收回复通知';
+		replynotice.innerHTML = '接收评论通知';
 		replynotice.setAttribute("status", 0);
 	} else {
 		replynotice.href = newurl + 'ignore';
-		replynotice.innerHTML = '取消回复通知';
+		replynotice.innerHTML = '取消评论通知';
 		replynotice.setAttribute("status", 1);
 	}
 }
@@ -444,7 +444,7 @@ function connect_show_dialog(title, html, type) {
 function connect_get_thread() {
 	connect_thread_info.subject = $('connect_thread_title').value;
 	if ($('postmessage_' + connect_thread_info.post_id)) {
-		connect_thread_info.html_content = preg_replace(["'"], ['%27'], encodeURIComponent(preg_replace(['本帖最后由 .*? 于 .*? 编辑','&nbsp;','<em onclick="copycode\\(\\$\\(\'code0\'\\)\\);">复制代码</em>'], ['',' ', ''], $('postmessage_' + connect_thread_info.post_id).innerHTML)));
+		connect_thread_info.html_content = preg_replace(["'"], ['%27'], encodeURIComponent(preg_replace(['本课件最后由 .*? 于 .*? 编辑','&nbsp;','<em onclick="copycode\\(\\$\\(\'code0\'\\)\\);">复制代码</em>'], ['',' ', ''], $('postmessage_' + connect_thread_info.post_id).innerHTML)));
 	}
 	return connect_thread_info;
 }

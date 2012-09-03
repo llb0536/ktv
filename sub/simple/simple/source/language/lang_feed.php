@@ -54,7 +54,7 @@ $lang = array
 	'feed_profile_update_edu' => '{actor} 更新了自己的教育情况',
 	'feed_profile_update_work' => '{actor} 更新了自己的工作信息',
 	'feed_profile_update_info' => '{actor} 更新了自己的个人信息',
-	'feed_profile_update_bbs' => '{actor} 更新了自己的论坛信息',
+	'feed_profile_update_bbs' => '{actor} 更新了自己的课件交流系统信息',
 	'feed_profile_update_verify' => '{actor} 更新了自己的认证信息',
 
 	'feed_add_attachsize' => '{actor} 用 {credit} 个积分兑换了 {size} 附件空间，可以上传更多的图片啦(<a href="home.php?mod=spacecp&ac=credit&op=addsize">我也来兑换</a>)',
@@ -68,8 +68,8 @@ $lang = array
 	'feed_thread_title' =>			'{actor} 发表了新话题',
 	'feed_thread_message' =>		'<b>{subject}</b><br />{message}',
 
-	'feed_reply_title' =>			'{actor} 回复了 {author} 的话题 {subject}',
-	'feed_reply_title_anonymous' =>		'{actor} 回复了话题 {subject}',
+	'feed_reply_title' =>			'{actor} 评论了 {author} 的话题 {subject}',
+	'feed_reply_title_anonymous' =>		'{actor} 评论了话题 {subject}',
 	'feed_reply_message' =>			'',
 
 	'feed_thread_poll_title' =>		'{actor} 发起了新投票',
@@ -86,7 +86,7 @@ $lang = array
 	'feed_thread_reward_title' =>		'{actor} 发起了新悬赏',
 	'feed_thread_reward_message' =>		'<b>{subject}</b><br />悬赏 {rewardprice}{extcredits}',
 
-	'feed_reply_reward_title' =>		'{actor} 回复了关于 {subject} 的悬赏',
+	'feed_reply_reward_title' =>		'{actor} 评论了关于 {subject} 的悬赏',
 	'feed_reply_reward_message' =>		'',
 
 	'feed_thread_activity_title' =>		'{actor} 发起了新活动',
