@@ -26,7 +26,7 @@ $lang = array
   	'view_noperm' => '隐藏内容',
 	'post_hidden' => '**** 本内容被作者隐藏 ****',
 	'post_banned' => '**** 作者被禁止或删除 内容自动屏蔽 ****',
-	'post_single_banned' => '**** 该帖被屏蔽 ****',
+	'post_single_banned' => '**** 该课件被屏蔽 ****',
 	'message_ishidden_hiddenreplies' => '此帖仅作者可见',
 	'post_reply_quote' => '{author} 发表于 {time}',
 	'post_edit' => "[i=s] 本帖最后由 {editor} 于 {edittime} 编辑 [/i]\n\n",

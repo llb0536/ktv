@@ -21,7 +21,7 @@ $lang = array
 	'repent_succeed' => '您操作的课件已删除',
 	'repent_info_noperm' => '对不起，课件所在课程不允许使用本道具',
 	'repent_info_user_noperm' => '对不起，您只能删除自己的课件',
-	'repent_do_not_rushreply' => '不能在抢楼帖中使用此道具',
+	'repent_do_not_rushreply' => '不能在抢楼件中使用此道具',
 );
 
 ?>
