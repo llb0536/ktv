@@ -54,38 +54,6 @@
 	<!--{ad/cornerbanner/a_cn}-->
 
 	<!--{hook/global_footer}-->
-	<div id="ft" class="wp cl">
-		<div id="flk" class="y">
-			<p>
-				<!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
-						!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile'))}-->$nav[code]<span class="pipe">|</span><!--{/if}--><!--{/loop}-->
-						<strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong>
-				<!--{if $_G['setting']['icp']}-->( <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> )<!--{/if}-->
-				<!--{hook/global_footerlink}-->
-				<!--{if $_G['setting']['statcode']}-->$_G['setting']['statcode']<!--{/if}-->
-			</p>
-			<p class="xs0">
-				{lang time_now}
-				<span id="debuginfo">
-				<!--{if debuginfo()}-->, Processed in $_G[debuginfo][time] second(s), $_G[debuginfo][queries] queries
-					<!--{if $_G['gzipcompress']}-->, Gzip On<!--{/if}--><!--{if C::memory()->type}-->, <!--{echo ucwords(C::memory()->type)}--> On<!--{/if}-->.
-				<!--{/if}-->
-				</span>
-			</p>
-		</div>
-		<div id="frt">
-			<p>Powered by <strong><a href="http://www.kejian.tv" target="_blank">Kejian.TV</a></strong> <em>$_G['setting']['version']</em><!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.kejian.tv/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}--></p>
-			<p class="xs0">&copy; 2001-2012 <a href="http://www.kejian.tv" target="_blank">Kejian.TV Inc.</a></p>
-		</div>
-		<!--{eval updatesession();}-->
-		<!--{if $_G['uid'] && $_G['group']['allowinvisible']}-->
-			<script type="text/javascript">
-			var invisiblestatus = '<!--{if $_G['session']['invisible']}-->{lang login_invisible_mode}<!--{else}-->{lang login_normal_mode}<!--{/if}-->';
-			var loginstatusobj = $('loginstatusid');
-			if(loginstatusobj != undefined && loginstatusobj != null) loginstatusobj.innerHTML = invisiblestatus;
-			</script>
-		<!--{/if}-->
-	</div>
   <div id="psvr_footer">
     <div id="psvr_footer_top">
       <p class="psvr psvr_good_link">
@@ -93,6 +61,9 @@
         <a href="/" class="psvr"><!--{echo $PSVR['parsed_setting']['ktv_subname']}-->课件交流系统</a> | 
         <a onclick="setHomepage('http://<!--{echo PSVR_KTV_SUB}-->.kejian.tv/');" href="javascript:;" class="psvr">设为首页</a> |
         <a onclick="addFavorite(this.href, '<!--{echo addslashes($PSVR['parsed_setting']['ktv_subname'].'课件交流系统')}-->');return false;" href="http://<!--{echo PSVR_KTV_SUB}-->.kejian.tv/" class="psvr">收藏本站</a> |
+        <a href="misc.php?mod=stat">站点统计</a> |
+        <a onclick="showWindow('miscreport', 'misc.php?mod=report&amp;url='+REPORTURL);return false;" href="javascript:;">举报</a> |
+        <a href="archiver/">简明版</a>
       </span>
       <span style="float:right;margin-right:20px" class="psvr"><a href="#" class="psvr">背景图为<!--{echo addslashes($PSVR['foto_desc'])}-->.</a></span>
       </p>
