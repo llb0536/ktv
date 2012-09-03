@@ -6,8 +6,10 @@
  *
  *      $Id: class_core.php 28824 2012-03-14 06:41:27Z zhangguosheng $
  */
-
 // psvr add
+function asset_path($file){
+  return '/assets'.$file;
+}
 function psvr_in_dev(){
   $server_name = @$_SERVER['SERVER_NAME'];
   if($server_name){
@@ -23,6 +25,17 @@ if(psvr_in_dev()){
 }else{
   define('PSVR_IN_DEV',false);
 }
+define('PSVR_RAILS_ENV','sub_'.PSVR_KTV_SUB.(PSVR_IN_DEV ? '_dev' : ''));
+
+global $PSVR;
+$PSVR=array();
+$PSVR['parsed_setting'] = yaml_parse(file_get_contents('../../config/setting.yml'));
+$PSVR['parsed_setting'] = $PSVR['parsed_setting'][PSVR_RAILS_ENV];
+
+$PSVR['foto'] = rand(0,count($PSVR['parsed_setting']['fotos'])-1);
+$PSVR['foto_desc'] = $PSVR['parsed_setting']['fotos'][$PSVR['foto']];
+$PSVR['foto_src'] = "http://ktv-pic.b0.upaiyun.com/sub/".PSVR_KTV_SUB."_foto/{$PSVR['foto']}.jpg";
+
 function puts($str){
   $psvr_fp = fopen("/tmp/psvr_simple_log.log", "a");
   fprintf($psvr_fp,"> ");

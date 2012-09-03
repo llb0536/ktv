@@ -26,6 +26,8 @@
 	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
 	<link rel="stylesheet" type="text/css" id="diy_common" href="data_<!--{echo PSVR_KTV_SUB}-->/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
 	<!--{/if}-->
+  <script src="{echo asset_path('/modernizr.js')}" type="text/javascript" type="text/javascript"></script>
+  <link href="{echo asset_path('/application.css')}" media="all" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}{if $_G['basescript'] === 'portal' && CURMODULE === 'list' && !empty($cat)} {$cat['bodycss']}{/if}" onkeydown="if(event.keyCode==27) return false;">
@@ -53,31 +55,6 @@
 			    {lang your_mobile_browser}<a href="{$_G['siteurl']}forum.php?mobile=yes">{lang go_to_mobile}</a> <span class="xg1">|</span> <a href="$_G['setting']['mobile']['nomobileurl']">{lang to_be_continue}</a>
 			</div>
 		<!--{/if}-->
-
-		<div id="toptb" class="cl">
-			<!--{hook/global_cpnav_top}-->
-			<div class="wp">
-				<div class="z">
-					<!--{loop $_G['setting']['topnavs'][0] $nav}-->
-						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
-					<!--{/loop}-->
-					<!--{hook/global_cpnav_extra1}-->
-				</div>
-				<div class="y">
-					<!--{hook/global_cpnav_extra2}-->
-					<!--{loop $_G['setting']['topnavs'][1] $nav}-->
-						<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
-					<!--{/loop}-->
-					<!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
-						<a href="javascript:;" onclick="widthauto(this)"><!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}--></a>
-					<!--{/if}-->
-					<!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});">{lang changestyle}</a><!--{/if}-->
-					<!--{if check_diy_perm($topic)}-->
-						$diynav
-					<!--{/if}-->
-				</div>
-			</div>
-		</div>
 
 		<!--{if !IS_ROBOT}-->
 			<!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}-->
@@ -109,13 +86,10 @@
 					<!--{/if}-->
 				</div>
 		<!--{/if}-->
-
-		<!--{ad/headerbanner/wp a_h}-->
 		<div id="hd">
-			<div class="wp">
-				<div class="hdc cl">
+			<div class="wp" style="padding:0">
+				<div class="hdc cl psvr_wtf_logdiv">
 					<!--{eval $mnid = getcurrentnav();}-->
-					<h2><!--{if !isset($_G['setting']['navlogos'][$mnid])}--><a href="./" title="$_G['setting']['bbname']">{$_G['style']['boardlogo']}</a><!--{else}-->$_G['setting']['navlogos'][$mnid]<!--{/if}--></h2>
 
 					<!--{if $_G['uid']}-->
 					<div id="um">
@@ -178,15 +152,6 @@
 					<!--{/if}-->
 				</div>
 
-				<div id="nv">
-					<a href="javascript:;" id="qmenu" onmouseover="showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});">{lang my_nav}</a>
-					<ul>
-						<!--{loop $_G['setting']['navs'] $nav}-->
-							<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li {if $mnid == $nav[navid]}class="a" {/if}$nav[nav]></li><!--{/if}-->
-						<!--{/loop}-->
-					</ul>
-					<!--{hook/global_nav_extra}-->
-				</div>
 				<!--{if !empty($_G['setting']['plugins']['jsmenu'])}-->
 					<ul class="p_pop h_pop" id="plugin_menu" style="display: none">
 					<!--{loop $_G['setting']['plugins']['jsmenu'] $module}-->
@@ -216,4 +181,43 @@
 		<!--{hook/global_header}-->
 	<!--{/if}-->
 
+  <div class="psvrsub">
+    <!--背景图片 拉伸效果-->
+    <script language="javascript">
+      if(typeof document.compatMode!='undefined'&&document.compatMode!='BackCompat'){
+        cot_t1_DOCtp="_top:expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.clientHeight);_left:expression(document.documentElement.scrollLeft + document.documentElement.clientWidth - offsetWidth);}";
+      }else{
+      cot_t1_DOCtp="_top:expression(document.body.scrollTop+document.body.clientHeight-this.clientHeight);_left:expression(document.body.scrollLeft + document.body.clientWidth - offsetWidth);}";
+      }
+      var fdcCSS='.psvr_bgscroll {';
+      var fdcCSS=fdcCSS+cot_t1_DOCtp;
+      document.write('<style type=\"text\/css\">'+fdcCSS+'<\/style>');
+    </script>
+    <div class="psvr_bgscroll" id="ktv_bg_container">
+    </div>
+		<!--{ad/headerbanner/wp a_h}-->
+   <div class="psvr_wtf_wrap">
+   <div class="psvr_wtf_wrapper">
+
+   <div id="psvr_header">
+     <div class="psvr_headtop">
+       <div class="psvr_logo">
+         <a id="psvr_logimg_a" class="psvr" href="/"><img id="psvr_logimg" alt="<!--{echo $PSVR['parsed_setting']['ktv_subname']}-->课件交流系统" src="<!--{echo asset_path('logo_'.PSVR_KTV_SUB.'.png')}-->" class="psvr"></a>
+       </div>
+     </div>
+
+     <div class="psvr_menu_out">
+       <div id="psvr_navmenu" class="psvr_menu_in"> 
+         <div id="psvr_navmenu" class="psvr_menu">
+           <ul class="psvr">
+             <li style="height:37px" class="psvr">&nbsp;</li>
+             <li class="psvr"><a href="/" class="psvr psvr_now"><span class="psvr">首页</span></a></li>
+             <li class="psvr"><a href="/courses" class="psvr "><span class="psvr">本学期课程</span></a></li>
+             <li class="psvr"><a href="/un_courses" class="psvr "><span class="psvr">本学期未开</span></a></li>
+           </ul>
+         </div>
+       </div>
+
+     </div>
+   </div>
 	<div id="wp" class="wp">

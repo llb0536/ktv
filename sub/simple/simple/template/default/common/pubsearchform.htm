@@ -9,7 +9,7 @@
 	<!--{block slist[user]}--><li><a href="javascript:;" rel="user">{lang users}</a></li><!--{/block}-->
 <!--{/if}-->
 <!--{if $_G['setting']['search'] && $slist}-->
-<div id="scbar" class="{if $_G['setting']['srchhotkeywords'] && count($_G['setting']['srchhotkeywords']) > 5}scbar_narrow {/if}cl">
+<div id="scbar" class="{if $_G['setting']['srchhotkeywords'] && count($_G['setting']['srchhotkeywords']) > 5}scbar_narrow {/if}cl psvr_wtf_scbar">
 	<form id="scbar_form" method="{if $_G[fid] && !empty($searchparams[url])}get{else}post{/if}" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="{if $_G[fid] && !empty($searchparams[url])}$searchparams[url]{else}search.php?searchsubmit=yes{/if}" target="_blank">
 		<input type="hidden" name="mod" id="scbar_mod" value="search" />
 		<input type="hidden" name="formhash" value="{FORMHASH}" />
@@ -41,7 +41,7 @@
 		<table cellspacing="0" cellpadding="0">
 			<tr>
 				<td class="scbar_icon_td"></td>
-				<td class="scbar_txt_td"><input type="text" name="srchtxt" id="scbar_txt" value="{lang enter_content}" autocomplete="off" x-webkit-speech speech /></td>
+				<td class="scbar_txt_td"><input type="text" name="srchtxt" id="scbar_txt" value="{lang enter_content}" autocomplete="off" x-webkit-speech speech class="psvr_wtf_scbar_txt" /></td>
 				<td class="scbar_type_td"><a href="javascript:;" id="scbar_type" class="showmenu xg1 xs2" onclick="showMenu(this.id)" hidefocus="true">{lang search}</a></td>
 				<td class="scbar_btn_td"><button type="submit" name="searchsubmit" id="scbar_btn" sc="1" class="pn pnc" value="true"><strong class="xi2 xs2">{lang search}</strong></button></td>
 				<td class="scbar_hot_td">

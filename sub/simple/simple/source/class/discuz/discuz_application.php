@@ -43,6 +43,7 @@ class discuz_application extends discuz_base{
 		'_SERVER' => 1,
 		'_ENV' => 1,
 		'_FILES' => 1,
+    'PSVR' => 1,
 	);
 
 	static function &instance() {
