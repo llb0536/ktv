@@ -53,7 +53,7 @@
 			<item id="2">
 				<item id="displayorder"><![CDATA[2]]></item>
 				<item id="title"><![CDATA[显示用户漫游动态]]></item>
-				<item id="description"><![CDATA[开启后帖子下方显示本用户的漫游动态]]></item>
+				<item id="description"><![CDATA[开启后课件下方显示本用户的漫游动态]]></item>
 				<item id="variable"><![CDATA[showmyapp]]></item>
 				<item id="type"><![CDATA[radio]]></item>
 				<item id="value"><![CDATA[1]]></item>

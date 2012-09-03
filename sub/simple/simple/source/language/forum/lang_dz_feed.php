@@ -13,29 +13,29 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'feed_thread_pin_title' =>		'{actor} 发表的主题 {subject} 被 {operater} 置顶',
+	'feed_thread_pin_title' =>		'{actor} 发表的课件 {subject} 被 {operater} 置顶',
 
-	'feed_thread_digest_title' =>		'{actor} 发表的主题 {subject} 被 {operater} 加精',
+	'feed_thread_digest_title' =>		'{actor} 发表的课件 {subject} 被 {operater} 加精',
 
-	'feed_thread_highlight_title' =>	'{actor} 发表的主题 {subject} 被 {operater} 高亮',
+	'feed_thread_highlight_title' =>	'{actor} 发表的课件 {subject} 被 {operater} 高亮',
 
-	'feed_thread_del_title' =>		'{actor} 发表的主题 {subject} 被 {operater} 删除',
+	'feed_thread_del_title' =>		'{actor} 发表的课件 {subject} 被 {operater} 删除',
 
-	'feed_thread_move_title' =>		'{actor} 发表的主题 {subject} 被 {operater} 移动',
+	'feed_thread_move_title' =>		'{actor} 发表的课件 {subject} 被 {operater} 移动',
 
-	'feed_thread_views_title' =>		'{actor} 发表的主题 {subject} 查看数超过了 {count}',
+	'feed_thread_views_title' =>		'{actor} 发表的课件 {subject} 查看数超过了 {count}',
 
-	'feed_thread_replies_title' =>		'{actor} 发表的主题 {subject} 回复数超过了 {count}',
+	'feed_thread_replies_title' =>		'{actor} 发表的课件 {subject} 评论数超过了 {count}',
 
-	'feed_thread_rate_title' =>		'{actor} 发表的主题 {subject} 评分超过了 {count}',
+	'feed_thread_rate_title' =>		'{actor} 发表的课件 {subject} 评分超过了 {count}',
 
-	'feed_thread_magic_title' =>		'{actor} 发表的主题 {subject} 被 {operater} 使用了 {magiccard}',
+	'feed_thread_magic_title' =>		'{actor} 发表的课件 {subject} 被 {operater} 使用了 {magiccard}',
 
-	'feed_thread_recommend_title' =>	'{actor} 发表的主题 {subject} 被版主推荐',
+	'feed_thread_recommend_title' =>	'{actor} 发表的课件 {subject} 被版主推荐',
 
-	'feed_post_rate_title' =>		'{actor} 在 {thread} 的回复评分超过了{count}',
+	'feed_post_rate_title' =>		'{actor} 在 {thread} 的评论评分超过了{count}',
 
-	'feed_post_magic_title' =>		'{actor} 在 {thread} 的回复被 {operater} 使用了 {magiccard}',
+	'feed_post_magic_title' =>		'{actor} 在 {thread} 的评论被 {operater} 使用了 {magiccard}',
 
 	'feed_user_profile_title' =>		'{actor} 更新了自己的个人资料',
 
@@ -43,9 +43,9 @@ $lang = array
 
 	'feed_user_credit_title' =>		'{actor} 的总积分达到 {count}',
 
-	'feed_user_threads_title' =>		'{actor} 发表的主题数达到 {count}',
+	'feed_user_threads_title' =>		'{actor} 发表的课件数达到 {count}',
 
-	'feed_user_posts_title' =>		'{actor} 的发帖数达到 {count}',
+	'feed_user_posts_title' =>		'{actor} 的上传课件数达到 {count}',
 
 	'feed_user_digest_title' =>		'{actor} 的精华帖数达到 {count}',
 

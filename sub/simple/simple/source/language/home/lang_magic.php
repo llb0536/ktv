@@ -13,10 +13,10 @@ if(!defined('IN_DISCUZ')) {
 
 $lang = array
 (
-	'target_tid' => '目标主题 tid',
-	'target_pid' => '目标帖子 pid',
+	'target_tid' => '目标课件 tid',
+	'target_pid' => '目标课件 pid',
 	'target_username' => '目标用户名',
-	'magics_type_1' => '帖子类',
+	'magics_type_1' => '课件类',
 	'magics_type_2' => '会员类',
 	'magics_type_3' => '其他类',
 

@@ -21,8 +21,8 @@ $lang = array (
   'no_content' => '没有相关内容',
   'personal_category' => '个人分类',
   'related_blog' => '相关日志',
-  'related_thread' => '相关帖子',
-  'replies' => '回复/查看',
+  'related_thread' => '相关课件',
+  'replies' => '评论/查看',
 );
 
 ?>

@@ -24,9 +24,9 @@ $lang = array
 	'forumlist_orderby' => '版块排序方式',
 	'forumlist_orderby_comment' => '设置以哪一字段或方式对版块进行排序',
 	'forumlist_orderby_displayorder' => '按显示顺序顺序排序',
-	'forumlist_orderby_threads' => '按主题数倒序排序',
-	'forumlist_orderby_todayposts' => '按今日发帖数倒序排序',
-	'forumlist_orderby_posts' => '按帖子数倒序排序',
+	'forumlist_orderby_threads' => '按课件数倒序排序',
+	'forumlist_orderby_todayposts' => '按今日上传课件数倒序排序',
+	'forumlist_orderby_posts' => '按课件数倒序排序',
 );
 
 ?>

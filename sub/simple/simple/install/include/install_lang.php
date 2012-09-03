@@ -159,9 +159,9 @@ $lang = array(
 
 	'tagtemplates_subject' => '标题',
 	'tagtemplates_uid' => '用户 ID',
-	'tagtemplates_username' => '发帖者',
+	'tagtemplates_username' => '上传课件者',
 	'tagtemplates_dateline' => '日期',
-	'tagtemplates_url' => '主题地址',
+	'tagtemplates_url' => '课件地址',
 
 	'uc_version_incorrect' => '您的 UCenter 服务端版本过低，请升级 UCenter 服务端到最新版本，并且升级，下载地址：http://www.kejian.tv/ 。',
 	'config_unwriteable' => '安装向导无法写入配置文件, 请设置 config.inc.php 程序属性为可写状态(777)',
@@ -206,17 +206,17 @@ $lang = array(
 	'init_rank_4' => '自由撰稿人',
 	'init_rank_5' => '特聘作家',
 
-	'init_cron_1' => '清空今日发帖数',
+	'init_cron_1' => '清空今日上传课件数',
 	'init_cron_2' => '清空本月在线时间',
 	'init_cron_3' => '每日数据清理',
 	'init_cron_4' => '生日统计与邮件祝福',
-	'init_cron_5' => '主题回复通知',
+	'init_cron_5' => '课件评论通知',
 	'init_cron_6' => '每日公告清理',
 	'init_cron_7' => '限时操作清理',
 	'init_cron_8' => '论坛推广清理',
-	'init_cron_9' => '每月主题清理',
+	'init_cron_9' => '每月课件清理',
 	'init_cron_10' => '每日 X-Space更新用户',
-	'init_cron_11' => '每周主题更新',
+	'init_cron_11' => '每周课件更新',
 
 	'init_bbcode_1' => '使内容横向滚动，这个效果类似 HTML 的 marquee 标签，注意：这个效果只在 Internet Explorer 浏览器下有效。',
 	'init_bbcode_2' => '嵌入 Flash 动画',
@@ -235,7 +235,7 @@ $lang = array(
 	'init_default_template_copyright' => '北京课件交流系统科技有限责任公司',
 
 	'init_dataformat' => 'Y-n-j',
-	'init_modreasons' => '广告/SPAM\r\n恶意灌水\r\n违规内容\r\n文不对题\r\n重复发帖\r\n\r\n我很赞同\r\n精品文章\r\n原创内容',
+	'init_modreasons' => '广告/SPAM\r\n恶意灌水\r\n违规内容\r\n文不对题\r\n重复上传课件\r\n\r\n我很赞同\r\n精品文章\r\n原创内容',
 	'init_userreasons' => '很给力!\r\n神马都是浮云\r\n赞一个!\r\n山寨\r\n淡定',
 	'init_link' => 'Kejian.TV 官方论坛',
 	'init_link_note' => '提供最新 Kejian.TV 产品新闻、软件下载与技术交流',

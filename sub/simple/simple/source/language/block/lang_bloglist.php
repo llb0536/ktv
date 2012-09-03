@@ -36,7 +36,7 @@ $lang = array
 	'bloglist_orderby_comment' => '设置以哪一字段或方式对日志进行排序',
 	'bloglist_orderby_dateline' => '按发布时间倒序',
 	'bloglist_orderby_viewnum' => '按查看数倒序',
-	'bloglist_orderby_replynum' => '按回复数倒序',
+	'bloglist_orderby_replynum' => '按评论数倒序',
 	'bloglist_orderby_hot' => '按热度倒序'
 );
 

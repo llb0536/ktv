@@ -20,15 +20,15 @@ $lang = array
 	'forumstat_forums_text' => '版块数统计提示文字',
 	'forumstat_forums_default' => '版块数:',
 
-	'forumstat_threads_allow' => '显示主题数统计',
-	'forumstat_threads_order' => '主题数统计显示顺序',
-	'forumstat_threads_text' => '主题数统计提示文字',
-	'forumstat_threads_default' => '主题数:',
+	'forumstat_threads_allow' => '显示课件数统计',
+	'forumstat_threads_order' => '课件数统计显示顺序',
+	'forumstat_threads_text' => '课件数统计提示文字',
+	'forumstat_threads_default' => '课件数:',
 
-	'forumstat_posts_allow' => '显示帖子数统计',
-	'forumstat_posts_order' => '帖子数统计显示顺序',
-	'forumstat_posts_text' => '帖子数统计提示文字',
-	'forumstat_posts_default' => '帖子数:',
+	'forumstat_posts_allow' => '显示课件数统计',
+	'forumstat_posts_order' => '课件数统计显示顺序',
+	'forumstat_posts_text' => '课件数统计提示文字',
+	'forumstat_posts_default' => '课件数:',
 
 	'forumstat_members_allow' => '显示用户数统计',
 	'forumstat_members_order' => '用户数统计显示顺序',

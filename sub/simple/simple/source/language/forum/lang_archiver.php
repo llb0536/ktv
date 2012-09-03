@@ -15,7 +15,7 @@ $lang = array
 (
 
 	'page' => '页',
-	'replies' => '篇回复',
+	'replies' => '篇评论',
 	'anonymous' => '匿名',
 	'full_version' => '查看完整版本',
 	'forum_nonexistence' => '抱歉，您没有权限访问这个论坛的存档或该论坛不存在',

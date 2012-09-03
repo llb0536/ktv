@@ -970,7 +970,7 @@
 				<item id="dateuformat"><![CDATA[0]]></item>
 				<item id="punctualupdate"><![CDATA[0]]></item>
 				<item id="blockstyle">
-					<item id="name"><![CDATA[专题_帖子模块_作者加标题]]></item>
+					<item id="name"><![CDATA[专题_课件模块_作者加标题]]></item>
 					<item id="blockclass"><![CDATA[forum_thread]]></item>
 					<item id="makethumb"><![CDATA[0]]></item>
 					<item id="getpic"><![CDATA[0]]></item>
@@ -1052,7 +1052,7 @@
 				<item id="dateuformat"><![CDATA[1]]></item>
 				<item id="punctualupdate"><![CDATA[0]]></item>
 				<item id="blockstyle">
-					<item id="name"><![CDATA[专题_帖子模块_作者加标题加头像]]></item>
+					<item id="name"><![CDATA[专题_课件模块_作者加标题加头像]]></item>
 					<item id="blockclass"><![CDATA[forum_thread]]></item>
 					<item id="makethumb"><![CDATA[0]]></item>
 					<item id="getpic"><![CDATA[0]]></item>
@@ -1430,7 +1430,7 @@
 			<item id="9">
 				<item id="styleid"><![CDATA[9]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[帖子标题]]></item>
+				<item id="name"><![CDATA[课件标题]]></item>
 				<item id="template">
 					<item id="loop"><![CDATA[<li><a href="{url}" title="{title}"{target}>{title}</a></li>]]></item>
 					<item id="footer"><![CDATA[
@@ -1454,7 +1454,7 @@
 			<item id="17">
 				<item id="styleid"><![CDATA[17]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[帖子标题+摘要]]></item>
+				<item id="name"><![CDATA[课件标题+摘要]]></item>
 				<item id="template">
 					<item id="loop"><![CDATA[<dl class="cl">
 	<dt><a href="{url}" title="{title}"{target}>{title}</a></dt>
@@ -1501,7 +1501,7 @@
 			<item id="228">
 				<item id="styleid"><![CDATA[228]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X2.0]帖子图片换灯片]]></item>
+				<item id="name"><![CDATA[[X2.0]课件图片换灯片]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl slidebox">
 <ul class="slideshow">

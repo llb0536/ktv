@@ -14,9 +14,9 @@ if(!defined('IN_DISCUZ')) {
 $sql = <<<EOF
 
 CREATE TABLE IF NOT EXISTS `pre_security_evilpost` (
-  `pid` int(10) unsigned NOT NULL COMMENT '帖子ID',
-  `tid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '主题ID',
-  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '帖子类型',
+  `pid` int(10) unsigned NOT NULL COMMENT '课件ID',
+  `tid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '课件ID',
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '课件类型',
   `evilcount` int(10) NOT NULL DEFAULT '0' COMMENT '恶意次数',
   `eviltype` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '恶意类型',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `pre_security_failedlog` (
   `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'UID',
   `failcount` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '计数',
   `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '失败时间',
-  `posttime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发帖时间/上次发帖时间',
+  `posttime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上传课件时间/上次上传课件时间',
   `delreason` char(255) NOT NULL COMMENT '处理原因',
   `scheduletime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '计划重试时间',
   `lastfailtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上次失败时间',

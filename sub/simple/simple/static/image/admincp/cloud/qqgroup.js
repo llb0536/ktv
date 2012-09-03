@@ -164,7 +164,7 @@ function addMiniportalList(tid) {
 		return false;
 	}
 	if (selectedNormalIds.length >= 5) {
-		alert('推送帖子已达到5条，请在右侧取消一些再重试。');
+		alert('推送课件已达到5条，请在右侧取消一些再重试。');
 		return false;
 	}
 	if (tid == selectedTopicId) {

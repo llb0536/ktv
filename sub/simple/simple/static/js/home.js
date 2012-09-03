@@ -810,7 +810,7 @@ function docomment_colse(doid, key) {
 	$(showid).style.display = 'none';
 	$(showid).style.className = '';
 
-	$(opid).innerHTML = '回复';
+	$(opid).innerHTML = '评论';
 	$(opid).onclick = function() {
 		docomment_get(doid, key);
 	}
@@ -839,7 +839,7 @@ function docomment_form_close(doid, id, key) {
 	if(!liObj.length) {
 		$(key+'_'+doid).style.display = 'none';
 		if($(opid)) {
-			$(opid).innerHTML = '回复';
+			$(opid).innerHTML = '评论';
 			$(opid).onclick = function () {
 				docomment_get(doid, key);
 			}

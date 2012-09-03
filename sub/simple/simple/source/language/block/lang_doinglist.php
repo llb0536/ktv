@@ -22,7 +22,7 @@ $lang = array
 	'doinglist_orderby' => '动态排序方式',
 	'doinglist_orderby_comment' => '设置以哪一字段或方式对动态进行排序',
 	'doinglist_orderby_dateline' => '按发布时间倒序',
-	'doinglist_orderby_replynum' => '按回复数倒序'
+	'doinglist_orderby_replynum' => '按评论数倒序'
 );
 
 ?>

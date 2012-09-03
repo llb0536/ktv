@@ -100,7 +100,7 @@ function validate(theform) {
 	}
 
 	if(!disablepostctrl && !sortid && !special && ((postminchars != 0 && mb_strlen(message) < postminchars) || (postmaxchars != 0 && mb_strlen(message) > postmaxchars))) {
-		showError('您的帖子长度不符合要求。\n\n当前长度: ' + mb_strlen(message) + ' 字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节');
+		showError('您的课件长度不符合要求。\n\n当前长度: ' + mb_strlen(message) + ' 字节\n系统限制: ' + postminchars + ' 到 ' + postmaxchars + ' 字节');
 		return false;
 	}
 	if(UPLOADSTATUS == 0) {
@@ -108,7 +108,7 @@ function validate(theform) {
 			return false;
 		}
 	} else if(UPLOADSTATUS == 1) {
-		showDialog('您有正在上传的附件，请稍候，上传完成后帖子将会自动发表...', 'notice');
+		showDialog('您有正在上传的附件，请稍候，上传完成后课件将会自动发表...', 'notice');
 		AUTOPOST = 1;
 		return false;
 	}
@@ -802,7 +802,7 @@ function getreplycredit() {
 	var reply_credits_sum = Math.ceil(parseInt(credit_once * times));
 
 	if(real_reply_credit > userextcredit) {
-		$('replycredit').innerHTML = '<b class="xi1">回帖奖励积分总额过大('+real_reply_credit+')</b>';
+		$('replycredit').innerHTML = '<b class="xi1">课件评论奖励积分总额过大('+real_reply_credit+')</b>';
 	} else {
 		if(have_replycredit > 0 && real_reply_credit < 0) {
 			$('replycredit').innerHTML = "<font class='xi1'>返还"+Math.abs(real_reply_credit)+"</font>";
@@ -820,7 +820,7 @@ function extraCheckall() {
 }
 
 function deleteThread() {
-	if(confirm('确定要删除该帖子吗？') != 0){
+	if(confirm('确定要删除该课件吗？') != 0){
 		$('delete').value = '1';
 		$('postform').submit();
 	}

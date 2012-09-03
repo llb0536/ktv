@@ -3218,7 +3218,7 @@
 				<item id="name"><![CDATA[]]></item>
 				<item id="title"><![CDATA[]]></item>
 				<item id="classname"><![CDATA[]]></item>
-				<item id="summary"><![CDATA[<div class="tns"><table cellspacing="0" cellpadding="4" border="0"><tbody><tr><th><p>0</p>帖子</th><th><p>0</p>群组</th><th class="bbn"><p>1</p>会员</th></tr></tbody></table></div>]]></item>
+				<item id="summary"><![CDATA[<div class="tns"><table cellspacing="0" cellpadding="4" border="0"><tbody><tr><th><p>0</p>课件</th><th><p>0</p>群组</th><th class="bbn"><p>1</p>会员</th></tr></tbody></table></div>]]></item>
 				<item id="uid"><![CDATA[1]]></item>
 				<item id="username"><![CDATA[admin]]></item>
 				<item id="styleid"><![CDATA[0]]></item>
@@ -3327,7 +3327,7 @@
 			<item id="9">
 				<item id="styleid"><![CDATA[9]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子标题]]></item>
+				<item id="name"><![CDATA[[X1.5]课件标题]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3363,7 +3363,7 @@
 			<item id="17">
 				<item id="styleid"><![CDATA[17]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子标题+摘要]]></item>
+				<item id="name"><![CDATA[[X1.5]课件标题+摘要]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -3404,7 +3404,7 @@
 			<item id="20">
 				<item id="styleid"><![CDATA[20]]></item>
 				<item id="blockclass"><![CDATA[forum_attachment]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子标题+摘要+附件缩略图]]></item>
+				<item id="name"><![CDATA[[X1.5]课件标题+摘要+附件缩略图]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -3448,7 +3448,7 @@
 			<item id="24">
 				<item id="styleid"><![CDATA[24]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子标题]]></item>
+				<item id="name"><![CDATA[[X1.5]课件标题]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -3955,7 +3955,7 @@ runslideshow();
 			<item id="85">
 				<item id="styleid"><![CDATA[85]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子作者＋标题+摘要（带头像）]]></item>
+				<item id="name"><![CDATA[[X1.5]课件作者＋标题+摘要（带头像）]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld xlda">
 [loop]
@@ -4041,7 +4041,7 @@ runslideshow();
 			<item id="87">
 				<item id="styleid"><![CDATA[87]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]悬赏主题专用样式]]></item>
+				<item id="name"><![CDATA[[X1.5]悬赏课件专用样式]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xl xl1">
 <ul>
@@ -4078,7 +4078,7 @@ runslideshow();
 			<item id="88">
 				<item id="styleid"><![CDATA[88]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]首页热议-帖子]]></item>
+				<item id="name"><![CDATA[[X1.5]首页热议-课件]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4122,7 +4122,7 @@ runslideshow();
 			<item id="89">
 				<item id="styleid"><![CDATA[89]]></item>
 				<item id="blockclass"><![CDATA[group_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]首页热议-群组帖子]]></item>
+				<item id="name"><![CDATA[[X1.5]首页热议-群组课件]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
@@ -4210,7 +4210,7 @@ runslideshow();
 			<item id="91">
 				<item id="styleid"><![CDATA[91]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]投票主题专用样式]]></item>
+				<item id="name"><![CDATA[[X1.5]投票课件专用样式]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld b_poll">
 [loop]
@@ -4251,7 +4251,7 @@ runslideshow();
 			<item id="92">
 				<item id="styleid"><![CDATA[92]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]辩论主题专用样式]]></item>
+				<item id="name"><![CDATA[[X1.5]辩论课件专用样式]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld b_debate">
 [loop]
@@ -4491,7 +4491,7 @@ runslideshow();
 			<item id="111">
 				<item id="styleid"><![CDATA[111]]></item>
 				<item id="blockclass"><![CDATA[forum_thread]]></item>
-				<item id="name"><![CDATA[[X1.5]帖子缩略图＋主题＋摘要]]></item>
+				<item id="name"><![CDATA[[X1.5]课件缩略图＋课件＋摘要]]></item>
 				<item id="template">
 					<item id="raw"><![CDATA[<div class="module cl xld">
 [loop]
