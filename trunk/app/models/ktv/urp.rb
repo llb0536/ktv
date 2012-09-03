@@ -48,7 +48,7 @@ module Ktv
     
    def touch_course_departments_buaa
         for i in 1..42 do  
-          data = open("#{@base_url}#{1.to_s}").read
+          data = open("#{@base_url}#{i.to_s}").read
           # actual [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 42] is not empty
           xmldoc = Nokogiri::XML(data)
           c_type = '学院课程'

@@ -146,7 +146,7 @@ sub_ibeike_dev:
   wendao_domain_name: "kejian.lvh.me"
   ktv_subdomain: 'ibeike.kejian.lvh.me'
   
-sub_buaa:
+sub_buaa: &sub_buaa
   <<: *defaults
   official_website: 'http://www.buaa.edu.cn/'
   uc_appid: '13'
@@ -169,3 +169,8 @@ sub_buaa:
     - 2013
     - 1
     - 21
+sub_buaa_dev:
+  <<: *sub_buaa
+  ktv_domain: kejian.lvh.me
+  wendao_domain_name: "kejian.lvh.me"
+  ktv_subdomain: 'buaa.kejian.lvh.me'
