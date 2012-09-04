@@ -78,7 +78,7 @@ if($operation == 'newreport') {
 		showtablerow('', array('class="td25"', 'class="td28"', '', ''), array(
 			'<input type="checkbox" class="checkbox" name="reportids[]" value="'.$row['id'].'" />',
 			'<b>'.cplang('report_newreport_url').'</b><a href="'.$row['url'].'" target="_blank">'.$row['url'].'</a><br \><b>'.cplang('report_newreport_time').'</b>'.dgmdate($row['dateline']).'<br><b>'.cplang('report_newreport_message').'</b><br>'.$row['message'],
-			'<a href="home.php?mod=space&uid='.$row['uid'].'">'.$row['username'].'</a><input type="hidden" name="reportuids['.$row['id'].']" value="'.$row['uid'].'">',
+			'<a href="/simple/home.php?mod=space&uid='.$row['uid'].'">'.$row['username'].'</a><input type="hidden" name="reportuids['.$row['id'].']" value="'.$row['uid'].'">',
 			($report_reward['max'] != $report_reward['min'] ? $_G['setting']['extcredits'][$curcredits]['title'].':&nbsp;<select name="creditsvalue['.$row['id'].']">'.$rewardlist.'</select><br /><br />'.cplang('report_note').':&nbsp;<input type="text" name="msg['.$row['id'].']" value="">' : '')
 		));
 	}
@@ -172,7 +172,7 @@ if($operation == 'newreport') {
 		$checked = in_array($uid, $report_receive['adminuser']) ? 'checked' : '';
 		showtablerow('style="height:20px;width:50px;"', array('class="td25"'), array(
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"adminuser[]\" value=\"$uid\" $checked>",
-			"<a href=\"home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
+			"<a href=\"/simple/home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
 			));
 	}
 	showtablefooter();
@@ -184,7 +184,7 @@ if($operation == 'newreport') {
 		$checked = in_array($uid, $report_receive['supmoderator']) ? 'checked' : '';
 		showtablerow('style="height:20px;width:50px;"', array('class="td25"'), array(
 			"<input class=\"checkbox\" type=\"checkbox\" name=\"supmoderator[]\" value=\"$uid]\" $checked>",
-			"<a href=\"home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
+			"<a href=\"/simple/home.php?mod=space&uid=$uid\" target=\"_blank\">$username</a>"
 			));
 	}
 	showsubmit('', '', '', '<input type="submit" class="btn" name="receivesubmit" value="'.$lang['submit'].'" />');

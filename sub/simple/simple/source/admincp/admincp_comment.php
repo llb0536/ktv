@@ -154,22 +154,22 @@ EOT;
 						$comment['dateline'] = dgmdate($comment['dateline']);
 						switch($comment['idtype']) {
 							case 'picid':
-								$address = "<a href=\"home.php?mod=space&uid=$comment[uid]&do=album&picid=$comment[id]\" target=\"_blank\">$comment[message]</a>";
+								$address = "<a href=\"/simple/home.php?mod=space&uid=$comment[uid]&do=album&picid=$comment[id]\" target=\"_blank\">$comment[message]</a>";
 								break;
 							case 'uid':
-								$address = "<a href=\"home.php?mod=space&uid=$comment[uid]&do=wall\" target=\"_blank\">$comment[message]</a>";
+								$address = "<a href=\"/simple/home.php?mod=space&uid=$comment[uid]&do=wall\" target=\"_blank\">$comment[message]</a>";
 								break;
 							case 'sid':
-								$address = "<a href=\"home.php?mod=space&uid=1&do=share&id=$comment[id]\" target=\"_blank\">$comment[message]</a>";
+								$address = "<a href=\"/simple/home.php?mod=space&uid=1&do=share&id=$comment[id]\" target=\"_blank\">$comment[message]</a>";
 								break;
 							case 'blogid':
-								$address = "<a href=\"home.php?mod=space&uid=$comment[uid]&do=blog&id=$comment[id]\" target=\"_blank\">$comment[message]</a>";
+								$address = "<a href=\"/simple/home.php?mod=space&uid=$comment[uid]&do=blog&id=$comment[id]\" target=\"_blank\">$comment[message]</a>";
 								break;
 						}
 						$comments .= showtablerow('', '', array(
 							"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$comment[cid]\" />",
 							$address,
-							"<a href=\"home.php?mod=space&uid=$comment[uid]\" target=\"_blank\">$comment[author]</a>",
+							"<a href=\"/simple/home.php?mod=space&uid=$comment[uid]\" target=\"_blank\">$comment[author]</a>",
 							$comment['ip'],
 							$comment['idtype'],
 							$comment['dateline']
@@ -338,9 +338,9 @@ EOT;
 					$comment['dateline'] = dgmdate($comment['dateline']);
 					$comments .= showtablerow('', '', array(
 						"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$comment[cid]\" />",
-						"<a href=\"portal.php?mod=$mod&$idtype=$comment[id]\" target=\"_blank\">$comment[title]</a>",
+						"<a href=\"/simple/portal.php?mod=$mod&$idtype=$comment[id]\" target=\"_blank\">$comment[title]</a>",
 						$comment[message],
-						"<a href=\"home.php?mod=space&uid=$comment[uid]\" target=\"_blank\">$comment[username]</a>",
+						"<a href=\"/simple/home.php?mod=space&uid=$comment[uid]\" target=\"_blank\">$comment[username]</a>",
 						$comment['dateline']
 					), TRUE);
 				}

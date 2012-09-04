@@ -189,7 +189,7 @@ if($operation == 'illegal') {
 		}
 		showtablerow('', array('class="smallefont"', 'class="bold"', 'class="smallefont"'), array(
 			$log[1],
-			'<a href="home.php?mod=space&username='.$log[6].'" target="_blank">'.$log[6].'</a>',
+			'<a href="/simple/home.php?mod=space&username='.$log[6].'" target="_blank">'.$log[6].'</a>',
 			$log[5]
 		));
 	}
@@ -212,12 +212,12 @@ if($operation == 'illegal') {
 			continue;
 		}
 		$log[1] = dgmdate($log[1], 'y-n-j H:i');
-		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a>";
+		$log[2] = "<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a>";
 		$log[3] = $usergroup[$log[3]];
 		if($log[4] == $_G['member']['username']) {
 			$log[4] = "<b>$log[4]</b>";
 		}
-		$log[4] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[4])."\" target=\"_blank\">$log[4]</a>";
+		$log[4] = "<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[4])."\" target=\"_blank\">$log[4]</a>";
 		$log[6] = $_G['setting']['extcredits'][$log[5]]['title'].' '.($log[6] < 0 ? "<b>$log[6]</b>" : "+$log[6]").' '.$_G['setting']['extcredits'][$log[5]]['unit'];
 		$log[7] = $log[7] ? "<a href=\"./forum.php?mod=viewthread&tid=$log[7]\" target=\"_blank\" title=\"$log[8]\">".cutstr($log[8], 20)."</a>" : "<i>$lang[logs_rating_manual]</i>";
 
@@ -246,9 +246,9 @@ if($operation == 'illegal') {
 	C::t('forum_warning')->fetch_all_by_author(($_GET['keyword'] ? explode(',', $_GET['keyword']) : null), $start, $lpp);
 	foreach(C::t('forum_warning')->fetch_all_by_author(($_GET['keyword'] ? explode(',', $_GET['keyword']) : null), $start, $lpp) as $row) {
 		showtablerow('', array('class="td28"', 'class=""', '', 'class="td26"', ''), array(
-			'<b>'.cplang('warn_url').'</b><a href="forum.php?mod=redirect&goto=findpost&pid='.$row['pid'].'" target="_blank">'.$_G['siteurl'].'forum.php?mod=redirect&goto=findpost&pid='.$row['pid'].'</a><br><b>'.cplang('warn_reason').'</b>'.$row['reason'],
-			'<a href="home.php?mod=space&uid='.$row['authorid'].'">'.$row['author'].'</a>',
-			'<a href="home.php?mod=space&uid='.$row['operatorid'].'">'.$row['operator'].'</a>',
+			'<b>'.cplang('warn_url').'</b><a href="/simple/forum.php?mod=redirect&goto=findpost&pid='.$row['pid'].'" target="_blank">'.$_G['siteurl'].'/simple/forum.php?mod=redirect&goto=findpost&pid='.$row['pid'].'</a><br><b>'.cplang('warn_reason').'</b>'.$row['reason'],
+			'<a href="/simple/home.php?mod=space&uid='.$row['authorid'].'">'.$row['author'].'</a>',
+			'<a href="/simple/home.php?mod=space&uid='.$row['operatorid'].'">'.$row['operator'].'</a>',
 			dgmdate($row['dateline'], 'y-m-d H:i'),
 		));
 	}
@@ -303,7 +303,7 @@ SEARCH;
 		if($clist) {
 			showtablerow('class="header"', array('class="td24"','class="td24"','class="td31"','','class="td24"'), array($lang['crime_user'], $lang['crime_action'], $lang['crime_dateline'], $lang['crime_reason'], $lang['crime_operator']));
 			foreach($clist as $crime) {
-				showtablerow('', '', array('<a href="home.php?mod=space&uid='.$crime['uid'].'" target="_blank">'.$crime['username'].'</a>', $lang[$crime['action']], date('Y-m-d H:i:s', $crime['dateline']), $crime['reason'], '<a href="home.php?mod=space&uid='.$crime['operatorid'].'" target="_blank">'.$crime['operator'].'</a>'));
+				showtablerow('', '', array('<a href="/simple/home.php?mod=space&uid='.$crime['uid'].'" target="_blank">'.$crime['username'].'</a>', $lang[$crime['action']], date('Y-m-d H:i:s', $crime['dateline']), $crime['reason'], '<a href="/simple/home.php?mod=space&uid='.$crime['operatorid'].'" target="_blank">'.$crime['operator'].'</a>'));
 			}
 			$multipage = multi($count, $lpp, $page, ADMINSCRIPT."?action=logs&operation=$operation&keyword=".rawurlencode($_GET['keyword'])."&starttime=$starttime&endtime=$endtime&username=".rawurlencode($username)."&operator=".rawurlencode($operator)."&crimeaction=$crimeaction&lpp=$lpp&crimesearch=yes");
 		} else {
@@ -450,10 +450,10 @@ SEARCH;
 		$related = '';
 		if(in_array($log['operation'], $rdata['task'])) {
 			$rtype = 'task';
-			$related = '<a href="home.php?mod=task&do=view&id='.$log['relatedid'].'" target="_blank">'.cplang('logs_task_id').':'.$log['relatedid'].'</a>';
+			$related = '<a href="/simple/home.php?mod=task&do=view&id='.$log['relatedid'].'" target="_blank">'.cplang('logs_task_id').':'.$log['relatedid'].'</a>';
 		} elseif(in_array($log['operation'], $rdata['thread'])) {
 			$rtype = 'thread';
-			$related = '<a href="forum.php?mod=viewthread&tid='.$log['relatedid'].'" target="_blank">'.cplang('logs_thread_id').':'.$log['relatedid'].'</a>';
+			$related = '<a href="/simple/forum.php?mod=viewthread&tid='.$log['relatedid'].'" target="_blank">'.cplang('logs_thread_id').':'.$log['relatedid'].'</a>';
 		} elseif(in_array($log['operation'], $rdata['magic'])) {
 			$rtype = 'magic';
 			$related = cplang('logs_magic_id').':'.$log['relatedid'];
@@ -462,14 +462,14 @@ SEARCH;
 			$related = cplang('logs_medal_id').':'.$log['relatedid'];
 		} elseif(in_array($log['operation'], $rdata['member'])) {
 			$rtype = 'member';
-			$related = '<a href="home.php?mod=space&uid='.$log['relatedid'].'&do=profile" target="_blank">'.cplang('uid').':'.$log['relatedid'].'</a>';
+			$related = '<a href="/simple/home.php?mod=space&uid='.$log['relatedid'].'&do=profile" target="_blank">'.cplang('uid').':'.$log['relatedid'].'</a>';
 		} elseif(in_array($log['operation'], $rdata['attach'])) {
 			$rtype = 'attach';
 			$aid = aidencode($log['relatedid']);
-			$related = '<a href="forum.php?mod=attachment&aid='.$aid.'&findpost=yes" target="_blank">'.cplang('logs_attach_id').':'.$log['relatedid'].'</a>';
+			$related = '<a href="/simple/forum.php?mod=attachment&aid='.$aid.'&findpost=yes" target="_blank">'.cplang('logs_attach_id').':'.$log['relatedid'].'</a>';
 		} elseif(in_array($log['operation'], $rdata['post'])) {
 			$rtype = 'post';
-			$related = '<a href="forum.php?mod=redirect&goto=findpost&pid='.$log['relatedid'].'" target="_blank">'.cplang('logs_post_id').':'.$log['relatedid'].'</a>';
+			$related = '<a href="/simple/forum.php?mod=redirect&goto=findpost&pid='.$log['relatedid'].'" target="_blank">'.cplang('logs_post_id').':'.$log['relatedid'].'</a>';
 		} elseif(in_array($log['operation'], $rdata['usergroup'])) {
 			$rtype = 'usergroup';
 			$related = $_G['cache']['group'][$log['relatedid']]['grouptitle'];
@@ -478,7 +478,7 @@ SEARCH;
 			$related = cplang('logs_report_id').':'.$log['relatedid'];
 		}
 		showtablerow('', array('class="bold"'), array(
-			"<a href=\"home.php?mod=space&uid=$log[uid]\" target=\"_blank\">$log[username]",
+			"<a href=\"/simple/home.php?mod=space&uid=$log[uid]\" target=\"_blank\">$log[username]",
 			$log['dateline'],
 			cplang('logs_credit_update_'.$log['operation']),
 			$log['update'],
@@ -520,7 +520,7 @@ SEARCH;
 		$log[8] = "<a href=\"./forum.php?mod=viewthread&tid=$log[7]\" target=\"_blank\" title=\"$log[8]\">".cutstr($log[8], 15)."</a>";
 		$log[9] = $modactioncode[trim($log[9])];
 		showtablerow('', array('class="bold"'), array(
-			"<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">".($log[2] != $_G['member']['username'] ? "<b>$log[2]</b>" : $log[2]),
+			"<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">".($log[2] != $_G['member']['username'] ? "<b>$log[2]</b>" : $log[2]),
 			$log[3],
 			$log[4],
 			$log[1],
@@ -556,9 +556,9 @@ SEARCH;
 			continue;
 		}
 		$log[1] = dgmdate($log[1], 'y-n-j H:i');
-		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a> <span class=\"normal\">".$usergroup[$log[3]]."</span>";
+		$log[2] = "<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">$log[2]</a> <span class=\"normal\">".$usergroup[$log[3]]."</span>";
 		$log[4] = $_G['group']['allowviewip'] ? $log[4] : '-';
-		$log[5] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[5])."\" target=\"_blank\">$log[5]</a>";
+		$log[5] = "<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[5])."\" target=\"_blank\">$log[5]</a>";
 		$log[8] = trim($log[8]) ? dgmdate($log[8], 'y-n-j') : '';
 		if($log[10] == -1) {
 			$operation = 1;
@@ -637,7 +637,7 @@ EOD;
 		}
 		$log[1] = dgmdate($log[1], 'y-n-j H:i');
 		$log[2] = $log[2];
-		$log[2] = "<a href=\"home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">".($log[2] != $_G['member']['username'] ? "<b>$log[2]</b>" : $log[2])."</a>";
+		$log[2] = "<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log[2])."\" target=\"_blank\">".($log[2] != $_G['member']['username'] ? "<b>$log[2]</b>" : $log[2])."</a>";
 		$log[3] = $usergroup[$log[3]];
 		$log[4] = $_G['group']['allowviewip'] ? $log[4] : '-';
 		preg_match("/operation=(.[^;]*)/i", $log[6], $operationInfo);
@@ -788,10 +788,10 @@ EOD;
 				}
 
 				$invite['statuslog'] = $lang['logs_invite_status_'.$invite['status']];
-				$username = "<a href=\"home.php?mod=space&uid=$invite[uid]\">$invite[username]</a>";
+				$username = "<a href=\"/simple/home.php?mod=space&uid=$invite[uid]\">$invite[username]</a>";
 				$invite['dateline'] = dgmdate($invite['dateline'], 'Y-n-j H:i');
 				$invite['expiration'] = dgmdate($invite['endtime'], 'Y-n-j H:i');
-				$stats = $invite['statuslog'].($invite['status'] == 2 ? '&nbsp;[<a href="home.php?mod=space&uid='.$invite['fuid'].'" target="_blank">'.$lang['logs_invite_target'].':'.$invite['fusername'].'</a>]' : '');
+				$stats = $invite['statuslog'].($invite['status'] == 2 ? '&nbsp;[<a href="/simple/home.php?mod=space&uid='.$invite['fuid'].'" target="_blank">'.$lang['logs_invite_target'].':'.$invite['fusername'].'</a>]' : '');
 
 				showtablerow('', array('', 'class="bold"'), array(
 					'<input type="checkbox" class="checkbox" name="delete[]" value="'.$invite['id'].'" />',
@@ -896,12 +896,12 @@ EOD;
 
 		foreach($logs as $log) {
 			showtablerow('', array('class="bold"'), array(
-				"<a href=\"home.php?mod=space&username=".rawurlencode($log['username'])."\" target=\"_blank\">$log[username]",
+				"<a href=\"/simple/home.php?mod=space&username=".rawurlencode($log['username'])."\" target=\"_blank\">$log[username]",
 				$log['name'],
 				$log['dateline'],
 				$log['amount'],
 				$log['price'],
-				$lang['logs_magic_operation_'.$log['action']].($log['action'] == 3 ? '<a href="home.php?mod=space&uid='.$log['targetuid'].'" target="_blank">'.$targetuids[$log['targetuid']].'</a>' : ''),
+				$lang['logs_magic_operation_'.$log['action']].($log['action'] == 3 ? '<a href="/simple/home.php?mod=space&uid='.$log['targetuid'].'" target="_blank">'.$targetuids[$log['targetuid']].'</a>' : ''),
 			));
 		}
 	}
@@ -966,7 +966,7 @@ EOD;
 			$log['dateline'] = dgmdate($log['dateline'], 'Y-n-j H:i');
 			$log['expiration'] = empty($log['expiration']) ? cplang('logs_noexpire') : dgmdate($log['expiration'], 'Y-n-j H:i');
 			showtablerow('', array('class="td23"', 'class="td24"', 'class="td23"', 'class="td24"'), array(
-				"<a href=\"home.php?mod=space&uid=".$log['uid']."\" target=\"_blank\">".$users[$log['uid']],
+				"<a href=\"/simple/home.php?mod=space&uid=".$log['uid']."\" target=\"_blank\">".$users[$log['uid']],
 				$log['name'],
 				$lang['logs_medal_operation_'.$log['type']],
 				$log['dateline'],
@@ -1009,9 +1009,9 @@ EOD;
 			$paythread['author'] = $thread['author'];
 			$paythread['tauthorid'] = $thread['authorid'];
 
-			$paythread['seller'] = $paythread['tauthorid'] ? "<a href=\"home.php?mod=space&uid=$paythread[tauthorid]\">$paythread[author]</a>" : cplang('logs_payment_del')."(<a href=\"home.php?mod=space&uid=$paythread[authorid]\">".cplang('logs_payment_view')."</a>)";
-			$paythread['buyer'] = "<a href=\"home.php?mod=space&uid=$paythread[uid]\">$paythread[username]</a>";
-			$paythread['subject'] = $paythread['subject'] ? "<a href=\"forum.php?mod=viewthread&tid=$paythread[tid]\">$paythread[subject]</a>" : cplang('logs_payment_del');
+			$paythread['seller'] = $paythread['tauthorid'] ? "<a href=\"/simple/home.php?mod=space&uid=$paythread[tauthorid]\">$paythread[author]</a>" : cplang('logs_payment_del')."(<a href=\"/simple/home.php?mod=space&uid=$paythread[authorid]\">".cplang('logs_payment_view')."</a>)";
+			$paythread['buyer'] = "<a href=\"/simple/home.php?mod=space&uid=$paythread[uid]\">$paythread[username]</a>";
+			$paythread['subject'] = $paythread['subject'] ? "<a href=\"/simple/forum.php?mod=viewthread&tid=$paythread[tid]\">$paythread[subject]</a>" : cplang('logs_payment_del');
 			$paythread['dateline'] = dgmdate($paythread['dateline'], 'Y-n-j H:i');
 			$paythread['postdateline'] = $paythread['postdateline'] ? dgmdate($paythread['postdateline'], 'Y-n-j H:i') : cplang('logs_payment_del');
 			foreach($_G['setting']['extcredits'] as $id => $credits) {

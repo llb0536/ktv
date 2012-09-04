@@ -105,27 +105,27 @@ if(!submitcheck('modsubmit') && !$_GET['fast']) {
 		$shareurl = '';
 		switch($share['type']) {
 			case 'thread':
-				$shareurl = "forum.php?mod=viewthread&tid=$share[itemid]&modthreadkey=$share[modkey]";
+				$shareurl = "/simple/forum.php?mod=viewthread&tid=$share[itemid]&modthreadkey=$share[modkey]";
 				$sharetitle = lang('admincp', 'share_type_thread');
 				break;
 			case 'pic':
-				$shareurl = "home.php?mod=space&uid=$share[fromuid]&do=album&picid=$share[itemid]&modpickey=$share[modkey]";
+				$shareurl = "/simple/home.php?mod=space&uid=$share[fromuid]&do=album&picid=$share[itemid]&modpickey=$share[modkey]";
 				$sharetitle = lang('admincp', 'share_type_pic');
 				break;
 			case 'space':
-				$shareurl = "home.php?mod=space&uid=$share[itemid]";
+				$shareurl = "/simple/home.php?mod=space&uid=$share[itemid]";
 				$sharetitle = lang('admincp', 'share_type_space');
 				break;
 			case 'blog':
-				$shareurl = "home.php?mod=space&uid=$share[fromuid]&do=blog&id=$share[itemid]&modblogkey=$share[modkey]";
+				$shareurl = "/simple/home.php?mod=space&uid=$share[fromuid]&do=blog&id=$share[itemid]&modblogkey=$share[modkey]";
 				$sharetitle = lang('admincp', 'share_type_blog');
 				break;
 			case 'album':
-				$shareurl = "home.php?mod=space&uid=$share[fromuid]&do=album&id=$share[itemid]&modalbumkey=$share[modkey]";
+				$shareurl = "/simple/home.php?mod=space&uid=$share[fromuid]&do=album&id=$share[itemid]&modalbumkey=$share[modkey]";
 				$sharetitle = lang('admincp', 'share_type_album');
 				break;
 			case 'article':
-				$shareurl = "portal.php?mod=view&aid=$share[itemid]&modarticlekey=$share[modkey]";
+				$shareurl = "/simple/portal.php?mod=view&aid=$share[itemid]&modarticlekey=$share[modkey]";
 				$sharetitle = lang('admincp', 'share_type_article');
 				break;
 		}

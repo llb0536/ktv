@@ -192,7 +192,7 @@ class Search {
 		global $_G;
 
 		$leftHtmlCode = '<div id="navs-wraper-v2" class="v2" onmouseover="document.getElementById(\'navs-menu\').style.display=\'block\'" onmouseout="document.getElementById(\'navs-menu\').style.display=\'none\'">';
-		$leftHtmlCode .= '<p id="return-homepage"><a href="'.(!empty($_G['setting']['defaultindex']) ? $_G['setting']['defaultindex'] : 'forum.php').'">' . lang('home/template', 'return_homepage') . '</a></p>' . "\n";
+		$leftHtmlCode .= '<p id="return-homepage"><a href="'.(!empty($_G['setting']['defaultindex']) ? $_G['setting']['defaultindex'] : '/').'">' . lang('home/template', 'return_homepage') . '</a></p>' . "\n";
 		$leftHtmlCode .= "<ul id=\"navs-menu\">\n";
 		foreach($_G['setting']['navs'] as $navsid => $nav) {
 			$nav['nav'] = '<li ' . $nav['nav'] . '></li>';
@@ -210,9 +210,9 @@ class Search {
 
 		$rightHtmlCode = "<p>\n";
 		if($_G['uid']) {
-			$rightHtmlCode .= "\t<strong><a href=\"home.php?mod=space\" class=\"noborder\" target=\"_blank\">{$_G[member][username]}</a></strong>\n";
+			$rightHtmlCode .= "\t<strong><a href=\"/simple/home.php?mod=space\" class=\"noborder\" target=\"_blank\">{$_G[member][username]}</a></strong>\n";
 			if($_G['group']['allowinvisible']) {
-				$rightHtmlCode .= "<span id=\"loginstatus\" class=\"xg1\"><a href=\"member.php?mod=switchstatus\" title=\"".lang('template', 'login_switch_invisible_mode')."\">";
+				$rightHtmlCode .= "<span id=\"loginstatus\" class=\"xg1\"><a href=\"/simple/member.php?mod=switchstatus\" title=\"".lang('template', 'login_switch_invisible_mode')."\">";
 				if($_G['session']['invisible']) {
 					$rightHtmlCode .= lang('template', 'login_invisible_mode');
 				} else {
@@ -220,27 +220,27 @@ class Search {
 				}
 				$rightHtmlCode .= "</a></span>\n";
 			}
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"home.php?mod=space&do=home\">".lang('template', 'my_space')."</a>\n";
-			$rightHtmlCode .= "\t<span class=\"xg1\"><a href=\"home.php?mod=spacecp\">".lang('template', 'setup')."</a></span>\n";
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"home.php?mod=space&do=notice\" id=\"myprompt\"".($_G['member']['newprompt'] ? ' class="new"' : '').">".lang('template', 'notice').($_G['member']['newprompt'] ? '('.$_G['member']['newprompt'].')' : '')."</a><span id=\"myprompt_check\"></span>\n";
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"home.php?mod=space&do=pm\" id=\"pm_ntc\"".($_G['member']['newpm'] ? ' class="new"' : '').">".lang('template', 'pm_center').($_G['member']['newpm'] ? '('.$_G['member']['newpm'].')' : '')."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/home.php?mod=space&do=home\">".lang('template', 'my_space')."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"xg1\"><a href=\"/simple/home.php?mod=spacecp\">".lang('template', 'setup')."</a></span>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/home.php?mod=space&do=notice\" id=\"myprompt\"".($_G['member']['newprompt'] ? ' class="new"' : '').">".lang('template', 'notice').($_G['member']['newprompt'] ? '('.$_G['member']['newprompt'].')' : '')."</a><span id=\"myprompt_check\"></span>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/home.php?mod=space&do=pm\" id=\"pm_ntc\"".($_G['member']['newpm'] ? ' class="new"' : '').">".lang('template', 'pm_center').($_G['member']['newpm'] ? '('.$_G['member']['newpm'].')' : '')."</a>\n";
 			if($_G['group']['allowmanagearticle'] || $_G['group']['allowdiy']) {
-				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"portal.php?mod=portalcp\" target=\"_blank\">".lang('template', 'portal_manage')."</a>\n";
+				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/portal.php?mod=portalcp\" target=\"_blank\">".lang('template', 'portal_manage')."</a>\n";
 			}
 			if($_G['uid'] && $_G['adminid'] > 1) {
-				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"forum.php?mod=modcp&fid=$_G[fid]\" target=\"_blank\">".$_G['setting']['navs']['2']['navname'].lang('template', 'manage')."</a>\n";
+				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/forum.php?mod=modcp&fid=$_G[fid]\" target=\"_blank\">".$_G['setting']['navs']['2']['navname'].lang('template', 'manage')."</a>\n";
 			}
 			if($_G['uid'] && ($_G['adminid'] == 1 || $_G['member']['allowadmincp'])) {
-				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"admin.php\" target=\"_blank\">".lang('template', 'admincp')."</a>\n";
+				$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/admin.php\" target=\"_blank\">".lang('template', 'admincp')."</a>\n";
 			}
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"member.php?mod=logging&action=logout&formhash=".FORMHASH."\">".lang('template', 'logout')."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/member.php?mod=logging&action=logout&formhash=".FORMHASH."\">".lang('template', 'logout')."</a>\n";
 		} elseif(!empty($_G['cookie']['loginuser'])) {
 			$rightHtmlCode .= "\t<strong><a id=\"loginuser\" class=\noborder\">".$_G['cookie']['loginuser']."</a></strong>\n";
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"member.php?mod=logging&action=login\">".lang('template', 'activation')."</a>\n";
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"member.php?mod=logging&action=logout&formhash={FORMHASH}\">".lang('template', 'logout')."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/member.php?mod=logging&action=login\">".lang('template', 'activation')."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/member.php?mod=logging&action=logout&formhash={FORMHASH}\">".lang('template', 'logout')."</a>\n";
 		} else {
-			$rightHtmlCode .= "\t<a href=\"member.php?mod=".$_G['setting']['regname']."\" class=\"noborder\">".$_G['setting']['reglinkname']."</a>\n";
-			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"member.php?mod=logging&action=login\">".lang('template', 'login')."</a>\n";
+			$rightHtmlCode .= "\t<a href=\"/simple/member.php?mod=".$_G['setting']['regname']."\" class=\"noborder\">".$_G['setting']['reglinkname']."</a>\n";
+			$rightHtmlCode .= "\t<span class=\"pipe\">|</span><a href=\"/simple/member.php?mod=logging&action=login\">".lang('template', 'login')."</a>\n";
 		}
 		$rightHtmlCode .= "\t</p>\n";
 		$leftHtmlCode = urlcovert($leftHtmlCode, $_G['siteurl']);

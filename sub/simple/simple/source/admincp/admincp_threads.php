@@ -244,9 +244,9 @@ EOT;
 						foreach($threadlist as $thread) {
 							$threads .= showtablerow('', array('class="td25"', '', '', '', 'class="td25"', 'class="td25"'), array(
 								"<input class=\"checkbox\" type=\"checkbox\" name=\"tidarray[]\" value=\"$thread[tid]\" />",
-								"<a href=\"forum.php?mod=viewthread&tid=$thread[tid]".($thread['displayorder'] != -4 ? '' : '&modthreadkey='.modauthkey($thread['tid']))."\" target=\"_blank\">$thread[subject]</a>".($thread['readperm'] ? " - [$lang[threads_readperm] $thread[readperm]]" : '').($thread['price'] ? " - [$lang[threads_price] $thread[price]]" : ''),
-							"<a href=\"forum.php?mod=forumdisplay&fid=$thread[fid]\" target=\"_blank\">".(empty($thread['isgroup']) ? $_G['cache']['forums'][$thread[fid]]['name'] : $groupsname[$thread[fid]])."</a>",
-								"<a href=\"home.php?mod=space&uid=$thread[authorid]\" target=\"_blank\">$thread[author]</a>",
+								"<a href=\"/simple/forum.php?mod=viewthread&tid=$thread[tid]".($thread['displayorder'] != -4 ? '' : '&modthreadkey='.modauthkey($thread['tid']))."\" target=\"_blank\">$thread[subject]</a>".($thread['readperm'] ? " - [$lang[threads_readperm] $thread[readperm]]" : '').($thread['price'] ? " - [$lang[threads_price] $thread[price]]" : ''),
+							"<a href=\"/simple/forum.php?mod=forumdisplay&fid=$thread[fid]\" target=\"_blank\">".(empty($thread['isgroup']) ? $_G['cache']['forums'][$thread[fid]]['name'] : $groupsname[$thread[fid]])."</a>",
+								"<a href=\"/simple/home.php?mod=space&uid=$thread[authorid]\" target=\"_blank\">$thread[author]</a>",
 								$thread['replies'],
 								$thread['views'],
 								$thread['lastpost']
@@ -491,7 +491,7 @@ EOT;
 						}
 						showtablerow('', array('class="td25"'), array(
 							"<input type=\"checkbox\" class=\"checkbox\" name=\"delete[]\" value=\"$k\">",
-							"<a href=\"forum.php?mod=viewthread&tid=$v[tid]\" target=\"_blank\">$v[subject]</a>",
+							"<a href=\"/simple/forum.php?mod=viewthread&tid=$v[tid]\" target=\"_blank\">$v[subject]</a>",
 							implode(', ', $forumnames),
 							implode(', ', $grouptypes),
 							"<a href=\"".ADMINSCRIPT."?action=threads&operation=forumstick&do=edit&id=$k\">$lang[threads_forumstick_targets_change]</a>",

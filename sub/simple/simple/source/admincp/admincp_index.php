@@ -165,7 +165,7 @@ $onlines = '';
 $admincp_session = C::t('common_admincp_session')->fetch_all_by_panel(1);
 $members = C::t('common_member')->fetch_all(array_keys($admincp_session), false, 0);
 foreach($admincp_session as $uid => $online) {
-	$onlines .= '<a href="home.php?mod=space&uid='.$online['uid'].'" title="'.dgmdate($online['dateline']).'" target="_blank">'.$members[$uid]['username'].'</a>&nbsp;&nbsp;&nbsp;';
+	$onlines .= '<a href="/simple/home.php?mod=space&uid='.$online['uid'].'" title="'.dgmdate($online['dateline']).'" target="_blank">'.$members[$uid]['username'].'</a>&nbsp;&nbsp;&nbsp;';
 }
 
 
@@ -212,7 +212,7 @@ foreach(C::t('common_adminnote')->fetch_all_by_access(0) as $note) {
 		$note['dateline'] = dgmdate($note['dateline'], 'dt');
 		showtablerow('', array('', '', ''), array(
 			$isfounder || $_G['member']['username'] == $note['admin'] ? '<a href="'.ADMINSCRIPT.'?action=index&notesubmit=yes&noteid='.$note['id'].'"><img src="static/image/admincp/close.gif" width="7" height="8" title="'.cplang('delete').'" /></a>' : '',
-			"<span class=\"bold\"><a href=\"home.php?mod=space&username=$note[adminenc]\" target=\"_blank\">$note[admin]</a></span> $note[dateline] (".cplang('validity').": $note[expiration] ".cplang('days').")<br />$note[message]",
+			"<span class=\"bold\"><a href=\"/simple/home.php?mod=space&username=$note[adminenc]\" target=\"_blank\">$note[admin]</a></span> $note[dateline] (".cplang('validity').": $note[expiration] ".cplang('days').")<br />$note[message]",
 		));
 	}
 }

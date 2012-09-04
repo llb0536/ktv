@@ -245,10 +245,10 @@ if(submitcheck('searchsubmit', 1)) {
 				foreach($postlist as $post) {
 					$posts .= showtablerow('', '', array(
 						"<input class=\"checkbox\" type=\"checkbox\" name=\"pidarray[]\" value=\"$post[pid]\" checked />",
-						"<a href=\"forum.php?mod=redirect&goto=findpost&pid=$post[pid]&ptid=$post[tid]\" target=\"_blank\">$post[subject]</a>",
+						"<a href=\"/simple/forum.php?mod=redirect&goto=findpost&pid=$post[pid]&ptid=$post[tid]\" target=\"_blank\">$post[subject]</a>",
 						$post['message'],
-					"<a href=\"forum.php?mod=forumdisplay&fid=$post[fid]\" target=\"_blank\">".$forumnames[$post[fid]]."</a>",
-						"<a href=\"home.php?mod=space&uid=$post[authorid]\" target=\"_blank\">$post[author]</a>",
+					"<a href=\"/simple/forum.php?mod=forumdisplay&fid=$post[fid]\" target=\"_blank\">".$forumnames[$post[fid]]."</a>",
+						"<a href=\"/simple/home.php?mod=space&uid=$post[authorid]\" target=\"_blank\">$post[author]</a>",
 						$post['dateline']
 					), TRUE);
 				}

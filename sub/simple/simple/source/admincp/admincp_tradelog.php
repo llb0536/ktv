@@ -45,13 +45,13 @@ foreach(C::t('forum_tradelog')->fetch_all_by_status($filter, $start_limit, $ppp)
 	$tradelog['tradeno'] = $tradelog['offline'] ? $lang['tradelog_offline'] : $tradelog['tradeno'];
 	showtablerow('', '', array(
 		$tradelog['tradeno'],
-		'<a target="_blank" href="forum.php?mod=viewthread&do=tradeinfo&tid='.$tradelog['tid'].'&pid='.$tradelog['pid'].'">'.$tradelog['subject'].'</a>',
-		'<a target="_blank" href="home.php?mod=space&uid='.$tradelog['buyerid'].'">'.$tradelog['buyer'].'</a>',
-		'<a target="_blank" href="home.php?mod=space&uid='.$tradelog['sellerid'].'">'.$tradelog['seller'].'</a>',
+		'<a target="_blank" href="/simple/forum.php?mod=viewthread&do=tradeinfo&tid='.$tradelog['tid'].'&pid='.$tradelog['pid'].'">'.$tradelog['subject'].'</a>',
+		'<a target="_blank" href="/simple/home.php?mod=space&uid='.$tradelog['buyerid'].'">'.$tradelog['buyer'].'</a>',
+		'<a target="_blank" href="/simple/home.php?mod=space&uid='.$tradelog['sellerid'].'">'.$tradelog['seller'].'</a>',
 		$tradelog['price'],
 		$tradelog['credit'],
 		$tradelog['tax'],
-		'<a target="_blank" href="forum.php?mod=trade&orderid='.$tradelog['orderid'].'&tid='.$tradelog['tid'].'&modthreadkey='.modauthkey($tradelog['tid']).'">'.$tradelog['status'].'<br />'.$tradelog['lastupdate']
+		'<a target="_blank" href="/simple/forum.php?mod=trade&orderid='.$tradelog['orderid'].'&tid='.$tradelog['tid'].'&modthreadkey='.modauthkey($tradelog['tid']).'">'.$tradelog['status'].'<br />'.$tradelog['lastupdate']
 	));
 }
 

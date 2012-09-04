@@ -61,9 +61,9 @@ if($suboperation !== 'adduser') {
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$specialuser[uid]\">",
 				"<input type=\"text\" name=\"displayorder[$specialuser[uid]]\" value=\"$specialuser[displayorder]\" size=\"8\">",
 				$specialuser['uid'],
-				"<a href=\"home.php?mod=space&uid=$specialuser[uid]\" target=\"_blank\">$specialuser[username]</a>",
+				"<a href=\"/simple/home.php?mod=space&uid=$specialuser[uid]\" target=\"_blank\">$specialuser[username]</a>",
 				$specialuser['reason'],
-				"<a href=\"home.php?mod=space&uid=$specialuser[opuid]\" target=\"_blank\">$specialuser[opusername]</a>",
+				"<a href=\"/simple/home.php?mod=space&uid=$specialuser[opuid]\" target=\"_blank\">$specialuser[opusername]</a>",
 				$specialuser['dateline'],
 				"<a href=\"".ADMINSCRIPT."?action=specialuser&operation=$op&do=edit&uid=$specialuser[uid]\" class=\"act\">".$lang['edit']."</a>"
 				);

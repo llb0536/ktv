@@ -192,7 +192,7 @@ if(!$operation) {
 		foreach($medallogs as $id => $medal) {
 			$medals .= showtablerow('', '', array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$id\">",
-				"<a href=\"home.php?mod=space&username=".rawurlencode($medalusers[$medal['uid']]['username'])."\" target=\"_blank\">{$medalusers[$medal[uid]][username]}</a>",
+				"<a href=\"/simple/home.php?mod=space&username=".rawurlencode($medalusers[$medal['uid']]['username'])."\" target=\"_blank\">{$medalusers[$medal[uid]][username]}</a>",
 				$medalnames[$medal['medalid']]['name'],
 				$medal['dateline'],
 				$medal['expiration']

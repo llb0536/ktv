@@ -99,7 +99,7 @@ EOF;
 					$lockshow = $member['status'] == '-1' ? '<em class="lightnum">['.cplang('lock').']</em>' : '';
 					$members .= showtablerow('', array('class="td25"', '', 'title="'.implode("\n", $memberextcredits).'"'), array(
 						"<input type=\"checkbox\" name=\"uidarray[]\" value=\"$member[uid]\"".($member['adminid'] == 1 ? 'disabled' : '')." class=\"checkbox\">",
-						($_G['setting']['connect']['allow'] && $member['conisbind'] ? '<img class="vmiddle" src="static/image/common/connect_qq.gif" /> ' : '')."<a href=\"home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
+						($_G['setting']['connect']['allow'] && $member['conisbind'] ? '<img class="vmiddle" src="static/image/common/connect_qq.gif" /> ' : '')."<a href=\"/simple/home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
 						$member['credits'],
 						$member['posts'],
 						$usergroups[$member['adminid']]['grouptitle'],
@@ -279,7 +279,7 @@ EOF;
 				}
 				$members .= showtablerow('', array('class="td25"', '', 'title="'.implode("\n", $memberextcredits).'"'), array(
 					"<input type=\"checkbox\" name=\"uidarray[]\" value=\"$member[uid]\"".($member['adminid'] == 1 ? 'disabled' : '')." class=\"checkbox\">",
-					"<a href=\"home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
+					"<a href=\"/simple/home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
 					$member['credits'],
 					$member['posts'],
 					$usergroups[$member['adminid']]['grouptitle'],
@@ -635,8 +635,8 @@ EOF;
 		$users = C::t('common_member')->fetch_all(C::t('common_grouppm')->get_uids());
 		foreach($grouppms as $grouppm) {
 			showtablerow('', array('valign="top" class="td25"', 'valign="top"'), array(
-			    '<a href="home.php?mod=space&uid='.$grouppm['authorid'].'" target="_blank">'.avatar($grouppm['authorid'], 'small').'</a>',
-			    '<a href="home.php?mod=space&uid='.$grouppm['authorid'].'" target="_blank"><b>'.$users[$grouppm['authorid']]['username'].'</b></a> ('.dgmdate($grouppm['dateline']).'):<br />'.
+			    '<a href="/simple/home.php?mod=space&uid='.$grouppm['authorid'].'" target="_blank">'.avatar($grouppm['authorid'], 'small').'</a>',
+			    '<a href="/simple/home.php?mod=space&uid='.$grouppm['authorid'].'" target="_blank"><b>'.$users[$grouppm['authorid']]['username'].'</b></a> ('.dgmdate($grouppm['dateline']).'):<br />'.
 			    $grouppm['message'].'<br /><br />'.
 			    (!$do ?
 				'<a href="'.ADMINSCRIPT.'?action=members&operation=grouppmlist&do='.$grouppm['id'].'">'.cplang('members_grouppmlist_view', array('number' => $grouppm['numbers'])).'</a>' :
@@ -664,7 +664,7 @@ EOF;
 		$alldata = C::t('common_member_grouppm')->fetch_all_by_gpmid($gpmid, $_GET['filter'] == 'read' ? 1 : 0, $start_limit, $ppp);
 		$allmember = $gpmuser ? C::t('common_member')->fetch_all_username_by_uid(array_keys($gpmuser)) : array();
 		foreach($alldata as $uid => $gpmuser) {
-			echo '<div style="margin-bottom:5px;float:left;width:24%"><b><a href="home.php?mod=space&uid='.$uid.'" target="_blank">'.$allmember[$uid].'</a></b><br />&nbsp;';
+			echo '<div style="margin-bottom:5px;float:left;width:24%"><b><a href="/simple/home.php?mod=space&uid='.$uid.'" target="_blank">'.$allmember[$uid].'</a></b><br />&nbsp;';
 			if($gpmuser['status'] == 0) {
 				echo '<span class="lightfont">'.cplang('members_grouppmlist_status_0').'</span>';
 			} else {
@@ -1409,7 +1409,7 @@ EOT;
 				echo '<tr><td colspan="2" style="padding:0 !important;border-top:none;"><table style="width:100%;">';
 				showtablerow('class="partition"', array('width="15%"', 'width="10%"', 'width="20%"', '', 'width="15%"'), array($lang['crime_user'], $lang['crime_action'], $lang['crime_dateline'], $lang['crime_reason'], $lang['crime_operator']));
 				foreach($clist as $crime) {
-					showtablerow('', '', array('<a href="home.php?mod=space&uid='.$member['uid'].'">'.$member['username'], $lang[$crime['action']], date('Y-m-d H:i:s', $crime['dateline']), $crime['reason'], '<a href="home.php?mod=space&uid='.$crime['operatorid'].'" target="_blank">'.$crime['operator'].'</a>'));
+					showtablerow('', '', array('<a href="/simple/home.php?mod=space&uid='.$member['uid'].'">'.$member['username'], $lang[$crime['action']], date('Y-m-d H:i:s', $crime['dateline']), $crime['reason'], '<a href="/simple/home.php?mod=space&uid='.$crime['operatorid'].'" target="_blank">'.$crime['operator'].'</a>'));
 				}
 				echo '</table></td></tr>';
 			}
@@ -1567,7 +1567,7 @@ EOF;
 		}
 		if($noticekey) {
 			$notearr = array(
-				'user' => "<a href=\"home.php?mod=space&uid=$_G[uid]\">$_G[username]</a>",
+				'user' => "<a href=\"/simple/home.php?mod=space&uid=$_G[uid]\">$_G[username]</a>",
 				'day' => intval($_POST['banexpirynew']),
 				'reason' => $reason,
 				'from_id' => 0,

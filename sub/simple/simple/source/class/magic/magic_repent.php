@@ -83,7 +83,7 @@ class magic_repent {
 		usemagic($this->magic['magicid'], $this->magic['num']);
 		updatemagiclog($this->magic['magicid'], '2', '1', '0', 0, 'tid', $_G['tid']);
 
-		showmessage(lang('magic/repent', 'repent_succeed'), $post['first'] ? 'forum.php?mod=forumdisplay&fid='.$post['fid'] : dreferer(), array(), array('alert' => 'right', 'showdialog' => 1, 'locationtime' => true));
+		showmessage(lang('magic/repent', 'repent_succeed'), $post['first'] ? '/simple/forum.php?mod=forumdisplay&fid='.$post['fid'] : dreferer(), array(), array('alert' => 'right', 'showdialog' => 1, 'locationtime' => true));
 	}
 
 	function show() {

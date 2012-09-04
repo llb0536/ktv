@@ -179,7 +179,7 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 					$share = mkshare($share);
 					$shares .= showtablerow('', array('', 'style="width:80px;"', 'style="width:150px;"', 'style="width:500px;"'), array(
 						"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$share[sid]\" />",
-						"<a href=\"home.php?mod=space&uid=$share[uid]\" target=\"_blank\">".$share['username']."</a>",
+						"<a href=\"/simple/home.php?mod=space&uid=$share[uid]\" target=\"_blank\">".$share['username']."</a>",
 						$share['title_template'],
 						$share['body_template'],
 						$share['dateline']

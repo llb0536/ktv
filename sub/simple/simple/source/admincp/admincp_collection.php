@@ -93,8 +93,8 @@ if($operation == 'comment') {
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"cidarray[]\" value=\"$uniquecomment[cid]\" />",
 				$uniquecomment['message'],
 				$uniquecomment['cid'],
-				"<a href='forum.php?mod=collection&action=view&ctid={$uniquecomment['ctid']}' target='_blank'>{$collectiondata[$uniquecomment['ctid']]['name']}</a>",
-				"<a href='home.php?mod=space&uid={$uniquecomment['uid']}' target='_blank'>{$uniquecomment['username']}</a>",
+				"<a href='/simple/forum.php?mod=collection&action=view&ctid={$uniquecomment['ctid']}' target='_blank'>{$collectiondata[$uniquecomment['ctid']]['name']}</a>",
+				"<a href='/simple/home.php?mod=space&uid={$uniquecomment['uid']}' target='_blank'>{$uniquecomment['username']}</a>",
 				$uniquecomment['useip'],
 				$uniquecomment['rate'],
 				dgmdate($uniquecomment['dateline']),
@@ -156,8 +156,8 @@ if($operation == 'comment') {
 		foreach($collection as $uniquecollection) {
 			showtablerow('', array('class="td25"', 'width=400', ''), array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"ctidarray[]\" value=\"$uniquecollection[ctid]\" />",
-				"<a href='forum.php?mod=collection&action=view&ctid={$uniquecollection['ctid']}' target='_blank'>{$uniquecollection['name']}</a>",
-				"<a href='home.php?mod=space&uid={$uniquecollection['uid']}' target='_blank'>{$uniquecollection['username']}</a>",
+				"<a href='/simple/forum.php?mod=collection&action=view&ctid={$uniquecollection['ctid']}' target='_blank'>{$uniquecollection['name']}</a>",
+				"<a href='/simple/home.php?mod=space&uid={$uniquecollection['uid']}' target='_blank'>{$uniquecollection['username']}</a>",
 				dgmdate($uniquecollection['dateline']),
 			));
 		}

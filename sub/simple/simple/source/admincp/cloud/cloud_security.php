@@ -117,7 +117,7 @@ if ($_GET['anchor'] == 'index') {
 		}
 		$value['message'] = convertMessage($value);
 		$modthreadkey = modauthkey($value['tid']);
-		$viewlink = $value['message'] ? '<a href="forum.php?mod=redirect&goto=findpost&ptid='.$value['tid'].'&pid='.$value['pid'].'&modthreadkey='.$modthreadkey.'" target="_blank" title="'.$lang['security_view_thread'].'">'.$value['subject'].'</a>' : '';
+		$viewlink = $value['message'] ? '<a href="/simple/forum.php?mod=redirect&goto=findpost&ptid='.$value['tid'].'&pid='.$value['pid'].'&modthreadkey='.$modthreadkey.'" target="_blank" title="'.$lang['security_view_thread'].'">'.$value['subject'].'</a>' : '';
 
 		$thread = array(convertSubjectandIP($value, $viewlink), getNamebyFid($value['fid']), convertAuthorAndDate($value), //convertIdtoStr($value['eviltype']),
 		convertIdtoStr($value['invisible'], 'adminoperate'));
@@ -357,7 +357,7 @@ function getNamebyFid($fid) {
 	}
 	$forumInfo = C::t('forum_forum')->fetch_all_name_by_fid($fid);
 	$name = $forumInfo[$fid]['name'];
-	$name = "<a href='forum.php?mod=forumdisplay&fid=$fid' target='_blank'>".$name."</a>";
+	$name = "<a href='/simple/forum.php?mod=forumdisplay&fid=$fid' target='_blank'>".$name."</a>";
 	return $name;
 }
 
@@ -390,7 +390,7 @@ function convertAuthorAndDate($value) {
 	if (!$value['author']) {
 		return false;
 	}
-	$result = "<a href='home.php?mod=space&uid={$value[authorid]}&do=profile' target='_blank'>" . $value['author'] . "</a>" . '<p>';
+	$result = "<a href='/simple/home.php?mod=space&uid={$value[authorid]}&do=profile' target='_blank'>" . $value['author'] . "</a>" . '<p>';
 	$result .= dgmdate($value['dateline']);
 	$result .= '</a>';
 	return $result;

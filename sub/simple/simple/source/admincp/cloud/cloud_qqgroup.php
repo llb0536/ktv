@@ -223,7 +223,7 @@ function showSearchResultThreads($threads, $mpurl) {
 			$thread['subject'] = strip_tags($thread['subject']);
 			$threadsOutput .= '
 			<tr id="thread_'.$thread['tid'].'">
-				<td class="title"><a href="forum.php?mod=viewthread&tid='.$thread['tid'].'"  title="'.$thread['subject'].'" target="_blank">'.cutstr($thread['subject'], 45).($thread['attachment'] == 2 ? '&nbsp;<img align="absmiddle" src="static/image/admincp/cloud/image_s.gif" alt="attach_img" title="'.cplang('attach_img').'" />' : '').'</a></td>
+				<td class="title"><a href="/simple/forum.php?mod=viewthread&tid='.$thread['tid'].'"  title="'.$thread['subject'].'" target="_blank">'.cutstr($thread['subject'], 45).($thread['attachment'] == 2 ? '&nbsp;<img align="absmiddle" src="static/image/admincp/cloud/image_s.gif" alt="attach_img" title="'.cplang('attach_img').'" />' : '').'</a></td>
 				<td title="'.dhtmlspecialchars(strip_tags($_G['cache']['forums'][$thread['fid']]['name'])).'">'.cutstr(dhtmlspecialchars(strip_tags($_G['cache']['forums'][$thread['fid']]['name'])), 14, '').'</td>
 				<td class="qqqun_op"><a id="thread_addtop_'.$thread['tid'].'" href="javascript:;" onClick="addMiniportalTop('.$thread['tid'].')" class="qqqun_op_top" title="'.cplang('qqgroup_ctrl_add_miniportal_topic').'">top</a><a  id="thread_addlist_'.$thread['tid'].'" href="javascript:;" onClick="addMiniportalList('.$thread['tid'].')" class="qqqun_op_list" title="'.cplang('qqgroup_ctrl_add_miniportal_normal').'">list</a></td>
 			</tr>';

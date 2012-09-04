@@ -30,6 +30,6 @@ include loadarchiver('common/header');
 
 <div id="end">
 	<?php echo lang('forum/archiver', 'full_version'); ?>:
-	<a href="../<?php echo in_array('forum_forumdisplay', $_G['setting']['rewritestatus']) ? rewriteoutput('forum_forumdisplay', 1, '', $_G['fid'], $page) : 'forum.php?mod=forumdisplay&fid='.$_G['fid'].'&page='.$page; ?>" target="_blank"><strong><?php echo $_G['forum']['name']; ?></strong></a>
+	<a href="../<?php echo in_array('forum_forumdisplay', $_G['setting']['rewritestatus']) ? rewriteoutput('forum_forumdisplay', 1, '', $_G['fid'], $page) : '/simple/forum.php?mod=forumdisplay&fid='.$_G['fid'].'&page='.$page; ?>" target="_blank"><strong><?php echo $_G['forum']['name']; ?></strong></a>
 </div>
 <?php include loadarchiver('common/footer'); ?>

@@ -211,7 +211,7 @@ if($operation == 'perm') {
 					$isfounder = array_key_exists($id, $founders);
 					showtablerow('style="height:20px"', array('class="td25"', 'class="td24"', 'class="td24"'), array(
 						!$isfounder || isset($adminmembers[$member['uid']]['cpgroupid']) ? "<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$id]\">" : '',
-						"<a href=\"home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
+						"<a href=\"/simple/home.php?mod=space&uid=$member[uid]\" target=\"_blank\">$member[username]</a>",
 						$member['cpgroupname'],
 						!$isfounder && $adminmembers[$member['uid']]['cpgroupid'] ? '<a href="'.ADMINSCRIPT.'?action=founder&operation=perm&do=member&id='.$id.'">'.cplang('edit').'</a>' : ''
 						));

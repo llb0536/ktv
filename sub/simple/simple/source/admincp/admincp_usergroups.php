@@ -392,7 +392,7 @@ EOT;
 	$num = C::t('common_member')->count_by_groupid($sgroupid);
 	$sgroups = '';
 	foreach(C::t('common_member')->fetch_all_by_groupid($sgroupid, 0, 80) as $uid => $member) {
-		$sgroups .= '<li><a href="home.php?mod=space&uid='.$uid.'" target="_blank">'.$member['username'].'</a></li>';
+		$sgroups .= '<li><a href="/simple/home.php?mod=space&uid='.$uid.'" target="_blank">'.$member['username'].'</a></li>';
 	}
 	ajaxshowheader();
 	echo '<ul class="userlist"><li class="unum">'.$lang['usernum'].$num.($num > 80 ? '&nbsp;<a href="'.ADMINSCRIPT.'?action=members&submit=yes&usergroupid[]='.$sgroupid.'">'.$lang['more'].'&raquo;</a>' : '').'</li>'.$sgroups.'</ul>';

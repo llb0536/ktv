@@ -275,7 +275,7 @@ EOF;
 					if($anchor == 'pass') {
 						$value = array_merge($value, $profiles[$uid]);
 					}
-					$value['username'] = '<a href="home.php?mod=space&uid='.$value['uid'].'&do=profile" target="_blank">'.avatar($value['uid'], "small").'<br/>'.$value['username'].'</a>';
+					$value['username'] = '<a href="/simple/home.php?mod=space&uid='.$value['uid'].'&do=profile" target="_blank">'.avatar($value['uid'], "small").'<br/>'.$value['username'].'</a>';
 					if($anchor != 'pass') {
 						$fields = $anchor != 'pass' ? dunserialize($value['field']) : $_G['setting']['verify'][$vid]['field'];
 						$verifytype = $value['verifytype'] ? $_G['setting']['verify'][$value['verifytype']]['title'] : $lang['members_verify_profile'];
@@ -356,7 +356,7 @@ EOF;
 			if($anchor == 'pass') {
 				$verifyuids = array();
 				$note_values = array(
-						'verify' => $vid ? '<a href="home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$_G['setting']['verify'][$vid]['title'].'</a>' : ''
+						'verify' => $vid ? '<a href="/simple/home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$_G['setting']['verify'][$vid]['title'].'</a>' : ''
 					);
 				foreach($_GET['verify'] as $uid => $type) {
 					if($type == 'export') {
@@ -461,7 +461,7 @@ EOF;
 								}
 								$verify['flag'][] = $value['vid'];
 								$note_values = array(
-										'verify' => $vid ? '<a href="home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$verifysetting['title'].'</a>' : '',
+										'verify' => $vid ? '<a href="/simple/home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$verifysetting['title'].'</a>' : '',
 										'profile' => $fieldtitle,
 										'reason' => $_GET['reason'][$value['vid']],
 									);
@@ -473,7 +473,7 @@ EOF;
 									$verify["verify"]['1'][] = $value['uid'];
 								}
 								$note_values = array(
-										'verify' => $vid ? '<a href="home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$verifysetting['title'].'</a>' : ''
+										'verify' => $vid ? '<a href="/simple/home.php?mod=spacecp&ac=profile&op=verify&vid='.$vid.'" target="_blank">'.$verifysetting['title'].'</a>' : ''
 									);
 								$note_lang = 'profile_verify_pass';
 							}

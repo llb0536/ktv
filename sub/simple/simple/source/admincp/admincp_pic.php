@@ -198,10 +198,10 @@ if(submitcheck('searchsubmit', 1) || $newlist) {
 				$pic['albumid'] = empty($pic['albumid']) ? -1 : $pic['albumid'];
 				$pics .= showtablerow('', '', array(
 					"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$pic[picid]\" />",
-					"<a href='home.php?mod=space&uid=$pic[uid]&do=album&picid=$pic[picid]'  target='_blank'><img src='$pic[pic]'/></a>",
+					"<a href='/simple/home.php?mod=space&uid=$pic[uid]&do=album&picid=$pic[picid]'  target='_blank'><img src='$pic[pic]'/></a>",
 					$pic['size'],
-					"<a href='home.php?mod=space&uid=$pic[uid]&do=album&id=$pic[albumid]'  target='_blank'>$pic[albumname]</a>",
-					"<a href=\"home.php?mod=space&uid=$pic[uid]\" target=\"_blank\">".$pic['username']."</a>",
+					"<a href='/simple/home.php?mod=space&uid=$pic[uid]&do=album&id=$pic[albumid]'  target='_blank'>$pic[albumname]</a>",
+					"<a href=\"/simple/home.php?mod=space&uid=$pic[uid]\" target=\"_blank\">".$pic['username']."</a>",
 					$pic['dateline'], "<a href=\"".ADMINSCRIPT."?action=comment&detail=1&searchsubmit=1&idtype=picid&id=$pic[picid]\">".$lang['pic_comment']."</a>"
 				), TRUE);
 			}

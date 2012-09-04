@@ -146,14 +146,14 @@ SEARCH;
 		foreach(C::t('portal_topic')->fetch_all_by_search_where($wherearr, $ordersql, $start, $perpage) as $topicid => $value) {
 			showtablerow('', array('class="td25"', 'class=""', 'class="td28"'), array(
 					"<input type=\"checkbox\" class=\"checkbox\" name=\"ids[]\" value=\"$topicid\">",
-					"<a href=\"portal.php?mod=topic&topicid=$topicid\" target=\"_blank\">".$value[title]."</a>"
+					"<a href=\"/simple/portal.php?mod=topic&topicid=$topicid\" target=\"_blank\">".$value[title]."</a>"
 					.($value['closed'] ? ' ['.cplang('topic_closed_yes').']' : ''),
 					$value['domain'] && !empty($_G['setting']['domain']['root']['topic']) ? 'http://'.$value['domain'].'.'.$_G['setting']['domain']['root']['topic'] : '',
 					$value['name'],
-					"<a href=\"home.php?mod=space&uid=$value[uid]&do=profile\" target=\"_blank\">$value[username]</a>",
+					"<a href=\"/simple/home.php?mod=space&uid=$value[uid]&do=profile\" target=\"_blank\">$value[username]</a>",
 					dgmdate($value[dateline]),
-					"<a href=\"portal.php?mod=portalcp&ac=topic&topicid=$topicid\" target=\"_blank\">".cplang('topic_edit')."</a>&nbsp;&nbsp;".
-					"<a href=\"portal.php?mod=topic&topicid=$topicid&diy=yes\" target=\"_blank\">DIY</a>".
+					"<a href=\"/simple/portal.php?mod=portalcp&ac=topic&topicid=$topicid\" target=\"_blank\">".cplang('topic_edit')."</a>&nbsp;&nbsp;".
+					"<a href=\"/simple/portal.php?mod=topic&topicid=$topicid&diy=yes\" target=\"_blank\">DIY</a>".
 					'&nbsp;&nbsp;<a href="'.ADMINSCRIPT.'?action=diytemplate&operation=perm&targettplname=portal/portal_topic_content_'.$value['topicid'].'&tpldirectory='.getdiydirectory($value['primaltplname']).'">'.cplang('topic_perm').'</a>',
 				));
 		}

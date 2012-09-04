@@ -106,23 +106,23 @@ if(!submitcheck('modsubmit') && !$_GET['fast']) {
 		}
 		$viewurl = '';
 		$commenttype = '';
-		$editurl = "home.php?mod=spacecp&ac=comment&op=edit&cid=$comment[cid]&modcommentkey=$comment[modcommentkey]";
+		$editurl = "/simple/home.php?mod=spacecp&ac=comment&op=edit&cid=$comment[cid]&modcommentkey=$comment[modcommentkey]";
 		switch($comment['idtype']) {
 			case 'uid':
 				$commenttype = lang('admincp', 'comment_uid');
-				$viewurl = "home.php?mod=space&uid=$comment[uid]&do=wall#comment_anchor_$comment[cid]";
+				$viewurl = "/simple/home.php?mod=space&uid=$comment[uid]&do=wall#comment_anchor_$comment[cid]";
 				break;
 			case 'blogid':
 				$commenttype = lang('admincp', 'comment_blogid');
-				$viewurl = "home.php?mod=space&uid=$comment[uid]&do=blog&id=$comment[id]&modblogkey=$comment[modkey]#comment_anchor_$comment[cid]";
+				$viewurl = "/simple/home.php?mod=space&uid=$comment[uid]&do=blog&id=$comment[id]&modblogkey=$comment[modkey]#comment_anchor_$comment[cid]";
 				break;
 			case 'picid':
 				$commenttype = lang('admincp', 'comment_picid');
-				$viewurl = "home.php?mod=space&uid=$comment[uid]&do=album&picid=$comment[id]&modpickey=$comment[modkey]#comment_anchor_$comment[cid]";
+				$viewurl = "/simple/home.php?mod=space&uid=$comment[uid]&do=album&picid=$comment[id]&modpickey=$comment[modkey]#comment_anchor_$comment[cid]";
 				break;
 			case 'sid':
 				$commenttype = lang('admincp', 'comment_sid');
-				$viewurl = "home.php?mod=space&uid=$comment[uid]&do=share&id=$comment[id]#comment_anchor_$comment[cid]";
+				$viewurl = "/simple/home.php?mod=space&uid=$comment[uid]&do=share&id=$comment[id]#comment_anchor_$comment[cid]";
 				break;
 		}
 		showtagheader('tbody', '', true, 'hover');

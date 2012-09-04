@@ -225,11 +225,11 @@ var rowtypedata = [
 		foreach($query as $group) {
 			$groups .= showtablerow('', array('class="td25"', '', ''), array(
 				"<input type=\"checkbox\" name=\"fidarray[]\" value=\"$group[fid]\" class=\"checkbox\">",
-				"<span class=\"lightfont right\">(fid:$group[fid])</span><a href=\"forum.php?mod=forumdisplay&fid=$group[fid]\" target=\"_blank\">$group[name]</a>",
+				"<span class=\"lightfont right\">(fid:$group[fid])</span><a href=\"/simple/forum.php?mod=forumdisplay&fid=$group[fid]\" target=\"_blank\">$group[name]</a>",
 				$group['posts'],
 				$group['threads'],
 				$group['membernum'],
-				"<a href=\"home.php?mod=space&uid=$group[founderuid]\" target=\"_blank\">$group[foundername]</a>",
+				"<a href=\"/simple/home.php?mod=space&uid=$group[founderuid]\" target=\"_blank\">$group[foundername]</a>",
 				"<a href=\"".ADMINSCRIPT."?action=group&operation=editgroup&fid=$group[fid]\" class=\"act\">".cplang('detail')."</a>"
 			), TRUE);
 		}
@@ -994,9 +994,9 @@ EOT;
 	foreach($query as $group) {
 		$groups .= showtablerow('', array('class="td25"', '', ''), array(
 			"<input type=\"checkbox\" name=\"fidarray[]\" value=\"$group[fid]\" class=\"checkbox\">",
-			"<a href=\"forum.php?mod=forumdisplay&fid=$group[fid]\" target=\"_blank\">$group[name]</a>",
+			"<a href=\"/simple/forum.php?mod=forumdisplay&fid=$group[fid]\" target=\"_blank\">$group[name]</a>",
 			empty($_G['cache']['grouptype']['first'][$group[fup]]) ? $_G['cache']['grouptype']['second'][$group[fup]]['name'] : $_G['cache']['grouptype']['first'][$group[fup]]['name'],
-			"<a href=\"home.php?mod=space&uid=$group[founderuid]\" target=\"_blank\">$group[foundername]</a>",
+			"<a href=\"/simple/home.php?mod=space&uid=$group[founderuid]\" target=\"_blank\">$group[foundername]</a>",
 			dgmdate($group['dateline'])
 		), TRUE);
 		$groups .=showtablerow('', array('','colspan="4"'), array('',cplang('group_mod_description').'&nbsp;:&nbsp;'.$group['description']), TRUE);
