@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'active_support/all'
 %w{
 pre_common_admincp_cmenu

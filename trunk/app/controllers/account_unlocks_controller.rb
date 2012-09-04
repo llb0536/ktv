@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AccountUnlocksController < Devise::UnlocksController
   def new
     super

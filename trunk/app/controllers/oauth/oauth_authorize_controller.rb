@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Oauth::OauthAuthorizeController < ApiController
 
   # before_filter :authenticate

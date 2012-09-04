@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
   def timeago(time, options = {})
     options[:class]

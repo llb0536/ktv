@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "rmmseg"
 class MMSeg
   def self.split(text)

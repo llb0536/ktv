@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Oauth::OauthTokenController < ApiController
   include ActionView::Helpers::DateHelper
 

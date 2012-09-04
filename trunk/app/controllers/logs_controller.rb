@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class LogsController < ApplicationController
   before_filter :we_are_inside_qa
   def we_are_inside_qa

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # # coding: utf-8
 # father = Topic.math_and_sciences
 # # t=Topic.find_or_create_by(name:'生物学');t.add_father(father)

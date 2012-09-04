@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Oauth
 
   def self.normalize_scope(scope = [])

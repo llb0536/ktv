@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Authorization grant which represents the authorization
 # provided by the resource owner
 

@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class Courseware
   include Mongoid::Document
   include Mongoid::Timestamps

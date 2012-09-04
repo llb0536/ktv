@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CoverUploader < BaseUploader
   def default_url
     "/defaults/cover/#{version_name}.gif"

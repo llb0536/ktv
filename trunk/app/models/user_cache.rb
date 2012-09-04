@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserCache
   include Mongoid::Document
   store_in :user_caches,capped:true,size:100000  # 10000 = 127 records

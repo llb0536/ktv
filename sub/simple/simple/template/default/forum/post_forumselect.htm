@@ -20,7 +20,7 @@
 </div>
 <h3 class="flb">
 	<!--{if $special === null}-->
-		<em>{lang post_forum_navigation}</em>
+		<em>请选择要上传课件的课程</em>
 	<!--{else}-->
 		<!--{block actiontitle}--><!--{if $special == 1}-->{lang post_newthreadpoll}<!--{elseif $special == 2}-->{lang post_newthreadtrade}<!--{elseif $special == 3}-->{lang post_newthreadreward}<!--{elseif $special == 4}-->{lang post_newthreadactivity}<!--{elseif $special == 5}-->{lang post_newthreaddebate}<!--{else}-->{lang send_posts}<!--{/if}--><!--{/block}-->
 		<em>$actiontitle</em>
@@ -37,20 +37,22 @@
 			<!--{if $special === null}-->
 				<button id="postbtn" class="pn pnc y" onclick="hideWindow('nav');showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=' + selectfid)" disabled="disabled"><span>{lang send_posts}</span></button>
 			<!--{else}-->
-				<button id="postbtn" class="pn pnc y" onclick="hideWindow('nav');window.location.href='forum.php?mod=post&action=newthread&fid=' + selectfid + '&special=$special'" disabled="disabled"><span>$actiontitle</span></button>
+				<button id="postbtn" class="pn pnc y" onclick="hideWindow('nav');window.location.href='/simple/forum.php?mod=post&action=newthread&fid=' + selectfid + '&special=$special'" disabled="disabled"><span>$actiontitle</span></button>
 			<!--{/if}-->
 		<!--{/if}-->
 		<span class="pbnv">$_G['setting']['bbname']<span id="pbnv"></span> <a id="enterbtn" class="xg1" href="javascript:;" onclick="locationforums(currentblock, currentfid)">[{lang nav_forum}]</a></span>
 	</p>
 	<ul class="pbl cl">
-		<li id="block_group"></li>
-		<li id="block_forum"></li>
-		<li id="block_subforum"></li>
+		<li id="block_group" style="width:299px"></li>
+		<li id="block_forum" style="width:299px"></li>
+		<li id="block_subforum" style="display:none"></li>
 	</ul>
 </div>
 
 <script type="text/javascript" reload="1">
-var s = '<!--{if $commonfids}--><p><a id="commonforum" href="javascript:;" onclick="switchforums(this, 1, \'common\')" class="pbsb lightlink">{lang nav_forum_frequently}</a></p><!--{/if}-->';
+vas s;
+s='<p><a class="pbsb lightlink" onclick="console.log(this)" href="javascript:;" id="commonforum">搜索结果</a></p>';
+var s += '<!--{if $commonfids}--><p><a id="commonforum" href="javascript:;" onclick="switchforums(this, 1, \'common\')" class="pbsb lightlink">{lang nav_forum_frequently}</a></p><!--{/if}-->';
 var lis = $('fs_group').getElementsByTagName('LI');
 for(i = 0;i < lis.length;i++) {
 	var gid = lis[i].getAttribute('fid');
@@ -59,6 +61,7 @@ for(i = 0;i < lis.length;i++) {
 	}
 
 }
+console.log(s);
 $('block_group').innerHTML = s;
 var lastswitchobj = null;
 var selectfid = 0;

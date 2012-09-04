@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'fileutils'
 FileUtils.cd('/root/ktv_simulator') do
   PreForumForum.where(:type=>:group).each do |x|

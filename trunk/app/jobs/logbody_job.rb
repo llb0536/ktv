@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class LogbodyJob
   @queue = :redundancy
   def self.perform(params={})

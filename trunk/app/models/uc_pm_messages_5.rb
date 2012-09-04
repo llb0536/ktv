@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UcPmMessages5 < ActiveRecord::Base
   include ActiveBaseModel
   self.table_name =  'uc_pm_messages_5'

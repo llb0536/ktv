@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AccountSessionsController < Devise::SessionsController 
   def new
     resource = build_resource(nil, :unsafe => true)

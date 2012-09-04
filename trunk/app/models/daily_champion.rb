@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DailyChampion
   include Mongoid::Document
   field :day,:type=>Date

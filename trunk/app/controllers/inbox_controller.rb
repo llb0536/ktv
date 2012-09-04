@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class InboxController < ApplicationController
   def index
     @inboxes = Inbox.find_by_user_id(current_user.id)

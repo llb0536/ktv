@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class HookerSuspendedJob
   @queue = :hooker_suspended
   def self.perform(klass,id,method,*args,&block)

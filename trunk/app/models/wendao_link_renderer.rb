@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class ZMLinkRenderer<WillPaginate::ActionView::LinkRenderer
   class << self
     attr_accessor :sectionPagerKlass

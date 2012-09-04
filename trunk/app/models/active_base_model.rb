@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ActiveBaseModel
   extend ActiveSupport::Concern
   included do

@@ -5,31 +5,43 @@ require "redis-search"
 def redis_connect!(index=0)
   $debug_logger.fatal("redis_connect! at #{index} (#{index.class})")
   redis_config = YAML.load_file("#{Rails.root}/config/redis.yml")[Rails.env]
-
+  select = 0
   $passwd = '87dsFDLKJ7^*$@#_Dn1..d0983DKOI892617jKLKLKDFJ;;dskojifdsouitreo09w'
+
   $redis = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=> $passwd)
-  $redis.select(redis_config['select'])
+  $redis.select(select)
+  select+=1
 
-  $redis_search = Redis.new(:host => redis_config['host_search'],:port => redis_config['port_search'],:thread_safe => true, :password=> $passwd)
-  $redis_search.select(redis_config['select_search'])
+  $redis_search = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=> $passwd)
+  $redis_search.select(select)
+  select+=1
 
-  $redis_resque = Redis.new(:host => redis_config['host_resque'],:port => redis_config['port_resque'],:thread_safe => true, :password=>$passwd) 
-  $redis_resque.select(redis_config['select_resque'])
+  $redis_resque = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd) 
+  $redis_resque.select(select)
+  select+=1
 
-  $redis_users = Redis.new(:host => redis_config['host_users'],:port => redis_config['port_users'],:thread_safe => true, :password=>$passwd)
-  $redis_users.select(redis_config['select_users'])
+  $redis_users = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_users.select(select)
+  select+=1
 
-  $redis_topics = Redis.new(:host => redis_config['host_topics'],:port => redis_config['port_topics'],:thread_safe => true, :password=>$passwd)
-  $redis_topics.select(redis_config['select_topics'])
+  $redis_topics = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_topics.select(select)
+  select+=1
 
-  $redis_asks = Redis.new(:host => redis_config['host_asks'],:port => redis_config['port_asks'],:thread_safe => true, :password=>$passwd)
-  $redis_asks.select(redis_config['select_asks'])
+  $redis_asks = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_asks.select(select)
+  select+=1
 
-  $redis_experts = Redis.new(:host => redis_config['host_experts'],:port => redis_config['port_experts'],:thread_safe => true, :password=>$passwd)
-  $redis_experts.select(redis_config['select_experts'])
+  $redis_experts = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_experts.select(select)
+  select+=1
 
-  $redis_courses = Redis.new(:host => redis_config['host_courses'],:port => redis_config['port_courses'],:thread_safe => true, :password=>$passwd)
-  $redis_courses.select(redis_config['select_courses'])
+  $redis_courses = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_courses.select(select)
+  select+=1
+
+  $redis_departments = Redis.new(:host => redis_config['host'],:port => redis_config['port'],:thread_safe => true, :password=>$passwd)
+  $redis_departments.select(select)
 
   Redis::Search.configure do |config|
     config.redis = $redis_search

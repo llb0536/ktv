@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 module BaseModel
   extend ActiveSupport::Concern
   included do
@@ -73,7 +73,7 @@ module BaseModel
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
           after_save{
             unless 1==self.deleted
-              self.class.set_#{child}(self.id,self.#{child})
+              self.class.set_#{child}(self.#{(opts[:from_what] == :id) ? '_id' : opts[:from_what]},self.#{child})
             end
           }
       RUBY

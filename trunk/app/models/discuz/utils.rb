@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Discuz
   module Utils
     def self.formhash(opts={},specialadd = '')

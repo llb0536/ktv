@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class TopicCache
   include Mongoid::Document
   store_in :topic_caches,capped:true,size:100000  # 10000 = 127 records

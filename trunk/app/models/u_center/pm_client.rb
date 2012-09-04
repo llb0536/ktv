@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module UCenter
   module PmClient
     def ls

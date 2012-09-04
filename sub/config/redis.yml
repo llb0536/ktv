@@ -1,72 +1,20 @@
 defaults: &defaults
   host: '127.0.0.1'
-  port: 6380
-  select: '0'
-  
-  host_search: '127.0.0.1'
-  port_search: 6380
-  select_search: '1'
-  
-  host_resque: '127.0.0.1'
-  port_resque: 6380
-  select_resque: '2'
-  
-  host_users: '127.0.0.1'
-  port_users: 6380
-  select_users: '3'
-  
-  host_topics: '127.0.0.1'
-  port_topics: 6380
-  select_topics: '4'
-  
-  host_asks: '127.0.0.1'
-  port_asks: 6380
-  select_asks: '5'
-  
-  host_experts: '127.0.0.1'
-  port_experts: 6380
-  select_experts: '6'
-  
-  host_courses: '127.0.0.1'
-  port_courses: 6380
-  select_courses: '7'
   
 sub_cnu: &sub_cnu
   <<: *defaults
   port: 6380
-  port_search: 6380
-  port_resque: 6380
-  port_users: 6380
-  port_topics: 6380
-  port_asks: 6380
-  port_experts: 6380
-  port_courses: 6380
 sub_cnu_dev:
   <<: *sub_cnu
-
 
 sub_ibeike: &sub_ibeike
   <<: *defaults
   port: 6381
-  port_search: 6381
-  port_resque: 6381
-  port_users: 6381
-  port_topics: 6381
-  port_asks: 6381
-  port_experts: 6381
-  port_courses: 6381
 sub_ibeike_dev:
   <<: *sub_ibeike
 
 sub_buaa: &sub_buaa
   <<: *defaults
   port: 6382
-  port_search: 6382
-  port_resque: 6382
-  port_users: 6382
-  port_topics: 6382
-  port_asks: 6382
-  port_experts: 6382
-  port_courses: 6382
 sub_buaa_dev:
   <<: *sub_buaa

@@ -1,9 +1,13 @@
+# -*- encoding : utf-8 -*-
 class Course
   include Mongoid::Document
   include Mongoid::Timestamps
   include Redis::Search
   include BaseModel
   field :department
+  def department_ins
+    Department.where(:name=>self.department).first
+  end
   field :ctype
   field :number
   field :name

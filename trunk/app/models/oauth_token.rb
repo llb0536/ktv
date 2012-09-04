@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Access token used from the client to request resource
 # owner resouces
 

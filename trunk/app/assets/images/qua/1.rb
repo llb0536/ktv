@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'fileutils'
 Dir['./*'].each do |f|
   n =File.basename f

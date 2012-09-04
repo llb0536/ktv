@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class AskSuggestAsk
   ANSWER_COUNT = 3
   UP_COUNT = 8

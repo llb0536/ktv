@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserRegip < Mongoid::Migration
   def self.up
     User.skip_callback(:update, :before, :postpone_email_change_until_confirmation)

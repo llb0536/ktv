@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 worker_processes 4
 working_directory Dir.pwd
 listen "/web/ktv.sock", :backlog => 64

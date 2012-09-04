@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'active_support/all'
 Dir['./{pre_,uc_}*.rb'].each do |filename|
   filename = filename[2..-1]

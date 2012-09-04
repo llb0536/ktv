@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class TopicSuggestTopic
   include Mongoid::Document
   field :sizze, :type => Integer, :default => 0
