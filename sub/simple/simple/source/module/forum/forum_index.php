@@ -204,7 +204,6 @@ if(!$gid && (!defined('FORUM_INDEX_PAGE_MEMORY') || !FORUM_INDEX_PAGE_MEMORY)) {
 
 		if($detailstatus) {
 			$actioncode = lang('action');
-puts('here3');
 			$_G['uid'] && updatesession();
 			$whosonline = array();
 
