@@ -35,13 +35,16 @@
 	<p class="cl">
 		<!--{if $_G['group']['allowpost'] || !$_G['uid']}-->
 			<!--{if $special === null}-->
-				<button id="postbtn" class="pn pnc y" onclick="hideWindow('nav');showWindow('newthread', 'forum.php?mod=post&action=newthread&fid=' + selectfid)" disabled="disabled"><span>{lang send_posts}</span></button>
+				<button id="postbtn" style="margin-right:1px" class="pn pnc y" onclick="hideWindow('nav');showWindow('newthread', '/simple/forum.php?mod=post&action=newthread&fid=' + selectfid)" disabled="disabled"><span>{lang send_posts}</span></button>
 			<!--{else}-->
-				<button id="postbtn" class="pn pnc y" onclick="hideWindow('nav');window.location.href='/simple/forum.php?mod=post&action=newthread&fid=' + selectfid + '&special=$special'" disabled="disabled"><span>$actiontitle</span></button>
+				<button id="postbtn" style="margin-right:1px" class="pn pnc y" onclick="hideWindow('nav');window.location.href='/simple/forum.php?mod=post&action=newthread&fid=' + selectfid + '&special=$special'" disabled="disabled"><span>$actiontitle</span></button>
 			<!--{/if}-->
 		<!--{/if}-->
 		<span class="pbnv">$_G['setting']['bbname']<span id="pbnv"></span> <a id="enterbtn" class="xg1" href="javascript:;" onclick="locationforums(currentblock, currentfid)">[{lang nav_forum}]</a></span>
 	</p>
+  <p>
+  搜索课程: <input style="width:559px" name="q" id="forumselect_q" />
+  </p>
 	<ul class="pbl cl">
 		<li id="block_group" style="width:299px"></li>
 		<li id="block_forum" style="width:299px"></li>
@@ -50,7 +53,7 @@
 </div>
 
 <script type="text/javascript" reload="1">
-var s='<p><a class="pbsb lightlink" onclick="console.log(this)" href="javascript:;" id="commonforum">搜索结果</a></p>';
+var s='<p><a class="pbsb lightlink" onclick="switchforums(this, 100, \'search\')" href="javascript:;" id="searchforum">搜索结果</a></p>';
 s += '<!--{if $commonfids}--><p><a id="commonforum" href="javascript:;" onclick="switchforums(this, 1, \'common\')" class="pbsb lightlink">{lang nav_forum_frequently}</a></p><!--{/if}-->';
 var lis = $('fs_group').getElementsByTagName('LI');
 for(i = 0;i < lis.length;i++) {
@@ -60,7 +63,6 @@ for(i = 0;i < lis.length;i++) {
 	}
 
 }
-console.log(s);
 $('block_group').innerHTML = s;
 var lastswitchobj = null;
 var selectfid = 0;
@@ -97,6 +99,14 @@ function switchforums(obj, block, fid) {
 		selectfid = 0;
 		$('postbtn').setAttribute("disabled", "disabled");
 		$('postbtn').className = 'pn xg1 y';
+  }else if(block == 100) {
+    s += 'test';
+		$('block_forum').innerHTML = s;
+		$('block_subforum').innerHTML = '';
+		switchforum = switchsubforum = '';
+		selectfid = 0;
+		$('postbtn').setAttribute("disabled", "disabled");
+		$('postbtn').className = 'pn xg1 y';
 	} else if(block == 2) {
 		selectfid = fid;
 		if($('fs_subforum_' + fid)) {
@@ -124,9 +134,14 @@ function switchforums(obj, block, fid) {
 }
 
 function locationforums(block, fid) {
-	location.href = block == 1 ? 'forum.php?gid=' + fid : 'forum.php?mod=forumdisplay&fid=' + fid;
+	location.href = block == 1 ? '/simple/forum.php?gid=' + fid : '/simple/forum.php?mod=forumdisplay&fid=' + fid;
 }
-
+(function($){
+  $('#forumselect_q').focus(function(){
+    $('#searchforum').trigger('click');
+    return true;
+  });
+})(jQuery);
 </script>
 
 <!--{if empty($_GET['infloat'])}-->
