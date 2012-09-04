@@ -39,6 +39,7 @@ default: &defaults
   user_qingqiu_id: 72
   course_qingqiu_id: 2116
   topic_qingqiu: '领域请求'
+#所有子站公用这个有点危险！这个authkey千万不能让黑客知道！绝对是密钥
   dz_authkey: '0b7310esiKtBIrpX'
   dz_cookiepre: '6tce_'
   dz_cookiepath: '/'
