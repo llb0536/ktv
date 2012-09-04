@@ -213,9 +213,8 @@ class logging_ctl {
 		global $_G;
 
 		$ucsynlogout = $this->setting['allowsynlogin'] ? uc_user_synlogout() : '';
-
 		if($_GET['formhash'] != $_G['formhash']) {
-			showmessage('logout_succeed', dreferer(), array('formhash' => FORMHASH, 'ucsynlogout' => $ucsynlogout));
+			showmessage('psvr_formhash_failed', dreferer(), array('formhash' => FORMHASH, 'ucsynlogout' => $ucsynlogout));
 		}
 
 		clearcookies();

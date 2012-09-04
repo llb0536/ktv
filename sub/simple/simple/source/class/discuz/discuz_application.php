@@ -500,6 +500,7 @@ class discuz_application extends discuz_base{
 		$this->timezone_set($timeoffset);
 
 		$this->var['formhash'] = formhash();
+    puts(formhash());
 		define('FORMHASH', $this->var['formhash']);
 
 		if($this->init_user) {
