@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module UCenter
   module User
     UCenter.define('UC_USER_CHECK_USERNAME_FAILED', -1);

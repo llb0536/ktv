@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 class Api::UsersController < ApiController
   before_filter :must_oauth_authorized,:only=>:show,:if=>proc{!api_super_client?}
 # safe______________________________________________

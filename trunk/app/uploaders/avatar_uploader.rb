@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AvatarUploader < BaseUploader
   def default_url
     "/assets/avatar/#{version_name}.jpg"

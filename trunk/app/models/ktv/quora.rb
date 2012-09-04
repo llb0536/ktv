@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 module Ktv
   class Quora
     def self.zhankai!(div,index,li)

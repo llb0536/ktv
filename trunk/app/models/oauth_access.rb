@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Access info related to a resource owner using a specific
 # client (block and statistics)
 

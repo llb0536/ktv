@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Api::AsksController < ApiController
   before_filter :get_current_user,:except=>[:index,:show,:sugg]

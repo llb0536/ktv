@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 module UCenter
   module Php
     def is_numeric(number)

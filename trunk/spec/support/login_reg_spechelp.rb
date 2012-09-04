@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 def login_user_via_zhilian(email,password)
   within('#inner_login') do
     fill_in 'loginname',with:email

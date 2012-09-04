@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Askbody2Job
   @queue = :redundancy
   def self.perform(params={})

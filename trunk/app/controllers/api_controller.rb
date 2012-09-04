@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ApiController < ApplicationController
   layout false
   # before_filter proc{

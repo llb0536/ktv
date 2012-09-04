@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class EmbedController < ApplicationController
   def search
     render :layout=>false

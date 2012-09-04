@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class BanWordUploader < CarrierWave::Uploader::Base
   storage :file

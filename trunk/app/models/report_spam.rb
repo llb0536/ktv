@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ReportSpam
   include Mongoid::Document
   include Mongoid::Timestamps

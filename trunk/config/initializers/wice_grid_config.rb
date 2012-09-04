@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 if defined?(Wice::Defaults)
  
   Wice::Defaults::JS_FRAMEWORK = :jquery

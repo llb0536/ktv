@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 # Application making protected resource requests on behalf of
 # the resource owner and with its authorization
 

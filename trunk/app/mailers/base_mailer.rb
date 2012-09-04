@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "resque"
 class BaseMailer < ActionMailer::Base
 #Pan>

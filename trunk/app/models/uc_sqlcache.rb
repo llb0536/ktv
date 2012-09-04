@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UcSqlcache < ActiveRecord::Base
   include ActiveBaseModel
   self.table_name =  'uc_sqlcache'

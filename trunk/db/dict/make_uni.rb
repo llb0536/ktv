@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 
 source = File.open("new.txt")
 File.open("uni.txt","a") do |f|

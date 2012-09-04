@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Cryptor
 
   def self.encryptData(strString)

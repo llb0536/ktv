@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Daily requests of a Resource Owner on a specific client
 
 class OauthDailyRequest

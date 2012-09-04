@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ClientsController < ApplicationController
   layout 'oauth'
   before_filter :find_clients

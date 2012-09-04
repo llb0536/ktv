@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe Topic do
   it "能取出A的孩子" do

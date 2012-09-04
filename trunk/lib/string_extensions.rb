@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module StringExtensions
   JS_ESCAPE_MAP = {
                     '\\'    => '\\\\',
