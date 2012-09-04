@@ -1,6 +1,21 @@
 class PreForumForum < ActiveRecord::Base
   include ActiveBaseModel
   self.table_name =  'pre_forum_forum'
+  # 这个是用来添加一级板块用的
+  # name 名字
+  # displayorder 显示顺序
+  def self.insert1(name,displayorder)
+    forum = self.create! do |f|
+      f.type='group'
+      f.name=name
+      f.status=1
+      f.displayorder=displayorder
+    end
+    PreForumForumfield.create! do |x|
+      x.fid=forum.id
+    end
+    forum
+  end
   # 这个是用来添加第二级子模块用的
   # up_fid 是父亲板块的fid
   # name 名字
