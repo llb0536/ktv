@@ -41,5 +41,19 @@ class Course
   def self.import_coursewares_count
     self.all.each{|cw| cw.update_attribute(:coursewares_count,PreForumThread.where(fid:cw.fid).count);}
   end
+  def name_long
+    "[#{self.number}] #{self.name}"
+  end
+  def name_long_changed?
+    self.number_changed? or self.name_changed?
+  end
+  def name_long_was
+    "#{self.number_was} #{self.name_was}"
+  end
+  redis_search_index(:title_field => :name,
+                     :alias_field => :name_long,
+    :prefix_index_enable => true,
+    :ext_fields => [:fid,:name_long],
+    :score_field => :coursewares_count)
 end
 

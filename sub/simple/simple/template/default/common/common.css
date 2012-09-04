@@ -538,7 +538,7 @@ CSS 写作注意事项：
 		.alert_act { margin-top: 20px; padding-left: 58px; }
 
 /* 上传课件导航 by lushnis */
-.pbnv { float: left; white-space: nowrap; overflow: hidden; width: 400px; padding: 7px 0; }
+.pbnv { float: left; white-space: nowrap; overflow: hidden; width: 538px; padding: 7px 0; }
 .pbl { overflow: hidden; margin: 9px 0; width: 621px; border-width: 1px 0 1px 1px; border-style: solid; border-color: #CCC; background: {WRAPBG}; }
 	.pbl li { float: left; overflow-x: hidden; overflow-y: auto; padding: 5px; width: 196px; height: 300px; border-right: 1px solid #CCC; }
 	.pbl p { height: 25px; line-height: 25px; }

@@ -48,6 +48,7 @@
 	<ul class="pbl cl">
 		<li id="block_group" style="width:299px"></li>
 		<li id="block_forum" style="width:299px"></li>
+		<li id="block_search" style="width:299px;display:none"></li>
 		<li id="block_subforum" style="display:none"></li>
 	</ul>
 </div>
@@ -78,7 +79,7 @@ function switchforums(obj, block, fid) {
 		obj.parentNode.className = 'pbls';
 	}
 	var s = '';
-	if(fid != 'common') {
+	if(fid != 'common' && fid != 'search') {
 		$('enterbtn').className = 'xi2';
 		currentblock = block;
 		currentfid = fid;
@@ -86,6 +87,8 @@ function switchforums(obj, block, fid) {
 		$('enterbtn').className = 'xg1';
 	}
 	if(block == 1) {
+    jQuery('#block_search').hide();
+    jQuery('#block_forum').show();
 		var lis = $('fs_forum_' + fid).getElementsByTagName('LI');
 		for(i = 0;i < lis.length;i++) {
 			fid = lis[i].getAttribute('fid');
@@ -100,9 +103,8 @@ function switchforums(obj, block, fid) {
 		$('postbtn').setAttribute("disabled", "disabled");
 		$('postbtn').className = 'pn xg1 y';
   }else if(block == 100) {
-    s += 'test';
-		$('block_forum').innerHTML = s;
-		$('block_subforum').innerHTML = '';
+    jQuery('#block_forum').hide();
+    jQuery('#block_search').show();
 		switchforum = switchsubforum = '';
 		selectfid = 0;
 		$('postbtn').setAttribute("disabled", "disabled");
@@ -140,6 +142,36 @@ function locationforums(block, fid) {
   $('#forumselect_q').focus(function(){
     $('#searchforum').trigger('click');
     return true;
+  });
+  var psvr_complete_cache={}, lastXhr;
+  var psvr_complete_response = function(json){
+    psvr_s = '';
+    for(i=0;i<json.length;++i){
+      psvr_s += '<p><a onclick="switchforums(this, 2, '+json[i]['fid']+')" ondblclick="locationforums(2, '+json[i]['fid']+')" href="javascript:;">'+json[i]['name_long']+'</a></p>';
+    }
+    $('#block_search').html(psvr_s);
+    jQuery('#block_forum').hide();
+    jQuery('#block_search').show();
+    console.log(json);
+  };
+  $('#forumselect_q').autocomplete({
+    source: function(request, response){
+      var term = request.term;
+      if ( term in psvr_complete_cache ) {
+        psvr_complete_response( psvr_complete_cache[ term ] );
+        return;
+      }
+      lastXhr = $.getJSON( '/search/courses', request, function( data, status, xhr ) {
+        psvr_complete_cache[ term ] = data;
+        if ( xhr === lastXhr ) {
+          psvr_complete_response( data );
+        }
+      });
+    },
+    minLength: 1
+  });
+  $('#forumselect_q').bind( "input.autocomplete", function(){
+      $(this).trigger('keydown.autocomplete');
   });
 })(jQuery);
 </script>
