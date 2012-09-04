@@ -7,9 +7,6 @@
  *      $Id: class_core.php 28824 2012-03-14 06:41:27Z zhangguosheng $
  */
 // psvr add
-function asset_path($file){
-  return '/assets'.$file;
-}
 function psvr_in_dev(){
   $server_name = @$_SERVER['SERVER_NAME'];
   if($server_name){
@@ -35,6 +32,14 @@ $PSVR['parsed_setting'] = $PSVR['parsed_setting'][PSVR_RAILS_ENV];
 $PSVR['foto'] = rand(0,count($PSVR['parsed_setting']['fotos'])-1);
 $PSVR['foto_desc'] = $PSVR['parsed_setting']['fotos'][$PSVR['foto']];
 $PSVR['foto_src'] = "http://ktv-pic.b0.upaiyun.com/sub/".PSVR_KTV_SUB."_foto/{$PSVR['foto']}.jpg";
+if(!PSVR_IN_DEV){
+  global $PSVR;
+  $PSVR['parsed_manifest'] = yaml_parse(file_get_contents('../../../_assets_sub/manifest.yml'));
+}
+function asset_path($file){
+  global $PSVR;
+  return PSVR_IN_DEV ? '/assets/'.$file : 'http://ktv-intrinsic-sub.b0.upaiyun.com/'.$PSVR['parsed_manifest'][$file];
+}
 
 function puts($str){
   $psvr_fp = fopen("/tmp/psvr_simple_log.log", "a");
