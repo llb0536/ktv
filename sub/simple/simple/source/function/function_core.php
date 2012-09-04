@@ -18,6 +18,7 @@ function system_error($message, $show = true, $save = true, $halt = true) {
 }
 
 function updatesession() {
+puts('here2');
 	return C::app()->session->updatesession();
 }
 

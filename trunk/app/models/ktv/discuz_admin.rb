@@ -9,9 +9,9 @@ module Ktv
     def start_mode(mode=nil)
       @mode = mode
       if @mode.present?
-        @base_url = "http://#{@mode}.kejian.#{Rails.env.development? ? 'lvh.me' : 'tv' }/simple"
+        @base_url = "http://#{@mode}.kejian.#{$psvr_really_development ? 'lvh.me' : 'tv' }/simple"
       else
-        @base_url = "http://kejian.#{Rails.env.development? ? 'lvh.me' : 'tv' }/simple"
+        @base_url = "http://kejian.#{$psvr_really_development ? 'lvh.me' : 'tv' }/simple"
       end
       puts @base_url
       # 依赖于forum.php显示登陆框框

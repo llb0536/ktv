@@ -56,6 +56,7 @@ class discuz_session {
 	}
 
 	public function init($sid, $ip, $uid) {
+
 		$this->old = array('sid' =>  $sid, 'ip' =>  $ip, 'uid' =>  $uid);
 		$session = array();
 		if($sid) {
@@ -64,6 +65,7 @@ class discuz_session {
 
 		if(empty($session) || $session['uid'] != $uid) {
 			$session = $this->create($ip, $uid);
+// puts($session);
 		}
 
 		$this->var = $session;
@@ -71,7 +73,8 @@ class discuz_session {
 	}
 
 	public function create($ip, $uid) {
-
+// puts($ip);
+// puts($uid);
 		$this->isnew = true;
 		$this->var = $this->newguest;
 		$this->set('sid', random(6));
@@ -80,7 +83,7 @@ class discuz_session {
 		$uid && $this->set('invisible', getuserprofile('invisible'));
 		$this->set('lastactivity', time());
 		$this->sid = $this->var['sid'];
-
+// puts($this->sid);
 		return $this->var;
 	}
 
@@ -92,11 +95,14 @@ class discuz_session {
 
 	public function update() {
 		if($this->sid !== null) {
-
 			if($this->isnew) {
+			  puts('delete!!!!! '.$this->sid);
 				$this->delete();
 				$this->table->insert($this->var, false, false, true);
 			} else {
+			  puts('update:');
+			  puts($this->var);
+			  puts('-------------------');
 				$this->table->update($this->var['sid'], $this->var);
 			}
 			setglobal('sessoin', $this->var);
@@ -205,7 +211,7 @@ class discuz_session {
 			foreach($_G['action'] as $k => $v) {
 				C::app()->session->set($k, $v);
 			}
-
+puts('here1');
 			C::app()->session->update();
 
 			if($_G['uid'] && TIMESTAMP - $ulastactivity > 21600) {
