@@ -23,6 +23,7 @@ class Course
   embeds_many :teachings
   
   def self.reflect_onto_discuz!
+    PreForumForum.delete_all
     self.asc('number').each_with_index do |item,index|
       PreForumForum.insert2(1,"[#{item.number}] #{item.name}",index+1)
     end
