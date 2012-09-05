@@ -5,7 +5,7 @@ if(empty($argv[1])) {
 
 require '../lib/Resque.php';
 date_default_timezone_set('GMT');
-Resque::setBackend('127.0.0.1:5050');
+Resque::setBackend('127.0.0.1:6379');
 
 $args = array(
 	'time' => time(),
