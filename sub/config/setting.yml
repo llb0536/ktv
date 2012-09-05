@@ -108,6 +108,13 @@ sub_cnu: &sub_cnu
     - 19
 sub_cnu_dev:
   <<: *sub_cnu
+  open_timeout: 30
+  # Connections that have not been used in this many seconds will be reset.
+  # Sets the idle timeout to idle_timeout. The default timeout is 5 seconds. If you experience “too many connection resets”, reducing this value may help.
+  idle_timeout: 30 
+  # Length of time to wait for data from the server
+  read_timeout: 30 
+  timeout: 30 
   ktv_domain: kejian.lvh.me
   wendao_domain_name: "kejian.lvh.me"
   ktv_subdomain: 'cnu.kejian.lvh.me'

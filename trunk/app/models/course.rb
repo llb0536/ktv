@@ -14,6 +14,7 @@ class Course
   field :fid
   field :coursewares_count,:type=>Integer,:default=>0
   field :years,:type=>Array,:default=>[]
+  field :is_yjs,:type=>Boolean,:default=>false
   
   index :fid
   cache_consultant :name,:from_what => :fid,:no_callbacks=>true
