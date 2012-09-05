@@ -307,6 +307,35 @@
       $('#login').click(function(){return KTV.login()});
       $("abbr.timeago").timeago();
     });
+    jQuery.fn.extend({
+        shareModes:['share-public', 'share-followers','share-private'],
+        shareMod:['分享该笔记','只好友可见','仅自己可见'],
+        shareModeNum:['1','2','0'],
+        resetShareModeClassNames:function() {
+          var elements = this;
+          elements.removeClass();
+          return this;
+        },
+        resetShareMode:function() {
+          this.resetShareModeClassNames();
+          return this.each(function() {
+            $('#note_shared').attr('value','0');
+            jQuery(this).data('shareModeIndex', 0)
+              .addClass(jQuery.fn.shareModes[2]).html(jQuery.fn.shareMod[2]);
+          });
+        },
+        toggleShareMode:function() {
+          // this.resetShareModeClassNames();
+          return this.each(function() {
+            var element = jQuery(this);
+            var shareModeIndex = element.data('shareModeIndex') || 0;
+            shareModeIndex = (shareModeIndex + 1) % jQuery.fn.shareModes.length;
+            element.data('shareModeIndex', shareModeIndex)
+              .addClass(jQuery.fn.shareModes[shareModeIndex]).html(jQuery.fn.shareMod[shareModeIndex]);
+            $('#note_shared').attr('value',jQuery.fn.shareModeNum[shareModeIndex]);  
+          });
+        }  
+      });
   </script>
   <%= javascript_include_tag "application" %>
   

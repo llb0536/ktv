@@ -34,6 +34,27 @@ KTV.data = {
   .new_sticky_btn{
     
   }
+  .n_share {
+       }       
+  #shared_lb {
+      declaration:none;
+      display: block;
+      float: left;
+      margin-left: 5px;
+      margin-right:10px;
+      margin-top:4px;
+/*      background-image: url(<%= asset_path 'task-x.png' %>); */
+      }
+  #shared_lb.share-private {
+/*        background-image: url(<%= asset_path 'task-x.png' %>);*/
+        }
+  #shared_lb.share-public{
+/*        background-image: url(<%= asset_path 'task-apostrophe.png' %>); */
+        }
+  #shared_lb.share-followers {
+/*        background-image: url(<%= asset_path 'task-dash.png' %>); */
+        }
+
 </style>
 <script type="text/javascript" charset="utf-8">
   <% content_for :butt2 do %>
@@ -73,11 +94,17 @@ KTV.data = {
     }else{
       KTV.sdk_flashes_set('error','网络通信失败');
     }
-  })
+  });
+  $('#shared_lb').live("click", function(e) {
+      $(this).toggleShareMode();
+      return false;
+  }); 
+
   <% end %>
 </script>
 <div class="__own">
   <div class="wrapper">
+
     <div id="stickies" style="display:none">
       <%= form_for [@courseware,@note],:remote => true,:html=>{style:'display:none;width:225px'} do |f| %>
         <%= f.hidden_field :page %>
@@ -88,11 +115,17 @@ KTV.data = {
         <%= f.hidden_field :courseware_id %>
         <textarea class="sticky new_sticky" name="note[body]" id="note_body" onkeydown=""></textarea>
         <div class="wrapper222" style="position:relative;top:-38px">
-          <button id="new_sticky_cancel" class="new_sticky_btn" style="float:right;margin-right:8px"><span class="button primary cancel">取消</span></button>
-          <button id="new_sticky_submit" class="new_sticky_btn" style="float:right;margin-right:4px"><span class="primary">保存笔记</span></button>
-        </div>
+            <div class="n_share">
+            <%= f.hidden_field :shared %>
+            <%= f.label :shared,'仅自己可见',:id => 'shared_lb'%>
+            </div>
+          <button id="new_sticky_cancel" class="new_sticky_btn" style="float:right;margin-right:2px"><span class="button primary cancel">取消</span></button>
+          <button id="new_sticky_submit" class="new_sticky_btn" style="float:right;margin-right:5px"><span class="primary">保存笔记</span></button>
+        </div>f
       <% end %>
-      <% @courseware.notes.where(:page=>0).each_with_index do |note,index| %>
+      <% @courseware.notes.where(:page => 0).each_with_index do |note,index| %>
+      <!-- 这个查询怎么写？:user_id=>BSON::ObjectId(\"#{current_user.id}\")
+      "page = #{0}AND ((shared = 1) OR (shared = 0 AND user_id = #{current_user.id}) OR (shared = 2 AND (user_id in #{current_user.followers})))" -->
         <textarea class="sticky" readonly="readonly" id="note_<%= note.id %>"><%= note.body %></textarea>
         <% content_for :butt3 do %>
           real_val = $('#note_<%= note.id %>').position().top + $('#note_<%= note.id %>').height() / 2;
